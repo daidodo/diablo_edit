@@ -1,0 +1,21 @@
+Stag Bow
+Reflex Bow
+Maiden Spear
+Maiden Pike
+Maiden Javelin
+
+Ashwood Bow
+Ceremonial Bow
+Ceremonial Spear
+Ceremonial Pike
+Ceremonial Javelin
+
+Matriarchal Bow
+Grand Matron Bow
+Matriarchal Spear
+Matriarchal Pike
+Matriarchal Javelin
+
+
+
+

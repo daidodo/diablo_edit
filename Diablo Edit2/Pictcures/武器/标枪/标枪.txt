@@ -1,0 +1,18 @@
+Javelin
+Pilum
+Short Spear
+Glaive
+Throwing Spear
+
+War Javelin
+Great Pilum
+Simbilan
+Spiculum
+Harpoon
+
+Hyperion Javelin
+Stygian Pilum
+Balrog Spear
+Ghost Glaive
+Winged Harpoon
+

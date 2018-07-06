@@ -1,0 +1,14 @@
+Throwing Knife
+Throwing Axe
+Balanced Knife
+Balanced Axe
+
+Battle Dart
+Francisca
+War Dart
+Hurlbat
+
+Flying Knife
+Flying Axe
+Winged Knife
+Winged Axe

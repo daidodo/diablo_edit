@@ -1,0 +1,30 @@
+2
+Buckler
+Small Shield
+Large Shield
+Kite Shield
+Tower Shield
+Gothic Shield
+3
+Bone Shield
+Spiked Shield
+5
+Defender
+Round Shield
+Scutum
+Dragon Shield
+Pavise
+Ancient Shield
+6
+Grim Shield
+Barbed Shield
+9
+Heater
+Luna
+Hyperion
+Monarch
+Aegis
+Ward
+10
+Troll Nest
+Blade Barrier

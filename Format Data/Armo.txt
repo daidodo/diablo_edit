@@ -1,0 +1,202 @@
+uow	Aegis	1	1
+pa4	Aerin Shield	1	1
+pa7	Akaran Rondache	1	1
+pa6	Akaran Targe	1	1
+dr6	Alpha Helm	1	1
+aar	Ancient Armor	1	1
+xts	Ancient Shield	1	1
+dr3	Antlers	1	1
+utp	Archon Plate	1	1
+ulm	Armet	1	1
+ba4	Assault Helmet	1	1
+ba5	Avenger Guard	1	1
+upl	Balrog Skin	1	1
+xpk	Barbed Shield	1	1
+xhl	Basinet	1	1
+ztb	Battle Belt	1	1
+xtb	Battle Boots	1	1
+xtg	Battle Gauntlets	1	1
+mbl	Belt	1	1
+upk	Blade Barrier	1	1
+drb	Blood Spirit	1	1
+nef	Bloodlord Skull	1	1
+bhm	Bone Helm	1	1
+bsh	Bone Shield	1	1
+uh9	Bone Visage	1	1
+uhn	Boneweave	1	1
+umb	Boneweave Boots	1	1
+lbt	Boots	1	1
+ulg	Bramble Mitts	1	1
+brs	Breast Plate	1	1
+buc	Buckler	1	1
+ne9	Cantor Trophy	1	1
+cap	Cap	1	1
+bab	Carnage Helm	1	1
+xlm	Casque	1	1
+mbt	Chain Boots	1	1
+mgl	Chain Gloves	1	1
+chn	Chain Mail	1	1
+xul	Chaos Armor	1	1
+ci0	Circlet	1	1
+uhc	Colossus Girdle	1	1
+bae	Conqueror Crown	1	1
+urn	Corona	1	1
+ci1	Coronet	1	1
+crn	Crown	1	1
+pa5	Crown Shield	1	1
+utg	Crusader Gauntlets	1	1
+xrs	Cuirass	1	1
+xsk	Death Mask	1	1
+xuc	Defender	1	1
+ne5	Demon Head	1	1
+usk	Demonhead	1	1
+xla	Demonhide Armor	1	1
+xlb	Demonhide Boots	1	1
+xlg	Demonhide Gloves	1	1
+zlb	Demonhide Sash	1	1
+bad	Destroyer Helm	1	1
+ci3	Diadem	1	1
+ung	Diamond Mail	1	1
+xit	Dragon Shield	1	1
+drf	Dream Spirit	1	1
+uui	Dusk Shroud	1	1
+drd	Earth Spirit	1	1
+xth	Embossed Plate	1	1
+dr4	Falcon Mask	1	1
+ba2	Fanged Helm	1	1
+ne7	Fetish Trophy	1	1
+fld	Field Plate	1	1
+fhl	Full Helm	1	1
+ful	Full Plate Mail	1	1
+bac	Fury Visor	1	1
+ne4	Gargoyle Head	1	1
+hgl	Gauntlets	1	1
+xui	Ghost Armor	1	1
+uhl	Giant Conch	1	1
+pa9	Gilded Shield	1	1
+gth	Gothic Plate	1	1
+gts	Gothic Shield	1	1
+xrn	Grand Crown	1	1
+urs	Great Hauberk	1	1
+ghm	Great Helm	1	1
+hbt	Greaves	1	1
+dr7	Griffon Headdress	1	1
+xh9	Grim Helm	1	1
+xsh	Grim Shield	1	1
+baf	Guardian Crown	1	1
+hla	Hard Leather Armor	1	1
+dr2	Hawk Helm	1	1
+uuc	Heater	1	1
+tbl	Heavy Belt	1	1
+vbt	Heavy Boots	1	1
+xmg	Heavy Bracers	1	1
+vgl	Heavy Gloves	1	1
+ult	Hellforge Plate	1	1
+neg	Hellspawn Skull	1	1
+hlm	Helm	1	1
+pa3	Heraldic Shield	1	1
+nea	Hierophant Trophy	1	1
+ba3	Horned Helm	1	1
+dr8	Hunter's Guise	1	1
+ukp	Hydraskull	1	1
+urg	Hyperion	1	1
+ba1	Jawbone Cap	1	1
+ba6	Jawbone Visor	1	1
+kit	Kite Shield	1	1
+uld	Kraken Shell	1	1
+pad	Kurast Shield	1	1
+uth	Lacquered Plate	1	1
+lrg	Large Shield	1	1
+lea	Leather Armor	1	1
+lgl	Leather Gloves	1	1
+vbl	Light Belt	1	1
+tgl	Light Gauntlets	1	1
+ltp	Light Plate	1	1
+tbt	Light Plated Boots	1	1
+xng	Linked Mail	1	1
+ba7	Lion Helm	1	1
+ucl	Loricated Mail	1	1
+uml	Luna	1	1
+xtp	Mage Plate	1	1
+msk	Mask	1	1
+xhn	Mesh Armor	1	1
+zmb	Mesh Belt	1	1
+xmb	Mesh Boots	1	1
+neb	Minion Skull	1	1
+utb	Mirrored Boots	1	1
+umc	Mithril Coil	1	1
+uit	Monarch	1	1
+ne6	Mummified Trophy	1	1
+uhb	Myrmidon Greaves	1	1
+uhg	Ogre Gauntlets	1	1
+xar	Ornate Plate	1	1
+ned	Overseer Skull	1	1
+xow	Pavise	1	1
+plt	Plate Mail	1	1
+hbl	Plated Belt	1	1
+ne1	Preserved Head	1	1
+pa8	Protector Shield	1	1
+qui	Quilted Armor	1	1
+ba8	Rage Mask	1	1
+rng	Ring Mail	1	1
+pa2	Rondache	1	1
+xml	Round Shield	1	1
+paa	Royal Shield	1	1
+xpl	Russet Armor	1	1
+uar	Sacred Armor	1	1
+dr9	Sacred Feathers	1	1
+pac	Sacred Rondache	1	1
+pab	Sacred Targe	1	1
+xkp	Sallet	1	1
+lbl	Sash	1	1
+ba9	Savage Helmet	1	1
+scl	Scale Mail	1	1
+ula	Scarab Husk	1	1
+uvb	Scarabshell Boots	1	1
+xrg	Scutum	1	1
+xea	Serpentskin Armor	1	1
+ne8	Sexton Trophy	1	1
+uul	Shadow Plate	1	1
+uap	Shako	1	1
+zvb	Sharkskin Belt	1	1
+xvb	Sharkskin Boots	1	1
+xvg	Sharkskin Gloves	1	1
+xld	Sharktooth Armor	1	1
+skp	Skull Cap	1	1
+dre	Sky Spirit	1	1
+baa	Slayer Guard	1	1
+sml	Small Shield	1	1
+ulc	Spiderweb Sash	1	1
+spk	Spiked Shield	1	1
+uhm	Spired Helm	1	1
+dr5	Spirit Mask	1	1
+spl	Splint Mail	1	1
+stu	Studded Leather	1	1
+nee	Succubus Skull	1	1
+drc	Sun Spirit	1	1
+pa1	Targe	1	1
+xlt	Templar Coat	1	1
+ci2	Tiara	1	1
+xcl	Tigulated Mail	1	1
+dra	Totemic Mask	1	1
+tow	Tower Shield	1	1
+xtu	Trellised Armor	1	1
+utc	Troll Belt	1	1
+ush	Troll Nest	1	1
+ne3	Unraveller Head	1	1
+umg	Vambraces	1	1
+uvg	Vampirebone Gloves	1	1
+uvc	Vampirefang Belt	1	1
+paf	Vortex Shield	1	1
+zhb	War Belt	1	1
+xhb	War Boots	1	1
+xhg	War Gauntlets	1	1
+xap	War Hat	1	1
+uts	Ward	1	1
+xhm	Winged Helm	1	1
+utu	Wire Fleece	1	1
+dr1	Wolf Head	1	1
+uea	Wyrmhide	1	1
+ulb	Wyrmhide Boots	1	1
+pae	Zakarum Shield	1	1
+ne2	Zombie Head	1	1

@@ -1,0 +1,39 @@
+Short Bow
+Hunter's Bow
+Long Bow
+Composite Bow
+Short Battle Bow
+Long Battle Bow
+Short War Bow
+Long War Bow
+Light Crossbow
+Crossbow
+Heavy Crossbow
+Repeating Crossbow
+
+Edge Bow
+Razor Bow
+Cedar Bow
+Double Bow
+Short Siege Bow
+Large Siege Bow
+Rune Bow
+Gothic Bow
+Arbalest
+Siege Crossbow
+Ballista
+Chu-ko-Nu
+
+Spider Bow
+Blade Bow
+Shadow Bow
+Great Bow
+Diamond Bow
+Crusader Bow
+Ward Bow
+Hydra Bow
+Pellet Bow
+Gorgon Crossbow
+Colossus Crossbow
+Demon Crossbow
+

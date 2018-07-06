@@ -1,0 +1,37 @@
+Spear
+Trident
+Brandistock
+Spetum
+Pike
+Bardiche
+Voulge
+Scythe
+Poleaxe
+Halberd
+War Scythe
+
+War Spear
+Fuscina
+War Fork
+Yari
+Lance
+Lochaber Axe
+Bill
+Battle Scythe
+Partizan
+Bec-de-Corbin
+Grim Scythe
+
+Hyperion Spear
+Stygain Pike
+Mancatcher
+Ghost Spear
+War Pike
+Ogre Axe
+Colossus Voulge
+Thresher
+Cryptic Axe
+Great Poleaxe
+Giant Thresher
+
+

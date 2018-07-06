@@ -1,0 +1,6 @@
+Rancid Gas Potion
+Oil Potion
+Choking Gas Potion
+Exploding Potion
+Strangling Gas Potion
+Fulminating Potion

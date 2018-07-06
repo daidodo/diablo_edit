@@ -1,0 +1,1438 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(简体，中国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#include ""res\\DiabloEdit2.rc2""  // 非 Microsoft Visual C++ 编辑的资源\r\n"
+    "#include ""afxres.rc""         // 标准组件\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\1.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
+
+IDB_BITMAP0             BITMAP                  "Pictcures\\Misc\\Elixir.bmp"
+
+IDB_BITMAP1             BITMAP                  "Pictcures\\Misc\\Hpo.bmp"
+
+IDB_BITMAP2             BITMAP                  "Pictcures\\Misc\\Mpo.bmp"
+
+IDB_BITMAP3             BITMAP                  "Pictcures\\Misc\\Hpf.bmp"
+
+IDB_BITMAP5             BITMAP                  "Pictcures\\Misc\\Stamina Potion.bmp"
+
+IDB_BITMAP4             BITMAP                  "Pictcures\\Misc\\Mpf.bmp"
+
+IDB_BITMAP6             BITMAP                  "Pictcures\\Misc\\Antidote Potion.bmp"
+
+IDB_BITMAP7             BITMAP                  "Pictcures\\Misc\\Reiuvenation Potion.bmp"
+
+IDB_BITMAP8             BITMAP                  "Pictcures\\Misc\\Full Reiuvenation Potion.bmp"
+
+IDB_BITMAP9             BITMAP                  "Pictcures\\Misc\\Thawing Potion.bmp"
+
+IDB_BITMAP10            BITMAP                  "Pictcures\\Misc\\Tome of Town Portal.bmp"
+
+IDB_BITMAP11            BITMAP                  "Pictcures\\Misc\\Tome of Identify.bmp"
+
+IDB_BITMAP12            BITMAP                  "Pictcures\\Misc\\Amulet.bmp"
+
+IDB_BITMAP13            BITMAP                  "Pictcures\\Misc\\Top of the Horadric Staff.bmp"
+
+IDB_BITMAP14            BITMAP                  "Pictcures\\Misc\\Ring.bmp"
+
+IDB_BITMAP15            BITMAP                  "Pictcures\\Misc\\Gold.bmp"
+
+IDB_BITMAP16            BITMAP                  "Pictcures\\Misc\\Scroll of Jnifuss.bmp"
+
+IDB_BITMAP17            BITMAP                  "Pictcures\\Misc\\Key to the Cairn Stones.bmp"
+
+IDB_BITMAP18            BITMAP                  "Pictcures\\Misc\\Arrows.bmp"
+
+IDB_BITMAP19            BITMAP                  "Pictcures\\Misc\\Torch.bmp"
+
+IDB_BITMAP20            BITMAP                  "Pictcures\\Misc\\Bolts.bmp"
+
+IDB_BITMAP21            BITMAP                  "Pictcures\\Misc\\Scroll of Town Portal.bmp"
+
+IDB_BITMAP22            BITMAP                  "Pictcures\\Misc\\Scroll of Identify.bmp"
+
+IDB_BITMAP23            BITMAP                  "Pictcures\\Misc\\Skeleton Heart.bmp"
+
+IDB_BITMAP24            BITMAP                  "Pictcures\\Misc\\Skeleton Brain.bmp"
+
+IDB_BITMAP25            BITMAP                  "Pictcures\\Misc\\Skeleton Jawbone.bmp"
+
+IDB_BITMAP26            BITMAP                  "Pictcures\\Misc\\Skeleton Eye.bmp"
+
+IDB_BITMAP27            BITMAP                  "Pictcures\\Misc\\Skeleton Horn.bmp"
+
+IDB_BITMAP28            BITMAP                  "Pictcures\\Misc\\Skeleton Tail.bmp"
+
+IDB_BITMAP29            BITMAP                  "Pictcures\\Misc\\Skeleton Flag.bmp"
+
+IDB_BITMAP30            BITMAP                  "Pictcures\\Misc\\Skeleton Fang.bmp"
+
+IDB_BITMAP31            BITMAP                  "Pictcures\\Misc\\Skeleton Quill.bmp"
+
+IDB_BITMAP32            BITMAP                  "Pictcures\\Misc\\Skeleton Soul.bmp"
+
+IDB_BITMAP33            BITMAP                  "Pictcures\\Misc\\Skeleton Scalp.bmp"
+
+IDB_BITMAP34            BITMAP                  "Pictcures\\Misc\\Skeleton Spleen.bmp"
+
+IDB_BITMAP35            BITMAP                  "Pictcures\\Misc\\Key.bmp"
+
+IDB_BITMAP36            BITMAP                  "Pictcures\\Misc\\the Black Tower Key.bmp"
+
+IDB_BITMAP37            BITMAP                  "Pictcures\\Misc\\Potion of Life.bmp"
+
+IDB_BITMAP38            BITMAP                  "Pictcures\\Misc\\a Jade Figuring.bmp"
+
+IDB_BITMAP39            BITMAP                  "Pictcures\\Misc\\the Golden Bird.bmp"
+
+IDB_BITMAP40            BITMAP                  "Pictcures\\Misc\\Lam Esen's Tome.bmp"
+
+IDB_BITMAP41            BITMAP                  "Pictcures\\Misc\\Horadric Cube.bmp"
+
+IDB_BITMAP42            BITMAP                  "Pictcures\\Misc\\Horadric Scroll.bmp"
+
+IDB_BITMAP43            BITMAP                  "Pictcures\\Misc\\Mephisto's Soulstone.bmp"
+
+IDB_BITMAP44            BITMAP                  "Pictcures\\Misc\\Book of Skill.bmp"
+
+IDB_BITMAP45            BITMAP                  "Pictcures\\Misc\\Khalim's Eye.bmp"
+
+IDB_BITMAP46            BITMAP                  "Pictcures\\Misc\\Khalim's Heart.bmp"
+
+IDB_BITMAP47            BITMAP                  "Pictcures\\Misc\\Khalim's Brain.bmp"
+
+IDB_BITMAP48            BITMAP                  "Pictcures\\Misc\\Khalim's Ear.bmp"
+
+IDB_BITMAP49            BITMAP                  "Pictcures\\Misc\\Chipped Amethyst.bmp"
+
+IDB_BITMAP50            BITMAP                  "Pictcures\\Misc\\Flawed Amethyst.bmp"
+
+IDB_BITMAP51            BITMAP                  "Pictcures\\Misc\\Amethyst.bmp"
+
+IDB_BITMAP52            BITMAP                  "Pictcures\\Misc\\Flawless Amethyst.bmp"
+
+IDB_BITMAP53            BITMAP                  "Pictcures\\Misc\\Perfect Amethyst.bmp"
+
+IDB_BITMAP54            BITMAP                  "Pictcures\\Misc\\Chipped Topaz.bmp"
+
+IDB_BITMAP55            BITMAP                  "Pictcures\\Misc\\Flawed Topaz.bmp"
+
+IDB_BITMAP56            BITMAP                  "Pictcures\\Misc\\Topaz.bmp"
+
+IDB_BITMAP57            BITMAP                  "Pictcures\\Misc\\Flawless Topaz.bmp"
+
+IDB_BITMAP58            BITMAP                  "Pictcures\\Misc\\Perfect Topaz.bmp"
+
+IDB_BITMAP59            BITMAP                  "Pictcures\\Misc\\Chipped Sapphire.bmp"
+
+IDB_BITMAP60            BITMAP                  "Pictcures\\Misc\\Flawed Saphire.bmp"
+
+IDB_BITMAP61            BITMAP                  "Pictcures\\Misc\\Sapphire.bmp"
+
+IDB_BITMAP62            BITMAP                  "Pictcures\\Misc\\Flawless Sapphire.bmp"
+
+IDB_BITMAP63            BITMAP                  "Pictcures\\Misc\\Perfect Sapphire.bmp"
+
+IDB_BITMAP64            BITMAP                  "Pictcures\\Misc\\Chipped Emerald.bmp"
+
+IDB_BITMAP65            BITMAP                  "Pictcures\\Misc\\Flawed Emerald.bmp"
+
+IDB_BITMAP66            BITMAP                  "Pictcures\\Misc\\Emerald.bmp"
+
+IDB_BITMAP67            BITMAP                  "Pictcures\\Misc\\Flawless Emerald.bmp"
+
+IDB_BITMAP68            BITMAP                  "Pictcures\\Misc\\Perfect Emerald.bmp"
+
+IDB_BITMAP69            BITMAP                  "Pictcures\\Misc\\Chipped Ruby.bmp"
+
+IDB_BITMAP70            BITMAP                  "Pictcures\\Misc\\Flawled Ruby.bmp"
+
+IDB_BITMAP71            BITMAP                  "Pictcures\\Misc\\Ruby.bmp"
+
+IDB_BITMAP72            BITMAP                  "Pictcures\\Misc\\Flawless Ruby.bmp"
+
+IDB_BITMAP73            BITMAP                  "Pictcures\\Misc\\Perfect Ruby.bmp"
+
+IDB_BITMAP74            BITMAP                  "Pictcures\\Misc\\Chipped Diamond.bmp"
+
+IDB_BITMAP75            BITMAP                  "Pictcures\\Misc\\Flawed Diamond.bmp"
+
+IDB_BITMAP76            BITMAP                  "Pictcures\\Misc\\Diamond.bmp"
+
+IDB_BITMAP77            BITMAP                  "Pictcures\\Misc\\Flawless Diamond.bmp"
+
+IDB_BITMAP78            BITMAP                  "Pictcures\\Misc\\Perfect Diamond.bmp"
+
+IDB_BITMAP79            BITMAP                  "Pictcures\\Misc\\Minor Healing Potion.bmp"
+
+IDB_BITMAP80            BITMAP                  "Pictcures\\Misc\\Light Healing Potion.bmp"
+
+IDB_BITMAP81            BITMAP                  "Pictcures\\Misc\\Healing Potion.bmp"
+
+IDB_BITMAP82            BITMAP                  "Pictcures\\Misc\\Greater Healing Potion.bmp"
+
+IDB_BITMAP83            BITMAP                  "Pictcures\\Misc\\Super Healing Potion.bmp"
+
+IDB_BITMAP84            BITMAP                  "Pictcures\\Misc\\Minor Mana Potion.bmp"
+
+IDB_BITMAP85            BITMAP                  "Pictcures\\Misc\\Light Mana Potion.bmp"
+
+IDB_BITMAP86            BITMAP                  "Pictcures\\Misc\\Mana Potion.bmp"
+
+IDB_BITMAP87            BITMAP                  "Pictcures\\Misc\\Greater Mana Potion.bmp"
+
+IDB_BITMAP88            BITMAP                  "Pictcures\\Misc\\Super Mana Potion.bmp"
+
+IDB_BITMAP89            BITMAP                  "Pictcures\\Misc\\Chipped Skull.bmp"
+
+IDB_BITMAP90            BITMAP                  "Pictcures\\Misc\\Flawed Skull.bmp"
+
+IDB_BITMAP91            BITMAP                  "Pictcures\\Misc\\Skull.bmp"
+
+IDB_BITMAP92            BITMAP                  "Pictcures\\Misc\\Flawless Skull.bmp"
+
+IDB_BITMAP93            BITMAP                  "Pictcures\\Misc\\Perfect Skull.bmp"
+
+IDB_BITMAP94            BITMAP                  "Pictcures\\Misc\\Herb.bmp"
+
+IDB_BITMAP95            BITMAP                  "Pictcures\\Misc\\Small Charm.bmp"
+
+IDB_BITMAP96            BITMAP                  "Pictcures\\Misc\\Large Charm.bmp"
+
+IDB_BITMAP97            BITMAP                  "Pictcures\\Misc\\Grand Charm.bmp"
+
+IDB_BITMAP98            BITMAP                  "Pictcures\\Misc\\Rps.bmp"
+
+IDB_BITMAP99            BITMAP                  "Pictcures\\Misc\\Rpl.bmp"
+
+IDB_BITMAP100           BITMAP                  "Pictcures\\Misc\\Bps.bmp"
+
+IDB_BITMAP101           BITMAP                  "Pictcures\\Misc\\Bpl.bmp"
+
+IDB_BITMAP102           BITMAP                  "Pictcures\\Misc\\El Rune.bmp"
+
+IDB_BITMAP103           BITMAP                  "Pictcures\\Misc\\Eld Rune.bmp"
+
+IDB_BITMAP104           BITMAP                  "Pictcures\\Misc\\Tir Rune.bmp"
+
+IDB_BITMAP105           BITMAP                  "Pictcures\\Misc\\Nef Rune.bmp"
+
+IDB_BITMAP106           BITMAP                  "Pictcures\\Misc\\Eth Rune.bmp"
+
+IDB_BITMAP107           BITMAP                  "Pictcures\\Misc\\Ith Rune.bmp"
+
+IDB_BITMAP108           BITMAP                  "Pictcures\\Misc\\Tal Rune.bmp"
+
+IDB_BITMAP109           BITMAP                  "Pictcures\\Misc\\Ral Rune.bmp"
+
+IDB_BITMAP110           BITMAP                  "Pictcures\\Misc\\Ort Rune.bmp"
+
+IDB_BITMAP111           BITMAP                  "Pictcures\\Misc\\Thul Rune.bmp"
+
+IDB_BITMAP112           BITMAP                  "Pictcures\\Misc\\Amn Rune.bmp"
+
+IDB_BITMAP113           BITMAP                  "Pictcures\\Misc\\Sol Rune.bmp"
+
+IDB_BITMAP114           BITMAP                  "Pictcures\\Misc\\Shael Rune.bmp"
+
+IDB_BITMAP115           BITMAP                  "Pictcures\\Misc\\Dol Rune.bmp"
+
+IDB_BITMAP116           BITMAP                  "Pictcures\\Misc\\Hel Rune.bmp"
+
+IDB_BITMAP117           BITMAP                  "Pictcures\\Misc\\Io Rune.bmp"
+
+IDB_BITMAP118           BITMAP                  "Pictcures\\Misc\\Lum Rune.bmp"
+
+IDB_BITMAP119           BITMAP                  "Pictcures\\Misc\\Ko Rune.bmp"
+
+IDB_BITMAP120           BITMAP                  "Pictcures\\Misc\\Fal Rune.bmp"
+
+IDB_BITMAP121           BITMAP                  "Pictcures\\Misc\\Lem Rune.bmp"
+
+IDB_BITMAP122           BITMAP                  "Pictcures\\Misc\\Pul Rune.bmp"
+
+IDB_BITMAP123           BITMAP                  "Pictcures\\Misc\\Um Rune.bmp"
+
+IDB_BITMAP124           BITMAP                  "Pictcures\\Misc\\Mal Rune.bmp"
+
+IDB_BITMAP125           BITMAP                  "Pictcures\\Misc\\Ist Rune.bmp"
+
+IDB_BITMAP126           BITMAP                  "Pictcures\\Misc\\Gul Rune.bmp"
+
+IDB_BITMAP127           BITMAP                  "Pictcures\\Misc\\Vex Rune.bmp"
+
+IDB_BITMAP128           BITMAP                  "Pictcures\\Misc\\Ohm Rune.bmp"
+
+IDB_BITMAP129           BITMAP                  "Pictcures\\Misc\\Lo Rune.bmp"
+
+IDB_BITMAP130           BITMAP                  "Pictcures\\Misc\\Sur Rune.bmp"
+
+IDB_BITMAP131           BITMAP                  "Pictcures\\Misc\\Ber Rune.bmp"
+
+IDB_BITMAP132           BITMAP                  "Pictcures\\Misc\\Jah Rune.bmp"
+
+IDB_BITMAP133           BITMAP                  "Pictcures\\Misc\\Cham Rune.bmp"
+
+IDB_BITMAP134           BITMAP                  "Pictcures\\Misc\\Zod Rune.bmp"
+
+IDB_BITMAP135           BITMAP                  "Pictcures\\Misc\\Jewel.bmp"
+
+IDB_BITMAP136           BITMAP                  "Pictcures\\Misc\\Malah's Potion.bmp"
+
+IDB_BITMAP137           BITMAP                  "Pictcures\\Misc\\Scroll of Knowledge.bmp"
+
+IDB_BITMAP138           BITMAP                  "Pictcures\\Misc\\Scroll of Resistance.bmp"
+
+IDB_BITMAP139           BITMAP                  "Pictcures\\帽子\\01 Cap.bmp"
+
+IDB_BITMAP140           BITMAP                  "Pictcures\\帽子\\02 Skull Cap.bmp"
+
+IDB_BITMAP141           BITMAP                  "Pictcures\\帽子\\03 Helm.bmp"
+
+IDB_BITMAP142           BITMAP                  "Pictcures\\帽子\\04 Full Helm.bmp"
+
+IDB_BITMAP143           BITMAP                  "Pictcures\\帽子\\05 Great Helm.bmp"
+
+IDB_BITMAP144           BITMAP                  "Pictcures\\帽子\\06 Crown.bmp"
+
+IDB_BITMAP145           BITMAP                  "Pictcures\\帽子\\07 Mask.bmp"
+
+IDB_BITMAP146           BITMAP                  "Pictcures\\帽子\\08 Grim Helm.bmp"
+
+IDB_BITMAP147           BITMAP                  "Pictcures\\帽子\\头冠\\09 Circlet.bmp"
+
+IDB_BITMAP148           BITMAP                  "Pictcures\\帽子\\头冠\\10 Coronet.bmp"
+
+IDB_BITMAP149           BITMAP                  "Pictcures\\帽子\\头冠\\11 Tiara.bmp"
+
+IDB_BITMAP150           BITMAP                  "Pictcures\\帽子\\头冠\\12 Diadem.bmp"
+
+IDB_BITMAP151           BITMAP                  "Pictcures\\帽子\\Bar专用\\21 Jawbone Cap.bmp"
+
+IDB_BITMAP152           BITMAP                  "Pictcures\\帽子\\Bar专用\\22 Fanged Helm.bmp"
+
+IDB_BITMAP153           BITMAP                  "Pictcures\\帽子\\Bar专用\\23 Horned Helm.bmp"
+
+IDB_BITMAP154           BITMAP                  "Pictcures\\帽子\\Bar专用\\24 Assault Helmet.bmp"
+
+IDB_BITMAP155           BITMAP                  "Pictcures\\帽子\\Bar专用\\25 Avenger Guard.bmp"
+
+IDB_BITMAP156           BITMAP                  "Pictcures\\帽子\\Dru专用\\16 Wolf Head.bmp"
+
+IDB_BITMAP157           BITMAP                  "Pictcures\\帽子\\Dru专用\\17 Hawk Helm.bmp"
+
+IDB_BITMAP158           BITMAP                  "Pictcures\\帽子\\Dru专用\\18 Antlers.bmp"
+
+IDB_BITMAP159           BITMAP                  "Pictcures\\帽子\\Dru专用\\19 Spirit Mask.bmp"
+
+IDB_BITMAP160           BITMAP                  "Pictcures\\帽子\\Dru专用\\20 Falcon Mask.bmp"
+
+IDB_BITMAP161           BITMAP                  "Pictcures\\手套\\01 Leather Gloves.bmp"
+
+IDB_BITMAP162           BITMAP                  "Pictcures\\手套\\02 Heavy Gloves.bmp"
+
+IDB_BITMAP163           BITMAP                  "Pictcures\\手套\\03 Chain Gloves.bmp"
+
+IDB_BITMAP164           BITMAP                  "Pictcures\\手套\\04 Light Gauntlets.bmp"
+
+IDB_BITMAP165           BITMAP                  "Pictcures\\手套\\05 Gauntlets.bmp"
+
+IDB_BITMAP166           BITMAP                  "Pictcures\\鞋子\\01 Boots.bmp"
+
+IDB_BITMAP167           BITMAP                  "Pictcures\\鞋子\\02 Heavy Boots.bmp"
+
+IDB_BITMAP168           BITMAP                  "Pictcures\\鞋子\\03 Chain Boots.bmp"
+
+IDB_BITMAP169           BITMAP                  "Pictcures\\鞋子\\04 Light Plated Boots.bmp"
+
+IDB_BITMAP170           BITMAP                  "Pictcures\\鞋子\\05 Greaves.bmp"
+
+IDB_BITMAP171           BITMAP                  "Pictcures\\腰带\\01 Sash.bmp"
+
+IDB_BITMAP172           BITMAP                  "Pictcures\\腰带\\02 Light Belt.bmp"
+
+IDB_BITMAP173           BITMAP                  "Pictcures\\腰带\\03 Belt.bmp"
+
+IDB_BITMAP174           BITMAP                  "Pictcures\\腰带\\04 Heavy Belt.bmp"
+
+IDB_BITMAP175           BITMAP                  "Pictcures\\腰带\\05 Plated Belt.bmp"
+
+IDB_BITMAP176           BITMAP                  "Pictcures\\衣服\\001 Quilted Armor.bmp"
+
+IDB_BITMAP177           BITMAP                  "Pictcures\\衣服\\002 Leather Armor.bmp"
+
+IDB_BITMAP178           BITMAP                  "Pictcures\\衣服\\003 Hard Leather Armor.bmp"
+
+IDB_BITMAP179           BITMAP                  "Pictcures\\衣服\\004 Studded Leather.bmp"
+
+IDB_BITMAP180           BITMAP                  "Pictcures\\衣服\\005 Ring Mail.bmp"
+
+IDB_BITMAP181           BITMAP                  "Pictcures\\衣服\\006 Scale Mail.bmp"
+
+IDB_BITMAP182           BITMAP                  "Pictcures\\衣服\\007 Chain Mail.bmp"
+
+IDB_BITMAP183           BITMAP                  "Pictcures\\衣服\\008 Breast Plate.bmp"
+
+IDB_BITMAP184           BITMAP                  "Pictcures\\衣服\\009 Splint Mail.bmp"
+
+IDB_BITMAP185           BITMAP                  "Pictcures\\衣服\\010 Plate Mail.bmp"
+
+IDB_BITMAP186           BITMAP                  "Pictcures\\衣服\\011 Field Mail.bmp"
+
+IDB_BITMAP187           BITMAP                  "Pictcures\\衣服\\012 Gothic Plate.bmp"
+
+IDB_BITMAP188           BITMAP                  "Pictcures\\衣服\\013 Full Plate Mail.bmp"
+
+IDB_BITMAP189           BITMAP                  "Pictcures\\衣服\\014 Ancient Armor.bmp"
+
+IDB_BITMAP190           BITMAP                  "Pictcures\\衣服\\015 Light Plate.bmp"
+
+IDB_BITMAP191           BITMAP                  "Pictcures\\盾牌\\01 Buckler.bmp"
+
+IDB_BITMAP192           BITMAP                  "Pictcures\\盾牌\\02 Small Shield.bmp"
+
+IDB_BITMAP193           BITMAP                  "Pictcures\\盾牌\\03 Large Shield.bmp"
+
+IDB_BITMAP194           BITMAP                  "Pictcures\\盾牌\\04 Kite Shield.bmp"
+
+IDB_BITMAP195           BITMAP                  "Pictcures\\盾牌\\06 Tower Shield.bmp"
+
+IDB_BITMAP196           BITMAP                  "Pictcures\\盾牌\\07 Gothic Shield.bmp"
+
+IDB_BITMAP197           BITMAP                  "Pictcures\\盾牌\\08 Bone Shield.bmp"
+
+IDB_BITMAP198           BITMAP                  "Pictcures\\盾牌\\09 Spiked Shield.bmp"
+
+IDB_BITMAP199           BITMAP                  "Pictcures\\盾牌\\Pal专用\\10 Targe.bmp"
+
+IDB_BITMAP200           BITMAP                  "Pictcures\\盾牌\\Pal专用\\11 Rondache.bmp"
+
+IDB_BITMAP201           BITMAP                  "Pictcures\\盾牌\\Pal专用\\12 Heraldic Shield.bmp"
+
+IDB_BITMAP202           BITMAP                  "Pictcures\\盾牌\\Pal专用\\13 Aerin Shield.bmp"
+
+IDB_BITMAP203           BITMAP                  "Pictcures\\盾牌\\Pal专用\\14 Crown Shield.bmp"
+
+IDB_BITMAP204           BITMAP                  "Pictcures\\盾牌\\Nec专用\\01 Preserved Head.bmp"
+
+IDB_BITMAP205           BITMAP                  "Pictcures\\盾牌\\Nec专用\\02 Zombie Head.bmp"
+
+IDB_BITMAP206           BITMAP                  "Pictcures\\盾牌\\Nec专用\\03 Unraveller Head.bmp"
+
+IDB_BITMAP207           BITMAP                  "Pictcures\\盾牌\\Nec专用\\04 Gargoyle Head.bmp"
+
+IDB_BITMAP208           BITMAP                  "Pictcures\\盾牌\\Nec专用\\05 Demon Head.bmp"
+
+IDB_BITMAP209           BITMAP                  "Pictcures\\武器\\斧头\\01 Hand Axe.bmp"
+
+IDB_BITMAP210           BITMAP                  "Pictcures\\武器\\斧头\\02 Axe.bmp"
+
+IDB_BITMAP211           BITMAP                  "Pictcures\\武器\\斧头\\03 Double Axe.bmp"
+
+IDB_BITMAP212           BITMAP                  "Pictcures\\武器\\斧头\\04 Military Pick.bmp"
+
+IDB_BITMAP213           BITMAP                  "Pictcures\\武器\\斧头\\05 War Axe.bmp"
+
+IDB_BITMAP214           BITMAP                  "Pictcures\\武器\\斧头\\06 Large Axe.bmp"
+
+IDB_BITMAP215           BITMAP                  "Pictcures\\武器\\斧头\\07 Broad Axe.bmp"
+
+IDB_BITMAP216           BITMAP                  "Pictcures\\武器\\斧头\\08 Battle Axe.bmp"
+
+IDB_BITMAP217           BITMAP                  "Pictcures\\武器\\斧头\\09 Great Axe.bmp"
+
+IDB_BITMAP218           BITMAP                  "Pictcures\\武器\\斧头\\10 Gaint Axe.bmp"
+
+IDB_BITMAP219           BITMAP                  "Pictcures\\武器\\Nec杖\\01 Wand.bmp"
+
+IDB_BITMAP220           BITMAP                  "Pictcures\\武器\\Nec杖\\02 Yew Wand.bmp"
+
+IDB_BITMAP221           BITMAP                  "Pictcures\\武器\\Nec杖\\03 Bone Wand.bmp"
+
+IDB_BITMAP222           BITMAP                  "Pictcures\\武器\\Nec杖\\04 Grim Wand.bmp"
+
+IDB_BITMAP223           BITMAP                  "Pictcures\\武器\\棒锤\\01 Club.bmp"
+
+IDB_BITMAP224           BITMAP                  "Pictcures\\武器\\棒锤\\02 Spiked Club.bmp"
+
+IDB_BITMAP225           BITMAP                  "Pictcures\\武器\\棒锤\\03 Mace.bmp"
+
+IDB_BITMAP226           BITMAP                  "Pictcures\\武器\\棒锤\\04 Morning Star.bmp"
+
+IDB_BITMAP227           BITMAP                  "Pictcures\\武器\\棒锤\\05 Flail.bmp"
+
+IDB_BITMAP228           BITMAP                  "Pictcures\\武器\\棒锤\\06 War Hammer.bmp"
+
+IDB_BITMAP229           BITMAP                  "Pictcures\\武器\\棒锤\\07 Maul.bmp"
+
+IDB_BITMAP230           BITMAP                  "Pictcures\\武器\\棒锤\\08 Great Maul.bmp"
+
+IDB_BITMAP231           BITMAP                  "Pictcures\\武器\\Pal杖\\01 Scepter.bmp"
+
+IDB_BITMAP232           BITMAP                  "Pictcures\\武器\\Pal杖\\02 Grand Scepter.bmp"
+
+IDB_BITMAP233           BITMAP                  "Pictcures\\武器\\Pal杖\\03 War Scepter.bmp"
+
+IDB_BITMAP234           BITMAP                  "Pictcures\\武器\\刀剑\\01 Short Sword.bmp"
+
+IDB_BITMAP235           BITMAP                  "Pictcures\\武器\\刀剑\\02 Scimitar.bmp"
+
+IDB_BITMAP236           BITMAP                  "Pictcures\\武器\\刀剑\\03 Sabre.bmp"
+
+IDB_BITMAP237           BITMAP                  "Pictcures\\武器\\刀剑\\04 Falchion.bmp"
+
+IDB_BITMAP238           BITMAP                  "Pictcures\\武器\\刀剑\\05 Crystal Sword.bmp"
+
+IDB_BITMAP239           BITMAP                  "Pictcures\\武器\\刀剑\\06 Broad Sword.bmp"
+
+IDB_BITMAP240           BITMAP                  "Pictcures\\武器\\刀剑\\07 Long Sword.bmp"
+
+IDB_BITMAP241           BITMAP                  "Pictcures\\武器\\刀剑\\08 War Sword.bmp"
+
+IDB_BITMAP242           BITMAP                  "Pictcures\\武器\\刀剑\\09 Tow Handed Sword.bmp"
+
+IDB_BITMAP243           BITMAP                  "Pictcures\\武器\\刀剑\\10 Claymore.bmp"
+
+IDB_BITMAP244           BITMAP                  "Pictcures\\武器\\刀剑\\11 Giant Sword.bmp"
+
+IDB_BITMAP245           BITMAP                  "Pictcures\\武器\\刀剑\\12 Bastard Sword.bmp"
+
+IDB_BITMAP246           BITMAP                  "Pictcures\\武器\\刀剑\\13 Flamberge.bmp"
+
+IDB_BITMAP247           BITMAP                  "Pictcures\\武器\\刀剑\\14 Great Sword.bmp"
+
+IDB_BITMAP248           BITMAP                  "Pictcures\\武器\\刀剑\\15 Dagger.bmp"
+
+IDB_BITMAP249           BITMAP                  "Pictcures\\武器\\刀剑\\16 Dirk.bmp"
+
+IDB_BITMAP250           BITMAP                  "Pictcures\\武器\\刀剑\\17 Kris.bmp"
+
+IDB_BITMAP251           BITMAP                  "Pictcures\\武器\\刀剑\\18 Blade.bmp"
+
+IDB_BITMAP252           BITMAP                  "Pictcures\\武器\\飞刀\\1 Throwing Knife.bmp"
+
+IDB_BITMAP253           BITMAP                  "Pictcures\\武器\\飞刀\\2 Throwing Axe.bmp"
+
+IDB_BITMAP254           BITMAP                  "Pictcures\\武器\\飞刀\\3 Balanced Knife.bmp"
+
+IDB_BITMAP255           BITMAP                  "Pictcures\\武器\\飞刀\\4 Balanced Axe.bmp"
+
+IDB_BITMAP256           BITMAP                  "Pictcures\\武器\\标枪\\1 Javelin.bmp"
+
+IDB_BITMAP257           BITMAP                  "Pictcures\\武器\\标枪\\2 Pilum.bmp"
+
+IDB_BITMAP258           BITMAP                  "Pictcures\\武器\\标枪\\3 Short Spear.bmp"
+
+IDB_BITMAP259           BITMAP                  "Pictcures\\武器\\标枪\\4 Glaive.bmp"
+
+IDB_BITMAP260           BITMAP                  "Pictcures\\武器\\标枪\\5 Throwing Spear.bmp"
+
+IDB_BITMAP261           BITMAP                  "Pictcures\\武器\\长柄\\01 Spear.bmp"
+
+IDB_BITMAP262           BITMAP                  "Pictcures\\武器\\长柄\\02 Trident.bmp"
+
+IDB_BITMAP263           BITMAP                  "Pictcures\\武器\\长柄\\03 Brandistock.bmp"
+
+IDB_BITMAP264           BITMAP                  "Pictcures\\武器\\长柄\\04 Spetum.bmp"
+
+IDB_BITMAP265           BITMAP                  "Pictcures\\武器\\长柄\\05 Pike.bmp"
+
+IDB_BITMAP266           BITMAP                  "Pictcures\\武器\\长柄\\06 Bardiche.bmp"
+
+IDB_BITMAP267           BITMAP                  "Pictcures\\武器\\长柄\\07 Voulge.bmp"
+
+IDB_BITMAP268           BITMAP                  "Pictcures\\武器\\长柄\\08 Scythe.bmp"
+
+IDB_BITMAP269           BITMAP                  "Pictcures\\武器\\长柄\\09 Poleaxe.bmp"
+
+IDB_BITMAP270           BITMAP                  "Pictcures\\武器\\长柄\\10 Halberd.bmp"
+
+IDB_BITMAP271           BITMAP                  "Pictcures\\武器\\长柄\\11 War Scythe.bmp"
+
+IDB_BITMAP272           BITMAP                  "Pictcures\\武器\\Sor杖\\01 Jo Staff.bmp"
+
+IDB_BITMAP273           BITMAP                  "Pictcures\\武器\\Sor杖\\02 Long Staff.bmp"
+
+IDB_BITMAP274           BITMAP                  "Pictcures\\武器\\Sor杖\\03 Ganrled Staff.bmp"
+
+IDB_BITMAP275           BITMAP                  "Pictcures\\武器\\Sor杖\\04 Battle Staff.bmp"
+
+IDB_BITMAP276           BITMAP                  "Pictcures\\武器\\Sor杖\\05 War Staff.bmp"
+
+IDB_BITMAP277           BITMAP                  "Pictcures\\武器\\弓弩\\01 Short Bow.bmp"
+
+IDB_BITMAP278           BITMAP                  "Pictcures\\武器\\弓弩\\02 Hunter's Bow.bmp"
+
+IDB_BITMAP279           BITMAP                  "Pictcures\\武器\\弓弩\\03 Long Bow.bmp"
+
+IDB_BITMAP280           BITMAP                  "Pictcures\\武器\\弓弩\\04 Composite Bow.bmp"
+
+IDB_BITMAP281           BITMAP                  "Pictcures\\武器\\弓弩\\05 Short Battle Bow.bmp"
+
+IDB_BITMAP282           BITMAP                  "Pictcures\\武器\\弓弩\\06 Long Battle Bow.bmp"
+
+IDB_BITMAP283           BITMAP                  "Pictcures\\武器\\弓弩\\07 Short War Bow.bmp"
+
+IDB_BITMAP284           BITMAP                  "Pictcures\\武器\\弓弩\\08 Long War Bow.bmp"
+
+IDB_BITMAP285           BITMAP                  "Pictcures\\武器\\弓弩\\09 Light Crossbow.bmp"
+
+IDB_BITMAP286           BITMAP                  "Pictcures\\武器\\弓弩\\10 Crossbow.bmp"
+
+IDB_BITMAP287           BITMAP                  "Pictcures\\武器\\弓弩\\11 Heavy Crossbow.bmp"
+
+IDB_BITMAP288           BITMAP                  "Pictcures\\武器\\弓弩\\12 Repeating Crossbow.bmp"
+
+IDB_BITMAP289           BITMAP                  "Pictcures\\武器\\毒药\\01 Rancid Gas Potion.bmp"
+
+IDB_BITMAP290           BITMAP                  "Pictcures\\武器\\毒药\\02 Oil Potion.bmp"
+
+IDB_BITMAP291           BITMAP                  "Pictcures\\武器\\毒药\\03 Choking Gas Potion.bmp"
+
+IDB_BITMAP292           BITMAP                  "Pictcures\\武器\\毒药\\04 Exploding Potion.bmp"
+
+IDB_BITMAP293           BITMAP                  "Pictcures\\武器\\毒药\\05 Strangling Gas Potion.bmp"
+
+IDB_BITMAP294           BITMAP                  "Pictcures\\武器\\毒药\\06 Fulminating Potion.bmp"
+
+IDB_BITMAP295           BITMAP                  "Pictcures\\武器\\任务\\01 Decoy Gidbinn.bmp"
+
+IDB_BITMAP296           BITMAP                  "Pictcures\\武器\\任务\\02 The Gidbinn.bmp"
+
+IDB_BITMAP297           BITMAP                  "Pictcures\\武器\\任务\\03 Wirt's Leg.bmp"
+
+IDB_BITMAP298           BITMAP                  "Pictcures\\武器\\任务\\04 Horadric Malus.bmp"
+
+IDB_BITMAP299           BITMAP                  "Pictcures\\武器\\任务\\05 Hell Forge Hammer.bmp"
+
+IDB_BITMAP300           BITMAP                  "Pictcures\\武器\\任务\\06 Horadric Staff.bmp"
+
+IDB_BITMAP301           BITMAP                  "Pictcures\\武器\\任务\\07 Staff Of Kings.bmp"
+
+IDB_BITMAP302           BITMAP                  "Pictcures\\武器\\任务\\08 Khalim's Flail.bmp"
+
+IDB_BITMAP303           BITMAP                  "Pictcures\\武器\\任务\\09 Khalim's Will.bmp"
+
+IDB_BITMAP304           BITMAP                  "Pictcures\\武器\\Ass剪\\01 Katar.bmp"
+
+IDB_BITMAP305           BITMAP                  "Pictcures\\武器\\Ass剪\\02 Hatchet Hands.bmp"
+
+IDB_BITMAP306           BITMAP                  "Pictcures\\武器\\Ass剪\\03 Claws.bmp"
+
+IDB_BITMAP307           BITMAP                  "Pictcures\\武器\\Ass剪\\04 Scissors Katar.bmp"
+
+IDB_BITMAP308           BITMAP                  "Pictcures\\武器\\Sor球\\1 Eagle Orb.bmp"
+
+IDB_BITMAP309           BITMAP                  "Pictcures\\武器\\Sor球\\2 Sacred Globe.bmp"
+
+IDB_BITMAP310           BITMAP                  "Pictcures\\武器\\Sor球\\3 Smoked Sphere.bmp"
+
+IDB_BITMAP311           BITMAP                  "Pictcures\\武器\\Sor球\\4 Clasped Orb.bmp"
+
+IDB_BITMAP312           BITMAP                  "Pictcures\\武器\\Sor球\\5 Jared's Stone.bmp"
+
+IDB_BITMAP313           BITMAP                  "Pictcures\\武器\\Ama专用\\1 Stag Bow.bmp"
+
+IDB_BITMAP314           BITMAP                  "Pictcures\\武器\\Ama专用\\2 Reflex Bow.bmp"
+
+IDB_BITMAP315           BITMAP                  "Pictcures\\武器\\Ama专用\\3 Maiden Spear.bmp"
+
+IDB_BITMAP316           BITMAP                  "Pictcures\\武器\\Ama专用\\4 Maiden Pike.bmp"
+
+IDB_BITMAP317           BITMAP                  "Pictcures\\武器\\Ama专用\\5 Maiden Javelin.bmp"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_FILE_NEW
+    BUTTON      ID_FILE_OPEN
+    BUTTON      ID_FILE_SAVE
+    SEPARATOR
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_FILE_PRINT
+    BUTTON      ID_APP_ABOUT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU
+BEGIN
+    POPUP "文件(&F)"
+    BEGIN
+        MENUITEM "新建(&New)",                    ID_FILE_NEW
+        MENUITEM "打开(&Open)",                   ID_FILE_OPEN
+        MENUITEM "保存(&Save)",                   ID_FILE_SAVE
+        MENUITEM "另存为(Save &As)...",            ID_FILE_SAVE_AS
+        MENUITEM "关闭(&Close)",                  ID_CLOSE_FILE
+        MENUITEM SEPARATOR
+        MENUITEM "退出(&X)",                      ID_APP_EXIT
+    END
+    POPUP "编辑(&E)"
+    BEGIN
+        MENUITEM "撤消(&U)\tCtrl+Z",              ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "剪切(&T)\tCtrl+X",              ID_EDIT_CUT
+        MENUITEM "复制(&C)\tCtrl+C",              ID_EDIT_COPY
+        MENUITEM "粘贴(&P)\tCtrl+V",              ID_EDIT_PASTE
+    END
+    POPUP "视图(&V)"
+    BEGIN
+        MENUITEM "工具栏(Tool &Bar)",              ID_VIEW_TOOLBAR
+        MENUITEM "状态栏(S&tatus Bar)",            ID_VIEW_STATUS_BAR
+        POPUP "语言(&Language)"
+        BEGIN
+            MENUITEM "语言一",                         ID_LANGUAGE1
+            MENUITEM "语言二",                         ID_LANGUAGE2
+            MENUITEM "语言三",                         ID_LANGUAGE3
+            MENUITEM "语言四",                         32783
+        END
+    END
+    POPUP "帮助(&H)"
+    BEGIN
+        MENUITEM "关于 Diablo Edit(&A)...",       ID_APP_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS
+BEGIN
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY 
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 235, 118
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 Diablo Edit"
+FONT 9, "宋体", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,11,20,20
+    LTEXT           "Diablo Edit 2.0 版",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2007",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "确定",IDOK,178,7,50,16,WS_GROUP
+    LTEXT           "作者: DoZerg",IDC_STATIC,168,90,52,9
+    LTEXT           "开发环境：Windows XP SP2",IDC_STATIC,25,51,100,10
+    LTEXT           "开发工具：Visual Studio 2005",IDC_STATIC,25,63,152,10
+    LTEXT           "Diablo版本：Diablo II Expansion Set v1.10",IDC_STATIC,25,75,193,10
+    LTEXT           "2007-06",IDC_STATIC,176,102,52,9
+END
+
+IDD_DIALOG_BasicCharInfo DIALOGEX 0, 0, 502, 300
+STYLE DS_SETFONT | DS_MODALFRAME | WS_CHILD | WS_VISIBLE
+EXSTYLE WS_EX_STATICEDGE | WS_EX_APPWINDOW
+FONT 9, "宋体", 0, 0, 0x1
+BEGIN
+    LTEXT           "Version",IDC_STATIC1,7,4,29,8
+    EDITTEXT        IDC_EDIT1,40,2,38,12,ES_AUTOHSCROLL | ES_READONLY
+    CTEXT           "Character",IDC_STATIC2,88,4,37,8
+    COMBOBOX        IDC_COMBO1,135,2,92,15,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Ladder",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,237,2,36,10
+    CONTROL         "Expansion",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,285,2,48,10
+    CONTROL         "Hardcore",IDC_CHECK3,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,345,2,48,10
+    LTEXT           "Name",IDC_STATIC3,7,20,17,8
+    EDITTEXT        IDC_EDIT2,39,18,74,12,ES_AUTOHSCROLL
+    CONTROL         "Died berfore",IDC_CHECK4,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,406,2,64,10
+    LTEXT           "Title",IDC_STATIC4,124,19,21,8
+    EDITTEXT        IDC_EDIT3,146,17,81,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "等级",IDC_STATIC8,7,34,25,8
+    EDITTEXT        IDC_EDIT4,39,32,29,12,ES_AUTOHSCROLL | ES_NUMBER
+    CTEXT           "Last game time",IDC_STATIC6,237,19,57,8
+    COMBOBOX        IDC_COMBO2,433,16,25,15,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Weapon",IDC_STATIC5,403,18,24,8
+    CTEXT           "Last position",IDC_STATIC7,211,34,54,9
+    COMBOBOX        IDC_COMBO3,267,32,45,15,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "ACT",IDC_STATIC,328,34,15,9
+    COMBOBOX        IDC_COMBO4,345,32,30,15,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "",IDC_DATETIMEPICKER1,"SysDateTimePick32",DTS_RIGHTALIGN | DTS_APPCANPARSE | DTS_LONGDATEFORMAT | WS_TABSTOP,299,15,75,14
+    RTEXT           "Experience",IDC_STATIC9,99,34,45,8
+    EDITTEXT        IDC_EDIT5,147,32,46,13,ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    RTEXT           "等级与经验对照表",IDC_STATIC10,47,52,82,8
+    COMBOBOX        IDC_COMBO6,132,49,72,12,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "力量",IDC_STATIC12,8,66,35,8
+    EDITTEXT        IDC_EDIT6,49,62,29,13,ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    LTEXT           "敏捷",IDC_STATIC13,8,79,40,8
+    EDITTEXT        IDC_EDIT7,49,77,29,12,ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    LTEXT           "体力",IDC_STATIC14,8,95,39,8
+    EDITTEXT        IDC_EDIT8,49,91,29,12,ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    LTEXT           "精力",IDC_STATIC15,7,107,31,8
+    EDITTEXT        IDC_EDIT9,49,105,29,12,ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    LTEXT           "Stat Points",IDC_STATIC16,298,66,47,8
+    EDITTEXT        IDC_EDIT10,362,63,29,12,ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    CTEXT           "耐力",IDC_STATIC19,134,78,31,8
+    CTEXT           "生命",IDC_STATIC20,134,90,31,8
+    EDITTEXT        IDC_EDIT12,172,88,29,12,ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    CTEXT           "法力",IDC_STATIC0,134,104,31,8
+    EDITTEXT        IDC_EDIT13,172,102,29,12,ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_EDIT14,172,74,29,12,ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_EDIT15,220,88,29,12,ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_EDIT16,220,102,29,12,ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_EDIT17,220,74,29,12,ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    CTEXT           "基础值",IDC_STATIC17,165,64,41,8
+    CTEXT           "当前值",IDC_STATIC18,210,64,49,8
+    CTEXT           "人物基本属性",IDC_STATIC11,225,52,65,8
+    PUSHBUTTON      "Skills",IDC_BUTTON1,402,38,46,16
+    LTEXT           "Skill Points",IDC_STATIC21,298,78,49,9
+    EDITTEXT        IDC_EDIT11,362,77,29,12,ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    LTEXT           "Gold in person",IDC_STATIC22,297,92,60,9
+    LTEXT           "Gold in stash",IDC_STATIC23,297,107,54,9
+    EDITTEXT        IDC_EDIT18,362,91,45,12,ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_EDIT19,362,104,45,12,ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    LTEXT           "1-127",IDC_STATIC,74,35,24,10
+    LTEXT           "0-1023",IDC_STATIC,85,64,24,10
+    LTEXT           "0-1023",IDC_STATIC,85,79,24,10
+    LTEXT           "0-1023",IDC_STATIC,85,93,24,10
+    LTEXT           "0-1023",IDC_STATIC,85,105,24,10
+    LTEXT           "0-1023",IDC_STATIC,400,65,24,10
+    LTEXT           "0-255",IDC_STATIC,400,77,24,10
+    LTEXT           "0-8191",IDC_STATIC,260,76,24,10
+    LTEXT           "0-8191",IDC_STATIC,260,90,24,10
+    LTEXT           "0-8191",IDC_STATIC,260,106,24,10
+    LTEXT           "0-10000 * Level",IDC_STATIC_GoldinPer,416,95,70,10
+    LTEXT           "0-10000 * Level",IDC_STATIC_GoldinSta,416,106,70,10
+    CONTROL         "",IDC_TAB1,"SysTabControl32",TCS_BUTTONS | TCS_FIXEDWIDTH | 0x8,7,128,347,62
+END
+
+IDD_DIALOG_OnlyTabCtrl DIALOGEX 0, 0, 500, 288
+STYLE DS_SETFONT | WS_CHILD
+FONT 9, "宋体", 0, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_TAB1,"SysTabControl32",0x0,76,27,166,146
+END
+
+IDD_DIALOG_WayPoints DIALOGEX 0, 0, 502, 148
+STYLE DS_SETFONT | WS_CHILD | WS_VISIBLE | WS_SYSMENU
+EXSTYLE WS_EX_STATICEDGE | WS_EX_APPWINDOW
+FONT 9, "宋体", 0, 0, 0x1
+BEGIN
+    LTEXT           "ACT I",IDC_STATIC,17,23,21,8
+    CONTROL         "蘿格營地",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,33,90,10
+    CONTROL         "冰冷之原",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,44,90,10
+    CONTROL         "石塊曠野",IDC_CHECK3,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,55,90,10
+    CONTROL         "黑暗森林",IDC_CHECK4,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,65,90,10
+    CONTROL         "黑色荒地",IDC_CHECK5,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,76,90,10
+    CONTROL         "外側迴廊",IDC_CHECK6,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,87,90,10
+    CONTROL         "監牢第一層",IDC_CHECK7,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,99,90,10
+    CONTROL         "内側迴廊",IDC_CHECK8,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,111,90,10
+    CONTROL         "地下墓穴第二層",IDC_CHECK9,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,123,90,10
+    LTEXT           "ACT II",IDC_STATIC,112,23,25,8
+    CONTROL         "魯.高因",IDC_CHECK10,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,101,33,90,10
+    CONTROL         "下水道第二層",IDC_CHECK11,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,101,44,90,10
+    CONTROL         "乾燥的高地",IDC_CHECK12,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,101,55,90,10
+    CONTROL         "死亡之殿第二層",IDC_CHECK13,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,101,65,113,10
+    CONTROL         "遙遠的綠洲",IDC_CHECK14,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,101,76,90,10
+    CONTROL         "遺失的城市",IDC_CHECK15,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,101,87,90,10
+    CONTROL         "皇宮監牢第一層",IDC_CHECK16,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,101,99,90,10
+    CONTROL         "神秘避難所",IDC_CHECK17,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,101,111,90,10
+    CONTROL         "衛士的峽谷",IDC_CHECK18,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,101,123,90,10
+    CONTROL         "庫拉斯特海港",IDC_CHECK19,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,216,33,90,10
+    CONTROL         "蜘蛛森林",IDC_CHECK20,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,216,44,90,10
+    CONTROL         "龐大濕地",IDC_CHECK21,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,216,55,90,10
+    CONTROL         "剝皮森林",IDC_CHECK22,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,216,66,90,10
+    CONTROL         "庫拉斯特下層",IDC_CHECK23,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,216,77,90,10
+    CONTROL         "庫拉斯特商場",IDC_CHECK24,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,216,88,90,10
+    CONTROL         "庫拉斯特上層",IDC_CHECK25,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,216,99,90,10
+    CONTROL         "崔凡克",IDC_CHECK26,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,216,111,90,10
+    CONTROL         "憎恨的囚牢第二層",IDC_CHECK27,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,216,123,90,10
+    LTEXT           "ACT III",IDC_STATIC,226,23,29,8
+    CONTROL         "群魔堡壘",IDC_CHECK28,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,307,33,90,10
+    CONTROL         "神罰之城",IDC_CHECK29,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,307,45,90,10
+    CONTROL         "火焰之河",IDC_CHECK30,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,307,57,90,10
+    LTEXT           "ACT IV",IDC_STATIC,317,23,25,8
+    CONTROL         "哈洛加斯",IDC_CHECK31,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,404,33,90,10
+    CONTROL         "冰凍高地",IDC_CHECK32,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,404,44,90,10
+    CONTROL         "亞瑞特高原",IDC_CHECK33,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,404,55,90,10
+    CONTROL         "水晶通道",IDC_CHECK34,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,404,66,90,10
+    CONTROL         "冰河路徑",IDC_CHECK35,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,404,77,90,10
+    CONTROL         "痛苦之廰",IDC_CHECK36,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,404,88,90,10
+    CONTROL         "冰凍苔原",IDC_CHECK37,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,404,99,90,10
+    CONTROL         "遠古之路",IDC_CHECK38,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,404,111,90,10
+    CONTROL         "世界之石要塞第二層",IDC_CHECK39,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,404,123,90,10
+    LTEXT           "ACT V",IDC_STATIC,414,23,21,8
+    CONTROL         "全部",IDC_CHECK0,"Button",BS_AUTO3STATE | WS_TABSTOP,404,7,32,10
+    CONTROL         "Normal",IDC_RADIO1,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,31,7,40,12
+    CONTROL         "Nightmare",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,85,7,52,10
+    CONTROL         "Hell",IDC_RADIO3,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,150,7,39,10
+END
+
+IDD_DIALOG_QuestInfo DIALOGEX 0, 0, 500, 137
+STYLE DS_SETFONT | WS_CHILD | WS_VISIBLE | WS_SYSMENU
+EXSTYLE WS_EX_STATICEDGE
+FONT 9, "宋体", 400, 0, 0x86
+BEGIN
+    CONTROL         "Normal",IDC_RADIO1,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,31,7,40,11
+    CONTROL         "Nightmare",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,85,7,52,9
+    CONTROL         "Hell",IDC_RADIO3,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,150,7,32,9
+    LTEXT           "ACT I",IDC_STATIC,17,22,21,8
+    LTEXT           "ACT II",IDC_STATIC,127,22,25,8
+    LTEXT           "ACT III",IDC_STATIC,211,21,29,8
+    LTEXT           "ACT IV",IDC_STATIC,323,22,25,8
+    LTEXT           "ACT V",IDC_STATIC,406,21,21,8
+    CONTROL         "邪惡洞穴",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,3,34,100,10
+    CONTROL         "修女埋骨之地",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,3,46,103,10
+    CONTROL         "凱恩的搜索",IDC_CHECK3,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,3,59,100,10
+    CONTROL         "遺忘之塔",IDC_CHECK4,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,3,72,100,10
+    CONTROL         "交易的工具",IDC_CHECK5,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,3,85,100,10
+    CONTROL         "屠殺的修女",IDC_CHECK6,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,3,98,107,10
+    CONTROL         "羅達門特的巢穴",IDC_CHECK7,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,115,34,83,10
+    CONTROL         "赫拉迪克之杖",IDC_CHECK8,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,115,47,84,10
+    CONTROL         "墮落的太陽",IDC_CHECK9,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,115,60,83,10
+    CONTROL         "神秘避難所",IDC_CHECK10,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,115,73,82,10
+    CONTROL         "召喚者",IDC_CHECK11,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,115,86,82,10
+    CONTROL         "七個古墓",IDC_CHECK12,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,115,98,82,10
+    CONTROL         "黃金鳥",IDC_CHECK13,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,200,33,100,10
+    CONTROL         "古代宗教之刃",IDC_CHECK14,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,200,47,112,10
+    CONTROL         "克林姆的意志",IDC_CHECK15,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,200,59,100,10
+    CONTROL         "藍.依森的古書",IDC_CHECK16,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,200,73,100,10
+    CONTROL         "轉爲黑暗的神殿",IDC_CHECK17,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,200,85,100,10
+    CONTROL         "守護者",IDC_CHECK18,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,200,97,100,10
+    CONTROL         "墮落的天使",IDC_CHECK19,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,313,34,80,10
+    CONTROL         "地獄熔爐",IDC_CHECK20,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,313,48,80,10
+    CONTROL         "恐怖的結局",IDC_CHECK21,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,313,60,79,10
+    CONTROL         "哈洛加斯圍城戰",IDC_CHECK22,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,395,33,100,10
+    CONTROL         "亞瑞特山的救援行動",IDC_CHECK23,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,395,47,100,10
+    CONTROL         "冰之囚",IDC_CHECK24,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,395,59,100,10
+    CONTROL         "哈洛加斯的反叛行動",IDC_CHECK25,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,395,73,100,10
+    CONTROL         "通道的祭典",IDC_CHECK26,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,395,85,100,10
+    CONTROL         "毀滅的前夕",IDC_CHECK27,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,395,97,100,10
+    CONTROL         "殺死母牛之王",IDC_CHECK28,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,395,119,100,10
+END
+
+IDD_DIALOG_Skills DIALOGEX 0, 0, 351, 253
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "人物技能"
+FONT 9, "宋体", 400, 0, 0x0
+BEGIN
+    CTEXT           "静态静态静态态",IDC_STATIC_Tree1,12,5,106,9
+    CTEXT           "静态静态静态态",IDC_STATIC_Tree2,115,5,110,9
+    CTEXT           "静态静态静态态",IDC_STATIC_Tree3,232,5,115,9
+    LTEXT           "zzzzzzzzzzzz",IDC_STATIC_Skill1,32,22,90,8
+    LTEXT           "静态静态静态",IDC_STATIC_Skill2,32,42,90,8
+    LTEXT           "静态静态静态",IDC_STATIC_Skill3,32,61,90,8
+    LTEXT           "静态静态静态",IDC_STATIC_Skill4,32,80,90,8
+    LTEXT           "静态静态静态",IDC_STATIC_Skill5,32,101,90,8
+    LTEXT           "静态静态静态",IDC_STATIC_Skill6,32,120,90,8
+    LTEXT           "静态静态静态",IDC_STATIC_Skill7,32,141,90,8
+    LTEXT           "静态静态静态",IDC_STATIC_Skill8,32,160,90,8
+    LTEXT           "静态静态静态",IDC_STATIC_Skill9,32,179,90,8
+    LTEXT           "静态静态静态",IDC_STATIC_Skill10,32,197,90,8
+    LTEXT           "静态静态静态",IDC_STATIC_Skill11,143,22,90,8
+    LTEXT           "静态静态静态",IDC_STATIC_Skill12,143,42,90,8
+    LTEXT           "静态静态静态",IDC_STATIC_Skill13,143,61,90,8
+    LTEXT           "静态静态静态",IDC_STATIC_Skill14,143,80,90,8
+    LTEXT           "静态静态静态",IDC_STATIC_Skill15,143,101,90,8
+    LTEXT           "静态静态静态",IDC_STATIC_Skill16,143,120,90,8
+    LTEXT           "静态静态静态",IDC_STATIC_Skill17,143,141,90,8
+    LTEXT           "静态静态静态",IDC_STATIC_Skill18,143,160,90,8
+    LTEXT           "静态静态静态",IDC_STATIC_Skill19,143,179,90,8
+    LTEXT           "静态静态静态",IDC_STATIC_Skill20,143,197,90,8
+    LTEXT           "静态静态静态",IDC_STATIC_Skill21,253,22,90,8
+    LTEXT           "静态静态静态",IDC_STATIC_Skill22,253,42,90,8
+    LTEXT           "静态静态静态",IDC_STATIC_Skill23,253,61,90,8
+    LTEXT           "静态静态静态",IDC_STATIC_Skill24,253,80,90,8
+    LTEXT           "静态静态静态",IDC_STATIC_Skill25,253,101,90,8
+    LTEXT           "静态静态静态",IDC_STATIC_Skill26,253,120,90,8
+    LTEXT           "静态静态静态",IDC_STATIC_Skill27,253,141,90,8
+    LTEXT           "静态静态静态",IDC_STATIC_Skill28,253,160,90,8
+    LTEXT           "静态静态静态",IDC_STATIC_Skill29,253,179,90,8
+    LTEXT           "静态静态静态",IDC_STATIC_Skill30,253,197,90,8
+    EDITTEXT        IDC_EDIT1,12,21,16,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT2,12,40,16,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT3,12,59,16,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT4,12,78,16,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT5,12,99,16,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT6,12,119,16,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT7,12,140,16,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT8,12,158,16,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT9,12,178,16,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT10,12,196,16,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT11,124,20,16,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT12,124,40,16,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT13,124,60,16,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT14,124,78,16,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT15,124,100,16,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT16,124,120,16,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT17,124,140,16,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT18,124,158,16,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT19,124,178,16,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT20,124,196,16,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT21,235,20,16,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT22,235,40,16,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT23,235,59,16,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT24,235,78,16,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT25,235,99,16,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT26,235,119,16,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT27,235,140,16,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT28,235,158,16,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT29,235,178,16,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT30,235,196,16,12,ES_AUTOHSCROLL | ES_NUMBER
+    PUSHBUTTON      "确认",IDOK,165,224,39,15
+    PUSHBUTTON      "取消",IDCANCEL,238,224,39,15
+    PUSHBUTTON      "全",IDC_BUTTON1,43,225,21,14
+    EDITTEXT        IDC_EDIT31,67,226,20,12,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "级",IDC_STATIC,89,227,26,12
+END
+
+IDD_DIALOG_SelectChar DIALOGEX 0, 0, 164, 66
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,21,45,50,14
+    PUSHBUTTON      "取消",IDCANCEL,95,45,50,14
+    COMBOBOX        IDC_COMBO1,51,14,69,13,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_DIALOG_CharItems DIALOGEX 0, 0, 515, 252
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "静态",IDC_STATIC_x,190,240,45,10
+    LTEXT           "静态",IDC_STATIC_y,243,240,45,10
+    CTEXT           "铸造台",IDC_STATIC1,383,3,33,10,0,WS_EX_TRANSPARENT
+    PUSHBUTTON      "锻造",IDC_BUTTON1,459,80,36,15
+    GROUPBOX        "",IDC_STATIC,308,3,193,247
+    LTEXT           "Level",IDC_STATIC2,317,17,18,9
+    EDITTEXT        IDC_EDIT2,336,15,21,12,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "拥有者",IDC_STATIC3,363,16,31,9
+    EDITTEXT        IDC_EDIT4,391,15,64,12,ES_AUTOHSCROLL
+    CONTROL         "隐藏",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,130,240,29,10
+    CONTROL         "Socket",IDC_CHECK5,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,317,45,35,10
+    EDITTEXT        IDC_EDIT5,353,44,14,12,ES_AUTOHSCROLL
+    LTEXT           "+",IDC_STATIC,368,45,8,10
+    EDITTEXT        IDC_EDIT7,376,44,13,12,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "Indestructible",IDC_CHECK6,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,318,57,56,11
+    LTEXT           "Quantity",IDC_STATIC6,402,60,29,9
+    EDITTEXT        IDC_EDIT8,433,58,22,12,ES_AUTOHSCROLL | ES_NUMBER
+    COMBOBOX        IDC_COMBO1,339,28,48,12,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Quality",IDC_STATIC4,315,31,23,9
+    LTEXT           "Defense",IDC_STATIC5,401,45,27,10
+    EDITTEXT        IDC_EDIT9,429,43,26,12,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "Durability",IDC_STATIC7,318,82,31,10
+    EDITTEXT        IDC_EDIT12,350,80,26,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT44,388,80,26,12,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "/",IDC_STATIC,380,82,8,8
+    CONTROL         "Ethereal",IDC_CHECK7,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,318,69,44,10
+    PUSHBUTTON      "添加",IDC_BUTTON3,325,96,38,11
+    PUSHBUTTON      "编辑",IDC_BUTTON4,366,96,38,11
+    CONTROL         "",IDC_LIST1,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SORTASCENDING | LVS_ALIGNLEFT | LVS_NOSORTHEADER | WS_BORDER | WS_TABSTOP,315,109,179,141
+    PUSHBUTTON      "删除",IDC_BUTTON5,407,96,38,11
+    PUSHBUTTON      "Prefix Suffix",IDC_BUTTON2,399,28,56,13
+    LTEXT           "Property Transparency",IDC_STATIC8,2,240,76,10
+    CONTROL         "",IDC_SLIDER1,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,78,242,51,8
+    CONTROL         "II",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,150,5,19,10
+END
+
+IDD_DIALOG_Suspend DIALOGEX 0, 0, 113, 53
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_BORDER
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+END
+
+IDD_DIALOG_PrefixSuffix DIALOGEX 0, 0, 252, 127
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,64,106,50,14
+    PUSHBUTTON      "取消",IDCANCEL,138,106,50,14
+    COMBOBOX        IDC_COMBO1,44,7,69,13,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO2,168,7,77,13,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CTEXT           "First Name",IDC_STATIC01,7,10,36,10
+    CTEXT           "Second Name",IDC_STATIC02,120,10,46,10
+    COMBOBOX        IDC_COMBO3,44,26,69,13,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO4,168,26,77,13,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CTEXT           "Prefix 1",IDC_STATIC03,7,28,36,10
+    CTEXT           "Suffix 1",IDC_STATIC04,120,28,46,10
+    COMBOBOX        IDC_COMBO5,44,45,69,13,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO7,168,45,77,13,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CTEXT           "Prefix 2",IDC_STATIC05,6,48,36,10
+    CTEXT           "Suffix 2",IDC_STATIC06,120,48,46,10
+    COMBOBOX        IDC_COMBO8,44,65,69,13,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO9,168,65,77,13,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CTEXT           "Prefix 3",IDC_STATIC07,6,68,36,10
+    CTEXT           "Suffix 3",IDC_STATIC08,120,68,46,10
+    COMBOBOX        IDC_COMBO10,55,85,102,13,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CTEXT           "Unique Name",IDC_STATIC09,7,88,46,10
+    CTEXT           "Sub Type",IDC_STATIC10,160,86,37,10
+    COMBOBOX        IDC_COMBO11,199,85,46,13,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080403a8"
+        BEGIN
+            VALUE "CompanyName", "DoZerg"
+            VALUE "FileDescription", "Diablo Editor"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "Diablo Edit.exe"
+            VALUE "LegalCopyright", "DoZerg (C), 保留所有权利"
+            VALUE "OriginalFilename", "Diablo Edit.exe"
+            VALUE "ProductName", "Diablo Editor"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 936
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 111
+    END
+
+    IDD_DIALOG_BasicCharInfo, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 495
+        VERTGUIDE, 7
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 297
+    END
+
+    IDD_DIALOG_OnlyTabCtrl, DIALOG
+    BEGIN
+        RIGHTMARGIN, 495
+        BOTTOMMARGIN, 285
+    END
+
+    IDD_DIALOG_WayPoints, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 497
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 145
+    END
+
+    IDD_DIALOG_QuestInfo, DIALOG
+    BEGIN
+        LEFTMARGIN, 3
+        RIGHTMARGIN, 495
+        TOPMARGIN, 1
+        BOTTOMMARGIN, 129
+    END
+
+    IDD_DIALOG_Skills, DIALOG
+    BEGIN
+        LEFTMARGIN, 12
+        RIGHTMARGIN, 347
+        TOPMARGIN, 5
+    END
+
+    IDD_DIALOG_SelectChar, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 157
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 59
+    END
+
+    IDD_DIALOG_CharItems, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 500
+        BOTTOMMARGIN, 250
+    END
+
+    IDD_DIALOG_Suspend, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 105
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 46
+    END
+
+    IDD_DIALOG_PrefixSuffix, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 245
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 120
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_DIALOG_CharItems AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDP_OLE_INIT_FAILED     "OLE 初始化失败。请确保 OLE 库是正确的版本。"
+END
+
+STRINGTABLE
+BEGIN
+    IDR_MAINFRAME           "Diablo Edit2\n\nDiablo Edit2\n\n\nDiabloEdit2.Document\nDiablo Edit2.Document"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_APP_TITLE       "Diablo Edit2"
+    AFX_IDS_IDLEMESSAGE     "就绪"
+END
+
+STRINGTABLE
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE
+BEGIN
+    ID_FILE_NEW             "创建新文档\n新建"
+    ID_FILE_OPEN            "打开现有文档\n打开"
+    ID_FILE_CLOSE           "关闭活动文档\n关闭"
+    ID_FILE_SAVE            "保存活动文档\n保存"
+    ID_FILE_SAVE_AS         "用新名称保存活动文档\n另存为"
+END
+
+STRINGTABLE
+BEGIN
+    ID_APP_ABOUT            "显示程序信息、版本号和版权\n关于"
+    ID_APP_EXIT             "退出应用程序；提示保存文档\n退出"
+END
+
+STRINGTABLE
+BEGIN
+    ID_FILE_MRU_FILE1       "打开此文档"
+    ID_FILE_MRU_FILE2       "打开此文档"
+    ID_FILE_MRU_FILE3       "打开此文档"
+    ID_FILE_MRU_FILE4       "打开此文档"
+    ID_FILE_MRU_FILE5       "打开此文档"
+    ID_FILE_MRU_FILE6       "打开此文档"
+    ID_FILE_MRU_FILE7       "打开此文档"
+    ID_FILE_MRU_FILE8       "打开此文档"
+    ID_FILE_MRU_FILE9       "打开此文档"
+    ID_FILE_MRU_FILE10      "打开此文档"
+    ID_FILE_MRU_FILE11      "打开此文档"
+    ID_FILE_MRU_FILE12      "打开此文档"
+    ID_FILE_MRU_FILE13      "打开此文档"
+    ID_FILE_MRU_FILE14      "打开此文档"
+    ID_FILE_MRU_FILE15      "打开此文档"
+    ID_FILE_MRU_FILE16      "打开此文档"
+END
+
+STRINGTABLE
+BEGIN
+    ID_NEXT_PANE            "切换到下一个窗格\n下一窗格"
+    ID_PREV_PANE            "切换回上一个窗格\n上一窗格"
+END
+
+STRINGTABLE
+BEGIN
+    ID_WINDOW_SPLIT         "将活动窗口拆分为多个窗格\n拆分"
+END
+
+STRINGTABLE
+BEGIN
+    ID_EDIT_CLEAR           "清除选定内容\n清除"
+    ID_EDIT_CLEAR_ALL       "清除全部内容\n全部清除"
+    ID_EDIT_COPY            "复制选定内容并将其放到剪贴板上\n复制"
+    ID_EDIT_CUT             "剪切选定内容并将其放到剪贴板上\n剪切"
+    ID_EDIT_FIND            "查找指定的文本\n查找"
+    ID_EDIT_PASTE           "插入剪贴板内容\n粘贴"
+    ID_EDIT_REPEAT          "重复上一操作\n重复"
+    ID_EDIT_REPLACE         "用其他文本替换特定的文本\n替换"
+    ID_EDIT_SELECT_ALL      "选定整个文档\n全选"
+    ID_EDIT_UNDO            "撤消上一操作\n撤消"
+    ID_EDIT_REDO            "恢复上次撤消的操作\n重做"
+END
+
+STRINGTABLE
+BEGIN
+    ID_VIEW_TOOLBAR         "显示或隐藏工具栏\n切换工具栏"
+    ID_VIEW_STATUS_BAR      "显示或隐藏状态栏\n切换状态栏"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCSIZE          "更改窗口大小"
+    AFX_IDS_SCMOVE          "更改窗口位置"
+    AFX_IDS_SCMINIMIZE      "将窗口缩小为图标"
+    AFX_IDS_SCMAXIMIZE      "使窗口最大化显示"
+    AFX_IDS_SCNEXTWINDOW    "切换到下一个文档窗口"
+    AFX_IDS_SCPREVWINDOW    "切换到前一个文档窗口"
+    AFX_IDS_SCCLOSE         "关闭活动窗口并提示保存文档"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCRESTORE       "将窗口恢复到正常大小"
+    AFX_IDS_SCTASKLIST      "激活任务列表"
+END
+
+#endif    // 中文(简体，中国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE 4, 2
+#pragma code_page(936)
+#include "res\DiabloEdit2.rc2"  // 非 Microsoft Visual C++ 编辑的资源
+#include "afxres.rc"         // 标准组件
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,12608 @@
+3 4188
+简体中文(&Simplified Chinese)
+基本信息
+小站
+任务
+技能
+警告
+错误
+是否保存已打开的人物
+ ？
+不能打开文件
+人物名字与文件名不同，是否继续？
+文件访问受限
+无标题
+文件可能不是正确的d2s格式，是否继续？
+文件长度错误，是否继续？
+未知
+人物名字格式错误
+长度：2-15字符
+包括：a-z,A-Z,-,_
+注意：名字必须以字母开头和结尾，
+中间只允许有一个'-'或'_'符号
+人物等级必须在1-127之间
+力量、敏捷、体力、精力和状态点数必须在0-1023之间
+耐力、生命和法力值必须在0-8191之间，技能点数在0-255之间
+亚马逊
+法师
+死灵法师
+圣骑士
+野蛮人
+德鲁依
+刺客
+普通
+恶梦
+地狱
+法力
+版本
+角色
+名字
+称谓
+武器
+最近游戏时间
+最后位置
+等级
+经验
+等级与经验对照表
+人物基本属性
+力量
+敏捷
+体力
+精力
+状态点剩余
+基础值
+当前值
+耐力
+生命
+天梯
+资料片
+专家级
+以前死过
+全部
+萝格营地
+冰冷之原
+石块旷野
+黑暗森林
+黑色荒地
+外侧回廊
+监牢第一层
+内侧回廊
+地下墓穴第二层
+鲁.高因
+下水道第二层
+干燥的高地
+死亡之殿第二层
+遥远的绿洲
+遗失的城市
+皇宫监牢第一层
+神秘避难所
+卫士的峡谷
+库拉斯特海港
+蜘蛛森林
+庞大湿地
+剥皮森林
+库拉斯特下层
+库拉斯特商场
+库拉斯特上层
+崔凡克
+憎恨的囚牢第二层
+群魔堡垒
+神罚之城
+火焰之河
+哈洛加斯
+冰冻高地
+亚瑞特高原
+水晶通道
+冰河路径
+痛苦之厅
+冰冻苔原
+远古之路
+世界之石要塞第二层
+邪恶洞穴
+修女埋骨之地
+凯恩的搜索
+遗忘之塔
+交易的工具
+屠杀的修女
+罗达门特的巢穴
+赫拉迪克之杖
+堕落的太阳
+神秘避难所
+召唤者
+七个古墓
+黄金鸟
+古代宗教之刃
+克林姆的意志
+蓝.依森的古书
+转为黑暗的神殿
+守护者
+堕落的天使
+地狱熔炉
+恐怖的结局
+哈洛加斯围城战
+亚瑞特山的救援行动
+冰之囚
+哈洛加斯的反叛行动
+通道的祭典
+毁灭的前夕
+杀死母牛之王
+技能点剩余
+身上金钱
+箱子金钱
+请选择一种角色
+亚马逊技能
+弓和十字弓技能
+被动和魔法技能
+标枪和长矛技能
+魔法箭
+火焰箭
+冰箭
+多重箭
+爆裂箭
+急冻箭
+导引箭
+炮轰
+牺牲之箭
+冻结之箭
+内视
+致命攻击
+闪避
+慢速箭
+躲避
+刺入
+诱饵
+回避
+女武神
+穿刺
+戳刺
+威力一击
+毒枪
+刺爆
+闪电球
+充能一击
+瘟疫标枪
+击退
+闪电攻击
+闪电之怒
+法师技能
+火焰法术
+闪电法术
+冰冻法术
+火弹
+暖气
+地狱之火
+炽烈之径
+火球
+火墙
+强化
+陨石
+支配之焰
+九头海蛇
+充能弹
+静态力场
+心灵传动
+新星
+闪电
+连锁闪电
+传送
+雷云风暴
+能量护盾
+支配闪电
+冰弹
+冰封装甲
+霜之新星
+冰风暴
+碎冰甲
+冰尖柱
+暴风雪
+寒冰装甲
+冰封球
+支配冰冷
+死灵法师技能
+诅咒
+毒素和白骨法术
+召唤法术
+伤害加深
+微暗灵视
+削弱
+攻击反噬
+恐惧
+迷乱
+偷取生命
+吸引
+衰老
+降低抵抗
+牙
+白骨装甲
+淬毒匕首
+尸体爆炸
+骨墙
+毒爆
+骨矛
+骨牢
+剧毒新星
+白骨之魂
+支配骷髅
+骷髅复苏
+黏土石魔
+支配石魔
+复苏骷髅法师
+鲜血石魔
+召唤反抗
+钢铁石魔
+火焰石魔
+重生
+圣骑士技能
+作战技能
+攻击灵气
+防御性灵气
+牺牲
+重击
+圣光弹
+白热
+突击
+复仇
+祝福之锤
+转换
+神圣之盾
+天堂之拳
+力量
+圣火
+刺针
+祝福瞄准
+专注
+神圣冰冻
+神圣冲击
+庇护所
+狂热
+信念
+祈祷
+抗火
+反抗
+抗冰冷
+净化
+抵抗闪电
+精力
+冥思
+救赎
+救助
+野蛮人技能
+战斗技能
+战斗专家
+呐喊
+重击
+跳跃
+双手挥击
+击昏
+双手投掷
+跳跃攻击
+专心
+狂乱
+旋风
+狂战士
+支配长剑
+支配斧头
+支配钉头锤
+支配长棍
+支配飞掷
+支配长矛
+增加耐力
+铁布衫
+加速
+自然抵抗
+狂嗥
+找寻药剂
+嘲弄
+大叫
+找寻物品
+战嗥
+战斗体制
+残酷喝阻
+战斗狂嗥
+战斗指挥
+德鲁依
+召唤
+外型变形
+元素
+乌鸦
+猛毒华藤
+橡木智者
+召唤鬼狼
+食尸藤
+狼獾之心
+召唤狂狼
+太阳藤
+棘灵
+召唤灰熊
+狼人变化
+变形术
+熊人变化
+野性狂暴
+撞槌
+狂犬病
+焰爪
+饥饿
+震波
+狂怒
+火风暴
+熔浆巨岩
+极地风暴
+火山爆
+飓风装甲
+镰鼬风
+火山
+龙卷风
+毁天灭地
+暴风
+刺客技能
+陷阱
+影子训练
+武学艺术
+火焰爆震
+雷电网
+刃之守卫
+电能守卫
+火焰复苏
+刃之怒
+雷光守卫
+复苏狱火
+亡者守卫
+刀刃之盾
+支配利爪
+心灵战锤
+加速
+武器格挡
+魔影斗篷
+能量消解
+影子战士
+心灵爆震
+毒牙
+影子大师
+虎击
+龙爪
+焰拳
+双龙爪
+眼镜蛇攻击
+雷电爪
+神龙摆尾
+寒冰刃
+飞龙在天
+凤凰攻击
+技能等级必须在0-127之间
+请选择角色
+不能读取文件“new.dat“，你可以用一个正确的d2s文件代替，只要改变文件名，并复制到程序目录下
+身上或箱子的金钱数过多
+Quest数据格式可能错误，是否继续？
+小站数据格式可能错误，是否继续？
+人物属性格式可能错误，是否继续？
+人物技能格式可能错误，是否继续？
+物品列表格式可能错误，是否继续？
+物品格式可能错误，是否继续？
+物品
+不能识别的物品代码，是否继续？
+未知的物品等级：
+数量：%d
+代码
+说明
+一般攻击
+白色低级
+白色普通
+白色高级
+蓝色魔法
+绿色套装
+黄金
+暗金
+橙色合成
+脚踢
+投掷
+取消召唤
+左手投掷
+左手挥动
+一股邪恶力量
+辨识卷轴
+辨识之书
+回城卷轴
+回城之书
+冰冻
+中毒
+火焰抵抗
+冰冷抵抗
+闪电抵抗
+普通
+在白天
+在黄昏
+在夜间
+在黎明
+粗糙的
+超强的
+防御: %d
+单手伤害: %d 到 %d
+双手伤害: %d 到 %d
+耐久度: %d 之 %d
+无法破坏
+无形的(无法修复)
+有凹槽(%d)
+物品前后缀名
+铸造台
+等级
+拥有者
+质量
+防御
+数量
+耐久度
+属性悬浮窗透明度
+隐藏
+有孔
+不可修复
+不可破坏
+锻造
+前后缀
+添加
+编辑
+删除
+名
+称
+前缀1
+后缀1
+前缀2
+后缀2
+前缀3
+后缀3
+暗金名
+子类
+****************************以下是物品名称
+Elixir
+Healing Potion
+Mana Potion
+Full Healing Potion
+Full Mana Potion
+Stamina Potion
+Antidote Potion
+Rejuvenation Potion
+Full Rejuvenation Potion
+Thawing Potion
+Town Portal Book
+Identify Book
+Amulet
+Top of The Horadric Staff
+Ring
+Gold
+Scroll of Jnifuss
+Key To The Cairn Stones
+Arrows
+Torch
+Bolts
+Town Portal Scroll
+Identify Scroll
+Heart
+Brain
+Jawbone
+Eye
+Horn
+Tail
+Flag
+Fang
+Quill
+Soul
+Scalp
+Spleen
+Key
+The Black Tower Key
+Potion of Life
+Jade Figurine
+Gold Bird
+Lam esen's tome
+Horadric Cube
+Horadric Scroll
+Mephisto SoulStone
+Book of Skill
+Khalim Eye
+Khalim Heart
+Khalim Brain
+Ear
+Chipped Amethyst
+Flawed Amethyst
+Amethyst
+Flawless Amethyst
+Perfect Amethyst
+Chipped Topaz
+Flawed Topaz
+Topaz
+Flawless Topaz
+Perfect Topaz
+Chipped Saphire
+Flawed Saphire
+Saphire
+Flawless Saphire
+Perfect Saphire
+Chipped Emerald
+Flawed Emerald
+Emerald
+Flawless Emerald
+Perfect Emerald
+Chipped Ruby
+Flawed Ruby
+Ruby
+Flawless Ruby
+Perfect Ruby
+Chipped Diamond
+Flawed Diamond
+Diamond
+Flawless Diamond
+Perfect Diamond
+Minor Healing Potion
+Light Healing Potion
+Healing Potion
+Greater Healing Potion
+Super Healing Potion
+Minor Mana Potion
+Light Mana Potion
+Mana Potion
+Greater Mana Potion
+Super Mana Potion
+Chipped Skull
+Flawed Skull
+Skull
+Flawless Skull
+Perfect Skull
+Herb
+Small Charm
+Large Charm
+Grand Charm
+Small Red Potion
+Large Red Potion
+Small Blue Potion
+Large Blue Potion
+El Rune
+Eld Rune
+Tir Rune
+Nef Rune
+Eth Rune
+Ith Rune
+Tal Rune
+Ral Rune
+Ort Rune
+Thul Rune
+Amn Rune
+Sol Rune
+Shael Rune
+Dol Rune
+Hel Rune
+Io Rune
+Lum Rune
+Ko Rune
+Fal Rune
+Lem Rune
+Pul Rune
+Um Rune
+Mal Rune
+Ist Rune
+Gul Rune
+Vex Rune
+Ohm Rune
+Lo Rune
+Sur Rune
+Ber Rune
+Jah Rune
+Cham Rune
+Zod Rune
+Jewel
+Malah's Potion
+Scroll of Knowledge
+Scroll of Resistances
+Cap
+Skull Cap
+Helm
+Full Helm
+Great Helm
+Crown
+Mask
+Bone Helm
+War Hat
+Sallet
+Casque
+Basinet
+Winged Helm
+Grand Crown
+Death Mask
+Grim Helm
+Shako
+Hydraskull
+Armet
+Giant Conch
+Spired Helm
+Corona
+Demonhead
+Bone Visage
+Circlet
+Coronet
+Tiara
+Diadem
+Jawbone Cap
+Fanged Helm
+Horned Helm
+Assault Helmet
+Avenger Guard
+Jawbone Visor
+Lion Helm
+Range Mask
+Savage Helmet
+Slayer Guard
+Carnage Helm
+Fury Visor
+Destroyer Helm
+Conqueror Crown
+Guardian Crown
+Wolf Head
+Hawk Helm
+Antlers
+Falcon Mask
+Spirit Mask
+Alpha Helm
+Griffon Headdress
+Hunter's Guise
+Sacred Feathers
+Totemic Mask
+Blood Spirit
+Sun Spirit
+Earth Spirit
+Sky Spirit
+Dream Spirit
+Leather Gloves
+Heavy Gloves
+Chain Gloves
+Light Gauntlets
+Gauntlets
+Demonhide Gloves
+Sharkskin Gloves
+Heavy Bracers
+Battle Gauntlets
+War Gauntlets
+Bramble Mitts
+Vampirebone Gloves
+Vambraces
+Crusader Gauntlets
+Ogre Gauntlets
+Boots
+Heavy Boots
+Chain Boots
+Light Plated Boots
+Greaves
+Demonhide Boots
+Sharkskin Boots
+Mesh Boots
+Battle Boots
+War Boots
+Wyrmhide Boots
+Scarabshell Boots
+BoneWeave Boots
+Mirrored Boots
+Myrmidon Greaves
+Sash
+Light Belt
+Belt
+Heavy Belt
+Plated Belt
+Demonhide Sash
+Sharkskin Belt
+Mesh Belt
+Battle Belt
+War Belt
+Spiderweb Sash
+Vampirefang Belt
+Mithril Coil
+Troll Belt
+Colossus Girdle
+Quilted Armor
+Leather Armor
+Hard Leather Armor
+Studded Leather
+Ring Mail
+Scale Mail
+Chain Mail
+Breast Plate
+Splint Mail
+Plate Mail
+Field Mail
+Gothic Plate
+Full Plate Mail
+Ancient Armor
+Light Plate
+Ghost Armor
+Serpentskin Armor
+Demonhide Armor
+Trellised Armor
+Linked Mail
+Tigulated Mail
+Mesh Armor
+Cuirass
+Russet Armor
+Templar Coat
+Sharktooth Armor
+Embossed Plate
+Chaos Armor
+Ornate Plate
+Mage Plate
+Dusk Shroud
+Wyrmhide
+Scarab Husk
+Wire Fleece
+Diamond Mail
+Loricated Mail
+Boneweave
+Great Hauberk
+Balrog Skin
+Hellforge Plate
+Kraken Shell
+Lacquered Plate
+Shadow Plate
+Sacred Armor
+Archon Plate
+Buckler
+Small Shield
+Large Shield
+Kite Shield
+Tower Shield
+Gothic Shield
+Bone Shield
+Spiked Shield
+Defender
+Round Shield
+Scutum
+Dragon Shield
+Pavise
+Ancient Shield
+Grim Shield
+Barbed Shield
+Heater
+Luna
+Hyperion
+Monarch
+Aegis
+Ward
+Troll Nest
+Blade Barrier
+Targe
+Rondache
+Heraldic Shield
+Aerin Shield
+Crown Shield
+Akaran Targe
+Akaran Rondache
+Protector Shield
+Gilded Shield
+Royal Shield
+Sacred Targe
+Sacred Rondache
+Kurast Shield
+Zakarum Shield
+Vortex Shield
+Preserved Head
+Zombie Head
+Unraveller Head
+Gargoyle Head
+Demon Head
+Mummified Trophy
+Fetish Trophy
+Sexton Trophy
+Cantor Trophy
+Hierophant Trophy
+Minion Skull
+Hellpawn Skull
+Overseer Skull
+Succubus Skull
+Bloodlord Skull
+Hand Axe
+Axe
+Double Axe
+Military Pick
+War Axe
+Large Axe
+Broad Axe
+Battle Axe
+Great Axe
+Gaint Axe
+Hatchet
+Cleaver
+Twin Axe
+Crowbill
+Naga
+Military Axe
+Bearded Axe
+Tabar
+Gothic Axe
+Ancient Axe
+Tomahawk
+Small Crescent
+Ettin Axe
+War Spike
+Berserker Axe
+Feral Axe
+Silver-Edged Axe
+Decapitator
+Champion Axe
+Glorious Axe
+Wand
+Yew Wand
+Bone Wand
+Grim Wand
+Burnt Wand
+Petrified Wand
+Tomb Wand
+Grave Wand
+Polished Wand
+Ghost Wand
+Lich Wand
+Unearthed Wand
+Club
+Spiked Club
+Mace
+Morning Star
+Flail
+War Hammer
+Maul
+Great Maul
+Cudgel
+Barbed Club
+Flanged Mace
+Jagged Star
+Knout
+Battle Hammer
+War Club
+Martel De Fer
+Truncheon
+Tyrant Club
+Reinforced Mace
+Devil Star
+Scourge
+Legendary Mallet
+Ogre Maul
+Thunder Maul
+Scepter
+Grand Scepter
+War Scepter
+Rune Scepter
+Holy Water Sprinkler
+Divine Scepter
+Mighty Scepter
+Seraph Rod
+Caduceus
+Short Sword
+Scimitar
+Sabre
+Falchion
+Crystal Sword
+Broad Sword
+Long Sword
+War Sword
+Tow Handed Sword
+Claymore
+Giant Sword
+Bastard Sword
+Flamberge
+Great Sword
+Dagger
+Dirk
+Kris
+Blade
+Gladius
+Cutlass
+Shamshir
+Tulwar
+Dimensional Blade
+Battle Sword
+Rune Sword
+Ancient Sword
+Espandon
+Dacian Falx
+Tusk Sword
+Gothic Sword
+Zweihander
+Executioner Sword
+Poignard
+Rondel
+Cinquedeas
+Stiletto
+Falcata
+Ataghan
+Elegant Blade
+Hydra Edge
+Phase Blade
+Conquest Sword
+Cryptic Sword
+Mythical Sword
+Legend Sword
+Highland Blade
+Balrog Blade
+Champion Sword
+Colossus Sword
+Colossus Blade
+Bone Knife
+Mithril Point
+Fanged Knife
+Legend Spike
+Throwing Knife
+Throwing Axe
+Balanced Knife
+Balanced Axe
+Battle Dart
+Francisca
+War Dart
+Hurlbat
+Flying Knife
+Flying Axe
+Winged Knife
+Winged Axe
+Javelin
+Pilum
+Short Spear
+Glaive
+Throwing Spear
+War Javelin
+Great Pilum
+Simbilan
+Spiculum
+Harpoon
+Hyperion Javelin
+Stygian Pilum
+Balrog Spear
+Ghost Glaive
+Winged Harpoon
+Spear
+Trident
+Brandistock
+Spetum
+Pike
+Bardiche
+Voulge
+Scythe
+Poleaxe
+Halberd
+War Scythe
+War Spear
+Fuscina
+War Fork
+Yari
+Lance
+Lochaber Axe
+Bill
+Battle Scythe
+Partizan
+Bec-de-Corbin
+Grim Scythe
+Hyperion Spear
+Stygain Pike
+Mancatcher
+Ghost Spear
+War Pike
+Ogre Axe
+Colossus Voulge
+Thresher
+Cryptic Axe
+Great Poleaxe
+Giant Thresher
+Short Staff
+Long Staff
+Ganrled Staff
+Battle Staff
+War Staff
+Jo Staff
+Quarter Staff
+Cedar Staff
+Gothic Staff
+Rune Staff
+Walking Stick
+Stalagmite
+Elder Staff
+Shillelagh
+Archon Staff
+Short Bow
+Hunter's Bow
+Long Bow
+Composite Bow
+Short Battle Bow
+Long Battle Bow
+Short War Bow
+Long War Bow
+Light Crossbow
+Crossbow
+Heavy Crossbow
+Repeating Crossbow
+Edge Bow
+Razor Bow
+Cedar Bow
+Double Bow
+Short Siege Bow
+Large Siege Bow
+Rune Bow
+Gothic Bow
+Arbalest
+Siege Crossbow
+Ballista
+Chu-ko-Nu
+Spider Bow
+Blade Bow
+Shadow Bow
+Great Bow
+Diamond Bow
+Crusader Bow
+Ward Bow
+Hydra Bow
+Pellet Bow
+Gorgon Crossbow
+Colossus Crossbow
+Demon Crossbow
+Rancid Gas Potion
+Oil Potion
+Choking Gas Potion
+Exploding Potion
+Strangling Gas Potion
+Fulminating Potion
+Decoy Gidbinn
+The Gidbinn
+Wirt's Leg
+Horadric Malus
+Hell Forge Hammer
+Horadric Staff
+Staff Of Kings
+Khalim's Flail
+Khalim's Will
+Katar
+Wrist Blade
+Hatchet Hands
+Cestus
+Claws
+Blade Talons
+Scissors Katar
+Quhab
+Wrist Spike
+Fascia
+Hand Scythe
+Greater Claws
+Greater Talons
+Scissors Quhab
+Suwayyah
+Wrist Sword
+War Fist
+Battle Cestus
+Feral Claws
+Runic Talons
+Scissors Suwayyah
+Eagle Orb
+Sacred Globe
+Smoked Sphere
+Clasped Orb
+Jared's Stone
+Glowing Orb
+Crystalline Globe
+Cloudy Sphere
+Sparkling Ball
+Swirling Crystal
+Heavenly Stone
+Eldritch Orb
+Demon Heart
+Vortex Orb
+Dimensional Shard
+Stag Bow
+Reflex Bow
+Maiden Spear
+Maiden Pike
+Maiden Javelin
+Ashwood Bow
+Ceremonial Bow
+Ceremonial Spear
+Ceremonial Pike
+Ceremonial Javelin
+Matriarchal Bow
+Grand Matron Bow
+Matriarchal Spear
+Matriarchal Pike
+Matriarchal Javelin
+**************************以下是属性名称(Property Name)
+%+d Strength
+%+d Energy
+%+d Dexterity
+%+d Vitality
+Stat Point
+Skill Point
+Life
+%+d Max Life
+Mana
+%+d Max Mana
+Stamina
+%+d Max Stamina
+Level
+Experience
+Gold
+Goldbank
+%+d%% Enhanced Defense
+%+d%% - %d%% Enhanced Damage
+%+d%% Enhanced Min Damage
+%+d Attack Rating
+%+d%% Chance of Blocking
+%+d Min 1-Handed Damage
+%+d Max 1-Handed Damage
+%+d Min 2-Handed Damage
+%+d Max 2-Handed Damage
+Damage %+d%% NV
+Regenerate mana % NV
+Regenerate Mana %+d%%
+Heal Stemina %+d%%
+Lastexp
+Nextxp
+%+d Defense
+%+d Defense vs Missile
+%+d Defense vs Melee
+Damage Reduced By %+d
+Magic Damage Reduced By %+d
+Damage Reduced By %+d%%
+%+d%% Magic Resist
+%+d%% Max Magic Resist
+%+d%% Fire Resist
+%+d%% Max Fire Resist
+%+d%% Lightning Resist
+%+d%% Max Lightning Resist
+%+d%% Cold Resist
+%+d%% Max Cold Resist
+%+d%% Poison Resist
+%+d%% Max Poison Resist
+Damageaure
+%+d - %d Fire Damage
+%+d Max Fire Damage
+%+d - %d Lightning Damage
+%+d Max Lightning Damage
+%+d - %d Magic Damage
+%+d Max Magic Damage
+%+d - %d Cold Damage Freezing %d sec
+%+d Max Cold Damage
+%+d Cold Length
+%+d - %d Poison Damage Over %d sec
+%+d Max Poison Damage
+%+d Poison Length
+%+d%% Life Stolen per Hit Min
+%+d%% Life Stolen per Hit Max
+%+d%% Mana Stolen per Hit Min
+%+d%% Mana Stolen per Hit Max
+Stamina Drain Min
+Stamina Drain Max
+Stun Length
+Run/Walk Speed %+d%% NV
+Attack Speed %+d%% NV
+Other Animrate
+Quantity
+Value %+d
+%+d Durability
+%+d Max Durability
+%+d Replenish Life
+Increase Max Durability %+d%%
+Increase Max Life %+d%%
+Increase Max Mana %+d%%
+Attacker Takes Damage of %+d
+%+d%% Extra Gold From Monsters
+%+d%% Better Chance of Getting Magic Items
+Knock Back %+d
+Time Duration %+d
+%+d %s Skill
+Unsentparaml
+%+d%% Experience Gained
+%+d Life After Each Kill
+Reduced Prices %+d%%
+Double Herb Duration
+%+d Light Radius
+Light Color NV %d
+Requirements %+d%%
+%+d Item Level Require
+%+d%% Increase Attack Speed
+Item Level Require %+d%%
+Last Block Frame
+%+d%% Faster Run/Walk
+%+d to %s
+Change Character State to %s
+%+d%% Faster Hit Recovery Rate
+Monster Player Count
+Poison Override
+%+d%% Faster Block Rate
+Bypass Undead
+Bypass Demons
+%+d%% Faster Cast Rate
+Bypass Beast
+%+d to %s(%s only)
+Slain Monsters Rest In Peace %+d
+Curse Resist %+d
+Poison Length Reduced by %+d%%
+Damage %+d
+Hit Causes Monster Flee %+d%%
+Hit Blinds Target %+d
+%+d%% Damage Mana
+Ignore Target Defense
+-%+d%% Target Defense
+Prevent Monster Heal %+d
+Half Freeze Duration
+%+d%% Bonus Attack Rating
+%+d Monster Defense Per Hit
+%+d%% Damage to Demons
+%+d%% Damage to Undead
+%+d Attack Rating vs Demons
+%+d Attack Rating vs Undead
+Throwable
+%+d Fire Skills %d
+%+d All Skills
+Attacker Takes Lightning Damage of %+d
+Iron Maiden Level
+Life Tap Level
+Thorns Percent
+Bone Armor
+Bone Armor Max
+Freezes Target %+d
+%+d%% Chance of Open Wounds
+%+d%% Chance of Crushing Blow
+%+d Kick Damage
+%+d Mana After Each Kill
+%+d Life After Each Demon Kill
+Extra Blood %d
+%+d%% Chance of Deadly Strike
+Fire Absorb %+d%%
+%+d File Absorb
+Lightning Absorb %+d%%
+%+d Lightning Absorb
+Magic Absorb %+d%%
+%+d Magic Absorb
+Cold Absorb %+d%%
+%+d Cold Absorb
+Slows Target by %+d%%
+Level %+d %s Aura When Equipped
+Indestructible
+Cannot Be Frozen
+%+d%% Slower Stamina Drain
+%+d%% Chance of Reanimate as %s
+%+d%% Chance of Piercing Attack
+Fires Magic Arrows or Bolts %+d
+Fires Explosive Arrows or Bolts %+d
+%+d to Min Throw Damage NV
+%+d to Max Throw Damage NV
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+%+d%% to Attack Rating vs %s
+%+d%% to Damage vs %s
+Fade %d
+Armor Override
+Unused
+Unused
+Unused
+Unused
+Unused
+%+d %s (%s only)
+Unused
+Unused
+Unused
+Unused
+Unused
+Add %+d Sockets
+%+d%% Chance to Cast Level %d %s When Attack
+%+d%% Chance to Cast Level %d %s When Kill
+%+d%% Chance to Cast Level %d %s When Death
+%+d%% Chance to Cast Level %d %s When Striking
+%+d%% Chance to Cast Level %d %s When Levelup
+Unused
+%+d%% Chance to Cast Level %+d %s When Struck
+Unused
+Unused
+Level %+d %s (%d/%d Charges)
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+%+d Defence per Level
+%+d Enhanced Defence per Level
+%+d Life per Level
+%+d Mana per Level
+%+d Max Damage per Level
+%+d Enhanced Max Damage per Level
+%+d Strength per Level
+%+d Dexterity per Level
+%+d Energy per Level
+%+d Vitality per Level
+%+d Attack Rating per Level
+%+d%% Bonus to Attack Rating per Level
+%+d Max Cold Damage per Level
+%+d Max Fire Damage per Level
+%+d Max Lightning Damage per Level
+%+d Max Poison Damage per Level
+Cold Resist %+d%% per Level
+Fire Resist %+d%% per Level
+Lightning Resist %+d%% per Level
+Poison Resist %+d%% per Level
+%+d Cold Absorb per Level
+%+d Fire Absorb per Level
+%+d Lightning Absorb per Level
+%+d Poison Absorb per Level
+Attacker Takes Damage of %+d per Level
+%+d%% Extra Gold from Monsters per Level
+%+d%% Better Chance of Getting Magic Items per Level
+Heal Stamina Plus %+d%% per Level
+%+d Max Stamina per Level
+%+d%% Damage to Demons per Level
+%+d%% Damage to Undead per Level
+%+d to Attack Rating vs Demons per Level
+%+d to Attack Rating vs Undead per Level
+%+d%% Chance of Crushing Blow per Level
+%+d%% Chance of Open Wounds per Level
+%+d Kick Damage per Level
+%+d%% Chance of Deadly Strike per Level
+Find Gems per Level
+Repairs 1 Durability in %d Seconds
+Replenishes 1 Quantity in %d Seconds
+Increased Stack Size %+d
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+%+d - %d Defense (Increases %s)
+%+d - %d Enhanced Defense (Increases %s)
+%+d - %d Life (Increases %s)
+%+d - %d Mana (Increases %s)
+%+d - %d Max Damage (Increases %s)
+%+d - %d Enhanced Max Damage (Increases %s)
+%+d - %d Strength (Increases %s)
+%+d - %d Dexterity (Increases %s)
+%+d - %d Energy (Increases %s)
+%+d - %d Vitality (Increases %s)
+%+d - %d Attack Rating (Increases %s)
+%+d - %d Enhanced Attack Rating (Increases %s)
+%+d - %d Max Cold Damage (Increases %s)
+%+d - %d Max Fire Damage (Increases %s)
+%+d - %d Max Lightning Damage (Increases %s)
+%+d - %d Max Poison Damage (Increases %s)
+%+d%% - %d%% Cold Resist (Increases %s)
+%+d%% - %d%% Fire Resist (Increases %s)
+%+d%% - %d%% Lightning Resist (Increases %s)
+%+d%% - %d%% Poison Resist (Increases %s)
+%+d - %d Cold Absorb (Increases %s)
+%+d - %d Fire Absorb (Increases %s)
+%+d - %d Lightning Absorb (Increases %s)
+%+d - %d Poison Absorb (Increases %s)
+%+d%% - %d%% Extra Gold from Monsters (Increases %s)
+%+d%% - %d%% Better Chance of Getting Magic Items (Increases %s)
+Heal Stamina Plus %+d - %d%% (Increases %s)
+%+d - %d Stamina (Increases %s)
+%+d%% - %d%% Damage to Demons (Increases %s)
+%+d%% - %d%% Damage to Undead (Increases %s)
+%+d - %d Attack Rating vs Demons (Increases %s)
+%+d - %d Attack Rating vs Undead (Increases %s)
+%+d%% - %d%% Chance of Crushing Blow (Increases %s)
+%+d%% - %d%% Chance of Open Wounds (Increases %s)
+%+d - %d Kick Damage (Increases %s)
+%+d - %d Chance of  Deadly Strike (Increases %s)
+Item Find Gems (by time)
+%+d%% Enemy Cold Resist
+%+d%% Enemy Fire Resist
+%+d%% Enemy Lightning Resist
+%+d%% Enemy Poison Resist
+Item Damage vs Monster
+Item Damage Percent vs Monster
+Item Tohit vs Monster
+Item Tohit Percent vs Monster
+Item AC vs Monster
+Item AC Percent vs Monster
+Fire Length
+Burning Min
+Burning Max
+Progressive Damage
+Progressive Steal
+Progressive Other
+Progressive Fire
+Progressive Cold
+Progressive Lightning
+Item Extra Charges %+d
+Progressive Tohit
+Poison Count
+Damage Frame Rate
+Pierce IDX
+%+d%% Fire Skill Damage
+%+d%% Lightning Skill Damage
+%+d%% Cold Skill Damage
+%+d%% Poison Skill Damage
+%+d%% Enemy Fire Resist
+%+d%% Enemy Lightning Resist
+%+d%% Enemy Cold Resist
+%+d%% Enemy Poison Resist
+Passive Critical Strike %d
+Passive Dodge %d
+Passive Avoid %d
+Passive Evade %d
+Passive Warmth %d
+Passive Mastery Melee TH %d
+Passive Mastery Melee Damage %d
+Passive Mastery Melee Crit %d
+Passive Mastery Throw TH %d
+Passive Mastery Throw Damage %d
+Passive Mastery Throw Crit %d
+Passive Weapon Block %d
+Passive Summon Resist %d
+Modifier List Skill
+Modifier List Level
+Last Sent HP PCT
+Source Unit Type
+Source Unit ID
+Short Paraml
+Quest Item Difficulty %d
+Passive Magic Mastery %d
+Passive Magic Pierce %d
+*********************************以下是怪物名称(Monster Names)
+Skeleton
+Returned
+BoneWarrior
+BurningDead
+Horror
+Zombie
+HungryDead
+Ghoul
+DrownedCarcass
+PlagueBearer
+Afflicted
+Tainted
+Misshapen
+Disfigured
+Damned
+FoulCrow
+BloodHawk
+BlackRaptor
+CloudStalker
+Fallen
+Carver
+Devilkin
+DarkOne
+WarpedFallen
+Brute
+Yeti
+Crusher
+WailingBeast
+GargantuanBeast
+SandRaider
+Marauder
+Invader
+Infidel
+Assailant
+unused
+unused
+unused
+unused
+Ghost
+Wraith
+Specter
+Apparition
+DarkShape
+DarkHunter
+VileHunter
+DarkStalker
+BlackRogue
+FleshHunter
+DuneBeast
+RockDweller
+JungleHunter
+DoomApe
+TempleGuard
+MoonClan
+NightClan
+BloodClan
+HellClan
+DeathClan
+FallenShaman
+CarverShaman
+DevilkinShaman
+DarkShaman
+WarpedShaman
+QuillRat
+SpikeFiend
+ThornBeast
+RazorSpine
+JungleUrchin
+SandMaggot
+RockWorm
+Devourer
+GiantLamprey
+WorldKiller
+TombViper
+ClawViper
+Salamander
+PitViper
+SerpentMagus
+SandLeaper
+CaveLeaper
+TombCreeper
+TreeLurker
+RazorPitDemon
+Huntress
+SaberCat
+NightTiger
+HellCat
+Itchies
+BlackLocusts
+PlagueBugs
+HellSwarm
+DungSoldier
+SandWarrior
+Scarab
+SteelWeevil
+AlbinoRoach
+DriedCorpse
+Decayed
+Embalmed
+PreservedDead
+Cadaver
+HollowOne
+Guardian
+Unraveler
+Horadrim Ancient
+Baal Subject Mummy
+unused
+unused
+unused
+unused
+CarrionBird
+UndeadScavenger
+HellBuzzard
+WingedNightmare
+Sucker
+Feeder
+BloodHook
+BloodWing
+Gloam
+SwampGhost
+BurningSoul
+BlackSoul
+Arach
+SandFisher
+PoisonSpinner
+FlameSpider
+SpiderMagus
+ThornedHulk
+BrambleHulk
+Thrasher
+Spikefist
+GhoulLord
+NightLord
+DarkLord
+BloodLord
+Banished
+DesertWing
+Fiend
+Gloombat
+BloodDiver
+DarkFamiliar
+RatMan
+Fetish
+Flayer
+SoulKiller
+StygianDoll
+DeckardCain
+Gheed
+Akara
+dummy
+Kashya
+dummy
+Dummy
+Dummy
+Charsi
+Warriv
+Andariel
+dummy
+dummy
+dummy
+DarkRanger
+VileArcher
+DarkArcher
+BlackArcher
+FleshArcher
+DarkSpearwoman
+VileLancer
+DarkLancer
+BlackLancer
+FleshLancer
+SkeletonArcher
+ReturnedArcher
+BoneArcher
+BurningDeadArcher
+HorrorArcher
+Warriv
+Atma
+Drognan
+Fara
+dummy
+SandMaggotYoung
+RockWormYoung
+DevourerYoung
+GiantLampreyYoung
+WorldKillerYoung
+dummy
+Blunderbore
+Gorbelly
+Mauler
+Urdar
+SandMaggotEgg
+RockWormEgg
+DevourerEgg
+GiantLampreyEgg
+WorldKillerEgg
+dummy
+Dummy
+dummy
+Greiz
+Elzix
+Geglash
+Jerhyn
+Lysander
+Dummy
+dummy
+dummy
+FoulCrowNest
+BloodHawkNest
+BlackVultureNest
+CloudStalkerNest
+Meshif
+Duriel
+Undead RatMan
+Undead Fetish
+Undead Flayer
+Undead SoulKiller
+Undead StygianDoll
+unused
+unused
+unused
+unused
+unused
+unused
+unused
+unused
+unused
+unused
+Maggot
+MummyGenerator
+Radament
+unused
+unused
+unused
+unused
+FlyingScimitar
+Zakarumite
+Faithful
+Zealot
+Sexton
+Cantor
+Heirophant
+Heirophant
+Mephisto
+Diablo
+DeckardCain
+DeckardCain
+DeckardCain
+Swamp Dweller
+Bog Creature
+Slime Prince
+Summoner
+tyrael
+asheara
+hratli
+alkor
+ormus
+izual
+halbu
+WaterWatcherLimb
+RiverStalkerLimb
+StygianWatcherLimb
+WaterWatcherHead
+RiverStalkerHead
+StygianWatcherHead
+meshif
+DeckardCain
+navi
+Bloodraven
+Dummy
+Dummy
+RogueScout
+Dummy
+Dummy
+GargoyleTrap
+ReturnedMage
+BoneMage
+BurningDeadMage
+HorrorMage
+RatManShaman
+FetishShaman
+FlayerShaman
+SoulKillerShaman
+StygianDollShaman
+larva
+SandMaggotQueen
+RockWormQueen
+DevourerQueen
+GiantLampreyQueen
+WorldKillerQueen
+ClayGolem
+BloodGolem
+IronGolem
+FireGolem
+Dummy
+Dummy
+NightMarauder
+Dummy
+Natalya
+FleshSpawner
+StygianHag
+Grotesque
+FleshBeast
+StygianDog
+GrotesqueWyrm
+Groper
+Strangler
+StormCaster
+Corpulent
+CorpseSpitter
+MawFiend
+DoomKnight
+AbyssKnight
+OblivionKnight
+QuillBear
+SpikeGiant
+ThornBrute
+RazorBeast
+GiantUrchin
+Dummy
+Dummy
+Dummy
+Dummy
+Dummy
+Dummy
+Dummy
+Dummy
+a trap
+a trap
+a trap
+a trap
+a trap
+Kaelan
+Dummy
+Diablo
+SuckerNest
+FeederNest
+BloodHookNest
+BloodWingNest
+Guard
+Dummy
+Dummy
+Dummy
+Dummy
+Dummy
+Dummy
+Council Member
+Council Member
+Council Member
+Turret
+Turret
+Turret
+Hydra
+Hydra
+Hydra
+a trap
+Dummy
+Dopplezon
+Valkyrie
+Dummy
+Iron Wolf
+Balrog
+PitLord
+VenomLord
+NecroSkeleton
+NecroMage
+Griswold
+compellingorb
+tyrael
+youngdiablo
+a trap
+Dummy
+LightningSpire
+FireTower
+Slinger
+SpearCat
+NightSlinger
+HellSlinger
+Dummy
+Dummy
+ReturnedMage
+BoneMage
+BaalColdMage
+HorrorMage
+ReturnedMage
+BoneMage
+BurningDeadMage
+HorrorMage
+ReturnedMage
+BoneMage
+BurningDeadMage
+HorrorMage
+Hell Bovine
+Dummy
+Dummy
+SpearCat
+NightSlinger
+RatMan
+Fetish
+Flayer
+SoulKiller
+StygianDoll
+Dummy
+The Smith
+TrappedSoul
+TrappedSoul
+Jamella
+Izual
+RatMan
+Malachai
+The Feature Creep
+Wake of Destruction
+Charged Bolt Sentry
+Lightning Sentry
+Blade Creeper
+Invis Pet
+Inferno Sentry
+Death Sentry
+Shadow Warrior
+Shadow Master
+Druid Hawk
+Druid Spirit Wolf
+Druid Fenris
+Spirit of Barbs
+Heart of Wolverine
+Oak Sage
+Druid Plague Poppy
+Druid Cycle of Life
+Vine Creature
+Druid Bear
+Eagle
+Wolf
+Bear
+Barricade Door
+Barricade Door
+Prison Door
+Barricade Tower
+RotWalker
+ReanimatedHorde
+ProwlingDead
+UnholyCorpse
+DefiledWarrior
+Siege Beast
+CrushBiest
+BloodBringer
+GoreBearer
+DeamonSteed
+SnowYeti1
+SnowYeti2
+SnowYeti3
+SnowYeti4
+WolfRider1
+WolfRider2
+WolfRider3
+Minionexp
+Slayerexp
+IceBoar
+FireBoar
+HellSpawn
+IceSpawn
+GreaterHellSpawn
+GreaterIceSpawn
+FanaticMinion
+BerserkSlayer
+ConsumedIceBoar
+ConsumedFireBoar
+FrenziedHellSpawn
+FrenziedIceSpawn
+InsaneHellSpawn
+InsaneIceSpawn
+Succubusexp
+VileTemptress
+StygianHarlot
+Hell Temptress
+Blood Temptress
+Dominus
+VileWitch
+StygianFury
+Blood Witch
+Hell Witch
+OverSeer
+Lasher
+OverLord
+BloodBoss
+HellWhip
+MinionSpawner
+MinionSlayerSpawner
+MinionIce/fireBoarSpawner
+MinionIce/fireBoarSpawner
+Minionice/hellSpawnSpawner
+MinionIce/fireBoarSpawner
+MinionIce/fireBoarSpawner
+Minionice/hellSpawnSpawner
+Imp1
+Imp2
+Imp3
+Imp4
+Imp5
+CatapultS
+CatapultE
+CatapultSiege
+CatapultW
+Frozen Horror1
+Frozen Horror2
+Frozen Horror3
+Frozen Horror4
+Frozen Horror5
+Blood Lord1
+Blood Lord2
+Blood Lord3
+Blood Lord4
+Blood Lord5
+Larzuk
+Drehya
+Malah
+Nihlathak Town
+Qual-Kehk
+Catapult Spotter S
+Catapult Spotter E
+Catapult Spotter Siege
+Catapult Spotter W
+DeckardCain
+tyrael
+Act 5 Combatant
+Act 5 Combatant
+Barricade Wall Right
+Barricade Wall Left
+Nihlathak
+Drehya
+Evil hut
+Death Mauler1
+Death Mauler2
+Death Mauler3
+Death Mauler4
+Death Mauler5
+POW
+Act 5 Townguard
+Act 5 Townguard
+Ancient Statue 1
+Ancient Statue 2
+Ancient Statue 3
+Ancient Barbarian 1
+Ancient Barbarian 2
+Ancient Barbarian 3
+Baal Throne
+Baal Crab
+Baal Taunt
+Putrid Defiler1
+Putrid Defiler2
+Putrid Defiler3
+Putrid Defiler4
+Putrid Defiler5
+Pain Worm1
+Pain Worm2
+Pain Worm3
+Pain Worm4
+Pain Worm5
+Bunny
+Council Member
+VenomLord
+Baal Crab to Stairs
+Act 5 Hireling 1hs
+Act 5 Hireling 2hs
+Baal Tentacle
+Baal Tentacle
+Baal Tentacle
+Baal Tentacle
+Baal Tentacle
+Injured Barbarian 1
+Injured Barbarian 2
+Injured Barbarian 3
+Baal Crab Clone
+Baals Minion
+Baals Minion
+Baals Minion
+Worldstone Effect
+BurningDeadArcher
+BoneArcher
+BurningDeadArcher
+ReturnedArcher
+HorrorArcher
+Afflicted
+Tainted
+Misshapen
+Disfigured
+Damned
+MoonClan
+NightClan
+HellClan
+BloodClan
+DeathClan
+FoulCrow
+BloodHawk
+BlackRaptor
+CloudStalker
+ClawViper
+PitViper
+Salamander
+TombViper
+SerpentMagus
+Marauder
+Infidel
+SandRaider
+Invader
+Assailant
+Death Mauler1
+QuillRat
+SpikeFiend
+RazorSpine
+CarrionBird
+ThornedHulk
+Slinger
+Slinger
+Slinger
+VileArcher
+DarkArcher
+VileLancer
+DarkLancer
+BlackLancer
+Blunderbore
+Mauler
+ReturnedMage
+BurningDeadMage
+ReturnedMage
+HorrorMage
+BoneMage
+HorrorMage
+HorrorMage
+Huntress
+SaberCat
+CaveLeaper
+TombCreeper
+Ghost
+Wraith
+Specter
+Succubusexp
+Hell Temptress
+Dominus
+Hell Witch
+VileWitch
+Gloam
+BlackSoul
+BurningSoul
+Carver
+Devilkin
+DarkOne
+CarverShaman
+DevilkinShaman
+DarkShaman
+BoneWarrior
+Returned
+Gloombat
+Fiend
+Blood Lord1
+Blood Lord4
+Scarab
+SteelWeevil
+Flayer
+StygianDoll
+SoulKiller
+Flayer
+StygianDoll
+SoulKiller
+FlayerShaman
+StygianDollShaman
+SoulKillerShaman
+TempleGuard
+TempleGuard
+Guardian
+Unraveler
+Horadrim Ancient
+Horadrim Ancient
+Zealot
+Zealot
+Heirophant
+Heirophant
+Grotesque
+FleshSpawner
+GrotesqueWyrm
+FleshBeast
+WorldKiller
+WorldKillerYoung
+WorldKillerEgg
+Slayerexp
+HellSpawn
+GreaterHellSpawn
+Arach
+Balrog
+PitLord
+Imp1
+Imp4
+Undead StygianDoll
+Undead SoulKiller
+Strangler
+StormCaster
+MawFiend
+BloodLord
+GhoulLord
+DarkLord
+UnholyCorpse
+DoomKnight
+DoomKnight
+OblivionKnight
+OblivionKnight
+Cadaver
+*********************************以下是魔法前缀(Magic Prefix)(^表示没有名字)
+^
+^
+Sturdy
+Strong
+Glorious
+Blessed
+Saintly
+Holy
+Devious
+Fortified
+^
+^
+^
+Jagged
+Deadly
+Vicious
+Brutal
+Massive
+Savage
+Merciless
+Vulpine
+^
+^
+^
+^
+Tireless
+Rugged
+Bronze
+Iron
+Steel
+Silver
+^
+Gold
+Platinum
+Meteoric
+Sharp
+Fine
+Warrior's
+Soldier's
+Knight's
+Lord's
+King's
+Howling
+Fortuitous
+^
+^
+^
+^
+^
+Glimmering
+Glowing
+^
+^
+Lizard's
+^
+Snake's
+Serpent's
+Serpent's
+Drake's
+Dragon's
+Dragon's
+Wyrm's
+^
+^
+Prismatic
+Prismatic
+Azure
+Lapis
+Lapis
+Cobalt
+Cobalt
+^
+Sapphire
+^
+^
+Crimson
+Burgundy
+Burgundy
+Garnet
+Garnet
+^
+Ruby
+^
+^
+Ocher
+Tangerine
+Tangerine
+Coral
+Coral
+^
+Amber
+^
+^
+Beryl
+Jade
+Jade
+Viridian
+Viridian
+^
+Emerald
+^
+Fletcher's
+Archer's
+Archer's
+Monk's
+Priest's
+Priest's
+Summoner's
+Necromancer's
+Necromancer's
+Angel's
+Arch-Angel's
+Arch-Angel's
+Slayer's
+Berserker's
+Berserker's
+^
+^
+Triumphant
+Stout
+Stout
+Stout
+Burly
+Burly
+Burly
+Stalwart
+Stalwart
+Stalwart
+Stout
+Stout
+Stout
+Burly
+Burly
+Stalwart
+Stalwart
+Stout
+Stout
+Burly
+Stalwart
+Blanched
+Eburin
+Bone
+Ivory
+Sturdy
+Sturdy
+Strong
+Glorious
+Blessed
+Saintly
+Holy
+Godly
+Devious
+Blank
+Null
+Antimagic
+Red
+Red
+Sanguinary
+Sanguinary
+Bloody
+Red
+Sanguinary
+Bloody
+Red
+Sanguinary
+Bloody
+Scarlet
+Crimson
+Jagged
+Jagged
+Jagged
+Forked
+Forked
+Serrated
+Serrated
+Jagged
+Jagged
+Forked
+Forked
+Serrated
+Jagged
+Forked
+Serrated
+Carbuncle
+Carmine
+Vermillion
+Jagged
+Deadly
+Vicious
+Brutal
+Massive
+Savage
+Merciless
+Ferocious
+Cruel
+Cinnabar
+Rusty
+Realgar
+Ruby
+Vulpine
+Dun
+Tireless
+Tireless
+Brown
+Rugged
+Rugged
+Rugged
+Rugged
+Rugged
+Rugged
+Rugged
+Rugged
+Rugged
+Rugged
+Rugged
+Vigorous
+Chestnut
+Maroon
+Bronze
+Bronze
+Bronze
+Iron
+Iron
+Iron
+Steel
+Steel
+Steel
+Bronze
+Bronze
+Bronze
+Iron
+Iron
+Steel
+Steel
+Bronze
+Bronze
+Iron
+Steel
+Bronze
+Iron
+Steel
+Silver
+Gold
+Platinum
+Meteoric
+Strange
+Weird
+Nickel
+Tin
+Silver
+Argent
+Fine
+Fine
+Sharp
+Fine
+Sharp
+Fine
+Sharp
+Fine
+Warrior's
+Soldier's
+Knight's
+Lord's
+King's
+Master's
+Grandmaster's
+Glimmering
+Glowing
+Bright
+Screaming
+Howling
+Wailing
+Screaming
+Howling
+Wailing
+Lucky
+Lucky
+Lucky
+Lucky
+Lucky
+Lucky
+Felicitous
+Fortuitous
+Emerald
+Lizard's
+Lizard's
+Lizard's
+Snake's
+Snake's
+Snake's
+Serpent's
+Serpent's
+Serpent's
+Lizard's
+Lizard's
+Lizard's
+Snake's
+Snake's
+Serpent's
+Serpent's
+Lizard's
+Lizard's
+Snake's
+Serpent's
+Lizard's
+Snake's
+Serpent's
+Serpent's
+Drake's
+Dragon's
+Dragon's
+Wyrm's
+Great Wyrm's
+Bahamut's
+Zircon
+Jacinth
+Turquoise
+Shimmering
+Shimmering
+Shimmering
+Shimmering
+Shimmering
+Shimmering
+Shimmering
+Rainbow
+Scintillating
+Prismatic
+Chromatic
+Shimmering
+Rainbow
+Scintillating
+Prismatic
+Chromatic
+Shimmering
+Rainbow
+Scintillating
+Shimmering
+Scintillating
+Azure
+Lapis
+Cobalt
+Sapphire
+Azure
+Lapis
+Cobalt
+Sapphire
+Azure
+Lapis
+Cobalt
+Sapphire
+Azure
+Lapis
+Lapis
+Cobalt
+Cobalt
+Sapphire
+Lapis Lazuli
+Sapphire
+Crimson
+Russet
+Garnet
+Ruby
+Crimson
+Russet
+Garnet
+Ruby
+Crimson
+Russet
+Garnet
+Ruby
+Russet
+Russet
+Garnet
+Garnet
+Ruby
+Garnet
+Ruby
+Tangerine
+Ocher
+Coral
+Amber
+Tangerine
+Ocher
+Coral
+Amber
+Tangerine
+Ocher
+Coral
+Amber
+Tangerine
+Ocher
+Ocher
+Coral
+Coral
+Amber
+Camphor
+Ambergris
+Beryl
+Viridian
+Jade
+Emerald
+Beryl
+Viridian
+Jade
+Emerald
+Beryl
+Viridian
+Jade
+Emerald
+Beryl
+Viridian
+Viridian
+Jade
+Jade
+Emerald
+Beryl
+Jade
+Triumphant
+Victorious
+Aureolin
+Mechanist's
+Artificer's
+Jeweler's
+Assamic
+Arcadian
+Unearthly
+Astral
+Elysian
+Celestial
+Diamond
+Fletcher's
+Acrobat's
+Harpoonist's
+Fletcher's
+Bowyer's
+Archer's
+Acrobat's
+Gymnast's
+Athlete's
+Harpoonist's
+Spearmaiden's
+Lancer's
+Burning
+Sparking
+Chilling
+Burning
+Blazing
+Volcanic
+Sparking
+Charged
+Powered
+Chilling
+Freezing
+Glacial
+Hexing
+Fungal
+Graverobber's
+Hexing
+Blighting
+Accursed
+Fungal
+Noxious
+Venomous
+Graverobber's
+Vodoun
+Golemlord's
+Lion Branded
+Captain's
+Preserver's
+Lion Branded
+Hawk Branded
+Rose Branded
+Captain's
+Commander's
+Marshal's
+Preserver's
+Warder's
+Guardian's
+Expert's
+Fanatic
+Sounding
+Expert's
+Veteran's
+Master's
+Fanatic
+Raging
+Furious
+Sounding
+Resonant
+Echoing
+Trainer's
+Spiritual
+Nature's
+Trainer's
+Caretaker's
+Keeper's
+Spiritual
+Feral
+Communal
+Nature's
+Terra's
+Gaea's
+Entrapping
+Mentalist's
+Shogukusha's
+Entrapping
+Trickster's
+Cunning
+Mentalist's
+Psychic
+Shadow
+Shogukusha's
+Sensei's
+Kenshi's
+Miocene
+Miocene
+Oligocene
+Oligocene
+Eocene
+Eocene
+Paleocene
+Paleocene
+Knave's
+Jack's
+Jester's
+Joker's
+Trump
+Loud
+Calling
+Yelling
+Shouting
+Gritty
+Paradox
+Paradox
+Robineye
+Sparroweye
+Falconeye
+Hawkeye
+Eagleeye
+Visionary
+Mnemonic
+Snowflake
+Shivering
+Boreal
+Hibernal
+Ember
+Smoldering
+Smoking
+Flaming
+Scorching
+Static
+Glowing
+Buzzing
+Arcing
+Shocking
+Septic
+Envenomed
+Corosive
+Toxic
+Pestilent
+Maiden's
+Valkyrie's
+Maiden's
+Valkyrie's
+Monk's
+Priest's
+Monk's
+Priest's
+Monk's
+Priest's
+Summoner's
+Necromancer's
+Summoner's
+Necromancer's
+Angel's
+Arch-Angel's
+Angel's
+Arch-Angel's
+Slayer's
+Berserker's
+Slayer's
+Berserker's
+Slayer's
+Berserker's
+Shaman's
+Hierophant's
+Shaman's
+Hierophant's
+Magekiller's
+Witch-hunter's
+Magekiller's
+Witch-hunter's
+Compact
+Thin
+Dense
+Consecrated
+Pure
+Sacred
+Hallowed
+Divine
+Pearl
+Crimson
+Red
+Sanguinary
+Bloody
+Red
+Sanguinary
+Red
+Jagged
+Forked
+Serrated
+Jagged
+Forked
+Jagged
+Snowflake
+Shivering
+Boreal
+Hibernal
+Snowflake
+Shivering
+Boreal
+Hibernal
+Snowflake
+Shivering
+Boreal
+Hibernal
+Ember
+Smoldering
+Smoking
+Flaming
+Ember
+Smoldering
+Smoking
+Flaming
+Ember
+Smoldering
+Smoking
+Flaming
+Static
+Glowing
+Arcing
+Shocking
+Static
+Glowing
+Arcing
+Shocking
+Static
+Glowing
+Arcing
+Shocking
+Septic
+Envenomed
+Toxic
+Pestilent
+Septic
+Envenomed
+Toxic
+Pestilent
+Septic
+Envenomed
+Toxic
+Pestilent
+Tireless
+Lizard's
+Azure
+Crimson
+Tangerine
+Beryl
+Godly
+Cruel
+*********************************以下是魔法后缀(Magic Suffix)(^表示没有名字)
+^
+of Health
+of Protection
+of Absorption
+of Life
+^
+of Warding
+of the Sentinel
+of Guarding
+of Negation
+^
+of Piercing
+of Bashing
+of Puncturing
+of Thorns
+of Spikes
+of Readiness
+of Alacrity
+of Swiftness
+of Quickness
+of Blocking
+of Deflecting
+of the Apprentice
+of the Magus
+of Frost
+of the Glacier
+of Frost
+of Warmth
+of Flame
+of Fire
+of Burning
+of Flame
+of Shock
+of Lightning
+of Thunder
+of Shock
+of Craftsmanship
+of Quality
+of Maiming
+of Slaying
+of Gore
+of Carnage
+of Slaughter
+of Maiming
+of Worth
+of Measure
+of Excellence
+of Performance
+of Measure
+of Blight
+of Venom
+of Pestilence
+of Blight
+of Dexterity
+of Dexterity
+of Skill
+of Skill
+of Accuracy
+of Precision
+of Precision
+of Perfection
+of Balance
+of Stability
+^
+of Regeneration
+of Regeneration
+of Regeneration
+of Regrowth
+of Regrowth
+of Vileness
+^
+of Greed
+of Wealth
+of Chance
+of Fortune
+of Energy
+of Energy
+of the Mind
+of Brilliance
+of Sorcery
+of Wizardry
+of the Bear
+of Light
+of Radiance
+of the Sun
+of Life
+of the Jackal
+of the Fox
+of the Wolf
+of the Wolf
+of the Tiger
+of the Mammoth
+of the Mammoth
+of the Colosuss
+of the Leech
+of the Locust
+of the Bat
+of the Vampire
+of Defiance
+of Amelioration
+of Remedy
+^
+of Simplicity
+of Ease
+^
+of Strength
+of Might
+of the Ox
+of the Ox
+of the Giant
+of the Giant
+of the Titan
+of Pacing
+of Haste
+of Speed
+of Health
+of Protection
+of Absorption
+of Life
+of Life Everlasting
+of Protection
+of Absorption
+of Life
+of Anima
+of Warding
+of the Sentinel
+of Guarding
+of Negation
+of the Sentinel
+of Guarding
+of Negation
+of Coolness
+of Incombustibility
+of Amianthus
+of Fire Quenching
+of Coolness
+of Incombustibility
+of Amianthus
+of Fire Quenching
+of Faith
+of Resistance
+of Insulation
+of Grounding
+of the Dynamo
+of Resistance
+of Insulation
+of Grounding
+of the Dynamo
+of Stoicism
+of Warming
+of Thawing
+of the Dunes
+of the Sirocco
+of Warming
+of Thawing
+of the Dunes
+of the Sirocco
+of Desire
+of Piercing
+of Bashing
+of Puncturing
+of Thorns
+of Spikes
+of Razors
+of Swords
+of Malice
+of Readiness
+of Alacrity
+of Swiftness
+of Quickness
+of Alacrity
+of Fervor
+of Blocking
+of Deflecting
+of the Apprentice
+of the Magus
+of Frost
+of the Icicle
+of the Glacier
+of Winter
+of Frost
+of Frigidity
+of Warmth
+of Flame
+of Fire
+of Burning
+of Incineration
+of Flame
+of Passion
+of Shock
+of Lightning
+of Thunder
+of Storms
+of Shock
+of Ennui
+of Craftsmanship
+of Quality
+of Maiming
+of Slaying
+of Gore
+of Carnage
+of Slaughter
+of Butchery
+of Evisceration
+of Maiming
+of Craftsmanship
+of Craftsmanship
+of Craftsmanship
+of Quality
+of Quality
+of Maiming
+of Maiming
+of Craftsmanship
+of Craftsmanship
+of Quality
+of Quality
+of Maiming
+of Craftsmanship
+of Quality
+of Maiming
+of Ire
+of Wrath
+of Carnage
+of Worth
+of Measure
+of Excellence
+of Performance
+of Transcendence
+of Worth
+of Measure
+of Excellence
+of Performance
+of Joyfulness
+of Bliss
+of Blight
+of Venom
+of Pestilence
+of Anthrax
+of Blight
+of Envy
+of Dexterity
+of Skill
+of Accuracy
+of Precision
+of Perfection
+of Nirvana
+of Dexterity
+of Skill
+of Accuracy
+of Precision
+of Perfection
+of Dexterity
+of Skill
+of Accuracy
+of Precision
+of Dexterity
+of Dexterity
+of Dexterity
+of Dexterity
+of Dexterity
+of Dexterity
+of Daring
+of Balance
+of Equilibrium
+of Stability
+of Balance
+of Balance
+of Balance
+of Truth
+of Regeneration
+of Regeneration
+of Regeneration
+of Regrowth
+of Regrowth
+of Revivification
+of Honor
+of Vileness
+of Greed
+of Wealth
+of Greed
+of Greed
+of Greed
+of Greed
+of Greed
+of Greed
+of Avarice
+of Chance
+of Fortune
+of Fortune
+of Luck
+of Fortune
+of Good Luck
+of Prosperity
+of Energy
+of the Mind
+of Brilliance
+of Sorcery
+of Wizardry
+of Enlightenment
+of Energy
+of the Mind
+of Brilliance
+of Sorcery
+of Wizardry
+of Energy
+of the Mind
+of Brilliance
+of Sorcery
+of Knowledge
+of the Bear
+of Light
+of Radiance
+of the Sun
+of the Jackal
+of the Fox
+of the Wolf
+of the Tiger
+of the Mammoth
+of the Colosuss
+of the Squid
+of the Whale
+of the Jackal
+of the Fox
+of the Wolf
+of the Tiger
+of the Mammoth
+of the Colosuss
+of the Jackal
+of the Fox
+of the Wolf
+of the Tiger
+of the Mammoth
+of Life
+of Life
+of Life
+of Substinence
+of Substinence
+of Substinence
+of Vita
+of Vita
+of Vita
+of Life
+of Life
+of Substinence
+of Substinence
+of Vita
+of Vita
+of Life
+of Substinence
+of Vita
+of Spirit
+of Hope
+of the Leech
+of the Locust
+of the Lamprey
+of the Leech
+of the Locust
+of the Lamprey
+of the Leech
+of the Bat
+of the Wraith
+of the Vampire
+of the Bat
+of the Wraith
+of the Vampire
+of the Bat
+of Defiance
+of Amelioration
+of Remedy
+of Simplicity
+of Ease
+of Freedom
+of Strength
+of Might
+of the Ox
+of the Giant
+of the Titan
+of Atlus
+of Strength
+of Might
+of the Ox
+of the Giant
+of the Titan
+of Strength
+of Might
+of the Ox
+of the Giant
+of Strength
+of Strength
+of Strength
+of Strength
+of Strength
+of Strength
+of Virility
+of Pacing
+of Haste
+of Speed
+of Traveling
+of Acceleration
+of Inertia
+of Inertia
+of Inertia
+of Self-Repair
+of Fast Repair
+of Ages
+of Replenishing
+of Propogation
+of the Kraken
+of Memory
+of the Elephant
+of Power
+of Grace
+of Grace and Power
+of the Yeti
+of the Phoenix
+of the Efreeti
+of the Cobra
+of the Elements
+of Firebolts
+of Firebolts
+of Firebolts
+of Charged Shield
+of Charged Shield
+of Charged Shield
+of Icebolt
+of Frozen Armor
+of Static Field
+of Telekinesis
+of Frost Shield
+of Ice Blast
+of Blaze
+of Fire Ball
+of Nova
+of Nova
+of Nova Shield
+of Nova Shield
+of Nova Shield
+of Lightning
+of Lightning
+of Shiver Armor
+of Fire Wall
+of Enchant
+of Chain Lightning
+of Chain Lightning
+of Chain Lightning
+of Teleport Shield
+of Teleport Shield
+of Teleport Shield
+of Glacial Spike
+of Meteor
+of Thunder Storm
+of Energy Shield
+of Blizzard
+of Chilling Armor
+of Hydra Shield
+of Frozen Orb
+of Dawn
+of Sunlight
+of Magic Arrows
+of Magic Arrows
+of Fire Arrows
+of Fire Arrows
+of Inner Sight
+of Inner Sight
+of Jabbing
+of Jabbing
+of Cold Arrows
+of Cold Arrows
+of Multiple Shot
+of Multiple Shot
+of Power Strike
+of Power Strike
+of Poison Jab
+of Poison Jab
+of Exploding Arrows
+of Exploding Arrows
+of Slow Missiles
+of Slow Missiles
+of Impaling Strike
+of Impaling Strike
+of Lightning Javelin
+of Lightning Javelin
+of Ice Arrows
+of Ice Arrows
+of Guided Arrows
+of Guided Arrows
+of Charged Strike
+of Charged Strike
+of Plague Jab
+of Plague Jab
+of Immolating Arrows
+of Immolating Arrows
+of Fending
+of Fending
+of Freezing Arrows
+of Freezing Arrows
+of Lightning Strike
+of Lightning Strike
+of Lightning Fury
+of Lightning Fury
+of Fire Bolts
+of Fire Bolts
+of Charged Bolts
+of Charged Bolts
+of Ice Bolts
+of Ice Bolts
+of Frozen Armor
+of Frozen Armor
+of Static Field
+of Static Field
+of Telekinesis
+of Telekinesis
+of Frost Novas
+of Frost Novas
+of Ice Blasts
+of Ice Blasts
+of Blazing
+of Blazing
+of Fire Balls
+of Fire Balls
+of Novas
+of Novas
+of Lightning
+of Lightning
+of Shiver Armor
+of Shiver Armor
+of Fire Walls
+of Fire Walls
+of Enchantment
+of Enchantment
+of Chain Lightning
+of Chain Lightning
+of Teleportation
+of Teleportation
+of Glacial Spikes
+of Glacial Spikes
+of Meteors
+of Meteors
+of Thunder Storm
+of Thunder Storm
+of Energy Shield
+of Energy Shield
+of Blizzards
+of Blizzards
+of Chilling Armor
+of Chilling Armor
+of Hydras
+of Hydras
+of Frozen Orbs
+of Frozen Orbs
+of Amplify Damage
+of Amplify Damage
+of Teeth
+of Teeth
+of Bone Armor
+of Bone Armor
+of Raise Skeletons
+of Raise Skeletons
+of Dim Vision
+of Dim Vision
+of Weaken
+of Weaken
+of Poison Dagger
+of Poison Dagger
+of Corpse Explosions
+of Corpse Explosions
+of Clay Golem Summoning
+of Clay Golem Summoning
+of Iron Maiden
+of Iron Maiden
+of Terror
+of Terror
+of Bone Walls
+of Bone Walls
+of Raise Skeletal Mages
+of Raise Skeletal Mages
+of Confusion
+of Confusion
+of Life Tap
+of Life Tap
+of Poison Explosion
+of Poison Explosion
+of Bone Spears
+of Bone Spears
+of Blood Golem Summoning
+of Blood Golem Summoning
+of Attraction
+of Attraction
+of Decrepification
+of Decrepification
+of Bone Imprisonment
+of Bone Imprisonment
+of Iron Golem Creation
+of Iron Golem Creation
+of Lower Resistance
+of Lower Resistance
+of Poison Novas
+of Poison Novas
+of Bone Spirits
+of Bone Spirits
+of Fire Golem Summoning
+of Fire Golem Summoning
+of Revivification
+of Revivification
+of Sacrifice
+of Sacrifice
+of Holy Bolts
+of Holy Bolts
+of Zeal
+of Zeal
+of Vengeance
+of Vengeance
+of Blessed Hammers
+of Blessed Hammers
+of Conversion
+of Conversion
+of Fist of the Heavens
+of Fist of the Heavens
+of Bashing
+of Bashing
+of Howling
+of Howling
+of Potion Finding
+of Potion Finding
+of Taunting
+of Taunting
+of Shouting
+of Shouting
+of Stunning
+of Stunning
+of Item Finding
+of Item Finding
+of Concentration
+of Concentration
+of Battle Cry
+of Battle Cry
+of Battle Orders
+of Battle Orders
+of Grim Ward
+of Grim Ward
+of War Cry
+of War Cry
+of Battle Command
+of Battle Command
+of Firestorms
+of Firestorms
+of Molten Boulders
+of Molten Boulders
+of Eruption
+of Eruption
+of Cyclone Armor
+of Cyclone Armor
+of Twister
+of Twister
+of Volcano
+of Volcano
+of Tornado
+of Tornado
+of Armageddon
+of Armageddon
+of Hurricane
+of Hurricane
+of Damage Amplification
+of the Icicle
+of the Glacier
+of Fire
+of Burning
+of Lightning
+of Thunder
+of Daring
+of Daring
+of Knowledge
+of Knowledge
+of Virility
+of Virility
+of Readiness
+of Craftsmanship
+of Quality
+of Maiming
+of Craftsmanship
+of Quality
+of Craftsmanship
+of Blight
+of Venom
+of Pestilence
+of Anthrax
+of Blight
+of Venom
+of Pestilence
+of Anthrax
+of Blight
+of Venom
+of Pestilence
+of Anthrax
+of Frost
+of the Icicle
+of the Glacier
+of Winter
+of Frost
+of the Icicle
+of the Glacier
+of Winter
+of Frost
+of the Icicle
+of the Glacier
+of Winter
+of Flame
+of Fire
+of Burning
+of Incineration
+of Flame
+of Fire
+of Burning
+of Incineration
+of Flame
+of Fire
+of Burning
+of Incineration
+of Shock
+of Lightning
+of Thunder
+of Storms
+of Shock
+of Lightning
+of Thunder
+of Storms
+of Shock
+of Lightning
+of Thunder
+of Storms
+of Dexterity
+of Dexterity
+of Strength
+of Strength
+of Thorns
+of Frost
+of Flame
+of Blight
+of Shock
+of Regeneration
+of Energy
+of Light
+of the Leech
+of the Locust
+of the Lamprey
+of the Bat
+of the Wraith
+of the Vampire
+*********************************以下是Rare和Crafted名字(^表示没有名字)
+^
+Bite
+Scratch
+Scalpel
+Fang
+Gutter
+Thirst
+Razor
+Scythe
+Edge
+Saw
+Splitter
+Cleaver
+Sever
+Sunder
+Rend
+Mangler
+Slayer
+Reaver
+Spawn
+Gnash
+Star
+Blow
+Smasher
+Bane
+Crusher
+Breaker
+Grinder
+Crack
+Mallet
+Knell
+Lance
+Spike
+Impaler
+Skewer
+Prod
+Scourge
+Wand
+Wrack
+Barb
+Needle
+Dart
+Bolt
+Quarrel
+Fletch
+Flight
+Nock
+Horn
+Stinger
+Quill
+Goad
+Branch
+Spire
+Song
+Call
+Cry
+Spell
+Chant
+Weaver
+Gnarl
+Visage
+Crest
+Circlet
+Veil
+Hood
+Mask
+Brow
+Casque
+Visor
+Cowl
+Hide
+Pelt
+Carapace
+Coat
+Wrap
+Suit
+Cloak
+Shroud
+Jack
+Mantle
+Guard
+Badge
+Rock
+Aegis
+Ward
+Tower
+Shield
+Wing
+Mark
+Emblem
+Hand
+Fist
+Claw
+Clutches
+Grip
+Grasp
+Hold
+Touch
+Finger
+Knuckle
+Shank
+Spur
+Tread
+Stalker
+Greaves
+Blazer
+Nails
+Trample
+Brogues
+Track
+Slippers
+Clasp
+Buckle
+Harness
+Lock
+Fringe
+Winding
+Chain
+Strap
+Lash
+Cord
+Knot
+Circle
+Loop
+Eye
+Turn
+Spiral
+Coil
+Gyre
+Band
+Whorl
+Talisman
+Heart
+Noose
+Necklace
+Collar
+Beads
+Torc
+Gorget
+Scarab
+Wood
+Brand
+Bludgeon
+Cudgel
+Loom
+Harp
+Master
+Bar
+Hew
+Crook
+Mar
+Shell
+Stake
+Picket
+Pale
+Flange
+Beast
+Eagle
+Raven
+Viper
+Ghoul
+Skull
+Blood
+Dread
+Doom
+Grim
+Bone
+Death
+Shadow
+Storm
+Rune
+Plague
+Stone
+Wraith
+Spirit
+Storm
+Demon
+Cruel
+Empyrian
+Bramble
+Pain
+Loath
+Glyph
+Imp
+Fiend
+Hailstone
+Gale
+Dire
+Soul
+Brimstone
+Corpse
+Carrion
+Armageddon
+Havoc
+Bitter
+Entropy
+Chaos
+Order
+Rule
+Warp
+Rift
+Corruption
+*********************************以下是暗金名字(Unique Name)(^表示没有名字)
+The Gnasher
+Deathspade
+Bladebone
+Mindrend
+Rakescar
+Fechmars Axe
+Goreshovel
+The Chieftan
+Brainhew
+The Humongous
+Iros Torch
+Maelstromwrath
+Gravenspine
+Umes Lament
+Felloak
+Knell Striker
+Rusthandle
+Stormeye
+Stoutnail
+Crushflange
+Bloodrise
+The Generals Tan Do Li Ga
+Ironstone
+Bonesob
+Steeldriver
+Rixots Keen
+Blood Crescent
+Krintizs Skewer
+Gleamscythe
+Azurewrath
+Griswolds Edge
+Hellplague
+Culwens Point
+Shadowfang
+Soulflay
+Kinemils Awl
+Blacktongue
+Ripsaw
+The Patriarch
+Gull
+The Diggler
+The Jade Tan Do
+Irices Shard
+The Dragon Chang
+Razortine
+Bloodthief
+Lance of Yaggai
+The Tannr Gorerod
+Dimoaks Hew
+Steelgoad
+Soul Harvest
+The Battlebranch
+Woestave
+The Grim Reaper
+Bane Ash
+Serpent Lord
+Lazarus Spire
+The Salamander
+The Iron Jang Bong
+Pluckeye
+Witherstring
+Rimeraven
+Piercerib
+Pullspite
+Wizendraw
+Hellclap
+Blastbark
+Leadcrow
+Ichorsting
+Hellcast
+Doomspittle
+War Bonnet
+Tarnhelm
+Coif of Glory
+Duskdeep
+Wormskull
+Howltusk
+Undead Crown
+The Face of Horror
+Greyform
+Blinkbats Form
+The Centurion
+Twitchthroe
+Darkglow
+Hawkmail
+Sparking Mail
+Venomsward
+Iceblink
+Boneflesh
+Rockfleece
+Rattlecage
+Goldskin
+Victors Silk
+Heavenly Garb
+Pelta Lunata
+Umbral Disk
+Stormguild
+Wall of the Eyeless
+Swordback Hold
+Steelclash
+Bverrit Keep
+The Ward
+The Hand of Broc
+Bloodfist
+Chance Guards
+Magefist
+Frostburn
+Hotspur
+Gorefoot
+Treads of Cthon
+Goblin Toe
+Tearhaunch
+Lenyms Cord
+Snakecord
+Nightsmoke
+Goldwrap
+Bladebuckle
+Nokozan Relic
+The Eye of Etlich
+The Mahim-Oak Curio
+Nagelring
+Manald Heal
+The Stone of Jordan
+Amulet of the Viper
+Staff of Kings
+Horadric Staff
+Hell Forge Hammer
+Khalim's Flail
+Khalim's Will
+Coldkill
+Butcher's Pupil
+Islestrike
+Pompe's Wrath
+Guardian Naga
+Warlord's Trust
+Spellsteel
+Stormrider
+Boneslayer Blade
+The Minataur
+Suicide Branch
+Carin Shard
+Arm of King Leoric
+Blackhand Key
+Dark Clan Crusher
+Zakarum's Hand
+The Fetid Sprinkler
+Hand of Blessed Light
+Fleshrender
+Sureshrill Frost
+Moonfall
+Baezil's Vortex
+Earthshaker
+Bloodtree Stump
+The Gavel of Pain
+Bloodletter
+Coldsteel Eye
+Hexfire
+Blade of Ali Baba
+Ginther's Rift
+Headstriker
+Plague Bearer
+The Atlantian
+Crainte Vomir
+Bing Sz Wang
+The Vile Husk
+Cloudcrack
+Todesfaelle Flamme
+Swordguard
+Spineripper
+Heart Carver
+Blackbog's Sharp
+Stormspike
+The Impaler
+Kelpie Snare
+Soulfeast Tine
+Hone Sundan
+Spire of Honor
+The Meat Scraper
+Blackleach Blade
+Athena's Wrath
+Pierre Tombale Couant
+Husoldal Evo
+Grim's Burning Dead
+Razorswitch
+Ribcracker
+Chromatic Ire
+Warpspear
+Skullcollector
+Skystrike
+Riphook
+Kuko Shakaku
+Endlesshail
+Whichwild String
+Cliffkiller
+Magewrath
+Godstrike Arch
+Langer Briser
+Pus Spiter
+Buriza-Do Kyanon
+Demon Machine
+Armor
+Peasent Crown
+Rockstopper
+Stealskull
+Darksight Helm
+Valkiry Wing
+Crown of Thieves
+Blackhorn's Face
+Vampiregaze
+The Spirit Shroud
+Skin of the Vipermagi
+Skin of the Flayerd One
+Ironpelt
+Spiritforge
+Crow Caw
+Shaftstop
+Duriel's Shell
+Skullder's Ire
+Guardian Angel
+Toothrow
+Atma's Wail
+Black Hades
+Corpsemourn
+Que-Hegan's Wisdon
+Visceratuant
+Mosers Blessed Circle
+Stormchaser
+Tiamat's Rebuke
+Kerke's Sanctuary
+Radimant's Sphere
+Lidless Wall
+Lance Guard
+Venom Grip
+Gravepalm
+Ghoulhide
+Lavagout
+Hellmouth
+Infernostride
+Waterwalk
+Silkweave
+Wartraveler
+Gorerider
+String of Ears
+Razortail
+Gloomstrap
+Snowclash
+Thudergod's Vigor
+Elite Uniques
+Harlequin Crest
+Veil of Steel
+The Gladiator's Bane
+Arkaine's Valor
+Blackoak Shield
+Stormshield
+Hellslayer
+Messerschmidt's Reaver
+Baranar's Star
+Schaefer's Hammer
+The Cranium Basher
+Lightsabre
+Doombringer
+The Grandfather
+Wizardspike
+Constricting Ring
+Stormspire
+Eaglehorn
+Windforce
+Rings
+Bul Katho's Wedding Band
+The Cat's Eye
+The Rising Sun
+Crescent Moon
+Mara's Kaleidoscope
+Atma's Scarab
+Dwarf Star
+Raven Frost
+Highlord's Wrath
+Saracen's Chance
+Class Specific
+Arreat's Face
+Homunculus
+Titan's Revenge
+Lycander's Aim
+Lycander's Flank
+The Oculus
+Herald of Zakarum
+Cutthroat1
+Jalal's Mane
+The Scalper
+Bloodmoon
+Djinnslayer
+Deathbit
+Warshrike
+Gutsiphon
+Razoredge
+Gore Ripper
+Demonlimb
+Steelshade
+Tomb Reaver
+Deaths's Web
+Nature's Peace
+Azurewrath
+Seraph's Hymn
+Zakarum's Salvation
+Fleshripper
+Odium
+Horizon's Tornado
+Stone Crusher
+Jadetalon
+Shadowdancer
+Cerebus
+Tyrael's Might
+Souldrain
+Runemaster
+Deathcleaver
+Executioner's Justice
+Stoneraven
+Leviathan
+Larzuk's Champion
+Wisp
+Gargoyle's Bite
+Lacerator
+Mang Song's Lesson
+Viperfork
+Ethereal Edge
+Demonhorn's Edge
+The Reaper's Toll
+Spiritkeeper
+Hellrack
+Alma Negra
+Darkforge Spawn
+Widowmaker
+Bloodraven's Charge
+Ghostflame
+Shadowkiller
+Gimmershred
+Griffon's Eye
+Windhammer
+Thunderstroke
+Giantmaimer
+Demon's Arch
+Boneflame
+Steelpillar
+Nightwing's Veil
+Crown of Ages
+Andariel's Visage
+Darkfear
+Dragonscale
+Steel Carapice
+Medusa's Gaze
+Ravenlore
+Boneshade
+Nethercrow
+Flamebellow
+Fathom
+Wolfhowl
+Spirit Ward
+Kira's Guardian
+Ormus' Robes
+Gheed's Fortune
+Stormlash
+Halaberd's Reign
+Warriv's Warder
+Spike Thorn
+Dracul's Grasp
+Frostwind
+Templar's Might
+Eschuta's temper
+Firelizard's Talons
+Sandstorm Trek
+Marrowwalk
+Heaven's Light
+Merman's Speed
+Arachnid Mesh
+Nosferatu's Coil
+Metalgrid
+Verdugo's Hearty Cord
+Sigurd's Staunch
+Carrion Wind
+Giantskull
+Ironward
+Annihilus
+Arioc's Needle
+Cranebeak
+Nord's Tenderizer
+Earthshifter
+Wraithflight
+Bonehew
+Ondal's Wisdom
+The Reedeemer
+Headhunter's Glory
+Steelrend
+Rainbow Facet
+Rainbow Facet
+Rainbow Facet
+Rainbow Facet
+Rainbow Facet
+Rainbow Facet
+Rainbow Facet
+Rainbow Facet
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+繁體中文(&Traditional Chinese)
+基本信息
+小站
+任務
+技能
+警告
+錯誤
+是否保存已打開的人物
+ ？
+不能打開文件
+人物名字與文件名不同，是否繼續？
+文件訪問受限
+無標題
+文件可能不是正確的d2s格式，是否繼續？
+文件長度錯誤，是否繼續？
+未知
+人物名字格式錯誤
+長度：2-15字符
+包括：a-z,A-Z,-,_
+注意：名字必須以字母開頭和結尾
+中間只允許有一個'-'或'_'符號
+人物等級必須在1-99之間
+力量、敏捷、體力、精力和狀態點數值必須在0-1023之間
+耐力、生命和法力值必須在0-8191之間，技能點數值在0-255之間
+亞馬遜
+法師
+死靈法師
+聖騎士
+野蠻人
+德魯依
+刺客
+普通
+噩夢
+地獄
+法力
+版本
+角色
+名字
+稱謂
+武器
+最近遊戲時間
+最後位置
+等級
+經驗
+等級與經驗對照表
+人物基本屬性
+力量
+敏捷
+體力
+精力
+狀態點剩餘
+基礎值
+當前值
+耐力
+生命
+天梯
+資料片
+專家級
+以前死過
+全部
+蘿格營地
+冰冷之原
+石塊曠野
+黑暗森林
+黑色荒地
+外側迴廊
+監牢第一層
+内側迴廊
+地下墓穴第二層
+魯.高因
+下水道第二層
+乾燥的高地
+死亡之殿第二層
+遙遠的綠洲
+遺失的城市
+皇宮監牢第一層
+神秘避難所
+衛士的峽谷
+庫拉斯特海港
+蜘蛛森林
+龐大濕地
+剝皮森林
+庫拉斯特下層
+庫拉斯特商場
+庫拉斯特上層
+崔凡克
+憎恨的囚牢第二層
+群魔堡壘
+神罰之城
+火焰之河
+哈洛加斯
+冰凍高地
+亞瑞特高原
+水晶通道
+冰河路徑
+痛苦之廰
+冰凍苔原
+遠古之路
+世界之石要塞第二層
+邪惡洞穴
+修女埋骨之地
+凱恩的搜索
+遺忘之塔
+交易的工具
+屠殺的修女
+羅達門特的巢穴
+赫拉迪克之杖
+墮落的太陽
+神秘避難所
+召喚者
+七個古墓
+黃金鳥
+古代宗教之刃
+克林姆的意志
+藍.依森的古書
+轉爲黑暗的神殿
+守護者
+墮落的天使
+地獄熔爐
+恐怖的結局
+哈洛加斯圍城戰
+亞瑞特山的救援行動
+冰之囚
+哈洛加斯的反叛行動
+通道的祭典
+毀滅的前夕
+殺死母牛之王
+技能點剩餘
+身上金錢
+箱子金錢
+請選擇一種角色
+亞馬遜技能
+弓和十字弓技能
+被動和魔法技能
+標槍和長矛技能
+魔法箭
+火焰箭
+冰箭
+多重箭
+爆裂箭
+急凍箭
+導引箭
+砲轟
+犧牲之箭
+凍結之箭
+内視
+致命攻擊
+閃避
+慢速箭
+躲避
+刺入
+誘餌
+迴避
+女武神
+穿刺
+戳刺
+威力一擊
+毒槍
+刺爆
+閃電球
+充能一擊
+瘟疫標槍
+擊退
+閃電攻擊
+閃電之怒
+法師技能
+火焰法術
+閃電法術
+冰凍法術
+火彈
+暖氣
+地獄之火
+熾烈之徑
+火球
+火墻
+強化
+隕石
+支配之焰
+九頭海蛇
+充能彈
+靜態力場
+心靈傳動
+新星
+閃電
+連鎖閃電
+傳送
+雷云風暴
+能量護盾
+支配閃電
+冰彈
+冰封裝甲
+霜之新星
+冰風暴
+碎冰甲
+冰尖柱
+暴風雪
+寒冰裝甲
+冰封球
+支配冰冷
+死靈法師技能
+詛咒
+毒素和白骨法術
+召喚法術
+傷害加深
+微暗靈視
+削弱
+攻擊反噬
+恐懼
+迷亂
+偷取生命
+吸引
+衰老
+降低抵抗
+牙
+白骨裝甲
+淬毒匕首
+屍體爆炸
+骨墻
+毒爆
+骨矛
+骨牢
+劇毒新星
+白骨之魂
+支配骷髏
+骷髏復甦
+黏土石魔
+支配石魔
+復甦骷髏法師
+鮮血石魔
+召喚反抗
+鋼鐵石魔
+火焰石魔
+重生
+聖騎士技能
+作戰技能
+攻擊靈氣
+防禦性靈氣
+犧牲
+重擊
+聖光彈
+白熱
+突擊
+復仇
+祝福之鎚
+轉換
+神聖之盾
+天堂之拳
+力量
+聖火
+刺針
+祝福瞄準
+專注
+神聖冰凍
+神聖衝擊
+庇護所
+狂熱
+信念
+祈禱
+抗火
+反抗
+抗冰冷
+淨化
+抵抗閃電
+精力
+冥思
+救贖
+救助
+野蠻人技能
+戰鬥技能
+戰鬥專家
+呐喊
+重擊
+跳躍
+雙手揮擊
+擊昏
+雙手投擲
+跳躍攻擊
+專心
+狂亂
+旋風
+狂戰士
+支配長劍
+支配斧頭
+支配釘頭鎚
+支配長棍
+支配飛擲
+支配長矛
+增加耐力
+鉄布衫
+加速
+自然抵抗
+狂嗥
+找尋藥劑
+嘲弄
+大叫
+找尋物品
+戰嗥
+戰鬥體制
+殘酷嚇阻
+戰鬥狂嗥
+戰鬥指揮
+德魯依技能
+召喚
+外型變形
+元素
+烏鴉
+猛毒花藤
+橡木智者
+召喚鬼狼
+食屍藤
+狼獾之心
+召喚狂狼
+太陽藤
+棘靈
+召喚灰熊
+狼人變化
+變形朮
+熊人變化
+野性狂暴
+撞鎚
+狂犬病
+焰爪
+飢餓
+震波
+狂怒
+火風暴
+熔漿巨岩
+極地風暴
+火山爆
+颶風裝甲
+鎌鼬風
+火山
+龍捲風
+毀天滅地
+暴風
+刺客技能
+陷阱
+影子訓練
+武學藝術
+火焰爆震
+雷電網
+刃之守衛
+電能守衛
+火焰復甦
+刃之怒
+雷光守衛
+復甦獄火
+亡者守衛
+刀刃之盾
+支配利爪
+心靈戰鎚
+加速
+武器格擋
+魔影斗篷
+能量消解
+影子戰士
+心靈爆震
+毒牙
+影子大師
+虎擊
+龍爪
+焰拳
+雙龍爪
+眼鏡蛇攻擊
+雷電爪
+神龍擺尾
+寒冰刃
+飛龍在天
+鳳凰攻擊
+技能等級必須在0-127之間
+請選擇角色
+不能讀取文件“new.dat“，你可以用一個正確的d2s文件代替，只要改變文件名，並複製到程序目錄下
+身上或箱子的金錢數過多
+Quest數據格式可能錯誤，是否繼續？
+小站數據格式可能錯誤，是否繼續？
+人物屬性格式可能錯誤，是否繼續？
+人物技能格式可能錯誤，是否繼續？
+物品列表格式可能錯誤，是否繼續？
+物品格式可能錯誤，是否繼續？
+物品
+不可識別的物品代碼，是否繼續？
+未知的物品等級：
+數量：%d
+代碼
+説明
+一般攻擊
+白色低級
+白色普通
+白色高級
+藍色魔法
+綠色套裝
+黃金
+暗金
+橙色合成
+腳踢
+投擲
+取消召喚
+左手投擲
+左手揮動
+一股邪惡力量
+辨識卷軸
+辨識之書
+回城卷軸
+回城之書
+冰凍
+中毒
+火焰抵抗
+冰冷抵抗
+閃電抵抗
+普通
+在白天
+在黃昏
+在夜間
+在黎明
+粗糙的
+超強的
+防禦: %d
+單手傷害: %d 到 %d
+雙手傷害: %d 到 %d
+耐久度: %d 之 %d
+無法破壞
+無形的(無法修復)
+有凹槽(%d)
+物品前后綴名
+鑄造臺
+等級
+擁有者
+質量
+防御
+數量
+耐久度
+屬性懸浮窗透明度
+隱藏
+有孔
+不可修復
+不可破壞
+鑄造
+前后綴
+添加
+編輯
+刪除
+名
+稱
+前綴1
+后綴1
+前綴2
+后綴2
+前綴3
+后綴3
+暗金名
+子類
+****************************以下是物品名称
+Elixir
+Healing Potion
+Mana Potion
+Full Healing Potion
+Full Mana Potion
+Stamina Potion
+Antidote Potion
+Rejuvenation Potion
+Full Rejuvenation Potion
+Thawing Potion
+Town Portal Book
+Identify Book
+Amulet
+Top of The Horadric Staff
+Ring
+Gold
+Scroll of Jnifuss
+Key To The Cairn Stones
+Arrows
+Torch
+Bolts
+Town Portal Scroll
+Identify Scroll
+Heart
+Brain
+Jawbone
+Eye
+Horn
+Tail
+Flag
+Fang
+Quill
+Soul
+Scalp
+Spleen
+Key
+The Black Tower Key
+Potion of Life
+Jade Figurine
+Gold Bird
+Lam esen's tome
+Horadric Cube
+Horadric Scroll
+Mephisto SoulStone
+Book of Skill
+Khalim Eye
+Khalim Heart
+Khalim Brain
+Ear
+Chipped Amethyst
+Flawed Amethyst
+Amethyst
+Flawless Amethyst
+Perfect Amethyst
+Chipped Topaz
+Flawed Topaz
+Topaz
+Flawless Topaz
+Perfect Topaz
+Chipped Saphire
+Flawed Saphire
+Saphire
+Flawless Saphire
+Perfect Saphire
+Chipped Emerald
+Flawed Emerald
+Emerald
+Flawless Emerald
+Perfect Emerald
+Chipped Ruby
+Flawed Ruby
+Ruby
+Flawless Ruby
+Perfect Ruby
+Chipped Diamond
+Flawed Diamond
+Diamond
+Flawless Diamond
+Perfect Diamond
+Minor Healing Potion
+Light Healing Potion
+Healing Potion
+Greater Healing Potion
+Super Healing Potion
+Minor Mana Potion
+Light Mana Potion
+Mana Potion
+Greater Mana Potion
+Super Mana Potion
+Chipped Skull
+Flawed Skull
+Skull
+Flawless Skull
+Perfect Skull
+Herb
+Small Charm
+Large Charm
+Grand Charm
+Small Red Potion
+Large Red Potion
+Small Blue Potion
+Large Blue Potion
+El Rune
+Eld Rune
+Tir Rune
+Nef Rune
+Eth Rune
+Ith Rune
+Tal Rune
+Ral Rune
+Ort Rune
+Thul Rune
+Amn Rune
+Sol Rune
+Shael Rune
+Dol Rune
+Hel Rune
+Io Rune
+Lum Rune
+Ko Rune
+Fal Rune
+Lem Rune
+Pul Rune
+Um Rune
+Mal Rune
+Ist Rune
+Gul Rune
+Vex Rune
+Ohm Rune
+Lo Rune
+Sur Rune
+Ber Rune
+Jah Rune
+Cham Rune
+Zod Rune
+Jewel
+Malah's Potion
+Scroll of Knowledge
+Scroll of Resistances
+Cap
+Skull Cap
+Helm
+Full Helm
+Great Helm
+Crown
+Mask
+Bone Helm
+War Hat
+Sallet
+Casque
+Basinet
+Winged Helm
+Grand Crown
+Death Mask
+Grim Helm
+Shako
+Hydraskull
+Armet
+Giant Conch
+Spired Helm
+Corona
+Demonhead
+Bone Visage
+Circlet
+Coronet
+Tiara
+Diadem
+Jawbone Cap
+Fanged Helm
+Horned Helm
+Assault Helmet
+Avenger Guard
+Jawbone Visor
+Lion Helm
+Range Mask
+Savage Helmet
+Slayer Guard
+Carnage Helm
+Fury Visor
+Destroyer Helm
+Conqueror Crown
+Guardian Crown
+Wolf Head
+Hawk Helm
+Antlers
+Falcon Mask
+Spirit Mask
+Alpha Helm
+Griffon Headdress
+Hunter's Guise
+Sacred Feathers
+Totemic Mask
+Blood Spirit
+Sun Spirit
+Earth Spirit
+Sky Spirit
+Dream Spirit
+Leather Gloves
+Heavy Gloves
+Chain Gloves
+Light Gauntlets
+Gauntlets
+Demonhide Gloves
+Sharkskin Gloves
+Heavy Bracers
+Battle Gauntlets
+War Gauntlets
+Bramble Mitts
+Vampirebone Gloves
+Vambraces
+Crusader Gauntlets
+Ogre Gauntlets
+Boots
+Heavy Boots
+Chain Boots
+Light Plated Boots
+Greaves
+Demonhide Boots
+Sharkskin Boots
+Mesh Boots
+Battle Boots
+War Boots
+Wyrmhide Boots
+Scarabshell Boots
+BoneWeave Boots
+Mirrored Boots
+Myrmidon Greaves
+Sash
+Light Belt
+Belt
+Heavy Belt
+Plated Belt
+Demonhide Sash
+Sharkskin Belt
+Mesh Belt
+Battle Belt
+War Belt
+Spiderweb Sash
+Vampirefang Belt
+Mithril Coil
+Troll Belt
+Colossus Girdle
+Quilted Armor
+Leather Armor
+Hard Leather Armor
+Studded Leather
+Ring Mail
+Scale Mail
+Chain Mail
+Breast Plate
+Splint Mail
+Plate Mail
+Field Mail
+Gothic Plate
+Full Plate Mail
+Ancient Armor
+Light Plate
+Ghost Armor
+Serpentskin Armor
+Demonhide Armor
+Trellised Armor
+Linked Mail
+Tigulated Mail
+Mesh Armor
+Cuirass
+Russet Armor
+Templar Coat
+Sharktooth Armor
+Embossed Plate
+Chaos Armor
+Ornate Plate
+Mage Plate
+Dusk Shroud
+Wyrmhide
+Scarab Husk
+Wire Fleece
+Diamond Mail
+Loricated Mail
+Boneweave
+Great Hauberk
+Balrog Skin
+Hellforge Plate
+Kraken Shell
+Lacquered Plate
+Shadow Plate
+Sacred Armor
+Archon Plate
+Buckler
+Small Shield
+Large Shield
+Kite Shield
+Tower Shield
+Gothic Shield
+Bone Shield
+Spiked Shield
+Defender
+Round Shield
+Scutum
+Dragon Shield
+Pavise
+Ancient Shield
+Grim Shield
+Barbed Shield
+Heater
+Luna
+Hyperion
+Monarch
+Aegis
+Ward
+Troll Nest
+Blade Barrier
+Targe
+Rondache
+Heraldic Shield
+Aerin Shield
+Crown Shield
+Akaran Targe
+Akaran Rondache
+Protector Shield
+Gilded Shield
+Royal Shield
+Sacred Targe
+Sacred Rondache
+Kurast Shield
+Zakarum Shield
+Vortex Shield
+Preserved Head
+Zombie Head
+Unraveller Head
+Gargoyle Head
+Demon Head
+Mummified Trophy
+Fetish Trophy
+Sexton Trophy
+Cantor Trophy
+Hierophant Trophy
+Minion Skull
+Hellpawn Skull
+Overseer Skull
+Succubus Skull
+Bloodlord Skull
+Hand Axe
+Axe
+Double Axe
+Military Pick
+War Axe
+Large Axe
+Broad Axe
+Battle Axe
+Great Axe
+Gaint Axe
+Hatchet
+Cleaver
+Twin Axe
+Crowbill
+Naga
+Military Axe
+Bearded Axe
+Tabar
+Gothic Axe
+Ancient Axe
+Tomahawk
+Small Crescent
+Ettin Axe
+War Spike
+Berserker Axe
+Feral Axe
+Silver-Edged Axe
+Decapitator
+Champion Axe
+Glorious Axe
+Wand
+Yew Wand
+Bone Wand
+Grim Wand
+Burnt Wand
+Petrified Wand
+Tomb Wand
+Grave Wand
+Polished Wand
+Ghost Wand
+Lich Wand
+Unearthed Wand
+Club
+Spiked Club
+Mace
+Morning Star
+Flail
+War Hammer
+Maul
+Great Maul
+Cudgel
+Barbed Club
+Flanged Mace
+Jagged Star
+Knout
+Battle Hammer
+War Club
+Martel De Fer
+Truncheon
+Tyrant Club
+Reinforced Mace
+Devil Star
+Scourge
+Legendary Mallet
+Ogre Maul
+Thunder Maul
+Scepter
+Grand Scepter
+War Scepter
+Rune Scepter
+Holy Water Sprinkler
+Divine Scepter
+Mighty Scepter
+Seraph Rod
+Caduceus
+Short Sword
+Scimitar
+Sabre
+Falchion
+Crystal Sword
+Broad Sword
+Long Sword
+War Sword
+Tow Handed Sword
+Claymore
+Giant Sword
+Bastard Sword
+Flamberge
+Great Sword
+Dagger
+Dirk
+Kris
+Blade
+Gladius
+Cutlass
+Shamshir
+Tulwar
+Dimensional Blade
+Battle Sword
+Rune Sword
+Ancient Sword
+Espandon
+Dacian Falx
+Tusk Sword
+Gothic Sword
+Zweihander
+Executioner Sword
+Poignard
+Rondel
+Cinquedeas
+Stiletto
+Falcata
+Ataghan
+Elegant Blade
+Hydra Edge
+Phase Blade
+Conquest Sword
+Cryptic Sword
+Mythical Sword
+Legend Sword
+Highland Blade
+Balrog Blade
+Champion Sword
+Colossus Sword
+Colossus Blade
+Bone Knife
+Mithril Point
+Fanged Knife
+Legend Spike
+Throwing Knife
+Throwing Axe
+Balanced Knife
+Balanced Axe
+Battle Dart
+Francisca
+War Dart
+Hurlbat
+Flying Knife
+Flying Axe
+Winged Knife
+Winged Axe
+Javelin
+Pilum
+Short Spear
+Glaive
+Throwing Spear
+War Javelin
+Great Pilum
+Simbilan
+Spiculum
+Harpoon
+Hyperion Javelin
+Stygian Pilum
+Balrog Spear
+Ghost Glaive
+Winged Harpoon
+Spear
+Trident
+Brandistock
+Spetum
+Pike
+Bardiche
+Voulge
+Scythe
+Poleaxe
+Halberd
+War Scythe
+War Spear
+Fuscina
+War Fork
+Yari
+Lance
+Lochaber Axe
+Bill
+Battle Scythe
+Partizan
+Bec-de-Corbin
+Grim Scythe
+Hyperion Spear
+Stygain Pike
+Mancatcher
+Ghost Spear
+War Pike
+Ogre Axe
+Colossus Voulge
+Thresher
+Cryptic Axe
+Great Poleaxe
+Giant Thresher
+Short Staff
+Long Staff
+Ganrled Staff
+Battle Staff
+War Staff
+Jo Staff
+Quarter Staff
+Cedar Staff
+Gothic Staff
+Rune Staff
+Walking Stick
+Stalagmite
+Elder Staff
+Shillelagh
+Archon Staff
+Short Bow
+Hunter's Bow
+Long Bow
+Composite Bow
+Short Battle Bow
+Long Battle Bow
+Short War Bow
+Long War Bow
+Light Crossbow
+Crossbow
+Heavy Crossbow
+Repeating Crossbow
+Edge Bow
+Razor Bow
+Cedar Bow
+Double Bow
+Short Siege Bow
+Large Siege Bow
+Rune Bow
+Gothic Bow
+Arbalest
+Siege Crossbow
+Ballista
+Chu-ko-Nu
+Spider Bow
+Blade Bow
+Shadow Bow
+Great Bow
+Diamond Bow
+Crusader Bow
+Ward Bow
+Hydra Bow
+Pellet Bow
+Gorgon Crossbow
+Colossus Crossbow
+Demon Crossbow
+Rancid Gas Potion
+Oil Potion
+Choking Gas Potion
+Exploding Potion
+Strangling Gas Potion
+Fulminating Potion
+Decoy Gidbinn
+The Gidbinn
+Wirt's Leg
+Horadric Malus
+Hell Forge Hammer
+Horadric Staff
+Staff Of Kings
+Khalim's Flail
+Khalim's Will
+Katar
+Wrist Blade
+Hatchet Hands
+Cestus
+Claws
+Blade Talons
+Scissors Katar
+Quhab
+Wrist Spike
+Fascia
+Hand Scythe
+Greater Claws
+Greater Talons
+Scissors Quhab
+Suwayyah
+Wrist Sword
+War Fist
+Battle Cestus
+Feral Claws
+Runic Talons
+Scissors Suwayyah
+Eagle Orb
+Sacred Globe
+Smoked Sphere
+Clasped Orb
+Jared's Stone
+Glowing Orb
+Crystalline Globe
+Cloudy Sphere
+Sparkling Ball
+Swirling Crystal
+Heavenly Stone
+Eldritch Orb
+Demon Heart
+Vortex Orb
+Dimensional Shard
+Stag Bow
+Reflex Bow
+Maiden Spear
+Maiden Pike
+Maiden Javelin
+Ashwood Bow
+Ceremonial Bow
+Ceremonial Spear
+Ceremonial Pike
+Ceremonial Javelin
+Matriarchal Bow
+Grand Matron Bow
+Matriarchal Spear
+Matriarchal Pike
+Matriarchal Javelin
+**************************以下是属性名称(Property Name)
+%+d Strength
+%+d Energy
+%+d Dexterity
+%+d Vitality
+Stat Point
+Skill Point
+Life
+%+d Max Life
+Mana
+%+d Max Mana
+Stamina
+%+d Max Stamina
+Level
+Experience
+Gold
+Goldbank
+%+d%% Enhanced Defense
+%+d%% - %d%% Enhanced Damage
+%+d%% Enhanced Min Damage
+%+d Attack Rating
+%+d%% Chance of Blocking
+%+d Min 1-Handed Damage
+%+d Max 1-Handed Damage
+%+d Min 2-Handed Damage
+%+d Max 2-Handed Damage
+Damage %+d%% NV
+Regenerate mana % NV
+Regenerate Mana %+d%%
+Heal Stemina %+d%%
+Lastexp
+Nextxp
+%+d Defense
+%+d Defense vs Missile
+%+d Defense vs Melee
+Damage Reduced By %+d
+Magic Damage Reduced By %+d
+Damage Reduced By %+d%%
+%+d%% Magic Resist
+%+d%% Max Magic Resist
+%+d%% Fire Resist
+%+d%% Max Fire Resist
+%+d%% Lightning Resist
+%+d%% Max Lightning Resist
+%+d%% Cold Resist
+%+d%% Max Cold Resist
+%+d%% Poison Resist
+%+d%% Max Poison Resist
+Damageaure
+%+d - %d Fire Damage
+%+d Max Fire Damage
+%+d - %d Lightning Damage
+%+d Max Lightning Damage
+%+d - %d Magic Damage
+%+d Max Magic Damage
+%+d - %d Cold Damage Freezing %d sec
+%+d Max Cold Damage
+%+d Cold Length
+%+d - %d Poison Damage Over %d sec
+%+d Max Poison Damage
+%+d Poison Length
+%+d%% Life Stolen per Hit Min
+%+d%% Life Stolen per Hit Max
+%+d%% Mana Stolen per Hit Min
+%+d%% Mana Stolen per Hit Max
+Stamina Drain Min
+Stamina Drain Max
+Stun Length
+Run/Walk Speed %+d%% NV
+Attack Speed %+d%% NV
+Other Animrate
+Quantity
+Value %+d
+%+d Durability
+%+d Max Durability
+%+d Replenish Life
+Increase Max Durability %+d%%
+Increase Max Life %+d%%
+Increase Max Mana %+d%%
+Attacker Takes Damage of %+d
+%+d%% Extra Gold From Monsters
+%+d%% Better Chance of Getting Magic Items
+Knock Back %+d
+Time Duration %+d
+%+d %s Skill
+Unsentparaml
+%+d%% Experience Gained
+%+d Life After Each Kill
+Reduced Prices %+d%%
+Double Herb Duration
+%+d Light Radius
+Light Color NV %d
+Requirements %+d%%
+%+d Item Level Require
+%+d%% Increase Attack Speed
+Item Level Require %+d%%
+Last Block Frame
+%+d%% Faster Run/Walk
+%+d to %s
+Change Character State to %s
+%+d%% Faster Hit Recovery Rate
+Monster Player Count
+Poison Override
+%+d%% Faster Block Rate
+Bypass Undead
+Bypass Demons
+%+d%% Faster Cast Rate
+Bypass Beast
+%+d to %s(%s only)
+Slain Monsters Rest In Peace %+d
+Curse Resist %+d
+Poison Length Reduced by %+d%%
+Damage %+d
+Hit Causes Monster Flee %+d%%
+Hit Blinds Target %+d
+%+d%% Damage Mana
+Ignore Target Defense
+-%+d%% Target Defense
+Prevent Monster Heal %+d
+Half Freeze Duration
+%+d%% Bonus Attack Rating
+%+d Monster Defense Per Hit
+%+d%% Damage to Demons
+%+d%% Damage to Undead
+%+d Attack Rating vs Demons
+%+d Attack Rating vs Undead
+Throwable
+%+d Fire Skills %d
+%+d All Skills
+Attacker Takes Lightning Damage of %+d
+Iron Maiden Level
+Life Tap Level
+Thorns Percent
+Bone Armor
+Bone Armor Max
+Freezes Target %+d
+%+d%% Chance of Open Wounds
+%+d%% Chance of Crushing Blow
+%+d Kick Damage
+%+d Mana After Each Kill
+%+d Life After Each Demon Kill
+Extra Blood %d
+%+d%% Chance of Deadly Strike
+Fire Absorb %+d%%
+%+d File Absorb
+Lightning Absorb %+d%%
+%+d Lightning Absorb
+Magic Absorb %+d%%
+%+d Magic Absorb
+Cold Absorb %+d%%
+%+d Cold Absorb
+Slows Target by %+d%%
+Level %+d %s Aura When Equipped
+Indestructible
+Cannot Be Frozen
+%+d%% Slower Stamina Drain
+%+d%% Chance of Reanimate as %s
+%+d%% Chance of Piercing Attack
+Fires Magic Arrows or Bolts %+d
+Fires Explosive Arrows or Bolts %+d
+%+d to Min Throw Damage NV
+%+d to Max Throw Damage NV
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+%+d%% to Attack Rating vs %s
+%+d%% to Damage vs %s
+Fade %d
+Armor Override
+Unused
+Unused
+Unused
+Unused
+Unused
+%+d %s (%s only)
+Unused
+Unused
+Unused
+Unused
+Unused
+Add %+d Sockets
+%+d%% Chance to Cast Level %d %s When Attack
+%+d%% Chance to Cast Level %d %s When Kill
+%+d%% Chance to Cast Level %d %s When Death
+%+d%% Chance to Cast Level %d %s When Striking
+%+d%% Chance to Cast Level %d %s When Levelup
+Unused
+%+d%% Chance to Cast Level %+d %s When Struck
+Unused
+Unused
+Level %+d %s (%d/%d Charges)
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+%+d Defence per Level
+%+d Enhanced Defence per Level
+%+d Life per Level
+%+d Mana per Level
+%+d Max Damage per Level
+%+d Enhanced Max Damage per Level
+%+d Strength per Level
+%+d Dexterity per Level
+%+d Energy per Level
+%+d Vitality per Level
+%+d Attack Rating per Level
+%+d%% Bonus to Attack Rating per Level
+%+d Max Cold Damage per Level
+%+d Max Fire Damage per Level
+%+d Max Lightning Damage per Level
+%+d Max Poison Damage per Level
+Cold Resist %+d%% per Level
+Fire Resist %+d%% per Level
+Lightning Resist %+d%% per Level
+Poison Resist %+d%% per Level
+%+d Cold Absorb per Level
+%+d Fire Absorb per Level
+%+d Lightning Absorb per Level
+%+d Poison Absorb per Level
+Attacker Takes Damage of %+d per Level
+%+d%% Extra Gold from Monsters per Level
+%+d%% Better Chance of Getting Magic Items per Level
+Heal Stamina Plus %+d%% per Level
+%+d Max Stamina per Level
+%+d%% Damage to Demons per Level
+%+d%% Damage to Undead per Level
+%+d to Attack Rating vs Demons per Level
+%+d to Attack Rating vs Undead per Level
+%+d%% Chance of Crushing Blow per Level
+%+d%% Chance of Open Wounds per Level
+%+d Kick Damage per Level
+%+d%% Chance of Deadly Strike per Level
+Find Gems per Level
+Repairs 1 Durability in %d Seconds
+Replenishes 1 Quantity in %d Seconds
+Increased Stack Size %+d
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+%+d - %d Defense (Increases %s)
+%+d - %d Enhanced Defense (Increases %s)
+%+d - %d Life (Increases %s)
+%+d - %d Mana (Increases %s)
+%+d - %d Max Damage (Increases %s)
+%+d - %d Enhanced Max Damage (Increases %s)
+%+d - %d Strength (Increases %s)
+%+d - %d Dexterity (Increases %s)
+%+d - %d Energy (Increases %s)
+%+d - %d Vitality (Increases %s)
+%+d - %d Attack Rating (Increases %s)
+%+d - %d Enhanced Attack Rating (Increases %s)
+%+d - %d Max Cold Damage (Increases %s)
+%+d - %d Max Fire Damage (Increases %s)
+%+d - %d Max Lightning Damage (Increases %s)
+%+d - %d Max Poison Damage (Increases %s)
+%+d%% - %d%% Cold Resist (Increases %s)
+%+d%% - %d%% Fire Resist (Increases %s)
+%+d%% - %d%% Lightning Resist (Increases %s)
+%+d%% - %d%% Poison Resist (Increases %s)
+%+d - %d Cold Absorb (Increases %s)
+%+d - %d Fire Absorb (Increases %s)
+%+d - %d Lightning Absorb (Increases %s)
+%+d - %d Poison Absorb (Increases %s)
+%+d%% - %d%% Extra Gold from Monsters (Increases %s)
+%+d%% - %d%% Better Chance of Getting Magic Items (Increases %s)
+Heal Stamina Plus %+d - %d%% (Increases %s)
+%+d - %d Stamina (Increases %s)
+%+d%% - %d%% Damage to Demons (Increases %s)
+%+d%% - %d%% Damage to Undead (Increases %s)
+%+d - %d Attack Rating vs Demons (Increases %s)
+%+d - %d Attack Rating vs Undead (Increases %s)
+%+d%% - %d%% Chance of Crushing Blow (Increases %s)
+%+d%% - %d%% Chance of Open Wounds (Increases %s)
+%+d - %d Kick Damage (Increases %s)
+%+d - %d Chance of  Deadly Strike (Increases %s)
+Item Find Gems (by time)
+%+d%% Enemy Cold Resist
+%+d%% Enemy Fire Resist
+%+d%% Enemy Lightning Resist
+%+d%% Enemy Poison Resist
+Item Damage vs Monster
+Item Damage Percent vs Monster
+Item Tohit vs Monster
+Item Tohit Percent vs Monster
+Item AC vs Monster
+Item AC Percent vs Monster
+Fire Length
+Burning Min
+Burning Max
+Progressive Damage
+Progressive Steal
+Progressive Other
+Progressive Fire
+Progressive Cold
+Progressive Lightning
+Item Extra Charges %+d
+Progressive Tohit
+Poison Count
+Damage Frame Rate
+Pierce IDX
+%+d%% Fire Skill Damage
+%+d%% Lightning Skill Damage
+%+d%% Cold Skill Damage
+%+d%% Poison Skill Damage
+%+d%% Enemy Fire Resist
+%+d%% Enemy Lightning Resist
+%+d%% Enemy Cold Resist
+%+d%% Enemy Poison Resist
+Passive Critical Strike %d
+Passive Dodge %d
+Passive Avoid %d
+Passive Evade %d
+Passive Warmth %d
+Passive Mastery Melee TH %d
+Passive Mastery Melee Damage %d
+Passive Mastery Melee Crit %d
+Passive Mastery Throw TH %d
+Passive Mastery Throw Damage %d
+Passive Mastery Throw Crit %d
+Passive Weapon Block %d
+Passive Summon Resist %d
+Modifier List Skill
+Modifier List Level
+Last Sent HP PCT
+Source Unit Type
+Source Unit ID
+Short Paraml
+Quest Item Difficulty %d
+Passive Magic Mastery %d
+Passive Magic Pierce %d
+*********************************以下是怪物名称(Monster Names)
+Skeleton
+Returned
+BoneWarrior
+BurningDead
+Horror
+Zombie
+HungryDead
+Ghoul
+DrownedCarcass
+PlagueBearer
+Afflicted
+Tainted
+Misshapen
+Disfigured
+Damned
+FoulCrow
+BloodHawk
+BlackRaptor
+CloudStalker
+Fallen
+Carver
+Devilkin
+DarkOne
+WarpedFallen
+Brute
+Yeti
+Crusher
+WailingBeast
+GargantuanBeast
+SandRaider
+Marauder
+Invader
+Infidel
+Assailant
+unused
+unused
+unused
+unused
+Ghost
+Wraith
+Specter
+Apparition
+DarkShape
+DarkHunter
+VileHunter
+DarkStalker
+BlackRogue
+FleshHunter
+DuneBeast
+RockDweller
+JungleHunter
+DoomApe
+TempleGuard
+MoonClan
+NightClan
+BloodClan
+HellClan
+DeathClan
+FallenShaman
+CarverShaman
+DevilkinShaman
+DarkShaman
+WarpedShaman
+QuillRat
+SpikeFiend
+ThornBeast
+RazorSpine
+JungleUrchin
+SandMaggot
+RockWorm
+Devourer
+GiantLamprey
+WorldKiller
+TombViper
+ClawViper
+Salamander
+PitViper
+SerpentMagus
+SandLeaper
+CaveLeaper
+TombCreeper
+TreeLurker
+RazorPitDemon
+Huntress
+SaberCat
+NightTiger
+HellCat
+Itchies
+BlackLocusts
+PlagueBugs
+HellSwarm
+DungSoldier
+SandWarrior
+Scarab
+SteelWeevil
+AlbinoRoach
+DriedCorpse
+Decayed
+Embalmed
+PreservedDead
+Cadaver
+HollowOne
+Guardian
+Unraveler
+Horadrim Ancient
+Baal Subject Mummy
+unused
+unused
+unused
+unused
+CarrionBird
+UndeadScavenger
+HellBuzzard
+WingedNightmare
+Sucker
+Feeder
+BloodHook
+BloodWing
+Gloam
+SwampGhost
+BurningSoul
+BlackSoul
+Arach
+SandFisher
+PoisonSpinner
+FlameSpider
+SpiderMagus
+ThornedHulk
+BrambleHulk
+Thrasher
+Spikefist
+GhoulLord
+NightLord
+DarkLord
+BloodLord
+Banished
+DesertWing
+Fiend
+Gloombat
+BloodDiver
+DarkFamiliar
+RatMan
+Fetish
+Flayer
+SoulKiller
+StygianDoll
+DeckardCain
+Gheed
+Akara
+dummy
+Kashya
+dummy
+Dummy
+Dummy
+Charsi
+Warriv
+Andariel
+dummy
+dummy
+dummy
+DarkRanger
+VileArcher
+DarkArcher
+BlackArcher
+FleshArcher
+DarkSpearwoman
+VileLancer
+DarkLancer
+BlackLancer
+FleshLancer
+SkeletonArcher
+ReturnedArcher
+BoneArcher
+BurningDeadArcher
+HorrorArcher
+Warriv
+Atma
+Drognan
+Fara
+dummy
+SandMaggotYoung
+RockWormYoung
+DevourerYoung
+GiantLampreyYoung
+WorldKillerYoung
+dummy
+Blunderbore
+Gorbelly
+Mauler
+Urdar
+SandMaggotEgg
+RockWormEgg
+DevourerEgg
+GiantLampreyEgg
+WorldKillerEgg
+dummy
+Dummy
+dummy
+Greiz
+Elzix
+Geglash
+Jerhyn
+Lysander
+Dummy
+dummy
+dummy
+FoulCrowNest
+BloodHawkNest
+BlackVultureNest
+CloudStalkerNest
+Meshif
+Duriel
+Undead RatMan
+Undead Fetish
+Undead Flayer
+Undead SoulKiller
+Undead StygianDoll
+unused
+unused
+unused
+unused
+unused
+unused
+unused
+unused
+unused
+unused
+Maggot
+MummyGenerator
+Radament
+unused
+unused
+unused
+unused
+FlyingScimitar
+Zakarumite
+Faithful
+Zealot
+Sexton
+Cantor
+Heirophant
+Heirophant
+Mephisto
+Diablo
+DeckardCain
+DeckardCain
+DeckardCain
+Swamp Dweller
+Bog Creature
+Slime Prince
+Summoner
+tyrael
+asheara
+hratli
+alkor
+ormus
+izual
+halbu
+WaterWatcherLimb
+RiverStalkerLimb
+StygianWatcherLimb
+WaterWatcherHead
+RiverStalkerHead
+StygianWatcherHead
+meshif
+DeckardCain
+navi
+Bloodraven
+Dummy
+Dummy
+RogueScout
+Dummy
+Dummy
+GargoyleTrap
+ReturnedMage
+BoneMage
+BurningDeadMage
+HorrorMage
+RatManShaman
+FetishShaman
+FlayerShaman
+SoulKillerShaman
+StygianDollShaman
+larva
+SandMaggotQueen
+RockWormQueen
+DevourerQueen
+GiantLampreyQueen
+WorldKillerQueen
+ClayGolem
+BloodGolem
+IronGolem
+FireGolem
+Dummy
+Dummy
+NightMarauder
+Dummy
+Natalya
+FleshSpawner
+StygianHag
+Grotesque
+FleshBeast
+StygianDog
+GrotesqueWyrm
+Groper
+Strangler
+StormCaster
+Corpulent
+CorpseSpitter
+MawFiend
+DoomKnight
+AbyssKnight
+OblivionKnight
+QuillBear
+SpikeGiant
+ThornBrute
+RazorBeast
+GiantUrchin
+Dummy
+Dummy
+Dummy
+Dummy
+Dummy
+Dummy
+Dummy
+Dummy
+a trap
+a trap
+a trap
+a trap
+a trap
+Kaelan
+Dummy
+Diablo
+SuckerNest
+FeederNest
+BloodHookNest
+BloodWingNest
+Guard
+Dummy
+Dummy
+Dummy
+Dummy
+Dummy
+Dummy
+Council Member
+Council Member
+Council Member
+Turret
+Turret
+Turret
+Hydra
+Hydra
+Hydra
+a trap
+Dummy
+Dopplezon
+Valkyrie
+Dummy
+Iron Wolf
+Balrog
+PitLord
+VenomLord
+NecroSkeleton
+NecroMage
+Griswold
+compellingorb
+tyrael
+youngdiablo
+a trap
+Dummy
+LightningSpire
+FireTower
+Slinger
+SpearCat
+NightSlinger
+HellSlinger
+Dummy
+Dummy
+ReturnedMage
+BoneMage
+BaalColdMage
+HorrorMage
+ReturnedMage
+BoneMage
+BurningDeadMage
+HorrorMage
+ReturnedMage
+BoneMage
+BurningDeadMage
+HorrorMage
+Hell Bovine
+Dummy
+Dummy
+SpearCat
+NightSlinger
+RatMan
+Fetish
+Flayer
+SoulKiller
+StygianDoll
+Dummy
+The Smith
+TrappedSoul
+TrappedSoul
+Jamella
+Izual
+RatMan
+Malachai
+The Feature Creep
+Wake of Destruction
+Charged Bolt Sentry
+Lightning Sentry
+Blade Creeper
+Invis Pet
+Inferno Sentry
+Death Sentry
+Shadow Warrior
+Shadow Master
+Druid Hawk
+Druid Spirit Wolf
+Druid Fenris
+Spirit of Barbs
+Heart of Wolverine
+Oak Sage
+Druid Plague Poppy
+Druid Cycle of Life
+Vine Creature
+Druid Bear
+Eagle
+Wolf
+Bear
+Barricade Door
+Barricade Door
+Prison Door
+Barricade Tower
+RotWalker
+ReanimatedHorde
+ProwlingDead
+UnholyCorpse
+DefiledWarrior
+Siege Beast
+CrushBiest
+BloodBringer
+GoreBearer
+DeamonSteed
+SnowYeti1
+SnowYeti2
+SnowYeti3
+SnowYeti4
+WolfRider1
+WolfRider2
+WolfRider3
+Minionexp
+Slayerexp
+IceBoar
+FireBoar
+HellSpawn
+IceSpawn
+GreaterHellSpawn
+GreaterIceSpawn
+FanaticMinion
+BerserkSlayer
+ConsumedIceBoar
+ConsumedFireBoar
+FrenziedHellSpawn
+FrenziedIceSpawn
+InsaneHellSpawn
+InsaneIceSpawn
+Succubusexp
+VileTemptress
+StygianHarlot
+Hell Temptress
+Blood Temptress
+Dominus
+VileWitch
+StygianFury
+Blood Witch
+Hell Witch
+OverSeer
+Lasher
+OverLord
+BloodBoss
+HellWhip
+MinionSpawner
+MinionSlayerSpawner
+MinionIce/fireBoarSpawner
+MinionIce/fireBoarSpawner
+Minionice/hellSpawnSpawner
+MinionIce/fireBoarSpawner
+MinionIce/fireBoarSpawner
+Minionice/hellSpawnSpawner
+Imp1
+Imp2
+Imp3
+Imp4
+Imp5
+CatapultS
+CatapultE
+CatapultSiege
+CatapultW
+Frozen Horror1
+Frozen Horror2
+Frozen Horror3
+Frozen Horror4
+Frozen Horror5
+Blood Lord1
+Blood Lord2
+Blood Lord3
+Blood Lord4
+Blood Lord5
+Larzuk
+Drehya
+Malah
+Nihlathak Town
+Qual-Kehk
+Catapult Spotter S
+Catapult Spotter E
+Catapult Spotter Siege
+Catapult Spotter W
+DeckardCain
+tyrael
+Act 5 Combatant
+Act 5 Combatant
+Barricade Wall Right
+Barricade Wall Left
+Nihlathak
+Drehya
+Evil hut
+Death Mauler1
+Death Mauler2
+Death Mauler3
+Death Mauler4
+Death Mauler5
+POW
+Act 5 Townguard
+Act 5 Townguard
+Ancient Statue 1
+Ancient Statue 2
+Ancient Statue 3
+Ancient Barbarian 1
+Ancient Barbarian 2
+Ancient Barbarian 3
+Baal Throne
+Baal Crab
+Baal Taunt
+Putrid Defiler1
+Putrid Defiler2
+Putrid Defiler3
+Putrid Defiler4
+Putrid Defiler5
+Pain Worm1
+Pain Worm2
+Pain Worm3
+Pain Worm4
+Pain Worm5
+Bunny
+Council Member
+VenomLord
+Baal Crab to Stairs
+Act 5 Hireling 1hs
+Act 5 Hireling 2hs
+Baal Tentacle
+Baal Tentacle
+Baal Tentacle
+Baal Tentacle
+Baal Tentacle
+Injured Barbarian 1
+Injured Barbarian 2
+Injured Barbarian 3
+Baal Crab Clone
+Baals Minion
+Baals Minion
+Baals Minion
+Worldstone Effect
+BurningDeadArcher
+BoneArcher
+BurningDeadArcher
+ReturnedArcher
+HorrorArcher
+Afflicted
+Tainted
+Misshapen
+Disfigured
+Damned
+MoonClan
+NightClan
+HellClan
+BloodClan
+DeathClan
+FoulCrow
+BloodHawk
+BlackRaptor
+CloudStalker
+ClawViper
+PitViper
+Salamander
+TombViper
+SerpentMagus
+Marauder
+Infidel
+SandRaider
+Invader
+Assailant
+Death Mauler1
+QuillRat
+SpikeFiend
+RazorSpine
+CarrionBird
+ThornedHulk
+Slinger
+Slinger
+Slinger
+VileArcher
+DarkArcher
+VileLancer
+DarkLancer
+BlackLancer
+Blunderbore
+Mauler
+ReturnedMage
+BurningDeadMage
+ReturnedMage
+HorrorMage
+BoneMage
+HorrorMage
+HorrorMage
+Huntress
+SaberCat
+CaveLeaper
+TombCreeper
+Ghost
+Wraith
+Specter
+Succubusexp
+Hell Temptress
+Dominus
+Hell Witch
+VileWitch
+Gloam
+BlackSoul
+BurningSoul
+Carver
+Devilkin
+DarkOne
+CarverShaman
+DevilkinShaman
+DarkShaman
+BoneWarrior
+Returned
+Gloombat
+Fiend
+Blood Lord1
+Blood Lord4
+Scarab
+SteelWeevil
+Flayer
+StygianDoll
+SoulKiller
+Flayer
+StygianDoll
+SoulKiller
+FlayerShaman
+StygianDollShaman
+SoulKillerShaman
+TempleGuard
+TempleGuard
+Guardian
+Unraveler
+Horadrim Ancient
+Horadrim Ancient
+Zealot
+Zealot
+Heirophant
+Heirophant
+Grotesque
+FleshSpawner
+GrotesqueWyrm
+FleshBeast
+WorldKiller
+WorldKillerYoung
+WorldKillerEgg
+Slayerexp
+HellSpawn
+GreaterHellSpawn
+Arach
+Balrog
+PitLord
+Imp1
+Imp4
+Undead StygianDoll
+Undead SoulKiller
+Strangler
+StormCaster
+MawFiend
+BloodLord
+GhoulLord
+DarkLord
+UnholyCorpse
+DoomKnight
+DoomKnight
+OblivionKnight
+OblivionKnight
+Cadaver
+*********************************以下是魔法前缀(Magic Prefix)(^表示没有名字)
+^
+^
+Sturdy
+Strong
+Glorious
+Blessed
+Saintly
+Holy
+Devious
+Fortified
+^
+^
+^
+Jagged
+Deadly
+Vicious
+Brutal
+Massive
+Savage
+Merciless
+Vulpine
+^
+^
+^
+^
+Tireless
+Rugged
+Bronze
+Iron
+Steel
+Silver
+^
+Gold
+Platinum
+Meteoric
+Sharp
+Fine
+Warrior's
+Soldier's
+Knight's
+Lord's
+King's
+Howling
+Fortuitous
+^
+^
+^
+^
+^
+Glimmering
+Glowing
+^
+^
+Lizard's
+^
+Snake's
+Serpent's
+Serpent's
+Drake's
+Dragon's
+Dragon's
+Wyrm's
+^
+^
+Prismatic
+Prismatic
+Azure
+Lapis
+Lapis
+Cobalt
+Cobalt
+^
+Sapphire
+^
+^
+Crimson
+Burgundy
+Burgundy
+Garnet
+Garnet
+^
+Ruby
+^
+^
+Ocher
+Tangerine
+Tangerine
+Coral
+Coral
+^
+Amber
+^
+^
+Beryl
+Jade
+Jade
+Viridian
+Viridian
+^
+Emerald
+^
+Fletcher's
+Archer's
+Archer's
+Monk's
+Priest's
+Priest's
+Summoner's
+Necromancer's
+Necromancer's
+Angel's
+Arch-Angel's
+Arch-Angel's
+Slayer's
+Berserker's
+Berserker's
+^
+^
+Triumphant
+Stout
+Stout
+Stout
+Burly
+Burly
+Burly
+Stalwart
+Stalwart
+Stalwart
+Stout
+Stout
+Stout
+Burly
+Burly
+Stalwart
+Stalwart
+Stout
+Stout
+Burly
+Stalwart
+Blanched
+Eburin
+Bone
+Ivory
+Sturdy
+Sturdy
+Strong
+Glorious
+Blessed
+Saintly
+Holy
+Godly
+Devious
+Blank
+Null
+Antimagic
+Red
+Red
+Sanguinary
+Sanguinary
+Bloody
+Red
+Sanguinary
+Bloody
+Red
+Sanguinary
+Bloody
+Scarlet
+Crimson
+Jagged
+Jagged
+Jagged
+Forked
+Forked
+Serrated
+Serrated
+Jagged
+Jagged
+Forked
+Forked
+Serrated
+Jagged
+Forked
+Serrated
+Carbuncle
+Carmine
+Vermillion
+Jagged
+Deadly
+Vicious
+Brutal
+Massive
+Savage
+Merciless
+Ferocious
+Cruel
+Cinnabar
+Rusty
+Realgar
+Ruby
+Vulpine
+Dun
+Tireless
+Tireless
+Brown
+Rugged
+Rugged
+Rugged
+Rugged
+Rugged
+Rugged
+Rugged
+Rugged
+Rugged
+Rugged
+Rugged
+Vigorous
+Chestnut
+Maroon
+Bronze
+Bronze
+Bronze
+Iron
+Iron
+Iron
+Steel
+Steel
+Steel
+Bronze
+Bronze
+Bronze
+Iron
+Iron
+Steel
+Steel
+Bronze
+Bronze
+Iron
+Steel
+Bronze
+Iron
+Steel
+Silver
+Gold
+Platinum
+Meteoric
+Strange
+Weird
+Nickel
+Tin
+Silver
+Argent
+Fine
+Fine
+Sharp
+Fine
+Sharp
+Fine
+Sharp
+Fine
+Warrior's
+Soldier's
+Knight's
+Lord's
+King's
+Master's
+Grandmaster's
+Glimmering
+Glowing
+Bright
+Screaming
+Howling
+Wailing
+Screaming
+Howling
+Wailing
+Lucky
+Lucky
+Lucky
+Lucky
+Lucky
+Lucky
+Felicitous
+Fortuitous
+Emerald
+Lizard's
+Lizard's
+Lizard's
+Snake's
+Snake's
+Snake's
+Serpent's
+Serpent's
+Serpent's
+Lizard's
+Lizard's
+Lizard's
+Snake's
+Snake's
+Serpent's
+Serpent's
+Lizard's
+Lizard's
+Snake's
+Serpent's
+Lizard's
+Snake's
+Serpent's
+Serpent's
+Drake's
+Dragon's
+Dragon's
+Wyrm's
+Great Wyrm's
+Bahamut's
+Zircon
+Jacinth
+Turquoise
+Shimmering
+Shimmering
+Shimmering
+Shimmering
+Shimmering
+Shimmering
+Shimmering
+Rainbow
+Scintillating
+Prismatic
+Chromatic
+Shimmering
+Rainbow
+Scintillating
+Prismatic
+Chromatic
+Shimmering
+Rainbow
+Scintillating
+Shimmering
+Scintillating
+Azure
+Lapis
+Cobalt
+Sapphire
+Azure
+Lapis
+Cobalt
+Sapphire
+Azure
+Lapis
+Cobalt
+Sapphire
+Azure
+Lapis
+Lapis
+Cobalt
+Cobalt
+Sapphire
+Lapis Lazuli
+Sapphire
+Crimson
+Russet
+Garnet
+Ruby
+Crimson
+Russet
+Garnet
+Ruby
+Crimson
+Russet
+Garnet
+Ruby
+Russet
+Russet
+Garnet
+Garnet
+Ruby
+Garnet
+Ruby
+Tangerine
+Ocher
+Coral
+Amber
+Tangerine
+Ocher
+Coral
+Amber
+Tangerine
+Ocher
+Coral
+Amber
+Tangerine
+Ocher
+Ocher
+Coral
+Coral
+Amber
+Camphor
+Ambergris
+Beryl
+Viridian
+Jade
+Emerald
+Beryl
+Viridian
+Jade
+Emerald
+Beryl
+Viridian
+Jade
+Emerald
+Beryl
+Viridian
+Viridian
+Jade
+Jade
+Emerald
+Beryl
+Jade
+Triumphant
+Victorious
+Aureolin
+Mechanist's
+Artificer's
+Jeweler's
+Assamic
+Arcadian
+Unearthly
+Astral
+Elysian
+Celestial
+Diamond
+Fletcher's
+Acrobat's
+Harpoonist's
+Fletcher's
+Bowyer's
+Archer's
+Acrobat's
+Gymnast's
+Athlete's
+Harpoonist's
+Spearmaiden's
+Lancer's
+Burning
+Sparking
+Chilling
+Burning
+Blazing
+Volcanic
+Sparking
+Charged
+Powered
+Chilling
+Freezing
+Glacial
+Hexing
+Fungal
+Graverobber's
+Hexing
+Blighting
+Accursed
+Fungal
+Noxious
+Venomous
+Graverobber's
+Vodoun
+Golemlord's
+Lion Branded
+Captain's
+Preserver's
+Lion Branded
+Hawk Branded
+Rose Branded
+Captain's
+Commander's
+Marshal's
+Preserver's
+Warder's
+Guardian's
+Expert's
+Fanatic
+Sounding
+Expert's
+Veteran's
+Master's
+Fanatic
+Raging
+Furious
+Sounding
+Resonant
+Echoing
+Trainer's
+Spiritual
+Nature's
+Trainer's
+Caretaker's
+Keeper's
+Spiritual
+Feral
+Communal
+Nature's
+Terra's
+Gaea's
+Entrapping
+Mentalist's
+Shogukusha's
+Entrapping
+Trickster's
+Cunning
+Mentalist's
+Psychic
+Shadow
+Shogukusha's
+Sensei's
+Kenshi's
+Miocene
+Miocene
+Oligocene
+Oligocene
+Eocene
+Eocene
+Paleocene
+Paleocene
+Knave's
+Jack's
+Jester's
+Joker's
+Trump
+Loud
+Calling
+Yelling
+Shouting
+Gritty
+Paradox
+Paradox
+Robineye
+Sparroweye
+Falconeye
+Hawkeye
+Eagleeye
+Visionary
+Mnemonic
+Snowflake
+Shivering
+Boreal
+Hibernal
+Ember
+Smoldering
+Smoking
+Flaming
+Scorching
+Static
+Glowing
+Buzzing
+Arcing
+Shocking
+Septic
+Envenomed
+Corosive
+Toxic
+Pestilent
+Maiden's
+Valkyrie's
+Maiden's
+Valkyrie's
+Monk's
+Priest's
+Monk's
+Priest's
+Monk's
+Priest's
+Summoner's
+Necromancer's
+Summoner's
+Necromancer's
+Angel's
+Arch-Angel's
+Angel's
+Arch-Angel's
+Slayer's
+Berserker's
+Slayer's
+Berserker's
+Slayer's
+Berserker's
+Shaman's
+Hierophant's
+Shaman's
+Hierophant's
+Magekiller's
+Witch-hunter's
+Magekiller's
+Witch-hunter's
+Compact
+Thin
+Dense
+Consecrated
+Pure
+Sacred
+Hallowed
+Divine
+Pearl
+Crimson
+Red
+Sanguinary
+Bloody
+Red
+Sanguinary
+Red
+Jagged
+Forked
+Serrated
+Jagged
+Forked
+Jagged
+Snowflake
+Shivering
+Boreal
+Hibernal
+Snowflake
+Shivering
+Boreal
+Hibernal
+Snowflake
+Shivering
+Boreal
+Hibernal
+Ember
+Smoldering
+Smoking
+Flaming
+Ember
+Smoldering
+Smoking
+Flaming
+Ember
+Smoldering
+Smoking
+Flaming
+Static
+Glowing
+Arcing
+Shocking
+Static
+Glowing
+Arcing
+Shocking
+Static
+Glowing
+Arcing
+Shocking
+Septic
+Envenomed
+Toxic
+Pestilent
+Septic
+Envenomed
+Toxic
+Pestilent
+Septic
+Envenomed
+Toxic
+Pestilent
+Tireless
+Lizard's
+Azure
+Crimson
+Tangerine
+Beryl
+Godly
+Cruel
+*********************************以下是魔法后缀(Magic Suffix)(^表示没有名字)
+^
+of Health
+of Protection
+of Absorption
+of Life
+^
+of Warding
+of the Sentinel
+of Guarding
+of Negation
+^
+of Piercing
+of Bashing
+of Puncturing
+of Thorns
+of Spikes
+of Readiness
+of Alacrity
+of Swiftness
+of Quickness
+of Blocking
+of Deflecting
+of the Apprentice
+of the Magus
+of Frost
+of the Glacier
+of Frost
+of Warmth
+of Flame
+of Fire
+of Burning
+of Flame
+of Shock
+of Lightning
+of Thunder
+of Shock
+of Craftsmanship
+of Quality
+of Maiming
+of Slaying
+of Gore
+of Carnage
+of Slaughter
+of Maiming
+of Worth
+of Measure
+of Excellence
+of Performance
+of Measure
+of Blight
+of Venom
+of Pestilence
+of Blight
+of Dexterity
+of Dexterity
+of Skill
+of Skill
+of Accuracy
+of Precision
+of Precision
+of Perfection
+of Balance
+of Stability
+^
+of Regeneration
+of Regeneration
+of Regeneration
+of Regrowth
+of Regrowth
+of Vileness
+^
+of Greed
+of Wealth
+of Chance
+of Fortune
+of Energy
+of Energy
+of the Mind
+of Brilliance
+of Sorcery
+of Wizardry
+of the Bear
+of Light
+of Radiance
+of the Sun
+of Life
+of the Jackal
+of the Fox
+of the Wolf
+of the Wolf
+of the Tiger
+of the Mammoth
+of the Mammoth
+of the Colosuss
+of the Leech
+of the Locust
+of the Bat
+of the Vampire
+of Defiance
+of Amelioration
+of Remedy
+^
+of Simplicity
+of Ease
+^
+of Strength
+of Might
+of the Ox
+of the Ox
+of the Giant
+of the Giant
+of the Titan
+of Pacing
+of Haste
+of Speed
+of Health
+of Protection
+of Absorption
+of Life
+of Life Everlasting
+of Protection
+of Absorption
+of Life
+of Anima
+of Warding
+of the Sentinel
+of Guarding
+of Negation
+of the Sentinel
+of Guarding
+of Negation
+of Coolness
+of Incombustibility
+of Amianthus
+of Fire Quenching
+of Coolness
+of Incombustibility
+of Amianthus
+of Fire Quenching
+of Faith
+of Resistance
+of Insulation
+of Grounding
+of the Dynamo
+of Resistance
+of Insulation
+of Grounding
+of the Dynamo
+of Stoicism
+of Warming
+of Thawing
+of the Dunes
+of the Sirocco
+of Warming
+of Thawing
+of the Dunes
+of the Sirocco
+of Desire
+of Piercing
+of Bashing
+of Puncturing
+of Thorns
+of Spikes
+of Razors
+of Swords
+of Malice
+of Readiness
+of Alacrity
+of Swiftness
+of Quickness
+of Alacrity
+of Fervor
+of Blocking
+of Deflecting
+of the Apprentice
+of the Magus
+of Frost
+of the Icicle
+of the Glacier
+of Winter
+of Frost
+of Frigidity
+of Warmth
+of Flame
+of Fire
+of Burning
+of Incineration
+of Flame
+of Passion
+of Shock
+of Lightning
+of Thunder
+of Storms
+of Shock
+of Ennui
+of Craftsmanship
+of Quality
+of Maiming
+of Slaying
+of Gore
+of Carnage
+of Slaughter
+of Butchery
+of Evisceration
+of Maiming
+of Craftsmanship
+of Craftsmanship
+of Craftsmanship
+of Quality
+of Quality
+of Maiming
+of Maiming
+of Craftsmanship
+of Craftsmanship
+of Quality
+of Quality
+of Maiming
+of Craftsmanship
+of Quality
+of Maiming
+of Ire
+of Wrath
+of Carnage
+of Worth
+of Measure
+of Excellence
+of Performance
+of Transcendence
+of Worth
+of Measure
+of Excellence
+of Performance
+of Joyfulness
+of Bliss
+of Blight
+of Venom
+of Pestilence
+of Anthrax
+of Blight
+of Envy
+of Dexterity
+of Skill
+of Accuracy
+of Precision
+of Perfection
+of Nirvana
+of Dexterity
+of Skill
+of Accuracy
+of Precision
+of Perfection
+of Dexterity
+of Skill
+of Accuracy
+of Precision
+of Dexterity
+of Dexterity
+of Dexterity
+of Dexterity
+of Dexterity
+of Dexterity
+of Daring
+of Balance
+of Equilibrium
+of Stability
+of Balance
+of Balance
+of Balance
+of Truth
+of Regeneration
+of Regeneration
+of Regeneration
+of Regrowth
+of Regrowth
+of Revivification
+of Honor
+of Vileness
+of Greed
+of Wealth
+of Greed
+of Greed
+of Greed
+of Greed
+of Greed
+of Greed
+of Avarice
+of Chance
+of Fortune
+of Fortune
+of Luck
+of Fortune
+of Good Luck
+of Prosperity
+of Energy
+of the Mind
+of Brilliance
+of Sorcery
+of Wizardry
+of Enlightenment
+of Energy
+of the Mind
+of Brilliance
+of Sorcery
+of Wizardry
+of Energy
+of the Mind
+of Brilliance
+of Sorcery
+of Knowledge
+of the Bear
+of Light
+of Radiance
+of the Sun
+of the Jackal
+of the Fox
+of the Wolf
+of the Tiger
+of the Mammoth
+of the Colosuss
+of the Squid
+of the Whale
+of the Jackal
+of the Fox
+of the Wolf
+of the Tiger
+of the Mammoth
+of the Colosuss
+of the Jackal
+of the Fox
+of the Wolf
+of the Tiger
+of the Mammoth
+of Life
+of Life
+of Life
+of Substinence
+of Substinence
+of Substinence
+of Vita
+of Vita
+of Vita
+of Life
+of Life
+of Substinence
+of Substinence
+of Vita
+of Vita
+of Life
+of Substinence
+of Vita
+of Spirit
+of Hope
+of the Leech
+of the Locust
+of the Lamprey
+of the Leech
+of the Locust
+of the Lamprey
+of the Leech
+of the Bat
+of the Wraith
+of the Vampire
+of the Bat
+of the Wraith
+of the Vampire
+of the Bat
+of Defiance
+of Amelioration
+of Remedy
+of Simplicity
+of Ease
+of Freedom
+of Strength
+of Might
+of the Ox
+of the Giant
+of the Titan
+of Atlus
+of Strength
+of Might
+of the Ox
+of the Giant
+of the Titan
+of Strength
+of Might
+of the Ox
+of the Giant
+of Strength
+of Strength
+of Strength
+of Strength
+of Strength
+of Strength
+of Virility
+of Pacing
+of Haste
+of Speed
+of Traveling
+of Acceleration
+of Inertia
+of Inertia
+of Inertia
+of Self-Repair
+of Fast Repair
+of Ages
+of Replenishing
+of Propogation
+of the Kraken
+of Memory
+of the Elephant
+of Power
+of Grace
+of Grace and Power
+of the Yeti
+of the Phoenix
+of the Efreeti
+of the Cobra
+of the Elements
+of Firebolts
+of Firebolts
+of Firebolts
+of Charged Shield
+of Charged Shield
+of Charged Shield
+of Icebolt
+of Frozen Armor
+of Static Field
+of Telekinesis
+of Frost Shield
+of Ice Blast
+of Blaze
+of Fire Ball
+of Nova
+of Nova
+of Nova Shield
+of Nova Shield
+of Nova Shield
+of Lightning
+of Lightning
+of Shiver Armor
+of Fire Wall
+of Enchant
+of Chain Lightning
+of Chain Lightning
+of Chain Lightning
+of Teleport Shield
+of Teleport Shield
+of Teleport Shield
+of Glacial Spike
+of Meteor
+of Thunder Storm
+of Energy Shield
+of Blizzard
+of Chilling Armor
+of Hydra Shield
+of Frozen Orb
+of Dawn
+of Sunlight
+of Magic Arrows
+of Magic Arrows
+of Fire Arrows
+of Fire Arrows
+of Inner Sight
+of Inner Sight
+of Jabbing
+of Jabbing
+of Cold Arrows
+of Cold Arrows
+of Multiple Shot
+of Multiple Shot
+of Power Strike
+of Power Strike
+of Poison Jab
+of Poison Jab
+of Exploding Arrows
+of Exploding Arrows
+of Slow Missiles
+of Slow Missiles
+of Impaling Strike
+of Impaling Strike
+of Lightning Javelin
+of Lightning Javelin
+of Ice Arrows
+of Ice Arrows
+of Guided Arrows
+of Guided Arrows
+of Charged Strike
+of Charged Strike
+of Plague Jab
+of Plague Jab
+of Immolating Arrows
+of Immolating Arrows
+of Fending
+of Fending
+of Freezing Arrows
+of Freezing Arrows
+of Lightning Strike
+of Lightning Strike
+of Lightning Fury
+of Lightning Fury
+of Fire Bolts
+of Fire Bolts
+of Charged Bolts
+of Charged Bolts
+of Ice Bolts
+of Ice Bolts
+of Frozen Armor
+of Frozen Armor
+of Static Field
+of Static Field
+of Telekinesis
+of Telekinesis
+of Frost Novas
+of Frost Novas
+of Ice Blasts
+of Ice Blasts
+of Blazing
+of Blazing
+of Fire Balls
+of Fire Balls
+of Novas
+of Novas
+of Lightning
+of Lightning
+of Shiver Armor
+of Shiver Armor
+of Fire Walls
+of Fire Walls
+of Enchantment
+of Enchantment
+of Chain Lightning
+of Chain Lightning
+of Teleportation
+of Teleportation
+of Glacial Spikes
+of Glacial Spikes
+of Meteors
+of Meteors
+of Thunder Storm
+of Thunder Storm
+of Energy Shield
+of Energy Shield
+of Blizzards
+of Blizzards
+of Chilling Armor
+of Chilling Armor
+of Hydras
+of Hydras
+of Frozen Orbs
+of Frozen Orbs
+of Amplify Damage
+of Amplify Damage
+of Teeth
+of Teeth
+of Bone Armor
+of Bone Armor
+of Raise Skeletons
+of Raise Skeletons
+of Dim Vision
+of Dim Vision
+of Weaken
+of Weaken
+of Poison Dagger
+of Poison Dagger
+of Corpse Explosions
+of Corpse Explosions
+of Clay Golem Summoning
+of Clay Golem Summoning
+of Iron Maiden
+of Iron Maiden
+of Terror
+of Terror
+of Bone Walls
+of Bone Walls
+of Raise Skeletal Mages
+of Raise Skeletal Mages
+of Confusion
+of Confusion
+of Life Tap
+of Life Tap
+of Poison Explosion
+of Poison Explosion
+of Bone Spears
+of Bone Spears
+of Blood Golem Summoning
+of Blood Golem Summoning
+of Attraction
+of Attraction
+of Decrepification
+of Decrepification
+of Bone Imprisonment
+of Bone Imprisonment
+of Iron Golem Creation
+of Iron Golem Creation
+of Lower Resistance
+of Lower Resistance
+of Poison Novas
+of Poison Novas
+of Bone Spirits
+of Bone Spirits
+of Fire Golem Summoning
+of Fire Golem Summoning
+of Revivification
+of Revivification
+of Sacrifice
+of Sacrifice
+of Holy Bolts
+of Holy Bolts
+of Zeal
+of Zeal
+of Vengeance
+of Vengeance
+of Blessed Hammers
+of Blessed Hammers
+of Conversion
+of Conversion
+of Fist of the Heavens
+of Fist of the Heavens
+of Bashing
+of Bashing
+of Howling
+of Howling
+of Potion Finding
+of Potion Finding
+of Taunting
+of Taunting
+of Shouting
+of Shouting
+of Stunning
+of Stunning
+of Item Finding
+of Item Finding
+of Concentration
+of Concentration
+of Battle Cry
+of Battle Cry
+of Battle Orders
+of Battle Orders
+of Grim Ward
+of Grim Ward
+of War Cry
+of War Cry
+of Battle Command
+of Battle Command
+of Firestorms
+of Firestorms
+of Molten Boulders
+of Molten Boulders
+of Eruption
+of Eruption
+of Cyclone Armor
+of Cyclone Armor
+of Twister
+of Twister
+of Volcano
+of Volcano
+of Tornado
+of Tornado
+of Armageddon
+of Armageddon
+of Hurricane
+of Hurricane
+of Damage Amplification
+of the Icicle
+of the Glacier
+of Fire
+of Burning
+of Lightning
+of Thunder
+of Daring
+of Daring
+of Knowledge
+of Knowledge
+of Virility
+of Virility
+of Readiness
+of Craftsmanship
+of Quality
+of Maiming
+of Craftsmanship
+of Quality
+of Craftsmanship
+of Blight
+of Venom
+of Pestilence
+of Anthrax
+of Blight
+of Venom
+of Pestilence
+of Anthrax
+of Blight
+of Venom
+of Pestilence
+of Anthrax
+of Frost
+of the Icicle
+of the Glacier
+of Winter
+of Frost
+of the Icicle
+of the Glacier
+of Winter
+of Frost
+of the Icicle
+of the Glacier
+of Winter
+of Flame
+of Fire
+of Burning
+of Incineration
+of Flame
+of Fire
+of Burning
+of Incineration
+of Flame
+of Fire
+of Burning
+of Incineration
+of Shock
+of Lightning
+of Thunder
+of Storms
+of Shock
+of Lightning
+of Thunder
+of Storms
+of Shock
+of Lightning
+of Thunder
+of Storms
+of Dexterity
+of Dexterity
+of Strength
+of Strength
+of Thorns
+of Frost
+of Flame
+of Blight
+of Shock
+of Regeneration
+of Energy
+of Light
+of the Leech
+of the Locust
+of the Lamprey
+of the Bat
+of the Wraith
+of the Vampire
+*********************************以下是Rare和Crafted名字(^表示没有名字)
+^
+Bite
+Scratch
+Scalpel
+Fang
+Gutter
+Thirst
+Razor
+Scythe
+Edge
+Saw
+Splitter
+Cleaver
+Sever
+Sunder
+Rend
+Mangler
+Slayer
+Reaver
+Spawn
+Gnash
+Star
+Blow
+Smasher
+Bane
+Crusher
+Breaker
+Grinder
+Crack
+Mallet
+Knell
+Lance
+Spike
+Impaler
+Skewer
+Prod
+Scourge
+Wand
+Wrack
+Barb
+Needle
+Dart
+Bolt
+Quarrel
+Fletch
+Flight
+Nock
+Horn
+Stinger
+Quill
+Goad
+Branch
+Spire
+Song
+Call
+Cry
+Spell
+Chant
+Weaver
+Gnarl
+Visage
+Crest
+Circlet
+Veil
+Hood
+Mask
+Brow
+Casque
+Visor
+Cowl
+Hide
+Pelt
+Carapace
+Coat
+Wrap
+Suit
+Cloak
+Shroud
+Jack
+Mantle
+Guard
+Badge
+Rock
+Aegis
+Ward
+Tower
+Shield
+Wing
+Mark
+Emblem
+Hand
+Fist
+Claw
+Clutches
+Grip
+Grasp
+Hold
+Touch
+Finger
+Knuckle
+Shank
+Spur
+Tread
+Stalker
+Greaves
+Blazer
+Nails
+Trample
+Brogues
+Track
+Slippers
+Clasp
+Buckle
+Harness
+Lock
+Fringe
+Winding
+Chain
+Strap
+Lash
+Cord
+Knot
+Circle
+Loop
+Eye
+Turn
+Spiral
+Coil
+Gyre
+Band
+Whorl
+Talisman
+Heart
+Noose
+Necklace
+Collar
+Beads
+Torc
+Gorget
+Scarab
+Wood
+Brand
+Bludgeon
+Cudgel
+Loom
+Harp
+Master
+Bar
+Hew
+Crook
+Mar
+Shell
+Stake
+Picket
+Pale
+Flange
+Beast
+Eagle
+Raven
+Viper
+Ghoul
+Skull
+Blood
+Dread
+Doom
+Grim
+Bone
+Death
+Shadow
+Storm
+Rune
+Plague
+Stone
+Wraith
+Spirit
+Storm
+Demon
+Cruel
+Empyrian
+Bramble
+Pain
+Loath
+Glyph
+Imp
+Fiend
+Hailstone
+Gale
+Dire
+Soul
+Brimstone
+Corpse
+Carrion
+Armageddon
+Havoc
+Bitter
+Entropy
+Chaos
+Order
+Rule
+Warp
+Rift
+Corruption
+*********************************以下是暗金名字(Unique Name)(^表示没有名字)
+The Gnasher
+Deathspade
+Bladebone
+Mindrend
+Rakescar
+Fechmars Axe
+Goreshovel
+The Chieftan
+Brainhew
+The Humongous
+Iros Torch
+Maelstromwrath
+Gravenspine
+Umes Lament
+Felloak
+Knell Striker
+Rusthandle
+Stormeye
+Stoutnail
+Crushflange
+Bloodrise
+The Generals Tan Do Li Ga
+Ironstone
+Bonesob
+Steeldriver
+Rixots Keen
+Blood Crescent
+Krintizs Skewer
+Gleamscythe
+Azurewrath
+Griswolds Edge
+Hellplague
+Culwens Point
+Shadowfang
+Soulflay
+Kinemils Awl
+Blacktongue
+Ripsaw
+The Patriarch
+Gull
+The Diggler
+The Jade Tan Do
+Irices Shard
+The Dragon Chang
+Razortine
+Bloodthief
+Lance of Yaggai
+The Tannr Gorerod
+Dimoaks Hew
+Steelgoad
+Soul Harvest
+The Battlebranch
+Woestave
+The Grim Reaper
+Bane Ash
+Serpent Lord
+Lazarus Spire
+The Salamander
+The Iron Jang Bong
+Pluckeye
+Witherstring
+Rimeraven
+Piercerib
+Pullspite
+Wizendraw
+Hellclap
+Blastbark
+Leadcrow
+Ichorsting
+Hellcast
+Doomspittle
+War Bonnet
+Tarnhelm
+Coif of Glory
+Duskdeep
+Wormskull
+Howltusk
+Undead Crown
+The Face of Horror
+Greyform
+Blinkbats Form
+The Centurion
+Twitchthroe
+Darkglow
+Hawkmail
+Sparking Mail
+Venomsward
+Iceblink
+Boneflesh
+Rockfleece
+Rattlecage
+Goldskin
+Victors Silk
+Heavenly Garb
+Pelta Lunata
+Umbral Disk
+Stormguild
+Wall of the Eyeless
+Swordback Hold
+Steelclash
+Bverrit Keep
+The Ward
+The Hand of Broc
+Bloodfist
+Chance Guards
+Magefist
+Frostburn
+Hotspur
+Gorefoot
+Treads of Cthon
+Goblin Toe
+Tearhaunch
+Lenyms Cord
+Snakecord
+Nightsmoke
+Goldwrap
+Bladebuckle
+Nokozan Relic
+The Eye of Etlich
+The Mahim-Oak Curio
+Nagelring
+Manald Heal
+The Stone of Jordan
+Amulet of the Viper
+Staff of Kings
+Horadric Staff
+Hell Forge Hammer
+Khalim's Flail
+Khalim's Will
+Coldkill
+Butcher's Pupil
+Islestrike
+Pompe's Wrath
+Guardian Naga
+Warlord's Trust
+Spellsteel
+Stormrider
+Boneslayer Blade
+The Minataur
+Suicide Branch
+Carin Shard
+Arm of King Leoric
+Blackhand Key
+Dark Clan Crusher
+Zakarum's Hand
+The Fetid Sprinkler
+Hand of Blessed Light
+Fleshrender
+Sureshrill Frost
+Moonfall
+Baezil's Vortex
+Earthshaker
+Bloodtree Stump
+The Gavel of Pain
+Bloodletter
+Coldsteel Eye
+Hexfire
+Blade of Ali Baba
+Ginther's Rift
+Headstriker
+Plague Bearer
+The Atlantian
+Crainte Vomir
+Bing Sz Wang
+The Vile Husk
+Cloudcrack
+Todesfaelle Flamme
+Swordguard
+Spineripper
+Heart Carver
+Blackbog's Sharp
+Stormspike
+The Impaler
+Kelpie Snare
+Soulfeast Tine
+Hone Sundan
+Spire of Honor
+The Meat Scraper
+Blackleach Blade
+Athena's Wrath
+Pierre Tombale Couant
+Husoldal Evo
+Grim's Burning Dead
+Razorswitch
+Ribcracker
+Chromatic Ire
+Warpspear
+Skullcollector
+Skystrike
+Riphook
+Kuko Shakaku
+Endlesshail
+Whichwild String
+Cliffkiller
+Magewrath
+Godstrike Arch
+Langer Briser
+Pus Spiter
+Buriza-Do Kyanon
+Demon Machine
+Armor
+Peasent Crown
+Rockstopper
+Stealskull
+Darksight Helm
+Valkiry Wing
+Crown of Thieves
+Blackhorn's Face
+Vampiregaze
+The Spirit Shroud
+Skin of the Vipermagi
+Skin of the Flayerd One
+Ironpelt
+Spiritforge
+Crow Caw
+Shaftstop
+Duriel's Shell
+Skullder's Ire
+Guardian Angel
+Toothrow
+Atma's Wail
+Black Hades
+Corpsemourn
+Que-Hegan's Wisdon
+Visceratuant
+Mosers Blessed Circle
+Stormchaser
+Tiamat's Rebuke
+Kerke's Sanctuary
+Radimant's Sphere
+Lidless Wall
+Lance Guard
+Venom Grip
+Gravepalm
+Ghoulhide
+Lavagout
+Hellmouth
+Infernostride
+Waterwalk
+Silkweave
+Wartraveler
+Gorerider
+String of Ears
+Razortail
+Gloomstrap
+Snowclash
+Thudergod's Vigor
+Elite Uniques
+Harlequin Crest
+Veil of Steel
+The Gladiator's Bane
+Arkaine's Valor
+Blackoak Shield
+Stormshield
+Hellslayer
+Messerschmidt's Reaver
+Baranar's Star
+Schaefer's Hammer
+The Cranium Basher
+Lightsabre
+Doombringer
+The Grandfather
+Wizardspike
+Constricting Ring
+Stormspire
+Eaglehorn
+Windforce
+Rings
+Bul Katho's Wedding Band
+The Cat's Eye
+The Rising Sun
+Crescent Moon
+Mara's Kaleidoscope
+Atma's Scarab
+Dwarf Star
+Raven Frost
+Highlord's Wrath
+Saracen's Chance
+Class Specific
+Arreat's Face
+Homunculus
+Titan's Revenge
+Lycander's Aim
+Lycander's Flank
+The Oculus
+Herald of Zakarum
+Cutthroat1
+Jalal's Mane
+The Scalper
+Bloodmoon
+Djinnslayer
+Deathbit
+Warshrike
+Gutsiphon
+Razoredge
+Gore Ripper
+Demonlimb
+Steelshade
+Tomb Reaver
+Deaths's Web
+Nature's Peace
+Azurewrath
+Seraph's Hymn
+Zakarum's Salvation
+Fleshripper
+Odium
+Horizon's Tornado
+Stone Crusher
+Jadetalon
+Shadowdancer
+Cerebus
+Tyrael's Might
+Souldrain
+Runemaster
+Deathcleaver
+Executioner's Justice
+Stoneraven
+Leviathan
+Larzuk's Champion
+Wisp
+Gargoyle's Bite
+Lacerator
+Mang Song's Lesson
+Viperfork
+Ethereal Edge
+Demonhorn's Edge
+The Reaper's Toll
+Spiritkeeper
+Hellrack
+Alma Negra
+Darkforge Spawn
+Widowmaker
+Bloodraven's Charge
+Ghostflame
+Shadowkiller
+Gimmershred
+Griffon's Eye
+Windhammer
+Thunderstroke
+Giantmaimer
+Demon's Arch
+Boneflame
+Steelpillar
+Nightwing's Veil
+Crown of Ages
+Andariel's Visage
+Darkfear
+Dragonscale
+Steel Carapice
+Medusa's Gaze
+Ravenlore
+Boneshade
+Nethercrow
+Flamebellow
+Fathom
+Wolfhowl
+Spirit Ward
+Kira's Guardian
+Ormus' Robes
+Gheed's Fortune
+Stormlash
+Halaberd's Reign
+Warriv's Warder
+Spike Thorn
+Dracul's Grasp
+Frostwind
+Templar's Might
+Eschuta's temper
+Firelizard's Talons
+Sandstorm Trek
+Marrowwalk
+Heaven's Light
+Merman's Speed
+Arachnid Mesh
+Nosferatu's Coil
+Metalgrid
+Verdugo's Hearty Cord
+Sigurd's Staunch
+Carrion Wind
+Giantskull
+Ironward
+Annihilus
+Arioc's Needle
+Cranebeak
+Nord's Tenderizer
+Earthshifter
+Wraithflight
+Bonehew
+Ondal's Wisdom
+The Reedeemer
+Headhunter's Glory
+Steelrend
+Rainbow Facet
+Rainbow Facet
+Rainbow Facet
+Rainbow Facet
+Rainbow Facet
+Rainbow Facet
+Rainbow Facet
+Rainbow Facet
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&English
+Basic Info
+Waypoints
+Missions
+Skills
+Warning
+Error
+Save the character 
+ ?
+Cannot open file
+Character name and file name are different, continue?
+File access denied
+no title
+The file may be not d2s format, continue?
+file lenght is incorrect, continue?
+unknown
+Character name format error
+Lenght:  2-5 chars
+Content: a-z,A-Z,-,_
+Caution: name string starts and ends with chars,
+only one '-' or '_' is allowed
+Character level is between 1-99
+Strength, Energy, Dexterity, Vitality and Stat Points is between 0-1023
+Life, Mana and Stamina is between 0-8191, Skill Points is between 0-255
+Amazon
+Sorceress
+Necromancer
+Paladin
+Barbarian
+Druid
+Assassin
+Normal
+Nightmare
+Hell
+Mana
+Version
+Character
+Name
+Title
+Weapon
+Last game time
+Last position
+Level
+Experience
+Level And Experience
+Character Stats
+Strength
+Dexterity
+Vitality
+Energy
+Stat Points
+Basic Value
+Current
+Stamina
+Life
+Ladder
+Expansion
+Hardcore
+Died berfore
+All
+Rogue Encampment
+Cold Plains
+Stony Field
+Dark Wood
+Black Marsh
+Outer Cloister
+Jail Level 1
+Inner Cloister
+Catacombs Level 2
+Lut Gholein
+Sewers Level 2
+Dry Hills
+Halls of the Dead Level 2
+Far Oasis
+Lost City
+Palace Cellar Level 1 
+Arcane Sanctuary
+Canyon of the Magi
+Kurast Docktown
+Spider Forest
+Great Marsh
+Flayer Jungle
+Lower Kurast
+Kurast Bazaar
+Upper Kurast
+Travincal
+Durance of Hate Level 2
+The Pandemonium Fortress
+City of the Damned
+River of Flame
+Harrogath
+Rigid Highlands
+Arreat Plateau
+Crystalline Passage
+Glacial Trail
+Halls of Anguish
+Tundra Wastelands
+The Ancients' way
+The Worldstone Keep Level 2
+Den of Evil
+Sisters' Burial Grounds
+The Search for Cain
+The Forgotten Tower
+Tools of the Trade
+Sisters to the Slaughter
+Radament's Lair
+The Horadric Staff
+Tainted Sun
+Arcane Sanctuary
+The Summoner
+The Seven Tombs
+The Golden Bird
+Blade of the Old Religion
+Khalim's Will
+Lam Esen's Tome
+The Blackened Temple
+The Guardian
+The Fallen Angel
+Hell's Forge
+Terror's End
+Siege on Harrogath
+Rescue on Mount Arreat
+Prison of Ice
+Betrayal of Harrogath
+Rite of Passage
+Eve of Destruction
+Moo Moo Farm
+Skill Points
+Gold in person
+Gold in stash
+Please choose character class
+Amazon Skills
+Bow and Crossbow Skills
+Passive and Magic Skills
+Javelin and Spear Skills
+Magic Arrow
+Fire Arrow
+Cold Arrow
+Multiple Shot
+Exploding Arrow
+Ice Arrow
+Guided Arrow
+Strafe
+Immolation Arrow
+Freezing Arrow
+Inner Sight
+Critical Strike
+Dodge
+Slow Missiles
+Avoid
+Penetrate
+Dopplezon
+Evade
+Valkyrie
+Pierce
+Jab
+Power Strike
+Poison Javelin
+Impale
+Lightning Bolt
+Charged Strike
+Plague Javelin
+Fend
+Lightning Strike
+Lightning Fury
+Sorceress Skills
+Fire Spells
+Lightning Spells
+Cold Spells
+Fire Bolt
+Warmth
+Inferno
+Blaze
+Fire Ball
+Fire Wall
+Enchant
+Meteor
+Fire Mastery
+Hydra
+Charged Bolt
+Static Field
+Telekinesis
+Nova
+Lightning
+Chain Lightning
+Teleport
+Thunder Storm
+Energy Shield
+Lightning Mastery
+Ice Bolt
+Frozen Armor
+Frost Nova
+Ice Blast
+Shiver Armor
+Glacial Spike
+Blizzard
+Chilling Armor
+Frozen Orb
+Cold Mastery
+Necromancer Skills
+Curses
+Poison and Bone Spells
+Summoning Spells
+Amplify Damage
+Dim Vision
+Weaken
+Iron Maiden
+Terror
+Confuse
+Life Tap
+Attract
+Decrepify
+Lower Resist
+Teeth
+Bone Armor
+Poison Dagger
+Corpse Explosion
+Bone Wall
+Poison Explosion
+Bone Spear
+Bone Prison
+Poison Nova
+Bone Spirit
+Skeleton Mastery
+Raise Skeleton
+Clay Golem
+Golem Mastery
+Raise Skeletal Mage
+Blood Golem
+Summon Resist
+Iron Golem
+Fire Golem
+Revive
+Paladin Skills
+Combat Skills
+Offensive Auras
+Defensive Auras
+Sacrifice
+Smite
+Holy Bolt
+Zeal
+Charge
+Vengeance
+Blessed Hammer
+Conversion
+Holy Shield
+Fist of the Heavens
+Might
+Holy Fire
+Thorns
+Blessed Aim
+Concentration
+Holy Freeze
+Holy Shock
+Sanctuary
+Fanaticism
+Conviction
+Prayer
+Resist Fire
+Defiance
+Resist Cold
+Cleansing
+Resist Lightning
+Vigor
+Meditation
+Redemption
+Salvation
+Barbarian Skills
+Combat Skills
+Combat Masteries
+Warcries
+Bash
+Leap
+Double Swing
+Stun
+Double Throw
+Leap Attack
+Concentrate
+Frenzy
+Whirlwind
+Berserk
+Sword Mastery
+Axe Mastery
+Mace Mastery
+Pole Arm Mastery
+Throwing Mastery
+Spear Mastery
+Increased Stamina
+Iron Skin
+Increased Speed
+Natural Resistance
+Howl
+Find Potion
+Taunt
+Shout
+Find Item
+Battle Cry
+Battle Orders
+Grim Ward
+War Cry
+Battle Command
+Druid Skills
+Summoning
+Lycanthropy
+Elemental
+Raven
+Plague Poppy
+Oak Sage
+Summon Spirit Wolf
+Cycle of Life
+Heart of Wolverine
+Summon Fenris
+Vines
+Spirit of Barbs
+Summon Grizzly
+Wearwolf
+Shape Shifting
+Wearbear
+Feral Rage
+Maul
+Rabies
+Fire Claws
+Hunger
+Shock Wave
+Fury
+Firestorm
+Molten Boulder
+Arctic Blast
+Eruption
+Cyclone Armor
+Twister
+Volcano
+Tornado
+Armageddon
+Hurricane
+Assassin Skills
+Traps
+Shadow Disciplines
+Martial Arts
+Fire Trauma
+Shock Field
+Blade Sentinel
+Charged Bolt Sentry
+Wake of Fire Sentry
+Blade Fury
+Lightning Sentry
+Inferno Sentry
+Death Sentry
+Blade Shield
+Claw Mastery
+Psychic Hammer
+Quickness
+Weapon Block
+Cloak of Shadows
+Fade
+Shadow Warrior
+Mind Blast
+Venom
+Shadow Master
+Tiger Strike
+Dragon Talon
+Fists of Fire
+Dragon Claw
+Cobra Strike
+Claws of Thunder
+Dragon Tail
+Blades of Ice
+Dragon Flight
+Royal Strike
+Skill levels must be between 0-127
+Please Choose a character class
+Cannot read file "new.dat". You can create it from a correct d2s file by changing the file name and copying it to the executive directory
+Too many golds in person or stash
+Quest info data format error, continue?
+Waypoint info data format error, continue?
+Player Stats data format error, continue?
+Player Skills data format error, continue?
+Item List data format error, continue?
+Item data format error, continue?
+Items
+Unrecognised Item Code, continue?
+Unkown Item Quality: 
+Quantity: %d
+Code
+Description
+Attack
+Low
+Normal
+High
+Magical
+Set
+Rare
+Unique
+Crafted
+Kick
+Throw
+Unsummon
+Left Hand Throw
+Left Hand Swing
+An Evil Force
+Scroll of Identify
+Tome of Identify
+Scroll of Town Portal
+Tome of Town Portal
+Freezing
+Poisoned
+Fire Resist
+Cold Resist
+Lightning Resist
+Normal
+During Daytime
+Near Dusk
+During Nighttime
+Near Dawn
+Crude
+Superior
+Defence: %d
+One Hand Damage: %d to %d
+Tow Hands Damage: %d to %d
+Durability: %d / %d
+Indestructible
+Ethereal(cannot be repaired)
+Sockets(%d)
+Item Prefix Suffix
+Foundry
+Level
+Owner
+Quality
+Defence
+Quantity
+Durability
+Property Transparency
+Hide
+Socket
+Indestructible
+Ethereal
+Found
+Prefix Suffix
+Add
+Edit
+Delete
+First Name
+Last Name
+Prefix1
+Suffix1
+Prefix2
+Suffix2
+Prefix3
+Suffix3
+Unique Name
+Sub Type
+****************************以下是物品名称
+Elixir
+Healing Potion
+Mana Potion
+Full Healing Potion
+Full Mana Potion
+Stamina Potion
+Antidote Potion
+Rejuvenation Potion
+Full Rejuvenation Potion
+Thawing Potion
+Town Portal Book
+Identify Book
+Amulet
+Top of The Horadric Staff
+Ring
+Gold
+Scroll of Jnifuss
+Key To The Cairn Stones
+Arrows
+Torch
+Bolts
+Town Portal Scroll
+Identify Scroll
+Heart
+Brain
+Jawbone
+Eye
+Horn
+Tail
+Flag
+Fang
+Quill
+Soul
+Scalp
+Spleen
+Key
+The Black Tower Key
+Potion of Life
+Jade Figurine
+Gold Bird
+Lam esen's tome
+Horadric Cube
+Horadric Scroll
+Mephisto SoulStone
+Book of Skill
+Khalim Eye
+Khalim Heart
+Khalim Brain
+Ear
+Chipped Amethyst
+Flawed Amethyst
+Amethyst
+Flawless Amethyst
+Perfect Amethyst
+Chipped Topaz
+Flawed Topaz
+Topaz
+Flawless Topaz
+Perfect Topaz
+Chipped Saphire
+Flawed Saphire
+Saphire
+Flawless Saphire
+Perfect Saphire
+Chipped Emerald
+Flawed Emerald
+Emerald
+Flawless Emerald
+Perfect Emerald
+Chipped Ruby
+Flawed Ruby
+Ruby
+Flawless Ruby
+Perfect Ruby
+Chipped Diamond
+Flawed Diamond
+Diamond
+Flawless Diamond
+Perfect Diamond
+Minor Healing Potion
+Light Healing Potion
+Healing Potion
+Greater Healing Potion
+Super Healing Potion
+Minor Mana Potion
+Light Mana Potion
+Mana Potion
+Greater Mana Potion
+Super Mana Potion
+Chipped Skull
+Flawed Skull
+Skull
+Flawless Skull
+Perfect Skull
+Herb
+Small Charm
+Large Charm
+Grand Charm
+Small Red Potion
+Large Red Potion
+Small Blue Potion
+Large Blue Potion
+El Rune
+Eld Rune
+Tir Rune
+Nef Rune
+Eth Rune
+Ith Rune
+Tal Rune
+Ral Rune
+Ort Rune
+Thul Rune
+Amn Rune
+Sol Rune
+Shael Rune
+Dol Rune
+Hel Rune
+Io Rune
+Lum Rune
+Ko Rune
+Fal Rune
+Lem Rune
+Pul Rune
+Um Rune
+Mal Rune
+Ist Rune
+Gul Rune
+Vex Rune
+Ohm Rune
+Lo Rune
+Sur Rune
+Ber Rune
+Jah Rune
+Cham Rune
+Zod Rune
+Jewel
+Malah's Potion
+Scroll of Knowledge
+Scroll of Resistances
+Cap
+Skull Cap
+Helm
+Full Helm
+Great Helm
+Crown
+Mask
+Bone Helm
+War Hat
+Sallet
+Casque
+Basinet
+Winged Helm
+Grand Crown
+Death Mask
+Grim Helm
+Shako
+Hydraskull
+Armet
+Giant Conch
+Spired Helm
+Corona
+Demonhead
+Bone Visage
+Circlet
+Coronet
+Tiara
+Diadem
+Jawbone Cap
+Fanged Helm
+Horned Helm
+Assault Helmet
+Avenger Guard
+Jawbone Visor
+Lion Helm
+Range Mask
+Savage Helmet
+Slayer Guard
+Carnage Helm
+Fury Visor
+Destroyer Helm
+Conqueror Crown
+Guardian Crown
+Wolf Head
+Hawk Helm
+Antlers
+Falcon Mask
+Spirit Mask
+Alpha Helm
+Griffon Headdress
+Hunter's Guise
+Sacred Feathers
+Totemic Mask
+Blood Spirit
+Sun Spirit
+Earth Spirit
+Sky Spirit
+Dream Spirit
+Leather Gloves
+Heavy Gloves
+Chain Gloves
+Light Gauntlets
+Gauntlets
+Demonhide Gloves
+Sharkskin Gloves
+Heavy Bracers
+Battle Gauntlets
+War Gauntlets
+Bramble Mitts
+Vampirebone Gloves
+Vambraces
+Crusader Gauntlets
+Ogre Gauntlets
+Boots
+Heavy Boots
+Chain Boots
+Light Plated Boots
+Greaves
+Demonhide Boots
+Sharkskin Boots
+Mesh Boots
+Battle Boots
+War Boots
+Wyrmhide Boots
+Scarabshell Boots
+BoneWeave Boots
+Mirrored Boots
+Myrmidon Greaves
+Sash
+Light Belt
+Belt
+Heavy Belt
+Plated Belt
+Demonhide Sash
+Sharkskin Belt
+Mesh Belt
+Battle Belt
+War Belt
+Spiderweb Sash
+Vampirefang Belt
+Mithril Coil
+Troll Belt
+Colossus Girdle
+Quilted Armor
+Leather Armor
+Hard Leather Armor
+Studded Leather
+Ring Mail
+Scale Mail
+Chain Mail
+Breast Plate
+Splint Mail
+Plate Mail
+Field Mail
+Gothic Plate
+Full Plate Mail
+Ancient Armor
+Light Plate
+Ghost Armor
+Serpentskin Armor
+Demonhide Armor
+Trellised Armor
+Linked Mail
+Tigulated Mail
+Mesh Armor
+Cuirass
+Russet Armor
+Templar Coat
+Sharktooth Armor
+Embossed Plate
+Chaos Armor
+Ornate Plate
+Mage Plate
+Dusk Shroud
+Wyrmhide
+Scarab Husk
+Wire Fleece
+Diamond Mail
+Loricated Mail
+Boneweave
+Great Hauberk
+Balrog Skin
+Hellforge Plate
+Kraken Shell
+Lacquered Plate
+Shadow Plate
+Sacred Armor
+Archon Plate
+Buckler
+Small Shield
+Large Shield
+Kite Shield
+Tower Shield
+Gothic Shield
+Bone Shield
+Spiked Shield
+Defender
+Round Shield
+Scutum
+Dragon Shield
+Pavise
+Ancient Shield
+Grim Shield
+Barbed Shield
+Heater
+Luna
+Hyperion
+Monarch
+Aegis
+Ward
+Troll Nest
+Blade Barrier
+Targe
+Rondache
+Heraldic Shield
+Aerin Shield
+Crown Shield
+Akaran Targe
+Akaran Rondache
+Protector Shield
+Gilded Shield
+Royal Shield
+Sacred Targe
+Sacred Rondache
+Kurast Shield
+Zakarum Shield
+Vortex Shield
+Preserved Head
+Zombie Head
+Unraveller Head
+Gargoyle Head
+Demon Head
+Mummified Trophy
+Fetish Trophy
+Sexton Trophy
+Cantor Trophy
+Hierophant Trophy
+Minion Skull
+Hellpawn Skull
+Overseer Skull
+Succubus Skull
+Bloodlord Skull
+Hand Axe
+Axe
+Double Axe
+Military Pick
+War Axe
+Large Axe
+Broad Axe
+Battle Axe
+Great Axe
+Gaint Axe
+Hatchet
+Cleaver
+Twin Axe
+Crowbill
+Naga
+Military Axe
+Bearded Axe
+Tabar
+Gothic Axe
+Ancient Axe
+Tomahawk
+Small Crescent
+Ettin Axe
+War Spike
+Berserker Axe
+Feral Axe
+Silver-Edged Axe
+Decapitator
+Champion Axe
+Glorious Axe
+Wand
+Yew Wand
+Bone Wand
+Grim Wand
+Burnt Wand
+Petrified Wand
+Tomb Wand
+Grave Wand
+Polished Wand
+Ghost Wand
+Lich Wand
+Unearthed Wand
+Club
+Spiked Club
+Mace
+Morning Star
+Flail
+War Hammer
+Maul
+Great Maul
+Cudgel
+Barbed Club
+Flanged Mace
+Jagged Star
+Knout
+Battle Hammer
+War Club
+Martel De Fer
+Truncheon
+Tyrant Club
+Reinforced Mace
+Devil Star
+Scourge
+Legendary Mallet
+Ogre Maul
+Thunder Maul
+Scepter
+Grand Scepter
+War Scepter
+Rune Scepter
+Holy Water Sprinkler
+Divine Scepter
+Mighty Scepter
+Seraph Rod
+Caduceus
+Short Sword
+Scimitar
+Sabre
+Falchion
+Crystal Sword
+Broad Sword
+Long Sword
+War Sword
+Tow Handed Sword
+Claymore
+Giant Sword
+Bastard Sword
+Flamberge
+Great Sword
+Dagger
+Dirk
+Kris
+Blade
+Gladius
+Cutlass
+Shamshir
+Tulwar
+Dimensional Blade
+Battle Sword
+Rune Sword
+Ancient Sword
+Espandon
+Dacian Falx
+Tusk Sword
+Gothic Sword
+Zweihander
+Executioner Sword
+Poignard
+Rondel
+Cinquedeas
+Stiletto
+Falcata
+Ataghan
+Elegant Blade
+Hydra Edge
+Phase Blade
+Conquest Sword
+Cryptic Sword
+Mythical Sword
+Legend Sword
+Highland Blade
+Balrog Blade
+Champion Sword
+Colossus Sword
+Colossus Blade
+Bone Knife
+Mithril Point
+Fanged Knife
+Legend Spike
+Throwing Knife
+Throwing Axe
+Balanced Knife
+Balanced Axe
+Battle Dart
+Francisca
+War Dart
+Hurlbat
+Flying Knife
+Flying Axe
+Winged Knife
+Winged Axe
+Javelin
+Pilum
+Short Spear
+Glaive
+Throwing Spear
+War Javelin
+Great Pilum
+Simbilan
+Spiculum
+Harpoon
+Hyperion Javelin
+Stygian Pilum
+Balrog Spear
+Ghost Glaive
+Winged Harpoon
+Spear
+Trident
+Brandistock
+Spetum
+Pike
+Bardiche
+Voulge
+Scythe
+Poleaxe
+Halberd
+War Scythe
+War Spear
+Fuscina
+War Fork
+Yari
+Lance
+Lochaber Axe
+Bill
+Battle Scythe
+Partizan
+Bec-de-Corbin
+Grim Scythe
+Hyperion Spear
+Stygain Pike
+Mancatcher
+Ghost Spear
+War Pike
+Ogre Axe
+Colossus Voulge
+Thresher
+Cryptic Axe
+Great Poleaxe
+Giant Thresher
+Short Staff
+Long Staff
+Ganrled Staff
+Battle Staff
+War Staff
+Jo Staff
+Quarter Staff
+Cedar Staff
+Gothic Staff
+Rune Staff
+Walking Stick
+Stalagmite
+Elder Staff
+Shillelagh
+Archon Staff
+Short Bow
+Hunter's Bow
+Long Bow
+Composite Bow
+Short Battle Bow
+Long Battle Bow
+Short War Bow
+Long War Bow
+Light Crossbow
+Crossbow
+Heavy Crossbow
+Repeating Crossbow
+Edge Bow
+Razor Bow
+Cedar Bow
+Double Bow
+Short Siege Bow
+Large Siege Bow
+Rune Bow
+Gothic Bow
+Arbalest
+Siege Crossbow
+Ballista
+Chu-ko-Nu
+Spider Bow
+Blade Bow
+Shadow Bow
+Great Bow
+Diamond Bow
+Crusader Bow
+Ward Bow
+Hydra Bow
+Pellet Bow
+Gorgon Crossbow
+Colossus Crossbow
+Demon Crossbow
+Rancid Gas Potion
+Oil Potion
+Choking Gas Potion
+Exploding Potion
+Strangling Gas Potion
+Fulminating Potion
+Decoy Gidbinn
+The Gidbinn
+Wirt's Leg
+Horadric Malus
+Hell Forge Hammer
+Horadric Staff
+Staff Of Kings
+Khalim's Flail
+Khalim's Will
+Katar
+Wrist Blade
+Hatchet Hands
+Cestus
+Claws
+Blade Talons
+Scissors Katar
+Quhab
+Wrist Spike
+Fascia
+Hand Scythe
+Greater Claws
+Greater Talons
+Scissors Quhab
+Suwayyah
+Wrist Sword
+War Fist
+Battle Cestus
+Feral Claws
+Runic Talons
+Scissors Suwayyah
+Eagle Orb
+Sacred Globe
+Smoked Sphere
+Clasped Orb
+Jared's Stone
+Glowing Orb
+Crystalline Globe
+Cloudy Sphere
+Sparkling Ball
+Swirling Crystal
+Heavenly Stone
+Eldritch Orb
+Demon Heart
+Vortex Orb
+Dimensional Shard
+Stag Bow
+Reflex Bow
+Maiden Spear
+Maiden Pike
+Maiden Javelin
+Ashwood Bow
+Ceremonial Bow
+Ceremonial Spear
+Ceremonial Pike
+Ceremonial Javelin
+Matriarchal Bow
+Grand Matron Bow
+Matriarchal Spear
+Matriarchal Pike
+Matriarchal Javelin
+**************************以下是属性名称(Property Name)
+%+d Strength
+%+d Energy
+%+d Dexterity
+%+d Vitality
+Stat Point
+Skill Point
+Life
+%+d Max Life
+Mana
+%+d Max Mana
+Stamina
+%+d Max Stamina
+Level
+Experience
+Gold
+Goldbank
+%+d%% Enhanced Defense
+%+d%% - %d%% Enhanced Damage
+%+d%% Enhanced Min Damage
+%+d Attack Rating
+%+d%% Chance of Blocking
+%+d Min 1-Handed Damage
+%+d Max 1-Handed Damage
+%+d Min 2-Handed Damage
+%+d Max 2-Handed Damage
+Damage %+d%% NV
+Regenerate mana % NV
+Regenerate Mana %+d%%
+Heal Stemina %+d%%
+Lastexp
+Nextxp
+%+d Defense
+%+d Defense vs Missile
+%+d Defense vs Melee
+Damage Reduced By %+d
+Magic Damage Reduced By %+d
+Damage Reduced By %+d%%
+%+d%% Magic Resist
+%+d%% Max Magic Resist
+%+d%% Fire Resist
+%+d%% Max Fire Resist
+%+d%% Lightning Resist
+%+d%% Max Lightning Resist
+%+d%% Cold Resist
+%+d%% Max Cold Resist
+%+d%% Poison Resist
+%+d%% Max Poison Resist
+Damageaure
+%+d - %d Fire Damage
+%+d Max Fire Damage
+%+d - %d Lightning Damage
+%+d Max Lightning Damage
+%+d - %d Magic Damage
+%+d Max Magic Damage
+%+d - %d Cold Damage Freezing %d sec
+%+d Max Cold Damage
+%+d Cold Length
+%+d - %d Poison Damage Over %d sec
+%+d Max Poison Damage
+%+d Poison Length
+%+d%% Life Stolen per Hit Min
+%+d%% Life Stolen per Hit Max
+%+d%% Mana Stolen per Hit Min
+%+d%% Mana Stolen per Hit Max
+Stamina Drain Min
+Stamina Drain Max
+Stun Length
+Run/Walk Speed %+d%% NV
+Attack Speed %+d%% NV
+Other Animrate
+Quantity
+Value %+d
+%+d Durability
+%+d Max Durability
+%+d Replenish Life
+Increase Max Durability %+d%%
+Increase Max Life %+d%%
+Increase Max Mana %+d%%
+Attacker Takes Damage of %+d
+%+d%% Extra Gold From Monsters
+%+d%% Better Chance of Getting Magic Items
+Knock Back %+d
+Time Duration %+d
+%+d %s Skill
+Unsentparaml
+%+d%% Experience Gained
+%+d Life After Each Kill
+Reduced Prices %+d%%
+Double Herb Duration
+%+d Light Radius
+Light Color NV %d
+Requirements %+d%%
+%+d Item Level Require
+%+d%% Increase Attack Speed
+Item Level Require %+d%%
+Last Block Frame
+%+d%% Faster Run/Walk
+%+d to %s
+Change Character State to %s
+%+d%% Faster Hit Recovery Rate
+Monster Player Count
+Poison Override
+%+d%% Faster Block Rate
+Bypass Undead
+Bypass Demons
+%+d%% Faster Cast Rate
+Bypass Beast
+%+d to %s(%s only)
+Slain Monsters Rest In Peace %+d
+Curse Resist %+d
+Poison Length Reduced by %+d%%
+Damage %+d
+Hit Causes Monster Flee %+d%%
+Hit Blinds Target %+d
+%+d%% Damage Mana
+Ignore Target Defense
+-%+d%% Target Defense
+Prevent Monster Heal %+d
+Half Freeze Duration
+%+d%% Bonus Attack Rating
+%+d Monster Defense Per Hit
+%+d%% Damage to Demons
+%+d%% Damage to Undead
+%+d Attack Rating vs Demons
+%+d Attack Rating vs Undead
+Throwable
+%+d Fire Skills %d
+%+d All Skills
+Attacker Takes Lightning Damage of %+d
+Iron Maiden Level
+Life Tap Level
+Thorns Percent
+Bone Armor
+Bone Armor Max
+Freezes Target %+d
+%+d%% Chance of Open Wounds
+%+d%% Chance of Crushing Blow
+%+d Kick Damage
+%+d Mana After Each Kill
+%+d Life After Each Demon Kill
+Extra Blood %d
+%+d%% Chance of Deadly Strike
+Fire Absorb %+d%%
+%+d File Absorb
+Lightning Absorb %+d%%
+%+d Lightning Absorb
+Magic Absorb %+d%%
+%+d Magic Absorb
+Cold Absorb %+d%%
+%+d Cold Absorb
+Slows Target by %+d%%
+Level %+d %s Aura When Equipped
+Indestructible
+Cannot Be Frozen
+%+d%% Slower Stamina Drain
+%+d%% Chance of Reanimate as %s
+%+d%% Chance of Piercing Attack
+Fires Magic Arrows or Bolts %+d
+Fires Explosive Arrows or Bolts %+d
+%+d to Min Throw Damage NV
+%+d to Max Throw Damage NV
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+%+d%% to Attack Rating vs %s
+%+d%% to Damage vs %s
+Fade %d
+Armor Override
+Unused
+Unused
+Unused
+Unused
+Unused
+%+d %s (%s only)
+Unused
+Unused
+Unused
+Unused
+Unused
+Add %+d Sockets
+%+d%% Chance to Cast Level %d %s When Attack
+%+d%% Chance to Cast Level %d %s When Kill
+%+d%% Chance to Cast Level %d %s When Death
+%+d%% Chance to Cast Level %d %s When Striking
+%+d%% Chance to Cast Level %d %s When Levelup
+Unused
+%+d%% Chance to Cast Level %+d %s When Struck
+Unused
+Unused
+Level %+d %s (%d/%d Charges)
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+Unused
+%+d Defence per Level
+%+d Enhanced Defence per Level
+%+d Life per Level
+%+d Mana per Level
+%+d Max Damage per Level
+%+d Enhanced Max Damage per Level
+%+d Strength per Level
+%+d Dexterity per Level
+%+d Energy per Level
+%+d Vitality per Level
+%+d Attack Rating per Level
+%+d%% Bonus to Attack Rating per Level
+%+d Max Cold Damage per Level
+%+d Max Fire Damage per Level
+%+d Max Lightning Damage per Level
+%+d Max Poison Damage per Level
+Cold Resist %+d%% per Level
+Fire Resist %+d%% per Level
+Lightning Resist %+d%% per Level
+Poison Resist %+d%% per Level
+%+d Cold Absorb per Level
+%+d Fire Absorb per Level
+%+d Lightning Absorb per Level
+%+d Poison Absorb per Level
+Attacker Takes Damage of %+d per Level
+%+d%% Extra Gold from Monsters per Level
+%+d%% Better Chance of Getting Magic Items per Level
+Heal Stamina Plus %+d%% per Level
+%+d Max Stamina per Level
+%+d%% Damage to Demons per Level
+%+d%% Damage to Undead per Level
+%+d to Attack Rating vs Demons per Level
+%+d to Attack Rating vs Undead per Level
+%+d%% Chance of Crushing Blow per Level
+%+d%% Chance of Open Wounds per Level
+%+d Kick Damage per Level
+%+d%% Chance of Deadly Strike per Level
+Find Gems per Level
+Repairs 1 Durability in %d Seconds
+Replenishes 1 Quantity in %d Seconds
+Increased Stack Size %+d
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+Uncoded
+%+d - %d Defense (Increases %s)
+%+d - %d Enhanced Defense (Increases %s)
+%+d - %d Life (Increases %s)
+%+d - %d Mana (Increases %s)
+%+d - %d Max Damage (Increases %s)
+%+d - %d Enhanced Max Damage (Increases %s)
+%+d - %d Strength (Increases %s)
+%+d - %d Dexterity (Increases %s)
+%+d - %d Energy (Increases %s)
+%+d - %d Vitality (Increases %s)
+%+d - %d Attack Rating (Increases %s)
+%+d - %d Enhanced Attack Rating (Increases %s)
+%+d - %d Max Cold Damage (Increases %s)
+%+d - %d Max Fire Damage (Increases %s)
+%+d - %d Max Lightning Damage (Increases %s)
+%+d - %d Max Poison Damage (Increases %s)
+%+d%% - %d%% Cold Resist (Increases %s)
+%+d%% - %d%% Fire Resist (Increases %s)
+%+d%% - %d%% Lightning Resist (Increases %s)
+%+d%% - %d%% Poison Resist (Increases %s)
+%+d - %d Cold Absorb (Increases %s)
+%+d - %d Fire Absorb (Increases %s)
+%+d - %d Lightning Absorb (Increases %s)
+%+d - %d Poison Absorb (Increases %s)
+%+d%% - %d%% Extra Gold from Monsters (Increases %s)
+%+d%% - %d%% Better Chance of Getting Magic Items (Increases %s)
+Heal Stamina Plus %+d - %d%% (Increases %s)
+%+d - %d Stamina (Increases %s)
+%+d%% - %d%% Damage to Demons (Increases %s)
+%+d%% - %d%% Damage to Undead (Increases %s)
+%+d - %d Attack Rating vs Demons (Increases %s)
+%+d - %d Attack Rating vs Undead (Increases %s)
+%+d%% - %d%% Chance of Crushing Blow (Increases %s)
+%+d%% - %d%% Chance of Open Wounds (Increases %s)
+%+d - %d Kick Damage (Increases %s)
+%+d - %d Chance of  Deadly Strike (Increases %s)
+Item Find Gems (by time)
+%+d%% Enemy Cold Resist
+%+d%% Enemy Fire Resist
+%+d%% Enemy Lightning Resist
+%+d%% Enemy Poison Resist
+Item Damage vs Monster
+Item Damage Percent vs Monster
+Item Tohit vs Monster
+Item Tohit Percent vs Monster
+Item AC vs Monster
+Item AC Percent vs Monster
+Fire Length
+Burning Min
+Burning Max
+Progressive Damage
+Progressive Steal
+Progressive Other
+Progressive Fire
+Progressive Cold
+Progressive Lightning
+Item Extra Charges %+d
+Progressive Tohit
+Poison Count
+Damage Frame Rate
+Pierce IDX
+%+d%% Fire Skill Damage
+%+d%% Lightning Skill Damage
+%+d%% Cold Skill Damage
+%+d%% Poison Skill Damage
+%+d%% Enemy Fire Resist
+%+d%% Enemy Lightning Resist
+%+d%% Enemy Cold Resist
+%+d%% Enemy Poison Resist
+Passive Critical Strike %d
+Passive Dodge %d
+Passive Avoid %d
+Passive Evade %d
+Passive Warmth %d
+Passive Mastery Melee TH %d
+Passive Mastery Melee Damage %d
+Passive Mastery Melee Crit %d
+Passive Mastery Throw TH %d
+Passive Mastery Throw Damage %d
+Passive Mastery Throw Crit %d
+Passive Weapon Block %d
+Passive Summon Resist %d
+Modifier List Skill
+Modifier List Level
+Last Sent HP PCT
+Source Unit Type
+Source Unit ID
+Short Paraml
+Quest Item Difficulty %d
+Passive Magic Mastery %d
+Passive Magic Pierce %d
+*********************************以下是怪物名称(Monster Names)
+Skeleton
+Returned
+BoneWarrior
+BurningDead
+Horror
+Zombie
+HungryDead
+Ghoul
+DrownedCarcass
+PlagueBearer
+Afflicted
+Tainted
+Misshapen
+Disfigured
+Damned
+FoulCrow
+BloodHawk
+BlackRaptor
+CloudStalker
+Fallen
+Carver
+Devilkin
+DarkOne
+WarpedFallen
+Brute
+Yeti
+Crusher
+WailingBeast
+GargantuanBeast
+SandRaider
+Marauder
+Invader
+Infidel
+Assailant
+unused
+unused
+unused
+unused
+Ghost
+Wraith
+Specter
+Apparition
+DarkShape
+DarkHunter
+VileHunter
+DarkStalker
+BlackRogue
+FleshHunter
+DuneBeast
+RockDweller
+JungleHunter
+DoomApe
+TempleGuard
+MoonClan
+NightClan
+BloodClan
+HellClan
+DeathClan
+FallenShaman
+CarverShaman
+DevilkinShaman
+DarkShaman
+WarpedShaman
+QuillRat
+SpikeFiend
+ThornBeast
+RazorSpine
+JungleUrchin
+SandMaggot
+RockWorm
+Devourer
+GiantLamprey
+WorldKiller
+TombViper
+ClawViper
+Salamander
+PitViper
+SerpentMagus
+SandLeaper
+CaveLeaper
+TombCreeper
+TreeLurker
+RazorPitDemon
+Huntress
+SaberCat
+NightTiger
+HellCat
+Itchies
+BlackLocusts
+PlagueBugs
+HellSwarm
+DungSoldier
+SandWarrior
+Scarab
+SteelWeevil
+AlbinoRoach
+DriedCorpse
+Decayed
+Embalmed
+PreservedDead
+Cadaver
+HollowOne
+Guardian
+Unraveler
+Horadrim Ancient
+Baal Subject Mummy
+unused
+unused
+unused
+unused
+CarrionBird
+UndeadScavenger
+HellBuzzard
+WingedNightmare
+Sucker
+Feeder
+BloodHook
+BloodWing
+Gloam
+SwampGhost
+BurningSoul
+BlackSoul
+Arach
+SandFisher
+PoisonSpinner
+FlameSpider
+SpiderMagus
+ThornedHulk
+BrambleHulk
+Thrasher
+Spikefist
+GhoulLord
+NightLord
+DarkLord
+BloodLord
+Banished
+DesertWing
+Fiend
+Gloombat
+BloodDiver
+DarkFamiliar
+RatMan
+Fetish
+Flayer
+SoulKiller
+StygianDoll
+DeckardCain
+Gheed
+Akara
+dummy
+Kashya
+dummy
+Dummy
+Dummy
+Charsi
+Warriv
+Andariel
+dummy
+dummy
+dummy
+DarkRanger
+VileArcher
+DarkArcher
+BlackArcher
+FleshArcher
+DarkSpearwoman
+VileLancer
+DarkLancer
+BlackLancer
+FleshLancer
+SkeletonArcher
+ReturnedArcher
+BoneArcher
+BurningDeadArcher
+HorrorArcher
+Warriv
+Atma
+Drognan
+Fara
+dummy
+SandMaggotYoung
+RockWormYoung
+DevourerYoung
+GiantLampreyYoung
+WorldKillerYoung
+dummy
+Blunderbore
+Gorbelly
+Mauler
+Urdar
+SandMaggotEgg
+RockWormEgg
+DevourerEgg
+GiantLampreyEgg
+WorldKillerEgg
+dummy
+Dummy
+dummy
+Greiz
+Elzix
+Geglash
+Jerhyn
+Lysander
+Dummy
+dummy
+dummy
+FoulCrowNest
+BloodHawkNest
+BlackVultureNest
+CloudStalkerNest
+Meshif
+Duriel
+Undead RatMan
+Undead Fetish
+Undead Flayer
+Undead SoulKiller
+Undead StygianDoll
+unused
+unused
+unused
+unused
+unused
+unused
+unused
+unused
+unused
+unused
+Maggot
+MummyGenerator
+Radament
+unused
+unused
+unused
+unused
+FlyingScimitar
+Zakarumite
+Faithful
+Zealot
+Sexton
+Cantor
+Heirophant
+Heirophant
+Mephisto
+Diablo
+DeckardCain
+DeckardCain
+DeckardCain
+Swamp Dweller
+Bog Creature
+Slime Prince
+Summoner
+tyrael
+asheara
+hratli
+alkor
+ormus
+izual
+halbu
+WaterWatcherLimb
+RiverStalkerLimb
+StygianWatcherLimb
+WaterWatcherHead
+RiverStalkerHead
+StygianWatcherHead
+meshif
+DeckardCain
+navi
+Bloodraven
+Dummy
+Dummy
+RogueScout
+Dummy
+Dummy
+GargoyleTrap
+ReturnedMage
+BoneMage
+BurningDeadMage
+HorrorMage
+RatManShaman
+FetishShaman
+FlayerShaman
+SoulKillerShaman
+StygianDollShaman
+larva
+SandMaggotQueen
+RockWormQueen
+DevourerQueen
+GiantLampreyQueen
+WorldKillerQueen
+ClayGolem
+BloodGolem
+IronGolem
+FireGolem
+Dummy
+Dummy
+NightMarauder
+Dummy
+Natalya
+FleshSpawner
+StygianHag
+Grotesque
+FleshBeast
+StygianDog
+GrotesqueWyrm
+Groper
+Strangler
+StormCaster
+Corpulent
+CorpseSpitter
+MawFiend
+DoomKnight
+AbyssKnight
+OblivionKnight
+QuillBear
+SpikeGiant
+ThornBrute
+RazorBeast
+GiantUrchin
+Dummy
+Dummy
+Dummy
+Dummy
+Dummy
+Dummy
+Dummy
+Dummy
+a trap
+a trap
+a trap
+a trap
+a trap
+Kaelan
+Dummy
+Diablo
+SuckerNest
+FeederNest
+BloodHookNest
+BloodWingNest
+Guard
+Dummy
+Dummy
+Dummy
+Dummy
+Dummy
+Dummy
+Council Member
+Council Member
+Council Member
+Turret
+Turret
+Turret
+Hydra
+Hydra
+Hydra
+a trap
+Dummy
+Dopplezon
+Valkyrie
+Dummy
+Iron Wolf
+Balrog
+PitLord
+VenomLord
+NecroSkeleton
+NecroMage
+Griswold
+compellingorb
+tyrael
+youngdiablo
+a trap
+Dummy
+LightningSpire
+FireTower
+Slinger
+SpearCat
+NightSlinger
+HellSlinger
+Dummy
+Dummy
+ReturnedMage
+BoneMage
+BaalColdMage
+HorrorMage
+ReturnedMage
+BoneMage
+BurningDeadMage
+HorrorMage
+ReturnedMage
+BoneMage
+BurningDeadMage
+HorrorMage
+Hell Bovine
+Dummy
+Dummy
+SpearCat
+NightSlinger
+RatMan
+Fetish
+Flayer
+SoulKiller
+StygianDoll
+Dummy
+The Smith
+TrappedSoul
+TrappedSoul
+Jamella
+Izual
+RatMan
+Malachai
+The Feature Creep
+Wake of Destruction
+Charged Bolt Sentry
+Lightning Sentry
+Blade Creeper
+Invis Pet
+Inferno Sentry
+Death Sentry
+Shadow Warrior
+Shadow Master
+Druid Hawk
+Druid Spirit Wolf
+Druid Fenris
+Spirit of Barbs
+Heart of Wolverine
+Oak Sage
+Druid Plague Poppy
+Druid Cycle of Life
+Vine Creature
+Druid Bear
+Eagle
+Wolf
+Bear
+Barricade Door
+Barricade Door
+Prison Door
+Barricade Tower
+RotWalker
+ReanimatedHorde
+ProwlingDead
+UnholyCorpse
+DefiledWarrior
+Siege Beast
+CrushBiest
+BloodBringer
+GoreBearer
+DeamonSteed
+SnowYeti1
+SnowYeti2
+SnowYeti3
+SnowYeti4
+WolfRider1
+WolfRider2
+WolfRider3
+Minionexp
+Slayerexp
+IceBoar
+FireBoar
+HellSpawn
+IceSpawn
+GreaterHellSpawn
+GreaterIceSpawn
+FanaticMinion
+BerserkSlayer
+ConsumedIceBoar
+ConsumedFireBoar
+FrenziedHellSpawn
+FrenziedIceSpawn
+InsaneHellSpawn
+InsaneIceSpawn
+Succubusexp
+VileTemptress
+StygianHarlot
+Hell Temptress
+Blood Temptress
+Dominus
+VileWitch
+StygianFury
+Blood Witch
+Hell Witch
+OverSeer
+Lasher
+OverLord
+BloodBoss
+HellWhip
+MinionSpawner
+MinionSlayerSpawner
+MinionIce/fireBoarSpawner
+MinionIce/fireBoarSpawner
+Minionice/hellSpawnSpawner
+MinionIce/fireBoarSpawner
+MinionIce/fireBoarSpawner
+Minionice/hellSpawnSpawner
+Imp1
+Imp2
+Imp3
+Imp4
+Imp5
+CatapultS
+CatapultE
+CatapultSiege
+CatapultW
+Frozen Horror1
+Frozen Horror2
+Frozen Horror3
+Frozen Horror4
+Frozen Horror5
+Blood Lord1
+Blood Lord2
+Blood Lord3
+Blood Lord4
+Blood Lord5
+Larzuk
+Drehya
+Malah
+Nihlathak Town
+Qual-Kehk
+Catapult Spotter S
+Catapult Spotter E
+Catapult Spotter Siege
+Catapult Spotter W
+DeckardCain
+tyrael
+Act 5 Combatant
+Act 5 Combatant
+Barricade Wall Right
+Barricade Wall Left
+Nihlathak
+Drehya
+Evil hut
+Death Mauler1
+Death Mauler2
+Death Mauler3
+Death Mauler4
+Death Mauler5
+POW
+Act 5 Townguard
+Act 5 Townguard
+Ancient Statue 1
+Ancient Statue 2
+Ancient Statue 3
+Ancient Barbarian 1
+Ancient Barbarian 2
+Ancient Barbarian 3
+Baal Throne
+Baal Crab
+Baal Taunt
+Putrid Defiler1
+Putrid Defiler2
+Putrid Defiler3
+Putrid Defiler4
+Putrid Defiler5
+Pain Worm1
+Pain Worm2
+Pain Worm3
+Pain Worm4
+Pain Worm5
+Bunny
+Council Member
+VenomLord
+Baal Crab to Stairs
+Act 5 Hireling 1hs
+Act 5 Hireling 2hs
+Baal Tentacle
+Baal Tentacle
+Baal Tentacle
+Baal Tentacle
+Baal Tentacle
+Injured Barbarian 1
+Injured Barbarian 2
+Injured Barbarian 3
+Baal Crab Clone
+Baals Minion
+Baals Minion
+Baals Minion
+Worldstone Effect
+BurningDeadArcher
+BoneArcher
+BurningDeadArcher
+ReturnedArcher
+HorrorArcher
+Afflicted
+Tainted
+Misshapen
+Disfigured
+Damned
+MoonClan
+NightClan
+HellClan
+BloodClan
+DeathClan
+FoulCrow
+BloodHawk
+BlackRaptor
+CloudStalker
+ClawViper
+PitViper
+Salamander
+TombViper
+SerpentMagus
+Marauder
+Infidel
+SandRaider
+Invader
+Assailant
+Death Mauler1
+QuillRat
+SpikeFiend
+RazorSpine
+CarrionBird
+ThornedHulk
+Slinger
+Slinger
+Slinger
+VileArcher
+DarkArcher
+VileLancer
+DarkLancer
+BlackLancer
+Blunderbore
+Mauler
+ReturnedMage
+BurningDeadMage
+ReturnedMage
+HorrorMage
+BoneMage
+HorrorMage
+HorrorMage
+Huntress
+SaberCat
+CaveLeaper
+TombCreeper
+Ghost
+Wraith
+Specter
+Succubusexp
+Hell Temptress
+Dominus
+Hell Witch
+VileWitch
+Gloam
+BlackSoul
+BurningSoul
+Carver
+Devilkin
+DarkOne
+CarverShaman
+DevilkinShaman
+DarkShaman
+BoneWarrior
+Returned
+Gloombat
+Fiend
+Blood Lord1
+Blood Lord4
+Scarab
+SteelWeevil
+Flayer
+StygianDoll
+SoulKiller
+Flayer
+StygianDoll
+SoulKiller
+FlayerShaman
+StygianDollShaman
+SoulKillerShaman
+TempleGuard
+TempleGuard
+Guardian
+Unraveler
+Horadrim Ancient
+Horadrim Ancient
+Zealot
+Zealot
+Heirophant
+Heirophant
+Grotesque
+FleshSpawner
+GrotesqueWyrm
+FleshBeast
+WorldKiller
+WorldKillerYoung
+WorldKillerEgg
+Slayerexp
+HellSpawn
+GreaterHellSpawn
+Arach
+Balrog
+PitLord
+Imp1
+Imp4
+Undead StygianDoll
+Undead SoulKiller
+Strangler
+StormCaster
+MawFiend
+BloodLord
+GhoulLord
+DarkLord
+UnholyCorpse
+DoomKnight
+DoomKnight
+OblivionKnight
+OblivionKnight
+Cadaver
+*********************************以下是魔法前缀(Magic Prefix)(^表示没有名字)
+^
+^
+Sturdy
+Strong
+Glorious
+Blessed
+Saintly
+Holy
+Devious
+Fortified
+^
+^
+^
+Jagged
+Deadly
+Vicious
+Brutal
+Massive
+Savage
+Merciless
+Vulpine
+^
+^
+^
+^
+Tireless
+Rugged
+Bronze
+Iron
+Steel
+Silver
+^
+Gold
+Platinum
+Meteoric
+Sharp
+Fine
+Warrior's
+Soldier's
+Knight's
+Lord's
+King's
+Howling
+Fortuitous
+^
+^
+^
+^
+^
+Glimmering
+Glowing
+^
+^
+Lizard's
+^
+Snake's
+Serpent's
+Serpent's
+Drake's
+Dragon's
+Dragon's
+Wyrm's
+^
+^
+Prismatic
+Prismatic
+Azure
+Lapis
+Lapis
+Cobalt
+Cobalt
+^
+Sapphire
+^
+^
+Crimson
+Burgundy
+Burgundy
+Garnet
+Garnet
+^
+Ruby
+^
+^
+Ocher
+Tangerine
+Tangerine
+Coral
+Coral
+^
+Amber
+^
+^
+Beryl
+Jade
+Jade
+Viridian
+Viridian
+^
+Emerald
+^
+Fletcher's
+Archer's
+Archer's
+Monk's
+Priest's
+Priest's
+Summoner's
+Necromancer's
+Necromancer's
+Angel's
+Arch-Angel's
+Arch-Angel's
+Slayer's
+Berserker's
+Berserker's
+^
+^
+Triumphant
+Stout
+Stout
+Stout
+Burly
+Burly
+Burly
+Stalwart
+Stalwart
+Stalwart
+Stout
+Stout
+Stout
+Burly
+Burly
+Stalwart
+Stalwart
+Stout
+Stout
+Burly
+Stalwart
+Blanched
+Eburin
+Bone
+Ivory
+Sturdy
+Sturdy
+Strong
+Glorious
+Blessed
+Saintly
+Holy
+Godly
+Devious
+Blank
+Null
+Antimagic
+Red
+Red
+Sanguinary
+Sanguinary
+Bloody
+Red
+Sanguinary
+Bloody
+Red
+Sanguinary
+Bloody
+Scarlet
+Crimson
+Jagged
+Jagged
+Jagged
+Forked
+Forked
+Serrated
+Serrated
+Jagged
+Jagged
+Forked
+Forked
+Serrated
+Jagged
+Forked
+Serrated
+Carbuncle
+Carmine
+Vermillion
+Jagged
+Deadly
+Vicious
+Brutal
+Massive
+Savage
+Merciless
+Ferocious
+Cruel
+Cinnabar
+Rusty
+Realgar
+Ruby
+Vulpine
+Dun
+Tireless
+Tireless
+Brown
+Rugged
+Rugged
+Rugged
+Rugged
+Rugged
+Rugged
+Rugged
+Rugged
+Rugged
+Rugged
+Rugged
+Vigorous
+Chestnut
+Maroon
+Bronze
+Bronze
+Bronze
+Iron
+Iron
+Iron
+Steel
+Steel
+Steel
+Bronze
+Bronze
+Bronze
+Iron
+Iron
+Steel
+Steel
+Bronze
+Bronze
+Iron
+Steel
+Bronze
+Iron
+Steel
+Silver
+Gold
+Platinum
+Meteoric
+Strange
+Weird
+Nickel
+Tin
+Silver
+Argent
+Fine
+Fine
+Sharp
+Fine
+Sharp
+Fine
+Sharp
+Fine
+Warrior's
+Soldier's
+Knight's
+Lord's
+King's
+Master's
+Grandmaster's
+Glimmering
+Glowing
+Bright
+Screaming
+Howling
+Wailing
+Screaming
+Howling
+Wailing
+Lucky
+Lucky
+Lucky
+Lucky
+Lucky
+Lucky
+Felicitous
+Fortuitous
+Emerald
+Lizard's
+Lizard's
+Lizard's
+Snake's
+Snake's
+Snake's
+Serpent's
+Serpent's
+Serpent's
+Lizard's
+Lizard's
+Lizard's
+Snake's
+Snake's
+Serpent's
+Serpent's
+Lizard's
+Lizard's
+Snake's
+Serpent's
+Lizard's
+Snake's
+Serpent's
+Serpent's
+Drake's
+Dragon's
+Dragon's
+Wyrm's
+Great Wyrm's
+Bahamut's
+Zircon
+Jacinth
+Turquoise
+Shimmering
+Shimmering
+Shimmering
+Shimmering
+Shimmering
+Shimmering
+Shimmering
+Rainbow
+Scintillating
+Prismatic
+Chromatic
+Shimmering
+Rainbow
+Scintillating
+Prismatic
+Chromatic
+Shimmering
+Rainbow
+Scintillating
+Shimmering
+Scintillating
+Azure
+Lapis
+Cobalt
+Sapphire
+Azure
+Lapis
+Cobalt
+Sapphire
+Azure
+Lapis
+Cobalt
+Sapphire
+Azure
+Lapis
+Lapis
+Cobalt
+Cobalt
+Sapphire
+Lapis Lazuli
+Sapphire
+Crimson
+Russet
+Garnet
+Ruby
+Crimson
+Russet
+Garnet
+Ruby
+Crimson
+Russet
+Garnet
+Ruby
+Russet
+Russet
+Garnet
+Garnet
+Ruby
+Garnet
+Ruby
+Tangerine
+Ocher
+Coral
+Amber
+Tangerine
+Ocher
+Coral
+Amber
+Tangerine
+Ocher
+Coral
+Amber
+Tangerine
+Ocher
+Ocher
+Coral
+Coral
+Amber
+Camphor
+Ambergris
+Beryl
+Viridian
+Jade
+Emerald
+Beryl
+Viridian
+Jade
+Emerald
+Beryl
+Viridian
+Jade
+Emerald
+Beryl
+Viridian
+Viridian
+Jade
+Jade
+Emerald
+Beryl
+Jade
+Triumphant
+Victorious
+Aureolin
+Mechanist's
+Artificer's
+Jeweler's
+Assamic
+Arcadian
+Unearthly
+Astral
+Elysian
+Celestial
+Diamond
+Fletcher's
+Acrobat's
+Harpoonist's
+Fletcher's
+Bowyer's
+Archer's
+Acrobat's
+Gymnast's
+Athlete's
+Harpoonist's
+Spearmaiden's
+Lancer's
+Burning
+Sparking
+Chilling
+Burning
+Blazing
+Volcanic
+Sparking
+Charged
+Powered
+Chilling
+Freezing
+Glacial
+Hexing
+Fungal
+Graverobber's
+Hexing
+Blighting
+Accursed
+Fungal
+Noxious
+Venomous
+Graverobber's
+Vodoun
+Golemlord's
+Lion Branded
+Captain's
+Preserver's
+Lion Branded
+Hawk Branded
+Rose Branded
+Captain's
+Commander's
+Marshal's
+Preserver's
+Warder's
+Guardian's
+Expert's
+Fanatic
+Sounding
+Expert's
+Veteran's
+Master's
+Fanatic
+Raging
+Furious
+Sounding
+Resonant
+Echoing
+Trainer's
+Spiritual
+Nature's
+Trainer's
+Caretaker's
+Keeper's
+Spiritual
+Feral
+Communal
+Nature's
+Terra's
+Gaea's
+Entrapping
+Mentalist's
+Shogukusha's
+Entrapping
+Trickster's
+Cunning
+Mentalist's
+Psychic
+Shadow
+Shogukusha's
+Sensei's
+Kenshi's
+Miocene
+Miocene
+Oligocene
+Oligocene
+Eocene
+Eocene
+Paleocene
+Paleocene
+Knave's
+Jack's
+Jester's
+Joker's
+Trump
+Loud
+Calling
+Yelling
+Shouting
+Gritty
+Paradox
+Paradox
+Robineye
+Sparroweye
+Falconeye
+Hawkeye
+Eagleeye
+Visionary
+Mnemonic
+Snowflake
+Shivering
+Boreal
+Hibernal
+Ember
+Smoldering
+Smoking
+Flaming
+Scorching
+Static
+Glowing
+Buzzing
+Arcing
+Shocking
+Septic
+Envenomed
+Corosive
+Toxic
+Pestilent
+Maiden's
+Valkyrie's
+Maiden's
+Valkyrie's
+Monk's
+Priest's
+Monk's
+Priest's
+Monk's
+Priest's
+Summoner's
+Necromancer's
+Summoner's
+Necromancer's
+Angel's
+Arch-Angel's
+Angel's
+Arch-Angel's
+Slayer's
+Berserker's
+Slayer's
+Berserker's
+Slayer's
+Berserker's
+Shaman's
+Hierophant's
+Shaman's
+Hierophant's
+Magekiller's
+Witch-hunter's
+Magekiller's
+Witch-hunter's
+Compact
+Thin
+Dense
+Consecrated
+Pure
+Sacred
+Hallowed
+Divine
+Pearl
+Crimson
+Red
+Sanguinary
+Bloody
+Red
+Sanguinary
+Red
+Jagged
+Forked
+Serrated
+Jagged
+Forked
+Jagged
+Snowflake
+Shivering
+Boreal
+Hibernal
+Snowflake
+Shivering
+Boreal
+Hibernal
+Snowflake
+Shivering
+Boreal
+Hibernal
+Ember
+Smoldering
+Smoking
+Flaming
+Ember
+Smoldering
+Smoking
+Flaming
+Ember
+Smoldering
+Smoking
+Flaming
+Static
+Glowing
+Arcing
+Shocking
+Static
+Glowing
+Arcing
+Shocking
+Static
+Glowing
+Arcing
+Shocking
+Septic
+Envenomed
+Toxic
+Pestilent
+Septic
+Envenomed
+Toxic
+Pestilent
+Septic
+Envenomed
+Toxic
+Pestilent
+Tireless
+Lizard's
+Azure
+Crimson
+Tangerine
+Beryl
+Godly
+Cruel
+*********************************以下是魔法后缀(Magic Suffix)(^表示没有名字)
+^
+of Health
+of Protection
+of Absorption
+of Life
+^
+of Warding
+of the Sentinel
+of Guarding
+of Negation
+^
+of Piercing
+of Bashing
+of Puncturing
+of Thorns
+of Spikes
+of Readiness
+of Alacrity
+of Swiftness
+of Quickness
+of Blocking
+of Deflecting
+of the Apprentice
+of the Magus
+of Frost
+of the Glacier
+of Frost
+of Warmth
+of Flame
+of Fire
+of Burning
+of Flame
+of Shock
+of Lightning
+of Thunder
+of Shock
+of Craftsmanship
+of Quality
+of Maiming
+of Slaying
+of Gore
+of Carnage
+of Slaughter
+of Maiming
+of Worth
+of Measure
+of Excellence
+of Performance
+of Measure
+of Blight
+of Venom
+of Pestilence
+of Blight
+of Dexterity
+of Dexterity
+of Skill
+of Skill
+of Accuracy
+of Precision
+of Precision
+of Perfection
+of Balance
+of Stability
+^
+of Regeneration
+of Regeneration
+of Regeneration
+of Regrowth
+of Regrowth
+of Vileness
+^
+of Greed
+of Wealth
+of Chance
+of Fortune
+of Energy
+of Energy
+of the Mind
+of Brilliance
+of Sorcery
+of Wizardry
+of the Bear
+of Light
+of Radiance
+of the Sun
+of Life
+of the Jackal
+of the Fox
+of the Wolf
+of the Wolf
+of the Tiger
+of the Mammoth
+of the Mammoth
+of the Colosuss
+of the Leech
+of the Locust
+of the Bat
+of the Vampire
+of Defiance
+of Amelioration
+of Remedy
+^
+of Simplicity
+of Ease
+^
+of Strength
+of Might
+of the Ox
+of the Ox
+of the Giant
+of the Giant
+of the Titan
+of Pacing
+of Haste
+of Speed
+of Health
+of Protection
+of Absorption
+of Life
+of Life Everlasting
+of Protection
+of Absorption
+of Life
+of Anima
+of Warding
+of the Sentinel
+of Guarding
+of Negation
+of the Sentinel
+of Guarding
+of Negation
+of Coolness
+of Incombustibility
+of Amianthus
+of Fire Quenching
+of Coolness
+of Incombustibility
+of Amianthus
+of Fire Quenching
+of Faith
+of Resistance
+of Insulation
+of Grounding
+of the Dynamo
+of Resistance
+of Insulation
+of Grounding
+of the Dynamo
+of Stoicism
+of Warming
+of Thawing
+of the Dunes
+of the Sirocco
+of Warming
+of Thawing
+of the Dunes
+of the Sirocco
+of Desire
+of Piercing
+of Bashing
+of Puncturing
+of Thorns
+of Spikes
+of Razors
+of Swords
+of Malice
+of Readiness
+of Alacrity
+of Swiftness
+of Quickness
+of Alacrity
+of Fervor
+of Blocking
+of Deflecting
+of the Apprentice
+of the Magus
+of Frost
+of the Icicle
+of the Glacier
+of Winter
+of Frost
+of Frigidity
+of Warmth
+of Flame
+of Fire
+of Burning
+of Incineration
+of Flame
+of Passion
+of Shock
+of Lightning
+of Thunder
+of Storms
+of Shock
+of Ennui
+of Craftsmanship
+of Quality
+of Maiming
+of Slaying
+of Gore
+of Carnage
+of Slaughter
+of Butchery
+of Evisceration
+of Maiming
+of Craftsmanship
+of Craftsmanship
+of Craftsmanship
+of Quality
+of Quality
+of Maiming
+of Maiming
+of Craftsmanship
+of Craftsmanship
+of Quality
+of Quality
+of Maiming
+of Craftsmanship
+of Quality
+of Maiming
+of Ire
+of Wrath
+of Carnage
+of Worth
+of Measure
+of Excellence
+of Performance
+of Transcendence
+of Worth
+of Measure
+of Excellence
+of Performance
+of Joyfulness
+of Bliss
+of Blight
+of Venom
+of Pestilence
+of Anthrax
+of Blight
+of Envy
+of Dexterity
+of Skill
+of Accuracy
+of Precision
+of Perfection
+of Nirvana
+of Dexterity
+of Skill
+of Accuracy
+of Precision
+of Perfection
+of Dexterity
+of Skill
+of Accuracy
+of Precision
+of Dexterity
+of Dexterity
+of Dexterity
+of Dexterity
+of Dexterity
+of Dexterity
+of Daring
+of Balance
+of Equilibrium
+of Stability
+of Balance
+of Balance
+of Balance
+of Truth
+of Regeneration
+of Regeneration
+of Regeneration
+of Regrowth
+of Regrowth
+of Revivification
+of Honor
+of Vileness
+of Greed
+of Wealth
+of Greed
+of Greed
+of Greed
+of Greed
+of Greed
+of Greed
+of Avarice
+of Chance
+of Fortune
+of Fortune
+of Luck
+of Fortune
+of Good Luck
+of Prosperity
+of Energy
+of the Mind
+of Brilliance
+of Sorcery
+of Wizardry
+of Enlightenment
+of Energy
+of the Mind
+of Brilliance
+of Sorcery
+of Wizardry
+of Energy
+of the Mind
+of Brilliance
+of Sorcery
+of Knowledge
+of the Bear
+of Light
+of Radiance
+of the Sun
+of the Jackal
+of the Fox
+of the Wolf
+of the Tiger
+of the Mammoth
+of the Colosuss
+of the Squid
+of the Whale
+of the Jackal
+of the Fox
+of the Wolf
+of the Tiger
+of the Mammoth
+of the Colosuss
+of the Jackal
+of the Fox
+of the Wolf
+of the Tiger
+of the Mammoth
+of Life
+of Life
+of Life
+of Substinence
+of Substinence
+of Substinence
+of Vita
+of Vita
+of Vita
+of Life
+of Life
+of Substinence
+of Substinence
+of Vita
+of Vita
+of Life
+of Substinence
+of Vita
+of Spirit
+of Hope
+of the Leech
+of the Locust
+of the Lamprey
+of the Leech
+of the Locust
+of the Lamprey
+of the Leech
+of the Bat
+of the Wraith
+of the Vampire
+of the Bat
+of the Wraith
+of the Vampire
+of the Bat
+of Defiance
+of Amelioration
+of Remedy
+of Simplicity
+of Ease
+of Freedom
+of Strength
+of Might
+of the Ox
+of the Giant
+of the Titan
+of Atlus
+of Strength
+of Might
+of the Ox
+of the Giant
+of the Titan
+of Strength
+of Might
+of the Ox
+of the Giant
+of Strength
+of Strength
+of Strength
+of Strength
+of Strength
+of Strength
+of Virility
+of Pacing
+of Haste
+of Speed
+of Traveling
+of Acceleration
+of Inertia
+of Inertia
+of Inertia
+of Self-Repair
+of Fast Repair
+of Ages
+of Replenishing
+of Propogation
+of the Kraken
+of Memory
+of the Elephant
+of Power
+of Grace
+of Grace and Power
+of the Yeti
+of the Phoenix
+of the Efreeti
+of the Cobra
+of the Elements
+of Firebolts
+of Firebolts
+of Firebolts
+of Charged Shield
+of Charged Shield
+of Charged Shield
+of Icebolt
+of Frozen Armor
+of Static Field
+of Telekinesis
+of Frost Shield
+of Ice Blast
+of Blaze
+of Fire Ball
+of Nova
+of Nova
+of Nova Shield
+of Nova Shield
+of Nova Shield
+of Lightning
+of Lightning
+of Shiver Armor
+of Fire Wall
+of Enchant
+of Chain Lightning
+of Chain Lightning
+of Chain Lightning
+of Teleport Shield
+of Teleport Shield
+of Teleport Shield
+of Glacial Spike
+of Meteor
+of Thunder Storm
+of Energy Shield
+of Blizzard
+of Chilling Armor
+of Hydra Shield
+of Frozen Orb
+of Dawn
+of Sunlight
+of Magic Arrows
+of Magic Arrows
+of Fire Arrows
+of Fire Arrows
+of Inner Sight
+of Inner Sight
+of Jabbing
+of Jabbing
+of Cold Arrows
+of Cold Arrows
+of Multiple Shot
+of Multiple Shot
+of Power Strike
+of Power Strike
+of Poison Jab
+of Poison Jab
+of Exploding Arrows
+of Exploding Arrows
+of Slow Missiles
+of Slow Missiles
+of Impaling Strike
+of Impaling Strike
+of Lightning Javelin
+of Lightning Javelin
+of Ice Arrows
+of Ice Arrows
+of Guided Arrows
+of Guided Arrows
+of Charged Strike
+of Charged Strike
+of Plague Jab
+of Plague Jab
+of Immolating Arrows
+of Immolating Arrows
+of Fending
+of Fending
+of Freezing Arrows
+of Freezing Arrows
+of Lightning Strike
+of Lightning Strike
+of Lightning Fury
+of Lightning Fury
+of Fire Bolts
+of Fire Bolts
+of Charged Bolts
+of Charged Bolts
+of Ice Bolts
+of Ice Bolts
+of Frozen Armor
+of Frozen Armor
+of Static Field
+of Static Field
+of Telekinesis
+of Telekinesis
+of Frost Novas
+of Frost Novas
+of Ice Blasts
+of Ice Blasts
+of Blazing
+of Blazing
+of Fire Balls
+of Fire Balls
+of Novas
+of Novas
+of Lightning
+of Lightning
+of Shiver Armor
+of Shiver Armor
+of Fire Walls
+of Fire Walls
+of Enchantment
+of Enchantment
+of Chain Lightning
+of Chain Lightning
+of Teleportation
+of Teleportation
+of Glacial Spikes
+of Glacial Spikes
+of Meteors
+of Meteors
+of Thunder Storm
+of Thunder Storm
+of Energy Shield
+of Energy Shield
+of Blizzards
+of Blizzards
+of Chilling Armor
+of Chilling Armor
+of Hydras
+of Hydras
+of Frozen Orbs
+of Frozen Orbs
+of Amplify Damage
+of Amplify Damage
+of Teeth
+of Teeth
+of Bone Armor
+of Bone Armor
+of Raise Skeletons
+of Raise Skeletons
+of Dim Vision
+of Dim Vision
+of Weaken
+of Weaken
+of Poison Dagger
+of Poison Dagger
+of Corpse Explosions
+of Corpse Explosions
+of Clay Golem Summoning
+of Clay Golem Summoning
+of Iron Maiden
+of Iron Maiden
+of Terror
+of Terror
+of Bone Walls
+of Bone Walls
+of Raise Skeletal Mages
+of Raise Skeletal Mages
+of Confusion
+of Confusion
+of Life Tap
+of Life Tap
+of Poison Explosion
+of Poison Explosion
+of Bone Spears
+of Bone Spears
+of Blood Golem Summoning
+of Blood Golem Summoning
+of Attraction
+of Attraction
+of Decrepification
+of Decrepification
+of Bone Imprisonment
+of Bone Imprisonment
+of Iron Golem Creation
+of Iron Golem Creation
+of Lower Resistance
+of Lower Resistance
+of Poison Novas
+of Poison Novas
+of Bone Spirits
+of Bone Spirits
+of Fire Golem Summoning
+of Fire Golem Summoning
+of Revivification
+of Revivification
+of Sacrifice
+of Sacrifice
+of Holy Bolts
+of Holy Bolts
+of Zeal
+of Zeal
+of Vengeance
+of Vengeance
+of Blessed Hammers
+of Blessed Hammers
+of Conversion
+of Conversion
+of Fist of the Heavens
+of Fist of the Heavens
+of Bashing
+of Bashing
+of Howling
+of Howling
+of Potion Finding
+of Potion Finding
+of Taunting
+of Taunting
+of Shouting
+of Shouting
+of Stunning
+of Stunning
+of Item Finding
+of Item Finding
+of Concentration
+of Concentration
+of Battle Cry
+of Battle Cry
+of Battle Orders
+of Battle Orders
+of Grim Ward
+of Grim Ward
+of War Cry
+of War Cry
+of Battle Command
+of Battle Command
+of Firestorms
+of Firestorms
+of Molten Boulders
+of Molten Boulders
+of Eruption
+of Eruption
+of Cyclone Armor
+of Cyclone Armor
+of Twister
+of Twister
+of Volcano
+of Volcano
+of Tornado
+of Tornado
+of Armageddon
+of Armageddon
+of Hurricane
+of Hurricane
+of Damage Amplification
+of the Icicle
+of the Glacier
+of Fire
+of Burning
+of Lightning
+of Thunder
+of Daring
+of Daring
+of Knowledge
+of Knowledge
+of Virility
+of Virility
+of Readiness
+of Craftsmanship
+of Quality
+of Maiming
+of Craftsmanship
+of Quality
+of Craftsmanship
+of Blight
+of Venom
+of Pestilence
+of Anthrax
+of Blight
+of Venom
+of Pestilence
+of Anthrax
+of Blight
+of Venom
+of Pestilence
+of Anthrax
+of Frost
+of the Icicle
+of the Glacier
+of Winter
+of Frost
+of the Icicle
+of the Glacier
+of Winter
+of Frost
+of the Icicle
+of the Glacier
+of Winter
+of Flame
+of Fire
+of Burning
+of Incineration
+of Flame
+of Fire
+of Burning
+of Incineration
+of Flame
+of Fire
+of Burning
+of Incineration
+of Shock
+of Lightning
+of Thunder
+of Storms
+of Shock
+of Lightning
+of Thunder
+of Storms
+of Shock
+of Lightning
+of Thunder
+of Storms
+of Dexterity
+of Dexterity
+of Strength
+of Strength
+of Thorns
+of Frost
+of Flame
+of Blight
+of Shock
+of Regeneration
+of Energy
+of Light
+of the Leech
+of the Locust
+of the Lamprey
+of the Bat
+of the Wraith
+of the Vampire
+*********************************以下是Rare和Crafted名字(^表示没有名字)
+^
+Bite
+Scratch
+Scalpel
+Fang
+Gutter
+Thirst
+Razor
+Scythe
+Edge
+Saw
+Splitter
+Cleaver
+Sever
+Sunder
+Rend
+Mangler
+Slayer
+Reaver
+Spawn
+Gnash
+Star
+Blow
+Smasher
+Bane
+Crusher
+Breaker
+Grinder
+Crack
+Mallet
+Knell
+Lance
+Spike
+Impaler
+Skewer
+Prod
+Scourge
+Wand
+Wrack
+Barb
+Needle
+Dart
+Bolt
+Quarrel
+Fletch
+Flight
+Nock
+Horn
+Stinger
+Quill
+Goad
+Branch
+Spire
+Song
+Call
+Cry
+Spell
+Chant
+Weaver
+Gnarl
+Visage
+Crest
+Circlet
+Veil
+Hood
+Mask
+Brow
+Casque
+Visor
+Cowl
+Hide
+Pelt
+Carapace
+Coat
+Wrap
+Suit
+Cloak
+Shroud
+Jack
+Mantle
+Guard
+Badge
+Rock
+Aegis
+Ward
+Tower
+Shield
+Wing
+Mark
+Emblem
+Hand
+Fist
+Claw
+Clutches
+Grip
+Grasp
+Hold
+Touch
+Finger
+Knuckle
+Shank
+Spur
+Tread
+Stalker
+Greaves
+Blazer
+Nails
+Trample
+Brogues
+Track
+Slippers
+Clasp
+Buckle
+Harness
+Lock
+Fringe
+Winding
+Chain
+Strap
+Lash
+Cord
+Knot
+Circle
+Loop
+Eye
+Turn
+Spiral
+Coil
+Gyre
+Band
+Whorl
+Talisman
+Heart
+Noose
+Necklace
+Collar
+Beads
+Torc
+Gorget
+Scarab
+Wood
+Brand
+Bludgeon
+Cudgel
+Loom
+Harp
+Master
+Bar
+Hew
+Crook
+Mar
+Shell
+Stake
+Picket
+Pale
+Flange
+Beast
+Eagle
+Raven
+Viper
+Ghoul
+Skull
+Blood
+Dread
+Doom
+Grim
+Bone
+Death
+Shadow
+Storm
+Rune
+Plague
+Stone
+Wraith
+Spirit
+Storm
+Demon
+Cruel
+Empyrian
+Bramble
+Pain
+Loath
+Glyph
+Imp
+Fiend
+Hailstone
+Gale
+Dire
+Soul
+Brimstone
+Corpse
+Carrion
+Armageddon
+Havoc
+Bitter
+Entropy
+Chaos
+Order
+Rule
+Warp
+Rift
+Corruption
+*********************************以下是暗金名字(Unique Name)(^表示没有名字)
+The Gnasher
+Deathspade
+Bladebone
+Mindrend
+Rakescar
+Fechmars Axe
+Goreshovel
+The Chieftan
+Brainhew
+The Humongous
+Iros Torch
+Maelstromwrath
+Gravenspine
+Umes Lament
+Felloak
+Knell Striker
+Rusthandle
+Stormeye
+Stoutnail
+Crushflange
+Bloodrise
+The Generals Tan Do Li Ga
+Ironstone
+Bonesob
+Steeldriver
+Rixots Keen
+Blood Crescent
+Krintizs Skewer
+Gleamscythe
+Azurewrath
+Griswolds Edge
+Hellplague
+Culwens Point
+Shadowfang
+Soulflay
+Kinemils Awl
+Blacktongue
+Ripsaw
+The Patriarch
+Gull
+The Diggler
+The Jade Tan Do
+Irices Shard
+The Dragon Chang
+Razortine
+Bloodthief
+Lance of Yaggai
+The Tannr Gorerod
+Dimoaks Hew
+Steelgoad
+Soul Harvest
+The Battlebranch
+Woestave
+The Grim Reaper
+Bane Ash
+Serpent Lord
+Lazarus Spire
+The Salamander
+The Iron Jang Bong
+Pluckeye
+Witherstring
+Rimeraven
+Piercerib
+Pullspite
+Wizendraw
+Hellclap
+Blastbark
+Leadcrow
+Ichorsting
+Hellcast
+Doomspittle
+War Bonnet
+Tarnhelm
+Coif of Glory
+Duskdeep
+Wormskull
+Howltusk
+Undead Crown
+The Face of Horror
+Greyform
+Blinkbats Form
+The Centurion
+Twitchthroe
+Darkglow
+Hawkmail
+Sparking Mail
+Venomsward
+Iceblink
+Boneflesh
+Rockfleece
+Rattlecage
+Goldskin
+Victors Silk
+Heavenly Garb
+Pelta Lunata
+Umbral Disk
+Stormguild
+Wall of the Eyeless
+Swordback Hold
+Steelclash
+Bverrit Keep
+The Ward
+The Hand of Broc
+Bloodfist
+Chance Guards
+Magefist
+Frostburn
+Hotspur
+Gorefoot
+Treads of Cthon
+Goblin Toe
+Tearhaunch
+Lenyms Cord
+Snakecord
+Nightsmoke
+Goldwrap
+Bladebuckle
+Nokozan Relic
+The Eye of Etlich
+The Mahim-Oak Curio
+Nagelring
+Manald Heal
+The Stone of Jordan
+Amulet of the Viper
+Staff of Kings
+Horadric Staff
+Hell Forge Hammer
+Khalim's Flail
+Khalim's Will
+Coldkill
+Butcher's Pupil
+Islestrike
+Pompe's Wrath
+Guardian Naga
+Warlord's Trust
+Spellsteel
+Stormrider
+Boneslayer Blade
+The Minataur
+Suicide Branch
+Carin Shard
+Arm of King Leoric
+Blackhand Key
+Dark Clan Crusher
+Zakarum's Hand
+The Fetid Sprinkler
+Hand of Blessed Light
+Fleshrender
+Sureshrill Frost
+Moonfall
+Baezil's Vortex
+Earthshaker
+Bloodtree Stump
+The Gavel of Pain
+Bloodletter
+Coldsteel Eye
+Hexfire
+Blade of Ali Baba
+Ginther's Rift
+Headstriker
+Plague Bearer
+The Atlantian
+Crainte Vomir
+Bing Sz Wang
+The Vile Husk
+Cloudcrack
+Todesfaelle Flamme
+Swordguard
+Spineripper
+Heart Carver
+Blackbog's Sharp
+Stormspike
+The Impaler
+Kelpie Snare
+Soulfeast Tine
+Hone Sundan
+Spire of Honor
+The Meat Scraper
+Blackleach Blade
+Athena's Wrath
+Pierre Tombale Couant
+Husoldal Evo
+Grim's Burning Dead
+Razorswitch
+Ribcracker
+Chromatic Ire
+Warpspear
+Skullcollector
+Skystrike
+Riphook
+Kuko Shakaku
+Endlesshail
+Whichwild String
+Cliffkiller
+Magewrath
+Godstrike Arch
+Langer Briser
+Pus Spiter
+Buriza-Do Kyanon
+Demon Machine
+Armor
+Peasent Crown
+Rockstopper
+Stealskull
+Darksight Helm
+Valkiry Wing
+Crown of Thieves
+Blackhorn's Face
+Vampiregaze
+The Spirit Shroud
+Skin of the Vipermagi
+Skin of the Flayerd One
+Ironpelt
+Spiritforge
+Crow Caw
+Shaftstop
+Duriel's Shell
+Skullder's Ire
+Guardian Angel
+Toothrow
+Atma's Wail
+Black Hades
+Corpsemourn
+Que-Hegan's Wisdon
+Visceratuant
+Mosers Blessed Circle
+Stormchaser
+Tiamat's Rebuke
+Kerke's Sanctuary
+Radimant's Sphere
+Lidless Wall
+Lance Guard
+Venom Grip
+Gravepalm
+Ghoulhide
+Lavagout
+Hellmouth
+Infernostride
+Waterwalk
+Silkweave
+Wartraveler
+Gorerider
+String of Ears
+Razortail
+Gloomstrap
+Snowclash
+Thudergod's Vigor
+Elite Uniques
+Harlequin Crest
+Veil of Steel
+The Gladiator's Bane
+Arkaine's Valor
+Blackoak Shield
+Stormshield
+Hellslayer
+Messerschmidt's Reaver
+Baranar's Star
+Schaefer's Hammer
+The Cranium Basher
+Lightsabre
+Doombringer
+The Grandfather
+Wizardspike
+Constricting Ring
+Stormspire
+Eaglehorn
+Windforce
+Rings
+Bul Katho's Wedding Band
+The Cat's Eye
+The Rising Sun
+Crescent Moon
+Mara's Kaleidoscope
+Atma's Scarab
+Dwarf Star
+Raven Frost
+Highlord's Wrath
+Saracen's Chance
+Class Specific
+Arreat's Face
+Homunculus
+Titan's Revenge
+Lycander's Aim
+Lycander's Flank
+The Oculus
+Herald of Zakarum
+Cutthroat1
+Jalal's Mane
+The Scalper
+Bloodmoon
+Djinnslayer
+Deathbit
+Warshrike
+Gutsiphon
+Razoredge
+Gore Ripper
+Demonlimb
+Steelshade
+Tomb Reaver
+Deaths's Web
+Nature's Peace
+Azurewrath
+Seraph's Hymn
+Zakarum's Salvation
+Fleshripper
+Odium
+Horizon's Tornado
+Stone Crusher
+Jadetalon
+Shadowdancer
+Cerebus
+Tyrael's Might
+Souldrain
+Runemaster
+Deathcleaver
+Executioner's Justice
+Stoneraven
+Leviathan
+Larzuk's Champion
+Wisp
+Gargoyle's Bite
+Lacerator
+Mang Song's Lesson
+Viperfork
+Ethereal Edge
+Demonhorn's Edge
+The Reaper's Toll
+Spiritkeeper
+Hellrack
+Alma Negra
+Darkforge Spawn
+Widowmaker
+Bloodraven's Charge
+Ghostflame
+Shadowkiller
+Gimmershred
+Griffon's Eye
+Windhammer
+Thunderstroke
+Giantmaimer
+Demon's Arch
+Boneflame
+Steelpillar
+Nightwing's Veil
+Crown of Ages
+Andariel's Visage
+Darkfear
+Dragonscale
+Steel Carapice
+Medusa's Gaze
+Ravenlore
+Boneshade
+Nethercrow
+Flamebellow
+Fathom
+Wolfhowl
+Spirit Ward
+Kira's Guardian
+Ormus' Robes
+Gheed's Fortune
+Stormlash
+Halaberd's Reign
+Warriv's Warder
+Spike Thorn
+Dracul's Grasp
+Frostwind
+Templar's Might
+Eschuta's temper
+Firelizard's Talons
+Sandstorm Trek
+Marrowwalk
+Heaven's Light
+Merman's Speed
+Arachnid Mesh
+Nosferatu's Coil
+Metalgrid
+Verdugo's Hearty Cord
+Sigurd's Staunch
+Carrion Wind
+Giantskull
+Ironward
+Annihilus
+Arioc's Needle
+Cranebeak
+Nord's Tenderizer
+Earthshifter
+Wraithflight
+Bonehew
+Ondal's Wisdom
+The Reedeemer
+Headhunter's Glory
+Steelrend
+Rainbow Facet
+Rainbow Facet
+Rainbow Facet
+Rainbow Facet
+Rainbow Facet
+Rainbow Facet
+Rainbow Facet
+Rainbow Facet
+
+
+
+
+
+
+

@@ -1,0 +1,19 @@
+6
+Wolf Head
+Hawk Helm
+Antlers
+Falcon Mask
+Spirit Mask
+10
+Alpha Helm
+Griffon Headdress
+Hunter's Guise
+11
+Sacred Feathers
+Totemic Mask
+12
+Blood Spirit
+Sun Spirit
+Earth Spirit
+Sky Spirit
+Dream Spirit

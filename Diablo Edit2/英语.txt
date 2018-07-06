@@ -1,0 +1,452 @@
+&English
+Basic Info
+Waypoints
+Missions
+Skills
+Warning
+Error
+Save the character 
+ ?
+Cannot open file
+Character name and file name are different, continue?
+File access denied
+no title
+The file may be not d2s format, continue?
+file lenght is incorrect, continue?
+unknown
+Character name format error
+Lenght:  2-5 chars
+Content: a-z,A-Z,-,_
+Caution: name string starts and ends with chars,
+only one '-' or '_' is allowed
+Character level is between 1-99
+Strength, Energy, Dexterity, Vitality and Stat Points is between 0-1023
+Life, Mana and Stamina is between 0-8191, Skill Points is between 0-255
+Amazon
+Sorceress
+Necromancer
+Paladin
+Barbarian
+Druid
+Assassin
+Normal
+Nightmare
+Hell
+Mana
+Version
+Character
+Name
+Title
+Weapon
+Last game time
+Last position
+Level
+Experience
+Level And Experience
+Character Stats
+Strength
+Dexterity
+Vitality
+Energy
+Stat Points
+Basic Value
+Current
+Stamina
+Life
+Ladder
+Expansion
+Hardcore
+Died berfore
+All
+Rogue Encampment
+Cold Plains
+Stony Field
+Dark Wood
+Black Marsh
+Outer Cloister
+Jail Level 1
+Inner Cloister
+Catacombs Level 2
+Lut Gholein
+Sewers Level 2
+Dry Hills
+Halls of the Dead Level 2
+Far Oasis
+Lost City
+Palace Cellar Level 1 
+Arcane Sanctuary
+Canyon of the Magi
+Kurast Docktown
+Spider Forest
+Great Marsh
+Flayer Jungle
+Lower Kurast
+Kurast Bazaar
+Upper Kurast
+Travincal
+Durance of Hate Level 2
+The Pandemonium Fortress
+City of the Damned
+River of Flame
+Harrogath
+Rigid Highlands
+Arreat Plateau
+Crystalline Passage
+Glacial Trail
+Halls of Anguish
+Tundra Wastelands
+The Ancients' way
+The Worldstone Keep Level 2
+Den of Evil
+Sisters' Burial Grounds
+The Search for Cain
+The Forgotten Tower
+Tools of the Trade
+Sisters to the Slaughter
+Radament's Lair
+The Horadric Staff
+Tainted Sun
+Arcane Sanctuary
+The Summoner
+The Seven Tombs
+The Golden Bird
+Blade of the Old Religion
+Khalim's Will
+Lam Esen's Tome
+The Blackened Temple
+The Guardian
+The Fallen Angel
+Hell's Forge
+Terror's End
+Siege on Harrogath
+Rescue on Mount Arreat
+Prison of Ice
+Betrayal of Harrogath
+Rite of Passage
+Eve of Destruction
+Moo Moo Farm
+Skill Points
+Gold in person
+Gold in stash
+Please choose character class
+Amazon Skills
+Bow and Crossbow Skills
+Passive and Magic Skills
+Javelin and Spear Skills
+Magic Arrow
+Fire Arrow
+Cold Arrow
+Multiple Shot
+Exploding Arrow
+Ice Arrow
+Guided Arrow
+Strafe
+Immolation Arrow
+Freezing Arrow
+Inner Sight
+Critical Strike
+Dodge
+Slow Missiles
+Avoid
+Penetrate
+Dopplezon
+Evade
+Valkyrie
+Pierce
+Jab
+Power Strike
+Poison Javelin
+Impale
+Lightning Bolt
+Charged Strike
+Plague Javelin
+Fend
+Lightning Strike
+Lightning Fury
+Sorceress Skills
+Fire Spells
+Lightning Spells
+Cold Spells
+Fire Bolt
+Warmth
+Inferno
+Blaze
+Fire Ball
+Fire Wall
+Enchant
+Meteor
+Fire Mastery
+Hydra
+Charged Bolt
+Static Field
+Telekinesis
+Nova
+Lightning
+Chain Lightning
+Teleport
+Thunder Storm
+Energy Shield
+Lightning Mastery
+Ice Bolt
+Frozen Armor
+Frost Nova
+Ice Blast
+Shiver Armor
+Glacial Spike
+Blizzard
+Chilling Armor
+Frozen Orb
+Cold Mastery
+Necromancer Skills
+Curses
+Poison and Bone Spells
+Summoning Spells
+Amplify Damage
+Dim Vision
+Weaken
+Iron Maiden
+Terror
+Confuse
+Life Tap
+Attract
+Decrepify
+Lower Resist
+Teeth
+Bone Armor
+Poison Dagger
+Corpse Explosion
+Bone Wall
+Poison Explosion
+Bone Spear
+Bone Prison
+Poison Nova
+Bone Spirit
+Skeleton Mastery
+Raise Skeleton
+Clay Golem
+Golem Mastery
+Raise Skeletal Mage
+Blood Golem
+Summon Resist
+Iron Golem
+Fire Golem
+Revive
+Paladin Skills
+Combat Skills
+Offensive Auras
+Defensive Auras
+Sacrifice
+Smite
+Holy Bolt
+Zeal
+Charge
+Vengeance
+Blessed Hammer
+Conversion
+Holy Shield
+Fist of the Heavens
+Might
+Holy Fire
+Thorns
+Blessed Aim
+Concentration
+Holy Freeze
+Holy Shock
+Sanctuary
+Fanaticism
+Conviction
+Prayer
+Resist Fire
+Defiance
+Resist Cold
+Cleansing
+Resist Lightning
+Vigor
+Meditation
+Redemption
+Salvation
+Barbarian Skills
+Combat Skills
+Combat Masteries
+Warcries
+Bash
+Leap
+Double Swing
+Stun
+Double Throw
+Leap Attack
+Concentrate
+Frenzy
+Whirlwind
+Berserk
+Sword Mastery
+Axe Mastery
+Mace Mastery
+Pole Arm Mastery
+Throwing Mastery
+Spear Mastery
+Increased Stamina
+Iron Skin
+Increased Speed
+Natural Resistance
+Howl
+Find Potion
+Taunt
+Shout
+Find Item
+Battle Cry
+Battle Orders
+Grim Ward
+War Cry
+Battle Command
+Druid Skills
+Summoning
+Lycanthropy
+Elemental
+Raven
+Plague Poppy
+Oak Sage
+Summon Spirit Wolf
+Cycle of Life
+Heart of Wolverine
+Summon Fenris
+Vines
+Spirit of Barbs
+Summon Grizzly
+Wearwolf
+Shape Shifting
+Wearbear
+Feral Rage
+Maul
+Rabies
+Fire Claws
+Hunger
+Shock Wave
+Fury
+Firestorm
+Molten Boulder
+Arctic Blast
+Eruption
+Cyclone Armor
+Twister
+Volcano
+Tornado
+Armageddon
+Hurricane
+Assassin Skills
+Traps
+Shadow Disciplines
+Martial Arts
+Fire Trauma
+Shock Field
+Blade Sentinel
+Charged Bolt Sentry
+Wake of Fire Sentry
+Blade Fury
+Lightning Sentry
+Inferno Sentry
+Death Sentry
+Blade Shield
+Claw Mastery
+Psychic Hammer
+Quickness
+Weapon Block
+Cloak of Shadows
+Fade
+Shadow Warrior
+Mind Blast
+Venom
+Shadow Master
+Tiger Strike
+Dragon Talon
+Fists of Fire
+Dragon Claw
+Cobra Strike
+Claws of Thunder
+Dragon Tail
+Blades of Ice
+Dragon Flight
+Royal Strike
+Skill levels must be between 0-127
+Please Choose a character class
+Cannot read file "new.dat". You can create it from a correct d2s file by changing the file name and copying it to the executive directory
+Too many golds in person or stash
+Quest info data format error, continue?
+Waypoint info data format error, continue?
+Player Stats data format error, continue?
+Player Skills data format error, continue?
+Item List data format error, continue?
+Item data format error, continue?
+Items
+Unrecognised Item Code, continue?
+Unkown Item Quality: 
+Quantity: %d
+Code
+Description
+Attack
+Low
+Normal
+High
+Magical
+Set
+Rare
+Unique
+Crafted
+Kick
+Throw
+Unsummon
+Left Hand Throw
+Left Hand Swing
+An Evil Force
+Scroll of Identify
+Tome of Identify
+Scroll of Town Portal
+Tome of Town Portal
+Freezing
+Poisoned
+Fire Resist
+Cold Resist
+Lightning Resist
+Normal
+During Daytime
+Near Dusk
+During Nighttime
+Near Dawn
+Crude
+Superior
+Defence: %d
+One Hand Damage: %d to %d
+Tow Hands Damage: %d to %d
+Durability: %d / %d
+Indestructible
+Ethereal(cannot be repaired)
+Sockets(%d)
+Item Prefix Suffix
+Foundry
+Level
+Owner
+Quality
+Defence
+Quantity
+Durability
+Property Transparency
+Hide
+Socket
+Indestructible
+Ethereal
+Found
+Prefix Suffix
+Add
+Edit
+Delete
+First Name
+Last Name
+Prefix1
+Suffix1
+Prefix2
+Suffix2
+Prefix3
+Suffix3
+Unique Name
+Sub Type
+

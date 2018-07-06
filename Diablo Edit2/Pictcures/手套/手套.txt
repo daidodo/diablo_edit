@@ -1,0 +1,20 @@
+2
+Leather Gloves
+Heavy Gloves
+3
+Chain Gloves
+Light Gauntlets
+Gauntlets
+5
+Demonhide Gloves
+Sharkskin Gloves
+Heavy Bracers
+Battle Gauntlets
+War Gauntlets
+9
+Bramble Mitts
+10
+Vampirebone Gloves
+Vambraces
+Crusader Gauntlets
+Ogre Gauntlets

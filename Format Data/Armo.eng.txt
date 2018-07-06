@@ -1,0 +1,202 @@
+uow	Aegis
+pa4	Aerin Shield
+pa7	Akaran Rondache
+pa6	Akaran Targe
+dr6	Alpha Helm
+aar	Ancient Armor
+xts	Ancient Shield
+dr3	Antlers
+utp	Archon Plate
+ulm	Armet
+ba4	Assault Helmet
+ba5	Avenger Guard
+upl	Balrog Skin
+xpk	Barbed Shield
+xhl	Basinet
+ztb	Battle Belt
+xtb	Battle Boots
+xtg	Battle Gauntlets
+mbl	Belt
+upk	Blade Barrier
+drb	Blood Spirit
+nef	Bloodlord Skull
+bhm	Bone Helm
+bsh	Bone Shield
+uh9	Bone Visage
+uhn	Boneweave
+umb	Boneweave Boots
+lbt	Boots
+ulg	Bramble Mitts
+brs	Breast Plate
+buc	Buckler
+ne9	Cantor Trophy
+cap	Cap
+bab	Carnage Helm
+xlm	Casque
+mbt	Chain Boots
+mgl	Chain Gloves
+chn	Chain Mail
+xul	Chaos Armor
+ci0	Circlet
+uhc	Colossus Girdle
+bae	Conqueror Crown
+urn	Corona
+ci1	Coronet
+crn	Crown
+pa5	Crown Shield
+utg	Crusader Gauntlets
+xrs	Cuirass
+xsk	Death Mask
+xuc	Defender
+ne5	Demon Head
+usk	Demonhead
+xla	Demonhide Armor
+xlb	Demonhide Boots
+xlg	Demonhide Gloves
+zlb	Demonhide Sash
+bad	Destroyer Helm
+ci3	Diadem
+ung	Diamond Mail
+xit	Dragon Shield
+drf	Dream Spirit
+uui	Dusk Shroud
+drd	Earth Spirit
+xth	Embossed Plate
+dr4	Falcon Mask
+ba2	Fanged Helm
+ne7	Fetish Trophy
+fld	Field Plate
+fhl	Full Helm
+ful	Full Plate Mail
+bac	Fury Visor
+ne4	Gargoyle Head
+hgl	Gauntlets
+xui	Ghost Armor
+uhl	Giant Conch
+pa9	Gilded Shield
+gth	Gothic Plate
+gts	Gothic Shield
+xrn	Grand Crown
+urs	Great Hauberk
+ghm	Great Helm
+hbt	Greaves
+dr7	Griffon Headdress
+xh9	Grim Helm
+xsh	Grim Shield
+baf	Guardian Crown
+hla	Hard Leather Armor
+dr2	Hawk Helm
+uuc	Heater
+tbl	Heavy Belt
+vbt	Heavy Boots
+xmg	Heavy Bracers
+vgl	Heavy Gloves
+ult	Hellforge Plate
+neg	Hellspawn Skull
+hlm	Helm
+pa3	Heraldic Shield
+nea	Hierophant Trophy
+ba3	Horned Helm
+dr8	Hunter's Guise
+ukp	Hydraskull
+urg	Hyperion
+ba1	Jawbone Cap
+ba6	Jawbone Visor
+kit	Kite Shield
+uld	Kraken Shell
+pad	Kurast Shield
+uth	Lacquered Plate
+lrg	Large Shield
+lea	Leather Armor
+lgl	Leather Gloves
+vbl	Light Belt
+tgl	Light Gauntlets
+ltp	Light Plate
+tbt	Light Plated Boots
+xng	Linked Mail
+ba7	Lion Helm
+ucl	Loricated Mail
+uml	Luna
+xtp	Mage Plate
+msk	Mask
+xhn	Mesh Armor
+zmb	Mesh Belt
+xmb	Mesh Boots
+neb	Minion Skull
+utb	Mirrored Boots
+umc	Mithril Coil
+uit	Monarch
+ne6	Mummified Trophy
+uhb	Myrmidon Greaves
+uhg	Ogre Gauntlets
+xar	Ornate Plate
+ned	Overseer Skull
+xow	Pavise
+plt	Plate Mail
+hbl	Plated Belt
+ne1	Preserved Head
+pa8	Protector Shield
+qui	Quilted Armor
+ba8	Rage Mask
+rng	Ring Mail
+pa2	Rondache
+xml	Round Shield
+paa	Royal Shield
+xpl	Russet Armor
+uar	Sacred Armor
+dr9	Sacred Feathers
+pac	Sacred Rondache
+pab	Sacred Targe
+xkp	Sallet
+lbl	Sash
+ba9	Savage Helmet
+scl	Scale Mail
+ula	Scarab Husk
+uvb	Scarabshell Boots
+xrg	Scutum
+xea	Serpentskin Armor
+ne8	Sexton Trophy
+uul	Shadow Plate
+uap	Shako
+zvb	Sharkskin Belt
+xvb	Sharkskin Boots
+xvg	Sharkskin Gloves
+xld	Sharktooth Armor
+skp	Skull Cap
+dre	Sky Spirit
+baa	Slayer Guard
+sml	Small Shield
+ulc	Spiderweb Sash
+spk	Spiked Shield
+uhm	Spired Helm
+dr5	Spirit Mask
+spl	Splint Mail
+stu	Studded Leather
+nee	Succubus Skull
+drc	Sun Spirit
+pa1	Targe
+xlt	Templar Coat
+ci2	Tiara
+xcl	Tigulated Mail
+dra	Totemic Mask
+tow	Tower Shield
+xtu	Trellised Armor
+utc	Troll Belt
+ush	Troll Nest
+ne3	Unraveller Head
+umg	Vambraces
+uvg	Vampirebone Gloves
+uvc	Vampirefang Belt
+paf	Vortex Shield
+zhb	War Belt
+xhb	War Boots
+xhg	War Gauntlets
+xap	War Hat
+uts	Ward
+xhm	Winged Helm
+utu	Wire Fleece
+dr1	Wolf Head
+uea	Wyrmhide
+ulb	Wyrmhide Boots
+pae	Zakarum Shield
+ne2	Zombie Head

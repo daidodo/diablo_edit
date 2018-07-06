@@ -1,0 +1,492 @@
+		m_bWayData[i][1] = ((*character.Waypoints.wp[i].Waypoints)[0] & 1) != 0;
+		m_bWayData[i][2] = ((*character.Waypoints.wp[i].Waypoints)[0] & 2) != 0;
+		m_bWayData[i][3] = ((*character.Waypoints.wp[i].Waypoints)[0] & 4) != 0;
+		m_bWayData[i][4] = ((*character.Waypoints.wp[i].Waypoints)[0] & 8) != 0;
+		m_bWayData[i][5] = ((*character.Waypoints.wp[i].Waypoints)[0] & 0x10) != 0;
+		m_bWayData[i][6] = ((*character.Waypoints.wp[i].Waypoints)[0] & 0x20) != 0;
+		m_bWayData[i][7] = ((*character.Waypoints.wp[i].Waypoints)[0] & 0x40) != 0;
+		m_bWayData[i][8] = ((*character.Waypoints.wp[i].Waypoints)[0] & 0x80) != 0;
+		m_bWayData[i][9] = ((*character.Waypoints.wp[i].Waypoints)[1] & 1) != 0;
+		m_bWayData[i][10] = ((*character.Waypoints.wp[i].Waypoints)[1] & 2) != 0;
+		m_bWayData[i][11] = ((*character.Waypoints.wp[i].Waypoints)[1] & 4) != 0;
+		m_bWayData[i][12] = ((*character.Waypoints.wp[i].Waypoints)[1] & 8) != 0;
+		m_bWayData[i][13] = ((*character.Waypoints.wp[i].Waypoints)[1] & 0x10) != 0;
+		m_bWayData[i][14] = ((*character.Waypoints.wp[i].Waypoints)[1] & 0x20) != 0;
+		m_bWayData[i][15] = ((*character.Waypoints.wp[i].Waypoints)[1] & 0x40) != 0;
+		m_bWayData[i][16] = ((*character.Waypoints.wp[i].Waypoints)[1] & 0x80) != 0;
+		m_bWayData[i][17] = ((*character.Waypoints.wp[i].Waypoints)[2] & 1) != 0;
+		m_bWayData[i][18] = ((*character.Waypoints.wp[i].Waypoints) [2] & 2) != 0;
+		m_bWayData[i][19] = ((*character.Waypoints.wp[i].Waypoints) [2] & 4) != 0;
+		m_bWayData[i][20] = ((*character.Waypoints.wp[i].Waypoints) [2] & 8) != 0;
+		m_bWayData[i][21] = ((*character.Waypoints.wp[i].Waypoints) [2] & 0x10) != 0;
+		m_bWayData[i][22] = ((*character.Waypoints.wp[i].Waypoints) [2] & 0x20) != 0;
+		m_bWayData[i][23] = ((*character.Waypoints.wp[i].Waypoints) [2] & 0x40) != 0;
+		m_bWayData[i][24] = ((*character.Waypoints.wp[i].Waypoints) [2] & 0x80) != 0;
+		m_bWayData[i][25] = ((*character.Waypoints.wp[i].Waypoints) [3] & 1) != 0;
+		m_bWayData[i][26] = ((*character.Waypoints.wp[i].Waypoints) [3] & 2) != 0;
+		m_bWayData[i][27] = ((*character.Waypoints.wp[i].Waypoints) [3] & 4) != 0;
+		m_bWayData[i][28] = ((*character.Waypoints.wp[i].Waypoints) [3] & 8) != 0;
+		m_bWayData[i][29] = ((*character.Waypoints.wp[i].Waypoints) [3] & 0x10) != 0;
+		m_bWayData[i][30] = ((*character.Waypoints.wp[i].Waypoints) [3] & 0x20) != 0;
+		m_bWayData[i][31] = ((*character.Waypoints.wp[i].Waypoints) [3] & 0x40) != 0;
+		m_bWayData[i][32] = ((*character.Waypoints.wp[i].Waypoints) [3] & 0x80) != 0;
+		m_bWayData[i][33] = ((*character.Waypoints.wp[i].Waypoints) [4] & 1) != 0;
+		m_bWayData[i][34] = ((*character.Waypoints.wp[i].Waypoints) [4] & 2) != 0;
+		m_bWayData[i][35] = ((*character.Waypoints.wp[i].Waypoints) [4] & 4) != 0;
+		m_bWayData[i][36] = ((*character.Waypoints.wp[i].Waypoints) [4] & 8) != 0;
+		m_bWayData[i][37] = ((*character.Waypoints.wp[i].Waypoints) [4] & 0x10) != 0;
+		m_bWayData[i][38] = ((*character.Waypoints.wp[i].Waypoints) [4] & 0x20) != 0;
+		m_bWayData[i][39] = ((*character.Waypoints.wp[i].Waypoints) [4] & 0x40) != 0;
+
+/*
+class RAWData
+{
+	BYTE * data_;
+	UINT size_;
+public:
+	RAWData():data_(0),size_(0){}
+	BOOL ReadFile(CFile & cf){
+		ASSERT(!data_ && !size_);
+		size_ = UINT(cf.GetLength());
+		data_ = new BYTE[size_];
+		return (size_ == cf.Read(data_,size_));
+	}
+	DWORD GetChecksum() const{
+		//暗黑d2s文件的校验和算法
+		//注意：
+		//1．整个文件都参加校验，不过文件长data_[0x8]~data_[0xB]要先修改成文件实际长度bytes
+		//2．文件校验和data_[0xC]~data_[0xF]应先修改成0，即它自己不参与校验和的计算
+		//the checksum algorithm is a relatively simple one.
+		//After clearing the checksum field, you add up the values of all the bytes in the file,
+		//rotating the running total one bit to the left before adding each byte.
+		//Then store the result in this field.
+		//Thanks go to the Shadowmaster for publishing the checksum code.
+		ASSERT(data_ && size_);
+		DWORD add,ret = 0;
+		for(ULONGLONG i = 0;i < size_;++i){
+			add = (ret & 0x80000000 ? 1 : 0) + data_[i];
+			ret = (ret << 1) + add;
+		}
+		return ret;
+	}
+	~RAWData(){
+		delete [] data_;
+		data_ = 0;
+		size_ = 0;
+	}
+};
+
+
+struct CActInfo
+{
+//fields
+	BYTE d_[96];
+};
+
+struct CQuestInfo
+{
+//fields
+	DWORD	dwMajic;			//0x216F6F57
+	DWORD	dwActs;				//Numer of acts,好像都是6
+	WORD	wSize;				//Size in bytes,好像都是0x12A
+	BYTE	ActInfo[3 * 96];	//Quest/Act states
+//members
+	BOOL ReadFile(CFile & cf);
+};
+
+struct CWaypoints
+{
+//fields
+	BYTE	d_[80];
+//members
+	BOOL ReadFile(CFile & cf);
+};
+
+struct CNPCState 
+{
+//fields
+	BYTE	d_[52];
+//members
+	BOOL ReadFile(CFile & cf);
+};
+
+struct CPlayerStats
+{
+//fields
+	BYTE	data_[52];
+//members
+	BOOL ReadFile(CFile & cf);
+};
+//*/
+
+/*	BYTE		iCraftName1;	//8 bits,First Craft Name,if iQuality == 8
+	BYTE		iCraftName2;	//8 bits,Second Craft Name,if iQuality == 8
+	BOOL		bCraftPref1;	//1 bit,Prefix 1 flag,if iQuality == 8
+	WORD		wCraftPref1;	//11 bits,Prefix 1,if iQuality == 8 && bPref1 == TRUE
+	BOOL		bCraftSuff1;	//1 bit,Suffix 1 flag,if iQuality == 8
+	WORD		wCraftSuff1;	//11 bits,Suffix 1,if iQuality == 8 && bSuff1 == TRUE
+	BOOL		bCraftPref2;	//1 bit,Prefix 2 flag,if iQuality == 8
+	WORD		wCraftPref2;	//11 bits,Prefix 2,if iQuality == 8 && bPref2 == TRUE
+	BOOL		bCraftSuff2;	//1 bit,Suffix 2 flag,if iQuality == 8
+	WORD		wCraftSuff2;	//11 bits,Suffix 2,if iQuality == 8 && bSuff2 == TRUE
+	BOOL		bCraftPref3;	//1 bit,Prefix 3 flag,if iQuality == 8
+	WORD		wCraftPref3;	//11 bits,Prefix 3,if iQuality == 8 && bPref3 == TRUE
+	BOOL		bCraftSuff3;	//1 bit,Suffix 3 flag,if iQuality == 8
+	WORD		wCraftSuff3;	//11 bits,Suffix 3,if iQuality == 8 && bSuff3 == TRUE//*/
+
+
+IDB_BITMAP202           BITMAP                  "Pictcures\\手套\\06 Demonhide Gloves.bmp"
+IDB_BITMAP203           BITMAP                  "Pictcures\\手套\\07 Sharkskin Gloves.bmp"
+IDB_BITMAP204           BITMAP                  "Pictcures\\手套\\08 Heavy Bracers.bmp"
+IDB_BITMAP205           BITMAP                  "Pictcures\\手套\\09 Battle Gauntlets.bmp"
+IDB_BITMAP206           BITMAP                  "Pictcures\\手套\\10 War Gauntlets.bmp"
+IDB_BITMAP207           BITMAP                  "Pictcures\\手套\\11 Bramble Mitts.bmp"
+IDB_BITMAP208           BITMAP                  "Pictcures\\手套\\12 Vampirebone Gloves.bmp"
+IDB_BITMAP209           BITMAP                  "Pictcures\\手套\\13 Vambraces.bmp"
+IDB_BITMAP210           BITMAP                  "Pictcures\\手套\\14 Crusader Gauntlets.bmp"
+IDB_BITMAP211           BITMAP                  "Pictcures\\手套\\15 Ogre Gauntlets.bmp"
+#define IDB_BITMAP202                   351
+#define IDB_BITMAP203                   352
+#define IDB_BITMAP204                   353
+#define IDB_BITMAP205                   354
+#define IDB_BITMAP206                   355
+#define IDB_BITMAP207                   356
+#define IDB_BITMAP208                   357
+#define IDB_BITMAP209                   358
+#define IDB_BITMAP210                   359
+#define IDB_BITMAP211                   360
+
+IDB_BITMAP227           BITMAP                  "Pictcures\\衣服\\016 Ghost Armor.bmp"
+IDB_BITMAP228           BITMAP                  "Pictcures\\衣服\\017 Serpentskin Armor.bmp"
+IDB_BITMAP229           BITMAP                  "Pictcures\\衣服\\018 Demonhide Armor.bmp"
+IDB_BITMAP230           BITMAP                  "Pictcures\\衣服\\019 Trellised Armor.bmp"
+IDB_BITMAP231           BITMAP                  "Pictcures\\衣服\\020 Linked Mail.bmp"
+IDB_BITMAP232           BITMAP                  "Pictcures\\衣服\\021 Tigulated Mail.bmp"
+IDB_BITMAP233           BITMAP                  "Pictcures\\衣服\\022 Mesh Armor.bmp"
+IDB_BITMAP234           BITMAP                  "Pictcures\\衣服\\023 Cuirass.bmp"
+IDB_BITMAP235           BITMAP                  "Pictcures\\衣服\\024 Russet Armor.bmp"
+IDB_BITMAP236           BITMAP                  "Pictcures\\衣服\\025 Templar Coat.bmp"
+IDB_BITMAP237           BITMAP                  "Pictcures\\衣服\\026 Sharktooth Armor.bmp"
+IDB_BITMAP238           BITMAP                  "Pictcures\\衣服\\027 Embossed Plate.bmp"
+IDB_BITMAP239           BITMAP                  "Pictcures\\衣服\\028 Chaos Armor.bmp"
+IDB_BITMAP240           BITMAP                  "Pictcures\\衣服\\029 Ornate Plate.bmp"
+IDB_BITMAP241           BITMAP                  "Pictcures\\衣服\\030 Mage Plate.bmp"
+IDB_BITMAP242           BITMAP                  "Pictcures\\衣服\\031 Dusk Shroud.bmp"
+IDB_BITMAP243           BITMAP                  "Pictcures\\衣服\\032 Wyrmhide.bmp"
+IDB_BITMAP244           BITMAP                  "Pictcures\\衣服\\033 Scarab Husk.bmp"
+IDB_BITMAP245           BITMAP                  "Pictcures\\衣服\\034 Wire Fleece.bmp"
+IDB_BITMAP246           BITMAP                  "Pictcures\\衣服\\035 Diamond Mail.bmp"
+IDB_BITMAP247           BITMAP                  "Pictcures\\衣服\\036 Loricated Mail.bmp"
+IDB_BITMAP248           BITMAP                  "Pictcures\\衣服\\037 Boneweave.bmp"
+IDB_BITMAP249           BITMAP                  "Pictcures\\衣服\\038 Great Hauberk.bmp"
+IDB_BITMAP250           BITMAP                  "Pictcures\\衣服\\039 Balrog Skin.bmp"
+IDB_BITMAP251           BITMAP                  "Pictcures\\衣服\\040 Hellforge Plate.bmp"
+IDB_BITMAP252           BITMAP                  "Pictcures\\衣服\\041 Kraken Shell.bmp"
+IDB_BITMAP253           BITMAP                  "Pictcures\\衣服\\042 Lacquered Plate.bmp"
+IDB_BITMAP254           BITMAP                  "Pictcures\\衣服\\043 Shadow Plate.bmp"
+IDB_BITMAP255           BITMAP                  "Pictcures\\衣服\\044 Sacred Armor.bmp"
+IDB_BITMAP256           BITMAP                  "Pictcures\\衣服\\045 Archon Plate.bmp"
+#define IDB_BITMAP227                   376
+#define IDB_BITMAP228                   377
+#define IDB_BITMAP229                   378
+#define IDB_BITMAP230                   379
+#define IDB_BITMAP231                   380
+#define IDB_BITMAP232                   381
+#define IDB_BITMAP233                   382
+#define IDB_BITMAP234                   383
+#define IDB_BITMAP235                   384
+#define IDB_BITMAP236                   385
+#define IDB_BITMAP237                   386
+#define IDB_BITMAP238                   387
+#define IDB_BITMAP239                   388
+#define IDB_BITMAP240                   389
+#define IDB_BITMAP241                   390
+#define IDB_BITMAP242                   391
+#define IDB_BITMAP243                   392
+#define IDB_BITMAP244                   393
+#define IDB_BITMAP245                   394
+#define IDB_BITMAP246                   395
+#define IDB_BITMAP247                   396
+#define IDB_BITMAP248                   397
+#define IDB_BITMAP249                   398
+#define IDB_BITMAP250                   399
+#define IDB_BITMAP251                   400
+#define IDB_BITMAP252                   401
+#define IDB_BITMAP253                   402
+#define IDB_BITMAP254                   403
+#define IDB_BITMAP255                   404
+#define IDB_BITMAP256                   405
+
+
+IDB_BITMAP139           BITMAP                  "Pictcures\\帽子\\01 Cap.bmp"
+IDB_BITMAP140           BITMAP                  "Pictcures\\帽子\\02 Skull Cap.bmp"
+IDB_BITMAP141           BITMAP                  "Pictcures\\帽子\\03 Helm.bmp"
+IDB_BITMAP142           BITMAP                  "Pictcures\\帽子\\04 Full Helm.bmp"
+IDB_BITMAP143           BITMAP                  "Pictcures\\帽子\\05 Great Helm.bmp"
+IDB_BITMAP144           BITMAP                  "Pictcures\\帽子\\06 Crown.bmp"
+IDB_BITMAP145           BITMAP                  "Pictcures\\帽子\\07 Mask.bmp"
+IDB_BITMAP146           BITMAP                  "Pictcures\\帽子\\08 War Hat.bmp"
+IDB_BITMAP147           BITMAP                  "Pictcures\\帽子\\09 Sallet.bmp"
+IDB_BITMAP148           BITMAP                  "Pictcures\\帽子\\10 Casque.bmp"
+IDB_BITMAP149           BITMAP                  "Pictcures\\帽子\\11 Basinet.bmp"
+IDB_BITMAP150           BITMAP                  "Pictcures\\帽子\\12 Winged Helm.bmp"
+IDB_BITMAP151           BITMAP                  "Pictcures\\帽子\\13 Grand Crown.bmp"
+IDB_BITMAP152           BITMAP                  "Pictcures\\帽子\\14 Death Mask.bmp"
+IDB_BITMAP153           BITMAP                  "Pictcures\\帽子\\15 Grim Helm.bmp"
+IDB_BITMAP154           BITMAP                  "Pictcures\\帽子\\16 Wolf Head.bmp"
+IDB_BITMAP155           BITMAP                  "Pictcures\\帽子\\17 Hawk Helm.bmp"
+IDB_BITMAP156           BITMAP                  "Pictcures\\帽子\\18 Antlers.bmp"
+IDB_BITMAP157           BITMAP                  "Pictcures\\帽子\\19 Spirit Mask.bmp"
+IDB_BITMAP158           BITMAP                  "Pictcures\\帽子\\20 Falcon Mask.bmp"
+IDB_BITMAP159           BITMAP                  "Pictcures\\帽子\\21 Jawbone Cap.bmp"
+IDB_BITMAP160           BITMAP                  "Pictcures\\帽子\\22 Fanged Helm.bmp"
+IDB_BITMAP161           BITMAP                  "Pictcures\\帽子\\23 Horned Helm.bmp"
+IDB_BITMAP162           BITMAP                  "Pictcures\\帽子\\24 Assault Helmet.bmp"
+IDB_BITMAP163           BITMAP                  "Pictcures\\帽子\\25 Avenger Guard.bmp"
+IDB_BITMAP164           BITMAP                  "Pictcures\\帽子\\26 Circlet.bmp"
+IDB_BITMAP165           BITMAP                  "Pictcures\\帽子\\27 Coronet.bmp"
+IDB_BITMAP166           BITMAP                  "Pictcures\\帽子\\28 Tiara.bmp"
+IDB_BITMAP167           BITMAP                  "Pictcures\\帽子\\29 Diadem.bmp"
+IDB_BITMAP168           BITMAP                  "Pictcures\\帽子\\30 Shako.bmp"
+IDB_BITMAP169           BITMAP                  "Pictcures\\帽子\\31 Hydraskull.bmp"
+IDB_BITMAP170           BITMAP                  "Pictcures\\帽子\\32 Armet.bmp"
+IDB_BITMAP171           BITMAP                  "Pictcures\\帽子\\33 Giant Conch.bmp"
+IDB_BITMAP172           BITMAP                  "Pictcures\\帽子\\34 Spired Helm.bmp"
+IDB_BITMAP173           BITMAP                  "Pictcures\\帽子\\35 Corona.bmp"
+IDB_BITMAP174           BITMAP                  "Pictcures\\帽子\\36 Demonhead.bmp"
+IDB_BITMAP175           BITMAP                  "Pictcures\\帽子\\37 Bone Visage.bmp"
+IDB_BITMAP176           BITMAP                  "Pictcures\\帽子\\38 Alpha Helm.bmp"
+IDB_BITMAP177           BITMAP                  "Pictcures\\帽子\\39 Griffon Headdress.bmp"
+IDB_BITMAP178           BITMAP                  "Pictcures\\帽子\\40 Hunter's Guise.bmp"
+IDB_BITMAP179           BITMAP                  "Pictcures\\帽子\\41 Sacred Feathers.bmp"
+IDB_BITMAP180           BITMAP                  "Pictcures\\帽子\\42 Totemic Mask.bmp"
+IDB_BITMAP181           BITMAP                  "Pictcures\\帽子\\43 Jawbone Visor.bmp"
+IDB_BITMAP182           BITMAP                  "Pictcures\\帽子\\44 Lion Helm.bmp"
+IDB_BITMAP183           BITMAP                  "Pictcures\\帽子\\45 Range Mask.bmp"
+IDB_BITMAP184           BITMAP                  "Pictcures\\帽子\\46 Savage Helmet.bmp"
+IDB_BITMAP185           BITMAP                  "Pictcures\\帽子\\47 Slayer Guard.bmp"
+IDB_BITMAP186           BITMAP                  "Pictcures\\帽子\\48 Blood Spirit.bmp"
+IDB_BITMAP187           BITMAP                  "Pictcures\\帽子\\49 Sun Spirit.bmp"
+IDB_BITMAP188           BITMAP                  "Pictcures\\帽子\\50 Earth Spirit.bmp"
+IDB_BITMAP189           BITMAP                  "Pictcures\\帽子\\51 Sky Spirit.bmp"
+IDB_BITMAP190           BITMAP                  "Pictcures\\帽子\\52 Dream Spirit.bmp"
+IDB_BITMAP191           BITMAP                  "Pictcures\\帽子\\53 Carnage Helm.bmp"
+IDB_BITMAP192           BITMAP                  "Pictcures\\帽子\\54 Fury Visor.bmp"
+IDB_BITMAP193           BITMAP                  "Pictcures\\帽子\\55 Destroyer Helm.bmp"
+IDB_BITMAP194           BITMAP                  "Pictcures\\帽子\\56 Conqueror Crown.bmp"
+IDB_BITMAP195           BITMAP                  "Pictcures\\帽子\\57 Guardian Crown.bmp"
+IDB_BITMAP196           BITMAP                  "Pictcures\\帽子\\58 Bone Helm.bmp"
+IDB_BITMAP197           BITMAP                  "Pictcures\\手套\\01 Leather Gloves.bmp"
+IDB_BITMAP198           BITMAP                  "Pictcures\\手套\\02 Heavy Gloves.bmp"
+IDB_BITMAP199           BITMAP                  "Pictcures\\手套\\03 Chain Gloves.bmp"
+IDB_BITMAP200           BITMAP                  "Pictcures\\手套\\04 Light Gauntlets.bmp"
+IDB_BITMAP201           BITMAP                  "Pictcures\\手套\\05 Gauntlets.bmp"
+IDB_BITMAP202           BITMAP                  "Pictcures\\鞋子\\01 Boots.bmp"
+IDB_BITMAP203           BITMAP                  "Pictcures\\鞋子\\02 Heavy Boots.bmp"
+IDB_BITMAP204           BITMAP                  "Pictcures\\鞋子\\03 Chain Boots.bmp"
+IDB_BITMAP205           BITMAP                  "Pictcures\\鞋子\\04 Light Plated Boots.bmp"
+IDB_BITMAP206           BITMAP                  "Pictcures\\鞋子\\05 Greaves.bmp"
+IDB_BITMAP207           BITMAP                  "Pictcures\\腰带\\01 Sash.bmp"
+IDB_BITMAP208           BITMAP                  "Pictcures\\腰带\\02 Light Belt.bmp"
+IDB_BITMAP209           BITMAP                  "Pictcures\\腰带\\03 Belt.bmp"
+IDB_BITMAP210           BITMAP                  "Pictcures\\腰带\\04 Heavy Belt.bmp"
+IDB_BITMAP211           BITMAP                  "Pictcures\\腰带\\05 Plated Belt.bmp"
+IDB_BITMAP212           BITMAP                  "Pictcures\\衣服\\001 Quilted Armor.bmp"
+IDB_BITMAP213           BITMAP                  "Pictcures\\衣服\\002 Leather Armor.bmp"
+IDB_BITMAP214           BITMAP                  "Pictcures\\衣服\\003 Hard Leather Armor.bmp"
+IDB_BITMAP215           BITMAP                  "Pictcures\\衣服\\004 Studded Leather.bmp"
+IDB_BITMAP216           BITMAP                  "Pictcures\\衣服\\005 Ring Mail.bmp"
+IDB_BITMAP217           BITMAP                  "Pictcures\\衣服\\006 Scale Mail.bmp"
+IDB_BITMAP218           BITMAP                  "Pictcures\\衣服\\007 Chain Mail.bmp"
+IDB_BITMAP219           BITMAP                  "Pictcures\\衣服\\008 Breast Plate.bmp"
+IDB_BITMAP220           BITMAP                  "Pictcures\\衣服\\009 Splint Mail.bmp"
+IDB_BITMAP221           BITMAP                  "Pictcures\\衣服\\010 Plate Mail.bmp"
+IDB_BITMAP222           BITMAP                  "Pictcures\\衣服\\011 Field Mail.bmp"
+IDB_BITMAP223           BITMAP                  "Pictcures\\衣服\\012 Gothic Plate.bmp"
+IDB_BITMAP224           BITMAP                  "Pictcures\\衣服\\013 Full Plate Mail.bmp"
+IDB_BITMAP225           BITMAP                  "Pictcures\\衣服\\014 Ancient Armor.bmp"
+IDB_BITMAP226           BITMAP                  "Pictcures\\衣服\\015 Light Plate.bmp"
+IDB_BITMAP227           BITMAP                  "Pictcures\\盾牌\\01 Buckler.bmp"
+IDB_BITMAP228           BITMAP                  "Pictcures\\盾牌\\02 Small Shield.bmp"
+IDB_BITMAP229           BITMAP                  "Pictcures\\盾牌\\03 Large Shield.bmp"
+IDB_BITMAP230           BITMAP                  "Pictcures\\盾牌\\04 Kite Shield.bmp"
+IDB_BITMAP231           BITMAP                  "Pictcures\\盾牌\\06 Tower Shield.bmp"
+IDB_BITMAP232           BITMAP                  "Pictcures\\盾牌\\07 Gothic Shield.bmp"
+IDB_BITMAP233           BITMAP                  "Pictcures\\盾牌\\08 Bone Shield.bmp"
+IDB_BITMAP234           BITMAP                  "Pictcures\\盾牌\\09 Spiked Shield.bmp"
+IDB_BITMAP235           BITMAP                  "Pictcures\\盾牌\\Pal专用\\10 Targe.bmp"
+IDB_BITMAP236           BITMAP                  "Pictcures\\盾牌\\Pal专用\\11 Rondache.bmp"
+IDB_BITMAP237           BITMAP                  "Pictcures\\盾牌\\Pal专用\\12 Heraldic Shield.bmp"
+IDB_BITMAP238           BITMAP                  "Pictcures\\盾牌\\Pal专用\\13 Aerin Shield.bmp"
+IDB_BITMAP239           BITMAP                  "Pictcures\\盾牌\\Pal专用\\14 Crown Shield.bmp"
+IDB_BITMAP240           BITMAP                  "Pictcures\\盾牌\\Nec专用\\01 Preserved Head.bmp"
+IDB_BITMAP241           BITMAP                  "Pictcures\\盾牌\\Nec专用\\02 Zombie Head.bmp"
+IDB_BITMAP242           BITMAP                  "Pictcures\\盾牌\\Nec专用\\03 Unraveller Head.bmp"
+IDB_BITMAP243           BITMAP                  "Pictcures\\盾牌\\Nec专用\\04 Gargoyle Head.bmp"
+IDB_BITMAP244           BITMAP                  "Pictcures\\盾牌\\Nec专用\\05 Demon Head.bmp"
+
+#define IDB_BITMAP139                   288
+#define IDB_BITMAP140                   289
+#define IDB_BITMAP141                   290
+#define IDB_BITMAP142                   291
+#define IDB_BITMAP143                   292
+#define IDB_BITMAP144                   293
+#define IDB_BITMAP145                   294
+#define IDB_BITMAP146                   295
+#define IDB_BITMAP147                   296
+#define IDB_BITMAP148                   297
+#define IDB_BITMAP149                   298
+#define IDB_BITMAP150                   299
+#define IDB_BITMAP151                   300
+#define IDB_BITMAP152                   301
+#define IDB_BITMAP153                   302
+#define IDB_BITMAP154                   303
+#define IDB_BITMAP155                   304
+#define IDB_BITMAP156                   305
+#define IDB_BITMAP157                   306
+#define IDB_BITMAP158                   307
+#define IDB_BITMAP159                   308
+#define IDB_BITMAP160                   309
+#define IDB_BITMAP161                   310
+#define IDB_BITMAP162                   311
+#define IDB_BITMAP163                   312
+#define IDB_BITMAP164                   313
+#define IDB_BITMAP165                   314
+#define IDB_BITMAP166                   315
+#define IDB_BITMAP167                   316
+#define IDB_BITMAP168                   317
+#define IDB_BITMAP169                   318
+#define IDB_BITMAP170                   319
+#define IDB_BITMAP171                   320
+#define IDB_BITMAP172                   321
+#define IDB_BITMAP173                   322
+#define IDB_BITMAP174                   323
+#define IDB_BITMAP175                   324
+#define IDB_BITMAP176                   325
+#define IDB_BITMAP177                   326
+#define IDB_BITMAP178                   327
+#define IDB_BITMAP179                   328
+#define IDB_BITMAP180                   329
+#define IDB_BITMAP181                   330
+#define IDB_BITMAP182                   331
+#define IDB_BITMAP183                   332
+#define IDB_BITMAP184                   333
+#define IDB_BITMAP185                   334
+#define IDB_BITMAP186                   335
+#define IDB_BITMAP187                   336
+#define IDB_BITMAP188                   337
+#define IDB_BITMAP189                   338
+#define IDB_BITMAP190                   339
+#define IDB_BITMAP191                   340
+#define IDB_BITMAP192                   341
+#define IDB_BITMAP193                   342
+#define IDB_BITMAP194                   343
+#define IDB_BITMAP195                   344
+#define IDB_BITMAP196                   345
+#define IDB_BITMAP197                   346
+#define IDB_BITMAP198                   347
+#define IDB_BITMAP199                   348
+#define IDB_BITMAP200                   349
+#define IDB_BITMAP201                   350
+#define IDB_BITMAP202                   351
+#define IDB_BITMAP203                   352
+#define IDB_BITMAP204                   353
+#define IDB_BITMAP205                   354
+#define IDB_BITMAP206                   355
+#define IDB_BITMAP207                   356
+#define IDB_BITMAP208                   357
+#define IDB_BITMAP209                   358
+#define IDB_BITMAP210                   359
+#define IDB_BITMAP211                   360
+#define IDB_BITMAP212                   361
+#define IDB_BITMAP213                   362
+#define IDB_BITMAP214                   363
+#define IDB_BITMAP215                   364
+#define IDB_BITMAP216                   365
+#define IDB_BITMAP217                   366
+#define IDB_BITMAP218                   367
+#define IDB_BITMAP219                   368
+#define IDB_BITMAP220                   369
+#define IDB_BITMAP221                   370
+#define IDB_BITMAP222                   371
+#define IDB_BITMAP223                   372
+#define IDB_BITMAP224                   373
+#define IDB_BITMAP225                   374
+#define IDB_BITMAP226                   375
+#define IDB_BITMAP227                   376
+#define IDB_BITMAP228                   377
+#define IDB_BITMAP229                   378
+#define IDB_BITMAP230                   379
+#define IDB_BITMAP231                   380
+#define IDB_BITMAP232                   381
+#define IDB_BITMAP233                   382
+#define IDB_BITMAP234                   383
+#define IDB_BITMAP235                   384
+#define IDB_BITMAP236                   385
+#define IDB_BITMAP237                   386
+#define IDB_BITMAP238                   387
+#define IDB_BITMAP239                   388
+#define IDB_BITMAP240                   389
+#define IDB_BITMAP241                   390
+#define IDB_BITMAP242                   391
+#define IDB_BITMAP243                   392
+#define IDB_BITMAP244                   393
+
+Cap
+Skull Cap
+Helm
+Full Helm
+Great Helm
+Crown
+Mask
+War Hat
+Sallet
+Casque
+Basinet
+Winged Helm
+Grand Crown
+Death Mask
+Grim Helm
+Wolf Head
+Hawk Helm
+Antlers
+Falcon Mask
+Spirit Mask
+Jawbone Cap
+Fanged Helm
+Horned Helm
+Assault Helmet
+Avenger Guard
+Circlet
+Coronet
+Tiara
+Diadem
+Shako
+Hydraskull
+Armet
+Giant Conch
+Spired Helm
+Corona
+Demonhead
+Bone Visage
+Alpha Helm
+Griffon Headdress
+Hunter's Guise
+Sacred Feathers
+Totemic Mask
+Jawbone Visor
+Lion Helm
+Range Mask
+Savage Helmet
+Slayer Guard
+Blood Spirit
+Sun Spirit
+Earth Spirit
+Sky Spirit
+Dream Spirit
+Carnage Helm
+Fury Visor
+Destroyer Helm
+Conqueror Crown
+Guardian Crown
+Bone Helm

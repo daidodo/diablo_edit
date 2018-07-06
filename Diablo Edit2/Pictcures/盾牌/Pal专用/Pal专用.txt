@@ -1,0 +1,19 @@
+7
+Targe
+Rondache
+Heraldic Shield
+Aerin Shield
+Crown Shield
+11
+Akaran Targe
+Akaran Rondache
+Protector Shield
+Gilded Shield
+Royal Shield
+12
+Sacred Targe
+Sacred Rondache
+Kurast Shield
+13
+Zakarum Shield
+Vortex Shield

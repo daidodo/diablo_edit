@@ -1,0 +1,63 @@
+1
+Cap
+Skull Cap
+Helm
+Full Helm
+Great Helm
+Crown
+Mask
+3 
+Bone Helm
+War Hat
+Sallet
+Casque
+Basinet
+4
+Winged Helm
+Grand Crown
+Death Mask
+6
+Grim Helm
+7
+Circlet
+Coronet
+Tiara
+8
+Diadem
+Shako
+Hydraskull
+Armet
+Giant Conch
+Spired Helm
+Corona
+Demonhead
+10
+Bone Visage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,307 @@
+9gi	Ancient Axe		1
+9wd	Ancient Sword		1
+8lx	Arbalest		1
+6ws	Archon Staff		1
+am6	Ashwood Bow		1
+7sm	Ataghan		1
+axe	Axe		1
+bal	Balanced Axe		1
+bkf	Balanced Knife		1
+8hx	Ballista		1
+7gs	Balrog Blade		1
+7s7	Balrog Spear		1
+9sp	Barbed Club		1
+bar	Bardiche		1
+bsw	Bastard Sword		1
+btx	Battle Axe		1
+7cs	Battle Cestus		1
+9tk	Battle Dart		1
+9wh	Battle Hammer		1
+9s8	Battle Scythe		1
+bst	Battle Staff		1
+9bs	Battle Sword		1
+9ba	Bearded Axe		1
+9h9	Bec-de-Corbin		1
+7wa	Berserker Axe		1
+9vo	Bill		1
+bld	Blade		1
+6hb	Blade Bow		1
+btl	Blade Talons		1
+7dg	Bone Knife		1
+bwn	Bone Wand		1
+brn	Brandistock		1
+bax	Broad Axe		1
+bsd	Broad Sword		1
+9wn	Burnt Wand		1
+7ws	Caduceus		1
+8lb	Cedar Bow		1
+8cs	Cedar Staff		1
+am7	Ceremonial Bow		1
+ama	Ceremonial Javelin		1
+am9	Ceremonial Pike		1
+am8	Ceremonial Spear		1
+ces	Cestus		1
+7ga	Champion Axe		1
+7b7	Champion Sword		1
+gpm	Choking Gas Potion		1
+8rx	Chu-Ko-Nu		1
+9kr	Cinquedeas		1
+ob4	Clasped Orb		1
+clw	Claws		1
+clm	Claymore		1
+9ax	Cleaver		1
+ob8	Cloudy Sphere		1
+clb	Club		1
+7gd	Colossus Blade		1
+6hx	Colossus Crossbow		1
+7fb	Colossus Sword		1
+7vo	Colossus Voulge		1
+cbw	Composite Bow		1
+7bs	Conquest Sword		1
+mxb	Crossbow		1
+9mp	Crowbill		1
+6l7	Crusader Bow		1
+7pa	Cryptic Axe		1
+7ls	Cryptic Sword		1
+crs	Crystal Sword		1
+ob7	Crystalline Globe		1
+9cl	Cudgel		1
+9sm	Cutlass		1
+9cm	Dacian Falx		1
+dgr	Dagger		1
+7bt	Decapitator		1
+d33	Decoy Gidbinn		1
+6rx	Demon Crossbow		1
+obd	Demon Heart		1
+7mt	Devil Star		1
+6s7	Diamond Bow		1
+9cr	Dimensional Blade		1
+obf	Dimensional Shard		1
+dir	Dirk		1
+9ws	Divine Scepter		1
+2ax	Double Axe		1
+8cb	Double Bow		1
+ob1	Eagle Orb		1
+8sb	Edge Bow		1
+6cs	Elder Staff		1
+obc	Eldritch Orb		1
+7sb	Elegant Blade		1
+92h	Espandon		1
+72a	Ettin Axe		1
+9gd	Executioner Sword		1
+opm	Exploding Potion		1
+7ss	Falcata		1
+flc	Falchion		1
+7kr	Fanged Knife		1
+9xf	Fascia		1
+7la	Feral Axe		1
+7lw	Feral Claws		1
+fla	Flail		1
+flb	Flamberge		1
+9ma	Flanged Mace		1
+7ta	Flying Axe		1
+7tk	Flying Knife		1
+9ta	Francisca		1
+opl	Fulminating Potion		1
+9tr	Fuscina		1
+7gl	Ghost Glaive		1
+7st	Ghost Spear		1
+7yw	Ghost Wand		1
+gix	Giant Axe		1
+gis	Giant Sword		1
+7wc	Giant Thresher		1
+9ss	Gladius		1
+glv	Glaive		1
+7gi	Glorious Axe		1
+ob6	Glowing Orb		1
+cst	Gnarled Staff		1
+6mx	Gorgon Crossbow		1
+9ga	Gothic Axe		1
+8lw	Gothic Bow		1
+8bs	Gothic Staff		1
+9b9	Gothic Sword		1
+amc	Grand Matron Bow		1
+gsc	Grand Scepter		1
+9gw	Grave Wand		1
+gax	Great Axe		1
+6cb	Great Bow		1
+gma	Great Maul		1
+9pi	Great Pilum		1
+7h7	Great Poleaxe		1
+gsd	Great Sword		1
+9lw	Greater Claws		1
+9tw	Greater Talons		1
+9wc	Grim Scythe		1
+gwn	Grim Wand		1
+hal	Halberd		1
+hax	Hand Axe		1
+9cs	Hand Scythe		1
+9ts	Harpoon		1
+9ha	Hatchet		1
+axf	Hatchet Hands		1
+obb	Heavenly Stone		1
+hxb	Heavy Crossbow		1
+hfh	Hell Forge Hammer		1
+7cm	Highland Blade		1
+9qs	Holy Water Sprinkler		1
+hdm	Horadric Malus		1
+hst	Horadric Staff		1
+hbw	Hunter's Bow		1
+9b8	Hurlbat		1
+6lw	Hydra Bow		1
+7fc	Hydra Edge		1
+7ja	Hyperion Javelin		1
+7sr	Hyperion Spear		1
+9mt	Jagged Star		1
+ob5	Jared's Stone		1
+jav	Javelin		1
+8ss	Jo Staff		1
+ktr	Katar		1
+qf1	Khalim's Flail		1
+qf2	Khalim's Will		1
+9fl	Knout		1
+kri	Kris		1
+9p9	Lance		1
+lax	Large Axe		1
+8l8	Large Siege Bow		1
+7bl	Legend Spike		1
+72h	Legend Sword		1
+7wh	Legendary Mallet		1
+7bw	Lich Wand		1
+lxb	Light Crossbow		1
+9b7	Lochaber Axe		1
+lbb	Long Battle Bow		1
+lbw	Long Bow		1
+lst	Long Staff		1
+lsd	Long Sword		1
+lwb	Long War Bow		1
+mac	Mace		1
+am5	Maiden Javelin		1
+am4	Maiden Pike		1
+am3	Maiden Spear		1
+7br	Mancatcher		1
+9gm	Martel de Fer		1
+amb	Matriarchal Bow		1
+amf	Matriarchal Javelin		1
+ame	Matriarchal Pike		1
+amd	Matriarchal Spear		1
+mau	Maul		1
+7sc	Mighty Scepter		1
+9la	Military Axe		1
+mpi	Military Pick		1
+7di	Mithril Point		1
+mst	Morning Star		1
+7wd	Mythical Sword		1
+9wa	Naga		1
+7o7	Ogre Axe		1
+7m7	Ogre Maul		1
+ops	Oil Potion		1
+9pa	Partizan		1
+6lx	Pellet Bow		1
+9yw	Petrified Wand		1
+7cr	Phase Blade		1
+pik	Pike		1
+pil	Pilum		1
+9dg	Poignard		1
+pax	Poleaxe		1
+7wn	Polished Wand		1
+8ls	Quarterstaff		1
+9ar	Quhab		1
+gps	Rancid Gas Potion		1
+8hb	Razor Bow		1
+am2	Reflex Bow		1
+7ma	Reinforced Mace		1
+rxb	Repeating Crossbow		1
+9di	Rondel		1
+8sw	Rune Bow		1
+9sc	Rune Scepter		1
+8ws	Rune Staff		1
+9ls	Rune Sword		1
+7tw	Runic Talons		1
+sbr	Sabre		1
+ob2	Sacred Globe		1
+scp	Scepter		1
+scm	Scimitar		1
+skr	Scissors Katar		1
+9qr	Scissors Quhab		1
+7qr	Scissors Suwayyah		1
+7fl	Scourge		1
+scy	Scythe		1
+7qs	Seraph Rod		1
+6lb	Shadow Bow		1
+msf	Shaft of the Horadric Staff		1
+9sb	Shamshir		1
+6bs	Shillelagh		1
+sbb	Short Battle Bow		1
+sbw	Short Bow		1
+8s8	Short Siege Bow		1
+ssp	Short Spear		1
+sst	Short Staff		1
+ssd	Short Sword		1
+swb	Short War Bow		1
+8mx	Siege Crossbow		1
+7ba	Silver-edged Axe		1
+9s9	Simbilan		1
+7ax	Small Crescent		1
+ob3	Smoked Sphere		1
+ob9	Sparkling Ball		1
+spr	Spear		1
+spt	Spetum		1
+9gl	Spiculum		1
+6sb	Spider Bow		1
+spc	Spiked Club		1
+am1	Stag Bow		1
+6ls	Stalagmite		1
+9bl	Stiletto		1
+gpl	Strangling Gas Potion		1
+7tr	Stygian Pike		1
+7pi	Stygian Pilum		1
+7ar	Suwayyah		1
+oba	Swirling Crystal		1
+9bt	Tabar		1
+g33	The Gidbinn		1
+7s8	Thresher		1
+tax	Throwing Axe		1
+tkf	Throwing Knife		1
+tsp	Throwing Spear		1
+7gm	Thunder Maul		1
+7ha	Tomahawk		1
+9bw	Tomb Wand		1
+tri	Trident		1
+7cl	Truncheon		1
+9fc	Tulwar		1
+9gs	Tusk Sword		1
+92a	Twin Axe		1
+2hs	Two-Handed Sword		1
+7sp	Tyrant Club		1
+7gw	Unearthed Wand		1
+obe	Vortex Orb		1
+vou	Voulge		1
+6ss	Walking Stick		1
+wnd	Wand		1
+wax	War Axe		1
+9m9	War Club		1
+9bk	War Dart		1
+7xf	War Fist		1
+9br	War Fork		1
+whm	War Hammer		1
+9ja	War Javelin		1
+7p7	War Pike		1
+wsp	War Scepter		1
+wsc	War Scythe		1
+9sr	War Spear		1
+7mp	War Spike		1
+wst	War Staff		1
+wsd	War Sword		1
+6sw	Ward Bow		1
+7b8	Winged Axe		1
+7ts	Winged Harpoon		1
+7bk	Winged Knife		1
+leg	Wirt's Leg		1
+wrb	Wrist Blade		1
+9wb	Wrist Spike		1
+7wb	Wrist Sword		1
+9st	Yari		1
+ywn	Yew Wand		1
+9fb	Zweihander		1
+		1

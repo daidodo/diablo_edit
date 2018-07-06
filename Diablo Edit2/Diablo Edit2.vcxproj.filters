@@ -1,0 +1,1122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="资源文件\Pictures">
+      <UniqueIdentifier>{eff30932-02d1-4840-9ed9-47052c19be91}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Diablo Edit2.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFrm.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Diablo Edit2Doc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Diablo Edit2View.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="BinDataStream.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="D2Item.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="D2S_Struct.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStructs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgCharBasicInfo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgCharItems.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgPrefixSuffix.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgQuestInfo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgSelectChar.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgSkills.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgSuspend.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgWayPoints.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemDataStruct.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemList.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MayExist.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="PropertyDialog.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Diablo Edit2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFrm.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Diablo Edit2Doc.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Diablo Edit2View.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="D2Item.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="D2S_Struct.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgCharBasicInfo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgCharItems.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgPrefixSuffix.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgQuestInfo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgSelectChar.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgSkills.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgSuspend.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgWayPoints.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemList.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="PropertyDialog.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\Diablo Edit2Doc.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\Diablo Edit2.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\1.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="Pictcures\衣服\001 Quilted Armor.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\鞋子\01 Boots.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\盾牌\01 Buckler.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\帽子\01 Cap.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\棒锤\01 Club.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\任务\01 Decoy Gidbinn.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\斧头\01 Hand Axe.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\Sor杖\01 Jo Staff.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\Ass剪\01 Katar.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\手套\01 Leather Gloves.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\盾牌\Nec专用\01 Preserved Head.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\毒药\01 Rancid Gas Potion.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\腰带\01 Sash.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\Pal杖\01 Scepter.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\弓弩\01 Short Bow.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\刀剑\01 Short Sword.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\长柄\01 Spear.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\Nec杖\01 Wand.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\Sor球\1 Eagle Orb.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\标枪\1 Javelin.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\Ama专用\1 Stag Bow.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\飞刀\1 Throwing Knife.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\衣服\002 Leather Armor.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\斧头\02 Axe.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\Pal杖\02 Grand Scepter.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\Ass剪\02 Hatchet Hands.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\鞋子\02 Heavy Boots.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\手套\02 Heavy Gloves.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\弓弩\02 Hunter%27s Bow.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\腰带\02 Light Belt.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\Sor杖\02 Long Staff.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\毒药\02 Oil Potion.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\刀剑\02 Scimitar.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\帽子\02 Skull Cap.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\盾牌\02 Small Shield.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\棒锤\02 Spiked Club.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\任务\02 The Gidbinn.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\长柄\02 Trident.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\Nec杖\02 Yew Wand.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\盾牌\Nec专用\02 Zombie Head.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\标枪\2 Pilum.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\Ama专用\2 Reflex Bow.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\Sor球\2 Sacred Globe.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\飞刀\2 Throwing Axe.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\衣服\003 Hard Leather Armor.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\腰带\03 Belt.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\Nec杖\03 Bone Wand.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\长柄\03 Brandistock.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\鞋子\03 Chain Boots.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\手套\03 Chain Gloves.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\毒药\03 Choking Gas Potion.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\Ass剪\03 Claws.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\斧头\03 Double Axe.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\Sor杖\03 Ganrled Staff.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\帽子\03 Helm.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\盾牌\03 Large Shield.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\弓弩\03 Long Bow.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\棒锤\03 Mace.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\刀剑\03 Sabre.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\盾牌\Nec专用\03 Unraveller Head.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\Pal杖\03 War Scepter.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\任务\03 Wirt%27s Leg.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\飞刀\3 Balanced Knife.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\Ama专用\3 Maiden Spear.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\标枪\3 Short Spear.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\Sor球\3 Smoked Sphere.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\衣服\004 Studded Leather.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\Sor杖\04 Battle Staff.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\弓弩\04 Composite Bow.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\毒药\04 Exploding Potion.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\刀剑\04 Falchion.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\帽子\04 Full Helm.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\盾牌\Nec专用\04 Gargoyle Head.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\Nec杖\04 Grim Wand.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\腰带\04 Heavy Belt.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\任务\04 Horadric Malus.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\盾牌\04 Kite Shield.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\手套\04 Light Gauntlets.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\鞋子\04 Light Plated Boots.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\斧头\04 Military Pick.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\棒锤\04 Morning Star.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\Ass剪\04 Scissors Katar.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\长柄\04 Spetum.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\飞刀\4 Balanced Axe.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\Sor球\4 Clasped Orb.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\标枪\4 Glaive.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\Ama专用\4 Maiden Pike.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\衣服\005 Ring Mail.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\刀剑\05 Crystal Sword.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\盾牌\Nec专用\05 Demon Head.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\棒锤\05 Flail.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\手套\05 Gauntlets.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\帽子\05 Great Helm.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\鞋子\05 Greaves.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\任务\05 Hell Forge Hammer.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\长柄\05 Pike.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\腰带\05 Plated Belt.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\弓弩\05 Short Battle Bow.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\毒药\05 Strangling Gas Potion.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\斧头\05 War Axe.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\Sor杖\05 War Staff.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\Sor球\5 Jared%27s Stone.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\Ama专用\5 Maiden Javelin.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\标枪\5 Throwing Spear.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\衣服\006 Scale Mail.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\长柄\06 Bardiche.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\刀剑\06 Broad Sword.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\帽子\06 Crown.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\毒药\06 Fulminating Potion.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\任务\06 Horadric Staff.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\斧头\06 Large Axe.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\弓弩\06 Long Battle Bow.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\盾牌\06 Tower Shield.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\棒锤\06 War Hammer.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\衣服\007 Chain Mail.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\斧头\07 Broad Axe.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\盾牌\07 Gothic Shield.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\刀剑\07 Long Sword.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\帽子\07 Mask.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\棒锤\07 Maul.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\弓弩\07 Short War Bow.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\任务\07 Staff Of Kings.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\长柄\07 Voulge.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\衣服\008 Breast Plate.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\斧头\08 Battle Axe.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\盾牌\08 Bone Shield.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\棒锤\08 Great Maul.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\帽子\08 Grim Helm.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\任务\08 Khalim%27s Flail.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\弓弩\08 Long War Bow.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\长柄\08 Scythe.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\刀剑\08 War Sword.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\衣服\009 Splint Mail.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\帽子\头冠\09 Circlet.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\斧头\09 Great Axe.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\任务\09 Khalim%27s Will.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\弓弩\09 Light Crossbow.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\长柄\09 Poleaxe.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\盾牌\09 Spiked Shield.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\刀剑\09 Tow Handed Sword.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\衣服\010 Plate Mail.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\刀剑\10 Claymore.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\帽子\头冠\10 Coronet.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\弓弩\10 Crossbow.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\斧头\10 Gaint Axe.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\长柄\10 Halberd.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\盾牌\Pal专用\10 Targe.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\衣服\011 Field Mail.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\刀剑\11 Giant Sword.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\弓弩\11 Heavy Crossbow.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\盾牌\Pal专用\11 Rondache.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\帽子\头冠\11 Tiara.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\长柄\11 War Scythe.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\衣服\012 Gothic Plate.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\刀剑\12 Bastard Sword.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\帽子\头冠\12 Diadem.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\盾牌\Pal专用\12 Heraldic Shield.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\弓弩\12 Repeating Crossbow.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\衣服\013 Full Plate Mail.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\盾牌\Pal专用\13 Aerin Shield.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\刀剑\13 Flamberge.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\衣服\014 Ancient Armor.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\盾牌\Pal专用\14 Crown Shield.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\刀剑\14 Great Sword.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\衣服\015 Light Plate.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\刀剑\15 Dagger.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\刀剑\16 Dirk.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\帽子\Dru专用\16 Wolf Head.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\帽子\Dru专用\17 Hawk Helm.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\刀剑\17 Kris.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\帽子\Dru专用\18 Antlers.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\武器\刀剑\18 Blade.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\帽子\Dru专用\19 Spirit Mask.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\帽子\Dru专用\20 Falcon Mask.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\帽子\Bar专用\21 Jawbone Cap.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\帽子\Bar专用\22 Fanged Helm.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\帽子\Bar专用\23 Horned Helm.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\帽子\Bar专用\24 Assault Helmet.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\帽子\Bar专用\25 Avenger Guard.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\a Jade Figuring.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Amethyst.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Amn Rune.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Amulet.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Antidote Potion.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Arrows.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Ber Rune.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Bolts.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Book of Skill.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Bpl.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Bps.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Cham Rune.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Chipped Amethyst.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Chipped Diamond.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Chipped Emerald.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Chipped Ruby.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Chipped Sapphire.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Chipped Skull.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Chipped Topaz.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Diamond.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Dol Rune.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\El Rune.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Eld Rune.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Elixir.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Emerald.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Eth Rune.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Fal Rune.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Flawed Amethyst.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Flawed Diamond.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Flawed Emerald.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Flawed Saphire.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Flawed Skull.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Flawed Topaz.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Flawled Ruby.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Flawless Amethyst.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Flawless Diamond.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Flawless Emerald.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Flawless Ruby.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Flawless Sapphire.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Flawless Skull.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Flawless Topaz.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Full Reiuvenation Potion.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Gold.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Grand Charm.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Greater Healing Potion.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Greater Mana Potion.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Gul Rune.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Healing Potion.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Hel Rune.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Herb.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Horadric Cube.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Horadric Scroll.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Hpf.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Hpo.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Io Rune.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Ist Rune.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Ith Rune.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Jah Rune.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Jewel.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Key to the Cairn Stones.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Key.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Khalim%27s Brain.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Khalim%27s Ear.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Khalim%27s Eye.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Khalim%27s Heart.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Ko Rune.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Lam Esen%27s Tome.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Large Charm.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Lem Rune.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Light Healing Potion.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Light Mana Potion.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Lo Rune.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Lum Rune.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Mal Rune.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Malah%27s Potion.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Mana Potion.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Mephisto%27s Soulstone.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Minor Healing Potion.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Minor Mana Potion.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Mpf.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Mpo.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Nef Rune.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Ohm Rune.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Ort Rune.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Perfect Amethyst.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Perfect Diamond.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Perfect Emerald.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Perfect Ruby.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Perfect Sapphire.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Perfect Skull.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Perfect Topaz.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Potion of Life.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Pul Rune.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Ral Rune.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Reiuvenation Potion.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Ring.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Rpl.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Rps.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Ruby.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Sapphire.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Scroll of Identify.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Scroll of Jnifuss.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Scroll of Knowledge.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Scroll of Resistance.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Scroll of Town Portal.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Shael Rune.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Skeleton Brain.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Skeleton Eye.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Skeleton Fang.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Skeleton Flag.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Skeleton Heart.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Skeleton Horn.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Skeleton Jawbone.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Skeleton Quill.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Skeleton Scalp.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Skeleton Soul.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Skeleton Spleen.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Skeleton Tail.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Skull.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Small Charm.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Sol Rune.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Stamina Potion.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Super Healing Potion.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Super Mana Potion.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Sur Rune.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Tal Rune.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Thawing Potion.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\the Black Tower Key.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\the Golden Bird.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Thul Rune.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Tir Rune.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Tome of Identify.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Tome of Town Portal.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="res\Toolbar.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Top of the Horadric Staff.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Topaz.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Torch.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Um Rune.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Vex Rune.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Zod Rune.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\DiabloEdit2.rc2">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DiabloEdit2.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

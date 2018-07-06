@@ -1,0 +1,25 @@
+#pragma once
+
+#include <vector>
+#include "BinDataStream.h"
+
+struct CLeftData
+{
+//members
+	CLeftData(void);
+	~CLeftData(void);
+	void ReadData(CBinDataStream & bs){
+		bs>>bData;
+	}
+//	void WriteFile(CFile & cf) const{
+//		if(bData.size()){
+//			cf.Write(&bData[0],UINT(bData.size()));
+//			cf.Flush();
+//		}
+//	}
+//	DWORD Size() const{return DWORD(bData.size());}
+//	const BYTE * GetData() const{return &bData[0];}
+//fields
+private:
+	std::vector<BYTE>	bData;
+};

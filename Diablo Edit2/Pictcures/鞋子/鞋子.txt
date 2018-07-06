@@ -1,0 +1,19 @@
+3
+Boots
+Heavy Boots
+Chain Boots
+Light Plated Boots
+Greaves
+5
+Demonhide Boots
+6
+Sharkskin Boots
+Mesh Boots
+Battle Boots
+War Boots
+10
+Wyrmhide Boots
+Scarabshell Boots
+BoneWeave Boots
+Mirrored Boots
+Myrmidon Greaves

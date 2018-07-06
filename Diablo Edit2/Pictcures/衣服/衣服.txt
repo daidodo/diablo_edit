@@ -1,0 +1,51 @@
+1
+Quilted Armor
+Leather Armor
+Hard Leather Armor
+Studded Leather
+Ring Mail
+Scale Mail
+Chain Mail
+Breast Plate
+2
+Splint Mail
+Plate Mail
+Field Mail
+Gothic Plate
+Full Plate Mail
+Ancient Armor
+Light Plate
+3
+Ghost Armor
+Serpentskin Armor
+Demonhide Armor
+Trellised Armor
+Linked Mail
+Tigulated Mail
+Mesh Armor
+Cuirass
+Russet Armor
+Templar Coat
+Sharktooth Armor
+Embossed Plate
+4
+Chaos Armor
+Ornate Plate
+Mage Plate
+8
+Dusk Shroud
+Wyrmhide
+Scarab Husk
+Wire Fleece
+Diamond Mail
+Loricated Mail
+Boneweave
+9
+Great Hauberk
+Balrog Skin
+Hellforge Plate
+Kraken Shell
+Lacquered Plate
+Shadow Plate
+Sacred Armor
+Archon Plate

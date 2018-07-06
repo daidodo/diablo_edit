@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{E30BA087-C38B-4D3C-933E-A725823E6968}</ProjectGuid>
+    <Keyword>MFCProj</Keyword>
+    <RootNamespace>DiabloEdit2</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="BinDataStream.h" />
+    <ClInclude Include="D2Item.h" />
+    <ClInclude Include="D2S_Struct.h" />
+    <ClInclude Include="DataStructs.h" />
+    <ClInclude Include="Diablo Edit2.h" />
+    <ClInclude Include="Diablo Edit2Doc.h" />
+    <ClInclude Include="Diablo Edit2View.h" />
+    <ClInclude Include="DlgCharBasicInfo.h" />
+    <ClInclude Include="DlgCharItems.h" />
+    <ClInclude Include="DlgPrefixSuffix.h" />
+    <ClInclude Include="DlgQuestInfo.h" />
+    <ClInclude Include="DlgSelectChar.h" />
+    <ClInclude Include="DlgSkills.h" />
+    <ClInclude Include="DlgSuspend.h" />
+    <ClInclude Include="DlgWayPoints.h" />
+    <ClInclude Include="ItemDataStruct.h" />
+    <ClInclude Include="ItemList.h" />
+    <ClInclude Include="MainFrm.h" />
+    <ClInclude Include="MayExist.h" />
+    <ClInclude Include="PropertyDialog.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="D2Item.cpp" />
+    <ClCompile Include="D2S_Struct.cpp" />
+    <ClCompile Include="Diablo Edit2.cpp" />
+    <ClCompile Include="Diablo Edit2Doc.cpp" />
+    <ClCompile Include="Diablo Edit2View.cpp" />
+    <ClCompile Include="DlgCharBasicInfo.cpp" />
+    <ClCompile Include="DlgCharItems.cpp" />
+    <ClCompile Include="DlgPrefixSuffix.cpp" />
+    <ClCompile Include="DlgQuestInfo.cpp" />
+    <ClCompile Include="DlgSelectChar.cpp" />
+    <ClCompile Include="DlgSkills.cpp" />
+    <ClCompile Include="DlgSuspend.cpp" />
+    <ClCompile Include="DlgWayPoints.cpp" />
+    <ClCompile Include="ItemList.cpp" />
+    <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="PropertyDialog.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DiabloEdit2.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\DiabloEdit2.rc2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Pictcures\Misc\a Jade Figuring.bmp" />
+    <Image Include="Pictcures\Misc\Amethyst.bmp" />
+    <Image Include="Pictcures\Misc\Amn Rune.bmp" />
+    <Image Include="Pictcures\Misc\Amulet.bmp" />
+    <Image Include="Pictcures\Misc\Antidote Potion.bmp" />
+    <Image Include="Pictcures\Misc\Arrows.bmp" />
+    <Image Include="Pictcures\Misc\Ber Rune.bmp" />
+    <Image Include="Pictcures\Misc\Bolts.bmp" />
+    <Image Include="Pictcures\Misc\Book of Skill.bmp" />
+    <Image Include="Pictcures\Misc\Bpl.bmp" />
+    <Image Include="Pictcures\Misc\Bps.bmp" />
+    <Image Include="Pictcures\Misc\Cham Rune.bmp" />
+    <Image Include="Pictcures\Misc\Chipped Amethyst.bmp" />
+    <Image Include="Pictcures\Misc\Chipped Diamond.bmp" />
+    <Image Include="Pictcures\Misc\Chipped Emerald.bmp" />
+    <Image Include="Pictcures\Misc\Chipped Ruby.bmp" />
+    <Image Include="Pictcures\Misc\Chipped Sapphire.bmp" />
+    <Image Include="Pictcures\Misc\Chipped Skull.bmp" />
+    <Image Include="Pictcures\Misc\Chipped Topaz.bmp" />
+    <Image Include="Pictcures\Misc\Diamond.bmp" />
+    <Image Include="Pictcures\Misc\Dol Rune.bmp" />
+    <Image Include="Pictcures\Misc\El Rune.bmp" />
+    <Image Include="Pictcures\Misc\Eld Rune.bmp" />
+    <Image Include="Pictcures\Misc\Elixir.bmp" />
+    <Image Include="Pictcures\Misc\Emerald.bmp" />
+    <Image Include="Pictcures\Misc\Eth Rune.bmp" />
+    <Image Include="Pictcures\Misc\Fal Rune.bmp" />
+    <Image Include="Pictcures\Misc\Flawed Amethyst.bmp" />
+    <Image Include="Pictcures\Misc\Flawed Diamond.bmp" />
+    <Image Include="Pictcures\Misc\Flawed Emerald.bmp" />
+    <Image Include="Pictcures\Misc\Flawed Saphire.bmp" />
+    <Image Include="Pictcures\Misc\Flawed Skull.bmp" />
+    <Image Include="Pictcures\Misc\Flawed Topaz.bmp" />
+    <Image Include="Pictcures\Misc\Flawled Ruby.bmp" />
+    <Image Include="Pictcures\Misc\Flawless Amethyst.bmp" />
+    <Image Include="Pictcures\Misc\Flawless Diamond.bmp" />
+    <Image Include="Pictcures\Misc\Flawless Emerald.bmp" />
+    <Image Include="Pictcures\Misc\Flawless Ruby.bmp" />
+    <Image Include="Pictcures\Misc\Flawless Sapphire.bmp" />
+    <Image Include="Pictcures\Misc\Flawless Skull.bmp" />
+    <Image Include="Pictcures\Misc\Flawless Topaz.bmp" />
+    <Image Include="Pictcures\Misc\Full Reiuvenation Potion.bmp" />
+    <Image Include="Pictcures\Misc\Gold.bmp" />
+    <Image Include="Pictcures\Misc\Grand Charm.bmp" />
+    <Image Include="Pictcures\Misc\Greater Healing Potion.bmp" />
+    <Image Include="Pictcures\Misc\Greater Mana Potion.bmp" />
+    <Image Include="Pictcures\Misc\Gul Rune.bmp" />
+    <Image Include="Pictcures\Misc\Healing Potion.bmp" />
+    <Image Include="Pictcures\Misc\Hel Rune.bmp" />
+    <Image Include="Pictcures\Misc\Herb.bmp" />
+    <Image Include="Pictcures\Misc\Horadric Cube.bmp" />
+    <Image Include="Pictcures\Misc\Horadric Scroll.bmp" />
+    <Image Include="Pictcures\Misc\Hpf.bmp" />
+    <Image Include="Pictcures\Misc\Hpo.bmp" />
+    <Image Include="Pictcures\Misc\Io Rune.bmp" />
+    <Image Include="Pictcures\Misc\Ist Rune.bmp" />
+    <Image Include="Pictcures\Misc\Ith Rune.bmp" />
+    <Image Include="Pictcures\Misc\Jah Rune.bmp" />
+    <Image Include="Pictcures\Misc\Jewel.bmp" />
+    <Image Include="Pictcures\Misc\Key to the Cairn Stones.bmp" />
+    <Image Include="Pictcures\Misc\Key.bmp" />
+    <Image Include="Pictcures\Misc\Khalim%27s Brain.bmp" />
+    <Image Include="Pictcures\Misc\Khalim%27s Ear.bmp" />
+    <Image Include="Pictcures\Misc\Khalim%27s Eye.bmp" />
+    <Image Include="Pictcures\Misc\Khalim%27s Heart.bmp" />
+    <Image Include="Pictcures\Misc\Ko Rune.bmp" />
+    <Image Include="Pictcures\Misc\Lam Esen%27s Tome.bmp" />
+    <Image Include="Pictcures\Misc\Large Charm.bmp" />
+    <Image Include="Pictcures\Misc\Lem Rune.bmp" />
+    <Image Include="Pictcures\Misc\Light Healing Potion.bmp" />
+    <Image Include="Pictcures\Misc\Light Mana Potion.bmp" />
+    <Image Include="Pictcures\Misc\Lo Rune.bmp" />
+    <Image Include="Pictcures\Misc\Lum Rune.bmp" />
+    <Image Include="Pictcures\Misc\Mal Rune.bmp" />
+    <Image Include="Pictcures\Misc\Malah%27s Potion.bmp" />
+    <Image Include="Pictcures\Misc\Mana Potion.bmp" />
+    <Image Include="Pictcures\Misc\Mephisto%27s Soulstone.bmp" />
+    <Image Include="Pictcures\Misc\Minor Healing Potion.bmp" />
+    <Image Include="Pictcures\Misc\Minor Mana Potion.bmp" />
+    <Image Include="Pictcures\Misc\Mpf.bmp" />
+    <Image Include="Pictcures\Misc\Mpo.bmp" />
+    <Image Include="Pictcures\Misc\Nef Rune.bmp" />
+    <Image Include="Pictcures\Misc\Ohm Rune.bmp" />
+    <Image Include="Pictcures\Misc\Ort Rune.bmp" />
+    <Image Include="Pictcures\Misc\Perfect Amethyst.bmp" />
+    <Image Include="Pictcures\Misc\Perfect Diamond.bmp" />
+    <Image Include="Pictcures\Misc\Perfect Emerald.bmp" />
+    <Image Include="Pictcures\Misc\Perfect Ruby.bmp" />
+    <Image Include="Pictcures\Misc\Perfect Sapphire.bmp" />
+    <Image Include="Pictcures\Misc\Perfect Skull.bmp" />
+    <Image Include="Pictcures\Misc\Perfect Topaz.bmp" />
+    <Image Include="Pictcures\Misc\Potion of Life.bmp" />
+    <Image Include="Pictcures\Misc\Pul Rune.bmp" />
+    <Image Include="Pictcures\Misc\Ral Rune.bmp" />
+    <Image Include="Pictcures\Misc\Reiuvenation Potion.bmp" />
+    <Image Include="Pictcures\Misc\Ring.bmp" />
+    <Image Include="Pictcures\Misc\Rpl.bmp" />
+    <Image Include="Pictcures\Misc\Rps.bmp" />
+    <Image Include="Pictcures\Misc\Ruby.bmp" />
+    <Image Include="Pictcures\Misc\Sapphire.bmp" />
+    <Image Include="Pictcures\Misc\Scroll of Identify.bmp" />
+    <Image Include="Pictcures\Misc\Scroll of Jnifuss.bmp" />
+    <Image Include="Pictcures\Misc\Scroll of Knowledge.bmp" />
+    <Image Include="Pictcures\Misc\Scroll of Resistance.bmp" />
+    <Image Include="Pictcures\Misc\Scroll of Town Portal.bmp" />
+    <Image Include="Pictcures\Misc\Shael Rune.bmp" />
+    <Image Include="Pictcures\Misc\Skeleton Brain.bmp" />
+    <Image Include="Pictcures\Misc\Skeleton Eye.bmp" />
+    <Image Include="Pictcures\Misc\Skeleton Fang.bmp" />
+    <Image Include="Pictcures\Misc\Skeleton Flag.bmp" />
+    <Image Include="Pictcures\Misc\Skeleton Heart.bmp" />
+    <Image Include="Pictcures\Misc\Skeleton Horn.bmp" />
+    <Image Include="Pictcures\Misc\Skeleton Jawbone.bmp" />
+    <Image Include="Pictcures\Misc\Skeleton Quill.bmp" />
+    <Image Include="Pictcures\Misc\Skeleton Scalp.bmp" />
+    <Image Include="Pictcures\Misc\Skeleton Soul.bmp" />
+    <Image Include="Pictcures\Misc\Skeleton Spleen.bmp" />
+    <Image Include="Pictcures\Misc\Skeleton Tail.bmp" />
+    <Image Include="Pictcures\Misc\Skull.bmp" />
+    <Image Include="Pictcures\Misc\Small Charm.bmp" />
+    <Image Include="Pictcures\Misc\Sol Rune.bmp" />
+    <Image Include="Pictcures\Misc\Stamina Potion.bmp" />
+    <Image Include="Pictcures\Misc\Super Healing Potion.bmp" />
+    <Image Include="Pictcures\Misc\Super Mana Potion.bmp" />
+    <Image Include="Pictcures\Misc\Sur Rune.bmp" />
+    <Image Include="Pictcures\Misc\Tal Rune.bmp" />
+    <Image Include="Pictcures\Misc\Thawing Potion.bmp" />
+    <Image Include="Pictcures\Misc\the Black Tower Key.bmp" />
+    <Image Include="Pictcures\Misc\the Golden Bird.bmp" />
+    <Image Include="Pictcures\Misc\Thul Rune.bmp" />
+    <Image Include="Pictcures\Misc\Tir Rune.bmp" />
+    <Image Include="Pictcures\Misc\Tome of Identify.bmp" />
+    <Image Include="Pictcures\Misc\Tome of Town Portal.bmp" />
+    <Image Include="Pictcures\Misc\Top of the Horadric Staff.bmp" />
+    <Image Include="Pictcures\Misc\Topaz.bmp" />
+    <Image Include="Pictcures\Misc\Torch.bmp" />
+    <Image Include="Pictcures\Misc\Um Rune.bmp" />
+    <Image Include="Pictcures\Misc\Vex Rune.bmp" />
+    <Image Include="Pictcures\Misc\Zod Rune.bmp" />
+    <Image Include="Pictcures\帽子\01 Cap.bmp" />
+    <Image Include="Pictcures\帽子\02 Skull Cap.bmp" />
+    <Image Include="Pictcures\帽子\03 Helm.bmp" />
+    <Image Include="Pictcures\帽子\04 Full Helm.bmp" />
+    <Image Include="Pictcures\帽子\05 Great Helm.bmp" />
+    <Image Include="Pictcures\帽子\06 Crown.bmp" />
+    <Image Include="Pictcures\帽子\07 Mask.bmp" />
+    <Image Include="Pictcures\帽子\08 Grim Helm.bmp" />
+    <Image Include="Pictcures\帽子\Bar专用\21 Jawbone Cap.bmp" />
+    <Image Include="Pictcures\帽子\Bar专用\22 Fanged Helm.bmp" />
+    <Image Include="Pictcures\帽子\Bar专用\23 Horned Helm.bmp" />
+    <Image Include="Pictcures\帽子\Bar专用\24 Assault Helmet.bmp" />
+    <Image Include="Pictcures\帽子\Bar专用\25 Avenger Guard.bmp" />
+    <Image Include="Pictcures\帽子\Dru专用\16 Wolf Head.bmp" />
+    <Image Include="Pictcures\帽子\Dru专用\17 Hawk Helm.bmp" />
+    <Image Include="Pictcures\帽子\Dru专用\18 Antlers.bmp" />
+    <Image Include="Pictcures\帽子\Dru专用\19 Spirit Mask.bmp" />
+    <Image Include="Pictcures\帽子\Dru专用\20 Falcon Mask.bmp" />
+    <Image Include="Pictcures\帽子\头冠\09 Circlet.bmp" />
+    <Image Include="Pictcures\帽子\头冠\10 Coronet.bmp" />
+    <Image Include="Pictcures\帽子\头冠\11 Tiara.bmp" />
+    <Image Include="Pictcures\帽子\头冠\12 Diadem.bmp" />
+    <Image Include="Pictcures\手套\01 Leather Gloves.bmp" />
+    <Image Include="Pictcures\手套\02 Heavy Gloves.bmp" />
+    <Image Include="Pictcures\手套\03 Chain Gloves.bmp" />
+    <Image Include="Pictcures\手套\04 Light Gauntlets.bmp" />
+    <Image Include="Pictcures\手套\05 Gauntlets.bmp" />
+    <Image Include="Pictcures\武器\Ama专用\1 Stag Bow.bmp" />
+    <Image Include="Pictcures\武器\Ama专用\2 Reflex Bow.bmp" />
+    <Image Include="Pictcures\武器\Ama专用\3 Maiden Spear.bmp" />
+    <Image Include="Pictcures\武器\Ama专用\4 Maiden Pike.bmp" />
+    <Image Include="Pictcures\武器\Ama专用\5 Maiden Javelin.bmp" />
+    <Image Include="Pictcures\武器\Ass剪\01 Katar.bmp" />
+    <Image Include="Pictcures\武器\Ass剪\02 Hatchet Hands.bmp" />
+    <Image Include="Pictcures\武器\Ass剪\03 Claws.bmp" />
+    <Image Include="Pictcures\武器\Ass剪\04 Scissors Katar.bmp" />
+    <Image Include="Pictcures\武器\Nec杖\01 Wand.bmp" />
+    <Image Include="Pictcures\武器\Nec杖\02 Yew Wand.bmp" />
+    <Image Include="Pictcures\武器\Nec杖\03 Bone Wand.bmp" />
+    <Image Include="Pictcures\武器\Nec杖\04 Grim Wand.bmp" />
+    <Image Include="Pictcures\武器\Pal杖\01 Scepter.bmp" />
+    <Image Include="Pictcures\武器\Pal杖\02 Grand Scepter.bmp" />
+    <Image Include="Pictcures\武器\Pal杖\03 War Scepter.bmp" />
+    <Image Include="Pictcures\武器\Sor杖\01 Jo Staff.bmp" />
+    <Image Include="Pictcures\武器\Sor杖\02 Long Staff.bmp" />
+    <Image Include="Pictcures\武器\Sor杖\03 Ganrled Staff.bmp" />
+    <Image Include="Pictcures\武器\Sor杖\04 Battle Staff.bmp" />
+    <Image Include="Pictcures\武器\Sor杖\05 War Staff.bmp" />
+    <Image Include="Pictcures\武器\Sor球\1 Eagle Orb.bmp" />
+    <Image Include="Pictcures\武器\Sor球\2 Sacred Globe.bmp" />
+    <Image Include="Pictcures\武器\Sor球\3 Smoked Sphere.bmp" />
+    <Image Include="Pictcures\武器\Sor球\4 Clasped Orb.bmp" />
+    <Image Include="Pictcures\武器\Sor球\5 Jared%27s Stone.bmp" />
+    <Image Include="Pictcures\武器\任务\01 Decoy Gidbinn.bmp" />
+    <Image Include="Pictcures\武器\任务\02 The Gidbinn.bmp" />
+    <Image Include="Pictcures\武器\任务\03 Wirt%27s Leg.bmp" />
+    <Image Include="Pictcures\武器\任务\04 Horadric Malus.bmp" />
+    <Image Include="Pictcures\武器\任务\05 Hell Forge Hammer.bmp" />
+    <Image Include="Pictcures\武器\任务\06 Horadric Staff.bmp" />
+    <Image Include="Pictcures\武器\任务\07 Staff Of Kings.bmp" />
+    <Image Include="Pictcures\武器\任务\08 Khalim%27s Flail.bmp" />
+    <Image Include="Pictcures\武器\任务\09 Khalim%27s Will.bmp" />
+    <Image Include="Pictcures\武器\刀剑\01 Short Sword.bmp" />
+    <Image Include="Pictcures\武器\刀剑\02 Scimitar.bmp" />
+    <Image Include="Pictcures\武器\刀剑\03 Sabre.bmp" />
+    <Image Include="Pictcures\武器\刀剑\04 Falchion.bmp" />
+    <Image Include="Pictcures\武器\刀剑\05 Crystal Sword.bmp" />
+    <Image Include="Pictcures\武器\刀剑\06 Broad Sword.bmp" />
+    <Image Include="Pictcures\武器\刀剑\07 Long Sword.bmp" />
+    <Image Include="Pictcures\武器\刀剑\08 War Sword.bmp" />
+    <Image Include="Pictcures\武器\刀剑\09 Tow Handed Sword.bmp" />
+    <Image Include="Pictcures\武器\刀剑\10 Claymore.bmp" />
+    <Image Include="Pictcures\武器\刀剑\11 Giant Sword.bmp" />
+    <Image Include="Pictcures\武器\刀剑\12 Bastard Sword.bmp" />
+    <Image Include="Pictcures\武器\刀剑\13 Flamberge.bmp" />
+    <Image Include="Pictcures\武器\刀剑\14 Great Sword.bmp" />
+    <Image Include="Pictcures\武器\刀剑\15 Dagger.bmp" />
+    <Image Include="Pictcures\武器\刀剑\16 Dirk.bmp" />
+    <Image Include="Pictcures\武器\刀剑\17 Kris.bmp" />
+    <Image Include="Pictcures\武器\刀剑\18 Blade.bmp" />
+    <Image Include="Pictcures\武器\弓弩\01 Short Bow.bmp" />
+    <Image Include="Pictcures\武器\弓弩\02 Hunter%27s Bow.bmp" />
+    <Image Include="Pictcures\武器\弓弩\03 Long Bow.bmp" />
+    <Image Include="Pictcures\武器\弓弩\04 Composite Bow.bmp" />
+    <Image Include="Pictcures\武器\弓弩\05 Short Battle Bow.bmp" />
+    <Image Include="Pictcures\武器\弓弩\06 Long Battle Bow.bmp" />
+    <Image Include="Pictcures\武器\弓弩\07 Short War Bow.bmp" />
+    <Image Include="Pictcures\武器\弓弩\08 Long War Bow.bmp" />
+    <Image Include="Pictcures\武器\弓弩\09 Light Crossbow.bmp" />
+    <Image Include="Pictcures\武器\弓弩\10 Crossbow.bmp" />
+    <Image Include="Pictcures\武器\弓弩\11 Heavy Crossbow.bmp" />
+    <Image Include="Pictcures\武器\弓弩\12 Repeating Crossbow.bmp" />
+    <Image Include="Pictcures\武器\斧头\01 Hand Axe.bmp" />
+    <Image Include="Pictcures\武器\斧头\02 Axe.bmp" />
+    <Image Include="Pictcures\武器\斧头\03 Double Axe.bmp" />
+    <Image Include="Pictcures\武器\斧头\04 Military Pick.bmp" />
+    <Image Include="Pictcures\武器\斧头\05 War Axe.bmp" />
+    <Image Include="Pictcures\武器\斧头\06 Large Axe.bmp" />
+    <Image Include="Pictcures\武器\斧头\07 Broad Axe.bmp" />
+    <Image Include="Pictcures\武器\斧头\08 Battle Axe.bmp" />
+    <Image Include="Pictcures\武器\斧头\09 Great Axe.bmp" />
+    <Image Include="Pictcures\武器\斧头\10 Gaint Axe.bmp" />
+    <Image Include="Pictcures\武器\标枪\1 Javelin.bmp" />
+    <Image Include="Pictcures\武器\标枪\2 Pilum.bmp" />
+    <Image Include="Pictcures\武器\标枪\3 Short Spear.bmp" />
+    <Image Include="Pictcures\武器\标枪\4 Glaive.bmp" />
+    <Image Include="Pictcures\武器\标枪\5 Throwing Spear.bmp" />
+    <Image Include="Pictcures\武器\棒锤\01 Club.bmp" />
+    <Image Include="Pictcures\武器\棒锤\02 Spiked Club.bmp" />
+    <Image Include="Pictcures\武器\棒锤\03 Mace.bmp" />
+    <Image Include="Pictcures\武器\棒锤\04 Morning Star.bmp" />
+    <Image Include="Pictcures\武器\棒锤\05 Flail.bmp" />
+    <Image Include="Pictcures\武器\棒锤\06 War Hammer.bmp" />
+    <Image Include="Pictcures\武器\棒锤\07 Maul.bmp" />
+    <Image Include="Pictcures\武器\棒锤\08 Great Maul.bmp" />
+    <Image Include="Pictcures\武器\毒药\01 Rancid Gas Potion.bmp" />
+    <Image Include="Pictcures\武器\毒药\02 Oil Potion.bmp" />
+    <Image Include="Pictcures\武器\毒药\03 Choking Gas Potion.bmp" />
+    <Image Include="Pictcures\武器\毒药\04 Exploding Potion.bmp" />
+    <Image Include="Pictcures\武器\毒药\05 Strangling Gas Potion.bmp" />
+    <Image Include="Pictcures\武器\毒药\06 Fulminating Potion.bmp" />
+    <Image Include="Pictcures\武器\长柄\01 Spear.bmp" />
+    <Image Include="Pictcures\武器\长柄\02 Trident.bmp" />
+    <Image Include="Pictcures\武器\长柄\03 Brandistock.bmp" />
+    <Image Include="Pictcures\武器\长柄\04 Spetum.bmp" />
+    <Image Include="Pictcures\武器\长柄\05 Pike.bmp" />
+    <Image Include="Pictcures\武器\长柄\06 Bardiche.bmp" />
+    <Image Include="Pictcures\武器\长柄\07 Voulge.bmp" />
+    <Image Include="Pictcures\武器\长柄\08 Scythe.bmp" />
+    <Image Include="Pictcures\武器\长柄\09 Poleaxe.bmp" />
+    <Image Include="Pictcures\武器\长柄\10 Halberd.bmp" />
+    <Image Include="Pictcures\武器\长柄\11 War Scythe.bmp" />
+    <Image Include="Pictcures\武器\飞刀\1 Throwing Knife.bmp" />
+    <Image Include="Pictcures\武器\飞刀\2 Throwing Axe.bmp" />
+    <Image Include="Pictcures\武器\飞刀\3 Balanced Knife.bmp" />
+    <Image Include="Pictcures\武器\飞刀\4 Balanced Axe.bmp" />
+    <Image Include="Pictcures\盾牌\01 Buckler.bmp" />
+    <Image Include="Pictcures\盾牌\02 Small Shield.bmp" />
+    <Image Include="Pictcures\盾牌\03 Large Shield.bmp" />
+    <Image Include="Pictcures\盾牌\04 Kite Shield.bmp" />
+    <Image Include="Pictcures\盾牌\06 Tower Shield.bmp" />
+    <Image Include="Pictcures\盾牌\07 Gothic Shield.bmp" />
+    <Image Include="Pictcures\盾牌\08 Bone Shield.bmp" />
+    <Image Include="Pictcures\盾牌\09 Spiked Shield.bmp" />
+    <Image Include="Pictcures\盾牌\Nec专用\01 Preserved Head.bmp" />
+    <Image Include="Pictcures\盾牌\Nec专用\02 Zombie Head.bmp" />
+    <Image Include="Pictcures\盾牌\Nec专用\03 Unraveller Head.bmp" />
+    <Image Include="Pictcures\盾牌\Nec专用\04 Gargoyle Head.bmp" />
+    <Image Include="Pictcures\盾牌\Nec专用\05 Demon Head.bmp" />
+    <Image Include="Pictcures\盾牌\Pal专用\10 Targe.bmp" />
+    <Image Include="Pictcures\盾牌\Pal专用\11 Rondache.bmp" />
+    <Image Include="Pictcures\盾牌\Pal专用\12 Heraldic Shield.bmp" />
+    <Image Include="Pictcures\盾牌\Pal专用\13 Aerin Shield.bmp" />
+    <Image Include="Pictcures\盾牌\Pal专用\14 Crown Shield.bmp" />
+    <Image Include="Pictcures\腰带\01 Sash.bmp" />
+    <Image Include="Pictcures\腰带\02 Light Belt.bmp" />
+    <Image Include="Pictcures\腰带\03 Belt.bmp" />
+    <Image Include="Pictcures\腰带\04 Heavy Belt.bmp" />
+    <Image Include="Pictcures\腰带\05 Plated Belt.bmp" />
+    <Image Include="Pictcures\衣服\001 Quilted Armor.bmp" />
+    <Image Include="Pictcures\衣服\002 Leather Armor.bmp" />
+    <Image Include="Pictcures\衣服\003 Hard Leather Armor.bmp" />
+    <Image Include="Pictcures\衣服\004 Studded Leather.bmp" />
+    <Image Include="Pictcures\衣服\005 Ring Mail.bmp" />
+    <Image Include="Pictcures\衣服\006 Scale Mail.bmp" />
+    <Image Include="Pictcures\衣服\007 Chain Mail.bmp" />
+    <Image Include="Pictcures\衣服\008 Breast Plate.bmp" />
+    <Image Include="Pictcures\衣服\009 Splint Mail.bmp" />
+    <Image Include="Pictcures\衣服\010 Plate Mail.bmp" />
+    <Image Include="Pictcures\衣服\011 Field Mail.bmp" />
+    <Image Include="Pictcures\衣服\012 Gothic Plate.bmp" />
+    <Image Include="Pictcures\衣服\013 Full Plate Mail.bmp" />
+    <Image Include="Pictcures\衣服\014 Ancient Armor.bmp" />
+    <Image Include="Pictcures\衣服\015 Light Plate.bmp" />
+    <Image Include="Pictcures\鞋子\01 Boots.bmp" />
+    <Image Include="Pictcures\鞋子\02 Heavy Boots.bmp" />
+    <Image Include="Pictcures\鞋子\03 Chain Boots.bmp" />
+    <Image Include="Pictcures\鞋子\04 Light Plated Boots.bmp" />
+    <Image Include="Pictcures\鞋子\05 Greaves.bmp" />
+    <Image Include="res\1.ico" />
+    <Image Include="res\Diablo Edit2.ico" />
+    <Image Include="res\Diablo Edit2Doc.ico" />
+    <Image Include="res\Toolbar.bmp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,19 @@
+6
+Jawbone Cap
+Fanged Helm
+Horned Helm
+7
+Assault Helmet
+Avenger Guard
+11
+Jawbone Visor
+Lion Helm
+Range Mask
+Savage Helmet
+Slayer Guard
+12
+Carnage Helm
+Fury Visor
+Destroyer Helm
+Conqueror Crown
+Guardian Crown

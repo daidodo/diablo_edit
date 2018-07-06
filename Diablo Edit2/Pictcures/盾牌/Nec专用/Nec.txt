@@ -1,0 +1,19 @@
+7
+Preserved Head
+Zombie Head
+Unraveller Head
+Gargoyle Head
+Demon Head
+11
+Mummified Trophy
+Fetish Trophy
+Sexton Trophy
+12
+Cantor Trophy
+Hierophant Trophy
+13
+Minion Skull
+Hellpawn Skull
+Overseer Skull
+Succubus Skull
+Bloodlord Skull

@@ -1,0 +1,18 @@
+3
+Sash
+Light Belt
+Belt
+Heavy Belt
+Plated Belt
+6
+Demonhide Sash
+Sharkskin Belt
+Mesh Belt
+Battle Belt
+War Belt
+10
+Spiderweb Sash
+Vampirefang Belt
+Mithril Coil
+Troll Belt
+Colossus Girdle
