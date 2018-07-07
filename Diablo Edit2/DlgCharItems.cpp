@@ -30,10 +30,6 @@ IMPLEMENT_DYNAMIC(CDlgCharItems, CPropertyDialog)
 CDlgCharItems::CDlgCharItems(CWnd* pParent /*=NULL*/)
     : CPropertyDialog(CDlgCharItems::IDD, pParent)
 {
-    //光标
-    m_hCursor = ::LoadCursor(0,IDC_ARROW);
-    m_iPickedItemIndex = 0;
-    m_pPickedItem = 0;
     //网格
     for(int i = 0;i < GRID_BODY_NUMBER;++i){
         m_rectGrid[i].left = GRID_RECT[i][0];
@@ -105,7 +101,7 @@ BEGIN_MESSAGE_MAP(CDlgCharItems, CDialog)
     ON_WM_PAINT()
     ON_WM_MOUSEMOVE()
     ON_WM_LBUTTONDOWN()
-    ON_WM_SETCURSOR()
+//    ON_WM_SETCURSOR()
     ON_WM_SHOWWINDOW()
     ON_BN_CLICKED(IDC_CHECK2, &CDlgCharItems::OnBnClickedCheck2)
     ON_BN_CLICKED(IDC_CHECK1, &CDlgCharItems::OnChangeHand)
@@ -209,62 +205,43 @@ WORD CDlgCharItems::HitTestItem(const CPoint & pos,WORD range)
     return INVALID_ITEM;
 }
 
-BOOL CDlgCharItems::PutItemInGrid(WORD itemIndex,WORD gridIndex)
-{
-    ASSERT(itemIndex >= 0 && itemIndex < WORD(m_vpItems.size()) && m_vpItems[itemIndex]);
-    if(gridIndex == INVALID_ITEM)
-        return FALSE;
-    int i = INDEX(gridIndex);
-    if(i < GRID_NUMBER){	//存储箱,背包,方块
-        int x0 = COL(gridIndex);
-        int y0 = ROW(gridIndex);
-        CItemView & rit = *m_vpItems[itemIndex];
-        if(x0 + COL(rit.Range) > GRID_RECT[i][2] ||
-            y0 + ROW(rit.Range) > GRID_RECT[i][3])
-            return FALSE;   //物品在网格外面了
-        for(int x = 0;x < COL(rit.Range);++x)
-            for(int y = 0;y < ROW(rit.Range);++y)
-                if(GET_GRID_ITEM(i,x0 + x,y0 + y) != INVALID_ITEM)
-                    return FALSE;   //网格里有物品
-        m_vpItems[itemIndex]->Pos = gridIndex;
-        for(int x = 0;x < COL(rit.Range);++x)
-            for(int y = 0;y < ROW(rit.Range);++y)
-                SET_GRID_ITEM(i,x0 + x,y0 + y,itemIndex);
-    }else{					//身体或锻造台
+BOOL CDlgCharItems::PutItemInGrid(WORD itemIndex, WORD gridIndex) {
+	ASSERT(itemIndex >= 0 && itemIndex < WORD(m_vpItems.size()) && m_vpItems[itemIndex]);
+	if (gridIndex == INVALID_ITEM)
+		return FALSE;
+	int i = INDEX(gridIndex);
+	if (i < GRID_NUMBER) {	//存储箱,背包,方块
+		int x0 = COL(gridIndex);
+		int y0 = ROW(gridIndex);
+		CItemView & rit = *m_vpItems[itemIndex];
+		if (x0 + COL(rit.Range) > GRID_RECT[i][2] ||
+			y0 + ROW(rit.Range) > GRID_RECT[i][3])
+			return FALSE;   //物品在网格外面了
+		for (int x = 0; x < COL(rit.Range); ++x)
+			for (int y = 0; y < ROW(rit.Range); ++y)
+				if (GET_GRID_ITEM(i, x0 + x, y0 + y) != INVALID_ITEM)
+					return FALSE;   //网格里有物品
+		m_vpItems[itemIndex]->Pos = gridIndex;
+		for (int x = 0; x < COL(rit.Range); ++x)
+			for (int y = 0; y < ROW(rit.Range); ++y)
+				SET_GRID_ITEM(i, x0 + x, y0 + y, itemIndex);
+	} else {					//身体或锻造台
 		const WORD MAP[10] = { 1,2,3,4,4,5,5,6,7,8 };
 		if (m_vpItems[itemIndex]->pItem->pItemData->Equip() != MAP[i - 3])
 			return FALSE;
-        int c = COL(gridIndex),r = ROW(gridIndex);
-        if(GET_GRID_ITEM(i,c,r) != INVALID_ITEM)
-            return FALSE;
-        m_vpItems[itemIndex]->Pos = MAKE_GRID(i,c,r);
-        SET_GRID_ITEM(i,c,r,itemIndex);
-    }
-    return TRUE;
-}
-
-void CDlgCharItems::PickItemFromGrid(WORD itemIndex)
-{
-    ASSERT(itemIndex >= 0 && itemIndex < WORD(m_vpItems.size()) && m_vpItems[itemIndex]);
-    const CItemView & rit = *m_vpItems[itemIndex];
-    if(INDEX(rit.Pos) < GRID_NUMBER)	//从存储箱，口袋，方块等地方拿起来
-        for(int x = 0;x < COL(rit.Range);++x)
-            for(int y = 0;y < ROW(rit.Range);++y)
-                SET_GRID_ITEM(INDEX(rit.Pos),COL(rit.Pos) + x,ROW(rit.Pos) + y,INVALID_ITEM);
-    else								//从身体部位或锻造台拿起来
-        SET_GRID_ITEM(INDEX(rit.Pos),COL(rit.Pos),ROW(rit.Pos),INVALID_ITEM);
+		int c = COL(gridIndex), r = ROW(gridIndex);
+		if (GET_GRID_ITEM(i, c, r) != INVALID_ITEM)
+			return FALSE;
+		m_vpItems[itemIndex]->Pos = MAKE_GRID(i, c, r);
+		SET_GRID_ITEM(i, c, r, itemIndex);
+	}
+	return TRUE;
 }
 
 void CDlgCharItems::DestroyAllItems()
 {
-    for(std::vector<CItemView *>::iterator i = m_vpItems.begin();i != m_vpItems.end();++i)
-        if(*i)
-            delete *i;
-    if(m_pPickedItem){
-        delete m_pPickedItem;
-        m_pPickedItem = 0;
-        ::DestroyIcon(m_hCursor);
-    }
+	for(auto pItem : m_vpItems)
+		delete pItem;
 }
 
 void CDlgCharItems::ShowItemInfoDlg(const CD2Item * pItem)
@@ -334,27 +311,6 @@ void CDlgCharItems::ReadItemProperty(WORD itemIndex)
     UpdateData(FALSE);
 }
 
-HCURSOR CDlgCharItems::CreateAlphaCursor(const CItemView & itemView)
-{
-    DWORD dwWidth = COL(itemView.Range) * GRID_WIDTH;   // width of cursor
-    DWORD dwHeight = ROW(itemView.Range) * GRID_WIDTH;  // height of cursor
-    // Load bitmap
-    CBitmap bmp;
-    bmp.LoadBitmap(itemView.nPicRes);
-    // Create an empty mask bitmap.
-    CBitmap monobmp;
-    monobmp.CreateBitmap(dwWidth,dwHeight,1,1,NULL);
-    // Icon header
-    ICONINFO ii;
-    ii.fIcon = FALSE;  // Change fIcon to TRUE to create an alpha icon
-    ii.xHotspot = dwWidth >> 1;
-    ii.yHotspot = dwHeight >> 1;
-    ii.hbmMask = monobmp;
-    ii.hbmColor = bmp;
-    // Create the alpha cursor with the alpha DIB section, and return it.
-    return CreateIconIndirect(&ii);
-}
-
 void CDlgCharItems::ResetFoundry()
 {
     //m_sItemName = _T("");
@@ -406,8 +362,6 @@ void CDlgCharItems::UpdateUI(const CD2S_Struct & character)
             case 2:		//in belt
                 break;
             case 4:		//in hand(鼠标)
-                m_pPickedItem = new CItemView(BMP_INDEX_BASE + rit.pItemData->PicIndex(),rit.pItemData->Range(),&rit);
-                m_hCursor = CreateAlphaCursor(*m_pPickedItem);  //设置鼠标为物品图片
                 break;
             case 6:		//glued into a socket
                 break;
@@ -431,8 +385,6 @@ BOOL CDlgCharItems::GatherData(CD2S_Struct & character)
 void CDlgCharItems::ResetAll()
 {
     DestroyAllItems();
-    m_hCursor = ::LoadCursor(0,IDC_ARROW);
-    m_pPickedItem = 0;
     m_vpItems.clear();
     m_bSecondHand = FALSE;
     for(int i = 0;i < GRID_BODY_NUMBER;++i)
@@ -473,50 +425,33 @@ void CDlgCharItems::OnPaint()
 
 void CDlgCharItems::OnMouseMove(UINT nFlags, CPoint point)
 {
-    if(!m_pPickedItem){ //未拿起物品
-        int grid = HitTestItem(point);
-        if(grid != INVALID_ITEM){// && INDEX(grid) < GRID_BODY_NUMBER - 1){	//在非锻造台的网格范围内
-            int item = GET_GRID_ITEM(grid);
-            if(item != INVALID_ITEM){		//悬停在物品上
-                ShowItemInfoDlg(m_vpItems[item]->pItem);
-            }else
-                ShowItemInfoDlg(0);
-        }else
-            ShowItemInfoDlg(0);
-    }
-    m_pMouse = point;
-    UpdateData(FALSE);
-    CPropertyDialog::OnMouseMove(nFlags, point);
+	int grid = HitTestItem(point);
+	if (grid != INVALID_ITEM) {// && INDEX(grid) < GRID_BODY_NUMBER - 1){	//在非锻造台的网格范围内
+		int item = GET_GRID_ITEM(grid);
+		if (item != INVALID_ITEM) {		//悬停在物品上
+			ShowItemInfoDlg(m_vpItems[item]->pItem);
+		} else
+			ShowItemInfoDlg(0);
+	} else
+		ShowItemInfoDlg(0);
+
+	m_pMouse = point;
+	UpdateData(FALSE);
+	CPropertyDialog::OnMouseMove(nFlags, point);
 }
 
 void CDlgCharItems::OnLButtonDown(UINT nFlags, CPoint point)
 {
-	if (!m_pPickedItem) {		//未拿起物品
-		int grid = HitTestItem(point);
-		if (grid != INVALID_ITEM) {		//在网格范围内
-			int item = GET_GRID_ITEM(grid);
-			if (item != INVALID_ITEM && item != m_iSelectedItemIndex) {	//点中了另一件物品
-				if (m_iSelectedItemIndex != INVALID_ITEM)
-					ResetFoundry();
-				m_iSelectedItemIndex = item;
-				ReadItemProperty(m_iSelectedItemIndex);
-				Invalidate();
-			}
-		}
-	} else {	//已经拿起了一个物品
-		int grid = HitTestItem(point, m_pPickedItem->Range);
-		m_vpItems[m_iPickedItemIndex] = m_pPickedItem;
-		if (PutItemInGrid(m_iPickedItemIndex, grid)) {
-			//if (INDEX(grid) == GRID_BODY_NUMBER - 1)	//放在铸造台上，读取物品属性
-			//	ReadItemProperty(m_iPickedItemIndex);
-			ShowItemInfoDlg(m_pPickedItem->pItem);
-			m_pPickedItem = 0;
-			::DestroyIcon(m_hCursor);
-			m_hCursor = ::LoadCursor(0, IDC_ARROW);
-			m_iPickedItemIndex = INVALID_ITEM;
+	int grid = HitTestItem(point);
+	if (grid != INVALID_ITEM) {		//在网格范围内
+		int item = GET_GRID_ITEM(grid);
+		if (item != INVALID_ITEM && item != m_iSelectedItemIndex) {	//点中了另一件物品
+			if (m_iSelectedItemIndex != INVALID_ITEM)
+				ResetFoundry();
+			m_iSelectedItemIndex = item;
+			ReadItemProperty(m_iSelectedItemIndex);
 			Invalidate();
-		} else
-			m_vpItems[m_iPickedItemIndex] = 0;
+		}
 	}
    
     CPropertyDialog::OnLButtonDown(nFlags, point);
@@ -524,34 +459,8 @@ void CDlgCharItems::OnLButtonDown(UINT nFlags, CPoint point)
 
 void CDlgCharItems::OnRButtonUp(UINT nFlags, CPoint point)
 {
-	if (!m_pPickedItem) {		//未拿起物品
-		int grid = HitTestItem(point);
-		if (grid != INVALID_ITEM) {		//在网格范围内
-			int item = GET_GRID_ITEM(grid);
-			if (item != INVALID_ITEM) {		//点中了物品
-				PickItemFromGrid(item);
-				m_iPickedItemIndex = item;
-				m_pPickedItem = m_vpItems[item];
-				m_vpItems[item] = 0;
-				m_hCursor = CreateAlphaCursor(*m_pPickedItem);  //设置鼠标为物品图片
-				ShowItemInfoDlg(0);     //隐藏物品属性窗口
-				if (INDEX(grid) == GRID_BODY_NUMBER - 1) //拿起了铸造台的物品
-					ResetFoundry();
-				Invalidate();
-			}
-		}
-	}
 
     CPropertyDialog::OnRButtonUp(nFlags, point);
-}
-
-BOOL CDlgCharItems::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message)
-{
-    if(nHitTest == HTCLIENT){
-        ::SetCursor(m_hCursor);
-        return TRUE;
-    }
-    return CPropertyDialog::OnSetCursor(pWnd, nHitTest, message);
 }
 
 BOOL CDlgCharItems::OnInitDialog()
