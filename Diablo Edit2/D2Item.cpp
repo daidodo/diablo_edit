@@ -25,40 +25,39 @@ void CD2Item::ReadData(CBinDataStream & bs)
 {
 	bs>>wMajic;
 	if(wMajic != 0x4D4A)
-		if(MessageBox(0,::theApp.String(378),::theApp.String(5),MB_YESNO | MB_ICONWARNING) == IDNO)
+		if (MessageBox(0, ::theApp.String(378), ::theApp.String(5), MB_YESNO | MB_ICONWARNING) == IDNO)
 			throw 0;
-	bs.ReadBit(bQuest);
-	bs.ReadBits(iUNKNOWN_01,3);
-	bs.ReadBit(bIdentified);
-	bs.ReadBits(iUNKNOWN_02,3);
-	bs.ReadBit(bIllegalInventory);
-	bs.ReadBits(iUNKNOWN_10,2);
-	bs.ReadBit(bSocketed);
-	bs.ReadBits(iUNKNOWN_03,2);
-	bs.ReadBit(bBadEquipped);
-	bs.ReadBit(iUNKNOWN_04);
-	bs.ReadBit(bEar);
-	bs.ReadBit(bNewbie);
-	bs.ReadBits(iUNKNOWN_05,3);
-	bs.ReadBit(bSimple);
-	bs.ReadBit(bEthereal);
-	bs.ReadBit(iUNKNOWN_06);
-	bs.ReadBit(bPersonalized);
-	bs.ReadBit(iUNKNOWN_07);
-	bs.ReadBit(bRuneWord);
-	bs.ReadBits(iUNKNOWN_08,5);
-	bs.ReadBits(wVersion,10);
-	bs.ReadBits(iLocation,3);
-	bs.ReadBits(iPosition,4);
-	bs.ReadBits(iColumn,4);
-	bs.ReadBits(iRow,4);
-	bs.ReadBits(iStoredIn,3);
+	bs >> bQuest
+		>> bits(iUNKNOWN_01, 3)
+		>> bIdentified
+		>> bits(iUNKNOWN_02, 3)
+		>> bIllegalInventory
+		>> bits(iUNKNOWN_10, 2)
+		>> bSocketed
+		>> bits(iUNKNOWN_03, 2)
+		>> bBadEquipped
+		>> iUNKNOWN_04
+		>> bEar
+		>> bNewbie
+		>> bits(iUNKNOWN_05, 3)
+		>> bSimple
+		>> bEthereal
+		>> iUNKNOWN_06
+		>> bPersonalized
+		>> iUNKNOWN_07
+		>> bRuneWord
+		>> bits(iUNKNOWN_08, 5)
+		>> bits(wVersion, 10)
+		>> bits(iLocation, 3)
+		>> bits(iPosition, 4)
+		>> bits(iColumn, 4)
+		>> bits(iRow, 4)
+		>> bits(iStoredIn, 3);
 	if(bEar){	//这是一个耳朵
-		bs.ReadBits(pEar->iEarClass,3);
-		bs.ReadBits(pEar->iEarLevel,7);
+		bs >> bits(pEar->iEarClass, 3) >> bits(pEar->iEarLevel, 7);
 		::ZeroMemory(pEar->sEarName,sizeof(pEar->sEarName));
 		for(int i = 0;i < 16;++i){
-			bs.ReadBits(pEar->sEarName[i],7);
+			bs >> bits(pEar->sEarName[i], 7);
 			if(pEar->sEarName[i] == 0)
 				break;
 		}
@@ -67,7 +66,7 @@ void CD2Item::ReadData(CBinDataStream & bs)
         pItemData = ::theApp.ItemData(*type);
 	}else{		//这是一个物品,但是也可能为"ear "
 		for(int i = 0;i < 4;++i)
-			bs.ReadBits(pItemInfo->sTypeName[i],8);
+			bs >> bits(pItemInfo->sTypeName[i], 8);
 		if(!(pItemData = ::theApp.ItemData(pItemInfo->dwTypeID))){	//本程序不能识别此物品
 			DWORD from = bs.BytePos() - 13;
 			bs.AlignByte();
@@ -86,58 +85,58 @@ void CD2Item::ReadData(CBinDataStream & bs)
 				throw 0;
 		}
 		if(!bSimple){	//物品有额外属性
-			bs.ReadBits(pItemInfo->pExtItemInfo->nGems,3);
-			bs.ReadBits(pItemInfo->pExtItemInfo->dwGUID,32);
-			bs.ReadBits(pItemInfo->pExtItemInfo->iDropLevel,7);
-			bs.ReadBits(pItemInfo->pExtItemInfo->iQuality,4);
-			bs.ReadBit(pItemInfo->pExtItemInfo->bVarGfx);
+			bs >> bits(pItemInfo->pExtItemInfo->nGems, 3)
+				>> bits(pItemInfo->pExtItemInfo->dwGUID, 32)
+				>> bits(pItemInfo->pExtItemInfo->iDropLevel, 7)
+				>> bits(pItemInfo->pExtItemInfo->iQuality, 4)
+				>> pItemInfo->pExtItemInfo->bVarGfx;
 			if(pItemInfo->pExtItemInfo->bVarGfx)
-				bs.ReadBits(*pItemInfo->pExtItemInfo->iVarGfx,3);
-			bs.ReadBit(pItemInfo->pExtItemInfo->bClass);
+				bs>>bits(*pItemInfo->pExtItemInfo->iVarGfx,3);
+			bs >> pItemInfo->pExtItemInfo->bClass;
 			if(pItemInfo->pExtItemInfo->bClass)
-				bs.ReadBits(*pItemInfo->pExtItemInfo->wClass,11);
+				bs>>bits(*pItemInfo->pExtItemInfo->wClass,11);
 			switch(pItemInfo->pExtItemInfo->iQuality){
 				case 1:			//low quality
-					bs.ReadBits(*pItemInfo->pExtItemInfo->loQual,3);
+					bs >> bits(*pItemInfo->pExtItemInfo->loQual, 3);
 					break;
 				case 2:			//normal
-                    if(pItemData->IsCharm())
-                        bs.ReadBits(*pItemInfo->pExtItemInfo->wCharm,12);
-                    break;
+					if (pItemData->IsCharm())
+						bs >> bits(*pItemInfo->pExtItemInfo->wCharm, 12);
+					break;
 				case 3:			//high quality
-					bs.ReadBits(*pItemInfo->pExtItemInfo->hiQual,3);
+					bs >> bits(*pItemInfo->pExtItemInfo->hiQual, 3);
 					break;
 				case 4:			//magically enhanced
-					bs.ReadBits(*pItemInfo->pExtItemInfo->wPrefix,11);
-					bs.ReadBits(*pItemInfo->pExtItemInfo->wSuffix,11);
+					bs >> bits(*pItemInfo->pExtItemInfo->wPrefix, 11)
+						>> bits(*pItemInfo->pExtItemInfo->wSuffix, 11);
 					break;
 				case 5:			//part of a set
-					bs.ReadBits(*pItemInfo->pExtItemInfo->wSetID,12);
+					bs>>bits(*pItemInfo->pExtItemInfo->wSetID,12);
 					break;
 				case 6:			//rare
-					bs.ReadBits(pItemInfo->pExtItemInfo->pRareName->iName1,8);
-					bs.ReadBits(pItemInfo->pExtItemInfo->pRareName->iName2,8);
-					bs.ReadBit(pItemInfo->pExtItemInfo->pRareName->bPref1);
+					bs >> bits(pItemInfo->pExtItemInfo->pRareName->iName1, 8)
+						>> bits(pItemInfo->pExtItemInfo->pRareName->iName2, 8)
+						>> pItemInfo->pExtItemInfo->pRareName->bPref1;
                     if(pItemInfo->pExtItemInfo->pRareName->bPref1)
-					    bs.ReadBits(*pItemInfo->pExtItemInfo->pRareName->wPref1,11);
-					bs.ReadBit(pItemInfo->pExtItemInfo->pRareName->bSuff1);
-                    if(pItemInfo->pExtItemInfo->pRareName->bSuff1)
-					    bs.ReadBits(*pItemInfo->pExtItemInfo->pRareName->wSuff1,11);
-					bs.ReadBit(pItemInfo->pExtItemInfo->pRareName->bPref2);
-                    if(pItemInfo->pExtItemInfo->pRareName->bPref2)
-					    bs.ReadBits(*pItemInfo->pExtItemInfo->pRareName->wPref2,11);
-					bs.ReadBit(pItemInfo->pExtItemInfo->pRareName->bSuff2);
-                    if(pItemInfo->pExtItemInfo->pRareName->bSuff2)
-					    bs.ReadBits(*pItemInfo->pExtItemInfo->pRareName->wSuff2,11);
-					bs.ReadBit(pItemInfo->pExtItemInfo->pRareName->bPref3);
-                    if(pItemInfo->pExtItemInfo->pRareName->bPref3)
-					    bs.ReadBits(*pItemInfo->pExtItemInfo->pRareName->wPref3,11);
-					bs.ReadBit(pItemInfo->pExtItemInfo->pRareName->bSuff3);
-                    if(pItemInfo->pExtItemInfo->pRareName->bSuff3)
-					    bs.ReadBits(*pItemInfo->pExtItemInfo->pRareName->wSuff3,11);
+						bs >> bits(*pItemInfo->pExtItemInfo->pRareName->wPref1, 11);
+					bs >> pItemInfo->pExtItemInfo->pRareName->bSuff1;
+					if (pItemInfo->pExtItemInfo->pRareName->bSuff1)
+						bs >> bits(*pItemInfo->pExtItemInfo->pRareName->wSuff1, 11);
+					bs >> pItemInfo->pExtItemInfo->pRareName->bPref2;
+					if (pItemInfo->pExtItemInfo->pRareName->bPref2)
+						bs >> bits(*pItemInfo->pExtItemInfo->pRareName->wPref2, 11);
+					bs >> pItemInfo->pExtItemInfo->pRareName->bSuff2;
+					if (pItemInfo->pExtItemInfo->pRareName->bSuff2)
+						bs >> bits(*pItemInfo->pExtItemInfo->pRareName->wSuff2, 11);
+					bs >> pItemInfo->pExtItemInfo->pRareName->bPref3;
+					if (pItemInfo->pExtItemInfo->pRareName->bPref3)
+						bs >> bits(*pItemInfo->pExtItemInfo->pRareName->wPref3, 11);
+					bs >> pItemInfo->pExtItemInfo->pRareName->bSuff3;
+					if (pItemInfo->pExtItemInfo->pRareName->bSuff3)
+						bs >> bits(*pItemInfo->pExtItemInfo->pRareName->wSuff3, 11);
 					break;
 				case 7:			//unique
-					bs.ReadBits(*pItemInfo->pExtItemInfo->wUniID,12);
+					bs >> bits(*pItemInfo->pExtItemInfo->wUniID, 12);
 					break;
 				case 8:			//crafted
                     bs.ReadBits(pItemInfo->pExtItemInfo->pCraftName->iName1,8);
