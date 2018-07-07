@@ -373,6 +373,7 @@ void CDlgCharItems::UpdateUI(const CD2S_Struct & character)
         }
         //}
     }
+	m_iSelectedItemIndex = INVALID_ITEM;
     Invalidate();
 }
 

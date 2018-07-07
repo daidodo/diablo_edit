@@ -137,15 +137,14 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem)
             }
         }
         //Property
-        UINT socketnum = 0;   //sockets num
-        for(std::map<WORD,DWORD>::const_iterator i = pItem->pItemInfo->pTpSpInfo->mProperty.begin();
-            i != pItem->pItemInfo->pTpSpInfo->mProperty.end();++i)
-        {
-            if(i->first == 194)     //extend sockets
-                socketnum = i->second;
-            else
-                m_sItemMsg.push_back(__MsgType(BLUE,::theApp.PorpertyDescription(i->first,i->second)));
-        }
+		UINT socketnum = 0;   //sockets num
+		if (!pItem->bSimple) {
+			for (const auto & p : pItem->pItemInfo->pTpSpInfo->mProperty)
+				if (p.first == 194)     //extend sockets
+					socketnum = p.second;
+				else
+					m_sItemMsg.push_back(__MsgType(BLUE, ::theApp.PorpertyDescription(p.first, p.second)));
+		}
         //Ethereal
         if(pItem->bEthereal)
             m_sItemMsg.push_back(__MsgType(BLUE,::theApp.String(421)));
