@@ -22,29 +22,13 @@ const WORD	CDlgCharItems::GRID_RECT[CDlgCharItems::GRID_BODY_NUMBER][4] = {
     {300,165,2,1},	//腰带		10
     {400,155,2,2},	//鞋子		11
     {200,155,2,2},	//手套		12
-    {805,30,2,4},	//铸造台	13
+    //{805,30,2,4},	//铸造台	13
 };
 
 IMPLEMENT_DYNAMIC(CDlgCharItems, CPropertyDialog)
 
 CDlgCharItems::CDlgCharItems(CWnd* pParent /*=NULL*/)
     : CPropertyDialog(CDlgCharItems::IDD, pParent)
-    , m_pDlgItemInfo(0)
-    , m_bNotShowItemInfoDlg(FALSE)
-    , m_bSecondHand(FALSE)
-    //, m_sItemName(_T(""))
-    , m_bItemSocket(FALSE)
-    , m_bBaseSocket(0)
-    , m_bEthereal(FALSE)
-    //, m_bItemInscribed(FALSE)
-    , m_bItemLevel(0)
-    , m_ItemOwner(_T(""))
-    , m_wItemQuantity(0)
-    , m_wItemDefence(0)
-    , m_wMaxDurability(0)
-    , m_bIndestructible(FALSE)
-    , m_wCurDurability(0)
-    , m_bExtSocket(0)
 {
     //光标
     m_hCursor = ::LoadCursor(0,IDC_ARROW);
@@ -62,7 +46,7 @@ CDlgCharItems::CDlgCharItems(CWnd* pParent /*=NULL*/)
         m_iGridItems[i].resize(GRID_RECT[i][2]  * GRID_RECT[i][3],INVALID_ITEM);
     for(int i = GRID_NUMBER;i < GRID_BODY_NUMBER;++i)
         m_iGridItems[i].resize(1,INVALID_ITEM);
-    //武器右,武器左
+    //武器II
     m_iGridItems[6].push_back(INVALID_ITEM);
     m_iGridItems[7].push_back(INVALID_ITEM);
 }
@@ -126,70 +110,87 @@ BEGIN_MESSAGE_MAP(CDlgCharItems, CDialog)
     ON_BN_CLICKED(IDC_CHECK2, &CDlgCharItems::OnBnClickedCheck2)
     ON_BN_CLICKED(IDC_CHECK1, &CDlgCharItems::OnChangeHand)
     ON_BN_CLICKED(IDC_BUTTON2, &CDlgCharItems::OnPrefixSuffix)
+    ON_WM_RBUTTONUP()
 END_MESSAGE_MAP()
 
-void CDlgCharItems::InitUI()
+
+
+//画一个网格或矩形
+void DrawGrid(CPaintDC & dc, const CRect & rect, int intervalX = 0, int intervalY = 0)
 {
-    m_lcPropertyList.SetExtendedStyle(LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES);
-    m_lcPropertyList.InsertColumn(0,::theApp.String(383),LVCFMT_LEFT,60);
-    m_lcPropertyList.InsertColumn(1,::theApp.String(384),LVCFMT_LEFT,225);
-    m_scTrasparent.SetRange(0,255);
-    m_scTrasparent.SetPos(200);
+	if (intervalX == 0)
+		intervalX = rect.Width();
+	if (intervalY == 0)
+		intervalY = rect.Height();
+	for (int x = rect.left; x <= rect.right; x += intervalX) {
+		dc.MoveTo(x, rect.top);
+		dc.LineTo(x, rect.bottom);
+	}
+	for (int y = rect.top; y <= rect.bottom; y += intervalY) {
+		dc.MoveTo(rect.left, y);
+		dc.LineTo(rect.right, y);
+	}
 }
 
-void CDlgCharItems::DrawGrid(CPaintDC * pDC)
+void CDlgCharItems::DrawGrids(CPaintDC & dc)
 {
     CPen pen(PS_SOLID,1,RGB(0,200,100));
-    CPen * pOld = pDC->SelectObject(&pen);
-    for(int i = 0;i < GRID_NUMBER;++i){
-        for(LONG y = m_rectGrid[i].top;y <= m_rectGrid[i].bottom;y += GRID_WIDTH){
-            pDC->MoveTo(m_rectGrid[i].left,y);
-            pDC->LineTo(m_rectGrid[i].right,y);
-        }
-        for(LONG x = m_rectGrid[i].left;x <= m_rectGrid[i].right;x += GRID_WIDTH){
-            pDC->MoveTo(x,m_rectGrid[i].top);
-            pDC->LineTo(x,m_rectGrid[i].bottom);
-        }
-    }
-    for(int i = GRID_NUMBER;i < GRID_BODY_NUMBER;++i){		//画身体部位
-        pDC->MoveTo(m_rectGrid[i].left,m_rectGrid[i].top);
-        pDC->LineTo(m_rectGrid[i].right,m_rectGrid[i].top);
-        pDC->LineTo(m_rectGrid[i].right,m_rectGrid[i].bottom);
-        pDC->LineTo(m_rectGrid[i].left,m_rectGrid[i].bottom);
-        pDC->LineTo(m_rectGrid[i].left,m_rectGrid[i].top);
-    }
-    pDC->SelectObject(pOld);
+    CPen * pOld = dc.SelectObject(&pen);
+	//储存箱，口袋，方块
+    for(int i = 0;i < GRID_NUMBER;++i)
+		::DrawGrid(dc, m_rectGrid[i], GRID_WIDTH, GRID_WIDTH);
+    //身体部位
+    for(int i = GRID_NUMBER;i < GRID_BODY_NUMBER;++i)
+		::DrawGrid(dc, m_rectGrid[i]);
+
+	dc.SelectObject(pOld);
 }
 
-void CDlgCharItems::DrawItemXY(CPaintDC * pDC,CPoint pos,CItemView * pVI)
+void CDlgCharItems::DrawItemXY(CPaintDC & dc,CPoint pos,CItemView * pVI)
 {
-    if(pVI){
-        CBitmap bmp;
-        CDC memDC;
-        bmp.LoadBitmap(pVI->nPicRes);
-        memDC.CreateCompatibleDC(pDC);
-        CBitmap* pOld = memDC.SelectObject(&bmp);
-        pDC->BitBlt(pos.x,pos.y,COL(pVI->Range) * GRID_WIDTH,ROW(pVI->Range) * GRID_WIDTH,
-            &memDC,0,0,SRCCOPY);
-        memDC.SelectObject(pOld);
-    }
+	ASSERT(pVI);
+	//Draw item image
+	CBitmap bmp;
+	CDC memDC;
+	bmp.LoadBitmap(pVI->nPicRes);
+	memDC.CreateCompatibleDC(&dc);
+	CBitmap* pOld = memDC.SelectObject(&bmp);
+	dc.BitBlt(pos.x, pos.y, COL(pVI->Range) * GRID_WIDTH, ROW(pVI->Range) * GRID_WIDTH,
+		&memDC, 0, 0, SRCCOPY);
+	memDC.SelectObject(pOld);
 }
 
-void CDlgCharItems::DrawItemsInGrid(CPaintDC * pDC)
+void CDlgCharItems::DrawItemsInGrid(CPaintDC & dc)
 {
+	CRect selected(0, 0, 0, 0);
     for(size_t i = 0;i < m_vpItems.size();++i){
+		CPoint pos;
         if(m_vpItems[i]){
             int gridID = INDEX(m_vpItems[i]->Pos);
-            if(gridID < GRID_NUMBER)    //在箱子,背包,方块里
-                DrawItemXY(pDC,GRID2XY(m_vpItems[i]->Pos),m_vpItems[i]);
-            else if(gridID != 6 && gridID != 7) //身上(除了左右手),或铸造台上
-                DrawItemXY(pDC,GRID2XY(gridID,m_vpItems[i]->Range),m_vpItems[i]);
+			if (gridID < GRID_NUMBER)    //在箱子,背包,方块里
+				pos = GRID2XY(m_vpItems[i]->Pos);
+            else if(gridID != 6 && gridID != 7) //身上(除了左右手)
+				pos = GRID2XY(gridID, m_vpItems[i]->Range);
             else{       //左右手,分I,II
-                if(m_bSecondHand == COL(m_vpItems[i]->Pos))
-                    DrawItemXY(pDC,GRID2XY(gridID,m_vpItems[i]->Range),m_vpItems[i]);
+				if (m_bSecondHand != COL(m_vpItems[i]->Pos))
+					continue;
+				pos = GRID2XY(gridID, m_vpItems[i]->Range);
             }
-        }
-    }
+			DrawItemXY(dc, pos, m_vpItems[i]);
+
+			if (i == m_iSelectedItemIndex) {
+				CSize sz(COL(m_vpItems[i]->Range) * GRID_WIDTH, ROW(m_vpItems[i]->Range) * GRID_WIDTH);
+				selected = CRect(pos, sz);
+			}
+		}
+	}
+	// 高亮选中的物品
+	if (selected.top != 0) {
+		CPen pen(PS_SOLID, 1, RGB(255, 0, 0));
+		CPen * pOld = dc.SelectObject(&pen);
+		DrawGrid(dc, selected);
+		dc.SelectObject(pOld);
+	}
 }
 
 WORD CDlgCharItems::HitTestItem(const CPoint & pos,WORD range)
@@ -471,8 +472,8 @@ void CDlgCharItems::LoadText(void)
 void CDlgCharItems::OnPaint()
 {
     CPaintDC dc(this);
-    DrawGrid(&dc);					//画储存箱
-    DrawItemsInGrid(&dc);			//画网格里的物品
+    DrawGrids(dc);					//画储存箱
+    DrawItemsInGrid(dc);			//画网格里的物品
 }
 
 void CDlgCharItems::OnMouseMove(UINT nFlags, CPoint point)
@@ -495,38 +496,60 @@ void CDlgCharItems::OnMouseMove(UINT nFlags, CPoint point)
 
 void CDlgCharItems::OnLButtonDown(UINT nFlags, CPoint point)
 {
-    if(!m_pPickedItem){		//未拿起物品
-        int grid = HitTestItem(point);
-        if(grid != INVALID_ITEM){		//在网格范围内
-            int item = GET_GRID_ITEM(grid);
-            if(item != INVALID_ITEM){		//点中了物品
-                PickItemFromGrid(item);
-                m_iPickedItemIndex = item;
-                m_pPickedItem = m_vpItems[item];
-                m_vpItems[item] = 0;
-                m_hCursor = CreateAlphaCursor(*m_pPickedItem);  //设置鼠标为物品图片
-                ShowItemInfoDlg(0);     //隐藏物品属性窗口
-                if(INDEX(grid) == GRID_BODY_NUMBER - 1) //拿起了铸造台的物品
-                    ResetFoundry();
-                Invalidate();
-            }
-        }
-    }else{				//已经拿起了一个物品
-        int grid = HitTestItem(point,m_pPickedItem->Range);
-        m_vpItems[m_iPickedItemIndex] = m_pPickedItem;
-        if(PutItemInGrid(m_iPickedItemIndex,grid)){
-            if(INDEX(grid) == GRID_BODY_NUMBER - 1)	//放在铸造台上，读取物品属性
-                ReadItemProperty(m_iPickedItemIndex);
-            ShowItemInfoDlg(m_pPickedItem->pItem);
-            m_pPickedItem = 0;
-            ::DestroyIcon(m_hCursor);
-            m_hCursor = ::LoadCursor(0,IDC_ARROW);
-            m_iPickedItemIndex = INVALID_ITEM;
-            Invalidate();
-        }else
-            m_vpItems[m_iPickedItemIndex] = 0;
-    }
+	if (!m_pPickedItem) {		//未拿起物品
+		int grid = HitTestItem(point);
+		if (grid != INVALID_ITEM) {		//在网格范围内
+			int item = GET_GRID_ITEM(grid);
+			if (item != INVALID_ITEM && item != m_iSelectedItemIndex) {	//点中了另一件物品
+				if (m_iSelectedItemIndex != INVALID_ITEM)
+					ResetFoundry();
+				m_iSelectedItemIndex = item;
+				ReadItemProperty(m_iSelectedItemIndex);
+				Invalidate();
+			}
+		}
+	}
+   
     CPropertyDialog::OnLButtonDown(nFlags, point);
+}
+
+void CDlgCharItems::OnRButtonUp(UINT nFlags, CPoint point)
+{
+	if (!m_pPickedItem) {		//未拿起物品
+		int grid = HitTestItem(point);
+		if (grid != INVALID_ITEM) {		//在网格范围内
+			int item = GET_GRID_ITEM(grid);
+			if (item != INVALID_ITEM) {		//点中了物品
+				PickItemFromGrid(item);
+				m_iPickedItemIndex = item;
+				m_pPickedItem = m_vpItems[item];
+				m_vpItems[item] = 0;
+				m_hCursor = CreateAlphaCursor(*m_pPickedItem);  //设置鼠标为物品图片
+				ShowItemInfoDlg(0);     //隐藏物品属性窗口
+				if (INDEX(grid) == GRID_BODY_NUMBER - 1) //拿起了铸造台的物品
+					ResetFoundry();
+				Invalidate();
+			}
+		}
+	}
+	else {				//已经拿起了一个物品
+		int grid = HitTestItem(point, m_pPickedItem->Range);
+		m_vpItems[m_iPickedItemIndex] = m_pPickedItem;
+		if (PutItemInGrid(m_iPickedItemIndex, grid)) {
+			//if (INDEX(grid) == GRID_BODY_NUMBER - 1)	//放在铸造台上，读取物品属性
+			//	ReadItemProperty(m_iPickedItemIndex);
+			ShowItemInfoDlg(m_pPickedItem->pItem);
+			m_pPickedItem = 0;
+			::DestroyIcon(m_hCursor);
+			m_hCursor = ::LoadCursor(0, IDC_ARROW);
+			m_iPickedItemIndex = INVALID_ITEM;
+			Invalidate();
+		}
+		else
+			m_vpItems[m_iPickedItemIndex] = 0;
+	}
+
+    CPropertyDialog::OnRButtonUp(nFlags, point);
 }
 
 BOOL CDlgCharItems::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message)
@@ -541,7 +564,11 @@ BOOL CDlgCharItems::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message)
 BOOL CDlgCharItems::OnInitDialog()
 {
     CPropertyDialog::OnInitDialog();
-    InitUI();
+	m_lcPropertyList.SetExtendedStyle(LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES);
+	m_lcPropertyList.InsertColumn(0, ::theApp.String(383), LVCFMT_LEFT, 60);
+	m_lcPropertyList.InsertColumn(1, ::theApp.String(384), LVCFMT_LEFT, 225);
+	m_scTrasparent.SetRange(0, 255);
+	m_scTrasparent.SetPos(200);
     LoadText();
     return TRUE;
 }
