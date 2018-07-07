@@ -136,13 +136,11 @@ void CDlgCharItems::DrawGrids(CPaintDC & dc)
     //身体部位
     for(int i = GRID_NUMBER;i < GRID_BODY_NUMBER;++i)
 		::DrawGrid(dc, m_rectGrid[i]);
-
 	dc.SelectObject(pOld);
 }
 
 void CDlgCharItems::DrawItemXY(CPaintDC & dc, CPoint pos, const CItemView & itemView)
 {
-	//Draw item image
 	CBitmap bmp;
 	CDC memDC;
 	bmp.LoadBitmap(itemView.nPicRes);
@@ -225,7 +223,7 @@ BOOL CDlgCharItems::PutItemInGrid(WORD itemIndex, WORD gridIndex) {
 		for (int x = 0; x < COL(rit.Range); ++x)
 			for (int y = 0; y < ROW(rit.Range); ++y)
 				SET_GRID_ITEM(i, x0 + x, y0 + y, itemIndex);
-	} else {					//身体或锻造台
+	} else {					//身体
 		const WORD MAP[10] = { 1,2,3,4,4,5,5,6,7,8 };
 		if (m_vpItems[itemIndex]->pItem->pItemData->Equip() != MAP[i - 3])
 			return FALSE;
@@ -242,6 +240,7 @@ void CDlgCharItems::DestroyAllItems()
 {
 	for(auto pItem : m_vpItems)
 		delete pItem;
+	m_vpItems.clear();
 }
 
 void CDlgCharItems::ShowItemInfoDlg(const CD2Item * pItem)
@@ -293,18 +292,16 @@ void CDlgCharItems::ReadItemProperty(WORD itemIndex)
                 if(!(m_bIndestructible = (m_wMaxDurability == 0)))
                     m_wCurDurability = rit.pItemInfo->pTpSpInfo->iCurDur.Value();
             }
-            for(std::map<WORD,DWORD>::const_iterator it = rit.pItemInfo->pTpSpInfo->mProperty.begin();
-                it != rit.pItemInfo->pTpSpInfo->mProperty.end();++it)
-            {
-                if(it->first == 194){	//Adds X extra sockets to the item
-                    m_bExtSocket = BYTE(it->second);
-                }else{
-                    CString tmp;
-                    tmp.Format(_T("%3d"),UINT(it->first)); //属性代码
-                    int i = m_lcPropertyList.InsertItem(0,tmp);
-                    m_lcPropertyList.SetItemText(i,1,::theApp.PorpertyDescription(it->first,it->second)); //属性描述
-                }
-            }
+			for (const auto & p : rit.pItemInfo->pTpSpInfo->mProperty) {
+				if (p.first == 194) {	//Adds X extra sockets to the item
+					m_bExtSocket = BYTE(p.second);
+				} else {
+					CString tmp;
+					tmp.Format(_T("%3d"), UINT(p.first)); //属性代码
+					int i = m_lcPropertyList.InsertItem(0, tmp);
+					m_lcPropertyList.SetItemText(i, 1, ::theApp.PorpertyDescription(p.first, p.second)); //属性描述
+				}
+			}
         }
     }
 
@@ -386,7 +383,6 @@ BOOL CDlgCharItems::GatherData(CD2S_Struct & character)
 void CDlgCharItems::ResetAll()
 {
     DestroyAllItems();
-    m_vpItems.clear();
     m_bSecondHand = FALSE;
     for(int i = 0;i < GRID_BODY_NUMBER;++i)
         std::fill(m_iGridItems[i].begin(),m_iGridItems[i].end(),INVALID_ITEM);
