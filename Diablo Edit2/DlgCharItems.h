@@ -54,7 +54,7 @@ public:
 private:
 	// UI
 	void DrawGrids(CPaintDC & dc);	//画所有网格
-	void DrawItemXY(CPaintDC & dc,CPoint pos,CItemView * pVI);	//在绝对坐标点画物品
+	void DrawItemXY(CPaintDC & dc,CPoint pos, const CItemView & itemView);	//在绝对坐标点画物品
 	void DrawItemsInGrid(CPaintDC & dc);   //画网格内的所有物品
 	WORD HitTestItem(const CPoint & pos,WORD range = MAKE_GRID(1,1));	//返回网格索引gridIndex
 	BOOL PutItemInGrid(WORD itemIndex,WORD gridIndex);  //把m_vpItems中索引为itemIndex的物品放到网格索引gridIndex的位置
@@ -92,7 +92,7 @@ private:
 	//装备物品
 	std::vector<CItemView *> m_vpItems;				//所有的物品,除了鼠标拿起来的
 	CRect m_rectGrid[GRID_BODY_NUMBER];				//网格区域,箱子索引0,口袋索引1,方块索引2
-	std::vector<std::vector<WORD>>	m_iGridItems;	//网格内的物品的m_vpItems索引
+	std::vector<std::vector<WORD>> m_iGridItems;	//网格内的物品的m_vpItems索引
 	BOOL m_bSecondHand = FALSE;						//是否显示II手武器
 
 	//鼠标
