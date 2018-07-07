@@ -57,12 +57,10 @@ private:
 	void DrawItemXY(CPaintDC & dc,CPoint pos, const CItemView & itemView);	//在绝对坐标点画物品
 	void DrawItemsInGrid(CPaintDC & dc);   //画网格内的所有物品
 	WORD HitTestItem(const CPoint & pos,WORD range = MAKE_GRID(1,1));	//返回网格索引gridIndex
-	BOOL PutItemInGrid(WORD itemIndex,WORD gridIndex);  //把m_vpItems中索引为itemIndex的物品放到网格索引gridIndex的位置
-	void PickItemFromGrid(WORD itemIndex);  //把m_vpItems中索引为itemIndex的物品从网格里拿起来
+	BOOL PutItemInGrid(WORD itemIndex, WORD gridIndex);  //把m_vpItems中索引为itemIndex的物品放到网格索引gridIndex的位置
 	void DestroyAllItems();
 	void ShowItemInfoDlg(const CD2Item * pItem);    //显示/隐藏(pItem = 0)物品信息悬浮窗口
 	void ReadItemProperty(WORD itemIndex);  //读取m_vpItems中索引为itemIndex的物品的属性，并显示在锻造台
-	HCURSOR CreateAlphaCursor(const CItemView & itemView);  //把物品bmp转换成鼠标句柄
     void ResetFoundry();    //初始化铸造台
     //内联
     CPoint GRID2XY(WORD gridIndex) const{		//由grid索引(高8位为位置,低8位为坐标(x<<4 + y))得到实际像素坐标位置,只能用于储存箱，口袋，方块
@@ -96,9 +94,6 @@ private:
 	BOOL m_bSecondHand = FALSE;						//是否显示II手武器
 
 	//鼠标
-	HCURSOR m_hCursor;						//鼠标
-	WORD m_iPickedItemIndex = INVALID_ITEM;	//当前鼠标拿起的物品在m_vpItems中的索引
-	CItemView * m_pPickedItem = 0;			//当前鼠标拿起的物品
 	CPoint m_pMouse;						//鼠标位置
 
 	//铸造台
@@ -134,7 +129,6 @@ public:
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
     afx_msg void OnRButtonUp(UINT nFlags, CPoint point);
-	afx_msg BOOL OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message);
 	virtual BOOL OnInitDialog();
 	afx_msg void OnShowWindow(BOOL bShow, UINT nStatus);
 	afx_msg void OnBnClickedCheck2();
