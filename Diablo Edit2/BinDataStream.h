@@ -33,7 +33,7 @@ public:
 };
 
 template<typename T>
-OffsetValue<T> offset_value(const T & value, DWORD offset) {
+OffsetValue<T> offset_value(DWORD offset, const T & value) {
 	return OffsetValue<T>(value, offset);
 }
 
@@ -50,8 +50,10 @@ public:
 		: bytes_(0)
 		, bits_(0)
 		, bad_(false){}
+	DWORD DataSize() const { return data_.size(); }
 	DWORD BytePos() const{return bytes_;}
 	bool Good() const { return !bad_; }
+	std::vector<BYTE> & Data() { return data_; }	//返回可修改的数据，主要用于CRC校验
 	//随机定位
 	void SeekBack(DWORD back) {
 		if (ensurePos(bytes_ - back))
@@ -59,7 +61,8 @@ public:
 	}
 	void ReadFile(CFile & cf){
 		data_.resize(size_t(cf.GetLength()));
-		cf.Read(&data_[0],UINT(cf.GetLength()));
+		if(!data_.empty())
+			cf.Read(&data_[0], UINT(cf.GetLength()));
 	}
 	//字节读取
 	CInBitsStream & operator >>(DWORD & value) {return readPod(value);}
@@ -146,12 +149,19 @@ class COutBitsStream
 public:
 	COutBitsStream() :bytes_(0), bits_(0), bad_(false) {}
 	DWORD BytePos() const { return bytes_; }
-	bool good() const { return !bad_; }
-	/*void WriteFile(CFile & cf){
-	ASSERT(data_.size() && _T("CBinDataStream::WriteFile(CFile & cf)"));
-	cf.Write(&data_[0],UINT(data_.size()));
-	cf.Flush();
-}*/
+	bool Good() const { return !bad_; }
+	const std::vector<BYTE> & Data() {
+		ensure(0);
+		data_.resize(bytes_);
+		return data_;
+	}
+	void WriteFile(CFile & cf) {
+		if (bytes_ > 0) {
+			data_.resize(bytes_);
+			cf.Write(&data_[0], UINT(data_.size()));
+			cf.Flush();
+		}
+	}
 	//字节读取
 	COutBitsStream & operator <<(DWORD value) { return writePod(value); }
 	COutBitsStream & operator <<(WORD value) { return writePod(value); }
@@ -180,10 +190,27 @@ public:
 		return *this;
 	}
 	//位读取
+	void AlignByte() {	//按照8位进行对齐，舍弃多余的位
+		if (Good()) {
+			bytes_ += (bits_ + 7) / 8;
+			bits_ = 0;
+		}
+	}
+	COutBitsStream & operator <<(BOOL b) { return writeBits(bits(b, 1)); }
 	COutBitsStream & operator <<(const Bits<const DWORD> & m) { return writeBits(m); }
+	COutBitsStream & operator <<(const Bits<DWORD> & m) { return writeBits(m); }
 	COutBitsStream & operator <<(const Bits<const WORD> & m) { return writeBits(m); }
+	COutBitsStream & operator <<(const Bits<WORD> & m) { return writeBits(m); }
 	COutBitsStream & operator <<(const Bits<const BYTE> & m) { return writeBits(m); }
-
+	COutBitsStream & operator <<(const Bits<BYTE> & m) { return writeBits(m); }
+	//vector<BYTE>
+	COutBitsStream & operator <<(const std::vector<BYTE> & data) {
+		if (ensure(data.size())) {
+			::CopyMemory(&data_[bytes_], &data[0], data.size());
+			bytes_ += data.size();
+		}
+		return *this;
+	}
 private:
 	template<typename T>
 	COutBitsStream & writePod(T v) {
@@ -194,7 +221,7 @@ private:
 		return *this;
 	}
 	template<typename T>
-	COutBitsStream & writeBits(const Bits<const T> & m) {
+	COutBitsStream & writeBits(const Bits<T> & m) {
 		if (ensure(0, m.bits(), sizeof(T) * 8)) {
 			const BYTE * from = reinterpret_cast<const BYTE *>(&m.value());
 			CopyBits(from, &data_[bytes_], 0, bits_, m.bits());
@@ -210,10 +237,12 @@ private:
 			if (bytes_ + need > old)
 				data_.resize(old + (old >> 1) + need);
 		}
+		ASSERT(Good());
 		return !bad_;
 	}
 	bool ensurePos(DWORD pos) {
 		bad_ = (bad_ || pos > data_.size());
+		ASSERT(Good());
 		return !bad_;
 	}
 };
