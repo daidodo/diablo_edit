@@ -140,6 +140,9 @@
     <ClCompile Include="PropertyDialog.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="BinDataStream.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\Diablo Edit2Doc.ico">
