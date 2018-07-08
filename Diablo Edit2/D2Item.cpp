@@ -21,7 +21,7 @@ CD2Item::~CD2Item(){}
 //	}
 //}
 
-void CD2Item::ReadData(CBinDataStream & bs)
+void CD2Item::ReadData(CInBitsStream & bs)
 {
 	bs>>wMajic;
 	if(wMajic != 0x4D4A)

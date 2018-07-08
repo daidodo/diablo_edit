@@ -7,7 +7,7 @@ struct CItemList
 //members
 	CItemList();
 	~CItemList();
-	void ReadData(CBinDataStream & bs);
+	void ReadData(CInBitsStream & bs);
 private:
 	void ClearItems();
 //fields

@@ -6,7 +6,7 @@ CItemList::CItemList(){}
 
 CItemList::~CItemList(){ClearItems();}
 
-void CItemList::ReadData(CBinDataStream & bs)
+void CItemList::ReadData(CInBitsStream & bs)
 {
     bs>>wMajic>>nItems;
     if(wMajic != 0x4D4A)
