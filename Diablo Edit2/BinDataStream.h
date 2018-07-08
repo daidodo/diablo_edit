@@ -16,41 +16,49 @@ public:
 template<typename T>
 Bits<T> bits(T & v, int b) { return Bits<T>(v, b); }
 
-class CBinDataStream
+template<typename T>
+Bits<const T> bits(const T & v, int b) { return Bits<const T>(v, b); }
+
+//从from拷贝len比特数据到to，分别跳过from的前fromOff比特，和to的前toOff比特。
+void CopyBits(const BYTE * from, BYTE * to, DWORD fromOff, DWORD toOff, DWORD len);
+
+class CInBitsStream
 {
 	std::vector<BYTE> data_;
 	DWORD bytes_, bits_;
 	bool bad_;
 public:
-	CBinDataStream()
+	CInBitsStream()
 		: bytes_(0)
 		, bits_(0)
 		, bad_(false){}
 	DWORD BytePos() const{return bytes_;}
+	BOOL Good() const { return !bad_; }
+	//随机定位
+	void SeekBack(DWORD back) {
+		if (ensurePos(bytes_ - back))
+			bytes_ -= back;
+	}
 	void ReadFile(CFile & cf){
 		data_.resize(size_t(cf.GetLength()));
 		cf.Read(&data_[0],UINT(cf.GetLength()));
 	}
-	void WriteFile(CFile & cf){
-		ASSERT(data_.size() && _T("CBinDataStream::WriteFile(CFile & cf)"));
-		cf.Write(&data_[0],UINT(data_.size()));
-		cf.Flush();
-	}
 	//字节读取
-	CBinDataStream & operator >>(DWORD & value) {return readPod(value);}
-	CBinDataStream & operator >>(WORD & value){ return readPod(value); }
-	CBinDataStream & operator >>(BYTE & value){ return readPod(value); }
+	CInBitsStream & operator >>(DWORD & value) {return readPod(value);}
+	CInBitsStream & operator >>(WORD & value){ return readPod(value); }
+	CInBitsStream & operator >>(BYTE & value){ return readPod(value); }
 	template<typename T, int N>
-	CBinDataStream & operator >>(T (&value)[N]){
+	CInBitsStream & operator >>(T (&value)[N]){
 		for(T & v : value)
 			operator >>(v);
 		return *this;
 	}
 	template<int N>
-	CBinDataStream & operator >>(BYTE (&value)[N]){
-		ASSERT(!bits_ && _T("template<int N>CBinDataStream::operator >>(BYTE (&value)[N])"));
-		::CopyMemory(value,&data_[bytes_],N);
-		bytes_ += N;
+	CInBitsStream & operator >>(BYTE (&value)[N]){
+		if (ensure(N)) {
+			::CopyMemory(value, &data_[bytes_], N);
+			bytes_ += N;
+		}
 		return *this;
 	}
 	//位读取
@@ -58,44 +66,31 @@ public:
 		bytes_ += (bits_ + 7) / 8;
 		bits_ = 0;
 	}
-	CBinDataStream & operator >>(BOOL & b) {return readBits(bits(b, 1));}
-	CBinDataStream & operator >>(const Bits<DWORD> & m) { return readBits(m); }
-	CBinDataStream & operator >>(const Bits<WORD> & m) { return readBits(m); }
-	CBinDataStream & operator >>(const Bits<BYTE> & m) {return readBits(m);}
+	CInBitsStream & operator >>(BOOL & b) {return readBits(bits(b, 1));}
+	CInBitsStream & operator >>(const Bits<DWORD> & m) { return readBits(m); }
+	CInBitsStream & operator >>(const Bits<WORD> & m) { return readBits(m); }
+	CInBitsStream & operator >>(const Bits<BYTE> & m) {return readBits(m);}
 	void ReadBit(BOOL & value) { operator >>(value); }
 	void ReadBits(DWORD & value, int len) { operator >>(bits(value, len)); }
 	void ReadBits(WORD & value, int len) { operator>>(bits(value, len)); }
 	void ReadBits(BYTE & value, int len) { operator>>(bits(value, len)); }
 	//vector<BYTE>
-	CBinDataStream & operator >>(std::vector<BYTE> & vec){
-		ASSERT(!bits_ && _T("CBinDataStream::operator >>(std::vector<BYTE> & vec)"));
-		vec.assign(data_.begin() + bytes_,data_.end());
+	CInBitsStream & operator >>(std::vector<BYTE> & vec){
+		if (ensure(0))
+			vec.assign(data_.begin() + bytes_, data_.end());
 		return *this;
 	}
 	//把不能识别的数据转储
 	void Restore(std::vector<BYTE> & vec,DWORD from,DWORD to){
-		ASSERT(to > from && _T("CBinDataStream::Restore(std::vector<BYTE> & vec,DWORD from,DWORD to)"));
-		vec.assign(&data_[from],&data_[to]);
+		ASSERT(to >= from);
+		if(ensurePos(from) && ensurePos(to))
+			vec.assign(&data_[from], &data_[to]);
 	}
-	//随机定位
-	void SeekBack(DWORD back){bytes_ -= back;}
 	//调试用，得到后续的2进制位流
-	CString ToString(DWORD len = 32) const{
-		CString ret;
-		DWORD byte = bytes_;
-		DWORD bit = bits_;
-		while(len-- != 0 && byte < data_.size()){
-			ret = ((data_[byte] >> bit) & 1 ? _T("1") : _T("0")) + ret;
-			if(++bit == 8){
-				bit = 0,++byte;
-				ret = _T(" ") + ret;
-			}
-		}
-		return ret;
-	}
+	CString ToString(DWORD len = 32) const;
 private:
 	template<typename T>
-	CBinDataStream & readPod(T & value) {
+	CInBitsStream & readPod(T & value) {
 		if (ensure(sizeof value)) {
 			value = *reinterpret_cast<T *>(&data_[bytes_]);
 			bytes_ += sizeof value;
@@ -103,26 +98,89 @@ private:
 		return *this;
 	}
 	template<typename T>
-	CBinDataStream & readBits(const Bits<T> & m) {
-		const int BITS = sizeof(T) * 8;
-		if (ensure(0, m.bits(), BITS)) {
-			const T HIGHEST_BIT = T(1) << (BITS - 1);
-			T value = 0;
-			for (int i = m.bits(); i > 0; --i) {
-				value >>= 1;
-				if ((data_[bytes_] >> bits_) & 1)
-					value += HIGHEST_BIT;
-				if (++bits_ == 8)
-					bits_ = 0, ++bytes_;
-			}
-			m.value() = value >> (BITS - m.bits());
+	CInBitsStream & readBits(const Bits<T> & m) {
+		if (ensure(0, m.bits(), sizeof(T) * 8)) {
+			m.value() = 0;
+			BYTE * to = reinterpret_cast<BYTE *>(&m.value());
+			::CopyBits(&data_[bytes_], to, bits_, 0, m.bits());
+			bytes_ += (bits_ + m.bits()) / 8;
+			bits_ = (bits_ + m.bits()) % 8;
 		}
 		return *this;
 	}
 	bool ensure(DWORD bytes, DWORD bits = 0, DWORD maxBits = 0) {
 		bad_ = (bad_
 			|| !(bits > 0 ? bits <= maxBits : bits_ == 0)
-			|| !(bytes_ + (bits_ + bits + 7) / 8 <= data_.size()));
+			|| !(bytes_ + bytes + (bits_ + bits + 7) / 8 <= data_.size()));
+		return !bad_;
+	}
+	bool ensurePos(DWORD pos) {
+		bad_ = (bad_ || pos > data_.size());
+		return !bad_;
+	}
+};
+
+class COutBitsStream
+{
+	std::vector<BYTE> data_;
+	DWORD bytes_, bits_;
+	bool bad_;
+public:
+	COutBitsStream() :bytes_(0), bits_(0), bad_(false) {}
+
+	/*void WriteFile(CFile & cf){
+	ASSERT(data_.size() && _T("CBinDataStream::WriteFile(CFile & cf)"));
+	cf.Write(&data_[0],UINT(data_.size()));
+	cf.Flush();
+}*/
+	//字节读取
+	COutBitsStream & operator <<(DWORD value) { return writePod(value); }
+	COutBitsStream & operator <<(WORD value) { return writePod(value); }
+	COutBitsStream & operator <<(BYTE value) { return writePod(value); }
+	template<typename T, int N>
+	COutBitsStream & operator <<(const T (&value)[N]) {
+		for (auto & v : value)
+			operator <<(v);
+		return *this;
+	}
+	template<int N>
+	COutBitsStream & operator <<(BYTE (&value)[N]) {
+		ensure(N);
+		::CopyMemory(&data_[bytes_], value, N);
+		bytes_ += N;
+		return *this;
+	}
+	//位读取
+	COutBitsStream & operator <<(const Bits<const DWORD> & m) { return writeBits(m); }
+	COutBitsStream & operator <<(const Bits<const WORD> & m) { return writeBits(m); }
+	COutBitsStream & operator <<(const Bits<const BYTE> & m) { return writeBits(m); }
+
+private:
+	template<typename T>
+	COutBitsStream & writePod(T v) {
+		if (ensure(sizeof v)) {
+			*reinterpret_cast<T *>(&data_[bytes_]) = v;
+			bytes_ += sizeof v;
+		}
+		return *this;
+	}
+	template<typename T>
+	COutBitsStream & writeBits(const Bits<const T> & m) {
+		if (ensure(0, m.bits(), sizeof(T) * 8)) {
+			const BYTE * from = reinterpret_cast<const BYTE *>(&m.value());
+			CopyBits(from, &data_[bytes_], 0, bits_, m.bits());
+			bytes_ += (bits_ + m.bits()) / 8;
+			bits_ = (bits_ + m.bits()) % 8;
+		}
+		return *this;
+	}
+	bool ensure(DWORD bytes, DWORD bits = 0, DWORD maxBits = 0) {
+		bad_ = (bad_ || !(bits > 0 ? bits <= maxBits : bits_ == 0));
+		if (!bad_) {
+			const DWORD old = data_.size(), need = bytes + (bits_ + bits + 7) / 8;
+			if (bytes_ + need > old)
+				data_.resize(old + (old >> 1) + need);
+		}
 		return !bad_;
 	}
 };
