@@ -2,6 +2,7 @@
 
 #include <vector>
 
+// bits
 template<typename T>
 class Bits
 {
@@ -19,6 +20,23 @@ Bits<T> bits(T & v, int b) { return Bits<T>(v, b); }
 template<typename T>
 Bits<const T> bits(const T & v, int b) { return Bits<const T>(v, b); }
 
+// offset_value
+template<typename T>
+class OffsetValue
+{
+	const T & v_;
+	DWORD off_;
+public:
+	OffsetValue(const T & v, DWORD off) :v_(v), off_(off) {}
+	T value() const { return v_; }
+	DWORD offset() const { return off_; }
+};
+
+template<typename T>
+OffsetValue<T> offset_value(const T & value, DWORD offset) {
+	return OffsetValue<T>(value, offset);
+}
+
 //从from拷贝len比特数据到to，分别跳过from的前fromOff比特，和to的前toOff比特。
 void CopyBits(const BYTE * from, BYTE * to, DWORD fromOff, DWORD toOff, DWORD len);
 
@@ -33,7 +51,7 @@ public:
 		, bits_(0)
 		, bad_(false){}
 	DWORD BytePos() const{return bytes_;}
-	BOOL Good() const { return !bad_; }
+	bool Good() const { return !bad_; }
 	//随机定位
 	void SeekBack(DWORD back) {
 		if (ensurePos(bytes_ - back))
@@ -127,7 +145,8 @@ class COutBitsStream
 	bool bad_;
 public:
 	COutBitsStream() :bytes_(0), bits_(0), bad_(false) {}
-
+	DWORD BytePos() const { return bytes_; }
+	bool good() const { return !bad_; }
 	/*void WriteFile(CFile & cf){
 	ASSERT(data_.size() && _T("CBinDataStream::WriteFile(CFile & cf)"));
 	cf.Write(&data_[0],UINT(data_.size()));
@@ -148,6 +167,16 @@ public:
 		ensure(N);
 		::CopyMemory(&data_[bytes_], value, N);
 		bytes_ += N;
+		return *this;
+	}
+	template<typename T>
+	COutBitsStream & operator <<(const OffsetValue<T> & m) {
+		if (ensurePos(m.offset())) {
+			const auto save = bytes_;
+			bytes_ = m.offset();
+			operator <<(m.value());
+			bytes_ = save;
+		}
 		return *this;
 	}
 	//位读取
@@ -181,6 +210,10 @@ private:
 			if (bytes_ + need > old)
 				data_.resize(old + (old >> 1) + need);
 		}
+		return !bad_;
+	}
+	bool ensurePos(DWORD pos) {
+		bad_ = (bad_ || pos > data_.size());
 		return !bad_;
 	}
 };
