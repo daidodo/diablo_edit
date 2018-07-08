@@ -6,24 +6,13 @@
 struct CD2S_Struct
 {
 //members
-	CD2S_Struct();
-	~CD2S_Struct();
 	BOOL ReadFile(CFile & cf);
-	void WriteFile(CFile & cf);
+	void WriteFile(CFile & cf) const;
 private:
-//	void GetChecksum();
-//	DWORD ComputCRC(const BYTE * source,DWORD len,DWORD init);
-//	template<typename T>
-//	void Map(T *& pInfo,UINT & pos){
-//		ASSERT(bData && DATA_LEN && pos < DATA_LEN && "CD2S_Struct::Map(T * pInfo,UINT pos)");
-//		pInfo = reinterpret_cast<T *>(bData + pos);
-//		pos += sizeof(T);
-//	}
-//	void Map(CQuestInfo & qi,UINT & pos);
-//	void Map(CWaypoints & wp,UINT & pos);
-//fields
-	//人物信息
+	BOOL ReadData(CInBitsStream & bs);
+	BOOL WriteData(COutBitsStream & bs) const;
 public:
+	//人物信息
 	DWORD	dwMajic;			//0xAA55AA55
 	DWORD	dwVersion;			//文件版本
 								//对于1.10是0x60
@@ -77,7 +66,6 @@ public:
 	CCharSkills		Skills;			//人物技能信息
 	CItemList		ItemList;		//物品列表
 	WORD			wCorpses;		//尸体数目
-
 
 	std::vector<BYTE>	vLeftData;		//剩下的数据
 };

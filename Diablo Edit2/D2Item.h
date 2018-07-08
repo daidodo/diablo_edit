@@ -6,6 +6,11 @@
 #include "MayExist.h"
 #include "BinDataStream.h"
 
+template<int N>
+static bool IsSameType(const BYTE(&v1)[N], const char * v2) {
+	return memcmp(v1, v2, N) == 0;
+}
+
 //Ear
 struct CEar
 {
@@ -13,6 +18,7 @@ struct CEar
 	BYTE	iEarLevel;		//bit 79-85
 	BYTE	sEarName[16];	//bit 86-92,93-99,100-106,...,以0x00结束
 	void ReadData(CInBitsStream & bs);
+	void WriteData(COutBitsStream & bs) const;
 };
 
 //Item Long Name
@@ -33,6 +39,7 @@ struct CLongName
 	BOOL				bSuff3;		//1 bit,Suffix 3 flag
 	CMayExist<WORD>		wSuff3;		//11 bits,Suffix 3,if bSuff3 == TRUE
 	void ReadData(CInBitsStream & bs);
+	void WriteData(COutBitsStream & bs) const;
 };
 
 //Extended Item Info
@@ -82,8 +89,9 @@ struct CExtItemInfo
 	CMayExist<WORD>			wCharm;			//12 bits,if sTypeName == "cm1" || "cm2" || "cm3"
 //Spell ID
 	CMayExist<BYTE>			bSpellID;		//5 bits,if sTypeName == "0sc"
-	void ReadData(CInBitsStream & bs, BOOL bIsCharm, BOOL bRuneWord, BOOL bPersonalized, BOOL bIsTome, BOOL bHasMonsterID, BOOL bHasSpellID);
 	BOOL IsSet() const { return iQuality == 5; }
+	void ReadData(CInBitsStream & bs, BOOL bIsCharm, BOOL bRuneWord, BOOL bPersonalized, BOOL bIsTome, BOOL bHasMonsterID, BOOL bHasSpellID);
+	void WriteData(COutBitsStream & bs, BOOL bIsCharm, BOOL bRuneWord, BOOL bPersonalized, BOOL bIsTome, BOOL bHasMonsterID, BOOL bHasSpellID) const;
 };
 
 //Gold Quantity
@@ -92,6 +100,7 @@ struct CGoldQuantity
 	BOOL	bNotGold;		//1 bit
 	WORD	wQuantity;		//12 bits,黄金数量
 	void ReadData(CInBitsStream & bs);
+	void WriteData(COutBitsStream & bs) const;
 };
 
 //Type Specific info
@@ -104,9 +113,10 @@ struct CTypeSpecificInfo
 	CMayExist<WORD>			iQuantity;		//9 bits,if bStacked == TRUE
 	//Set Property
 	//Rune Word Property
-	std::map<WORD,DWORD>	mProperty;		//额外属性列表
-	WORD					iEndFlag;		//结束标志,0x1FF
+	std::map<WORD,DWORD>	mProperty;		//额外属性列表，每项（9 bits ID + VALUE)
+	WORD					iEndFlag;		//9 bits, 0x1FF, 结束标志
 	void ReadData(CInBitsStream & bs, BOOL bHasDef, BOOL bHasDur, BOOL bSocketed, BOOL bIsStacked, BOOL bIsSet, BOOL bRuneWord);
+	void WriteData(COutBitsStream & bs, BOOL bHasDef, BOOL bHasDur, BOOL bSocketed, BOOL bIsStacked, BOOL bIsSet, BOOL bRuneWord) const;
 };
 
 //ItemInfo
@@ -122,12 +132,8 @@ struct CItemInfo
 	CMayExistArray<DWORD, 3>		pTmStFlag;		//如果bHasRand == TRUE，则此结构存在
 	CMayExist<CTypeSpecificInfo>	pTpSpInfo;		//如果bSimple == FALSE，则此结构存在
 	const CItemDataStruct * ReadData(CInBitsStream & bs, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed);
+	void WriteData(COutBitsStream & bs, const CItemDataStruct & itemData, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed) const;
 };
-
-template<int N>
-static bool IsSameType(const BYTE (&v1)[N],const char * v2){
-	return memcmp(v1,v2,N) == 0;
-}
 
 class CD2Item
 {
@@ -137,7 +143,7 @@ public:
 	//BYTE Quality() const{return !bEar && !bSimple ? pItemInfo->pExtItemInfo->iQuality : (pItemData->IsUnique() ? 7 : 2);}
     BYTE Quality() const{return bEar ? 2 : (pItemData->IsUnique() ? 7 : (!bEar && !bSimple ? pItemInfo->pExtItemInfo->iQuality : 2));}
 	void ReadData(CInBitsStream & bs);
-	//void WriteData(COutBitsStream & bs) const {}
+	void WriteData(COutBitsStream & bs) const;
 private:
 	void findUnknownItem(CInBitsStream & bs);
 	//	void WriteFile(CFile & cf){

@@ -26,7 +26,7 @@ void CItemList::ReadData(CInBitsStream & bs)
 
 void CItemList::WriteData(COutBitsStream & bs) const {
 	bs << WORD(0x4D4A);
-	auto off = bs.BytePos();
+	const auto off = bs.BytePos();
 	WORD cnt = 0;
 	bs << cnt;	//item number
 	for (auto pItem : vpItems)
