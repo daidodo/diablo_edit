@@ -334,7 +334,8 @@ void CDlgCharItems::UpdateUI(const CD2S_Struct & character)
     for(WORD i = 0;i < character.ItemList.nItems;++i){
         ASSERT(character.ItemList.vpItems[i] && _T("CDlgCharItems::UpdateUI(const CD2S_Struct & character)"));
         CD2Item & rit = *character.ItemList.vpItems[i];
-        //if(rit.bEar){				//¶ú¶ä
+		m_vpItems[i] = new CItemView(BMP_INDEX_BASE + rit.pItemData->PicIndex(), rit.pItemData->Range(), &rit);
+		//if(rit.bEar){				//¶ú¶ä
         //    //...
         //}else if(rit.pItemData){	//ÎïÆ·
         int index = INVALID_ITEM,x,y;
@@ -349,7 +350,7 @@ void CDlgCharItems::UpdateUI(const CD2S_Struct & character)
                     if(rit.iPosition <= 10){
                         index = rit.iPosition + 2;
                         x = y = 0;
-                    }else if(rit.iPosition <= 12){
+                    }else if(rit.iPosition <= 12){	//×óÓÒÊÖII
                         index = rit.iPosition - 5;
                         x = 1;
                         y = 0;
@@ -364,10 +365,8 @@ void CDlgCharItems::UpdateUI(const CD2S_Struct & character)
                 break;
             default:;
         }
-        if(index != INVALID_ITEM){
-            m_vpItems[i] = new CItemView(BMP_INDEX_BASE + rit.pItemData->PicIndex(),rit.pItemData->Range(),&rit);
+		if(index != INVALID_ITEM)
             PutItemInGrid(i,MAKE_GRID(index,x,y));
-        }
         //}
     }
 	m_iSelectedItemIndex = INVALID_ITEM;
@@ -376,8 +375,9 @@ void CDlgCharItems::UpdateUI(const CD2S_Struct & character)
 
 BOOL CDlgCharItems::GatherData(CD2S_Struct & character)
 {
+	// TODO:
 
-    return FALSE;
+    return TRUE;
 }
 
 void CDlgCharItems::ResetAll()
