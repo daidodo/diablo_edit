@@ -22,9 +22,19 @@ struct CQuestInfoData
 	WORD	unkown2[2];
 	WORD	wActV[6];			//Act V
 	WORD	unkown3[7];
-	void ReadData(CBinDataStream & bs){
-		bs>>wIntroduced1>>wActI>>wTraval1>>wIntroduced2>>wActII>>wTraval2>>wIntroduced3>>wActIII>>wTraval3>>wIntroduced4
-			>>wActIV>>wTraval4>>unkown1>>wIntroduced5>>unkown2>>wActV>>unkown3;
+	void ReadData(CInBitsStream & bs){
+		bs >> wIntroduced1 >> wActI >> wTraval1
+			>> wIntroduced2 >> wActII >> wTraval2
+			>> wIntroduced3 >> wActIII >> wTraval3
+			>> wIntroduced4 >> wActIV >> wTraval4 >> unkown1
+			>> wIntroduced5 >> unkown2 >> wActV >> unkown3;
+	}
+	void WriteData(COutBitsStream & bs) const {
+		bs << wIntroduced1 << wActI << wTraval1
+			<< wIntroduced2 << wActII << wTraval2
+			<< wIntroduced3 << wActIII << wTraval3
+			<< wIntroduced4 << wActIV << wTraval4 << unkown1
+			<< wIntroduced5 << unkown2 << wActV << unkown3;
 	}
 };
 
@@ -34,13 +44,18 @@ struct CQuestInfo
 	DWORD	dwActs;				//似乎总是6
 	WORD	wSize;				//Quest Info结构的总长度，0x12A(=298=4+4+2+288)
 	CQuestInfoData	QIData[3];
-	void ReadData(CBinDataStream & bs){
+	void ReadData(CInBitsStream & bs){
 		bs>>dwMajic>>dwActs>>wSize;
 		if(dwMajic != 0x216F6F57 || wSize != 0x12A)
 			if(MessageBox(0,::theApp.String(373),::theApp.String(5),MB_YESNO | MB_ICONWARNING) == IDNO)
 				throw 0;
-		for(int i = 0;i < 3;++i)
-			QIData[i].ReadData(bs);
+		for (auto & q : QIData)
+			q.ReadData(bs);
+	}
+	void WriteData(COutBitsStream & bs) const {
+		bs << DWORD(0x216F6F57) << dwActs << WORD(0x12A);
+		for (auto & q : QIData)
+			q.WriteData(bs);
 	}
 };
 
@@ -50,8 +65,11 @@ struct CWaypointData
 	WORD	unkown;			//0x102;
 	BYTE	Waypoints[5];
 	BYTE	unkown2[17];		//全0
-	void ReadData(CBinDataStream & bs){
-		bs>>unkown>>Waypoints>>unkown2;
+	void ReadData(CInBitsStream & bs) {
+		bs >> unkown >> Waypoints >> unkown2;
+	}
+	void WriteData(COutBitsStream & bs) const {
+		bs << unkown << Waypoints << unkown2;
 	}
 };
 
@@ -61,13 +79,18 @@ struct CWaypoints
 	DWORD	unkown;
 	WORD	wSize;				//0x50
 	CWaypointData	wp[3];
-	void ReadData(CBinDataStream & bs){
+	void ReadData(CInBitsStream & bs){
 		bs>>wMajic>>unkown>>wSize;
 		if(wMajic != 0x5357 || wSize != 0x50)
 			if(MessageBox(0,::theApp.String(374),::theApp.String(5),MB_YESNO | MB_ICONWARNING) == IDNO)
 				throw 0;
-		for(int i = 0;i < 3;++i)
-			wp[i].ReadData(bs);
+		for (auto & w : wp)
+			w.ReadData(bs);
+	}
+	void WriteData(COutBitsStream & bs) const {
+		bs << WORD(0x5357) << unkown << WORD(0x50);
+		for (auto & w : wp)
+			w.WriteData(bs);
 	}
 };
 
@@ -78,12 +101,15 @@ class CCharSkills
 public:
 	CCharSkills(){}
 	~CCharSkills(){}
-	void ReadData(CBinDataStream & bs){
+	void ReadData(CInBitsStream & bs){
 		bs>>wMagic;
 		if(wMagic != 0x6669)
 			if(MessageBox(0,::theApp.String(376),::theApp.String(5),MB_YESNO | MB_ICONWARNING) == IDNO)
 				throw 0;
 		bs>>bSkillLevel;
+	}
+	void WriteData(COutBitsStream & bs) const {
+		bs << WORD(0x6669) << bSkillLevel;
 	}
 //fields
 public:
@@ -98,22 +124,8 @@ struct CPlayerStats
 //members
 	CPlayerStats(void){}
 	~CPlayerStats(void){}
-	void ReadData(CBinDataStream & bs){
-		bs>>wMajic;
-		if(wMajic != 0x6667)
-			if(MessageBox(0,::theApp.String(375),::theApp.String(5),MB_YESNO | MB_ICONWARNING) == IDNO)
-				throw 0;
-		::ZeroMemory(m_dwValue,sizeof(m_dwValue));
-		DWORD index;
-		bs.ReadBits(index,9);
-		for(DWORD i = 0;index < ARRAY_SIZE;++i){
-			if(i > index)	//Data Format Error
-				throw 0;
-			bs.ReadBits(m_dwValue[index],BITS_COUNT[index]);
-			bs.ReadBits(index,9);
-		}
-		bs.AlignByte();
-	}
+	void ReadData(CInBitsStream & bs);
+	void WriteData(COutBitsStream & bs) const;
 private:
 //fields
 	static const DWORD	ARRAY_SIZE = 0x10;
@@ -138,6 +150,7 @@ public:
 										D: 9 bits, + 32 bits Experience 
 										E: 9 bits, + 25 bits Gold on Person 
 										F: 9 bits, + 25 bits Gold in Stash
+									0x1FF: 9 bits, 结束
 									//*/
 };
 

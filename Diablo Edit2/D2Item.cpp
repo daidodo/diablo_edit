@@ -3,23 +3,184 @@
 #include "D2Item.h"
 #include <fstream>
 
+// struct CEar
+void CEar::ReadData(CInBitsStream & bs) {
+	bs >> bits(iEarClass, 3) >> bits(iEarLevel, 7);
+	::ZeroMemory(sEarName, sizeof(sEarName));
+	for (int i = 0; i < 16; ++i) {
+		bs >> bits(sEarName[i], 7);
+		if (sEarName[i] == 0)
+			break;
+	}
+}
+
+// struct CLongName
+void CLongName::ReadData(CInBitsStream & bs) {
+	bs >> bits(iName1, 8)
+		>> bits(iName2, 8)
+		>> bPref1;
+	if (bPref1)
+		bs >> bits(*wPref1, 11);
+	bs >> bSuff1;
+	if (bSuff1)
+		bs >> bits(*wSuff1, 11);
+	bs >> bPref2;
+	if (bPref2)
+		bs >> bits(*wPref2, 11);
+	bs >> bSuff2;
+	if (bSuff2)
+		bs >> bits(*wSuff2, 11);
+	bs >> bPref3;
+	if (bPref3)
+		bs >> bits(*wPref3, 11);
+	bs >> bSuff3;
+	if (bSuff3)
+		bs >> bits(*wSuff3, 11);
+}
+
+// struct CGoldQuantity
+void CGoldQuantity::ReadData(CInBitsStream & bs) {
+	bs >> bNotGold >> bits(wQuantity, 12);
+}
+
+// struct CExtItemInfo
+void CExtItemInfo::ReadData(CInBitsStream & bs, BOOL bIsCharm, BOOL bRuneWord, BOOL bPersonalized, BOOL bIsTome, BOOL bHasMonsterID, BOOL bHasSpellID) {
+	bs >> bits(nGems, 3)
+		>> bits(dwGUID, 32)
+		>> bits(iDropLevel, 7)
+		>> bits(iQuality, 4)
+		>> bVarGfx;
+	if (bVarGfx)
+		bs >> bits(*iVarGfx, 3);
+	bs >> bClass;
+	if (bClass)
+		bs >> bits(*wClass, 11);
+	switch (iQuality) {
+		case 1:			//low quality
+			bs >> bits(*loQual, 3);
+			break;
+		case 2:			//normal
+			if (bIsCharm)
+				bs >> bits(*wCharm, 12);
+			break;
+		case 3:			//high quality
+			bs >> bits(*hiQual, 3);
+			break;
+		case 4:			//magically enhanced
+			bs >> bits(*wPrefix, 11)
+				>> bits(*wSuffix, 11);
+			break;
+		case 5:			//part of a set
+			bs >> bits(*wSetID, 12);
+			break;
+		case 6:			//rare
+			pRareName->ReadData(bs);
+			break;
+		case 7:			//unique
+			bs >> bits(*wUniID, 12);
+			break;
+		case 8:			//crafted
+			pCraftName->ReadData(bs);
+			break;
+		default:
+			CString msg;
+			msg.Format(_T("iQuality = %d"), UINT(iQuality));
+			::MessageBox(0, ::theApp.String(381) + msg, 0, MB_OK);
+			throw 0;
+	}
+	if (bRuneWord)
+		bs.ReadBits(*wRune, 16);
+	if (bPersonalized)
+		for (int i = 0; i < 16; ++i) {
+			bs.ReadBits(sPersonName[i], 7);
+			if (sPersonName[i] == 0)
+				break;
+		}
+	if (bIsTome)
+		bs.ReadBits(*iTome, 5);
+	else if (bHasMonsterID)
+		bs.ReadBits(*wMonsterID, 10);
+	else if (bHasSpellID)
+		bs.ReadBits(*bSpellID, 5);
+}
+
+//struct CTypeSpecificInfo
+void CTypeSpecificInfo::ReadData(CInBitsStream & bs, BOOL bHasDef, BOOL bHasDur, BOOL bSocketed, BOOL bIsStacked, BOOL bIsSet, BOOL bRuneWord) {
+	if (bHasDef)
+		bs.ReadBits(*iDefence, 11);
+	if (bHasDur) {
+		bs.ReadBits(*iMaxDurability, 8);
+		if (iMaxDurability.Value())
+			bs.ReadBits(*iCurDur, 9);
+	}
+	if (bSocketed)
+		bs.ReadBits(*iSocket, 4);
+	if (bIsStacked)
+		bs.ReadBits(*iQuantity, 9);
+	if (bIsSet) {	//这是一个套装
+		//暂时不支持.......................
+	}
+	if (bRuneWord) {		//有符文之语属性
+		//暂时不支持.......................
+	}
+	//接下来是额外属性列表
+	for (bs.ReadBits(iEndFlag, 9); iEndFlag < 0x1FF; bs.ReadBits(iEndFlag, 9))
+		bs.ReadBits(mProperty[iEndFlag], ::theApp.PropertyData(iEndFlag).bits);
+}
+
+// struct CItemInfo
+const CItemDataStruct *  CItemInfo::ReadData(CInBitsStream & bs, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed) {
+	for (int i = 0; i < 4; ++i)
+		bs >> bits(sTypeName[i], 8);
+	auto pItemData = ::theApp.ItemData(dwTypeID);
+	if (!pItemData)		//本程序不能识别此物品
+		return 0;
+	if (!bSimple)	//物品有额外属性
+		pExtItemInfo->ReadData(bs,
+			pItemData->IsCharm(),
+			bRuneWord,
+			bPersonalized,
+			pItemData->IsTome(),
+			pItemData->HasMonsterID(),
+			pItemData->HasSpellID());
+	//特殊物品类型的额外数据
+	if (IsSameType(sTypeName, "gld "))	//gld 的数量域
+		pGold->ReadData(bs);
+	bs.ReadBit(bHasRand);
+	if (bHasRand)
+		for (int i = 0; i < 3; ++i)
+			bs.ReadBits(pTmStFlag[i], 32);
+	if (!bSimple) {	//Type Specific info
+		pTpSpInfo->ReadData(bs,
+			pItemData->HasDef(),
+			pItemData->HasDur(),
+			bSocketed,
+			pItemData->IsStacked(),
+			pExtItemInfo->IsSet(),
+			bRuneWord);
+	}
+	return pItemData;
+}
+
 //CD2Item
-//std::vector<BYTE>		CD2Item::SvBitFields;
 
-CD2Item::CD2Item(){}
-
-CD2Item::~CD2Item(){}
-
-//void CD2Item::ReadPropertyFields()
-//{
-//	TCHAR	FILE_NAME[] = _T("E:\\My Documents\\Visual Studio 2005\\Projects\\暗黑II\\D2 Item Editor\\Properties.txt");
-//	SvBitFields.resize(0x1FF);
-//	std::ifstream inf(FILE_NAME);
-//	for(int i,j;!inf.eof();){
-//		if(inf>>i>>j)
-//			SvBitFields[i] = j;
-//	}
-//}
+void CD2Item::findUnknownItem(CInBitsStream & bs) {
+	DWORD from = bs.BytePos() - 13;
+	bs.AlignByte();
+	BYTE J, M;
+	bs >> J;
+	for (bs >> M; J != 'J' || M != 'M'; J = M, bs >> M);	//找到下一个装备的起始点
+	bs.SeekBack(2);
+	bs.Restore(vItemData, from, bs.BytePos());
+	{	//把未知的物品存储成物品文件
+		CFile outf(::theApp.m_sAppPath + _T("unknown.d2i"), CFile::modeCreate | CFile::modeWrite);
+		outf.Write(&vItemData[0], UINT(vItemData.size()));
+	}
+	CString msg;
+	msg.Format(_T("(%c%c%c%c)"), pItemInfo->sTypeName[0], pItemInfo->sTypeName[1], pItemInfo->sTypeName[2], pItemInfo->sTypeName[3]);
+	if (MessageBox(0, msg + ::theApp.String(380), ::theApp.String(5), MB_YESNO | MB_ICONWARNING) == IDNO)
+		throw 0;
+}
 
 void CD2Item::ReadData(CInBitsStream & bs)
 {
@@ -54,173 +215,18 @@ void CD2Item::ReadData(CInBitsStream & bs)
 		>> bits(iRow, 4)
 		>> bits(iStoredIn, 3);
 	if(bEar){	//这是一个耳朵
-		bs >> bits(pEar->iEarClass, 3) >> bits(pEar->iEarLevel, 7);
-		::ZeroMemory(pEar->sEarName,sizeof(pEar->sEarName));
-		for(int i = 0;i < 16;++i){
-			bs >> bits(pEar->sEarName[i], 7);
-			if(pEar->sEarName[i] == 0)
-				break;
-		}
+		pEar->ReadData(bs);
         char buf[4] = {'e','a','r',' '};
         DWORD * type = reinterpret_cast<DWORD *>(buf);
         pItemData = ::theApp.ItemData(*type);
-	}else{		//这是一个物品,但是也可能为"ear "
-		for(int i = 0;i < 4;++i)
-			bs >> bits(pItemInfo->sTypeName[i], 8);
-		if(!(pItemData = ::theApp.ItemData(pItemInfo->dwTypeID))){	//本程序不能识别此物品
-			DWORD from = bs.BytePos() - 13;
-			bs.AlignByte();
-			BYTE J,M;
-			bs>>J;
-			for(bs>>M;J != 'J' || M != 'M';J = M,bs>>M);
-			bs.SeekBack(2);
-			bs.Restore(vItemData,from,bs.BytePos());
-			{	//把未知的物品存储成物品文件
-				CFile outf(::theApp.m_sAppPath + _T("unknown.d2i"),CFile::modeCreate | CFile::modeWrite);
-				outf.Write(&vItemData[0],UINT(vItemData.size()));
-			}
-			CString msg;
-			msg.Format(_T("(%c%c%c%c)"),pItemInfo->sTypeName[0],pItemInfo->sTypeName[1],pItemInfo->sTypeName[2],pItemInfo->sTypeName[3]);
-			if(MessageBox(0,msg + ::theApp.String(380),::theApp.String(5),MB_YESNO | MB_ICONWARNING) == IDNO)
-				throw 0;
-		}
-		if(!bSimple){	//物品有额外属性
-			bs >> bits(pItemInfo->pExtItemInfo->nGems, 3)
-				>> bits(pItemInfo->pExtItemInfo->dwGUID, 32)
-				>> bits(pItemInfo->pExtItemInfo->iDropLevel, 7)
-				>> bits(pItemInfo->pExtItemInfo->iQuality, 4)
-				>> pItemInfo->pExtItemInfo->bVarGfx;
-			if(pItemInfo->pExtItemInfo->bVarGfx)
-				bs>>bits(*pItemInfo->pExtItemInfo->iVarGfx,3);
-			bs >> pItemInfo->pExtItemInfo->bClass;
-			if(pItemInfo->pExtItemInfo->bClass)
-				bs>>bits(*pItemInfo->pExtItemInfo->wClass,11);
-			switch(pItemInfo->pExtItemInfo->iQuality){
-				case 1:			//low quality
-					bs >> bits(*pItemInfo->pExtItemInfo->loQual, 3);
-					break;
-				case 2:			//normal
-					if (pItemData->IsCharm())
-						bs >> bits(*pItemInfo->pExtItemInfo->wCharm, 12);
-					break;
-				case 3:			//high quality
-					bs >> bits(*pItemInfo->pExtItemInfo->hiQual, 3);
-					break;
-				case 4:			//magically enhanced
-					bs >> bits(*pItemInfo->pExtItemInfo->wPrefix, 11)
-						>> bits(*pItemInfo->pExtItemInfo->wSuffix, 11);
-					break;
-				case 5:			//part of a set
-					bs>>bits(*pItemInfo->pExtItemInfo->wSetID,12);
-					break;
-				case 6:			//rare
-					bs >> bits(pItemInfo->pExtItemInfo->pRareName->iName1, 8)
-						>> bits(pItemInfo->pExtItemInfo->pRareName->iName2, 8)
-						>> pItemInfo->pExtItemInfo->pRareName->bPref1;
-                    if(pItemInfo->pExtItemInfo->pRareName->bPref1)
-						bs >> bits(*pItemInfo->pExtItemInfo->pRareName->wPref1, 11);
-					bs >> pItemInfo->pExtItemInfo->pRareName->bSuff1;
-					if (pItemInfo->pExtItemInfo->pRareName->bSuff1)
-						bs >> bits(*pItemInfo->pExtItemInfo->pRareName->wSuff1, 11);
-					bs >> pItemInfo->pExtItemInfo->pRareName->bPref2;
-					if (pItemInfo->pExtItemInfo->pRareName->bPref2)
-						bs >> bits(*pItemInfo->pExtItemInfo->pRareName->wPref2, 11);
-					bs >> pItemInfo->pExtItemInfo->pRareName->bSuff2;
-					if (pItemInfo->pExtItemInfo->pRareName->bSuff2)
-						bs >> bits(*pItemInfo->pExtItemInfo->pRareName->wSuff2, 11);
-					bs >> pItemInfo->pExtItemInfo->pRareName->bPref3;
-					if (pItemInfo->pExtItemInfo->pRareName->bPref3)
-						bs >> bits(*pItemInfo->pExtItemInfo->pRareName->wPref3, 11);
-					bs >> pItemInfo->pExtItemInfo->pRareName->bSuff3;
-					if (pItemInfo->pExtItemInfo->pRareName->bSuff3)
-						bs >> bits(*pItemInfo->pExtItemInfo->pRareName->wSuff3, 11);
-					break;
-				case 7:			//unique
-					bs >> bits(*pItemInfo->pExtItemInfo->wUniID, 12);
-					break;
-				case 8:			//crafted
-                    bs.ReadBits(pItemInfo->pExtItemInfo->pCraftName->iName1,8);
-                    bs.ReadBits(pItemInfo->pExtItemInfo->pCraftName->iName2,8);
-                    bs.ReadBit(pItemInfo->pExtItemInfo->pCraftName->bPref1);
-                    if(pItemInfo->pExtItemInfo->pCraftName->bPref1)
-                        bs.ReadBits(*pItemInfo->pExtItemInfo->pCraftName->wPref1,11);
-                    bs.ReadBit(pItemInfo->pExtItemInfo->pCraftName->bSuff1);
-                    if(pItemInfo->pExtItemInfo->pCraftName->bSuff1)
-                        bs.ReadBits(*pItemInfo->pExtItemInfo->pCraftName->wSuff1,11);
-                    bs.ReadBit(pItemInfo->pExtItemInfo->pCraftName->bPref2);
-                    if(pItemInfo->pExtItemInfo->pCraftName->bPref2)
-                        bs.ReadBits(*pItemInfo->pExtItemInfo->pCraftName->wPref2,11);
-                    bs.ReadBit(pItemInfo->pExtItemInfo->pCraftName->bSuff2);
-                    if(pItemInfo->pExtItemInfo->pCraftName->bSuff2)
-                        bs.ReadBits(*pItemInfo->pExtItemInfo->pCraftName->wSuff2,11);
-                    bs.ReadBit(pItemInfo->pExtItemInfo->pCraftName->bPref3);
-                    if(pItemInfo->pExtItemInfo->pCraftName->bPref3)
-                        bs.ReadBits(*pItemInfo->pExtItemInfo->pCraftName->wPref3,11);
-                    bs.ReadBit(pItemInfo->pExtItemInfo->pCraftName->bSuff3);
-                    if(pItemInfo->pExtItemInfo->pCraftName->bSuff3)
-                        bs.ReadBits(*pItemInfo->pExtItemInfo->pCraftName->wSuff3,11);
-                    break;
-				default:
-					CString msg;
-					msg.Format(_T("iQuality = %d"),UINT(pItemInfo->pExtItemInfo->iQuality));
-					::MessageBox(0,::theApp.String(381) + msg,0,MB_OK);
-					throw 0;
-			}
-			if(bRuneWord)
-				bs.ReadBits(*pItemInfo->pExtItemInfo->wRune,16);
-			if(bPersonalized)
-				for(int i = 0;i < 16;++i){
-					bs.ReadBits(pItemInfo->pExtItemInfo->sPersonName[i],7);
-					if(pItemInfo->pExtItemInfo->sPersonName[i] == 0)
-						break;
-				}
-			if(pItemData->IsTome())
-				bs.ReadBits(*pItemInfo->pExtItemInfo->iTome,5);
-			else if(pItemData->HasMonsterID())
-				bs.ReadBits(*pItemInfo->pExtItemInfo->wMonsterID,10);
-			else if(pItemData->HasSpellID())
-				bs.ReadBits(*pItemInfo->pExtItemInfo->bSpellID,5);
-		}
-		//特殊物品类型的额外数据
-		if(IsSameType(pItemInfo->sTypeName,"gld ")){	//gld 的数量域
-			bs.ReadBit(pItemInfo->pGold->bNotGold);
-			bs.ReadBits(pItemInfo->pGold->wQuantity,12);
-		}
-		bs.ReadBit(pItemInfo->bHasRand);
-		if(pItemInfo->bHasRand)
-			for(int i = 0;i < 3;++i)
-				bs.ReadBits(pItemInfo->pTmStFlag->dwUNKNOWN_[i],32);
-		if(!bSimple){
-			if(pItemData->HasDef())
-				bs.ReadBits(*pItemInfo->pTpSpInfo->iDefence,11);
-			if(pItemData->HasDur()){
-				bs.ReadBits(*pItemInfo->pTpSpInfo->iMaxDurability,8);
-				if(pItemInfo->pTpSpInfo->iMaxDurability.Value())
-					bs.ReadBits(*pItemInfo->pTpSpInfo->iCurDur,9);
-			}
-			if(bSocketed)
-				bs.ReadBits(*pItemInfo->pTpSpInfo->iSocket,4);
-			if(pItemData->IsStacked())
-				bs.ReadBits(*pItemInfo->pTpSpInfo->iQuantity,9);
-			if(pItemInfo->pExtItemInfo->iQuality == 5){	//这是一个套装
-				//暂时不支持.......................
-			}
-			if(bRuneWord){		//有符文之语属性
-				//暂时不支持.......................
-			}
-			//接下来是额外属性列表
-			for(bs.ReadBits(pItemInfo->pTpSpInfo->iEndFlag,9);
-				pItemInfo->pTpSpInfo->iEndFlag < 0x1FF;
-				bs.ReadBits(pItemInfo->pTpSpInfo->iEndFlag,9))
-            {
-				bs.ReadBits(pItemInfo->pTpSpInfo->mProperty[pItemInfo->pTpSpInfo->iEndFlag],
-                    ::theApp.PropertyData(pItemInfo->pTpSpInfo->iEndFlag).bits);
-            }
-		}
+	} else {	//这是一个物品,但是也可能为"ear "
+		pItemData = pItemInfo->ReadData(bs, bSimple, bRuneWord, bPersonalized, bSocketed);
+		if (!pItemData)
+			findUnknownItem(bs);
 	}
 	bs.AlignByte();
-
-}/*
+}
+/*
 		}
 		if(!bSimple){
 			pItemInfo->pTpSpInfo->bHasDef = TRUE;	//.......................

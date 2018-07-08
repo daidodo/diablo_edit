@@ -12,6 +12,7 @@ struct CEar
 	BYTE	iEarClass;		//bit 76-78
 	BYTE	iEarLevel;		//bit 79-85
 	BYTE	sEarName[16];	//bit 86-92,93-99,100-106,...,以0x00结束
+	void ReadData(CInBitsStream & bs);
 };
 
 //Item Long Name
@@ -31,6 +32,7 @@ struct CLongName
 	CMayExist<WORD>		wPref3;		//11 bits,Prefix 3,if bPref3 == TRUE
 	BOOL				bSuff3;		//1 bit,Suffix 3 flag
 	CMayExist<WORD>		wSuff3;		//11 bits,Suffix 3,if bSuff3 == TRUE
+	void ReadData(CInBitsStream & bs);
 };
 
 //Extended Item Info
@@ -80,6 +82,8 @@ struct CExtItemInfo
 	CMayExist<WORD>			wCharm;			//12 bits,if sTypeName == "cm1" || "cm2" || "cm3"
 //Spell ID
 	CMayExist<BYTE>			bSpellID;		//5 bits,if sTypeName == "0sc"
+	void ReadData(CInBitsStream & bs, BOOL bIsCharm, BOOL bRuneWord, BOOL bPersonalized, BOOL bIsTome, BOOL bHasMonsterID, BOOL bHasSpellID);
+	BOOL IsSet() const { return iQuality == 5; }
 };
 
 //Gold Quantity
@@ -87,12 +91,7 @@ struct CGoldQuantity
 {
 	BOOL	bNotGold;		//1 bit
 	WORD	wQuantity;		//12 bits,黄金数量
-};
-
-//Time Stamp Flag
-struct CTimeStampFlag
-{
-	DWORD	dwUNKNOWN_[3];	//32 * 3 bits
+	void ReadData(CInBitsStream & bs);
 };
 
 //Type Specific info
@@ -107,7 +106,7 @@ struct CTypeSpecificInfo
 	//Rune Word Property
 	std::map<WORD,DWORD>	mProperty;		//额外属性列表
 	WORD					iEndFlag;		//结束标志,0x1FF
-
+	void ReadData(CInBitsStream & bs, BOOL bHasDef, BOOL bHasDur, BOOL bSocketed, BOOL bIsStacked, BOOL bIsSet, BOOL bRuneWord);
 };
 
 //ItemInfo
@@ -120,8 +119,9 @@ struct CItemInfo
 	CMayExist<CExtItemInfo>			pExtItemInfo;	//如果bSimple == FALSE，则此结构存在
 	CMayExist<CGoldQuantity>		pGold;			//如果sTypeName == "gld "，则此结构存在
 	BOOL							bHasRand;		//1 bit
-	CMayExist<CTimeStampFlag>		pTmStFlag;		//如果bHasRand == TRUE，则此结构存在
+	CMayExistArray<DWORD, 3>		pTmStFlag;		//如果bHasRand == TRUE，则此结构存在
 	CMayExist<CTypeSpecificInfo>	pTpSpInfo;		//如果bSimple == FALSE，则此结构存在
+	const CItemDataStruct * ReadData(CInBitsStream & bs, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed);
 };
 
 template<int N>
@@ -133,13 +133,14 @@ class CD2Item
 {
 //members
 public:
-	CD2Item();
-	~CD2Item();
     //Quality()只作显示时,控制名字的颜色用
 	//BYTE Quality() const{return !bEar && !bSimple ? pItemInfo->pExtItemInfo->iQuality : (pItemData->IsUnique() ? 7 : 2);}
     BYTE Quality() const{return bEar ? 2 : (pItemData->IsUnique() ? 7 : (!bEar && !bSimple ? pItemInfo->pExtItemInfo->iQuality : 2));}
 	void ReadData(CInBitsStream & bs);
-//	void WriteFile(CFile & cf){
+	//void WriteData(COutBitsStream & bs) const {}
+private:
+	void findUnknownItem(CInBitsStream & bs);
+	//	void WriteFile(CFile & cf){
 //		cf.Write(&bData[0],UINT(bData.size()));
 //		cf.Flush();
 //	}
@@ -148,7 +149,7 @@ public:
 	//static void ReadPropertyFields();
 //fields
 	//static std::vector<BYTE>	SvBitFields;	//额外属性的位长信息
-//public:
+public:
 	std::vector<BYTE>		vItemData;	//如果不能识别物品,那么物品的数据将存在这里
 	const CItemDataStruct *	pItemData;	//物品的额外属性,大小,bHasDef,bNoDurability,bStacked,等.如果不能识别物品,pItemData = 0;
 	//物品信息
