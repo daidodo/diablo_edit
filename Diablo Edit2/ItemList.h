@@ -8,6 +8,7 @@ struct CItemList
 	CItemList();
 	~CItemList();
 	void ReadData(CInBitsStream & bs);
+	void WriteData(COutBitsStream & bs) const;
 private:
 	void ClearItems();
 //fields

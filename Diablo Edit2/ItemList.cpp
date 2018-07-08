@@ -24,15 +24,23 @@ void CItemList::ReadData(CInBitsStream & bs)
             throw 0;
 }
 
+void CItemList::WriteData(COutBitsStream & bs) const {
+	bs << WORD(0x4D4A);
+	auto off = bs.BytePos();
+	WORD cnt = 0;
+	bs << cnt;	//item number
+	for (auto pItem : vpItems)
+		if (pItem) {
+			pItem->WriteData(bs);
+			++cnt;
+		}
+	bs << WORD(0x4D4A) << offset_value(off, cnt);
+}
+
 void CItemList::ClearItems()
 {
-    if(!vpItems.empty()){
-        for(std::vector<CD2Item *>::iterator it = vpItems.begin();it != vpItems.end();++it){
-            if(*it){
-                delete *it;
-                *it = 0;
-            }
-        }
-    }
+	for (auto p : vpItems)
+		delete p;
+	vpItems.clear();
 }
 
