@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.27825.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Property Data", "Property Data\Property Data.vcxproj", "{CF1A6020-A587-43B7-A807-9003D608A524}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Format Data", "Format Data\Format Data.vcxproj", "{54174F2B-7AEB-4AEC-B50F-B67F6911A63B}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Item Data", "Item Data\Item Data.vcxproj", "{D876FEC9-42C8-4FAC-820D-8F4BAB9F9032}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Language Data", "Language Data\Language Data.vcxproj", "{87C82E2C-C66E-4EA3-B5B0-6B631103312C}"
@@ -29,14 +27,6 @@ Global
 		{CF1A6020-A587-43B7-A807-9003D608A524}.Release|x64.Build.0 = Release|x64
 		{CF1A6020-A587-43B7-A807-9003D608A524}.Release|x86.ActiveCfg = Release|Win32
 		{CF1A6020-A587-43B7-A807-9003D608A524}.Release|x86.Build.0 = Release|Win32
-		{54174F2B-7AEB-4AEC-B50F-B67F6911A63B}.Debug|x64.ActiveCfg = Debug|x64
-		{54174F2B-7AEB-4AEC-B50F-B67F6911A63B}.Debug|x64.Build.0 = Debug|x64
-		{54174F2B-7AEB-4AEC-B50F-B67F6911A63B}.Debug|x86.ActiveCfg = Debug|Win32
-		{54174F2B-7AEB-4AEC-B50F-B67F6911A63B}.Debug|x86.Build.0 = Debug|Win32
-		{54174F2B-7AEB-4AEC-B50F-B67F6911A63B}.Release|x64.ActiveCfg = Release|x64
-		{54174F2B-7AEB-4AEC-B50F-B67F6911A63B}.Release|x64.Build.0 = Release|x64
-		{54174F2B-7AEB-4AEC-B50F-B67F6911A63B}.Release|x86.ActiveCfg = Release|Win32
-		{54174F2B-7AEB-4AEC-B50F-B67F6911A63B}.Release|x86.Build.0 = Release|Win32
 		{D876FEC9-42C8-4FAC-820D-8F4BAB9F9032}.Debug|x64.ActiveCfg = Debug|x64
 		{D876FEC9-42C8-4FAC-820D-8F4BAB9F9032}.Debug|x64.Build.0 = Debug|x64
 		{D876FEC9-42C8-4FAC-820D-8F4BAB9F9032}.Debug|x86.ActiveCfg = Debug|Win32

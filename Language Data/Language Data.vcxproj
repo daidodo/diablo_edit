@@ -163,6 +163,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <Text Include="lang.txt" />
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
