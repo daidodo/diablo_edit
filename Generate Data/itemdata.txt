@@ -1,5 +1,5 @@
-ITEM
-ID	Pic	Name	Range	Equip	bDef	bDur	bStack	bTome	bMonst	bCharm	bSpell	bUnique				
+*ITEM
+*ID	Pic	Name	Range	Equip	bDef	bDur	bStack	bTome	bMonst	bCharm	bSpell	bUnique				
 elx				9												
 hpo				9												
 mpo				9												

@@ -166,7 +166,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="itemdata.txt" />
+    <None Include="..\Diablo Edit2\itemdata.dat" />
+    <None Include="..\Diablo Edit2\language.dat" />
+    <None Include="..\Diablo Edit2\new.dat" />
+    <None Include="..\Diablo Edit2\property.dat" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
