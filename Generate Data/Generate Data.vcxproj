@@ -166,9 +166,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Diablo Edit2\new.dat" />
-  </ItemGroup>
-  <ItemGroup>
     <Text Include="itemdata.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
