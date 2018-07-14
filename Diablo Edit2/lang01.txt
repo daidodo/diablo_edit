@@ -1,0 +1,4189 @@
+*LANG	
+0	简体中文(&Simplified Chinese)
+1	基本信息
+2	小站
+3	任务
+4	技能
+5	警告
+6	错误
+7	是否保存已打开的人物
+8	 ？
+9	不能打开文件
+10	人物名字与文件名不同，是否继续？
+11	文件访问受限
+12	无标题
+13	文件可能不是正确的d2s格式，是否继续？
+14	文件长度错误，是否继续？
+15	未知
+16	人物名字格式错误
+17	长度：2-15字符
+18	"包括：a-z,A-Z,-,_"
+19	注意：名字必须以字母开头和结尾，
+20	中间只允许有一个'-'或'_'符号
+21	人物等级必须在1-127之间
+22	力量、敏捷、体力、精力和状态点数必须在0-1023之间
+23	耐力、生命和法力值必须在0-8191之间，技能点数在0-255之间
+24	亚马逊
+25	法师
+26	死灵法师
+27	圣骑士
+28	野蛮人
+29	德鲁依
+30	刺客
+31	普通
+32	恶梦
+33	地狱
+34	法力
+35	版本
+36	角色
+37	名字
+38	称谓
+39	武器
+40	最近游戏时间
+41	最后位置
+42	等级
+43	经验
+44	等级与经验对照表
+45	人物基本属性
+46	力量
+47	敏捷
+48	体力
+49	精力
+50	状态点剩余
+51	基础值
+52	当前值
+53	耐力
+54	生命
+55	天梯
+56	资料片
+57	专家级
+58	以前死过
+59	全部
+60	萝格营地
+61	冰冷之原
+62	石块旷野
+63	黑暗森林
+64	黑色荒地
+65	外侧回廊
+66	监牢第一层
+67	内侧回廊
+68	地下墓穴第二层
+69	鲁.高因
+70	下水道第二层
+71	干燥的高地
+72	死亡之殿第二层
+73	遥远的绿洲
+74	遗失的城市
+75	皇宫监牢第一层
+76	神秘避难所
+77	卫士的峡谷
+78	库拉斯特海港
+79	蜘蛛森林
+80	庞大湿地
+81	剥皮森林
+82	库拉斯特下层
+83	库拉斯特商场
+84	库拉斯特上层
+85	崔凡克
+86	憎恨的囚牢第二层
+87	群魔堡垒
+88	神罚之城
+89	火焰之河
+90	哈洛加斯
+91	冰冻高地
+92	亚瑞特高原
+93	水晶通道
+94	冰河路径
+95	痛苦之厅
+96	冰冻苔原
+97	远古之路
+98	世界之石要塞第二层
+99	邪恶洞穴
+100	修女埋骨之地
+101	凯恩的搜索
+102	遗忘之塔
+103	交易的工具
+104	屠杀的修女
+105	罗达门特的巢穴
+106	赫拉迪克之杖
+107	堕落的太阳
+108	神秘避难所
+109	召唤者
+110	七个古墓
+111	黄金鸟
+112	古代宗教之刃
+113	克林姆的意志
+114	蓝.依森的古书
+115	转为黑暗的神殿
+116	守护者
+117	堕落的天使
+118	地狱熔炉
+119	恐怖的结局
+120	哈洛加斯围城战
+121	亚瑞特山的救援行动
+122	冰之囚
+123	哈洛加斯的反叛行动
+124	通道的祭典
+125	毁灭的前夕
+126	杀死母牛之王
+127	技能点剩余
+128	身上金钱
+129	箱子金钱
+130	请选择一种角色
+131	亚马逊技能
+132	弓和十字弓技能
+133	被动和魔法技能
+134	标枪和长矛技能
+135	魔法箭
+136	火焰箭
+137	冰箭
+138	多重箭
+139	爆裂箭
+140	急冻箭
+141	导引箭
+142	炮轰
+143	牺牲之箭
+144	冻结之箭
+145	内视
+146	致命攻击
+147	闪避
+148	慢速箭
+149	躲避
+150	刺入
+151	诱饵
+152	回避
+153	女武神
+154	穿刺
+155	戳刺
+156	威力一击
+157	毒枪
+158	刺爆
+159	闪电球
+160	充能一击
+161	瘟疫标枪
+162	击退
+163	闪电攻击
+164	闪电之怒
+165	法师技能
+166	火焰法术
+167	闪电法术
+168	冰冻法术
+169	火弹
+170	暖气
+171	地狱之火
+172	炽烈之径
+173	火球
+174	火墙
+175	强化
+176	陨石
+177	支配之焰
+178	九头海蛇
+179	充能弹
+180	静态力场
+181	心灵传动
+182	新星
+183	闪电
+184	连锁闪电
+185	传送
+186	雷云风暴
+187	能量护盾
+188	支配闪电
+189	冰弹
+190	冰封装甲
+191	霜之新星
+192	冰风暴
+193	碎冰甲
+194	冰尖柱
+195	暴风雪
+196	寒冰装甲
+197	冰封球
+198	支配冰冷
+199	死灵法师技能
+200	诅咒
+201	毒素和白骨法术
+202	召唤法术
+203	伤害加深
+204	微暗灵视
+205	削弱
+206	攻击反噬
+207	恐惧
+208	迷乱
+209	偷取生命
+210	吸引
+211	衰老
+212	降低抵抗
+213	牙
+214	白骨装甲
+215	淬毒匕首
+216	尸体爆炸
+217	骨墙
+218	毒爆
+219	骨矛
+220	骨牢
+221	剧毒新星
+222	白骨之魂
+223	支配骷髅
+224	骷髅复苏
+225	黏土石魔
+226	支配石魔
+227	复苏骷髅法师
+228	鲜血石魔
+229	召唤反抗
+230	钢铁石魔
+231	火焰石魔
+232	重生
+233	圣骑士技能
+234	作战技能
+235	攻击灵气
+236	防御性灵气
+237	牺牲
+238	重击
+239	圣光弹
+240	白热
+241	突击
+242	复仇
+243	祝福之锤
+244	转换
+245	神圣之盾
+246	天堂之拳
+247	力量
+248	圣火
+249	刺针
+250	祝福瞄准
+251	专注
+252	神圣冰冻
+253	神圣冲击
+254	庇护所
+255	狂热
+256	信念
+257	祈祷
+258	抗火
+259	反抗
+260	抗冰冷
+261	净化
+262	抵抗闪电
+263	精力
+264	冥思
+265	救赎
+266	救助
+267	野蛮人技能
+268	战斗技能
+269	战斗专家
+270	呐喊
+271	重击
+272	跳跃
+273	双手挥击
+274	击昏
+275	双手投掷
+276	跳跃攻击
+277	专心
+278	狂乱
+279	旋风
+280	狂战士
+281	支配长剑
+282	支配斧头
+283	支配钉头锤
+284	支配长棍
+285	支配飞掷
+286	支配长矛
+287	增加耐力
+288	铁布衫
+289	加速
+290	自然抵抗
+291	狂嗥
+292	找寻药剂
+293	嘲弄
+294	大叫
+295	找寻物品
+296	战嗥
+297	战斗体制
+298	残酷喝阻
+299	战斗狂嗥
+300	战斗指挥
+301	德鲁依
+302	召唤
+303	外型变形
+304	元素
+305	乌鸦
+306	猛毒华藤
+307	橡木智者
+308	召唤鬼狼
+309	食尸藤
+310	狼獾之心
+311	召唤狂狼
+312	太阳藤
+313	棘灵
+314	召唤灰熊
+315	狼人变化
+316	变形术
+317	熊人变化
+318	野性狂暴
+319	撞槌
+320	狂犬病
+321	焰爪
+322	饥饿
+323	震波
+324	狂怒
+325	火风暴
+326	熔浆巨岩
+327	极地风暴
+328	火山爆
+329	飓风装甲
+330	镰鼬风
+331	火山
+332	龙卷风
+333	毁天灭地
+334	暴风
+335	刺客技能
+336	陷阱
+337	影子训练
+338	武学艺术
+339	火焰爆震
+340	雷电网
+341	刃之守卫
+342	电能守卫
+343	火焰复苏
+344	刃之怒
+345	雷光守卫
+346	复苏狱火
+347	亡者守卫
+348	刀刃之盾
+349	支配利爪
+350	心灵战锤
+351	加速
+352	武器格挡
+353	魔影斗篷
+354	能量消解
+355	影子战士
+356	心灵爆震
+357	毒牙
+358	影子大师
+359	虎击
+360	龙爪
+361	焰拳
+362	双龙爪
+363	眼镜蛇攻击
+364	雷电爪
+365	神龙摆尾
+366	寒冰刃
+367	飞龙在天
+368	凤凰攻击
+369	技能等级必须在0-127之间
+370	请选择角色
+371	不能读取文件“new.dat“，你可以用一个正确的d2s文件代替，只要改变文件名，并复制到程序目录下
+372	身上或箱子的金钱数过多
+373	Quest数据格式可能错误，是否继续？
+374	小站数据格式可能错误，是否继续？
+375	人物属性格式可能错误，是否继续？
+376	人物技能格式可能错误，是否继续？
+377	物品列表格式可能错误，是否继续？
+378	物品格式可能错误，是否继续？
+379	物品
+380	不能识别的物品代码，是否继续？
+381	未知的物品等级：
+382	数量：%d
+383	代码
+384	说明
+385	一般攻击
+386	白色低级
+387	白色普通
+388	白色高级
+389	蓝色魔法
+390	绿色套装
+391	黄金
+392	暗金
+393	橙色合成
+394	脚踢
+395	投掷
+396	取消召唤
+397	左手投掷
+398	左手挥动
+399	一股邪恶力量
+400	辨识卷轴
+401	辨识之书
+402	回城卷轴
+403	回城之书
+404	冰冻
+405	中毒
+406	火焰抵抗
+407	冰冷抵抗
+408	闪电抵抗
+409	普通
+410	在白天
+411	在黄昏
+412	在夜间
+413	在黎明
+414	粗糙的
+415	超强的
+416	防御: %d
+417	单手伤害: %d 到 %d
+418	双手伤害: %d 到 %d
+419	耐久度: %d 之 %d
+420	无法破坏
+421	无形的(无法修复)
+422	有凹槽(%d)
+423	物品前后缀名
+424	铸造台
+425	等级
+426	拥有者
+427	质量
+428	防御
+429	数量
+430	耐久度
+431	属性悬浮窗透明度
+432	隐藏
+433	有孔
+434	不可修复
+435	不可破坏
+436	锻造
+437	前后缀
+438	添加
+439	编辑
+440	删除
+441	名
+442	称
+443	前缀1
+444	后缀1
+445	前缀2
+446	后缀2
+447	前缀3
+448	后缀3
+449	暗金名
+450	子类
+****************************以下是物品名称	
+0	Elixir
+1	Healing Potion
+2	Mana Potion
+3	Full Healing Potion
+4	Full Mana Potion
+5	Stamina Potion
+6	Antidote Potion
+7	Rejuvenation Potion
+8	Full Rejuvenation Potion
+9	Thawing Potion
+10	Town Portal Book
+11	Identify Book
+12	Amulet
+13	Top of The Horadric Staff
+14	Ring
+15	Gold
+16	Scroll of Jnifuss
+17	Key To The Cairn Stones
+18	Arrows
+19	Torch
+20	Bolts
+21	Town Portal Scroll
+22	Identify Scroll
+23	Heart
+24	Brain
+25	Jawbone
+26	Eye
+27	Horn
+28	Tail
+29	Flag
+30	Fang
+31	Quill
+32	Soul
+33	Scalp
+34	Spleen
+35	Key
+36	The Black Tower Key
+37	Potion of Life
+38	Jade Figurine
+39	Gold Bird
+40	Lam esen's tome
+41	Horadric Cube
+42	Horadric Scroll
+43	Mephisto SoulStone
+44	Book of Skill
+45	Khalim Eye
+46	Khalim Heart
+47	Khalim Brain
+48	Ear
+49	Chipped Amethyst
+50	Flawed Amethyst
+51	Amethyst
+52	Flawless Amethyst
+53	Perfect Amethyst
+54	Chipped Topaz
+55	Flawed Topaz
+56	Topaz
+57	Flawless Topaz
+58	Perfect Topaz
+59	Chipped Saphire
+60	Flawed Saphire
+61	Saphire
+62	Flawless Saphire
+63	Perfect Saphire
+64	Chipped Emerald
+65	Flawed Emerald
+66	Emerald
+67	Flawless Emerald
+68	Perfect Emerald
+69	Chipped Ruby
+70	Flawed Ruby
+71	Ruby
+72	Flawless Ruby
+73	Perfect Ruby
+74	Chipped Diamond
+75	Flawed Diamond
+76	Diamond
+77	Flawless Diamond
+78	Perfect Diamond
+79	Minor Healing Potion
+80	Light Healing Potion
+81	Healing Potion
+82	Greater Healing Potion
+83	Super Healing Potion
+84	Minor Mana Potion
+85	Light Mana Potion
+86	Mana Potion
+87	Greater Mana Potion
+88	Super Mana Potion
+89	Chipped Skull
+90	Flawed Skull
+91	Skull
+92	Flawless Skull
+93	Perfect Skull
+94	Herb
+95	Small Charm
+96	Large Charm
+97	Grand Charm
+98	Small Red Potion
+99	Large Red Potion
+100	Small Blue Potion
+101	Large Blue Potion
+102	El Rune
+103	Eld Rune
+104	Tir Rune
+105	Nef Rune
+106	Eth Rune
+107	Ith Rune
+108	Tal Rune
+109	Ral Rune
+110	Ort Rune
+111	Thul Rune
+112	Amn Rune
+113	Sol Rune
+114	Shael Rune
+115	Dol Rune
+116	Hel Rune
+117	Io Rune
+118	Lum Rune
+119	Ko Rune
+120	Fal Rune
+121	Lem Rune
+122	Pul Rune
+123	Um Rune
+124	Mal Rune
+125	Ist Rune
+126	Gul Rune
+127	Vex Rune
+128	Ohm Rune
+129	Lo Rune
+130	Sur Rune
+131	Ber Rune
+132	Jah Rune
+133	Cham Rune
+134	Zod Rune
+135	Jewel
+136	Malah's Potion
+137	Scroll of Knowledge
+138	Scroll of Resistances
+139	Cap
+140	Skull Cap
+141	Helm
+142	Full Helm
+143	Great Helm
+144	Crown
+145	Mask
+146	Bone Helm
+147	War Hat
+148	Sallet
+149	Casque
+150	Basinet
+151	Winged Helm
+152	Grand Crown
+153	Death Mask
+154	Grim Helm
+155	Shako
+156	Hydraskull
+157	Armet
+158	Giant Conch
+159	Spired Helm
+160	Corona
+161	Demonhead
+162	Bone Visage
+163	Circlet
+164	Coronet
+165	Tiara
+166	Diadem
+167	Jawbone Cap
+168	Fanged Helm
+169	Horned Helm
+170	Assault Helmet
+171	Avenger Guard
+172	Jawbone Visor
+173	Lion Helm
+174	Range Mask
+175	Savage Helmet
+176	Slayer Guard
+177	Carnage Helm
+178	Fury Visor
+179	Destroyer Helm
+180	Conqueror Crown
+181	Guardian Crown
+182	Wolf Head
+183	Hawk Helm
+184	Antlers
+185	Falcon Mask
+186	Spirit Mask
+187	Alpha Helm
+188	Griffon Headdress
+189	Hunter's Guise
+190	Sacred Feathers
+191	Totemic Mask
+192	Blood Spirit
+193	Sun Spirit
+194	Earth Spirit
+195	Sky Spirit
+196	Dream Spirit
+197	Leather Gloves
+198	Heavy Gloves
+199	Chain Gloves
+200	Light Gauntlets
+201	Gauntlets
+202	Demonhide Gloves
+203	Sharkskin Gloves
+204	Heavy Bracers
+205	Battle Gauntlets
+206	War Gauntlets
+207	Bramble Mitts
+208	Vampirebone Gloves
+209	Vambraces
+210	Crusader Gauntlets
+211	Ogre Gauntlets
+212	Boots
+213	Heavy Boots
+214	Chain Boots
+215	Light Plated Boots
+216	Greaves
+217	Demonhide Boots
+218	Sharkskin Boots
+219	Mesh Boots
+220	Battle Boots
+221	War Boots
+222	Wyrmhide Boots
+223	Scarabshell Boots
+224	BoneWeave Boots
+225	Mirrored Boots
+226	Myrmidon Greaves
+227	Sash
+228	Light Belt
+229	Belt
+230	Heavy Belt
+231	Plated Belt
+232	Demonhide Sash
+233	Sharkskin Belt
+234	Mesh Belt
+235	Battle Belt
+236	War Belt
+237	Spiderweb Sash
+238	Vampirefang Belt
+239	Mithril Coil
+240	Troll Belt
+241	Colossus Girdle
+242	Quilted Armor
+243	Leather Armor
+244	Hard Leather Armor
+245	Studded Leather
+246	Ring Mail
+247	Scale Mail
+248	Chain Mail
+249	Breast Plate
+250	Splint Mail
+251	Plate Mail
+252	Field Mail
+253	Gothic Plate
+254	Full Plate Mail
+255	Ancient Armor
+256	Light Plate
+257	Ghost Armor
+258	Serpentskin Armor
+259	Demonhide Armor
+260	Trellised Armor
+261	Linked Mail
+262	Tigulated Mail
+263	Mesh Armor
+264	Cuirass
+265	Russet Armor
+266	Templar Coat
+267	Sharktooth Armor
+268	Embossed Plate
+269	Chaos Armor
+270	Ornate Plate
+271	Mage Plate
+272	Dusk Shroud
+273	Wyrmhide
+274	Scarab Husk
+275	Wire Fleece
+276	Diamond Mail
+277	Loricated Mail
+278	Boneweave
+279	Great Hauberk
+280	Balrog Skin
+281	Hellforge Plate
+282	Kraken Shell
+283	Lacquered Plate
+284	Shadow Plate
+285	Sacred Armor
+286	Archon Plate
+287	Buckler
+288	Small Shield
+289	Large Shield
+290	Kite Shield
+291	Tower Shield
+292	Gothic Shield
+293	Bone Shield
+294	Spiked Shield
+295	Defender
+296	Round Shield
+297	Scutum
+298	Dragon Shield
+299	Pavise
+300	Ancient Shield
+301	Grim Shield
+302	Barbed Shield
+303	Heater
+304	Luna
+305	Hyperion
+306	Monarch
+307	Aegis
+308	Ward
+309	Troll Nest
+310	Blade Barrier
+311	Targe
+312	Rondache
+313	Heraldic Shield
+314	Aerin Shield
+315	Crown Shield
+316	Akaran Targe
+317	Akaran Rondache
+318	Protector Shield
+319	Gilded Shield
+320	Royal Shield
+321	Sacred Targe
+322	Sacred Rondache
+323	Kurast Shield
+324	Zakarum Shield
+325	Vortex Shield
+326	Preserved Head
+327	Zombie Head
+328	Unraveller Head
+329	Gargoyle Head
+330	Demon Head
+331	Mummified Trophy
+332	Fetish Trophy
+333	Sexton Trophy
+334	Cantor Trophy
+335	Hierophant Trophy
+336	Minion Skull
+337	Hellpawn Skull
+338	Overseer Skull
+339	Succubus Skull
+340	Bloodlord Skull
+341	Hand Axe
+342	Axe
+343	Double Axe
+344	Military Pick
+345	War Axe
+346	Large Axe
+347	Broad Axe
+348	Battle Axe
+349	Great Axe
+350	Gaint Axe
+351	Hatchet
+352	Cleaver
+353	Twin Axe
+354	Crowbill
+355	Naga
+356	Military Axe
+357	Bearded Axe
+358	Tabar
+359	Gothic Axe
+360	Ancient Axe
+361	Tomahawk
+362	Small Crescent
+363	Ettin Axe
+364	War Spike
+365	Berserker Axe
+366	Feral Axe
+367	Silver-Edged Axe
+368	Decapitator
+369	Champion Axe
+370	Glorious Axe
+371	Wand
+372	Yew Wand
+373	Bone Wand
+374	Grim Wand
+375	Burnt Wand
+376	Petrified Wand
+377	Tomb Wand
+378	Grave Wand
+379	Polished Wand
+380	Ghost Wand
+381	Lich Wand
+382	Unearthed Wand
+383	Club
+384	Spiked Club
+385	Mace
+386	Morning Star
+387	Flail
+388	War Hammer
+389	Maul
+390	Great Maul
+391	Cudgel
+392	Barbed Club
+393	Flanged Mace
+394	Jagged Star
+395	Knout
+396	Battle Hammer
+397	War Club
+398	Martel De Fer
+399	Truncheon
+400	Tyrant Club
+401	Reinforced Mace
+402	Devil Star
+403	Scourge
+404	Legendary Mallet
+405	Ogre Maul
+406	Thunder Maul
+407	Scepter
+408	Grand Scepter
+409	War Scepter
+410	Rune Scepter
+411	Holy Water Sprinkler
+412	Divine Scepter
+413	Mighty Scepter
+414	Seraph Rod
+415	Caduceus
+416	Short Sword
+417	Scimitar
+418	Sabre
+419	Falchion
+420	Crystal Sword
+421	Broad Sword
+422	Long Sword
+423	War Sword
+424	Tow Handed Sword
+425	Claymore
+426	Giant Sword
+427	Bastard Sword
+428	Flamberge
+429	Great Sword
+430	Dagger
+431	Dirk
+432	Kris
+433	Blade
+434	Gladius
+435	Cutlass
+436	Shamshir
+437	Tulwar
+438	Dimensional Blade
+439	Battle Sword
+440	Rune Sword
+441	Ancient Sword
+442	Espandon
+443	Dacian Falx
+444	Tusk Sword
+445	Gothic Sword
+446	Zweihander
+447	Executioner Sword
+448	Poignard
+449	Rondel
+450	Cinquedeas
+451	Stiletto
+452	Falcata
+453	Ataghan
+454	Elegant Blade
+455	Hydra Edge
+456	Phase Blade
+457	Conquest Sword
+458	Cryptic Sword
+459	Mythical Sword
+460	Legend Sword
+461	Highland Blade
+462	Balrog Blade
+463	Champion Sword
+464	Colossus Sword
+465	Colossus Blade
+466	Bone Knife
+467	Mithril Point
+468	Fanged Knife
+469	Legend Spike
+470	Throwing Knife
+471	Throwing Axe
+472	Balanced Knife
+473	Balanced Axe
+474	Battle Dart
+475	Francisca
+476	War Dart
+477	Hurlbat
+478	Flying Knife
+479	Flying Axe
+480	Winged Knife
+481	Winged Axe
+482	Javelin
+483	Pilum
+484	Short Spear
+485	Glaive
+486	Throwing Spear
+487	War Javelin
+488	Great Pilum
+489	Simbilan
+490	Spiculum
+491	Harpoon
+492	Hyperion Javelin
+493	Stygian Pilum
+494	Balrog Spear
+495	Ghost Glaive
+496	Winged Harpoon
+497	Spear
+498	Trident
+499	Brandistock
+500	Spetum
+501	Pike
+502	Bardiche
+503	Voulge
+504	Scythe
+505	Poleaxe
+506	Halberd
+507	War Scythe
+508	War Spear
+509	Fuscina
+510	War Fork
+511	Yari
+512	Lance
+513	Lochaber Axe
+514	Bill
+515	Battle Scythe
+516	Partizan
+517	Bec-de-Corbin
+518	Grim Scythe
+519	Hyperion Spear
+520	Stygain Pike
+521	Mancatcher
+522	Ghost Spear
+523	War Pike
+524	Ogre Axe
+525	Colossus Voulge
+526	Thresher
+527	Cryptic Axe
+528	Great Poleaxe
+529	Giant Thresher
+530	Short Staff
+531	Long Staff
+532	Ganrled Staff
+533	Battle Staff
+534	War Staff
+535	Jo Staff
+536	Quarter Staff
+537	Cedar Staff
+538	Gothic Staff
+539	Rune Staff
+540	Walking Stick
+541	Stalagmite
+542	Elder Staff
+543	Shillelagh
+544	Archon Staff
+545	Short Bow
+546	Hunter's Bow
+547	Long Bow
+548	Composite Bow
+549	Short Battle Bow
+550	Long Battle Bow
+551	Short War Bow
+552	Long War Bow
+553	Light Crossbow
+554	Crossbow
+555	Heavy Crossbow
+556	Repeating Crossbow
+557	Edge Bow
+558	Razor Bow
+559	Cedar Bow
+560	Double Bow
+561	Short Siege Bow
+562	Large Siege Bow
+563	Rune Bow
+564	Gothic Bow
+565	Arbalest
+566	Siege Crossbow
+567	Ballista
+568	Chu-ko-Nu
+569	Spider Bow
+570	Blade Bow
+571	Shadow Bow
+572	Great Bow
+573	Diamond Bow
+574	Crusader Bow
+575	Ward Bow
+576	Hydra Bow
+577	Pellet Bow
+578	Gorgon Crossbow
+579	Colossus Crossbow
+580	Demon Crossbow
+581	Rancid Gas Potion
+582	Oil Potion
+583	Choking Gas Potion
+584	Exploding Potion
+585	Strangling Gas Potion
+586	Fulminating Potion
+587	Decoy Gidbinn
+588	The Gidbinn
+589	Wirt's Leg
+590	Horadric Malus
+591	Hell Forge Hammer
+592	Horadric Staff
+593	Staff Of Kings
+594	Khalim's Flail
+595	Khalim's Will
+596	Katar
+597	Wrist Blade
+598	Hatchet Hands
+599	Cestus
+600	Claws
+601	Blade Talons
+602	Scissors Katar
+603	Quhab
+604	Wrist Spike
+605	Fascia
+606	Hand Scythe
+607	Greater Claws
+608	Greater Talons
+609	Scissors Quhab
+610	Suwayyah
+611	Wrist Sword
+612	War Fist
+613	Battle Cestus
+614	Feral Claws
+615	Runic Talons
+616	Scissors Suwayyah
+617	Eagle Orb
+618	Sacred Globe
+619	Smoked Sphere
+620	Clasped Orb
+621	Jared's Stone
+622	Glowing Orb
+623	Crystalline Globe
+624	Cloudy Sphere
+625	Sparkling Ball
+626	Swirling Crystal
+627	Heavenly Stone
+628	Eldritch Orb
+629	Demon Heart
+630	Vortex Orb
+631	Dimensional Shard
+632	Stag Bow
+633	Reflex Bow
+634	Maiden Spear
+635	Maiden Pike
+636	Maiden Javelin
+637	Ashwood Bow
+638	Ceremonial Bow
+639	Ceremonial Spear
+640	Ceremonial Pike
+641	Ceremonial Javelin
+642	Matriarchal Bow
+643	Grand Matron Bow
+644	Matriarchal Spear
+645	Matriarchal Pike
+646	Matriarchal Javelin
+**************************以下是属性名称(Property Name)	
+0	%+d Strength
+1	%+d Energy
+2	%+d Dexterity
+3	%+d Vitality
+4	Stat Point
+5	Skill Point
+6	Life
+7	%+d Max Life
+8	Mana
+9	%+d Max Mana
+10	Stamina
+11	%+d Max Stamina
+12	Level
+13	Experience
+14	Gold
+15	Goldbank
+16	%+d%% Enhanced Defense
+17	%+d%% - %d%% Enhanced Damage
+18	%+d%% Enhanced Min Damage
+19	%+d Attack Rating
+20	%+d%% Chance of Blocking
+21	%+d Min 1-Handed Damage
+22	%+d Max 1-Handed Damage
+23	%+d Min 2-Handed Damage
+24	%+d Max 2-Handed Damage
+25	Damage %+d%% NV
+26	Regenerate mana % NV
+27	Regenerate Mana %+d%%
+28	Heal Stemina %+d%%
+29	Lastexp
+30	Nextxp
+31	%+d Defense
+32	%+d Defense vs Missile
+33	%+d Defense vs Melee
+34	Damage Reduced By %+d
+35	Magic Damage Reduced By %+d
+36	Damage Reduced By %+d%%
+37	%+d%% Magic Resist
+38	%+d%% Max Magic Resist
+39	%+d%% Fire Resist
+40	%+d%% Max Fire Resist
+41	%+d%% Lightning Resist
+42	%+d%% Max Lightning Resist
+43	%+d%% Cold Resist
+44	%+d%% Max Cold Resist
+45	%+d%% Poison Resist
+46	%+d%% Max Poison Resist
+47	Damageaure
+48	%+d - %d Fire Damage
+49	%+d Max Fire Damage
+50	%+d - %d Lightning Damage
+51	%+d Max Lightning Damage
+52	%+d - %d Magic Damage
+53	%+d Max Magic Damage
+54	%+d - %d Cold Damage Freezing %d sec
+55	%+d Max Cold Damage
+56	%+d Cold Length
+57	%+d - %d Poison Damage Over %d sec
+58	%+d Max Poison Damage
+59	%+d Poison Length
+60	%+d%% Life Stolen per Hit Min
+61	%+d%% Life Stolen per Hit Max
+62	%+d%% Mana Stolen per Hit Min
+63	%+d%% Mana Stolen per Hit Max
+64	Stamina Drain Min
+65	Stamina Drain Max
+66	Stun Length
+67	Run/Walk Speed %+d%% NV
+68	Attack Speed %+d%% NV
+69	Other Animrate
+70	Quantity
+71	Value %+d
+72	%+d Durability
+73	%+d Max Durability
+74	%+d Replenish Life
+75	Increase Max Durability %+d%%
+76	Increase Max Life %+d%%
+77	Increase Max Mana %+d%%
+78	Attacker Takes Damage of %+d
+79	%+d%% Extra Gold From Monsters
+80	%+d%% Better Chance of Getting Magic Items
+81	Knock Back %+d
+82	Time Duration %+d
+83	%+d %s Skill
+84	Unsentparaml
+85	%+d%% Experience Gained
+86	%+d Life After Each Kill
+87	Reduced Prices %+d%%
+88	Double Herb Duration
+89	%+d Light Radius
+90	Light Color NV %d
+91	Requirements %+d%%
+92	%+d Item Level Require
+93	%+d%% Increase Attack Speed
+94	Item Level Require %+d%%
+95	Last Block Frame
+96	%+d%% Faster Run/Walk
+97	%+d to %s
+98	Change Character State to %s
+99	%+d%% Faster Hit Recovery Rate
+100	Monster Player Count
+101	Poison Override
+102	%+d%% Faster Block Rate
+103	Bypass Undead
+104	Bypass Demons
+105	%+d%% Faster Cast Rate
+106	Bypass Beast
+107	%+d to %s(%s only)
+108	Slain Monsters Rest In Peace %+d
+109	Curse Resist %+d
+110	Poison Length Reduced by %+d%%
+111	Damage %+d
+112	Hit Causes Monster Flee %+d%%
+113	Hit Blinds Target %+d
+114	%+d%% Damage Mana
+115	Ignore Target Defense
+116	-%+d%% Target Defense
+117	Prevent Monster Heal %+d
+118	Half Freeze Duration
+119	%+d%% Bonus Attack Rating
+120	%+d Monster Defense Per Hit
+121	%+d%% Damage to Demons
+122	%+d%% Damage to Undead
+123	%+d Attack Rating vs Demons
+124	%+d Attack Rating vs Undead
+125	Throwable
+126	%+d Fire Skills %d
+127	%+d All Skills
+128	Attacker Takes Lightning Damage of %+d
+129	Iron Maiden Level
+130	Life Tap Level
+131	Thorns Percent
+132	Bone Armor
+133	Bone Armor Max
+134	Freezes Target %+d
+135	%+d%% Chance of Open Wounds
+136	%+d%% Chance of Crushing Blow
+137	%+d Kick Damage
+138	%+d Mana After Each Kill
+139	%+d Life After Each Demon Kill
+140	Extra Blood %d
+141	%+d%% Chance of Deadly Strike
+142	Fire Absorb %+d%%
+143	%+d File Absorb
+144	Lightning Absorb %+d%%
+145	%+d Lightning Absorb
+146	Magic Absorb %+d%%
+147	%+d Magic Absorb
+148	Cold Absorb %+d%%
+149	%+d Cold Absorb
+150	Slows Target by %+d%%
+151	Level %+d %s Aura When Equipped
+152	Indestructible
+153	Cannot Be Frozen
+154	%+d%% Slower Stamina Drain
+155	%+d%% Chance of Reanimate as %s
+156	%+d%% Chance of Piercing Attack
+157	Fires Magic Arrows or Bolts %+d
+158	Fires Explosive Arrows or Bolts %+d
+159	%+d to Min Throw Damage NV
+160	%+d to Max Throw Damage NV
+161	Uncoded
+162	Uncoded
+163	Uncoded
+164	Uncoded
+165	Uncoded
+166	Uncoded
+167	Uncoded
+168	Uncoded
+169	Uncoded
+170	Uncoded
+171	Uncoded
+172	Uncoded
+173	Uncoded
+174	Uncoded
+175	Uncoded
+176	Uncoded
+177	Uncoded
+178	Uncoded
+179	%+d%% to Attack Rating vs %s
+180	%+d%% to Damage vs %s
+181	Fade %d
+182	Armor Override
+183	Unused
+184	Unused
+185	Unused
+186	Unused
+187	Unused
+188	%+d %s (%s only)
+189	Unused
+190	Unused
+191	Unused
+192	Unused
+193	Unused
+194	Add %+d Sockets
+195	%+d%% Chance to Cast Level %d %s When Attack
+196	%+d%% Chance to Cast Level %d %s When Kill
+197	%+d%% Chance to Cast Level %d %s When Death
+198	%+d%% Chance to Cast Level %d %s When Striking
+199	%+d%% Chance to Cast Level %d %s When Levelup
+200	Unused
+201	%+d%% Chance to Cast Level %+d %s When Struck
+202	Unused
+203	Unused
+204	Level %+d %s (%d/%d Charges)
+205	Unused
+206	Unused
+207	Unused
+208	Unused
+209	Unused
+210	Unused
+211	Unused
+212	Unused
+213	Unused
+214	%+d Defence per Level
+215	%+d Enhanced Defence per Level
+216	%+d Life per Level
+217	%+d Mana per Level
+218	%+d Max Damage per Level
+219	%+d Enhanced Max Damage per Level
+220	%+d Strength per Level
+221	%+d Dexterity per Level
+222	%+d Energy per Level
+223	%+d Vitality per Level
+224	%+d Attack Rating per Level
+225	%+d%% Bonus to Attack Rating per Level
+226	%+d Max Cold Damage per Level
+227	%+d Max Fire Damage per Level
+228	%+d Max Lightning Damage per Level
+229	%+d Max Poison Damage per Level
+230	Cold Resist %+d%% per Level
+231	Fire Resist %+d%% per Level
+232	Lightning Resist %+d%% per Level
+233	Poison Resist %+d%% per Level
+234	%+d Cold Absorb per Level
+235	%+d Fire Absorb per Level
+236	%+d Lightning Absorb per Level
+237	%+d Poison Absorb per Level
+238	Attacker Takes Damage of %+d per Level
+239	%+d%% Extra Gold from Monsters per Level
+240	%+d%% Better Chance of Getting Magic Items per Level
+241	Heal Stamina Plus %+d%% per Level
+242	%+d Max Stamina per Level
+243	%+d%% Damage to Demons per Level
+244	%+d%% Damage to Undead per Level
+245	%+d to Attack Rating vs Demons per Level
+246	%+d to Attack Rating vs Undead per Level
+247	%+d%% Chance of Crushing Blow per Level
+248	%+d%% Chance of Open Wounds per Level
+249	%+d Kick Damage per Level
+250	%+d%% Chance of Deadly Strike per Level
+251	Find Gems per Level
+252	Repairs 1 Durability in %d Seconds
+253	Replenishes 1 Quantity in %d Seconds
+254	Increased Stack Size %+d
+255	Uncoded
+256	Uncoded
+257	Uncoded
+258	Uncoded
+259	Uncoded
+260	Uncoded
+261	Uncoded
+262	Uncoded
+263	Uncoded
+264	Uncoded
+265	Uncoded
+266	Uncoded
+267	Uncoded
+268	%+d - %d Defense (Increases %s)
+269	%+d - %d Enhanced Defense (Increases %s)
+270	%+d - %d Life (Increases %s)
+271	%+d - %d Mana (Increases %s)
+272	%+d - %d Max Damage (Increases %s)
+273	%+d - %d Enhanced Max Damage (Increases %s)
+274	%+d - %d Strength (Increases %s)
+275	%+d - %d Dexterity (Increases %s)
+276	%+d - %d Energy (Increases %s)
+277	%+d - %d Vitality (Increases %s)
+278	%+d - %d Attack Rating (Increases %s)
+279	%+d - %d Enhanced Attack Rating (Increases %s)
+280	%+d - %d Max Cold Damage (Increases %s)
+281	%+d - %d Max Fire Damage (Increases %s)
+282	%+d - %d Max Lightning Damage (Increases %s)
+283	%+d - %d Max Poison Damage (Increases %s)
+284	%+d%% - %d%% Cold Resist (Increases %s)
+285	%+d%% - %d%% Fire Resist (Increases %s)
+286	%+d%% - %d%% Lightning Resist (Increases %s)
+287	%+d%% - %d%% Poison Resist (Increases %s)
+288	%+d - %d Cold Absorb (Increases %s)
+289	%+d - %d Fire Absorb (Increases %s)
+290	%+d - %d Lightning Absorb (Increases %s)
+291	%+d - %d Poison Absorb (Increases %s)
+292	%+d%% - %d%% Extra Gold from Monsters (Increases %s)
+293	%+d%% - %d%% Better Chance of Getting Magic Items (Increases %s)
+294	Heal Stamina Plus %+d - %d%% (Increases %s)
+295	%+d - %d Stamina (Increases %s)
+296	%+d%% - %d%% Damage to Demons (Increases %s)
+297	%+d%% - %d%% Damage to Undead (Increases %s)
+298	%+d - %d Attack Rating vs Demons (Increases %s)
+299	%+d - %d Attack Rating vs Undead (Increases %s)
+300	%+d%% - %d%% Chance of Crushing Blow (Increases %s)
+301	%+d%% - %d%% Chance of Open Wounds (Increases %s)
+302	%+d - %d Kick Damage (Increases %s)
+303	%+d - %d Chance of  Deadly Strike (Increases %s)
+304	Item Find Gems (by time)
+305	%+d%% Enemy Cold Resist
+306	%+d%% Enemy Fire Resist
+307	%+d%% Enemy Lightning Resist
+308	%+d%% Enemy Poison Resist
+309	Item Damage vs Monster
+310	Item Damage Percent vs Monster
+311	Item Tohit vs Monster
+312	Item Tohit Percent vs Monster
+313	Item AC vs Monster
+314	Item AC Percent vs Monster
+315	Fire Length
+316	Burning Min
+317	Burning Max
+318	Progressive Damage
+319	Progressive Steal
+320	Progressive Other
+321	Progressive Fire
+322	Progressive Cold
+323	Progressive Lightning
+324	Item Extra Charges %+d
+325	Progressive Tohit
+326	Poison Count
+327	Damage Frame Rate
+328	Pierce IDX
+329	%+d%% Fire Skill Damage
+330	%+d%% Lightning Skill Damage
+331	%+d%% Cold Skill Damage
+332	%+d%% Poison Skill Damage
+333	%+d%% Enemy Fire Resist
+334	%+d%% Enemy Lightning Resist
+335	%+d%% Enemy Cold Resist
+336	%+d%% Enemy Poison Resist
+337	Passive Critical Strike %d
+338	Passive Dodge %d
+339	Passive Avoid %d
+340	Passive Evade %d
+341	Passive Warmth %d
+342	Passive Mastery Melee TH %d
+343	Passive Mastery Melee Damage %d
+344	Passive Mastery Melee Crit %d
+345	Passive Mastery Throw TH %d
+346	Passive Mastery Throw Damage %d
+347	Passive Mastery Throw Crit %d
+348	Passive Weapon Block %d
+349	Passive Summon Resist %d
+350	Modifier List Skill
+351	Modifier List Level
+352	Last Sent HP PCT
+353	Source Unit Type
+354	Source Unit ID
+355	Short Paraml
+356	Quest Item Difficulty %d
+357	Passive Magic Mastery %d
+358	Passive Magic Pierce %d
+*********************************以下是怪物名称(Monster Names)	
+0	Skeleton
+1	Returned
+2	BoneWarrior
+3	BurningDead
+4	Horror
+5	Zombie
+6	HungryDead
+7	Ghoul
+8	DrownedCarcass
+9	PlagueBearer
+10	Afflicted
+11	Tainted
+12	Misshapen
+13	Disfigured
+14	Damned
+15	FoulCrow
+16	BloodHawk
+17	BlackRaptor
+18	CloudStalker
+19	Fallen
+20	Carver
+21	Devilkin
+22	DarkOne
+23	WarpedFallen
+24	Brute
+25	Yeti
+26	Crusher
+27	WailingBeast
+28	GargantuanBeast
+29	SandRaider
+30	Marauder
+31	Invader
+32	Infidel
+33	Assailant
+34	unused
+35	unused
+36	unused
+37	unused
+38	Ghost
+39	Wraith
+40	Specter
+41	Apparition
+42	DarkShape
+43	DarkHunter
+44	VileHunter
+45	DarkStalker
+46	BlackRogue
+47	FleshHunter
+48	DuneBeast
+49	RockDweller
+50	JungleHunter
+51	DoomApe
+52	TempleGuard
+53	MoonClan
+54	NightClan
+55	BloodClan
+56	HellClan
+57	DeathClan
+58	FallenShaman
+59	CarverShaman
+60	DevilkinShaman
+61	DarkShaman
+62	WarpedShaman
+63	QuillRat
+64	SpikeFiend
+65	ThornBeast
+66	RazorSpine
+67	JungleUrchin
+68	SandMaggot
+69	RockWorm
+70	Devourer
+71	GiantLamprey
+72	WorldKiller
+73	TombViper
+74	ClawViper
+75	Salamander
+76	PitViper
+77	SerpentMagus
+78	SandLeaper
+79	CaveLeaper
+80	TombCreeper
+81	TreeLurker
+82	RazorPitDemon
+83	Huntress
+84	SaberCat
+85	NightTiger
+86	HellCat
+87	Itchies
+88	BlackLocusts
+89	PlagueBugs
+90	HellSwarm
+91	DungSoldier
+92	SandWarrior
+93	Scarab
+94	SteelWeevil
+95	AlbinoRoach
+96	DriedCorpse
+97	Decayed
+98	Embalmed
+99	PreservedDead
+100	Cadaver
+101	HollowOne
+102	Guardian
+103	Unraveler
+104	Horadrim Ancient
+105	Baal Subject Mummy
+106	unused
+107	unused
+108	unused
+109	unused
+110	CarrionBird
+111	UndeadScavenger
+112	HellBuzzard
+113	WingedNightmare
+114	Sucker
+115	Feeder
+116	BloodHook
+117	BloodWing
+118	Gloam
+119	SwampGhost
+120	BurningSoul
+121	BlackSoul
+122	Arach
+123	SandFisher
+124	PoisonSpinner
+125	FlameSpider
+126	SpiderMagus
+127	ThornedHulk
+128	BrambleHulk
+129	Thrasher
+130	Spikefist
+131	GhoulLord
+132	NightLord
+133	DarkLord
+134	BloodLord
+135	Banished
+136	DesertWing
+137	Fiend
+138	Gloombat
+139	BloodDiver
+140	DarkFamiliar
+141	RatMan
+142	Fetish
+143	Flayer
+144	SoulKiller
+145	StygianDoll
+146	DeckardCain
+147	Gheed
+148	Akara
+149	dummy
+150	Kashya
+151	dummy
+152	Dummy
+153	Dummy
+154	Charsi
+155	Warriv
+156	Andariel
+157	dummy
+158	dummy
+159	dummy
+160	DarkRanger
+161	VileArcher
+162	DarkArcher
+163	BlackArcher
+164	FleshArcher
+165	DarkSpearwoman
+166	VileLancer
+167	DarkLancer
+168	BlackLancer
+169	FleshLancer
+170	SkeletonArcher
+171	ReturnedArcher
+172	BoneArcher
+173	BurningDeadArcher
+174	HorrorArcher
+175	Warriv
+176	Atma
+177	Drognan
+178	Fara
+179	dummy
+180	SandMaggotYoung
+181	RockWormYoung
+182	DevourerYoung
+183	GiantLampreyYoung
+184	WorldKillerYoung
+185	dummy
+186	Blunderbore
+187	Gorbelly
+188	Mauler
+189	Urdar
+190	SandMaggotEgg
+191	RockWormEgg
+192	DevourerEgg
+193	GiantLampreyEgg
+194	WorldKillerEgg
+195	dummy
+196	Dummy
+197	dummy
+198	Greiz
+199	Elzix
+200	Geglash
+201	Jerhyn
+202	Lysander
+203	Dummy
+204	dummy
+205	dummy
+206	FoulCrowNest
+207	BloodHawkNest
+208	BlackVultureNest
+209	CloudStalkerNest
+210	Meshif
+211	Duriel
+212	Undead RatMan
+213	Undead Fetish
+214	Undead Flayer
+215	Undead SoulKiller
+216	Undead StygianDoll
+217	unused
+218	unused
+219	unused
+220	unused
+221	unused
+222	unused
+223	unused
+224	unused
+225	unused
+226	unused
+227	Maggot
+228	MummyGenerator
+229	Radament
+230	unused
+231	unused
+232	unused
+233	unused
+234	FlyingScimitar
+235	Zakarumite
+236	Faithful
+237	Zealot
+238	Sexton
+239	Cantor
+240	Heirophant
+241	Heirophant
+242	Mephisto
+243	Diablo
+244	DeckardCain
+245	DeckardCain
+246	DeckardCain
+247	Swamp Dweller
+248	Bog Creature
+249	Slime Prince
+250	Summoner
+251	tyrael
+252	asheara
+253	hratli
+254	alkor
+255	ormus
+256	izual
+257	halbu
+258	WaterWatcherLimb
+259	RiverStalkerLimb
+260	StygianWatcherLimb
+261	WaterWatcherHead
+262	RiverStalkerHead
+263	StygianWatcherHead
+264	meshif
+265	DeckardCain
+266	navi
+267	Bloodraven
+268	Dummy
+269	Dummy
+270	RogueScout
+271	Dummy
+272	Dummy
+273	GargoyleTrap
+274	ReturnedMage
+275	BoneMage
+276	BurningDeadMage
+277	HorrorMage
+278	RatManShaman
+279	FetishShaman
+280	FlayerShaman
+281	SoulKillerShaman
+282	StygianDollShaman
+283	larva
+284	SandMaggotQueen
+285	RockWormQueen
+286	DevourerQueen
+287	GiantLampreyQueen
+288	WorldKillerQueen
+289	ClayGolem
+290	BloodGolem
+291	IronGolem
+292	FireGolem
+293	Dummy
+294	Dummy
+295	NightMarauder
+296	Dummy
+297	Natalya
+298	FleshSpawner
+299	StygianHag
+300	Grotesque
+301	FleshBeast
+302	StygianDog
+303	GrotesqueWyrm
+304	Groper
+305	Strangler
+306	StormCaster
+307	Corpulent
+308	CorpseSpitter
+309	MawFiend
+310	DoomKnight
+311	AbyssKnight
+312	OblivionKnight
+313	QuillBear
+314	SpikeGiant
+315	ThornBrute
+316	RazorBeast
+317	GiantUrchin
+318	Dummy
+319	Dummy
+320	Dummy
+321	Dummy
+322	Dummy
+323	Dummy
+324	Dummy
+325	Dummy
+326	a trap
+327	a trap
+328	a trap
+329	a trap
+330	a trap
+331	Kaelan
+332	Dummy
+333	Diablo
+334	SuckerNest
+335	FeederNest
+336	BloodHookNest
+337	BloodWingNest
+338	Guard
+339	Dummy
+340	Dummy
+341	Dummy
+342	Dummy
+343	Dummy
+344	Dummy
+345	Council Member
+346	Council Member
+347	Council Member
+348	Turret
+349	Turret
+350	Turret
+351	Hydra
+352	Hydra
+353	Hydra
+354	a trap
+355	Dummy
+356	Dopplezon
+357	Valkyrie
+358	Dummy
+359	Iron Wolf
+360	Balrog
+361	PitLord
+362	VenomLord
+363	NecroSkeleton
+364	NecroMage
+365	Griswold
+366	compellingorb
+367	tyrael
+368	youngdiablo
+369	a trap
+370	Dummy
+371	LightningSpire
+372	FireTower
+373	Slinger
+374	SpearCat
+375	NightSlinger
+376	HellSlinger
+377	Dummy
+378	Dummy
+379	ReturnedMage
+380	BoneMage
+381	BaalColdMage
+382	HorrorMage
+383	ReturnedMage
+384	BoneMage
+385	BurningDeadMage
+386	HorrorMage
+387	ReturnedMage
+388	BoneMage
+389	BurningDeadMage
+390	HorrorMage
+391	Hell Bovine
+392	Dummy
+393	Dummy
+394	SpearCat
+395	NightSlinger
+396	RatMan
+397	Fetish
+398	Flayer
+399	SoulKiller
+400	StygianDoll
+401	Dummy
+402	The Smith
+403	TrappedSoul
+404	TrappedSoul
+405	Jamella
+406	Izual
+407	RatMan
+408	Malachai
+409	The Feature Creep
+410	Wake of Destruction
+411	Charged Bolt Sentry
+412	Lightning Sentry
+413	Blade Creeper
+414	Invis Pet
+415	Inferno Sentry
+416	Death Sentry
+417	Shadow Warrior
+418	Shadow Master
+419	Druid Hawk
+420	Druid Spirit Wolf
+421	Druid Fenris
+422	Spirit of Barbs
+423	Heart of Wolverine
+424	Oak Sage
+425	Druid Plague Poppy
+426	Druid Cycle of Life
+427	Vine Creature
+428	Druid Bear
+429	Eagle
+430	Wolf
+431	Bear
+432	Barricade Door
+433	Barricade Door
+434	Prison Door
+435	Barricade Tower
+436	RotWalker
+437	ReanimatedHorde
+438	ProwlingDead
+439	UnholyCorpse
+440	DefiledWarrior
+441	Siege Beast
+442	CrushBiest
+443	BloodBringer
+444	GoreBearer
+445	DeamonSteed
+446	SnowYeti1
+447	SnowYeti2
+448	SnowYeti3
+449	SnowYeti4
+450	WolfRider1
+451	WolfRider2
+452	WolfRider3
+453	Minionexp
+454	Slayerexp
+455	IceBoar
+456	FireBoar
+457	HellSpawn
+458	IceSpawn
+459	GreaterHellSpawn
+460	GreaterIceSpawn
+461	FanaticMinion
+462	BerserkSlayer
+463	ConsumedIceBoar
+464	ConsumedFireBoar
+465	FrenziedHellSpawn
+466	FrenziedIceSpawn
+467	InsaneHellSpawn
+468	InsaneIceSpawn
+469	Succubusexp
+470	VileTemptress
+471	StygianHarlot
+472	Hell Temptress
+473	Blood Temptress
+474	Dominus
+475	VileWitch
+476	StygianFury
+477	Blood Witch
+478	Hell Witch
+479	OverSeer
+480	Lasher
+481	OverLord
+482	BloodBoss
+483	HellWhip
+484	MinionSpawner
+485	MinionSlayerSpawner
+486	MinionIce/fireBoarSpawner
+487	MinionIce/fireBoarSpawner
+488	Minionice/hellSpawnSpawner
+489	MinionIce/fireBoarSpawner
+490	MinionIce/fireBoarSpawner
+491	Minionice/hellSpawnSpawner
+492	Imp1
+493	Imp2
+494	Imp3
+495	Imp4
+496	Imp5
+497	CatapultS
+498	CatapultE
+499	CatapultSiege
+500	CatapultW
+501	Frozen Horror1
+502	Frozen Horror2
+503	Frozen Horror3
+504	Frozen Horror4
+505	Frozen Horror5
+506	Blood Lord1
+507	Blood Lord2
+508	Blood Lord3
+509	Blood Lord4
+510	Blood Lord5
+511	Larzuk
+512	Drehya
+513	Malah
+514	Nihlathak Town
+515	Qual-Kehk
+516	Catapult Spotter S
+517	Catapult Spotter E
+518	Catapult Spotter Siege
+519	Catapult Spotter W
+520	DeckardCain
+521	tyrael
+522	Act 5 Combatant
+523	Act 5 Combatant
+524	Barricade Wall Right
+525	Barricade Wall Left
+526	Nihlathak
+527	Drehya
+528	Evil hut
+529	Death Mauler1
+530	Death Mauler2
+531	Death Mauler3
+532	Death Mauler4
+533	Death Mauler5
+534	POW
+535	Act 5 Townguard
+536	Act 5 Townguard
+537	Ancient Statue 1
+538	Ancient Statue 2
+539	Ancient Statue 3
+540	Ancient Barbarian 1
+541	Ancient Barbarian 2
+542	Ancient Barbarian 3
+543	Baal Throne
+544	Baal Crab
+545	Baal Taunt
+546	Putrid Defiler1
+547	Putrid Defiler2
+548	Putrid Defiler3
+549	Putrid Defiler4
+550	Putrid Defiler5
+551	Pain Worm1
+552	Pain Worm2
+553	Pain Worm3
+554	Pain Worm4
+555	Pain Worm5
+556	Bunny
+557	Council Member
+558	VenomLord
+559	Baal Crab to Stairs
+560	Act 5 Hireling 1hs
+561	Act 5 Hireling 2hs
+562	Baal Tentacle
+563	Baal Tentacle
+564	Baal Tentacle
+565	Baal Tentacle
+566	Baal Tentacle
+567	Injured Barbarian 1
+568	Injured Barbarian 2
+569	Injured Barbarian 3
+570	Baal Crab Clone
+571	Baals Minion
+572	Baals Minion
+573	Baals Minion
+574	Worldstone Effect
+575	BurningDeadArcher
+576	BoneArcher
+577	BurningDeadArcher
+578	ReturnedArcher
+579	HorrorArcher
+580	Afflicted
+581	Tainted
+582	Misshapen
+583	Disfigured
+584	Damned
+585	MoonClan
+586	NightClan
+587	HellClan
+588	BloodClan
+589	DeathClan
+590	FoulCrow
+591	BloodHawk
+592	BlackRaptor
+593	CloudStalker
+594	ClawViper
+595	PitViper
+596	Salamander
+597	TombViper
+598	SerpentMagus
+599	Marauder
+600	Infidel
+601	SandRaider
+602	Invader
+603	Assailant
+604	Death Mauler1
+605	QuillRat
+606	SpikeFiend
+607	RazorSpine
+608	CarrionBird
+609	ThornedHulk
+610	Slinger
+611	Slinger
+612	Slinger
+613	VileArcher
+614	DarkArcher
+615	VileLancer
+616	DarkLancer
+617	BlackLancer
+618	Blunderbore
+619	Mauler
+620	ReturnedMage
+621	BurningDeadMage
+622	ReturnedMage
+623	HorrorMage
+624	BoneMage
+625	HorrorMage
+626	HorrorMage
+627	Huntress
+628	SaberCat
+629	CaveLeaper
+630	TombCreeper
+631	Ghost
+632	Wraith
+633	Specter
+634	Succubusexp
+635	Hell Temptress
+636	Dominus
+637	Hell Witch
+638	VileWitch
+639	Gloam
+640	BlackSoul
+641	BurningSoul
+642	Carver
+643	Devilkin
+644	DarkOne
+645	CarverShaman
+646	DevilkinShaman
+647	DarkShaman
+648	BoneWarrior
+649	Returned
+650	Gloombat
+651	Fiend
+652	Blood Lord1
+653	Blood Lord4
+654	Scarab
+655	SteelWeevil
+656	Flayer
+657	StygianDoll
+658	SoulKiller
+659	Flayer
+660	StygianDoll
+661	SoulKiller
+662	FlayerShaman
+663	StygianDollShaman
+664	SoulKillerShaman
+665	TempleGuard
+666	TempleGuard
+667	Guardian
+668	Unraveler
+669	Horadrim Ancient
+670	Horadrim Ancient
+671	Zealot
+672	Zealot
+673	Heirophant
+674	Heirophant
+675	Grotesque
+676	FleshSpawner
+677	GrotesqueWyrm
+678	FleshBeast
+679	WorldKiller
+680	WorldKillerYoung
+681	WorldKillerEgg
+682	Slayerexp
+683	HellSpawn
+684	GreaterHellSpawn
+685	Arach
+686	Balrog
+687	PitLord
+688	Imp1
+689	Imp4
+690	Undead StygianDoll
+691	Undead SoulKiller
+692	Strangler
+693	StormCaster
+694	MawFiend
+695	BloodLord
+696	GhoulLord
+697	DarkLord
+698	UnholyCorpse
+699	DoomKnight
+700	DoomKnight
+701	OblivionKnight
+702	OblivionKnight
+703	Cadaver
+*********************************以下是魔法前缀(Magic Prefix)(^表示没有名字)	
+0	^
+1	^
+2	Sturdy
+3	Strong
+4	Glorious
+5	Blessed
+6	Saintly
+7	Holy
+8	Devious
+9	Fortified
+10	^
+11	^
+12	^
+13	Jagged
+14	Deadly
+15	Vicious
+16	Brutal
+17	Massive
+18	Savage
+19	Merciless
+20	Vulpine
+21	^
+22	^
+23	^
+24	^
+25	Tireless
+26	Rugged
+27	Bronze
+28	Iron
+29	Steel
+30	Silver
+31	^
+32	Gold
+33	Platinum
+34	Meteoric
+35	Sharp
+36	Fine
+37	Warrior's
+38	Soldier's
+39	Knight's
+40	Lord's
+41	King's
+42	Howling
+43	Fortuitous
+44	^
+45	^
+46	^
+47	^
+48	^
+49	Glimmering
+50	Glowing
+51	^
+52	^
+53	Lizard's
+54	^
+55	Snake's
+56	Serpent's
+57	Serpent's
+58	Drake's
+59	Dragon's
+60	Dragon's
+61	Wyrm's
+62	^
+63	^
+64	Prismatic
+65	Prismatic
+66	Azure
+67	Lapis
+68	Lapis
+69	Cobalt
+70	Cobalt
+71	^
+72	Sapphire
+73	^
+74	^
+75	Crimson
+76	Burgundy
+77	Burgundy
+78	Garnet
+79	Garnet
+80	^
+81	Ruby
+82	^
+83	^
+84	Ocher
+85	Tangerine
+86	Tangerine
+87	Coral
+88	Coral
+89	^
+90	Amber
+91	^
+92	^
+93	Beryl
+94	Jade
+95	Jade
+96	Viridian
+97	Viridian
+98	^
+99	Emerald
+100	^
+101	Fletcher's
+102	Archer's
+103	Archer's
+104	Monk's
+105	Priest's
+106	Priest's
+107	Summoner's
+108	Necromancer's
+109	Necromancer's
+110	Angel's
+111	Arch-Angel's
+112	Arch-Angel's
+113	Slayer's
+114	Berserker's
+115	Berserker's
+116	^
+117	^
+118	Triumphant
+119	Stout
+120	Stout
+121	Stout
+122	Burly
+123	Burly
+124	Burly
+125	Stalwart
+126	Stalwart
+127	Stalwart
+128	Stout
+129	Stout
+130	Stout
+131	Burly
+132	Burly
+133	Stalwart
+134	Stalwart
+135	Stout
+136	Stout
+137	Burly
+138	Stalwart
+139	Blanched
+140	Eburin
+141	Bone
+142	Ivory
+143	Sturdy
+144	Sturdy
+145	Strong
+146	Glorious
+147	Blessed
+148	Saintly
+149	Holy
+150	Godly
+151	Devious
+152	Blank
+153	Null
+154	Antimagic
+155	Red
+156	Red
+157	Sanguinary
+158	Sanguinary
+159	Bloody
+160	Red
+161	Sanguinary
+162	Bloody
+163	Red
+164	Sanguinary
+165	Bloody
+166	Scarlet
+167	Crimson
+168	Jagged
+169	Jagged
+170	Jagged
+171	Forked
+172	Forked
+173	Serrated
+174	Serrated
+175	Jagged
+176	Jagged
+177	Forked
+178	Forked
+179	Serrated
+180	Jagged
+181	Forked
+182	Serrated
+183	Carbuncle
+184	Carmine
+185	Vermillion
+186	Jagged
+187	Deadly
+188	Vicious
+189	Brutal
+190	Massive
+191	Savage
+192	Merciless
+193	Ferocious
+194	Cruel
+195	Cinnabar
+196	Rusty
+197	Realgar
+198	Ruby
+199	Vulpine
+200	Dun
+201	Tireless
+202	Tireless
+203	Brown
+204	Rugged
+205	Rugged
+206	Rugged
+207	Rugged
+208	Rugged
+209	Rugged
+210	Rugged
+211	Rugged
+212	Rugged
+213	Rugged
+214	Rugged
+215	Vigorous
+216	Chestnut
+217	Maroon
+218	Bronze
+219	Bronze
+220	Bronze
+221	Iron
+222	Iron
+223	Iron
+224	Steel
+225	Steel
+226	Steel
+227	Bronze
+228	Bronze
+229	Bronze
+230	Iron
+231	Iron
+232	Steel
+233	Steel
+234	Bronze
+235	Bronze
+236	Iron
+237	Steel
+238	Bronze
+239	Iron
+240	Steel
+241	Silver
+242	Gold
+243	Platinum
+244	Meteoric
+245	Strange
+246	Weird
+247	Nickel
+248	Tin
+249	Silver
+250	Argent
+251	Fine
+252	Fine
+253	Sharp
+254	Fine
+255	Sharp
+256	Fine
+257	Sharp
+258	Fine
+259	Warrior's
+260	Soldier's
+261	Knight's
+262	Lord's
+263	King's
+264	Master's
+265	Grandmaster's
+266	Glimmering
+267	Glowing
+268	Bright
+269	Screaming
+270	Howling
+271	Wailing
+272	Screaming
+273	Howling
+274	Wailing
+275	Lucky
+276	Lucky
+277	Lucky
+278	Lucky
+279	Lucky
+280	Lucky
+281	Felicitous
+282	Fortuitous
+283	Emerald
+284	Lizard's
+285	Lizard's
+286	Lizard's
+287	Snake's
+288	Snake's
+289	Snake's
+290	Serpent's
+291	Serpent's
+292	Serpent's
+293	Lizard's
+294	Lizard's
+295	Lizard's
+296	Snake's
+297	Snake's
+298	Serpent's
+299	Serpent's
+300	Lizard's
+301	Lizard's
+302	Snake's
+303	Serpent's
+304	Lizard's
+305	Snake's
+306	Serpent's
+307	Serpent's
+308	Drake's
+309	Dragon's
+310	Dragon's
+311	Wyrm's
+312	Great Wyrm's
+313	Bahamut's
+314	Zircon
+315	Jacinth
+316	Turquoise
+317	Shimmering
+318	Shimmering
+319	Shimmering
+320	Shimmering
+321	Shimmering
+322	Shimmering
+323	Shimmering
+324	Rainbow
+325	Scintillating
+326	Prismatic
+327	Chromatic
+328	Shimmering
+329	Rainbow
+330	Scintillating
+331	Prismatic
+332	Chromatic
+333	Shimmering
+334	Rainbow
+335	Scintillating
+336	Shimmering
+337	Scintillating
+338	Azure
+339	Lapis
+340	Cobalt
+341	Sapphire
+342	Azure
+343	Lapis
+344	Cobalt
+345	Sapphire
+346	Azure
+347	Lapis
+348	Cobalt
+349	Sapphire
+350	Azure
+351	Lapis
+352	Lapis
+353	Cobalt
+354	Cobalt
+355	Sapphire
+356	Lapis Lazuli
+357	Sapphire
+358	Crimson
+359	Russet
+360	Garnet
+361	Ruby
+362	Crimson
+363	Russet
+364	Garnet
+365	Ruby
+366	Crimson
+367	Russet
+368	Garnet
+369	Ruby
+370	Russet
+371	Russet
+372	Garnet
+373	Garnet
+374	Ruby
+375	Garnet
+376	Ruby
+377	Tangerine
+378	Ocher
+379	Coral
+380	Amber
+381	Tangerine
+382	Ocher
+383	Coral
+384	Amber
+385	Tangerine
+386	Ocher
+387	Coral
+388	Amber
+389	Tangerine
+390	Ocher
+391	Ocher
+392	Coral
+393	Coral
+394	Amber
+395	Camphor
+396	Ambergris
+397	Beryl
+398	Viridian
+399	Jade
+400	Emerald
+401	Beryl
+402	Viridian
+403	Jade
+404	Emerald
+405	Beryl
+406	Viridian
+407	Jade
+408	Emerald
+409	Beryl
+410	Viridian
+411	Viridian
+412	Jade
+413	Jade
+414	Emerald
+415	Beryl
+416	Jade
+417	Triumphant
+418	Victorious
+419	Aureolin
+420	Mechanist's
+421	Artificer's
+422	Jeweler's
+423	Assamic
+424	Arcadian
+425	Unearthly
+426	Astral
+427	Elysian
+428	Celestial
+429	Diamond
+430	Fletcher's
+431	Acrobat's
+432	Harpoonist's
+433	Fletcher's
+434	Bowyer's
+435	Archer's
+436	Acrobat's
+437	Gymnast's
+438	Athlete's
+439	Harpoonist's
+440	Spearmaiden's
+441	Lancer's
+442	Burning
+443	Sparking
+444	Chilling
+445	Burning
+446	Blazing
+447	Volcanic
+448	Sparking
+449	Charged
+450	Powered
+451	Chilling
+452	Freezing
+453	Glacial
+454	Hexing
+455	Fungal
+456	Graverobber's
+457	Hexing
+458	Blighting
+459	Accursed
+460	Fungal
+461	Noxious
+462	Venomous
+463	Graverobber's
+464	Vodoun
+465	Golemlord's
+466	Lion Branded
+467	Captain's
+468	Preserver's
+469	Lion Branded
+470	Hawk Branded
+471	Rose Branded
+472	Captain's
+473	Commander's
+474	Marshal's
+475	Preserver's
+476	Warder's
+477	Guardian's
+478	Expert's
+479	Fanatic
+480	Sounding
+481	Expert's
+482	Veteran's
+483	Master's
+484	Fanatic
+485	Raging
+486	Furious
+487	Sounding
+488	Resonant
+489	Echoing
+490	Trainer's
+491	Spiritual
+492	Nature's
+493	Trainer's
+494	Caretaker's
+495	Keeper's
+496	Spiritual
+497	Feral
+498	Communal
+499	Nature's
+500	Terra's
+501	Gaea's
+502	Entrapping
+503	Mentalist's
+504	Shogukusha's
+505	Entrapping
+506	Trickster's
+507	Cunning
+508	Mentalist's
+509	Psychic
+510	Shadow
+511	Shogukusha's
+512	Sensei's
+513	Kenshi's
+514	Miocene
+515	Miocene
+516	Oligocene
+517	Oligocene
+518	Eocene
+519	Eocene
+520	Paleocene
+521	Paleocene
+522	Knave's
+523	Jack's
+524	Jester's
+525	Joker's
+526	Trump
+527	Loud
+528	Calling
+529	Yelling
+530	Shouting
+531	Gritty
+532	Paradox
+533	Paradox
+534	Robineye
+535	Sparroweye
+536	Falconeye
+537	Hawkeye
+538	Eagleeye
+539	Visionary
+540	Mnemonic
+541	Snowflake
+542	Shivering
+543	Boreal
+544	Hibernal
+545	Ember
+546	Smoldering
+547	Smoking
+548	Flaming
+549	Scorching
+550	Static
+551	Glowing
+552	Buzzing
+553	Arcing
+554	Shocking
+555	Septic
+556	Envenomed
+557	Corosive
+558	Toxic
+559	Pestilent
+560	Maiden's
+561	Valkyrie's
+562	Maiden's
+563	Valkyrie's
+564	Monk's
+565	Priest's
+566	Monk's
+567	Priest's
+568	Monk's
+569	Priest's
+570	Summoner's
+571	Necromancer's
+572	Summoner's
+573	Necromancer's
+574	Angel's
+575	Arch-Angel's
+576	Angel's
+577	Arch-Angel's
+578	Slayer's
+579	Berserker's
+580	Slayer's
+581	Berserker's
+582	Slayer's
+583	Berserker's
+584	Shaman's
+585	Hierophant's
+586	Shaman's
+587	Hierophant's
+588	Magekiller's
+589	Witch-hunter's
+590	Magekiller's
+591	Witch-hunter's
+592	Compact
+593	Thin
+594	Dense
+595	Consecrated
+596	Pure
+597	Sacred
+598	Hallowed
+599	Divine
+600	Pearl
+601	Crimson
+602	Red
+603	Sanguinary
+604	Bloody
+605	Red
+606	Sanguinary
+607	Red
+608	Jagged
+609	Forked
+610	Serrated
+611	Jagged
+612	Forked
+613	Jagged
+614	Snowflake
+615	Shivering
+616	Boreal
+617	Hibernal
+618	Snowflake
+619	Shivering
+620	Boreal
+621	Hibernal
+622	Snowflake
+623	Shivering
+624	Boreal
+625	Hibernal
+626	Ember
+627	Smoldering
+628	Smoking
+629	Flaming
+630	Ember
+631	Smoldering
+632	Smoking
+633	Flaming
+634	Ember
+635	Smoldering
+636	Smoking
+637	Flaming
+638	Static
+639	Glowing
+640	Arcing
+641	Shocking
+642	Static
+643	Glowing
+644	Arcing
+645	Shocking
+646	Static
+647	Glowing
+648	Arcing
+649	Shocking
+650	Septic
+651	Envenomed
+652	Toxic
+653	Pestilent
+654	Septic
+655	Envenomed
+656	Toxic
+657	Pestilent
+658	Septic
+659	Envenomed
+660	Toxic
+661	Pestilent
+662	Tireless
+663	Lizard's
+664	Azure
+665	Crimson
+666	Tangerine
+667	Beryl
+668	Godly
+669	Cruel
+*********************************以下是魔法后缀(Magic Suffix)(^表示没有名字)	
+0	^
+1	of Health
+2	of Protection
+3	of Absorption
+4	of Life
+5	^
+6	of Warding
+7	of the Sentinel
+8	of Guarding
+9	of Negation
+10	^
+11	of Piercing
+12	of Bashing
+13	of Puncturing
+14	of Thorns
+15	of Spikes
+16	of Readiness
+17	of Alacrity
+18	of Swiftness
+19	of Quickness
+20	of Blocking
+21	of Deflecting
+22	of the Apprentice
+23	of the Magus
+24	of Frost
+25	of the Glacier
+26	of Frost
+27	of Warmth
+28	of Flame
+29	of Fire
+30	of Burning
+31	of Flame
+32	of Shock
+33	of Lightning
+34	of Thunder
+35	of Shock
+36	of Craftsmanship
+37	of Quality
+38	of Maiming
+39	of Slaying
+40	of Gore
+41	of Carnage
+42	of Slaughter
+43	of Maiming
+44	of Worth
+45	of Measure
+46	of Excellence
+47	of Performance
+48	of Measure
+49	of Blight
+50	of Venom
+51	of Pestilence
+52	of Blight
+53	of Dexterity
+54	of Dexterity
+55	of Skill
+56	of Skill
+57	of Accuracy
+58	of Precision
+59	of Precision
+60	of Perfection
+61	of Balance
+62	of Stability
+63	^
+64	of Regeneration
+65	of Regeneration
+66	of Regeneration
+67	of Regrowth
+68	of Regrowth
+69	of Vileness
+70	^
+71	of Greed
+72	of Wealth
+73	of Chance
+74	of Fortune
+75	of Energy
+76	of Energy
+77	of the Mind
+78	of Brilliance
+79	of Sorcery
+80	of Wizardry
+81	of the Bear
+82	of Light
+83	of Radiance
+84	of the Sun
+85	of Life
+86	of the Jackal
+87	of the Fox
+88	of the Wolf
+89	of the Wolf
+90	of the Tiger
+91	of the Mammoth
+92	of the Mammoth
+93	of the Colosuss
+94	of the Leech
+95	of the Locust
+96	of the Bat
+97	of the Vampire
+98	of Defiance
+99	of Amelioration
+100	of Remedy
+101	^
+102	of Simplicity
+103	of Ease
+104	^
+105	of Strength
+106	of Might
+107	of the Ox
+108	of the Ox
+109	of the Giant
+110	of the Giant
+111	of the Titan
+112	of Pacing
+113	of Haste
+114	of Speed
+115	of Health
+116	of Protection
+117	of Absorption
+118	of Life
+119	of Life Everlasting
+120	of Protection
+121	of Absorption
+122	of Life
+123	of Anima
+124	of Warding
+125	of the Sentinel
+126	of Guarding
+127	of Negation
+128	of the Sentinel
+129	of Guarding
+130	of Negation
+131	of Coolness
+132	of Incombustibility
+133	of Amianthus
+134	of Fire Quenching
+135	of Coolness
+136	of Incombustibility
+137	of Amianthus
+138	of Fire Quenching
+139	of Faith
+140	of Resistance
+141	of Insulation
+142	of Grounding
+143	of the Dynamo
+144	of Resistance
+145	of Insulation
+146	of Grounding
+147	of the Dynamo
+148	of Stoicism
+149	of Warming
+150	of Thawing
+151	of the Dunes
+152	of the Sirocco
+153	of Warming
+154	of Thawing
+155	of the Dunes
+156	of the Sirocco
+157	of Desire
+158	of Piercing
+159	of Bashing
+160	of Puncturing
+161	of Thorns
+162	of Spikes
+163	of Razors
+164	of Swords
+165	of Malice
+166	of Readiness
+167	of Alacrity
+168	of Swiftness
+169	of Quickness
+170	of Alacrity
+171	of Fervor
+172	of Blocking
+173	of Deflecting
+174	of the Apprentice
+175	of the Magus
+176	of Frost
+177	of the Icicle
+178	of the Glacier
+179	of Winter
+180	of Frost
+181	of Frigidity
+182	of Warmth
+183	of Flame
+184	of Fire
+185	of Burning
+186	of Incineration
+187	of Flame
+188	of Passion
+189	of Shock
+190	of Lightning
+191	of Thunder
+192	of Storms
+193	of Shock
+194	of Ennui
+195	of Craftsmanship
+196	of Quality
+197	of Maiming
+198	of Slaying
+199	of Gore
+200	of Carnage
+201	of Slaughter
+202	of Butchery
+203	of Evisceration
+204	of Maiming
+205	of Craftsmanship
+206	of Craftsmanship
+207	of Craftsmanship
+208	of Quality
+209	of Quality
+210	of Maiming
+211	of Maiming
+212	of Craftsmanship
+213	of Craftsmanship
+214	of Quality
+215	of Quality
+216	of Maiming
+217	of Craftsmanship
+218	of Quality
+219	of Maiming
+220	of Ire
+221	of Wrath
+222	of Carnage
+223	of Worth
+224	of Measure
+225	of Excellence
+226	of Performance
+227	of Transcendence
+228	of Worth
+229	of Measure
+230	of Excellence
+231	of Performance
+232	of Joyfulness
+233	of Bliss
+234	of Blight
+235	of Venom
+236	of Pestilence
+237	of Anthrax
+238	of Blight
+239	of Envy
+240	of Dexterity
+241	of Skill
+242	of Accuracy
+243	of Precision
+244	of Perfection
+245	of Nirvana
+246	of Dexterity
+247	of Skill
+248	of Accuracy
+249	of Precision
+250	of Perfection
+251	of Dexterity
+252	of Skill
+253	of Accuracy
+254	of Precision
+255	of Dexterity
+256	of Dexterity
+257	of Dexterity
+258	of Dexterity
+259	of Dexterity
+260	of Dexterity
+261	of Daring
+262	of Balance
+263	of Equilibrium
+264	of Stability
+265	of Balance
+266	of Balance
+267	of Balance
+268	of Truth
+269	of Regeneration
+270	of Regeneration
+271	of Regeneration
+272	of Regrowth
+273	of Regrowth
+274	of Revivification
+275	of Honor
+276	of Vileness
+277	of Greed
+278	of Wealth
+279	of Greed
+280	of Greed
+281	of Greed
+282	of Greed
+283	of Greed
+284	of Greed
+285	of Avarice
+286	of Chance
+287	of Fortune
+288	of Fortune
+289	of Luck
+290	of Fortune
+291	of Good Luck
+292	of Prosperity
+293	of Energy
+294	of the Mind
+295	of Brilliance
+296	of Sorcery
+297	of Wizardry
+298	of Enlightenment
+299	of Energy
+300	of the Mind
+301	of Brilliance
+302	of Sorcery
+303	of Wizardry
+304	of Energy
+305	of the Mind
+306	of Brilliance
+307	of Sorcery
+308	of Knowledge
+309	of the Bear
+310	of Light
+311	of Radiance
+312	of the Sun
+313	of the Jackal
+314	of the Fox
+315	of the Wolf
+316	of the Tiger
+317	of the Mammoth
+318	of the Colosuss
+319	of the Squid
+320	of the Whale
+321	of the Jackal
+322	of the Fox
+323	of the Wolf
+324	of the Tiger
+325	of the Mammoth
+326	of the Colosuss
+327	of the Jackal
+328	of the Fox
+329	of the Wolf
+330	of the Tiger
+331	of the Mammoth
+332	of Life
+333	of Life
+334	of Life
+335	of Substinence
+336	of Substinence
+337	of Substinence
+338	of Vita
+339	of Vita
+340	of Vita
+341	of Life
+342	of Life
+343	of Substinence
+344	of Substinence
+345	of Vita
+346	of Vita
+347	of Life
+348	of Substinence
+349	of Vita
+350	of Spirit
+351	of Hope
+352	of the Leech
+353	of the Locust
+354	of the Lamprey
+355	of the Leech
+356	of the Locust
+357	of the Lamprey
+358	of the Leech
+359	of the Bat
+360	of the Wraith
+361	of the Vampire
+362	of the Bat
+363	of the Wraith
+364	of the Vampire
+365	of the Bat
+366	of Defiance
+367	of Amelioration
+368	of Remedy
+369	of Simplicity
+370	of Ease
+371	of Freedom
+372	of Strength
+373	of Might
+374	of the Ox
+375	of the Giant
+376	of the Titan
+377	of Atlus
+378	of Strength
+379	of Might
+380	of the Ox
+381	of the Giant
+382	of the Titan
+383	of Strength
+384	of Might
+385	of the Ox
+386	of the Giant
+387	of Strength
+388	of Strength
+389	of Strength
+390	of Strength
+391	of Strength
+392	of Strength
+393	of Virility
+394	of Pacing
+395	of Haste
+396	of Speed
+397	of Traveling
+398	of Acceleration
+399	of Inertia
+400	of Inertia
+401	of Inertia
+402	of Self-Repair
+403	of Fast Repair
+404	of Ages
+405	of Replenishing
+406	of Propogation
+407	of the Kraken
+408	of Memory
+409	of the Elephant
+410	of Power
+411	of Grace
+412	of Grace and Power
+413	of the Yeti
+414	of the Phoenix
+415	of the Efreeti
+416	of the Cobra
+417	of the Elements
+418	of Firebolts
+419	of Firebolts
+420	of Firebolts
+421	of Charged Shield
+422	of Charged Shield
+423	of Charged Shield
+424	of Icebolt
+425	of Frozen Armor
+426	of Static Field
+427	of Telekinesis
+428	of Frost Shield
+429	of Ice Blast
+430	of Blaze
+431	of Fire Ball
+432	of Nova
+433	of Nova
+434	of Nova Shield
+435	of Nova Shield
+436	of Nova Shield
+437	of Lightning
+438	of Lightning
+439	of Shiver Armor
+440	of Fire Wall
+441	of Enchant
+442	of Chain Lightning
+443	of Chain Lightning
+444	of Chain Lightning
+445	of Teleport Shield
+446	of Teleport Shield
+447	of Teleport Shield
+448	of Glacial Spike
+449	of Meteor
+450	of Thunder Storm
+451	of Energy Shield
+452	of Blizzard
+453	of Chilling Armor
+454	of Hydra Shield
+455	of Frozen Orb
+456	of Dawn
+457	of Sunlight
+458	of Magic Arrows
+459	of Magic Arrows
+460	of Fire Arrows
+461	of Fire Arrows
+462	of Inner Sight
+463	of Inner Sight
+464	of Jabbing
+465	of Jabbing
+466	of Cold Arrows
+467	of Cold Arrows
+468	of Multiple Shot
+469	of Multiple Shot
+470	of Power Strike
+471	of Power Strike
+472	of Poison Jab
+473	of Poison Jab
+474	of Exploding Arrows
+475	of Exploding Arrows
+476	of Slow Missiles
+477	of Slow Missiles
+478	of Impaling Strike
+479	of Impaling Strike
+480	of Lightning Javelin
+481	of Lightning Javelin
+482	of Ice Arrows
+483	of Ice Arrows
+484	of Guided Arrows
+485	of Guided Arrows
+486	of Charged Strike
+487	of Charged Strike
+488	of Plague Jab
+489	of Plague Jab
+490	of Immolating Arrows
+491	of Immolating Arrows
+492	of Fending
+493	of Fending
+494	of Freezing Arrows
+495	of Freezing Arrows
+496	of Lightning Strike
+497	of Lightning Strike
+498	of Lightning Fury
+499	of Lightning Fury
+500	of Fire Bolts
+501	of Fire Bolts
+502	of Charged Bolts
+503	of Charged Bolts
+504	of Ice Bolts
+505	of Ice Bolts
+506	of Frozen Armor
+507	of Frozen Armor
+508	of Static Field
+509	of Static Field
+510	of Telekinesis
+511	of Telekinesis
+512	of Frost Novas
+513	of Frost Novas
+514	of Ice Blasts
+515	of Ice Blasts
+516	of Blazing
+517	of Blazing
+518	of Fire Balls
+519	of Fire Balls
+520	of Novas
+521	of Novas
+522	of Lightning
+523	of Lightning
+524	of Shiver Armor
+525	of Shiver Armor
+526	of Fire Walls
+527	of Fire Walls
+528	of Enchantment
+529	of Enchantment
+530	of Chain Lightning
+531	of Chain Lightning
+532	of Teleportation
+533	of Teleportation
+534	of Glacial Spikes
+535	of Glacial Spikes
+536	of Meteors
+537	of Meteors
+538	of Thunder Storm
+539	of Thunder Storm
+540	of Energy Shield
+541	of Energy Shield
+542	of Blizzards
+543	of Blizzards
+544	of Chilling Armor
+545	of Chilling Armor
+546	of Hydras
+547	of Hydras
+548	of Frozen Orbs
+549	of Frozen Orbs
+550	of Amplify Damage
+551	of Amplify Damage
+552	of Teeth
+553	of Teeth
+554	of Bone Armor
+555	of Bone Armor
+556	of Raise Skeletons
+557	of Raise Skeletons
+558	of Dim Vision
+559	of Dim Vision
+560	of Weaken
+561	of Weaken
+562	of Poison Dagger
+563	of Poison Dagger
+564	of Corpse Explosions
+565	of Corpse Explosions
+566	of Clay Golem Summoning
+567	of Clay Golem Summoning
+568	of Iron Maiden
+569	of Iron Maiden
+570	of Terror
+571	of Terror
+572	of Bone Walls
+573	of Bone Walls
+574	of Raise Skeletal Mages
+575	of Raise Skeletal Mages
+576	of Confusion
+577	of Confusion
+578	of Life Tap
+579	of Life Tap
+580	of Poison Explosion
+581	of Poison Explosion
+582	of Bone Spears
+583	of Bone Spears
+584	of Blood Golem Summoning
+585	of Blood Golem Summoning
+586	of Attraction
+587	of Attraction
+588	of Decrepification
+589	of Decrepification
+590	of Bone Imprisonment
+591	of Bone Imprisonment
+592	of Iron Golem Creation
+593	of Iron Golem Creation
+594	of Lower Resistance
+595	of Lower Resistance
+596	of Poison Novas
+597	of Poison Novas
+598	of Bone Spirits
+599	of Bone Spirits
+600	of Fire Golem Summoning
+601	of Fire Golem Summoning
+602	of Revivification
+603	of Revivification
+604	of Sacrifice
+605	of Sacrifice
+606	of Holy Bolts
+607	of Holy Bolts
+608	of Zeal
+609	of Zeal
+610	of Vengeance
+611	of Vengeance
+612	of Blessed Hammers
+613	of Blessed Hammers
+614	of Conversion
+615	of Conversion
+616	of Fist of the Heavens
+617	of Fist of the Heavens
+618	of Bashing
+619	of Bashing
+620	of Howling
+621	of Howling
+622	of Potion Finding
+623	of Potion Finding
+624	of Taunting
+625	of Taunting
+626	of Shouting
+627	of Shouting
+628	of Stunning
+629	of Stunning
+630	of Item Finding
+631	of Item Finding
+632	of Concentration
+633	of Concentration
+634	of Battle Cry
+635	of Battle Cry
+636	of Battle Orders
+637	of Battle Orders
+638	of Grim Ward
+639	of Grim Ward
+640	of War Cry
+641	of War Cry
+642	of Battle Command
+643	of Battle Command
+644	of Firestorms
+645	of Firestorms
+646	of Molten Boulders
+647	of Molten Boulders
+648	of Eruption
+649	of Eruption
+650	of Cyclone Armor
+651	of Cyclone Armor
+652	of Twister
+653	of Twister
+654	of Volcano
+655	of Volcano
+656	of Tornado
+657	of Tornado
+658	of Armageddon
+659	of Armageddon
+660	of Hurricane
+661	of Hurricane
+662	of Damage Amplification
+663	of the Icicle
+664	of the Glacier
+665	of Fire
+666	of Burning
+667	of Lightning
+668	of Thunder
+669	of Daring
+670	of Daring
+671	of Knowledge
+672	of Knowledge
+673	of Virility
+674	of Virility
+675	of Readiness
+676	of Craftsmanship
+677	of Quality
+678	of Maiming
+679	of Craftsmanship
+680	of Quality
+681	of Craftsmanship
+682	of Blight
+683	of Venom
+684	of Pestilence
+685	of Anthrax
+686	of Blight
+687	of Venom
+688	of Pestilence
+689	of Anthrax
+690	of Blight
+691	of Venom
+692	of Pestilence
+693	of Anthrax
+694	of Frost
+695	of the Icicle
+696	of the Glacier
+697	of Winter
+698	of Frost
+699	of the Icicle
+700	of the Glacier
+701	of Winter
+702	of Frost
+703	of the Icicle
+704	of the Glacier
+705	of Winter
+706	of Flame
+707	of Fire
+708	of Burning
+709	of Incineration
+710	of Flame
+711	of Fire
+712	of Burning
+713	of Incineration
+714	of Flame
+715	of Fire
+716	of Burning
+717	of Incineration
+718	of Shock
+719	of Lightning
+720	of Thunder
+721	of Storms
+722	of Shock
+723	of Lightning
+724	of Thunder
+725	of Storms
+726	of Shock
+727	of Lightning
+728	of Thunder
+729	of Storms
+730	of Dexterity
+731	of Dexterity
+732	of Strength
+733	of Strength
+734	of Thorns
+735	of Frost
+736	of Flame
+737	of Blight
+738	of Shock
+739	of Regeneration
+740	of Energy
+741	of Light
+742	of the Leech
+743	of the Locust
+744	of the Lamprey
+745	of the Bat
+746	of the Wraith
+747	of the Vampire
+*********************************以下是Rare和Crafted名字(^表示没有名字)	
+0	^
+1	Bite
+2	Scratch
+3	Scalpel
+4	Fang
+5	Gutter
+6	Thirst
+7	Razor
+8	Scythe
+9	Edge
+10	Saw
+11	Splitter
+12	Cleaver
+13	Sever
+14	Sunder
+15	Rend
+16	Mangler
+17	Slayer
+18	Reaver
+19	Spawn
+20	Gnash
+21	Star
+22	Blow
+23	Smasher
+24	Bane
+25	Crusher
+26	Breaker
+27	Grinder
+28	Crack
+29	Mallet
+30	Knell
+31	Lance
+32	Spike
+33	Impaler
+34	Skewer
+35	Prod
+36	Scourge
+37	Wand
+38	Wrack
+39	Barb
+40	Needle
+41	Dart
+42	Bolt
+43	Quarrel
+44	Fletch
+45	Flight
+46	Nock
+47	Horn
+48	Stinger
+49	Quill
+50	Goad
+51	Branch
+52	Spire
+53	Song
+54	Call
+55	Cry
+56	Spell
+57	Chant
+58	Weaver
+59	Gnarl
+60	Visage
+61	Crest
+62	Circlet
+63	Veil
+64	Hood
+65	Mask
+66	Brow
+67	Casque
+68	Visor
+69	Cowl
+70	Hide
+71	Pelt
+72	Carapace
+73	Coat
+74	Wrap
+75	Suit
+76	Cloak
+77	Shroud
+78	Jack
+79	Mantle
+80	Guard
+81	Badge
+82	Rock
+83	Aegis
+84	Ward
+85	Tower
+86	Shield
+87	Wing
+88	Mark
+89	Emblem
+90	Hand
+91	Fist
+92	Claw
+93	Clutches
+94	Grip
+95	Grasp
+96	Hold
+97	Touch
+98	Finger
+99	Knuckle
+100	Shank
+101	Spur
+102	Tread
+103	Stalker
+104	Greaves
+105	Blazer
+106	Nails
+107	Trample
+108	Brogues
+109	Track
+110	Slippers
+111	Clasp
+112	Buckle
+113	Harness
+114	Lock
+115	Fringe
+116	Winding
+117	Chain
+118	Strap
+119	Lash
+120	Cord
+121	Knot
+122	Circle
+123	Loop
+124	Eye
+125	Turn
+126	Spiral
+127	Coil
+128	Gyre
+129	Band
+130	Whorl
+131	Talisman
+132	Heart
+133	Noose
+134	Necklace
+135	Collar
+136	Beads
+137	Torc
+138	Gorget
+139	Scarab
+140	Wood
+141	Brand
+142	Bludgeon
+143	Cudgel
+144	Loom
+145	Harp
+146	Master
+147	Bar
+148	Hew
+149	Crook
+150	Mar
+151	Shell
+152	Stake
+153	Picket
+154	Pale
+155	Flange
+156	Beast
+157	Eagle
+158	Raven
+159	Viper
+160	Ghoul
+161	Skull
+162	Blood
+163	Dread
+164	Doom
+165	Grim
+166	Bone
+167	Death
+168	Shadow
+169	Storm
+170	Rune
+171	Plague
+172	Stone
+173	Wraith
+174	Spirit
+175	Storm
+176	Demon
+177	Cruel
+178	Empyrian
+179	Bramble
+180	Pain
+181	Loath
+182	Glyph
+183	Imp
+184	Fiend
+185	Hailstone
+186	Gale
+187	Dire
+188	Soul
+189	Brimstone
+190	Corpse
+191	Carrion
+192	Armageddon
+193	Havoc
+194	Bitter
+195	Entropy
+196	Chaos
+197	Order
+198	Rule
+199	Warp
+200	Rift
+201	Corruption
+*********************************以下是暗金名字(Unique Name)(^表示没有名字)	
+0	The Gnasher
+1	Deathspade
+2	Bladebone
+3	Mindrend
+4	Rakescar
+5	Fechmars Axe
+6	Goreshovel
+7	The Chieftan
+8	Brainhew
+9	The Humongous
+10	Iros Torch
+11	Maelstromwrath
+12	Gravenspine
+13	Umes Lament
+14	Felloak
+15	Knell Striker
+16	Rusthandle
+17	Stormeye
+18	Stoutnail
+19	Crushflange
+20	Bloodrise
+21	The Generals Tan Do Li Ga
+22	Ironstone
+23	Bonesob
+24	Steeldriver
+25	Rixots Keen
+26	Blood Crescent
+27	Krintizs Skewer
+28	Gleamscythe
+29	Azurewrath
+30	Griswolds Edge
+31	Hellplague
+32	Culwens Point
+33	Shadowfang
+34	Soulflay
+35	Kinemils Awl
+36	Blacktongue
+37	Ripsaw
+38	The Patriarch
+39	Gull
+40	The Diggler
+41	The Jade Tan Do
+42	Irices Shard
+43	The Dragon Chang
+44	Razortine
+45	Bloodthief
+46	Lance of Yaggai
+47	The Tannr Gorerod
+48	Dimoaks Hew
+49	Steelgoad
+50	Soul Harvest
+51	The Battlebranch
+52	Woestave
+53	The Grim Reaper
+54	Bane Ash
+55	Serpent Lord
+56	Lazarus Spire
+57	The Salamander
+58	The Iron Jang Bong
+59	Pluckeye
+60	Witherstring
+61	Rimeraven
+62	Piercerib
+63	Pullspite
+64	Wizendraw
+65	Hellclap
+66	Blastbark
+67	Leadcrow
+68	Ichorsting
+69	Hellcast
+70	Doomspittle
+71	War Bonnet
+72	Tarnhelm
+73	Coif of Glory
+74	Duskdeep
+75	Wormskull
+76	Howltusk
+77	Undead Crown
+78	The Face of Horror
+79	Greyform
+80	Blinkbats Form
+81	The Centurion
+82	Twitchthroe
+83	Darkglow
+84	Hawkmail
+85	Sparking Mail
+86	Venomsward
+87	Iceblink
+88	Boneflesh
+89	Rockfleece
+90	Rattlecage
+91	Goldskin
+92	Victors Silk
+93	Heavenly Garb
+94	Pelta Lunata
+95	Umbral Disk
+96	Stormguild
+97	Wall of the Eyeless
+98	Swordback Hold
+99	Steelclash
+100	Bverrit Keep
+101	The Ward
+102	The Hand of Broc
+103	Bloodfist
+104	Chance Guards
+105	Magefist
+106	Frostburn
+107	Hotspur
+108	Gorefoot
+109	Treads of Cthon
+110	Goblin Toe
+111	Tearhaunch
+112	Lenyms Cord
+113	Snakecord
+114	Nightsmoke
+115	Goldwrap
+116	Bladebuckle
+117	Nokozan Relic
+118	The Eye of Etlich
+119	The Mahim-Oak Curio
+120	Nagelring
+121	Manald Heal
+122	The Stone of Jordan
+123	Amulet of the Viper
+124	Staff of Kings
+125	Horadric Staff
+126	Hell Forge Hammer
+127	Khalim's Flail
+128	Khalim's Will
+129	Coldkill
+130	Butcher's Pupil
+131	Islestrike
+132	Pompe's Wrath
+133	Guardian Naga
+134	Warlord's Trust
+135	Spellsteel
+136	Stormrider
+137	Boneslayer Blade
+138	The Minataur
+139	Suicide Branch
+140	Carin Shard
+141	Arm of King Leoric
+142	Blackhand Key
+143	Dark Clan Crusher
+144	Zakarum's Hand
+145	The Fetid Sprinkler
+146	Hand of Blessed Light
+147	Fleshrender
+148	Sureshrill Frost
+149	Moonfall
+150	Baezil's Vortex
+151	Earthshaker
+152	Bloodtree Stump
+153	The Gavel of Pain
+154	Bloodletter
+155	Coldsteel Eye
+156	Hexfire
+157	Blade of Ali Baba
+158	Ginther's Rift
+159	Headstriker
+160	Plague Bearer
+161	The Atlantian
+162	Crainte Vomir
+163	Bing Sz Wang
+164	The Vile Husk
+165	Cloudcrack
+166	Todesfaelle Flamme
+167	Swordguard
+168	Spineripper
+169	Heart Carver
+170	Blackbog's Sharp
+171	Stormspike
+172	The Impaler
+173	Kelpie Snare
+174	Soulfeast Tine
+175	Hone Sundan
+176	Spire of Honor
+177	The Meat Scraper
+178	Blackleach Blade
+179	Athena's Wrath
+180	Pierre Tombale Couant
+181	Husoldal Evo
+182	Grim's Burning Dead
+183	Razorswitch
+184	Ribcracker
+185	Chromatic Ire
+186	Warpspear
+187	Skullcollector
+188	Skystrike
+189	Riphook
+190	Kuko Shakaku
+191	Endlesshail
+192	Whichwild String
+193	Cliffkiller
+194	Magewrath
+195	Godstrike Arch
+196	Langer Briser
+197	Pus Spiter
+198	Buriza-Do Kyanon
+199	Demon Machine
+200	Armor
+201	Peasent Crown
+202	Rockstopper
+203	Stealskull
+204	Darksight Helm
+205	Valkiry Wing
+206	Crown of Thieves
+207	Blackhorn's Face
+208	Vampiregaze
+209	The Spirit Shroud
+210	Skin of the Vipermagi
+211	Skin of the Flayerd One
+212	Ironpelt
+213	Spiritforge
+214	Crow Caw
+215	Shaftstop
+216	Duriel's Shell
+217	Skullder's Ire
+218	Guardian Angel
+219	Toothrow
+220	Atma's Wail
+221	Black Hades
+222	Corpsemourn
+223	Que-Hegan's Wisdon
+224	Visceratuant
+225	Mosers Blessed Circle
+226	Stormchaser
+227	Tiamat's Rebuke
+228	Kerke's Sanctuary
+229	Radimant's Sphere
+230	Lidless Wall
+231	Lance Guard
+232	Venom Grip
+233	Gravepalm
+234	Ghoulhide
+235	Lavagout
+236	Hellmouth
+237	Infernostride
+238	Waterwalk
+239	Silkweave
+240	Wartraveler
+241	Gorerider
+242	String of Ears
+243	Razortail
+244	Gloomstrap
+245	Snowclash
+246	Thudergod's Vigor
+247	Elite Uniques
+248	Harlequin Crest
+249	Veil of Steel
+250	The Gladiator's Bane
+251	Arkaine's Valor
+252	Blackoak Shield
+253	Stormshield
+254	Hellslayer
+255	Messerschmidt's Reaver
+256	Baranar's Star
+257	Schaefer's Hammer
+258	The Cranium Basher
+259	Lightsabre
+260	Doombringer
+261	The Grandfather
+262	Wizardspike
+263	Constricting Ring
+264	Stormspire
+265	Eaglehorn
+266	Windforce
+267	Rings
+268	Bul Katho's Wedding Band
+269	The Cat's Eye
+270	The Rising Sun
+271	Crescent Moon
+272	Mara's Kaleidoscope
+273	Atma's Scarab
+274	Dwarf Star
+275	Raven Frost
+276	Highlord's Wrath
+277	Saracen's Chance
+278	Class Specific
+279	Arreat's Face
+280	Homunculus
+281	Titan's Revenge
+282	Lycander's Aim
+283	Lycander's Flank
+284	The Oculus
+285	Herald of Zakarum
+286	Cutthroat1
+287	Jalal's Mane
+288	The Scalper
+289	Bloodmoon
+290	Djinnslayer
+291	Deathbit
+292	Warshrike
+293	Gutsiphon
+294	Razoredge
+295	Gore Ripper
+296	Demonlimb
+297	Steelshade
+298	Tomb Reaver
+299	Deaths's Web
+300	Nature's Peace
+301	Azurewrath
+302	Seraph's Hymn
+303	Zakarum's Salvation
+304	Fleshripper
+305	Odium
+306	Horizon's Tornado
+307	Stone Crusher
+308	Jadetalon
+309	Shadowdancer
+310	Cerebus
+311	Tyrael's Might
+312	Souldrain
+313	Runemaster
+314	Deathcleaver
+315	Executioner's Justice
+316	Stoneraven
+317	Leviathan
+318	Larzuk's Champion
+319	Wisp
+320	Gargoyle's Bite
+321	Lacerator
+322	Mang Song's Lesson
+323	Viperfork
+324	Ethereal Edge
+325	Demonhorn's Edge
+326	The Reaper's Toll
+327	Spiritkeeper
+328	Hellrack
+329	Alma Negra
+330	Darkforge Spawn
+331	Widowmaker
+332	Bloodraven's Charge
+333	Ghostflame
+334	Shadowkiller
+335	Gimmershred
+336	Griffon's Eye
+337	Windhammer
+338	Thunderstroke
+339	Giantmaimer
+340	Demon's Arch
+341	Boneflame
+342	Steelpillar
+343	Nightwing's Veil
+344	Crown of Ages
+345	Andariel's Visage
+346	Darkfear
+347	Dragonscale
+348	Steel Carapice
+349	Medusa's Gaze
+350	Ravenlore
+351	Boneshade
+352	Nethercrow
+353	Flamebellow
+354	Fathom
+355	Wolfhowl
+356	Spirit Ward
+357	Kira's Guardian
+358	Ormus' Robes
+359	Gheed's Fortune
+360	Stormlash
+361	Halaberd's Reign
+362	Warriv's Warder
+363	Spike Thorn
+364	Dracul's Grasp
+365	Frostwind
+366	Templar's Might
+367	Eschuta's temper
+368	Firelizard's Talons
+369	Sandstorm Trek
+370	Marrowwalk
+371	Heaven's Light
+372	Merman's Speed
+373	Arachnid Mesh
+374	Nosferatu's Coil
+375	Metalgrid
+376	Verdugo's Hearty Cord
+377	Sigurd's Staunch
+378	Carrion Wind
+379	Giantskull
+380	Ironward
+381	Annihilus
+382	Arioc's Needle
+383	Cranebeak
+384	Nord's Tenderizer
+385	Earthshifter
+386	Wraithflight
+387	Bonehew
+388	Ondal's Wisdom
+389	The Reedeemer
+390	Headhunter's Glory
+391	Steelrend
+392	Rainbow Facet
+393	Rainbow Facet
+394	Rainbow Facet
+395	Rainbow Facet
+396	Rainbow Facet
+397	Rainbow Facet
+398	Rainbow Facet
+399	Rainbow Facet
