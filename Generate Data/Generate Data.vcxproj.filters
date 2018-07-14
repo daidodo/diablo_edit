@@ -37,17 +37,13 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Diablo Edit2\itemdata.dat">
-      <Filter>资源文件</Filter>
-    </None>
-    <None Include="..\Diablo Edit2\language.dat">
-      <Filter>资源文件</Filter>
-    </None>
     <None Include="..\Diablo Edit2\new.dat">
       <Filter>资源文件</Filter>
     </None>
-    <None Include="..\Diablo Edit2\property.dat">
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="itemdata.txt">
       <Filter>资源文件</Filter>
-    </None>
+    </Text>
   </ItemGroup>
 </Project>
