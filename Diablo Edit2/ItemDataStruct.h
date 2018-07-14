@@ -32,37 +32,46 @@ Dmg1Max	    BYTE,武器的单手最高伤害
 Dmg2Min	    BYTE,武器的双手最低伤害
 Dmg2Max	    BYTE,武器的双手最高伤害
 //*/
-class CItemDataStruct
+//class CItemDataStruct1
+//{
+////fields
+//	union{
+//		DWORD	dwTypeID;
+//		BYTE	sTypeName[4];
+//	};
+//	WORD	wPic;
+//	WORD	wName;
+//	BYTE	bEqRange;
+//	BYTE	bAdd;
+//    BYTE    bDmg1Min,bDmg1Max;
+//    BYTE    bDmg2Min,bDmg2Max;
+//public:
+//	static const int SIZE = 14;
+////members
+//	DWORD	TypeID() const{return dwTypeID;}
+//	WORD	PicIndex const{return wPic;}
+//	WORD	NameIndex const{return wName;}
+//	BYTE	Equip const{return bEqRange >> 4;}
+//	BYTE	Range const{return ((bEqRange & 0xC) << 2) + (bEqRange & 3) + 0x11;}
+//	BOOL	HasDef const{return (bAdd & 0x80) != 0;}
+//	BOOL	HasDur const{return (bAdd & 0x40) != 0;}
+//	BOOL	IsStacked const{return (bAdd & 0x20) != 0;}
+//	BOOL	IsTome() const{return (bAdd & 0x10) != 0;}
+//	BOOL	HasMonsterID() const{return (bAdd & 8) != 0;}
+//	BOOL	IsCharm const{return (bAdd & 4) != 0;}
+//	BOOL	HasSpellID() const{return (bAdd & 2) != 0;}
+//	BOOL	IsUnique() const{return (bAdd & 1) != 0;}
+//    UINT    Damage1Min const{return bDmg1Min;}
+//    UINT    Damage1Max const{return bDmg1Max;}
+//    UINT    Damage2Min const{return bDmg2Min;}
+//    UINT    Damage2Max const{return bDmg2Max;}
+//};
+
+struct CItemDataStruct
 {
-//fields
-	union{
-		DWORD	dwTypeID;
-		BYTE	sTypeName[4];
-	};
-	WORD	wPic;
-	WORD	wName;
-	BYTE	bEqRange;
-	BYTE	bAdd;
-    BYTE    bDmg1Min,bDmg1Max;
-    BYTE    bDmg2Min,bDmg2Max;
-public:
-	static const int SIZE = 14;
-//members
-	DWORD	TypeID() const{return dwTypeID;}
-	WORD	PicIndex() const{return wPic;}
-	WORD	NameIndex() const{return wName;}
-	BYTE	Equip() const{return bEqRange >> 4;}
-	BYTE	Range() const{return ((bEqRange & 0xC) << 2) + (bEqRange & 3) + 0x11;}
-	BOOL	HasDef() const{return (bAdd & 0x80) != 0;}
-	BOOL	HasDur() const{return (bAdd & 0x40) != 0;}
-	BOOL	IsStacked() const{return (bAdd & 0x20) != 0;}
-	BOOL	IsTome() const{return (bAdd & 0x10) != 0;}
-	BOOL	HasMonsterID() const{return (bAdd & 8) != 0;}
-	BOOL	IsCharm() const{return (bAdd & 4) != 0;}
-	BOOL	HasSpellID() const{return (bAdd & 2) != 0;}
-	BOOL	IsUnique() const{return (bAdd & 1) != 0;}
-    UINT    Damage1Min() const{return bDmg1Min;}
-    UINT    Damage1Max() const{return bDmg1Max;}
-    UINT    Damage2Min() const{return bDmg2Min;}
-    UINT    Damage2Max() const{return bDmg2Max;}
+	std::string name;
+	WORD PicIndex = 0, NameIndex = 0;
+	BYTE Equip = 0, Range = 0;
+	BOOL HasDef = FALSE, HasDur = FALSE, IsStacked = FALSE, IsTome = FALSE, HasMonsterID = FALSE, IsCharm = FALSE, HasSpellID = FALSE, IsUnique = FALSE;
+	UINT Damage1Min = 0, Damage1Max = 0, Damage2Min = 0, Damage2Max = 0;
 };
