@@ -141,7 +141,7 @@ class CD2Item
 public:
     //Quality()只作显示时,控制名字的颜色用
 	//BYTE Quality() const{return !bEar && !bSimple ? pItemInfo->pExtItemInfo->iQuality : (pItemData->IsUnique() ? 7 : 2);}
-    BYTE Quality() const{return bEar ? 2 : (pItemData->IsUnique() ? 7 : (!bEar && !bSimple ? pItemInfo->pExtItemInfo->iQuality : 2));}
+    BYTE Quality() const{return bEar ? 2 : (pItemData->IsUnique ? 7 : (!bEar && !bSimple ? pItemInfo->pExtItemInfo->iQuality : 2));}
 	void ReadData(CInBitsStream & bs);
 	void WriteData(COutBitsStream & bs) const;
 private:

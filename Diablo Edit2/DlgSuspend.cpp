@@ -49,7 +49,7 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem)
 
     }else{              //item structure
         //Prefix, Suffix, Name
-        CString name = ::theApp.ItemName(pItem->pItemData->NameIndex());
+        CString name = ::theApp.ItemName(pItem->pItemData->NameIndex);
         BYTE quality = pItem->Quality();
         BYTE color = quality <= 3 ? WHITE : quality - 3;
         switch(quality){
@@ -102,22 +102,22 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem)
         }
         m_sItemMsg.push_back(__MsgType(color,name));
         //Defence or Attack
-        if(pItem->pItemData->HasDef()){     //有防御值
+        if(pItem->pItemData->HasDef){     //有防御值
             CString defence;
             defence.Format(::theApp.String(416),UINT(pItem->pItemInfo->pTpSpInfo->iDefence.Value() - 10));
             m_sItemMsg.push_back(__MsgType(WHITE,defence));
-        }else if(pItem->pItemData->Damage1Min()){      //单手伤害
+        }else if(pItem->pItemData->Damage1Min){      //单手伤害
             CString dmg;
-            dmg.Format(::theApp.String(417),pItem->pItemData->Damage1Min(),pItem->pItemData->Damage1Max());
+            dmg.Format(::theApp.String(417),pItem->pItemData->Damage1Min,pItem->pItemData->Damage1Max);
             m_sItemMsg.push_back(__MsgType(WHITE,dmg));
-        }else if(pItem->pItemData->Damage2Min()){      //双手伤害
+        }else if(pItem->pItemData->Damage2Min){      //双手伤害
             CString dmg;
-            dmg.Format(::theApp.String(418),pItem->pItemData->Damage2Min(),pItem->pItemData->Damage2Max());
+            dmg.Format(::theApp.String(418),pItem->pItemData->Damage2Min,pItem->pItemData->Damage2Max);
             m_sItemMsg.push_back(__MsgType(WHITE,dmg));
         }
         //Quantity
         CString msg;
-        if(pItem->pItemData->IsStacked()){
+        if(pItem->pItemData->IsStacked){
             msg.Format(::theApp.String(382),UINT(pItem->pItemInfo->pTpSpInfo->iQuantity.Value()));
             m_sItemMsg.push_back(__MsgType(WHITE,msg));
         }else if(IsSameType(pItem->pItemInfo->sTypeName,"gld ")){
@@ -125,7 +125,7 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem)
             m_sItemMsg.push_back(__MsgType(WHITE,msg));
         }
         //Durability or Indestructible
-        if(pItem->pItemData->HasDur()){
+        if(pItem->pItemData->HasDur){
             if(pItem->pItemInfo->pTpSpInfo->iMaxDurability.Value()){   //有耐久度
                 CString dur;
                 dur.Format(::theApp.String(419),

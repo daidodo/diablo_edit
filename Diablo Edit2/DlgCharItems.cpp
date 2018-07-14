@@ -225,7 +225,7 @@ BOOL CDlgCharItems::PutItemInGrid(WORD itemIndex, WORD gridIndex) {
 				SET_GRID_ITEM(i, x0 + x, y0 + y, itemIndex);
 	} else {					//身体
 		const WORD MAP[10] = { 1,2,3,4,4,5,5,6,7,8 };
-		if (m_vpItems[itemIndex]->pItem->pItemData->Equip() != MAP[i - 3])
+		if (m_vpItems[itemIndex]->pItem->pItemData->Equip != MAP[i - 3])
 			return FALSE;
 		int c = COL(gridIndex), r = ROW(gridIndex);
 		if (GET_GRID_ITEM(i, c, r) != INVALID_ITEM)
@@ -267,7 +267,7 @@ void CDlgCharItems::ReadItemProperty(WORD itemIndex)
 {
     ASSERT(itemIndex >= 0 && itemIndex < WORD(m_vpItems.size()) && m_vpItems[itemIndex] && m_vpItems[itemIndex]->pItem);
     const CD2Item & rit = *m_vpItems[itemIndex]->pItem;
-    //m_sItemName = ::theApp.ItemName(rit.pItemData->NameIndex());
+    //m_sItemName = ::theApp.ItemName(rit.pItemData->NameIndex);
     if(m_bItemSocket = rit.bSocketed)
         m_bBaseSocket = rit.pItemInfo->pTpSpInfo->iSocket.Value();
     m_bEthereal = rit.bEthereal;
@@ -283,11 +283,11 @@ void CDlgCharItems::ReadItemProperty(WORD itemIndex)
             if(rit.bPersonalized)
                 m_ItemOwner = rit.pItemInfo->pExtItemInfo->sPersonName.Value();
             m_cbQuality.SetCurSel(rit.pItemInfo->pExtItemInfo->iQuality - 1);
-            if(rit.pItemData->IsStacked())
+            if(rit.pItemData->IsStacked)
                 m_wItemQuantity = rit.pItemInfo->pTpSpInfo->iQuantity.Value();
-            if(rit.pItemData->HasDef())
+            if(rit.pItemData->HasDef)
                 m_wItemDefence = rit.pItemInfo->pTpSpInfo->iDefence.Value() - 10;
-            if(rit.pItemData->HasDur()){
+            if(rit.pItemData->HasDur){
                 m_wMaxDurability = rit.pItemInfo->pTpSpInfo->iMaxDurability.Value();
                 if(!(m_bIndestructible = (m_wMaxDurability == 0)))
                     m_wCurDurability = rit.pItemInfo->pTpSpInfo->iCurDur.Value();
@@ -334,7 +334,7 @@ void CDlgCharItems::UpdateUI(const CD2S_Struct & character)
     for(WORD i = 0;i < character.ItemList.nItems;++i){
         ASSERT(character.ItemList.vpItems[i] && _T("CDlgCharItems::UpdateUI(const CD2S_Struct & character)"));
         CD2Item & rit = *character.ItemList.vpItems[i];
-		m_vpItems[i] = new CItemView(BMP_INDEX_BASE + rit.pItemData->PicIndex(), rit.pItemData->Range(), &rit);
+		m_vpItems[i] = new CItemView(BMP_INDEX_BASE + rit.pItemData->PicIndex, rit.pItemData->Range, &rit);
 		//if(rit.bEar){				//耳朵
         //    //...
         //}else if(rit.pItemData){	//物品

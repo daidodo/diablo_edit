@@ -293,12 +293,12 @@ const CItemDataStruct *  CItemInfo::ReadData(CInBitsStream & bs, BOOL bSimple, B
 		return 0;
 	if (!bSimple)	//物品有额外属性
 		pExtItemInfo->ReadData(bs,
-			pItemData->IsCharm(),
+			pItemData->IsCharm,
 			bRuneWord,
 			bPersonalized,
-			pItemData->IsTome(),
-			pItemData->HasMonsterID(),
-			pItemData->HasSpellID());
+			pItemData->IsTome,
+			pItemData->HasMonsterID,
+			pItemData->HasSpellID);
 	//特殊物品类型的额外数据
 	if (IsSameType(sTypeName, "gld "))	//gld 的数量域
 		pGold->ReadData(bs);
@@ -308,10 +308,10 @@ const CItemDataStruct *  CItemInfo::ReadData(CInBitsStream & bs, BOOL bSimple, B
 			bs >> bits(pTmStFlag[i], 32);
 	if (!bSimple) {	//Type Specific info
 		pTpSpInfo->ReadData(bs,
-			pItemData->HasDef(),
-			pItemData->HasDur(),
+			pItemData->HasDef,
+			pItemData->HasDur,
 			bSocketed,
-			pItemData->IsStacked(),
+			pItemData->IsStacked,
 			pExtItemInfo->IsSet(),
 			bRuneWord);
 	}
@@ -323,12 +323,12 @@ void CItemInfo::WriteData(COutBitsStream & bs, const CItemDataStruct & itemData,
 		bs << bits(b, 8);
 	if (!bSimple)	//物品有额外属性
 		pExtItemInfo->WriteData(bs,
-			itemData.IsCharm(),
+			itemData.IsCharm,
 			bRuneWord,
 			bPersonalized,
-			itemData.IsTome(),
-			itemData.HasMonsterID(),
-			itemData.HasSpellID());
+			itemData.IsTome,
+			itemData.HasMonsterID,
+			itemData.HasSpellID);
 	//特殊物品类型的额外数据
 	if (IsSameType(sTypeName, "gld "))	//gld 的数量域
 		pGold->WriteData(bs);
@@ -338,10 +338,10 @@ void CItemInfo::WriteData(COutBitsStream & bs, const CItemDataStruct & itemData,
 			bs << bits(pTmStFlag[i], 32);
 	if (!bSimple) {	//Type Specific info
 		pTpSpInfo->WriteData(bs,
-			itemData.HasDef(),
-			itemData.HasDur(),
+			itemData.HasDef,
+			itemData.HasDur,
 			bSocketed,
-			itemData.IsStacked(),
+			itemData.IsStacked,
 			pExtItemInfo->IsSet(),
 			bRuneWord);
 	}
