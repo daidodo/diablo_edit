@@ -393,19 +393,19 @@ void CDlgCharItems::ResetAll()
 void CDlgCharItems::LoadText(void)
 {
     for(int i = 0;i < 12;++i)
-        m_sText[i] = ::theApp.String(424 + i);
+        m_sText[i] = ::theApp.CharItemInfo(i);
     for(int i = 0;i < 5;++i)
-        m_btButton[i].SetWindowText(::theApp.String(436 + i));
+        m_btButton[i].SetWindowText(::theApp.CharItemInfo(12 + i));
     m_cbQuality.ResetContent();
-    for(int i = 0;i < 8;++i)
-        m_cbQuality.AddString(::theApp.String(386 + i));
+	for(UINT i = 0;i < ::theApp.ItemQualityNameSize();++i)
+		m_cbQuality.AddString(::theApp.ItemQualityName(i));
     //设置属性列表的标题文字
     LVCOLUMN col;
     col.cchTextMax = 20;
     col.mask = LVCF_TEXT;
-    col.pszText = (LPWSTR)::theApp.String(383).GetString(); 
+    col.pszText = (LPWSTR)::theApp.CharItemInfo(17).GetString();
     m_lcPropertyList.SetColumn(0,&col);
-    col.pszText = (LPWSTR)::theApp.String(384).GetString(); 
+    col.pszText = (LPWSTR)::theApp.CharItemInfo(18).GetString();
     m_lcPropertyList.SetColumn(1,&col);
 
 	UpdateData(FALSE);
@@ -464,8 +464,8 @@ BOOL CDlgCharItems::OnInitDialog()
 {
     CPropertyDialog::OnInitDialog();
 	m_lcPropertyList.SetExtendedStyle(LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES);
-	m_lcPropertyList.InsertColumn(0, ::theApp.String(383), LVCFMT_LEFT, 60);
-	m_lcPropertyList.InsertColumn(1, ::theApp.String(384), LVCFMT_LEFT, 225);
+	m_lcPropertyList.InsertColumn(0, _T(""), LVCFMT_LEFT, 60);
+	m_lcPropertyList.InsertColumn(1, _T(""), LVCFMT_LEFT, 225);
 	m_scTrasparent.SetRange(0, 255);
 	m_scTrasparent.SetPos(200);
     LoadText();

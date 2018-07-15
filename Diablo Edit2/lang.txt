@@ -32,17 +32,7 @@
 380	"Unrecognised Item Code, continue?"	不能识别的物品代码，是否继续？	不可識別的物品代碼，是否繼續？
 381	Unkown Item Quality: 	未知的物品等级：	未知的物品等級：
 382	Quantity: %d	数量：%d	數量：%d
-383	Code	代码	代碼
-384	Description	说明	説明
 385	Attack	一般攻击	一般攻擊
-386	Low	白色低级	白色低級
-387	Normal	白色普通	白色普通
-388	High	白色高级	白色高級
-389	Magical	蓝色魔法	藍色魔法
-390	Set	绿色套装	綠色套裝
-391	Rare	黄金	黃金
-392	Unique	暗金	暗金
-393	Crafted	橙色合成	橙色合成
 394	Kick	脚踢	腳踢
 395	Throw	投掷	投擲
 396	Unsummon	取消召唤	取消召喚
@@ -69,23 +59,6 @@
 421	Ethereal(cannot be repaired)	无形的(无法修复)	無形的(無法修復)
 422	Sockets(%d)	有凹槽(%d)	有凹槽(%d)
 423	Item Prefix Suffix	物品前后缀名	物品前后綴名
-424	Foundry	铸造台	鑄造臺
-425	Level	等级	等級
-426	Owner	拥有者	擁有者
-427	Quality	质量	質量
-428	Defence	防御	防御
-429	Quantity	数量	數量
-430	Durability	耐久度	耐久度
-431	Property Transparency	属性悬浮窗透明度	屬性懸浮窗透明度
-432	Hide	隐藏	隱藏
-433	Socket	有孔	有孔
-434	Indestructible	不可修复	不可修復
-435	Ethereal	不可破坏	不可破壞
-436	Found	锻造	鑄造
-437	Prefix Suffix	前后缀	前后綴
-438	Add	添加	添加
-439	Edit	编辑	編輯
-440	Delete	删除	刪除
 441	First Name	名	名
 442	Last Name	称	稱
 443	Prefix1	前缀1	前綴1
@@ -96,6 +69,26 @@
 448	Suffix3	后缀3	后綴3
 449	Unique Name	暗金名	暗金名
 450	Sub Type	子类	子類
+*=======================角色装备信息UI			
+0	Foundry	铸造台	鑄造臺
+1	Level	等级	等級
+2	Owner	拥有者	擁有者
+3	Quality	质量	質量
+4	Defence	防御	防御
+5	Quantity	数量	數量
+6	Durability	耐久度	耐久度
+7	Property Transparency	属性悬浮窗透明度	屬性懸浮窗透明度
+8	Hide	隐藏	隱藏
+9	Socket	有孔	有孔
+10	Indestructible	不可修复	不可修復
+11	Ethereal	不可破坏	不可破壞
+12	Found	锻造	鑄造
+13	Prefix Suffix	前后缀	前后綴
+14	Add	添加	添加
+15	Edit	编辑	編輯
+16	Delete	删除	刪除
+17	Code	代码	代碼
+18	Description	说明	説明
 *=======================角色基本信息UI			
 0	Basic Info	基本信息	基本信息
 1	Waypoints	小站	小站
@@ -135,6 +128,15 @@
 2	"Strength, Energy, Dexterity, Vitality and Stat Points is between 0-1023\nLife, Mana and Stamina is between 0-8191\nSkill Points is between 0-255"	力量、敏捷、体力、精力和状态点数必须在0-1023之间\n耐力、生命和法力值必须在0-8191之间\n技能点数必须在0-255之间	力量、敏捷、體力、精力和狀態點數值必須在0-1023之間\n耐力、生命和法力值必須在0-8191之間\n技能點數值必須在0-255之間
 3	Too many golds in person or stash	身上或箱子的金钱数过多	身上或箱子的金錢數過多
 4	Please choose character class	请选择一种角色	請選擇一種角色
+*=======================物品质量名字			
+0	Low	白色低级	白色低級
+1	Normal	白色普通	白色普通
+2	High	白色高级	白色高級
+3	Magical	蓝色魔法	藍色魔法
+4	Set	绿色套装	綠色套裝
+5	Rare	黄金	黃金
+6	Unique	暗金	暗金
+7	Crafted	橙色合成	橙色合成
 *=======================游戏难度			
 0	Normal	普通	普通
 1	Nightmare	恶梦	噩夢
