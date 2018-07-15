@@ -182,7 +182,7 @@ void CDlgWayPoints::GetOriginData(int level,BOOL * way)
 
 void CDlgWayPoints::LoadText(void)
 {
-	m_sText[0] = ::theApp.String(59);
+	m_sText[0] = ::theApp.OtherUI(8);
 	for(int i = 1;i < 40;++i)
 		m_sText[i] = ::theApp.WayPointName(i - 1);
 	for (UINT i = 0; i < ::theApp.DifficultyNameSize(); ++i)
