@@ -47,7 +47,7 @@ struct CQuestInfo
 	void ReadData(CInBitsStream & bs){
 		bs>>dwMajic>>dwActs>>wSize;
 		if(dwMajic != 0x216F6F57 || wSize != 0x12A)
-			if(MessageBox(0,::theApp.String(373),::theApp.String(5),MB_YESNO | MB_ICONWARNING) == IDNO)
+			if(MessageBox(0,::theApp.String(373),::theApp.MsgWarning(),MB_YESNO | MB_ICONWARNING) == IDNO)
 				throw 0;
 		for (auto & q : QIData)
 			q.ReadData(bs);
@@ -82,7 +82,7 @@ struct CWaypoints
 	void ReadData(CInBitsStream & bs){
 		bs>>wMajic>>unkown>>wSize;
 		if(wMajic != 0x5357 || wSize != 0x50)
-			if(MessageBox(0,::theApp.String(374),::theApp.String(5),MB_YESNO | MB_ICONWARNING) == IDNO)
+			if(MessageBox(0,::theApp.String(374),::theApp.MsgWarning(),MB_YESNO | MB_ICONWARNING) == IDNO)
 				throw 0;
 		for (auto & w : wp)
 			w.ReadData(bs);
@@ -104,7 +104,7 @@ public:
 	void ReadData(CInBitsStream & bs){
 		bs>>wMagic;
 		if(wMagic != 0x6669)
-			if(MessageBox(0,::theApp.String(376),::theApp.String(5),MB_YESNO | MB_ICONWARNING) == IDNO)
+			if(MessageBox(0,::theApp.String(376),::theApp.MsgWarning(),MB_YESNO | MB_ICONWARNING) == IDNO)
 				throw 0;
 		bs>>bSkillLevel;
 	}

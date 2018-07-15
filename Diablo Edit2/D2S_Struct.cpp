@@ -40,16 +40,16 @@ BOOL CD2S_Struct::ReadData(CInBitsStream & bs) {
 	//得到人物信息
 	bs >> dwMajic;
 	if (dwMajic != 0xAA55AA55)
-		if (MessageBox(0, ::theApp.String(13), ::theApp.String(5), MB_YESNO | MB_ICONWARNING) == IDNO)
+		if (MessageBox(0, ::theApp.String(13), ::theApp.MsgWarning(), MB_YESNO | MB_ICONWARNING) == IDNO)
 			return FALSE;
 	bs >> dwVersion >> dwSize;
 	if (bs.DataSize() != dwSize)
-		if (MessageBox(0, ::theApp.String(14), ::theApp.String(5), MB_YESNO | MB_ICONWARNING) == IDNO)
+		if (MessageBox(0, ::theApp.String(14), ::theApp.MsgWarning(), MB_YESNO | MB_ICONWARNING) == IDNO)
 			return FALSE;
 	const DWORD offCrc = bs.BytePos();
 	bs >> dwCRC;
 	if(!::ValidateCrc(bs.Data(), dwCRC, offCrc))	//校验CRC，会修改bs数据内容
-		if (MessageBox(0, ::theApp.String(13), ::theApp.String(5), MB_YESNO | MB_ICONWARNING) == IDNO)
+		if (MessageBox(0, ::theApp.String(13), ::theApp.MsgWarning(), MB_YESNO | MB_ICONWARNING) == IDNO)
 			return FALSE;
 	bs >> dwWeaponSet
 		>> Name

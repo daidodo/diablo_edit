@@ -1,9 +1,5 @@
 *LANG			
 0	&English	简体中文(&Simplified Chinese)	繁體中文(&Traditional Chinese)
-1	Basic Info	基本信息	基本信息
-2	Waypoints	小站	小站
-3	Missions	任务	任務
-4	Skills	技能	技能
 5	Warning	警告	警告
 6	Error	错误	錯誤
 7	Save the character 	是否保存已打开的人物	是否保存已打開的人物
@@ -14,364 +10,18 @@
 12	no title	无标题	無標題
 13	"The file may be not d2s format, continue?"	文件可能不是正确的d2s格式，是否继续？	文件可能不是正確的d2s格式，是否繼續？
 14	"file lenght is incorrect, continue?"	文件长度错误，是否继续？	文件長度錯誤，是否繼續？
-15	unknown	未知	未知
-16	Character name format error	人物名字格式错误	人物名字格式錯誤
-17	Lenght:  2-5 chars	长度：2-15字符	長度：2-15字符
-18	"Content: a-z,A-Z,-,_"	"包括：a-z,A-Z,-,_"	"包括：a-z,A-Z,-,_"
-19	"Caution: name string starts and ends with chars,"	注意：名字必须以字母开头和结尾，	注意：名字必須以字母開頭和結尾
-20	only one '-' or '_' is allowed	中间只允许有一个'-'或'_'符号	中間只允許有一個'-'或'_'符號
-21	Character level is between 1-99	人物等级必须在1-127之间	人物等級必須在1-99之間
-22	"Strength, Energy, Dexterity, Vitality and Stat Points is between 0-1023"	力量、敏捷、体力、精力和状态点数必须在0-1023之间	力量、敏捷、體力、精力和狀態點數值必須在0-1023之間
-23	"Life, Mana and Stamina is between 0-8191, Skill Points is between 0-255"	耐力、生命和法力值必须在0-8191之间，技能点数在0-255之间	耐力、生命和法力值必須在0-8191之間，技能點數值在0-255之間
-24	Amazon	亚马逊	亞馬遜
-25	Sorceress	法师	法師
-26	Necromancer	死灵法师	死靈法師
-27	Paladin	圣骑士	聖騎士
-28	Barbarian	野蛮人	野蠻人
-29	Druid	德鲁依	德魯依
-30	Assassin	刺客	刺客
-31	Normal	普通	普通
-32	Nightmare	恶梦	噩夢
-33	Hell	地狱	地獄
-34	Mana	法力	法力
-35	Version	版本	版本
-36	Character	角色	角色
-37	Name	名字	名字
-38	Title	称谓	稱謂
-39	Weapon	武器	武器
-40	Last game time	最近游戏时间	最近遊戲時間
-41	Last position	最后位置	最後位置
-42	Level	等级	等級
-43	Experience	经验	經驗
-44	Level And Experience	等级与经验对照表	等級與經驗對照表
-45	Character Stats	人物基本属性	人物基本屬性
-46	Strength	力量	力量
-47	Dexterity	敏捷	敏捷
-48	Vitality	体力	體力
-49	Energy	精力	精力
-50	Stat Points	状态点剩余	狀態點剩餘
-51	Basic Value	基础值	基礎值
-52	Current	当前值	當前值
-53	Stamina	耐力	耐力
-54	Life	生命	生命
-55	Ladder	天梯	天梯
-56	Expansion	资料片	資料片
-57	Hardcore	专家级	專家級
-58	Died berfore	以前死过	以前死過
+15	Unknown	未知	未知
 59	All	全部	全部
-60	Rogue Encampment	萝格营地	蘿格營地
-61	Cold Plains	冰冷之原	冰冷之原
-62	Stony Field	石块旷野	石塊曠野
-63	Dark Wood	黑暗森林	黑暗森林
-64	Black Marsh	黑色荒地	黑色荒地
-65	Outer Cloister	外侧回廊	外側迴廊
-66	Jail Level 1	监牢第一层	監牢第一層
-67	Inner Cloister	内侧回廊	内側迴廊
-68	Catacombs Level 2	地下墓穴第二层	地下墓穴第二層
-69	Lut Gholein	鲁.高因	魯.高因
-70	Sewers Level 2	下水道第二层	下水道第二層
-71	Dry Hills	干燥的高地	乾燥的高地
-72	Halls of the Dead Level 2	死亡之殿第二层	死亡之殿第二層
-73	Far Oasis	遥远的绿洲	遙遠的綠洲
-74	Lost City	遗失的城市	遺失的城市
-75	Palace Cellar Level 1 	皇宫监牢第一层	皇宮監牢第一層
-76	Arcane Sanctuary	神秘避难所	神秘避難所
-77	Canyon of the Magi	卫士的峡谷	衛士的峽谷
-78	Kurast Docktown	库拉斯特海港	庫拉斯特海港
-79	Spider Forest	蜘蛛森林	蜘蛛森林
-80	Great Marsh	庞大湿地	龐大濕地
-81	Flayer Jungle	剥皮森林	剝皮森林
-82	Lower Kurast	库拉斯特下层	庫拉斯特下層
-83	Kurast Bazaar	库拉斯特商场	庫拉斯特商場
-84	Upper Kurast	库拉斯特上层	庫拉斯特上層
-85	Travincal	崔凡克	崔凡克
-86	Durance of Hate Level 2	憎恨的囚牢第二层	憎恨的囚牢第二層
-87	The Pandemonium Fortress	群魔堡垒	群魔堡壘
-88	City of the Damned	神罚之城	神罰之城
-89	River of Flame	火焰之河	火焰之河
-90	Harrogath	哈洛加斯	哈洛加斯
-91	Rigid Highlands	冰冻高地	冰凍高地
-92	Arreat Plateau	亚瑞特高原	亞瑞特高原
-93	Crystalline Passage	水晶通道	水晶通道
-94	Glacial Trail	冰河路径	冰河路徑
-95	Halls of Anguish	痛苦之厅	痛苦之廰
-96	Tundra Wastelands	冰冻苔原	冰凍苔原
-97	The Ancients' way	远古之路	遠古之路
-98	The Worldstone Keep Level 2	世界之石要塞第二层	世界之石要塞第二層
-99	Den of Evil	邪恶洞穴	邪惡洞穴
-100	Sisters' Burial Grounds	修女埋骨之地	修女埋骨之地
-101	The Search for Cain	凯恩的搜索	凱恩的搜索
-102	The Forgotten Tower	遗忘之塔	遺忘之塔
-103	Tools of the Trade	交易的工具	交易的工具
-104	Sisters to the Slaughter	屠杀的修女	屠殺的修女
-105	Radament's Lair	罗达门特的巢穴	羅達門特的巢穴
-106	The Horadric Staff	赫拉迪克之杖	赫拉迪克之杖
-107	Tainted Sun	堕落的太阳	墮落的太陽
-108	Arcane Sanctuary	神秘避难所	神秘避難所
-109	The Summoner	召唤者	召喚者
-110	The Seven Tombs	七个古墓	七個古墓
-111	The Golden Bird	黄金鸟	黃金鳥
-112	Blade of the Old Religion	古代宗教之刃	古代宗教之刃
-113	Khalim's Will	克林姆的意志	克林姆的意志
-114	Lam Esen's Tome	蓝.依森的古书	藍.依森的古書
-115	The Blackened Temple	转为黑暗的神殿	轉爲黑暗的神殿
-116	The Guardian	守护者	守護者
-117	The Fallen Angel	堕落的天使	墮落的天使
-118	Hell's Forge	地狱熔炉	地獄熔爐
-119	Terror's End	恐怖的结局	恐怖的結局
-120	Siege on Harrogath	哈洛加斯围城战	哈洛加斯圍城戰
-121	Rescue on Mount Arreat	亚瑞特山的救援行动	亞瑞特山的救援行動
-122	Prison of Ice	冰之囚	冰之囚
-123	Betrayal of Harrogath	哈洛加斯的反叛行动	哈洛加斯的反叛行動
-124	Rite of Passage	通道的祭典	通道的祭典
-125	Eve of Destruction	毁灭的前夕	毀滅的前夕
-126	Moo Moo Farm	杀死母牛之王	殺死母牛之王
-127	Skill Points	技能点剩余	技能點剩餘
-128	Gold in person	身上金钱	身上金錢
-129	Gold in stash	箱子金钱	箱子金錢
-130	Please choose character class	请选择一种角色	請選擇一種角色
 131	Amazon Skills	亚马逊技能	亞馬遜技能
-132	Bow and Crossbow Skills	弓和十字弓技能	弓和十字弓技能
-133	Passive and Magic Skills	被动和魔法技能	被動和魔法技能
-134	Javelin and Spear Skills	标枪和长矛技能	標槍和長矛技能
-135	Magic Arrow	魔法箭	魔法箭
-136	Fire Arrow	火焰箭	火焰箭
-137	Cold Arrow	冰箭	冰箭
-138	Multiple Shot	多重箭	多重箭
-139	Exploding Arrow	爆裂箭	爆裂箭
-140	Ice Arrow	急冻箭	急凍箭
-141	Guided Arrow	导引箭	導引箭
-142	Strafe	炮轰	砲轟
-143	Immolation Arrow	牺牲之箭	犧牲之箭
-144	Freezing Arrow	冻结之箭	凍結之箭
-145	Inner Sight	内视	内視
-146	Critical Strike	致命攻击	致命攻擊
-147	Dodge	闪避	閃避
-148	Slow Missiles	慢速箭	慢速箭
-149	Avoid	躲避	躲避
-150	Penetrate	刺入	刺入
-151	Dopplezon	诱饵	誘餌
-152	Evade	回避	迴避
-153	Valkyrie	女武神	女武神
-154	Pierce	穿刺	穿刺
-155	Jab	戳刺	戳刺
-156	Power Strike	威力一击	威力一擊
-157	Poison Javelin	毒枪	毒槍
-158	Impale	刺爆	刺爆
-159	Lightning Bolt	闪电球	閃電球
-160	Charged Strike	充能一击	充能一擊
-161	Plague Javelin	瘟疫标枪	瘟疫標槍
-162	Fend	击退	擊退
-163	Lightning Strike	闪电攻击	閃電攻擊
-164	Lightning Fury	闪电之怒	閃電之怒
 165	Sorceress Skills	法师技能	法師技能
-166	Fire Spells	火焰法术	火焰法術
-167	Lightning Spells	闪电法术	閃電法術
-168	Cold Spells	冰冻法术	冰凍法術
-169	Fire Bolt	火弹	火彈
-170	Warmth	暖气	暖氣
-171	Inferno	地狱之火	地獄之火
-172	Blaze	炽烈之径	熾烈之徑
-173	Fire Ball	火球	火球
-174	Fire Wall	火墙	火墻
-175	Enchant	强化	強化
-176	Meteor	陨石	隕石
-177	Fire Mastery	支配之焰	支配之焰
-178	Hydra	九头海蛇	九頭海蛇
-179	Charged Bolt	充能弹	充能彈
-180	Static Field	静态力场	靜態力場
-181	Telekinesis	心灵传动	心靈傳動
-182	Nova	新星	新星
-183	Lightning	闪电	閃電
-184	Chain Lightning	连锁闪电	連鎖閃電
-185	Teleport	传送	傳送
-186	Thunder Storm	雷云风暴	雷云風暴
-187	Energy Shield	能量护盾	能量護盾
-188	Lightning Mastery	支配闪电	支配閃電
-189	Ice Bolt	冰弹	冰彈
-190	Frozen Armor	冰封装甲	冰封裝甲
-191	Frost Nova	霜之新星	霜之新星
-192	Ice Blast	冰风暴	冰風暴
-193	Shiver Armor	碎冰甲	碎冰甲
-194	Glacial Spike	冰尖柱	冰尖柱
-195	Blizzard	暴风雪	暴風雪
-196	Chilling Armor	寒冰装甲	寒冰裝甲
-197	Frozen Orb	冰封球	冰封球
-198	Cold Mastery	支配冰冷	支配冰冷
 199	Necromancer Skills	死灵法师技能	死靈法師技能
-200	Curses	诅咒	詛咒
-201	Poison and Bone Spells	毒素和白骨法术	毒素和白骨法術
-202	Summoning Spells	召唤法术	召喚法術
-203	Amplify Damage	伤害加深	傷害加深
-204	Dim Vision	微暗灵视	微暗靈視
-205	Weaken	削弱	削弱
-206	Iron Maiden	攻击反噬	攻擊反噬
-207	Terror	恐惧	恐懼
-208	Confuse	迷乱	迷亂
-209	Life Tap	偷取生命	偷取生命
-210	Attract	吸引	吸引
-211	Decrepify	衰老	衰老
-212	Lower Resist	降低抵抗	降低抵抗
-213	Teeth	牙	牙
-214	Bone Armor	白骨装甲	白骨裝甲
-215	Poison Dagger	淬毒匕首	淬毒匕首
-216	Corpse Explosion	尸体爆炸	屍體爆炸
-217	Bone Wall	骨墙	骨墻
-218	Poison Explosion	毒爆	毒爆
-219	Bone Spear	骨矛	骨矛
-220	Bone Prison	骨牢	骨牢
-221	Poison Nova	剧毒新星	劇毒新星
-222	Bone Spirit	白骨之魂	白骨之魂
-223	Skeleton Mastery	支配骷髅	支配骷髏
-224	Raise Skeleton	骷髅复苏	骷髏復甦
-225	Clay Golem	黏土石魔	黏土石魔
-226	Golem Mastery	支配石魔	支配石魔
-227	Raise Skeletal Mage	复苏骷髅法师	復甦骷髏法師
-228	Blood Golem	鲜血石魔	鮮血石魔
-229	Summon Resist	召唤反抗	召喚反抗
-230	Iron Golem	钢铁石魔	鋼鐵石魔
-231	Fire Golem	火焰石魔	火焰石魔
-232	Revive	重生	重生
 233	Paladin Skills	圣骑士技能	聖騎士技能
-234	Combat Skills	作战技能	作戰技能
-235	Offensive Auras	攻击灵气	攻擊靈氣
-236	Defensive Auras	防御性灵气	防禦性靈氣
-237	Sacrifice	牺牲	犧牲
-238	Smite	重击	重擊
-239	Holy Bolt	圣光弹	聖光彈
-240	Zeal	白热	白熱
-241	Charge	突击	突擊
-242	Vengeance	复仇	復仇
-243	Blessed Hammer	祝福之锤	祝福之鎚
-244	Conversion	转换	轉換
-245	Holy Shield	神圣之盾	神聖之盾
-246	Fist of the Heavens	天堂之拳	天堂之拳
-247	Might	力量	力量
-248	Holy Fire	圣火	聖火
-249	Thorns	刺针	刺針
-250	Blessed Aim	祝福瞄准	祝福瞄準
-251	Concentration	专注	專注
-252	Holy Freeze	神圣冰冻	神聖冰凍
-253	Holy Shock	神圣冲击	神聖衝擊
-254	Sanctuary	庇护所	庇護所
-255	Fanaticism	狂热	狂熱
-256	Conviction	信念	信念
-257	Prayer	祈祷	祈禱
-258	Resist Fire	抗火	抗火
-259	Defiance	反抗	反抗
-260	Resist Cold	抗冰冷	抗冰冷
-261	Cleansing	净化	淨化
-262	Resist Lightning	抵抗闪电	抵抗閃電
-263	Vigor	精力	精力
-264	Meditation	冥思	冥思
-265	Redemption	救赎	救贖
-266	Salvation	救助	救助
 267	Barbarian Skills	野蛮人技能	野蠻人技能
-268	Combat Skills	战斗技能	戰鬥技能
-269	Combat Masteries	战斗专家	戰鬥專家
-270	Warcries	呐喊	呐喊
-271	Bash	重击	重擊
-272	Leap	跳跃	跳躍
-273	Double Swing	双手挥击	雙手揮擊
-274	Stun	击昏	擊昏
-275	Double Throw	双手投掷	雙手投擲
-276	Leap Attack	跳跃攻击	跳躍攻擊
-277	Concentrate	专心	專心
-278	Frenzy	狂乱	狂亂
-279	Whirlwind	旋风	旋風
-280	Berserk	狂战士	狂戰士
-281	Sword Mastery	支配长剑	支配長劍
-282	Axe Mastery	支配斧头	支配斧頭
-283	Mace Mastery	支配钉头锤	支配釘頭鎚
-284	Pole Arm Mastery	支配长棍	支配長棍
-285	Throwing Mastery	支配飞掷	支配飛擲
-286	Spear Mastery	支配长矛	支配長矛
-287	Increased Stamina	增加耐力	增加耐力
-288	Iron Skin	铁布衫	鉄布衫
-289	Increased Speed	加速	加速
-290	Natural Resistance	自然抵抗	自然抵抗
-291	Howl	狂嗥	狂嗥
-292	Find Potion	找寻药剂	找尋藥劑
-293	Taunt	嘲弄	嘲弄
-294	Shout	大叫	大叫
-295	Find Item	找寻物品	找尋物品
-296	Battle Cry	战嗥	戰嗥
-297	Battle Orders	战斗体制	戰鬥體制
-298	Grim Ward	残酷喝阻	殘酷嚇阻
-299	War Cry	战斗狂嗥	戰鬥狂嗥
-300	Battle Command	战斗指挥	戰鬥指揮
-301	Druid Skills	德鲁依	德魯依技能
-302	Summoning	召唤	召喚
-303	Lycanthropy	外型变形	外型變形
-304	Elemental	元素	元素
-305	Raven	乌鸦	烏鴉
-306	Plague Poppy	猛毒华藤	猛毒花藤
-307	Oak Sage	橡木智者	橡木智者
-308	Summon Spirit Wolf	召唤鬼狼	召喚鬼狼
-309	Cycle of Life	食尸藤	食屍藤
-310	Heart of Wolverine	狼獾之心	狼獾之心
-311	Summon Fenris	召唤狂狼	召喚狂狼
-312	Vines	太阳藤	太陽藤
-313	Spirit of Barbs	棘灵	棘靈
-314	Summon Grizzly	召唤灰熊	召喚灰熊
-315	Wearwolf	狼人变化	狼人變化
-316	Shape Shifting	变形术	變形朮
-317	Wearbear	熊人变化	熊人變化
-318	Feral Rage	野性狂暴	野性狂暴
-319	Maul	撞槌	撞鎚
-320	Rabies	狂犬病	狂犬病
-321	Fire Claws	焰爪	焰爪
-322	Hunger	饥饿	飢餓
-323	Shock Wave	震波	震波
-324	Fury	狂怒	狂怒
-325	Firestorm	火风暴	火風暴
-326	Molten Boulder	熔浆巨岩	熔漿巨岩
-327	Arctic Blast	极地风暴	極地風暴
-328	Eruption	火山爆	火山爆
-329	Cyclone Armor	飓风装甲	颶風裝甲
-330	Twister	镰鼬风	鎌鼬風
-331	Volcano	火山	火山
-332	Tornado	龙卷风	龍捲風
-333	Armageddon	毁天灭地	毀天滅地
-334	Hurricane	暴风	暴風
+301	Druid Skills	德鲁依技能	德魯依技能
 335	Assassin Skills	刺客技能	刺客技能
-336	Traps	陷阱	陷阱
-337	Shadow Disciplines	影子训练	影子訓練
-338	Martial Arts	武学艺术	武學藝術
-339	Fire Trauma	火焰爆震	火焰爆震
-340	Shock Field	雷电网	雷電網
-341	Blade Sentinel	刃之守卫	刃之守衛
-342	Charged Bolt Sentry	电能守卫	電能守衛
-343	Wake of Fire Sentry	火焰复苏	火焰復甦
-344	Blade Fury	刃之怒	刃之怒
-345	Lightning Sentry	雷光守卫	雷光守衛
-346	Inferno Sentry	复苏狱火	復甦獄火
-347	Death Sentry	亡者守卫	亡者守衛
-348	Blade Shield	刀刃之盾	刀刃之盾
-349	Claw Mastery	支配利爪	支配利爪
-350	Psychic Hammer	心灵战锤	心靈戰鎚
-351	Quickness	加速	加速
-352	Weapon Block	武器格挡	武器格擋
-353	Cloak of Shadows	魔影斗篷	魔影斗篷
-354	Fade	能量消解	能量消解
-355	Shadow Warrior	影子战士	影子戰士
-356	Mind Blast	心灵爆震	心靈爆震
-357	Venom	毒牙	毒牙
-358	Shadow Master	影子大师	影子大師
-359	Tiger Strike	虎击	虎擊
-360	Dragon Talon	龙爪	龍爪
-361	Fists of Fire	焰拳	焰拳
-362	Dragon Claw	双龙爪	雙龍爪
-363	Cobra Strike	眼镜蛇攻击	眼鏡蛇攻擊
-364	Claws of Thunder	雷电爪	雷電爪
-365	Dragon Tail	神龙摆尾	神龍擺尾
-366	Blades of Ice	寒冰刃	寒冰刃
-367	Dragon Flight	飞龙在天	飛龍在天
-368	Royal Strike	凤凰攻击	鳳凰攻擊
 369	Skill levels must be between 0-127	技能等级必须在0-127之间	技能等級必須在0-127之間
 370	Please Choose a character class	请选择角色	請選擇角色
 371	Cannot read file 'new.dat'. You can create it from a correct d2s file by changing the file name and copying it to the executive directory	不能读取文件“new.dat“，你可以用一个正确的d2s文件代替，只要改变文件名，并复制到程序目录下	不能讀取文件“new.dat“，你可以用一個正確的d2s文件代替，只要改變文件名，並複製到程序目錄下
-372	Too many golds in person or stash	身上或箱子的金钱数过多	身上或箱子的金錢數過多
 373	"Quest info data format error, continue?"	Quest数据格式可能错误，是否继续？	Quest數據格式可能錯誤，是否繼續？
 374	"Waypoint info data format error, continue?"	小站数据格式可能错误，是否继续？	小站數據格式可能錯誤，是否繼續？
 375	"Player Stats data format error, continue?"	人物属性格式可能错误，是否继续？	人物屬性格式可能錯誤，是否繼續？
@@ -409,15 +59,11 @@
 407	Cold Resist	冰冷抵抗	冰冷抵抗
 408	Lightning Resist	闪电抵抗	閃電抵抗
 409	Normal	普通	普通
-410	During Daytime	在白天	在白天
-411	Near Dusk	在黄昏	在黃昏
-412	During Nighttime	在夜间	在夜間
-413	Near Dawn	在黎明	在黎明
 414	Crude	粗糙的	粗糙的
 415	Superior	超强的	超強的
 416	Defence: %d	防御: %d	防禦: %d
 417	One Hand Damage: %d to %d	单手伤害: %d 到 %d	單手傷害: %d 到 %d
-418	Tow Hands Damage: %d to %d	双手伤害: %d 到 %d	雙手傷害: %d 到 %d
+418	Two Hands Damage: %d to %d	双手伤害: %d 到 %d	雙手傷害: %d 到 %d
 419	Durability: %d / %d	耐久度: %d 之 %d	耐久度: %d 之 %d
 420	Indestructible	无法破坏	無法破壞
 421	Ethereal(cannot be repaired)	无形的(无法修复)	無形的(無法修復)
@@ -450,7 +96,365 @@
 448	Suffix3	后缀3	后綴3
 449	Unique Name	暗金名	暗金名
 450	Sub Type	子类	子類
-****************************以下是物品名称			
+*=======================角色基本信息UI			
+0	Basic Info	基本信息	基本信息
+1	Waypoints	小站	小站
+2	Missions	任务	任務
+3	Skills	技能	技能
+4	Mana	法力	法力
+5	Version	版本	版本
+6	Character	角色	角色
+7	Name	名字	名字
+8	Title	称谓	稱謂
+9	Weapon	武器	武器
+10	Last game time	最近游戏时间	最近遊戲時間
+11	Last position	最后位置	最後位置
+12	Level	等级	等級
+13	Experience	经验	經驗
+14	Level And Experience	等级与经验对照表	等級與經驗對照表
+15	Character Stats	人物基本属性	人物基本屬性
+16	Strength	力量	力量
+17	Dexterity	敏捷	敏捷
+18	Vitality	体力	體力
+19	Energy	精力	精力
+20	Stat Points	状态点剩余	狀態點剩餘
+21	Basic Value	基础值	基礎值
+22	Current	当前值	當前值
+23	Stamina	耐力	耐力
+24	Life	生命	生命
+25	Ladder	天梯	天梯
+26	Expansion	资料片	資料片
+27	Hardcore	专家级	專家級
+28	Died berfore	以前死过	以前死過
+29	Skill Points	技能点剩余	技能點剩餘
+30	Gold in person	身上金钱	身上金錢
+31	Gold in stash	箱子金钱	箱子金錢
+*=======================对话框消息			
+0	"Character name format error\nLenght:  2-15 chars\nContent: a-z,A-Z,-,_\nCaution: name string starts and ends with chars,\nonly one '-' or '_' is allowed"	"人物名字格式错误\n长度：2-15字符\n包括：a-z,A-Z,-,_\n注意：名字必须以字母开头和结尾，\n中间只允许有一个'-'或'_'符号"	"人物名字格式錯誤\n長度：2-15字符\n包括：a-z,A-Z,-,_\n注意：名字必須以字母開頭和結尾\n中間只允許有一個'-'或'_'符號"
+1	Character level is between 1-127	人物等级必须在1-127之间	人物等級必須在1-127之間
+2	"Strength, Energy, Dexterity, Vitality and Stat Points is between 0-1023\nLife, Mana and Stamina is between 0-8191\nSkill Points is between 0-255"	力量、敏捷、体力、精力和状态点数必须在0-1023之间\n耐力、生命和法力值必须在0-8191之间\n技能点数必须在0-255之间	力量、敏捷、體力、精力和狀態點數值必須在0-1023之間\n耐力、生命和法力值必須在0-8191之間\n技能點數值必須在0-255之間
+3	Too many golds in person or stash	身上或箱子的金钱数过多	身上或箱子的金錢數過多
+4	Please choose character class	请选择一种角色	請選擇一種角色
+*=======================游戏难度			
+0	Normal	普通	普通
+1	Nightmare	恶梦	噩夢
+2	Hell	地狱	地獄
+*=======================小站名字			
+0	Rogue Encampment	萝格营地	蘿格營地
+1	Cold Plains	冰冷之原	冰冷之原
+2	Stony Field	石块旷野	石塊曠野
+3	Dark Wood	黑暗森林	黑暗森林
+4	Black Marsh	黑色荒地	黑色荒地
+5	Outer Cloister	外侧回廊	外側迴廊
+6	Jail Level 1	监牢第一层	監牢第一層
+7	Inner Cloister	内侧回廊	内側迴廊
+8	Catacombs Level 2	地下墓穴第二层	地下墓穴第二層
+9	Lut Gholein	鲁.高因	魯.高因
+10	Sewers Level 2	下水道第二层	下水道第二層
+11	Dry Hills	干燥的高地	乾燥的高地
+12	Halls of the Dead Level 2	死亡之殿第二层	死亡之殿第二層
+13	Far Oasis	遥远的绿洲	遙遠的綠洲
+14	Lost City	遗失的城市	遺失的城市
+15	Palace Cellar Level 1 	皇宫监牢第一层	皇宮監牢第一層
+16	Arcane Sanctuary	神秘避难所	神秘避難所
+17	Canyon of the Magi	卫士的峡谷	衛士的峽谷
+18	Kurast Docktown	库拉斯特海港	庫拉斯特海港
+19	Spider Forest	蜘蛛森林	蜘蛛森林
+20	Great Marsh	庞大湿地	龐大濕地
+21	Flayer Jungle	剥皮森林	剝皮森林
+22	Lower Kurast	库拉斯特下层	庫拉斯特下層
+23	Kurast Bazaar	库拉斯特商场	庫拉斯特商場
+24	Upper Kurast	库拉斯特上层	庫拉斯特上層
+25	Travincal	崔凡克	崔凡克
+26	Durance of Hate Level 2	憎恨的囚牢第二层	憎恨的囚牢第二層
+27	The Pandemonium Fortress	群魔堡垒	群魔堡壘
+28	City of the Damned	神罚之城	神罰之城
+29	River of Flame	火焰之河	火焰之河
+30	Harrogath	哈洛加斯	哈洛加斯
+31	Rigid Highlands	冰冻高地	冰凍高地
+32	Arreat Plateau	亚瑞特高原	亞瑞特高原
+33	Crystalline Passage	水晶通道	水晶通道
+34	Glacial Trail	冰河路径	冰河路徑
+35	Halls of Anguish	痛苦之厅	痛苦之廰
+36	Tundra Wastelands	冰冻苔原	冰凍苔原
+37	The Ancients' way	远古之路	遠古之路
+38	The Worldstone Keep Level 2	世界之石要塞第二层	世界之石要塞第二層
+*=======================任务名字			
+0	Den of Evil	邪恶洞穴	邪惡洞穴
+1	Sisters' Burial Grounds	修女埋骨之地	修女埋骨之地
+2	The Search for Cain	凯恩的搜索	凱恩的搜索
+3	The Forgotten Tower	遗忘之塔	遺忘之塔
+4	Tools of the Trade	交易的工具	交易的工具
+5	Sisters to the Slaughter	屠杀的修女	屠殺的修女
+6	Radament's Lair	罗达门特的巢穴	羅達門特的巢穴
+7	The Horadric Staff	赫拉迪克之杖	赫拉迪克之杖
+8	Tainted Sun	堕落的太阳	墮落的太陽
+9	Arcane Sanctuary	神秘避难所	神秘避難所
+10	The Summoner	召唤者	召喚者
+11	The Seven Tombs	七个古墓	七個古墓
+12	The Golden Bird	黄金鸟	黃金鳥
+13	Blade of the Old Religion	古代宗教之刃	古代宗教之刃
+14	Khalim's Will	克林姆的意志	克林姆的意志
+15	Lam Esen's Tome	蓝.依森的古书	藍.依森的古書
+16	The Blackened Temple	转为黑暗的神殿	轉爲黑暗的神殿
+17	The Guardian	守护者	守護者
+18	The Fallen Angel	堕落的天使	墮落的天使
+19	Hell's Forge	地狱熔炉	地獄熔爐
+20	Terror's End	恐怖的结局	恐怖的結局
+21	Siege on Harrogath	哈洛加斯围城战	哈洛加斯圍城戰
+22	Rescue on Mount Arreat	亚瑞特山的救援行动	亞瑞特山的救援行動
+23	Prison of Ice	冰之囚	冰之囚
+24	Betrayal of Harrogath	哈洛加斯的反叛行动	哈洛加斯的反叛行動
+25	Rite of Passage	通道的祭典	通道的祭典
+26	Eve of Destruction	毁灭的前夕	毀滅的前夕
+27	Moo Moo Farm	杀死母牛之王	殺死母牛之王
+*=======================角色技能名字			
+0	Magic Arrow	魔法箭	魔法箭
+1	Fire Arrow	火焰箭	火焰箭
+2	Cold Arrow	冰箭	冰箭
+3	Multiple Shot	多重箭	多重箭
+4	Exploding Arrow	爆裂箭	爆裂箭
+5	Ice Arrow	急冻箭	急凍箭
+6	Guided Arrow	导引箭	導引箭
+7	Strafe	炮轰	砲轟
+8	Immolation Arrow	牺牲之箭	犧牲之箭
+9	Freezing Arrow	冻结之箭	凍結之箭
+10	Inner Sight	内视	内視
+11	Critical Strike	致命攻击	致命攻擊
+12	Dodge	闪避	閃避
+13	Slow Missiles	慢速箭	慢速箭
+14	Avoid	躲避	躲避
+15	Penetrate	刺入	刺入
+16	Dopplezon	诱饵	誘餌
+17	Evade	回避	迴避
+18	Valkyrie	女武神	女武神
+19	Pierce	穿刺	穿刺
+20	Jab	戳刺	戳刺
+21	Power Strike	威力一击	威力一擊
+22	Poison Javelin	毒枪	毒槍
+23	Impale	刺爆	刺爆
+24	Lightning Bolt	闪电球	閃電球
+25	Charged Strike	充能一击	充能一擊
+26	Plague Javelin	瘟疫标枪	瘟疫標槍
+27	Fend	击退	擊退
+28	Lightning Strike	闪电攻击	閃電攻擊
+29	Lightning Fury	闪电之怒	閃電之怒
+30	Fire Bolt	火弹	火彈
+31	Warmth	暖气	暖氣
+32	Inferno	地狱之火	地獄之火
+33	Blaze	炽烈之径	熾烈之徑
+34	Fire Ball	火球	火球
+35	Fire Wall	火墙	火墻
+36	Enchant	强化	強化
+37	Meteor	陨石	隕石
+38	Fire Mastery	支配之焰	支配之焰
+39	Hydra	九头海蛇	九頭海蛇
+40	Charged Bolt	充能弹	充能彈
+41	Static Field	静态力场	靜態力場
+42	Telekinesis	心灵传动	心靈傳動
+43	Nova	新星	新星
+44	Lightning	闪电	閃電
+45	Chain Lightning	连锁闪电	連鎖閃電
+46	Teleport	传送	傳送
+47	Thunder Storm	雷云风暴	雷云風暴
+48	Energy Shield	能量护盾	能量護盾
+49	Lightning Mastery	支配闪电	支配閃電
+50	Ice Bolt	冰弹	冰彈
+51	Frozen Armor	冰封装甲	冰封裝甲
+52	Frost Nova	霜之新星	霜之新星
+53	Ice Blast	冰风暴	冰風暴
+54	Shiver Armor	碎冰甲	碎冰甲
+55	Glacial Spike	冰尖柱	冰尖柱
+56	Blizzard	暴风雪	暴風雪
+57	Chilling Armor	寒冰装甲	寒冰裝甲
+58	Frozen Orb	冰封球	冰封球
+59	Cold Mastery	支配冰冷	支配冰冷
+60	Amplify Damage	伤害加深	傷害加深
+61	Dim Vision	微暗灵视	微暗靈視
+62	Weaken	削弱	削弱
+63	Iron Maiden	攻击反噬	攻擊反噬
+64	Terror	恐惧	恐懼
+65	Confuse	迷乱	迷亂
+66	Life Tap	偷取生命	偷取生命
+67	Attract	吸引	吸引
+68	Decrepify	衰老	衰老
+69	Lower Resist	降低抵抗	降低抵抗
+70	Teeth	牙	牙
+71	Bone Armor	白骨装甲	白骨裝甲
+72	Poison Dagger	淬毒匕首	淬毒匕首
+73	Corpse Explosion	尸体爆炸	屍體爆炸
+74	Bone Wall	骨墙	骨墻
+75	Poison Explosion	毒爆	毒爆
+76	Bone Spear	骨矛	骨矛
+77	Bone Prison	骨牢	骨牢
+78	Poison Nova	剧毒新星	劇毒新星
+79	Bone Spirit	白骨之魂	白骨之魂
+80	Skeleton Mastery	支配骷髅	支配骷髏
+81	Raise Skeleton	骷髅复苏	骷髏復甦
+82	Clay Golem	黏土石魔	黏土石魔
+83	Golem Mastery	支配石魔	支配石魔
+84	Raise Skeletal Mage	复苏骷髅法师	復甦骷髏法師
+85	Blood Golem	鲜血石魔	鮮血石魔
+86	Summon Resist	召唤反抗	召喚反抗
+87	Iron Golem	钢铁石魔	鋼鐵石魔
+88	Fire Golem	火焰石魔	火焰石魔
+89	Revive	重生	重生
+90	Sacrifice	牺牲	犧牲
+91	Smite	重击	重擊
+92	Holy Bolt	圣光弹	聖光彈
+93	Zeal	白热	白熱
+94	Charge	突击	突擊
+95	Vengeance	复仇	復仇
+96	Blessed Hammer	祝福之锤	祝福之鎚
+97	Conversion	转换	轉換
+98	Holy Shield	神圣之盾	神聖之盾
+99	Fist of the Heavens	天堂之拳	天堂之拳
+100	Might	力量	力量
+101	Holy Fire	圣火	聖火
+102	Thorns	刺针	刺針
+103	Blessed Aim	祝福瞄准	祝福瞄準
+104	Concentration	专注	專注
+105	Holy Freeze	神圣冰冻	神聖冰凍
+106	Holy Shock	神圣冲击	神聖衝擊
+107	Sanctuary	庇护所	庇護所
+108	Fanaticism	狂热	狂熱
+109	Conviction	信念	信念
+110	Prayer	祈祷	祈禱
+111	Resist Fire	抗火	抗火
+112	Defiance	反抗	反抗
+113	Resist Cold	抗冰冷	抗冰冷
+114	Cleansing	净化	淨化
+115	Resist Lightning	抵抗闪电	抵抗閃電
+116	Vigor	精力	精力
+117	Meditation	冥思	冥思
+118	Redemption	救赎	救贖
+119	Salvation	救助	救助
+120	Bash	重击	重擊
+121	Leap	跳跃	跳躍
+122	Double Swing	双手挥击	雙手揮擊
+123	Stun	击昏	擊昏
+124	Double Throw	双手投掷	雙手投擲
+125	Leap Attack	跳跃攻击	跳躍攻擊
+126	Concentrate	专心	專心
+127	Frenzy	狂乱	狂亂
+128	Whirlwind	旋风	旋風
+129	Berserk	狂战士	狂戰士
+130	Sword Mastery	支配长剑	支配長劍
+131	Axe Mastery	支配斧头	支配斧頭
+132	Mace Mastery	支配钉头锤	支配釘頭鎚
+133	Pole Arm Mastery	支配长棍	支配長棍
+134	Throwing Mastery	支配飞掷	支配飛擲
+135	Spear Mastery	支配长矛	支配長矛
+136	Increased Stamina	增加耐力	增加耐力
+137	Iron Skin	铁布衫	鉄布衫
+138	Increased Speed	加速	加速
+139	Natural Resistance	自然抵抗	自然抵抗
+140	Howl	狂嗥	狂嗥
+141	Find Potion	找寻药剂	找尋藥劑
+142	Taunt	嘲弄	嘲弄
+143	Shout	大叫	大叫
+144	Find Item	找寻物品	找尋物品
+145	Battle Cry	战嗥	戰嗥
+146	Battle Orders	战斗体制	戰鬥體制
+147	Grim Ward	残酷喝阻	殘酷嚇阻
+148	War Cry	战斗狂嗥	戰鬥狂嗥
+149	Battle Command	战斗指挥	戰鬥指揮
+150	Raven	乌鸦	烏鴉
+151	Plague Poppy	猛毒华藤	猛毒花藤
+152	Oak Sage	橡木智者	橡木智者
+153	Summon Spirit Wolf	召唤鬼狼	召喚鬼狼
+154	Cycle of Life	食尸藤	食屍藤
+155	Heart of Wolverine	狼獾之心	狼獾之心
+156	Summon Fenris	召唤狂狼	召喚狂狼
+157	Vines	太阳藤	太陽藤
+158	Spirit of Barbs	棘灵	棘靈
+159	Summon Grizzly	召唤灰熊	召喚灰熊
+160	Wearwolf	狼人变化	狼人變化
+161	Shape Shifting	变形术	變形朮
+162	Wearbear	熊人变化	熊人變化
+163	Feral Rage	野性狂暴	野性狂暴
+164	Maul	撞槌	撞鎚
+165	Rabies	狂犬病	狂犬病
+166	Fire Claws	焰爪	焰爪
+167	Hunger	饥饿	飢餓
+168	Shock Wave	震波	震波
+169	Fury	狂怒	狂怒
+170	Firestorm	火风暴	火風暴
+171	Molten Boulder	熔浆巨岩	熔漿巨岩
+172	Arctic Blast	极地风暴	極地風暴
+173	Eruption	火山爆	火山爆
+174	Cyclone Armor	飓风装甲	颶風裝甲
+175	Twister	镰鼬风	鎌鼬風
+176	Volcano	火山	火山
+177	Tornado	龙卷风	龍捲風
+178	Armageddon	毁天灭地	毀天滅地
+179	Hurricane	暴风	暴風
+180	Fire Trauma	火焰爆震	火焰爆震
+181	Shock Field	雷电网	雷電網
+182	Blade Sentinel	刃之守卫	刃之守衛
+183	Charged Bolt Sentry	电能守卫	電能守衛
+184	Wake of Fire Sentry	火焰复苏	火焰復甦
+185	Blade Fury	刃之怒	刃之怒
+186	Lightning Sentry	雷光守卫	雷光守衛
+187	Inferno Sentry	复苏狱火	復甦獄火
+188	Death Sentry	亡者守卫	亡者守衛
+189	Blade Shield	刀刃之盾	刀刃之盾
+190	Claw Mastery	支配利爪	支配利爪
+191	Psychic Hammer	心灵战锤	心靈戰鎚
+192	Quickness	加速	加速
+193	Weapon Block	武器格挡	武器格擋
+194	Cloak of Shadows	魔影斗篷	魔影斗篷
+195	Fade	能量消解	能量消解
+196	Shadow Warrior	影子战士	影子戰士
+197	Mind Blast	心灵爆震	心靈爆震
+198	Venom	毒牙	毒牙
+199	Shadow Master	影子大师	影子大師
+200	Tiger Strike	虎击	虎擊
+201	Dragon Talon	龙爪	龍爪
+202	Fists of Fire	焰拳	焰拳
+203	Dragon Claw	双龙爪	雙龍爪
+204	Cobra Strike	眼镜蛇攻击	眼鏡蛇攻擊
+205	Claws of Thunder	雷电爪	雷電爪
+206	Dragon Tail	神龙摆尾	神龍擺尾
+207	Blades of Ice	寒冰刃	寒冰刃
+208	Dragon Flight	飞龙在天	飛龍在天
+209	Royal Strike	凤凰攻击	鳳凰攻擊
+*=======================角色技能树名字（不是技能名）			
+0	Bow and Crossbow Skills	弓和十字弓技能	弓和十字弓技能
+1	Passive and Magic Skills	被动和魔法技能	被動和魔法技能
+2	Javelin and Spear Skills	标枪和长矛技能	標槍和長矛技能
+3	Fire Spells	火焰法术	火焰法術
+4	Lightning Spells	闪电法术	閃電法術
+5	Cold Spells	冰冻法术	冰凍法術
+6	Curses	诅咒	詛咒
+7	Poison and Bone Spells	毒素和白骨法术	毒素和白骨法術
+8	Summoning Spells	召唤法术	召喚法術
+9	Combat Skills	作战技能	作戰技能
+10	Offensive Auras	攻击灵气	攻擊靈氣
+11	Defensive Auras	防御性灵气	防禦性靈氣
+12	Combat Skills	战斗技能	戰鬥技能
+13	Combat Masteries	战斗专家	戰鬥專家
+14	Warcries	呐喊	呐喊
+15	Summoning	召唤	召喚
+16	Lycanthropy	外型变形	外型變形
+17	Elemental	元素	元素
+18	Traps	陷阱	陷阱
+19	Shadow Disciplines	影子训练	影子訓練
+20	Martial Arts	武学艺术	武學藝術
+*=======================时刻名字			
+0	During Daytime	在白天	在白天
+1	Near Dusk	在黄昏	在黃昏
+2	During Nighttime	在夜间	在夜間
+3	Near Dawn	在黎明	在黎明
+*=======================角色名字			
+0	Amazon	亚马逊	亞馬遜
+1	Sorceress	法师	法師
+2	Necromancer	死灵法师	死靈法師
+3	Paladin	圣骑士	聖騎士
+4	Barbarian	野蛮人	野蠻人
+5	Druid	德鲁依	德魯依
+6	Assassin	刺客	刺客
+*=======================以下是物品名称			
 0	Elixir		
 1	Healing Potion		
 2	Mana Potion		
@@ -1098,7 +1102,7 @@
 644	Matriarchal Spear		
 645	Matriarchal Pike		
 646	Matriarchal Javelin		
-**************************以下是属性名称(Property Name)			
+*=======================以下是属性名称(Property Name)			
 0	%+d Strength		
 1	%+d Energy		
 2	%+d Dexterity		
@@ -1458,7 +1462,7 @@
 356	Quest Item Difficulty %d		
 357	Passive Magic Mastery %d		
 358	Passive Magic Pierce %d		
-*********************************以下是怪物名称(Monster Names)			
+*=======================以下是怪物名称(Monster Names)			
 0	Skeleton		
 1	Returned		
 2	BoneWarrior		
@@ -2163,7 +2167,7 @@
 701	OblivionKnight		
 702	OblivionKnight		
 703	Cadaver		
-*********************************以下是魔法前缀(Magic Prefix)(^表示没有名字)			
+*=======================以下是魔法前缀(Magic Prefix)(^表示没有名字)			
 0	^		
 1	^		
 2	Sturdy		
@@ -2834,7 +2838,7 @@
 667	Beryl		
 668	Godly		
 669	Cruel		
-*********************************以下是魔法后缀(Magic Suffix)(^表示没有名字)			
+*=======================以下是魔法后缀(Magic Suffix)(^表示没有名字)			
 0	^		
 1	of Health		
 2	of Protection		
@@ -3583,7 +3587,7 @@
 745	of the Bat		
 746	of the Wraith		
 747	of the Vampire		
-*********************************以下是Rare和Crafted名字(^表示没有名字)			
+*=======================以下是Rare和Crafted名字(^表示没有名字)			
 0	^		
 1	Bite		
 2	Scratch		
@@ -3786,7 +3790,7 @@
 199	Warp		
 200	Rift		
 201	Corruption		
-*********************************以下是暗金名字(Unique Name)(^表示没有名字)			
+*=======================以下是暗金名字(Unique Name)(^表示没有名字)			
 0	The Gnasher		
 1	Deathspade		
 2	Bladebone		

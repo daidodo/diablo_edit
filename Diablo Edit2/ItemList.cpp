@@ -10,7 +10,7 @@ void CItemList::ReadData(CInBitsStream & bs)
 {
     bs>>wMajic>>nItems;
     if(wMajic != 0x4D4A)
-        if(MessageBox(0,::theApp.String(377),::theApp.String(5),MB_YESNO | MB_ICONWARNING) == IDNO)
+        if(MessageBox(0,::theApp.String(377),::theApp.MsgWarning(),MB_YESNO | MB_ICONWARNING) == IDNO)
             throw 0;
     ClearItems();
     vpItems.resize(nItems);
@@ -20,7 +20,7 @@ void CItemList::ReadData(CInBitsStream & bs)
     }
     bs>>wEndMajic;
     if(wEndMajic != 0x4D4A)
-        if(MessageBox(0,::theApp.String(377),::theApp.String(5),MB_YESNO | MB_ICONWARNING) == IDNO)
+        if(MessageBox(0,::theApp.String(377),::theApp.MsgWarning(),MB_YESNO | MB_ICONWARNING) == IDNO)
             throw 0;
 }
 

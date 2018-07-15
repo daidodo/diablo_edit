@@ -108,10 +108,9 @@ void CDlgSkills::LoadText()
 	int start = 131 + 34 * m_nCharClass;
 	SetWindowText(::theApp.String(start));
 	for(int i = 0;i < 30;++i)
-		m_sText[i] = ::theApp.String(start + 4 + i);
-	m_sText[30] = ::theApp.String(start + 1);
-	m_sText[31] = ::theApp.String(start + 2);
-	m_sText[32] = ::theApp.String(start + 3);
+		m_sText[i] = ::theApp.ClassSkillName(i, m_nCharClass);
+	for(int i = 0;i < 3;++i)
+		m_sText[30 + i] = ::theApp.ClassSkillTabName(i, m_nCharClass);
 	UpdateData(FALSE);
 }
 
@@ -136,7 +135,7 @@ void CDlgSkills::OnBnClickedOk()
 	//数据有效性检验
 	for(int i = 0;i < SKILL_SIZE;++i)
 		if(m_pSkills[i] > 127){
-			MessageBox(::theApp.String(369),::theApp.String(5),MB_ICONWARNING);
+			MessageBox(::theApp.String(369),::theApp.MsgWarning(),MB_ICONWARNING);
 			return;
 		}
 	for(int i = 0;i < SKILL_SIZE;++i)
@@ -148,7 +147,7 @@ void CDlgSkills::OnBnClickedButton1()
 {
 	UpdateData(TRUE);
 	if(m_bAll > 127)
-		MessageBox(::theApp.String(369),::theApp.String(5),MB_ICONWARNING);
+		MessageBox(::theApp.String(369),::theApp.MsgWarning(),MB_ICONWARNING);
 	else{
 		::FillMemory(m_pSkills,sizeof(m_pSkills),m_bAll);
 		UpdateData(FALSE);

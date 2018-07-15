@@ -14,7 +14,7 @@ const DWORD	CPlayerStats::BITS_COUNT[CPlayerStats::ARRAY_SIZE] = {
 void CPlayerStats::ReadData(CInBitsStream & bs) {
 	bs >> wMajic;
 	if (wMajic != 0x6667)
-		if (MessageBox(0, ::theApp.String(375), ::theApp.String(5), MB_YESNO | MB_ICONWARNING) == IDNO)
+		if (MessageBox(0, ::theApp.String(375), ::theApp.MsgWarning(), MB_YESNO | MB_ICONWARNING) == IDNO)
 			throw 0;
 	::ZeroMemory(m_dwValue, sizeof(m_dwValue));
 	DWORD index;
@@ -363,7 +363,7 @@ void CD2Item::findUnknownItem(CInBitsStream & bs) {
 	}
 	CString msg;
 	msg.Format(_T("(%c%c%c%c)"), pItemInfo->sTypeName[0], pItemInfo->sTypeName[1], pItemInfo->sTypeName[2], pItemInfo->sTypeName[3]);
-	if (MessageBox(0, msg + ::theApp.String(380), ::theApp.String(5), MB_YESNO | MB_ICONWARNING) == IDNO)
+	if (MessageBox(0, msg + ::theApp.String(380), ::theApp.MsgWarning(), MB_YESNO | MB_ICONWARNING) == IDNO)
 		throw 0;
 }
 
@@ -371,7 +371,7 @@ void CD2Item::ReadData(CInBitsStream & bs)
 {
 	bs>>wMajic;
 	if(wMajic != 0x4D4A)
-		if (MessageBox(0, ::theApp.String(378), ::theApp.String(5), MB_YESNO | MB_ICONWARNING) == IDNO)
+		if (MessageBox(0, ::theApp.String(378), ::theApp.MsgWarning(), MB_YESNO | MB_ICONWARNING) == IDNO)
 			throw 0;
 	bs >> bQuest
 		>> bits(iUNKNOWN_01, 3)
