@@ -34,9 +34,9 @@ BOOL CDlgSelectChar::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 	
-	SetWindowText(::theApp.String(370));
-	for(int i = 0;i < 7;++i)
-		m_cbSelectChar.AddString(::theApp.String(24 + i));
+	SetWindowText(::theApp.OtherUI(0));
+	for(UINT i = 0;i < ::theApp.ClassNameSize();++i)
+		m_cbSelectChar.AddString(::theApp.ClassName(i));
 	m_cbSelectChar.SetCurSel(0);
 
 	return TRUE;
