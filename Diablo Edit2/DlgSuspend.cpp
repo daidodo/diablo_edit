@@ -70,7 +70,7 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem)
 
     }else{              //item structure
         //Prefix, Suffix, Name
-		__Tokens name{ ::theApp.ItemName01(pItem->pItemData->NameIndex) };
+		__Tokens name{ ::theApp.ItemName(pItem->pItemData->NameIndex) };
         BYTE quality = pItem->Quality();
         BYTE color = quality <= 3 ? WHITE : quality - 3;
         switch(quality){
@@ -81,24 +81,24 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem)
             name.push_front(::theApp.ItemSuspendUI(1));
             break;
         case 4:        //magic
-			name.push_front(::theApp.MagicPrefix01(pItem->pItemInfo->pExtItemInfo->wPrefix.Value()));
-            name.push_back(::theApp.MagicSuffix01(pItem->pItemInfo->pExtItemInfo->wSuffix.Value()));
+			name.push_front(::theApp.MagicPrefix(pItem->pItemInfo->pExtItemInfo->wPrefix.Value()));
+            name.push_back(::theApp.MagicSuffix(pItem->pItemInfo->pExtItemInfo->wSuffix.Value()));
             break;
         case 5:         //set(ÔÝ²»Ö§³Ö)
 			//TODO
             break;
         case 6:{        //rare
 			const auto & rare = pItem->pItemInfo->pExtItemInfo->pRareName.Value();
-			__Tokens title{ ::theApp.RareCraftedName01(rare.iName1), ::theApp.RareCraftedName01(rare.iName2) };
+			__Tokens title{ ::theApp.RareCraftedName(rare.iName1), ::theApp.RareCraftedName(rare.iName2) };
 			AddMsg(color, text(title));
             break;}
         case 7:{        //unique
-            CString title = ::theApp.UniqueName01(pItem->pItemInfo->pExtItemInfo->wUniID.Value());
+            CString title = ::theApp.UniqueName(pItem->pItemInfo->pExtItemInfo->wUniID.Value());
 			AddMsg(color, title);
             break;}
         case 8:{        //crafted
 			const auto & craft = pItem->pItemInfo->pExtItemInfo->pCraftName.Value();
-			__Tokens title{ ::theApp.RareCraftedName01(craft.iName1), ::theApp.RareCraftedName01(craft.iName2) };
+			__Tokens title{ ::theApp.RareCraftedName(craft.iName1), ::theApp.RareCraftedName(craft.iName2) };
 			AddMsg(color, text(title));
             break;}
         default:;
