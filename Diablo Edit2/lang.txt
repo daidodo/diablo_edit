@@ -22,7 +22,6 @@
 379	Items	物品	物品
 380	"Unrecognised Item Code, continue?"	不能识别的物品代码，是否继续？	不可識別的物品代碼，是否繼續？
 381	Unkown Item Quality: 	未知的物品等级：	未知的物品等級：
-382	Quantity: %d	数量：%d	數量：%d
 385	Attack	一般攻击	一般攻擊
 394	Kick	脚踢	腳踢
 395	Throw	投掷	投擲
@@ -40,15 +39,6 @@
 407	Cold Resist	冰冷抵抗	冰冷抵抗
 408	Lightning Resist	闪电抵抗	閃電抵抗
 409	Normal	普通	普通
-414	Crude	粗糙的	粗糙的
-415	Superior	超强的	超強的
-416	Defence: %d	防御: %d	防禦: %d
-417	One Hand Damage: %d to %d	单手伤害: %d 到 %d	單手傷害: %d 到 %d
-418	Two Hands Damage: %d to %d	双手伤害: %d 到 %d	雙手傷害: %d 到 %d
-419	Durability: %d / %d	耐久度: %d 之 %d	耐久度: %d 之 %d
-420	Indestructible	无法破坏	無法破壞
-421	Ethereal(cannot be repaired)	无形的(无法修复)	無形的(無法修復)
-422	Sockets(%d)	有凹槽(%d)	有凹槽(%d)
 *=======================其他窗口UI			
 0	Please Choose a character class	请选择角色	請選擇角色
 1	Amazon Skills	亚马逊技能	亞馬遜技能
@@ -58,6 +48,17 @@
 5	Barbarian Skills	野蛮人技能	野蠻人技能
 6	Druid Skills	德鲁依技能	德魯依技能
 7	Assassin Skills	刺客技能	刺客技能
+*=======================物品属性悬浮窗口UI			
+0	Crude	粗糙的	粗糙的
+1	Superior	超强的	超強的
+2	Defence: %d	防御: %d	防禦: %d
+3	One Hand Damage: %d to %d	单手伤害: %d 到 %d	單手傷害: %d 到 %d
+4	Two Hands Damage: %d to %d	双手伤害: %d 到 %d	雙手傷害: %d 到 %d
+5	Quantity: %d	数量：%d	數量：%d
+6	Durability: %d / %d	耐久度: %d 之 %d	耐久度: %d 之 %d
+7	Indestructible	无法破坏	無法破壞
+8	Ethereal(cannot be repaired)	无形的(无法修复)	無形的(無法修復)
+9	Sockets(%d)	有凹槽(%d)	有凹槽(%d)
 *=======================物品前后缀窗口UI			
 0	Item Prefix Suffix	物品前后缀名	物品前后綴名
 1	First Name	名	名
