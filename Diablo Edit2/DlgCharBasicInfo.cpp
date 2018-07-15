@@ -378,7 +378,7 @@ void CDlgCharBasicInfo::LoadText(void)
 
     int sel = m_cbCharClass.GetCurSel();
     m_cbCharClass.ResetContent();
-    for(UINT i = 0;i < ::theApp.ClassNameSize();++i)
+    for(UINT i = 0;i < ::theApp.CLASS_NAME_SIZE;++i)
         m_cbCharClass.AddString(::theApp.ClassName(i));
     m_cbCharClass.SetCurSel(sel);
 

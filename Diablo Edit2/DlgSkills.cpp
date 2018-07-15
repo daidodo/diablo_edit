@@ -5,7 +5,7 @@
 #include "Diablo Edit2.h"
 #include "DlgSkills.h"
 
-const int CDlgSkills::INDEX[7][CDlgSkills::SKILL_SIZE] = {
+const int CDlgSkills::INDEX[CLASS_SIZE][SKILL_SIZE] = {
 	{0,1,10,11,20,2,3,12,21,22,4,13,14,23,24,5,6,15,25,26,7,8,16,17,27,9,18,19,28,29},	//Amazon
 	{0,1,10,20,21,2,11,12,22,23,3,4,13,14,24,5,6,15,16,25,7,17,18,26,27,8,9,19,28,29},	//Sorceress
 	{0,10,11,20,21,1,2,12,13,22,3,4,14,23,24,5,6,15,16,25,7,8,17,26,27,9,18,19,28,29},	//Necromancer
@@ -26,7 +26,7 @@ CDlgSkills::CDlgSkills(int charClass,BYTE * skills,CWnd* pParent /*=NULL*/)
 	, m_pData(skills)
 	, m_bAll(0)
 {
-	ASSERT(m_nCharClass >= 0 && m_nCharClass < 7 && m_pData);
+	ASSERT(m_nCharClass >= 0 && m_nCharClass < CLASS_SIZE && m_pData);
 	for(int i = 0;i < SKILL_SIZE;++i)
 		m_pSkills[INDEX[m_nCharClass][i]] = m_pData[i];
 }
@@ -105,11 +105,10 @@ void CDlgSkills::DoDataExchange(CDataExchange* pDX)
 
 void CDlgSkills::LoadText()
 {
-	int start = 131 + 34 * m_nCharClass;
-	SetWindowText(::theApp.String(start));
-	for(int i = 0;i < 30;++i)
+	SetWindowText(::theApp.OtherUI(1 + m_nCharClass));
+	for(int i = 0;i < SKILL_SIZE;++i)
 		m_sText[i] = ::theApp.ClassSkillName(i, m_nCharClass);
-	for(int i = 0;i < 3;++i)
+	for(int i = 0;i < TAB_SIZE;++i)
 		m_sText[30 + i] = ::theApp.ClassSkillTabName(i, m_nCharClass);
 	UpdateData(FALSE);
 }
@@ -130,12 +129,11 @@ BOOL CDlgSkills::OnInitDialog()
 void CDlgSkills::OnBnClickedOk()
 {
 	//保存人物技能等级
-	std::ofstream outf("C:\\1.txt");
 	UpdateData(TRUE);
 	//数据有效性检验
 	for(int i = 0;i < SKILL_SIZE;++i)
 		if(m_pSkills[i] > 127){
-			MessageBox(::theApp.String(369),::theApp.MsgWarning(),MB_ICONWARNING);
+			MessageBox(::theApp.MsgBoxInfo(5),::theApp.MsgWarning(),MB_ICONWARNING);
 			return;
 		}
 	for(int i = 0;i < SKILL_SIZE;++i)
@@ -147,7 +145,7 @@ void CDlgSkills::OnBnClickedButton1()
 {
 	UpdateData(TRUE);
 	if(m_bAll > 127)
-		MessageBox(::theApp.String(369),::theApp.MsgWarning(),MB_ICONWARNING);
+		MessageBox(::theApp.MsgBoxInfo(5),::theApp.MsgWarning(),MB_ICONWARNING);
 	else{
 		::FillMemory(m_pSkills,sizeof(m_pSkills),m_bAll);
 		UpdateData(FALSE);

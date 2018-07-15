@@ -12,14 +12,6 @@
 14	"file lenght is incorrect, continue?"	文件长度错误，是否继续？	文件長度錯誤，是否繼續？
 15	Unknown	未知	未知
 59	All	全部	全部
-131	Amazon Skills	亚马逊技能	亞馬遜技能
-165	Sorceress Skills	法师技能	法師技能
-199	Necromancer Skills	死灵法师技能	死靈法師技能
-233	Paladin Skills	圣骑士技能	聖騎士技能
-267	Barbarian Skills	野蛮人技能	野蠻人技能
-301	Druid Skills	德鲁依技能	德魯依技能
-335	Assassin Skills	刺客技能	刺客技能
-369	Skill levels must be between 0-127	技能等级必须在0-127之间	技能等級必須在0-127之間
 371	Cannot read file 'new.dat'. You can create it from a correct d2s file by changing the file name and copying it to the executive directory	不能读取文件“new.dat“，你可以用一个正确的d2s文件代替，只要改变文件名，并复制到程序目录下	不能讀取文件“new.dat“，你可以用一個正確的d2s文件代替，只要改變文件名，並複製到程序目錄下
 373	"Quest info data format error, continue?"	Quest数据格式可能错误，是否继续？	Quest數據格式可能錯誤，是否繼續？
 374	"Waypoint info data format error, continue?"	小站数据格式可能错误，是否继续？	小站數據格式可能錯誤，是否繼續？
@@ -59,6 +51,13 @@
 422	Sockets(%d)	有凹槽(%d)	有凹槽(%d)
 *=======================其他窗口UI			
 0	Please Choose a character class	请选择角色	請選擇角色
+1	Amazon Skills	亚马逊技能	亞馬遜技能
+2	Sorceress Skills	法师技能	法師技能
+3	Necromancer Skills	死灵法师技能	死靈法師技能
+4	Paladin Skills	圣骑士技能	聖騎士技能
+5	Barbarian Skills	野蛮人技能	野蠻人技能
+6	Druid Skills	德鲁依技能	德魯依技能
+7	Assassin Skills	刺客技能	刺客技能
 *=======================物品前后缀窗口UI			
 0	Item Prefix Suffix	物品前后缀名	物品前后綴名
 1	First Name	名	名
@@ -130,6 +129,7 @@
 2	"Strength, Energy, Dexterity, Vitality and Stat Points is between 0-1023\nLife, Mana and Stamina is between 0-8191\nSkill Points is between 0-255"	力量、敏捷、体力、精力和状态点数必须在0-1023之间\n耐力、生命和法力值必须在0-8191之间\n技能点数必须在0-255之间	力量、敏捷、體力、精力和狀態點數值必須在0-1023之間\n耐力、生命和法力值必須在0-8191之間\n技能點數值必須在0-255之間
 3	Too many golds in person or stash	身上或箱子的金钱数过多	身上或箱子的金錢數過多
 4	Please choose character class	请选择一种角色	請選擇一種角色
+5	Skill levels must be between 0-127	技能等级必须在0-127之间	技能等級必須在0-127之間
 *=======================物品质量名字			
 0	Low	白色低级	白色低級
 1	Normal	白色普通	白色普通
