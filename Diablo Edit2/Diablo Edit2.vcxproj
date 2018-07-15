@@ -236,6 +236,10 @@
     <ResourceCompile Include="DiabloEdit2.rc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="itemdata.dat" />
+    <None Include="language.dat" />
+    <None Include="new.dat" />
+    <None Include="property.dat" />
     <None Include="res\DiabloEdit2.rc2" />
   </ItemGroup>
   <ItemGroup>
