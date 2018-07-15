@@ -58,17 +58,18 @@
 420	Indestructible	无法破坏	無法破壞
 421	Ethereal(cannot be repaired)	无形的(无法修复)	無形的(無法修復)
 422	Sockets(%d)	有凹槽(%d)	有凹槽(%d)
-423	Item Prefix Suffix	物品前后缀名	物品前后綴名
-441	First Name	名	名
-442	Last Name	称	稱
-443	Prefix1	前缀1	前綴1
-444	Suffix1	后缀1	后綴1
-445	Prefix2	前缀2	前綴2
-446	Suffix2	后缀2	后綴2
-447	Prefix3	前缀3	前綴3
-448	Suffix3	后缀3	后綴3
-449	Unique Name	暗金名	暗金名
-450	Sub Type	子类	子類
+*=======================物品前后缀窗口UI			
+0	Item Prefix Suffix	物品前后缀名	物品前后綴名
+1	First Name	名	名
+2	Last Name	称	稱
+3	Prefix1	前缀1	前綴1
+4	Suffix1	后缀1	后綴1
+5	Prefix2	前缀2	前綴2
+6	Suffix2	后缀2	后綴2
+7	Prefix3	前缀3	前綴3
+8	Suffix3	后缀3	后綴3
+9	Unique Name	暗金名	暗金名
+10	Sub Type	子类	子類
 *=======================角色装备信息UI			
 0	Foundry	铸造台	鑄造臺
 1	Level	等级	等級
@@ -2169,9 +2170,9 @@
 701	OblivionKnight		
 702	OblivionKnight		
 703	Cadaver		
-*=======================以下是魔法前缀(Magic Prefix)(^表示没有名字)			
-0	^		
-1	^		
+*=======================以下是魔法前缀(Magic Prefix)			
+0			
+1			
 2	Sturdy		
 3	Strong		
 4	Glorious		
@@ -2180,9 +2181,9 @@
 7	Holy		
 8	Devious		
 9	Fortified		
-10	^		
-11	^		
-12	^		
+10			
+11			
+12			
 13	Jagged		
 14	Deadly		
 15	Vicious		
@@ -2191,17 +2192,17 @@
 18	Savage		
 19	Merciless		
 20	Vulpine		
-21	^		
-22	^		
-23	^		
-24	^		
+21			
+22			
+23			
+24			
 25	Tireless		
 26	Rugged		
 27	Bronze		
 28	Iron		
 29	Steel		
 30	Silver		
-31	^		
+31			
 32	Gold		
 33	Platinum		
 34	Meteoric		
@@ -2214,17 +2215,17 @@
 41	King's		
 42	Howling		
 43	Fortuitous		
-44	^		
-45	^		
-46	^		
-47	^		
-48	^		
+44			
+45			
+46			
+47			
+48			
 49	Glimmering		
 50	Glowing		
-51	^		
-52	^		
+51			
+52			
 53	Lizard's		
-54	^		
+54			
 55	Snake's		
 56	Serpent's		
 57	Serpent's		
@@ -2232,8 +2233,8 @@
 59	Dragon's		
 60	Dragon's		
 61	Wyrm's		
-62	^		
-63	^		
+62			
+63			
 64	Prismatic		
 65	Prismatic		
 66	Azure		
@@ -2241,36 +2242,36 @@
 68	Lapis		
 69	Cobalt		
 70	Cobalt		
-71	^		
+71			
 72	Sapphire		
-73	^		
-74	^		
+73			
+74			
 75	Crimson		
 76	Burgundy		
 77	Burgundy		
 78	Garnet		
 79	Garnet		
-80	^		
+80			
 81	Ruby		
-82	^		
-83	^		
+82			
+83			
 84	Ocher		
 85	Tangerine		
 86	Tangerine		
 87	Coral		
 88	Coral		
-89	^		
+89			
 90	Amber		
-91	^		
-92	^		
+91			
+92			
 93	Beryl		
 94	Jade		
 95	Jade		
 96	Viridian		
 97	Viridian		
-98	^		
+98			
 99	Emerald		
-100	^		
+100			
 101	Fletcher's		
 102	Archer's		
 103	Archer's		
@@ -2286,8 +2287,8 @@
 113	Slayer's		
 114	Berserker's		
 115	Berserker's		
-116	^		
-117	^		
+116			
+117			
 118	Triumphant		
 119	Stout		
 120	Stout		
@@ -2840,18 +2841,18 @@
 667	Beryl		
 668	Godly		
 669	Cruel		
-*=======================以下是魔法后缀(Magic Suffix)(^表示没有名字)			
-0	^		
+*=======================以下是魔法后缀(Magic Suffix)			
+0			
 1	of Health		
 2	of Protection		
 3	of Absorption		
 4	of Life		
-5	^		
+5			
 6	of Warding		
 7	of the Sentinel		
 8	of Guarding		
 9	of Negation		
-10	^		
+10			
 11	of Piercing		
 12	of Bashing		
 13	of Puncturing		
@@ -2904,14 +2905,14 @@
 60	of Perfection		
 61	of Balance		
 62	of Stability		
-63	^		
+63			
 64	of Regeneration		
 65	of Regeneration		
 66	of Regeneration		
 67	of Regrowth		
 68	of Regrowth		
 69	of Vileness		
-70	^		
+70			
 71	of Greed		
 72	of Wealth		
 73	of Chance		
@@ -2942,10 +2943,10 @@
 98	of Defiance		
 99	of Amelioration		
 100	of Remedy		
-101	^		
+101			
 102	of Simplicity		
 103	of Ease		
-104	^		
+104			
 105	of Strength		
 106	of Might		
 107	of the Ox		
@@ -3589,8 +3590,8 @@
 745	of the Bat		
 746	of the Wraith		
 747	of the Vampire		
-*=======================以下是Rare和Crafted名字(^表示没有名字)			
-0	^		
+*=======================以下是Rare和Crafted名字			
+0			
 1	Bite		
 2	Scratch		
 3	Scalpel		
@@ -3792,7 +3793,7 @@
 199	Warp		
 200	Rift		
 201	Corruption		
-*=======================以下是暗金名字(Unique Name)(^表示没有名字)			
+*=======================以下是暗金名字(Unique Name)			
 0	The Gnasher		
 1	Deathspade		
 2	Bladebone		

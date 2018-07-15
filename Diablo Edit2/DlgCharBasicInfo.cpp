@@ -370,11 +370,11 @@ void CDlgCharBasicInfo::LoadText(void)
     TCITEM tci;
     tci.mask = TCIF_TEXT;
     //Ð¡Õ¾,ÈÎÎñ
-    tci.pszText = (LPWSTR)::theApp.CharBasicInfo(1).GetString();
+    tci.pszText = (LPWSTR)::theApp.CharBasicInfoUI(1).GetString();
     m_tcBasicInfo.SetItem(0,&tci);
-    tci.pszText = (LPWSTR)::theApp.CharBasicInfo(2).GetString();
+    tci.pszText = (LPWSTR)::theApp.CharBasicInfoUI(2).GetString();
     m_tcBasicInfo.SetItem(1,&tci);
-	m_btnSkills.SetWindowText(::theApp.CharBasicInfo(3));
+	m_btnSkills.SetWindowText(::theApp.CharBasicInfoUI(3));
 
     int sel = m_cbCharClass.GetCurSel();
     m_cbCharClass.ResetContent();
@@ -389,7 +389,7 @@ void CDlgCharBasicInfo::LoadText(void)
     m_cbLastDifficult.SetCurSel(sel);
 
 	for(int i = 0;i < 28;++i)
-		m_sText[i] = ::theApp.CharBasicInfo(4 + i);
+		m_sText[i] = ::theApp.CharBasicInfoUI(4 + i);
 
 	for(int i = 0;i < m_nTabPageCount;++i)
 		m_dlgTabPage[i]->LoadText();

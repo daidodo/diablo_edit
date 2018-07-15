@@ -393,9 +393,9 @@ void CDlgCharItems::ResetAll()
 void CDlgCharItems::LoadText(void)
 {
     for(int i = 0;i < 12;++i)
-        m_sText[i] = ::theApp.CharItemInfo(i);
+        m_sText[i] = ::theApp.CharItemsUI(i);
     for(int i = 0;i < 5;++i)
-        m_btButton[i].SetWindowText(::theApp.CharItemInfo(12 + i));
+        m_btButton[i].SetWindowText(::theApp.CharItemsUI(12 + i));
     m_cbQuality.ResetContent();
 	for(UINT i = 0;i < ::theApp.ItemQualityNameSize();++i)
 		m_cbQuality.AddString(::theApp.ItemQualityName(i));
@@ -403,9 +403,9 @@ void CDlgCharItems::LoadText(void)
     LVCOLUMN col;
     col.cchTextMax = 20;
     col.mask = LVCF_TEXT;
-    col.pszText = (LPWSTR)::theApp.CharItemInfo(17).GetString();
+    col.pszText = (LPWSTR)::theApp.CharItemsUI(17).GetString();
     m_lcPropertyList.SetColumn(0,&col);
-    col.pszText = (LPWSTR)::theApp.CharItemInfo(18).GetString();
+    col.pszText = (LPWSTR)::theApp.CharItemsUI(18).GetString();
     m_lcPropertyList.SetColumn(1,&col);
 
 	UpdateData(FALSE);

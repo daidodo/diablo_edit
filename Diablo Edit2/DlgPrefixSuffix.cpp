@@ -54,9 +54,9 @@ END_MESSAGE_MAP()
 BOOL CDlgPrefixSuffix::OnInitDialog()
 {
     CDialog::OnInitDialog();
-    SetWindowText(::theApp.String(423));
+    SetWindowText(::theApp.PrefixSuffixUI(0));
     for(int i = 0;i < 10;++i)
-        m_sText[i] = ::theApp.String(441 + i);
+        m_sText[i] = ::theApp.PrefixSuffixUI(1 + i);
     switch(m_nQuality){
         case 1:case 3:{ //low or high
             m_cbFirstName.EnableWindow(FALSE);
@@ -85,10 +85,10 @@ BOOL CDlgPrefixSuffix::OnInitDialog()
             m_cbSuffix3.EnableWindow(FALSE);
             m_cbUniqueName.EnableWindow(FALSE);
             m_cbSubType.EnableWindow(FALSE);
-            for(int i = 0;i < ::theApp.MagicPrefixCount();++i)
-                m_cbPrefix1.InsertString(-1,::theApp.MagicPrefix(i) == _T("^") ? _T("") : ::theApp.MagicPrefix(i));
-            for(int i = 0;i < ::theApp.MagicSuffixCount();++i)
-                m_cbSuffix1.InsertString(-1,::theApp.MagicSuffix(i) == _T("^") ? _T("") : ::theApp.MagicSuffix(i));
+            for(UINT i = 0;i < ::theApp.MagicPrefixSize();++i)
+				m_cbPrefix1.InsertString(-1, ::theApp.MagicPrefix01(i));
+            for(UINT i = 0;i < ::theApp.MagicSuffixSize();++i)
+				m_cbSuffix1.InsertString(-1, ::theApp.MagicSuffix01(i));
             m_cbPrefix1.SetCurSel(m_vSelect[2]);
             m_cbSuffix1.SetCurSel(m_vSelect[3]);
             break;
@@ -115,19 +115,19 @@ BOOL CDlgPrefixSuffix::OnInitDialog()
             m_cbSuffix3.EnableWindow();
             m_cbUniqueName.EnableWindow(FALSE);
             m_cbSubType.EnableWindow(FALSE);
-            for(int i = 0;i < ::theApp.RareCraftedNameCount();++i){
-                m_cbFirstName.InsertString(-1,::theApp.RareCraftedName(i) == _T("^") ? _T("") : ::theApp.RareCraftedName(i));
-                m_cbLastName.InsertString(-1,::theApp.RareCraftedName(i) == _T("^") ? _T("") : ::theApp.RareCraftedName(i));
+            for(UINT i = 0;i < ::theApp.RareCraftedNameSize();++i){
+                m_cbFirstName.InsertString(-1, ::theApp.RareCraftedName01(i));
+                m_cbLastName.InsertString(-1, ::theApp.RareCraftedName01(i));
             }
-            for(int i = 0;i < ::theApp.MagicPrefixCount();++i){
-                m_cbPrefix1.InsertString(-1,::theApp.MagicPrefix(i) == _T("^") ? _T("") : ::theApp.MagicPrefix(i));
-                m_cbPrefix2.InsertString(-1,::theApp.MagicPrefix(i) == _T("^") ? _T("") : ::theApp.MagicPrefix(i));
-                m_cbPrefix3.InsertString(-1,::theApp.MagicPrefix(i) == _T("^") ? _T("") : ::theApp.MagicPrefix(i));
+            for(UINT i = 0;i < ::theApp.MagicPrefixSize();++i){
+                m_cbPrefix1.InsertString(-1, ::theApp.MagicPrefix01(i));
+                m_cbPrefix2.InsertString(-1, ::theApp.MagicPrefix01(i));
+                m_cbPrefix3.InsertString(-1, ::theApp.MagicPrefix01(i));
             }
-            for(int i = 0;i < ::theApp.MagicSuffixCount();++i){
-                m_cbSuffix1.InsertString(-1,::theApp.MagicSuffix(i) == _T("^") ? _T("") : ::theApp.MagicSuffix(i));
-                m_cbSuffix2.InsertString(-1,::theApp.MagicSuffix(i) == _T("^") ? _T("") : ::theApp.MagicSuffix(i));
-                m_cbSuffix3.InsertString(-1,::theApp.MagicSuffix(i) == _T("^") ? _T("") : ::theApp.MagicSuffix(i));
+            for(UINT i = 0;i < ::theApp.MagicSuffixSize();++i){
+                m_cbSuffix1.InsertString(-1, ::theApp.MagicSuffix01(i));
+                m_cbSuffix2.InsertString(-1, ::theApp.MagicSuffix01(i));
+                m_cbSuffix3.InsertString(-1, ::theApp.MagicSuffix01(i));
             }
             m_cbFirstName.SetCurSel(m_vSelect[0]);
             m_cbLastName.SetCurSel(m_vSelect[1]);
@@ -149,8 +149,8 @@ BOOL CDlgPrefixSuffix::OnInitDialog()
             m_cbSuffix3.EnableWindow(FALSE);
             m_cbUniqueName.EnableWindow();
             m_cbSubType.EnableWindow(FALSE);
-            for(int i = 0;i < ::theApp.UniqueNameCount();++i)
-                m_cbUniqueName.InsertString(-1,::theApp.UniqueName(i) == _T("^") ? _T("") : ::theApp.UniqueName(i));
+            for(UINT i = 0;i < ::theApp.UniqueNameSize();++i)
+                m_cbUniqueName.InsertString(-1, ::theApp.UniqueName01(i));
             m_cbUniqueName.SetCurSel(m_vSelect[8]);
             break;
         default:
