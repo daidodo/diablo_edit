@@ -5,17 +5,6 @@
 #include "Diablo Edit2.h"
 #include "DlgSkills.h"
 
-const int CDlgSkills::INDEX[CLASS_SIZE][SKILL_SIZE] = {
-	{0,1,10,11,20,2,3,12,21,22,4,13,14,23,24,5,6,15,25,26,7,8,16,17,27,9,18,19,28,29},	//Amazon
-	{0,1,10,20,21,2,11,12,22,23,3,4,13,14,24,5,6,15,16,25,7,17,18,26,27,8,9,19,28,29},	//Sorceress
-	{0,10,11,20,21,1,2,12,13,22,3,4,14,23,24,5,6,15,16,25,7,8,17,26,27,9,18,19,28,29},	//Necromancer
-	{0,1,10,20,21,2,11,12,22,23,3,4,13,24,25,5,6,14,15,26,7,8,16,17,27,9,18,19,28,29},	//Paladin
-	{0,10,11,12,20,21,1,2,13,14,15,22,23,3,4,16,24,5,6,17,25,7,18,26,27,8,9,19,28,29},	//Barbarian
-	{0,1,10,11,20,2,3,12,21,22,4,13,14,23,24,5,6,15,16,25,7,17,18,26,27,8,9,19,28,29},	//Druid
-	{0,10,11,20,21,1,2,12,22,23,3,4,13,14,24,5,15,16,25,26,6,7,17,27,28,8,9,18,19,29}	//Assassin
-};
-
-
 // CDlgSkills ¶Ô»°¿ò
 
 IMPLEMENT_DYNAMIC(CDlgSkills, CDialog)
@@ -26,9 +15,9 @@ CDlgSkills::CDlgSkills(int charClass,BYTE * skills,CWnd* pParent /*=NULL*/)
 	, m_pData(skills)
 	, m_bAll(0)
 {
-	ASSERT(m_nCharClass >= 0 && m_nCharClass < CLASS_SIZE && m_pData);
+	ASSERT(m_nCharClass >= 0 && m_nCharClass < ::theApp.CLASS_NAME_SIZE && m_pData);
 	for(int i = 0;i < SKILL_SIZE;++i)
-		m_pSkills[INDEX[m_nCharClass][i]] = m_pData[i];
+		m_pSkills[::theApp.CLASS_SKILL_INDEX[m_nCharClass][i]] = m_pData[i];
 }
 
 CDlgSkills::~CDlgSkills()
@@ -137,7 +126,7 @@ void CDlgSkills::OnBnClickedOk()
 			return;
 		}
 	for(int i = 0;i < SKILL_SIZE;++i)
-		m_pData[i] = m_pSkills[INDEX[m_nCharClass][i]]; 
+		m_pData[i] = m_pSkills[::theApp.CLASS_SKILL_INDEX[m_nCharClass][i]]; 
 	OnOK();
 }
 

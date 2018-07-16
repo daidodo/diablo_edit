@@ -5,17 +5,6 @@
 12	no title	无标题	無標題
 15	Unknown	未知	未知
 			
-385	Attack	一般攻击	一般攻擊
-394	Kick	脚踢	腳踢
-395	Throw	投掷	投擲
-396	Unsummon	取消召唤	取消召喚
-397	Left Hand Throw	左手投掷	左手投擲
-398	Left Hand Swing	左手挥动	左手揮動
-399	An Evil Force	一股邪恶力量	一股邪惡力量
-400	Scroll of Identify	辨识卷轴	辨識卷軸
-401	Tome of Identify	辨识之书	辨識之書
-402	Scroll of Town Portal	回城卷轴	回城卷軸
-403	Tome of Town Portal	回城之书	回城之書
 404	Freezing	冰冻	冰凍
 405	Poisoned	中毒	中毒
 406	Fire Resist	火焰抵抗	火焰抵抗
@@ -211,6 +200,18 @@
 25	Rite of Passage	通道的祭典	通道的祭典
 26	Eve of Destruction	毁灭的前夕	毀滅的前夕
 27	Moo Moo Farm	杀死母牛之王	殺死母牛之王
+*=======================通用技能名字			
+0	Attack	一般攻击	一般攻擊
+1	Kick	脚踢	腳踢
+2	Throw	投掷	投擲
+3	Unsummon	取消召唤	取消召喚
+4	Left Hand Throw	左手投掷	左手投擲
+5	Left Hand Swing	左手挥动	左手揮動
+6	Scroll of Identify	辨识卷轴	辨識卷軸
+7	Tome of Identify	辨识之书	辨識之書
+8	Scroll of Town Portal	回城卷轴	回城卷軸
+9	Tome of Town Portal	回城之书	回城之書
+10	An Evil Force	一股邪恶力量	一股邪惡力量
 *=======================角色技能名字			
 0	Magic Arrow	魔法箭	魔法箭
 1	Fire Arrow	火焰箭	火焰箭
