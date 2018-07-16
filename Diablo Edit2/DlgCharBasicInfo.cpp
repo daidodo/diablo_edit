@@ -216,7 +216,7 @@ BOOL CDlgCharBasicInfo::GatherData(CD2S_Struct & character)
 		return FALSE;
 	}
 	if(m_uCharLevel < 1 || m_uCharLevel > 127){
-		MessageBox(::theApp.MsgBoxInfo(11),::theApp.MsgError(),MB_ICONERROR);
+		MessageBox(::theApp.MsgBoxInfo(1),::theApp.MsgError(),MB_ICONERROR);
 		return FALSE;
 	}
 	if(m_dwStrength > 1023 ||

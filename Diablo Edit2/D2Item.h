@@ -133,6 +133,7 @@ struct CItemInfo
 	CMayExist<CTypeSpecificInfo>	pTpSpInfo;		//如果bSimple == FALSE，则此结构存在
 	const CItemDataStruct * ReadData(CInBitsStream & bs, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed);
 	void WriteData(COutBitsStream & bs, const CItemDataStruct & itemData, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed) const;
+	BOOL IsNameValid() const;
 };
 
 class CD2Item

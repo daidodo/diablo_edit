@@ -104,41 +104,27 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem)
         default:;
         }
 		AddMsg(color, text(name));
-        //Defence or Attack
-        if(pItem->pItemData->HasDef){     //有防御值
-            CString defence;
-            defence.Format(::theApp.ItemSuspendUI(2),UINT(pItem->pItemInfo->pTpSpInfo->iDefence.Value() - 10));
-			AddMsg(WHITE,defence);
-        }else if(pItem->pItemData->Damage1Min){      //单手伤害
-            CString dmg;
-            dmg.Format(::theApp.ItemSuspendUI(3),pItem->pItemData->Damage1Min,pItem->pItemData->Damage1Max);
-			AddMsg(WHITE,dmg);
-        }else if(pItem->pItemData->Damage2Min){      //双手伤害
-            CString dmg;
-            dmg.Format(::theApp.ItemSuspendUI(4),pItem->pItemData->Damage2Min,pItem->pItemData->Damage2Max);
-			AddMsg(WHITE,dmg);
-        }
+		//Defence or Attack
+		if (pItem->pItemData->HasDef) {				//有防御值
+			AddMsg(WHITE, CSFormat(::theApp.ItemSuspendUI(2), UINT(pItem->pItemInfo->pTpSpInfo->iDefence.Value() - 10)));
+		} else if (pItem->pItemData->Damage1Min) {		//单手伤害
+			AddMsg(WHITE, CSFormat(::theApp.ItemSuspendUI(3), pItem->pItemData->Damage1Min, pItem->pItemData->Damage1Max));
+		} else if (pItem->pItemData->Damage2Min)		//双手伤害
+			AddMsg(WHITE, CSFormat(::theApp.ItemSuspendUI(4), pItem->pItemData->Damage2Min, pItem->pItemData->Damage2Max));
         //Quantity
-        CString msg;
-		if(pItem->pItemData->IsStacked){
-            msg.Format(::theApp.ItemSuspendUI(5),UINT(pItem->pItemInfo->pTpSpInfo->iQuantity.Value()));
-			AddMsg(WHITE, msg);
-		}else if(IsSameType(pItem->pItemInfo->sTypeName,"gld ")){
-            msg.Format(::theApp.ItemSuspendUI(5),UINT(pItem->pItemInfo->pGold->wQuantity));
-			AddMsg(WHITE, msg);
-		}
+		if (pItem->pItemData->IsStacked) {
+			AddMsg(WHITE, CSFormat(::theApp.ItemSuspendUI(5), UINT(pItem->pItemInfo->pTpSpInfo->iQuantity.Value())));
+		} else if (IsSameType(pItem->pItemInfo->sTypeName, "gld "))
+			AddMsg(WHITE, CSFormat(::theApp.ItemSuspendUI(5), UINT(pItem->pItemInfo->pGold->wQuantity)));
 		//Durability or Indestructible
-        if(pItem->pItemData->HasDur){
-            if(pItem->pItemInfo->pTpSpInfo->iMaxDurability.Value()){   //有耐久度
-                CString dur;
-                dur.Format(::theApp.ItemSuspendUI(6),
-                    UINT(pItem->pItemInfo->pTpSpInfo->iCurDur.Value()),
-                    UINT(pItem->pItemInfo->pTpSpInfo->iMaxDurability.Value()));
-				AddMsg(WHITE,dur);
-            }else{      //不可破坏
-				AddMsg(BLUE,::theApp.ItemSuspendUI(7));
-            }
-        }
+		if (pItem->pItemData->HasDur) {
+			if (pItem->pItemInfo->pTpSpInfo->iMaxDurability.Value()) {   //有耐久度
+				AddMsg(WHITE, CSFormat(::theApp.ItemSuspendUI(6),
+					UINT(pItem->pItemInfo->pTpSpInfo->iCurDur.Value()),
+					UINT(pItem->pItemInfo->pTpSpInfo->iMaxDurability.Value())));
+			} else       //不可破坏
+				AddMsg(BLUE, ::theApp.ItemSuspendUI(7));
+		}
         //Property
 		UINT socketnum = 0;   //sockets num
 		if (!pItem->bSimple) 
@@ -153,9 +139,7 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem)
         //Socket
         if(pItem->bSocketed){
             socketnum += pItem->pItemInfo->pTpSpInfo->iSocket.Value();
-            CString socket;
-			socket.Format(::theApp.ItemSuspendUI(9), socketnum);
-			AddMsg(BLUE,socket);
+			AddMsg(BLUE, CSFormat(::theApp.ItemSuspendUI(9), socketnum));
         }
     }
 	//根据信息长度决定窗体长度

@@ -46,9 +46,10 @@ struct CQuestInfo
 	CQuestInfoData	QIData[3];
 	void ReadData(CInBitsStream & bs){
 		bs>>dwMajic>>dwActs>>wSize;
-		if(dwMajic != 0x216F6F57 || wSize != 0x12A)
-			if(MessageBox(0,::theApp.String(373),::theApp.MsgWarning(),MB_YESNO | MB_ICONWARNING) == IDNO)
-				throw 0;
+		if (dwMajic != 0x216F6F57 || wSize != 0x12A) {
+			MessageBox(0, ::theApp.MsgBoxInfo(13), ::theApp.MsgError(), MB_ICONERROR);
+			throw 0;
+		}
 		for (auto & q : QIData)
 			q.ReadData(bs);
 	}
@@ -81,9 +82,10 @@ struct CWaypoints
 	CWaypointData	wp[3];
 	void ReadData(CInBitsStream & bs){
 		bs>>wMajic>>unkown>>wSize;
-		if(wMajic != 0x5357 || wSize != 0x50)
-			if(MessageBox(0,::theApp.String(374),::theApp.MsgWarning(),MB_YESNO | MB_ICONWARNING) == IDNO)
-				throw 0;
+		if (wMajic != 0x5357 || wSize != 0x50) {
+			MessageBox(0, ::theApp.MsgBoxInfo(14), ::theApp.MsgError(), MB_ICONERROR);
+			throw 0;
+		}
 		for (auto & w : wp)
 			w.ReadData(bs);
 	}
@@ -103,9 +105,10 @@ public:
 	~CCharSkills(){}
 	void ReadData(CInBitsStream & bs){
 		bs>>wMagic;
-		if(wMagic != 0x6669)
-			if(MessageBox(0,::theApp.String(376),::theApp.MsgWarning(),MB_YESNO | MB_ICONWARNING) == IDNO)
-				throw 0;
+		if (wMagic != 0x6669) {
+			MessageBox(0, ::theApp.MsgBoxInfo(16), ::theApp.MsgError(), MB_ICONERROR);
+			throw 0;
+		}
 		bs>>bSkillLevel;
 	}
 	void WriteData(COutBitsStream & bs) const {

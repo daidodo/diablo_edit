@@ -9,19 +9,21 @@ CItemList::~CItemList(){ClearItems();}
 void CItemList::ReadData(CInBitsStream & bs)
 {
     bs>>wMajic>>nItems;
-    if(wMajic != 0x4D4A)
-        if(MessageBox(0,::theApp.String(377),::theApp.MsgWarning(),MB_YESNO | MB_ICONWARNING) == IDNO)
-            throw 0;
+	if (wMajic != 0x4D4A) {
+		MessageBox(0, ::theApp.MsgBoxInfo(17), ::theApp.MsgError(), MB_ICONERROR);
+		throw 0;
+	}
     ClearItems();
     vpItems.resize(nItems);
-    for(WORD i = 0;i < nItems;++i){
+    for(WORD i = 0;bs.Good() && i < nItems;++i){
         vpItems[i] = new CD2Item;
         vpItems[i]->ReadData(bs);
     }
     bs>>wEndMajic;
-    if(wEndMajic != 0x4D4A)
-        if(MessageBox(0,::theApp.String(377),::theApp.MsgWarning(),MB_YESNO | MB_ICONWARNING) == IDNO)
-            throw 0;
+	if (wEndMajic != 0x4D4A) {
+		MessageBox(0, ::theApp.MsgBoxInfo(17), ::theApp.MsgError(), MB_ICONERROR);
+		throw 0;
+	}
 }
 
 void CItemList::WriteData(COutBitsStream & bs) const {

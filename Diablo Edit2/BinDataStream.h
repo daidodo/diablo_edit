@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <cstring>
 
 // bits
 template<typename T>
@@ -54,15 +55,24 @@ public:
 	DWORD BytePos() const{return bytes_;}
 	bool Good() const { return !bad_; }
 	std::vector<BYTE> & Data() { return data_; }	//返回可修改的数据，主要用于CRC校验
+	void ReadFile(CFile & cf) {
+		data_.resize(size_t(cf.GetLength()));
+		if (!data_.empty())
+			cf.Read(&data_[0], UINT(cf.GetLength()));
+	}
 	//随机定位
 	void SeekBack(DWORD back) {
 		if (ensurePos(bytes_ - back))
 			bytes_ -= back;
 	}
-	void ReadFile(CFile & cf){
-		data_.resize(size_t(cf.GetLength()));
-		if(!data_.empty())
-			cf.Read(&data_[0], UINT(cf.GetLength()));
+	//跳过所有数据直到找到pattern，定位在pattern的首字符位置
+	void SkipUntil(const char * pattern) {
+		assert(pattern);
+		if (ensure(0)) {
+			const auto src = reinterpret_cast<const char *>(&data_[bytes_]);
+			const auto wh = std::strstr(src, pattern);
+			bytes_ = (wh ? bytes_ + (wh - src) : data_.size());
+		}
 	}
 	//字节读取
 	CInBitsStream & operator >>(DWORD & value) {return readPod(value);}
@@ -105,7 +115,7 @@ public:
 	void Restore(std::vector<BYTE> & vec,DWORD from,DWORD to){
 		ASSERT(to >= from);
 		if(ensurePos(from) && ensurePos(to))
-			vec.assign(&data_[from], &data_[to]);
+			vec.assign(data_.begin() + from, data_.begin() + to);
 	}
 	//调试用，得到后续的2进制位流
 	CString ToString(DWORD len = 32) const;

@@ -296,9 +296,7 @@ void CDlgCharItems::ReadItemProperty(WORD itemIndex)
 				if (p.first == 194) {	//Adds X extra sockets to the item
 					m_bExtSocket = BYTE(p.second);
 				} else {
-					CString tmp;
-					tmp.Format(_T("%3d"), UINT(p.first)); //属性代码
-					int i = m_lcPropertyList.InsertItem(0, tmp);
+					int i = m_lcPropertyList.InsertItem(0, CSFormat(_T("%3d"), UINT(p.first)));	//属性代码
 					m_lcPropertyList.SetItemText(i, 1, ::theApp.PorpertyDescription(p.first, p.second)); //属性描述
 				}
 			}
