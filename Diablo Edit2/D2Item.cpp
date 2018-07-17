@@ -360,7 +360,7 @@ void CD2Item::findUnknownItem(CInBitsStream & bs) {
 	bs.SkipUntil("JM");
 	bs.Restore(vItemData, from, bs.BytePos());
 	if (!vItemData.empty()) {	//把未知的物品存储成物品文件
-		CFile outf(::theApp.m_sAppPath + _T("unknown.d2i"), CFile::modeCreate | CFile::modeWrite);
+		CFile outf(::theApp.AppPath() + _T("unknown.d2i"), CFile::modeCreate | CFile::modeWrite);
 		outf.Write(&vItemData[0], UINT(vItemData.size()));
 	}
 	if (MessageBox(0, CSFormat(::theApp.MsgBoxInfo(6),
