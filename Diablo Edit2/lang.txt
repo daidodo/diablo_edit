@@ -1,16 +1,15 @@
 *LANG			
 0	&English	简体中文(&Simplified Chinese)	繁體中文(&Traditional Chinese)
-5	Warning	警告	警告
-6	Error	错误	錯誤
-12	no title	无标题	無標題
-15	Unknown	未知	未知
-			
-404	Freezing	冰冻	冰凍
-405	Poisoned	中毒	中毒
-406	Fire Resist	火焰抵抗	火焰抵抗
-407	Cold Resist	冰冷抵抗	冰冷抵抗
-408	Lightning Resist	闪电抵抗	閃電抵抗
-409	Normal	普通	普通
+1	Warning	警告	警告
+2	Error	错误	錯誤
+3	no title	无标题	無標題
+4	Unknown	未知	未知
+5	Freezing	冰冻	冰凍
+6	Poisoned	中毒	中毒
+7	Fire Resist	火焰抵抗	火焰抵抗
+8	Cold Resist	冰冷抵抗	冰冷抵抗
+9	Lightning Resist	闪电抵抗	閃電抵抗
+10	Normal	普通	普通
 *=======================其他窗口UI			
 0	Please Choose a character class	请选择角色	請選擇角色
 1	Amazon Skills	亚马逊技能	亞馬遜技能
