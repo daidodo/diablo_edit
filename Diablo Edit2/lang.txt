@@ -1133,7 +1133,7 @@
 23	%+d Min 2-Handed Damage		
 24	%+d Max 2-Handed Damage		
 25	Damage %+d%% NV		
-26	Regenerate mana % NV		
+26	Regenerate Mana %d%% NV		
 27	Regenerate Mana %+d%%		
 28	Heal Stemina %+d%%		
 29	Lastexp		

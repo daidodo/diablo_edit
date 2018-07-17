@@ -253,7 +253,7 @@ void CTypeSpecificInfo::ReadData(CInBitsStream & bs, BOOL bHasDef, BOOL bHasDur,
 	}
 	//接下来是额外属性列表
 	for (bs >> bits(iEndFlag, 9); bs.Good() && iEndFlag < 0x1FF; bs >> bits(iEndFlag, 9))
-		bs >> bits(mProperty[iEndFlag], ::theApp.PropertyData(iEndFlag).bits);
+		bs >> bits(mProperty[iEndFlag], ::theApp.PropertyData(iEndFlag).Bits());
 }
 
 void CTypeSpecificInfo::WriteData(COutBitsStream & bs, BOOL bHasDef, BOOL bHasDur, BOOL bSocketed, BOOL bIsStacked, BOOL bIsSet, BOOL bRuneWord) const {
@@ -276,7 +276,7 @@ void CTypeSpecificInfo::WriteData(COutBitsStream & bs, BOOL bHasDef, BOOL bHasDu
 	}
 	//接下来是额外属性列表
 	for (const auto & p : mProperty)
-		bs << bits(p.first, 9) << bits(p.second, ::theApp.PropertyData(p.first).bits);
+		bs << bits(p.first, 9) << bits(p.second, ::theApp.PropertyData(p.first).Bits());
 	bs << bits<WORD>(0x1FF, 9);
 }
 
