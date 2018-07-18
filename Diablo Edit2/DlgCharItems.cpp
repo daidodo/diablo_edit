@@ -333,9 +333,6 @@ void CDlgCharItems::UpdateUI(const CD2S_Struct & character)
         ASSERT(character.ItemList.vpItems[i] && _T("CDlgCharItems::UpdateUI(const CD2S_Struct & character)"));
         CD2Item & rit = *character.ItemList.vpItems[i];
 		m_vpItems[i] = new CItemView(BMP_INDEX_BASE + rit.pItemData->PicIndex, rit.pItemData->Range, &rit);
-		//if(rit.bEar){				//¶ú¶ä
-        //    //...
-        //}else if(rit.pItemData){	//ÎïÆ·
         int index = INVALID_ITEM,x,y;
         switch(rit.iLocation){
             case 0:		//grid
@@ -365,7 +362,6 @@ void CDlgCharItems::UpdateUI(const CD2S_Struct & character)
         }
 		if(index != INVALID_ITEM)
             PutItemInGrid(i,MAKE_GRID(index,x,y));
-        //}
     }
 	m_iSelectedItemIndex = INVALID_ITEM;
     Invalidate();

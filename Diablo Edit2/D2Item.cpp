@@ -407,7 +407,7 @@ void CD2Item::ReadData(CInBitsStream & bs)
 		>> bits(iStoredIn, 3);
 	if(bEar){	//这是一个耳朵
 		pEar->ReadData(bs);
-        char buf[4] = {'e','a','r',' '};
+		char buf[4] { 'e', 'a', 'r', ' ' };
         DWORD * type = reinterpret_cast<DWORD *>(buf);
         pItemData = ::theApp.ItemData(*type);
 	} else {	//这是一个物品,但是也可能为"ear "

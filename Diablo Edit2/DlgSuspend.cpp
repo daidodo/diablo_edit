@@ -67,7 +67,9 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem)
 	m_pItem = pItem;
 	m_sItemMsg.clear();
     if(pItem->bEar){    //ear structure
-
+		AddMsg(WHITE, CSFormat(::theApp.ItemSuspendUI(10), CString(pItem->pEar->sEarName)));
+		AddMsg(WHITE, ::theApp.ClassName(pItem->pEar->iEarClass));
+		AddMsg(WHITE, CSFormat(::theApp.ItemSuspendUI(11), pItem->pEar->iEarLevel));
     }else{              //item structure
         //Prefix, Suffix, Name
 		__Tokens name{ ::theApp.ItemName(pItem->pItemData->NameIndex) };

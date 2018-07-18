@@ -32,6 +32,8 @@
 7	Indestructible	无法破坏	無法破壞
 8	Ethereal(cannot be repaired)	无形的(无法修复)	無形的(無法修復)
 9	Sockets(%d)	有凹槽(%d)	有凹槽(%d)
+10	%s's Ear	(%s)的耳朵	(%s)的耳朵
+11	Level %d	%d级	%d級
 *=======================物品前后缀窗口UI			
 0	Item Prefix Suffix	物品前后缀名	物品前后綴名
 1	First Name	名	名
