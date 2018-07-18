@@ -2,10 +2,12 @@
 //
 
 #include "stdafx.h"
-#include "Diablo Edit2.h"
-#include "DlgSuspend.h"
 
 #include <deque>
+#include <numeric>
+
+#include "Diablo Edit2.h"
+#include "DlgSuspend.h"
 
 using namespace std;
 
@@ -144,11 +146,15 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem)
 			AddMsg(BLUE, CSFormat(::theApp.ItemSuspendUI(9), socketnum));
         }
     }
-	//根据信息长度决定窗体长度
+	//根据信息条数和长度决定窗体长度和宽度
+	LONG maxLen = accumulate(m_sItemMsg.begin(), m_sItemMsg.end(), 0, [](LONG m, auto & a) {return max(m, a.second.GetLength()); });
 	CRect rect;
 	GetWindowRect(&rect);
-	SetWindowPos(0, rect.left, rect.top, WINDOW_WIDTH, FONT_HEIGHT * int(m_sItemMsg.size() + 1), SWP_NOACTIVATE);
-	return 0;//FONT_HEIGHT * LONG(m_sItemMsg.size() + 1);
+	SetWindowPos(0, rect.left, rect.top,
+		max(WINDOW_WIDTH_MIN, WIDTH_PER_CHAR * maxLen),
+		HEIGHT_PER_LINE * int(m_sItemMsg.size() + 1),
+		SWP_NOACTIVATE);
+	return 0;
 }
 // CDlgSuspend 消息处理程序
 
@@ -161,13 +167,13 @@ void CDlgSuspend::OnPaint()
 	CBrush bh(RGB(0,0,0));
 	dc.FillRect(rect,&bh);
 	dc.SetBkColor(0);
-	rect.top = FONT_HEIGHT / 2;
-	rect.bottom = rect.top + FONT_HEIGHT;
+	rect.top = HEIGHT_PER_LINE / 2;
+	rect.bottom = rect.top + HEIGHT_PER_LINE;
 	for (auto & p : m_sItemMsg) {
 		dc.SetTextColor(FONT_COLOR[p.first]);
 		dc.DrawTextEx(p.second.GetBuffer(), p.second.GetLength(), &rect, DT_CENTER, 0);
 		rect.top = rect.bottom;
-		rect.bottom += FONT_HEIGHT;
+		rect.bottom += HEIGHT_PER_LINE;
 	}
 }
 

@@ -16,13 +16,12 @@ public:
 private:
 	typedef std::pair<BYTE,CString>	__MsgType;	//<字体颜色,内容>
 //自定义数据
-public:
-	static const LONG WINDOW_WIDTH = 273;
-	static const COLORREF	FONT_COLOR[];		//字体颜色
+	static const COLORREF FONT_COLOR[];			//字体颜色
 	enum {WHITE,BLUE,GREEN,RARE,UNIQUE,CRAFT};	//颜色索引
-private:
-	static const LONG FONT_HEIGHT = 20;			//每行字的高度
-    UINT m_nTransparency;       //窗体透明度
+	static const LONG HEIGHT_PER_LINE = 20;		//每行字的高度
+	static const LONG WIDTH_PER_CHAR = 9;		//每个字符的宽度
+	static const LONG WINDOW_WIDTH_MIN = 273;	//窗口最小宽度
+	UINT m_nTransparency;       //窗体透明度
 	const CD2Item * m_pItem;
 	std::vector<__MsgType> m_sItemMsg;	//物品的信息
 //自定义函数
