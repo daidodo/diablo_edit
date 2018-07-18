@@ -63,6 +63,14 @@ void CDlgSuspend::AddMsg(BYTE color, const CString & msg) {
 		m_sItemMsg.emplace_back(color, msg);
 }
 
+void CDlgSuspend::AddPropertyList(BYTE color, const CPropertyList & propList, UINT & sockets) {
+	for (const auto & p : propList.mProperty)
+		if (p.first == 194)     //extend sockets
+			sockets += p.second;
+		else
+			AddMsg(color, ::theApp.PorpertyDescription(p.first, p.second));
+}
+
 LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem)
 {
 	ASSERT(pItem);
@@ -131,12 +139,15 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem)
 		}
         //Property
 		UINT socketnum = 0;   //sockets num
-		if (!pItem->bSimple) 
-			for (const auto & p : pItem->pItemInfo->pTpSpInfo->mProperty)
-				if (p.first == 194)     //extend sockets
-					socketnum = p.second;
-				else
-					AddMsg(BLUE, ::theApp.PorpertyDescription(p.first, p.second));
+		if (!pItem->bSimple) {
+			AddPropertyList(BLUE, pItem->pItemInfo->pTpSpInfo->stPropertyList, socketnum);
+			if (pItem->pItemInfo->pExtItemInfo->IsSet()) {
+				auto & setProps = pItem->pItemInfo->pTpSpInfo->apSetProperty;
+				for (size_t i = 0; i < std::size(setProps); ++i)
+					if (setProps[i].IsSet())
+						AddPropertyList(GREEN, setProps[i].Value(), socketnum);
+			}
+		}
         //Ethereal
         if(pItem->bEthereal)
 			AddMsg(BLUE,::theApp.ItemSuspendUI(8));

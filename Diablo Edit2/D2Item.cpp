@@ -160,7 +160,7 @@ void CExtItemInfo::ReadData(CInBitsStream & bs, BOOL bIsCharm, BOOL bRuneWord, B
 	if (bRuneWord)
 		bs >> bits(*wRune, 16);
 	if (bPersonalized)
-		for (int i = 0; i < 16; ++i) {
+		for (int i = 0; i < sPersonName.Size(); ++i) {
 			bs >> bits(sPersonName[i], 7);
 			if (sPersonName[i] == 0)
 				break;
@@ -218,7 +218,7 @@ void CExtItemInfo::WriteData(COutBitsStream & bs, BOOL bIsCharm, BOOL bRuneWord,
 	if (bRuneWord)
 		bs << bits(*wRune, 16);
 	if (bPersonalized)
-		for (int i = 0; i < 16; ++i) {
+		for (int i = 0; i < sPersonName.Size(); ++i) {
 			bs << bits(sPersonName[i], 7);
 			if (sPersonName[i] == 0)
 				break;
@@ -231,8 +231,21 @@ void CExtItemInfo::WriteData(COutBitsStream & bs, BOOL bIsCharm, BOOL bRuneWord,
 		bs << bits(*bSpellID, 5);
 }
 
+//struct CPropertyList
+
+void CPropertyList::ReadData(CInBitsStream & bs) {
+	for (bs >> bits(iEndFlag, 9); bs.Good() && iEndFlag < 0x1FF; bs >> bits(iEndFlag, 9))
+		bs >> bits(mProperty[iEndFlag], ::theApp.PropertyData(iEndFlag).Bits());
+}
+
+void CPropertyList::WriteData(COutBitsStream & bs) const {
+	for (const auto & p : mProperty)
+		bs << bits(p.first, 9) << bits(p.second, ::theApp.PropertyData(p.first).Bits());
+	bs << bits<WORD>(0x1FF, 9);
+}
 
 //struct CTypeSpecificInfo
+
 void CTypeSpecificInfo::ReadData(CInBitsStream & bs, BOOL bHasDef, BOOL bHasDur, BOOL bSocketed, BOOL bIsStacked, BOOL bIsSet, BOOL bRuneWord) {
 	if (bHasDef)
 		bs >> bits(*iDefence, 11);
@@ -245,15 +258,17 @@ void CTypeSpecificInfo::ReadData(CInBitsStream & bs, BOOL bHasDef, BOOL bHasDur,
 		bs >> bits(*iSocket, 4);
 	if (bIsStacked)
 		bs >> bits(*iQuantity, 9);
-	if (bIsSet) {	//这是一个套装
-		//暂时不支持.......................
-	}
+	if (bIsSet) 	//这是一个套装
+		for (int i = 0; i < aHasSetPropList.Size(); ++i)
+			bs >> aHasSetPropList[i];
 	if (bRuneWord) {		//有符文之语属性
 		//暂时不支持.......................
 	}
-	//接下来是额外属性列表
-	for (bs >> bits(iEndFlag, 9); bs.Good() && iEndFlag < 0x1FF; bs >> bits(iEndFlag, 9))
-		bs >> bits(mProperty[iEndFlag], ::theApp.PropertyData(iEndFlag).Bits());
+	stPropertyList.ReadData(bs);
+	if (bIsSet) 	//这是一个套装
+		for (int i = 0; i < aHasSetPropList.Size(); ++i)
+			if(aHasSetPropList[i])
+				apSetProperty[i]->ReadData(bs);
 }
 
 void CTypeSpecificInfo::WriteData(COutBitsStream & bs, BOOL bHasDef, BOOL bHasDur, BOOL bSocketed, BOOL bIsStacked, BOOL bIsSet, BOOL bRuneWord) const {
@@ -268,16 +283,17 @@ void CTypeSpecificInfo::WriteData(COutBitsStream & bs, BOOL bHasDef, BOOL bHasDu
 		bs << bits(*iSocket, 4);
 	if (bIsStacked)
 		bs << bits(*iQuantity, 9);
-	if (bIsSet) {	//这是一个套装
-		//暂时不支持.......................
-	}
+	if (bIsSet) 	//这是一个套装
+		for (int i = 0; i < aHasSetPropList.Size(); ++i)
+			bs << aHasSetPropList[i];
 	if (bRuneWord) {		//有符文之语属性
 		//暂时不支持.......................
 	}
-	//接下来是额外属性列表
-	for (const auto & p : mProperty)
-		bs << bits(p.first, 9) << bits(p.second, ::theApp.PropertyData(p.first).Bits());
-	bs << bits<WORD>(0x1FF, 9);
+	stPropertyList.WriteData(bs);
+	if (bIsSet) 	//这是一个套装
+		for (int i = 0; i < aHasSetPropList.Size(); ++i)
+			if (aHasSetPropList[i])
+				apSetProperty[i]->WriteData(bs);
 }
 
 // struct CItemInfo
@@ -300,7 +316,7 @@ const CItemDataStruct *  CItemInfo::ReadData(CInBitsStream & bs, BOOL bSimple, B
 		pGold->ReadData(bs);
 	bs >> bHasRand;
 	if (bHasRand)
-		for (int i = 0; i < 3; ++i)
+		for (int i = 0; i < pTmStFlag.Size(); ++i)
 			bs >> bits(pTmStFlag[i], 32);
 	if (!bSimple) {	//Type Specific info
 		pTpSpInfo->ReadData(bs,
@@ -330,7 +346,7 @@ void CItemInfo::WriteData(COutBitsStream & bs, const CItemDataStruct & itemData,
 		pGold->WriteData(bs);
 	bs << bHasRand;
 	if (bHasRand)
-		for (int i = 0; i < 3; ++i)
+		for (int i = 0; i < pTmStFlag.Size(); ++i)
 			bs << bits(pTmStFlag[i], 32);
 	if (!bSimple) {	//Type Specific info
 		pTpSpInfo->WriteData(bs,

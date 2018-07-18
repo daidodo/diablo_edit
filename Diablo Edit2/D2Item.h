@@ -103,6 +103,14 @@ struct CGoldQuantity
 	void WriteData(COutBitsStream & bs) const;
 };
 
+struct CPropertyList
+{
+	std::map<WORD, DWORD>	mProperty;		//属性列表，每项（9 bits ID + VALUE)
+	WORD					iEndFlag;		//9 bits, 0x1FF, 结束标志
+	void ReadData(CInBitsStream & bs);
+	void WriteData(COutBitsStream & bs) const;
+};
+
 //Type Specific info
 struct CTypeSpecificInfo
 {
@@ -111,10 +119,11 @@ struct CTypeSpecificInfo
 	CMayExist<WORD>			iCurDur;		//9 bits,if bNoDurability == FALSE && iMaxDur > 0
 	CMayExist<BYTE>			iSocket;		//4 bits,Base Number of Sockets,基础数目,后面还有个附加数目,if bSocketed = TRUE
 	CMayExist<WORD>			iQuantity;		//9 bits,if bStacked == TRUE
-	//Set Property
+	CMayExistArray<BOOL, 5>	aHasSetPropList;//5 bits,if iQuality == 5 
 	//Rune Word Property
-	std::map<WORD,DWORD>	mProperty;		//额外属性列表，每项（9 bits ID + VALUE)
-	WORD					iEndFlag;		//9 bits, 0x1FF, 结束标志
+	CPropertyList			stPropertyList;		//属性列表
+	CMayExist<CPropertyList> apSetProperty[5];	//套装属性列表，每个列表是否存在由(aHasSetPropList[i] == TRUE)决定
+
 	void ReadData(CInBitsStream & bs, BOOL bHasDef, BOOL bHasDur, BOOL bSocketed, BOOL bIsStacked, BOOL bIsSet, BOOL bRuneWord);
 	void WriteData(COutBitsStream & bs, BOOL bHasDef, BOOL bHasDur, BOOL bSocketed, BOOL bIsStacked, BOOL bIsSet, BOOL bRuneWord) const;
 };

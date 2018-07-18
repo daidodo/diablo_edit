@@ -292,7 +292,7 @@ void CDlgCharItems::ReadItemProperty(WORD itemIndex)
                 if(!(m_bIndestructible = (m_wMaxDurability == 0)))
                     m_wCurDurability = rit.pItemInfo->pTpSpInfo->iCurDur.Value();
             }
-			for (const auto & p : rit.pItemInfo->pTpSpInfo->mProperty) {
+			for (const auto & p : rit.pItemInfo->pTpSpInfo->stPropertyList.mProperty) {
 				if (p.first == 194) {	//Adds X extra sockets to the item
 					m_bExtSocket = BYTE(p.second);
 				} else {
@@ -300,6 +300,7 @@ void CDlgCharItems::ReadItemProperty(WORD itemIndex)
 					m_lcPropertyList.SetItemText(i, 1, ::theApp.PorpertyDescription(p.first, p.second)); // Ù–‘√Ë ˆ
 				}
 			}
+			//TODO: Set property lists
         }
     }
 
