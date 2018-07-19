@@ -156,7 +156,7 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem)
         //Socket
         if(pItem->bSocketed){
             socketnum += pItem->pItemInfo->pTpSpInfo->iSocket.Value();
-			AddMsg(BLUE, CSFormat(::theApp.ItemSuspendUI(9), socketnum));
+			AddMsg(BLUE, CSFormat(::theApp.ItemSuspendUI(9), pItem->pItemInfo->pExtItemInfo->nGems, socketnum));
         }
     }
 	//根据信息条数和长度决定窗体长度和宽度

@@ -31,7 +31,7 @@
 6	Durability: %d / %d	耐久度: %d 之 %d	耐久度: %d 之 %d
 7	Indestructible	无法破坏	無法破壞
 8	Ethereal(cannot be repaired)	无形的(无法修复)	無形的(無法修復)
-9	Sockets(%d)	有凹槽(%d)	有凹槽(%d)
+9	Sockets(%d/%d)	有凹槽(%d/%d)	有凹槽(%d/%d)
 10	%s's Ear	(%s)的耳朵	(%s)的耳朵
 11	Level %d	%d级	%d級
 *=======================物品前后缀窗口UI			
@@ -59,13 +59,14 @@
 9	Socket	有孔	有孔
 10	Indestructible	不可修复	不可修復
 11	Ethereal	不可破坏	不可破壞
-12	Found	锻造	鑄造
-13	Prefix Suffix	前后缀	前后綴
-14	Add	添加	添加
-15	Edit	编辑	編輯
-16	Delete	删除	刪除
-17	Code	代码	代碼
-18	Description	说明	説明
+12	Sockets	孔	孔
+13	Found	锻造	鑄造
+14	Prefix Suffix	前后缀	前后綴
+15	Add	添加	添加
+16	Edit	编辑	編輯
+17	Delete	删除	刪除
+18	Code	代码	代碼
+19	Description	说明	説明
 *=======================角色基本信息UI			
 0	Basic Info	基本信息	基本信息
 1	Waypoints	小站	小站

@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "BinDataStream.h"
 
+using namespace std;
+
 void CopyBits(const BYTE * from, BYTE * to, DWORD fromOff, DWORD toOff, DWORD len) {
 	ASSERT(from && to);
 	for (; len > 0;) {
@@ -19,16 +21,21 @@ void CopyBits(const BYTE * from, BYTE * to, DWORD fromOff, DWORD toOff, DWORD le
 
 // class CInBitsStream
 
-CString CInBitsStream::ToString(DWORD len) const {
-	CString ret;
+string CInBitsStream::ToString(DWORD len) const {
 	DWORD byte = bytes_;
 	DWORD bit = bits_;
+	string ret;
 	while (len-- != 0 && byte < data_.size()) {
-		ret = ((data_[byte] >> bit) & 1 ? _T("1") : _T("0")) + ret;
+		ret.push_back(((data_[byte] >> bit) & 1) + '0');
 		if (++bit == 8) {
 			bit = 0, ++byte;
-			ret = _T(" ") + ret;
+			ret.push_back(' ');
 		}
+	}
+	if (!ret.empty()) {
+		if (ret.back() == ' ')
+			ret.pop_back();
+		reverse(ret.begin(), ret.end());
 	}
 	return ret;
 }

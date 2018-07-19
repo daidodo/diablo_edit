@@ -2,27 +2,48 @@
 //
 
 #include "stdafx.h"
+
 #include "Diablo Edit2.h"
 #include "DlgCharItems.h"
 
+using namespace std;
 
 // CDlgCharItems 对话框
 
+//和GRID_RECT要对应
+enum {
+	STASH,		//箱子
+	INVENTORY,	//口袋
+	CUBE,		//方块
+	SOCKETS,	//孔
+	HEAD,		//头
+	NECK,		//项链
+    BODY,		//身体
+    RIGHT_HAND,	//武器右
+    LEFT_HAND,	//武器左
+    RIGHT_RING,	//戒指右
+    LEFT_RING,	//戒指左
+    BELT,		//腰带		
+    FOOT,		//鞋子
+    GLOVE,		//手套
+};
+
 const WORD	CDlgCharItems::GRID_RECT[CDlgCharItems::GRID_BODY_NUMBER][4] = {
-    {10,5,6,8},		//箱子		0	left,top,col,row
-    {10,255,10,4},	//口袋		1
-    {340,255,3,4},	//方块		2
-    {300,5,2,2},	//头		3
-    {365,30,1,1},	//项链		4
-    {300,70,2,3},	//身体		5
-    {200,30,2,4},	//武器右	6
-    {400,30,2,4},	//武器左	7
-    {265,165,1,1},	//戒指右	8
-    {365,165,1,1},	//戒指左	9
-    {300,165,2,1},	//腰带		10
-    {400,155,2,2},	//鞋子		11
-    {200,155,2,2},	//手套		12
-    //{805,30,2,4},	//铸造台	13
+    {10,5,6,8},		//箱子			left,top,col,row
+    {10,255,10,4},	//口袋
+    {340,255,3,4},	//方块
+	{70,385,8,1},	//孔
+    {300,5,2,2},	//头
+    {365,30,1,1},	//项链
+    {300,70,2,3},	//身体
+    {200,30,2,4},	//武器右
+    {400,30,2,4},	//武器左
+    {265,165,1,1},	//戒指右
+    {365,165,1,1},	//戒指左
+    {300,165,2,1},	//腰带		
+    {400,155,2,2},	//鞋子
+    {200,155,2,2},	//手套
+    //{805,30,2,4},	//铸造台
 };
 
 IMPLEMENT_DYNAMIC(CDlgCharItems, CPropertyDialog)
@@ -43,8 +64,8 @@ CDlgCharItems::CDlgCharItems(CWnd* pParent /*=NULL*/)
     for(int i = GRID_NUMBER;i < GRID_BODY_NUMBER;++i)
         m_iGridItems[i].resize(1,INVALID_ITEM);
     //武器II
-    m_iGridItems[6].push_back(INVALID_ITEM);
-    m_iGridItems[7].push_back(INVALID_ITEM);
+    m_iGridItems[RIGHT_HAND].push_back(INVALID_ITEM);
+    m_iGridItems[LEFT_HAND].push_back(INVALID_ITEM);
 }
 
 CDlgCharItems::~CDlgCharItems()
@@ -89,12 +110,14 @@ void CDlgCharItems::DoDataExchange(CDataExchange* pDX)
     DDX_Text(pDX, IDC_CHECK2, m_sText[8]);
     DDX_Text(pDX, IDC_CHECK5, m_sText[9]);
     DDX_Text(pDX, IDC_CHECK6, m_sText[10]);
-    DDX_Text(pDX, IDC_CHECK7, m_sText[11]);
+	DDX_Text(pDX, IDC_CHECK7, m_sText[11]);
+	DDX_Text(pDX, IDC_STATIC_Sockets, m_sText[12]);
     DDX_Control(pDX, IDC_BUTTON1, m_btButton[0]);
     DDX_Control(pDX, IDC_BUTTON2, m_btButton[1]);
     DDX_Control(pDX, IDC_BUTTON3, m_btButton[2]);
     DDX_Control(pDX, IDC_BUTTON4, m_btButton[3]);
-    DDX_Control(pDX, IDC_BUTTON5, m_btButton[4]);
+	DDX_Control(pDX, IDC_BUTTON5, m_btButton[4]);
+	
 }
 
 BEGIN_MESSAGE_MAP(CDlgCharItems, CDialog)
@@ -159,9 +182,9 @@ void CDlgCharItems::DrawItemsInGrid(CPaintDC & dc)
 		auto & itemView = *m_vpItems[i];
 		CPoint pos;
 		int gridID = INDEX(itemView.Pos);
-		if (gridID < GRID_NUMBER)    //在箱子,背包,方块里
+		if (gridID < GRID_NUMBER)    //在箱子,背包,方块，孔里
 			pos = GRID2XY(itemView.Pos);
-		else if (gridID != 6 && gridID != 7) //身上(除了左右手)
+		else if (gridID != RIGHT_HAND && gridID != LEFT_HAND) //身上(除了左右手)
 			pos = GRID2XY(gridID, itemView.Range);
 		else {       //左右手,分I,II
 			if (m_bSecondHand != COL(itemView.Pos))
@@ -195,7 +218,7 @@ WORD CDlgCharItems::HitTestItem(const CPoint & pos,WORD range)
     }
     for(int i = GRID_NUMBER;i < GRID_BODY_NUMBER;++i)   //其他
         if(m_rectGrid[i].PtInRect(pos)){
-            if(i == 6 || i == 7)    //左右手
+            if(i == RIGHT_HAND || i == LEFT_HAND)    //左右手
                 return MAKE_GRID(i,m_bSecondHand,0);
             else    //其他
                 return MAKE_GRID(i,0,0);
@@ -225,7 +248,7 @@ BOOL CDlgCharItems::PutItemInGrid(WORD itemIndex, WORD gridIndex) {
 				SET_GRID_ITEM(i, x0 + x, y0 + y, itemIndex);
 	} else {					//身体
 		const WORD MAP[10] = { 1,2,3,4,4,5,5,6,7,8 };
-		if (m_vpItems[itemIndex]->pItem->pItemData->Equip != MAP[i - 3])
+		if (m_vpItems[itemIndex]->pItem->pItemData->Equip != MAP[i - GRID_NUMBER])
 			return FALSE;
 		int c = COL(gridIndex), r = ROW(gridIndex);
 		if (GET_GRID_ITEM(i, c, r) != INVALID_ITEM)
@@ -387,10 +410,11 @@ void CDlgCharItems::ResetAll()
 
 void CDlgCharItems::LoadText(void)
 {
-    for(int i = 0;i < 12;++i)
-        m_sText[i] = ::theApp.CharItemsUI(i);
-    for(int i = 0;i < 5;++i)
-        m_btButton[i].SetWindowText(::theApp.CharItemsUI(12 + i));
+	int index = 0;
+    for(auto & text : m_sText)
+        text = ::theApp.CharItemsUI(index++);
+    for(auto & button : m_btButton)
+        button.SetWindowText(::theApp.CharItemsUI(index++));
     m_cbQuality.ResetContent();
 	for(UINT i = 0;i < ::theApp.ItemQualityNameSize();++i)
 		m_cbQuality.AddString(::theApp.ItemQualityName(i));
@@ -398,9 +422,9 @@ void CDlgCharItems::LoadText(void)
     LVCOLUMN col;
     col.cchTextMax = 20;
     col.mask = LVCF_TEXT;
-    col.pszText = (LPWSTR)::theApp.CharItemsUI(17).GetString();
+    col.pszText = (LPWSTR)::theApp.CharItemsUI(index++).GetString();
     m_lcPropertyList.SetColumn(0,&col);
-    col.pszText = (LPWSTR)::theApp.CharItemsUI(18).GetString();
+    col.pszText = (LPWSTR)::theApp.CharItemsUI(index++).GetString();
     m_lcPropertyList.SetColumn(1,&col);
 
 	UpdateData(FALSE);
@@ -484,7 +508,7 @@ void CDlgCharItems::OnChangeHand()
 {
     m_bSecondHand = !m_bSecondHand;
     //更新左右手
-    for(int i = 6;i < 8;++i){
+    for(int i = RIGHT_HAND;i <= LEFT_HAND;++i){
         CRect rect(GRID_RECT[i][0],GRID_RECT[i][1],0,0);
         rect.right = rect.left + GRID_RECT[i][2] * GRID_WIDTH;
         rect.bottom = rect.top + GRID_RECT[i][3] * GRID_WIDTH;

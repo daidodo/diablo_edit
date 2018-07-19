@@ -107,8 +107,10 @@ public:
 	void ReadBits(BYTE & value, int len) { operator>>(bits(value, len)); }
 	//vector<BYTE>
 	CInBitsStream & operator >>(std::vector<BYTE> & vec){
-		if (ensure(0))
+		if (ensure(0)) {
 			vec.assign(data_.begin() + bytes_, data_.end());
+			bytes_ = data_.size();
+		}
 		return *this;
 	}
 	//把不能识别的数据转储
@@ -118,7 +120,7 @@ public:
 			vec.assign(data_.begin() + from, data_.begin() + to);
 	}
 	//调试用，得到后续的2进制位流
-	CString ToString(DWORD len = 32) const;
+	std::string ToString(DWORD len = 32) const;
 private:
 	template<typename T>
 	CInBitsStream & readPod(T & value) {

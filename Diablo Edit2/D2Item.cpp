@@ -368,6 +368,11 @@ BOOL CItemInfo::IsNameValid() const {
 
 //CD2Item
 
+CD2Item::~CD2Item() {
+	for (auto p : aGemItems)
+		delete p;
+}
+
 void CD2Item::findUnknownItem(CInBitsStream & bs) {
 	if (!pItemInfo->IsNameValid())
 		throw 0;
@@ -432,6 +437,11 @@ void CD2Item::ReadData(CInBitsStream & bs)
 			findUnknownItem(bs);
 	}
 	bs.AlignByte();
+	aGemItems.resize(Gems());
+	for (auto & item : aGemItems) {
+		item = new CD2Item;
+		item->ReadData(bs);
+	}
 }
 
 void CD2Item::WriteData(COutBitsStream & bs) const {
@@ -472,4 +482,7 @@ void CD2Item::WriteData(COutBitsStream & bs) const {
 		}
 	}
 	bs.AlignByte();
+	for (auto item : aGemItems)
+		if(item)
+			item->WriteData(bs);
 }

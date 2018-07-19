@@ -45,7 +45,7 @@ struct CLongName
 //Extended Item Info
 struct CExtItemInfo
 {
-	BYTE					nGems;			//bit 108-110
+	BYTE					nGems;			//bit 108-110, 如果有孔，镶嵌的宝石数
 	DWORD					dwGUID;			//bit 111-142
 	BYTE					iDropLevel;		//bit 143-149,drop level
 	BYTE					iQuality;		/*4 bits
@@ -90,6 +90,7 @@ struct CExtItemInfo
 //Spell ID
 	CMayExist<BYTE>			bSpellID;		//5 bits,if sTypeName == "0sc"
 	BOOL IsSet() const { return iQuality == 5; }
+	int Gems() const { return nGems; }
 	void ReadData(CInBitsStream & bs, BOOL bIsCharm, BOOL bRuneWord, BOOL bPersonalized, BOOL bIsTome, BOOL bHasMonsterID, BOOL bHasSpellID);
 	void WriteData(COutBitsStream & bs, BOOL bIsCharm, BOOL bRuneWord, BOOL bPersonalized, BOOL bIsTome, BOOL bHasMonsterID, BOOL bHasSpellID) const;
 };
@@ -144,12 +145,14 @@ struct CItemInfo
 	void WriteData(COutBitsStream & bs, const CItemDataStruct & itemData, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed) const;
 	BOOL IsNameValid() const;
 	BOOL IsSet() const { return pExtItemInfo.IsValid() && pExtItemInfo.Value().IsSet(); }
+	int Gems() const { return pExtItemInfo.IsValid() && pExtItemInfo.Value().Gems(); }
 };
 
 class CD2Item
 {
 //members
 public:
+	~CD2Item();
     //Quality()只作显示时,控制名字的颜色用
 	BYTE Quality() const{return !bEar && !bSimple ? pItemInfo->pExtItemInfo->iQuality : (pItemData->IsUnique ? 7 : 2);}
 	void ReadData(CInBitsStream & bs);
@@ -189,6 +192,8 @@ public:
 	BYTE	iStoredIn;			//bit 73-75,0 = equip/belt 1 = inventory 2 = ? 3 = ? 4 = cube 5 = stash
 	CMayExist<CEar>			pEar;			//如果bEar == TRUE，则此结构存在
 	CMayExist<CItemInfo>	pItemInfo;		//如果bEar == FALSE，则此结构存在
+	std::vector<CD2Item *>	aGemItems;		//如果有孔，镶嵌在孔里的装备
 	//Functions
 	BOOL IsSet() const { return pItemInfo.IsValid() && pItemInfo.Value().IsSet(); }
+	BOOL Gems() const { return pItemInfo.IsValid() && pItemInfo.Value().Gems(); }
 };
