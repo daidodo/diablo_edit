@@ -143,6 +143,7 @@ struct CItemInfo
 	const CItemDataStruct * ReadData(CInBitsStream & bs, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed);
 	void WriteData(COutBitsStream & bs, const CItemDataStruct & itemData, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed) const;
 	BOOL IsNameValid() const;
+	BOOL IsSet() const { return pExtItemInfo.IsValid() && pExtItemInfo.Value().IsSet(); }
 };
 
 class CD2Item
@@ -197,4 +198,6 @@ public:
 	BYTE	iStoredIn;			//bit 73-75,0 = equip/belt 1 = inventory 2 = ? 3 = ? 4 = cube 5 = stash
 	CMayExist<CEar>			pEar;			//如果bEar == TRUE，则此结构存在
 	CMayExist<CItemInfo>	pItemInfo;		//如果bEar == FALSE，则此结构存在
+	//Functions
+	BOOL IsSet() const { return pItemInfo.IsValid() && pItemInfo.Value().IsSet(); }
 };

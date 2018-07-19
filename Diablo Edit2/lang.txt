@@ -4196,3 +4196,131 @@
 397	Rainbow Facet		
 398	Rainbow Facet		
 399	Rainbow Facet		
+*=======================以下是套装名字(Set Name)			
+0	Civerb's Ward		
+1	Civerb's Icon		
+2	Civerb's Cudgel		
+3	Hsarus' Iron Heel		
+4	Hsarus' Iron Fist		
+5	Hsarus' Iron Stay		
+6	Cleglaw's Tooth		
+7	Cleglaw's Claw		
+8	Cleglaw's Pincers		
+9	Iratha's Collar		
+10	Iratha's Cuff		
+11	Iratha's Coil		
+12	Iratha's Cord		
+13	Isenhart's Lightbrand		
+14	Isenhart's Parry		
+15	Isenhart's Case		
+16	Isenhart's Horns		
+17	Vidala's Barb		
+18	Vidala's Fetlock		
+19	Vidala's Ambush		
+20	Vidala's Snare		
+21	Milabrega's Orb		
+22	Milabrega's Rod		
+23	Milabrega's Diadem		
+24	Milabrega's Robe		
+25	Cathan's Rule		
+26	Cathan's Mesh		
+27	Cathan's Visage		
+28	Cathan's Sigil		
+29	Cathan's Seal		
+30	Tancred's Crowbill		
+31	Tancred's Spine		
+32	Tancred's Hobnails		
+33	Tancred's Weird		
+34	Tancred's Skull		
+35	Sigon's Gage		
+36	Sigon's Visor		
+37	Sigon's Shelter		
+38	Sigon's Sabot		
+39	Sigon's Wrap		
+40	Sigon's Guard		
+41	Infernal Cranium		
+42	Infernal Torch		
+43	Infernal Sign		
+44	Berserker's Headgear		
+45	Berserker's Hauberk		
+46	Berserker's Hatchet		
+47	Death's Hand		
+48	Death's Guard		
+49	Death's Touch		
+50	Angelic Sickle		
+51	Angelic Mantle		
+52	Angelic Halo		
+53	Angelic Wings		
+54	Arctic Horn		
+55	Arctic Furs		
+56	Arctic Binding		
+57	Arctic Mitts		
+58	Arcanna's Sign		
+59	Arcanna's Deathwand		
+60	Arcanna's Head		
+61	Arcanna's Flesh		
+62	Natalya's Totem		
+63	Natalya's Mark		
+64	Natalya's Shadow		
+65	Natalya's Soul		
+66	Aldur's Stony Gaze		
+67	Aldur's Deception		
+68	Aldur's Gauntlet		
+69	Aldur's Advance		
+70	Immortal King's Will		
+71	Immortal King's Soul Cage 		
+72	Immortal King's Detail		
+73	Immortal King's Forge		
+74	Immortal King's Pillar		
+75	Immortal King's Stone Crusher		
+76	Tal Rasha's Fire-Spun Cloth		
+77	Tal Rasha's Adjudication		
+78	Tal Rasha's Lidless Eye		
+79	Tal Rasha's Howling Wind		
+80	Tal Rasha's Horadric Crest		
+81	Griswold's Valor		
+82	Griswold's Heart		
+83	Griswolds's Redemption		
+84	Griswold's Honor		
+85	Trang-Oul's Guise		
+86	Trang-Oul's Scales		
+87	Trang-Oul's Wing		
+88	Trang-Oul's Claws		
+89	Trang-Oul's Girth		
+90	M'avina's True Sight		
+91	M'avina's Embrace		
+92	M'avina's Icy Clutch		
+93	M'avina's Tenet		
+94	M'avina's Caster		
+95	Telling of Beads		
+96	Laying of Hands		
+97	Rite of Passage		
+98	Spiritual Custodian		
+99	Credendum		
+100	Dangoon's Teaching		
+101	Heaven's Taebaek		
+102	Haemosu's Adament		
+103	Ondal's Almighty		
+104	Guillaume's Face		
+105	Wilhelm's Pride		
+106	Magnus' Skin		
+107	Wihtstan's Guard		
+108	Hwanin's Splendor		
+109	Hwanin's Refuge		
+110	Hwanin's Seal		
+111	Hwanin's Justice		
+112	Sazabi's Cobalt Redeemer		
+113	Sazabi's Ghost Liberator		
+114	Sazabi's Mental Sheath		
+115	Bul-Kathos' Sacred Charge		
+116	Bul-Kathos' Tribal Guardian		
+117	Cow King's Horns		
+118	Cow King's Hide		
+119	Cow King's Hoofs		
+120	Naj's Puzzler		
+121	Naj's Light Plate		
+122	Naj's Circlet		
+123	McAuley's Paragon		
+124	McAuley's Riprap		
+125	McAuley's Taboo		
+126	McAuley's Superstition		

@@ -81,10 +81,12 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem)
 		AddMsg(WHITE, ::theApp.ClassName(pItem->pEar->iEarClass));
 		AddMsg(WHITE, CSFormat(::theApp.ItemSuspendUI(11), pItem->pEar->iEarLevel));
     }else{              //item structure
+		BYTE quality = pItem->Quality();
+		BYTE color = quality <= 3 ? WHITE : quality - 3;
+		if (pItem->IsSet())	//Set item
+			AddMsg(color, ::theApp.SetItemName(pItem->pItemInfo->pExtItemInfo->wSetID.Value()));
         //Prefix, Suffix, Name
 		__Tokens name{ ::theApp.ItemName(pItem->pItemData->NameIndex) };
-        BYTE quality = pItem->Quality();
-        BYTE color = quality <= 3 ? WHITE : quality - 3;
         switch(quality){
         case 1:         //low
             name.push_front(::theApp.ItemSuspendUI(0));
@@ -141,10 +143,10 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem)
 		UINT socketnum = 0;   //sockets num
 		if (!pItem->bSimple) {
 			AddPropertyList(BLUE, pItem->pItemInfo->pTpSpInfo->stPropertyList, socketnum);
-			if (pItem->pItemInfo->pExtItemInfo->IsSet()) {
+			if (pItem->IsSet()) {
 				auto & setProps = pItem->pItemInfo->pTpSpInfo->apSetProperty;
 				for (size_t i = 0; i < std::size(setProps); ++i)
-					if (setProps[i].IsSet())
+					if (setProps[i].IsValid())
 						AddPropertyList(GREEN, setProps[i].Value(), socketnum);
 			}
 		}

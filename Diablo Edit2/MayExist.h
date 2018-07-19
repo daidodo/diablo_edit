@@ -12,7 +12,7 @@ struct CMayExist
 	const T & operator *() const { return Value(); }
 	const T & Value() const { return *p_; }
 	bool operator !() const { return !p_; }
-	bool IsSet() const { return p_; }
+	bool IsValid() const { return p_; }
 private:
 	CMayExist(const CMayExist &) = delete;
 	CMayExist & operator =(const CMayExist &) = delete;
