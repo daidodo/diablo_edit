@@ -156,15 +156,6 @@ public:
 	void WriteData(COutBitsStream & bs) const;
 private:
 	void findUnknownItem(CInBitsStream & bs);
-	//	void WriteFile(CFile & cf){
-//		cf.Write(&bData[0],UINT(bData.size()));
-//		cf.Flush();
-//	}
-//	void MakeData();
-//private:
-	//static void ReadPropertyFields();
-//fields
-	//static std::vector<BYTE>	SvBitFields;	//额外属性的位长信息
 public:
 	std::vector<BYTE>		vItemData;	//如果不能识别物品,那么物品的数据将存在这里
 	const CItemDataStruct *	pItemData;	//物品的额外属性,大小,bHasDef,bNoDurability,bStacked,等.如果不能识别物品,pItemData = 0;
