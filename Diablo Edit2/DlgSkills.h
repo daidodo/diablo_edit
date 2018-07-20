@@ -27,9 +27,9 @@ public:
 	void LoadText();
 // 自定义成员
 private:
-	static const int SKILL_SIZE = 30;
-	static const int TEXT_SIZE = 33;
-	static const int INDEX[7][SKILL_SIZE];
+	static const int SKILL_SIZE = CDiabloEdit2App::CLASS_SKILL_NAME_SIZE;
+	static const int TAB_SIZE = CDiabloEdit2App::CLASS_SKILL_TAB_SIZE;
+	static const int TEXT_SIZE = SKILL_SIZE + TAB_SIZE;
 	CString m_sText[TEXT_SIZE];
 	int m_nCharClass;			//人物角色
 	BYTE m_pSkills[SKILL_SIZE];	//技能等级数组

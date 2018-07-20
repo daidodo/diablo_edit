@@ -12,7 +12,7 @@ struct CMayExist
 	const T & operator *() const { return Value(); }
 	const T & Value() const { return *p_; }
 	bool operator !() const { return !p_; }
-	//	void Assert() const{ASSERT(p_);}
+	bool IsValid() const { return p_; }
 private:
 	CMayExist(const CMayExist &) = delete;
 	CMayExist & operator =(const CMayExist &) = delete;
@@ -29,6 +29,7 @@ struct CMayExistArray
 	T & operator [](int i) { return (p_ ? p_[i] : (p_ = new T[N])[i]); }
 	const T & operator [](int i) const { return p_[i]; }
 	const T * Value() const { return p_; }
+	int Size() const { return N; }
 private:
 	CMayExistArray(const CMayExistArray &) = delete;
 	CMayExistArray & operator =(const CMayExistArray &) = delete;

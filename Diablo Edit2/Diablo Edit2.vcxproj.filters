@@ -16,6 +16,9 @@
     <Filter Include="资源文件\Pictures">
       <UniqueIdentifier>{eff30932-02d1-4840-9ed9-47052c19be91}</UniqueIdentifier>
     </Filter>
+    <Filter Include="资源文件\Data">
+      <UniqueIdentifier>{d4637e01-c222-4660-aca9-4b4c2cb3ca48}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Diablo Edit2.h">
@@ -1115,6 +1118,18 @@
   <ItemGroup>
     <None Include="res\DiabloEdit2.rc2">
       <Filter>资源文件</Filter>
+    </None>
+    <None Include="itemdata.dat">
+      <Filter>资源文件\Data</Filter>
+    </None>
+    <None Include="language.dat">
+      <Filter>资源文件\Data</Filter>
+    </None>
+    <None Include="new.dat">
+      <Filter>资源文件\Data</Filter>
+    </None>
+    <None Include="property.dat">
+      <Filter>资源文件\Data</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

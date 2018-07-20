@@ -2,27 +2,48 @@
 //
 
 #include "stdafx.h"
+
 #include "Diablo Edit2.h"
 #include "DlgCharItems.h"
 
+using namespace std;
 
 // CDlgCharItems 对话框
 
+//和GRID_RECT要对应
+enum {
+	STASH,		//箱子
+	INVENTORY,	//口袋
+	CUBE,		//方块
+	SOCKETS,	//孔
+	HEAD,		//头
+	NECK,		//项链
+    BODY,		//身体
+    RIGHT_HAND,	//武器右
+    LEFT_HAND,	//武器左
+    RIGHT_RING,	//戒指右
+    LEFT_RING,	//戒指左
+    BELT,		//腰带		
+    FOOT,		//鞋子
+    GLOVE,		//手套
+};
+
 const WORD	CDlgCharItems::GRID_RECT[CDlgCharItems::GRID_BODY_NUMBER][4] = {
-    {10,5,6,8},		//箱子		0	left,top,col,row
-    {10,255,10,4},	//口袋		1
-    {340,255,3,4},	//方块		2
-    {300,5,2,2},	//头		3
-    {365,30,1,1},	//项链		4
-    {300,70,2,3},	//身体		5
-    {200,30,2,4},	//武器右	6
-    {400,30,2,4},	//武器左	7
-    {265,165,1,1},	//戒指右	8
-    {365,165,1,1},	//戒指左	9
-    {300,165,2,1},	//腰带		10
-    {400,155,2,2},	//鞋子		11
-    {200,155,2,2},	//手套		12
-    //{805,30,2,4},	//铸造台	13
+    {10,5,6,8},		//箱子			left,top,col,row
+    {10,255,10,4},	//口袋
+    {340,255,3,4},	//方块
+	{70,385,8,1},	//孔
+    {300,5,2,2},	//头
+    {365,30,1,1},	//项链
+    {300,70,2,3},	//身体
+    {200,30,2,4},	//武器右
+    {400,30,2,4},	//武器左
+    {265,165,1,1},	//戒指右
+    {365,165,1,1},	//戒指左
+    {300,165,2,1},	//腰带		
+    {400,155,2,2},	//鞋子
+    {200,155,2,2},	//手套
+    //{805,30,2,4},	//铸造台
 };
 
 IMPLEMENT_DYNAMIC(CDlgCharItems, CPropertyDialog)
@@ -43,15 +64,13 @@ CDlgCharItems::CDlgCharItems(CWnd* pParent /*=NULL*/)
     for(int i = GRID_NUMBER;i < GRID_BODY_NUMBER;++i)
         m_iGridItems[i].resize(1,INVALID_ITEM);
     //武器II
-    m_iGridItems[6].push_back(INVALID_ITEM);
-    m_iGridItems[7].push_back(INVALID_ITEM);
+    m_iGridItems[RIGHT_HAND].push_back(INVALID_ITEM);
+    m_iGridItems[LEFT_HAND].push_back(INVALID_ITEM);
 }
 
 CDlgCharItems::~CDlgCharItems()
 {
-    DestroyAllItems();
-    if(m_pDlgItemInfo)
-        delete m_pDlgItemInfo;
+	delete m_pDlgItemInfo;
 }
 
 void CDlgCharItems::DoDataExchange(CDataExchange* pDX)
@@ -89,12 +108,14 @@ void CDlgCharItems::DoDataExchange(CDataExchange* pDX)
     DDX_Text(pDX, IDC_CHECK2, m_sText[8]);
     DDX_Text(pDX, IDC_CHECK5, m_sText[9]);
     DDX_Text(pDX, IDC_CHECK6, m_sText[10]);
-    DDX_Text(pDX, IDC_CHECK7, m_sText[11]);
+	DDX_Text(pDX, IDC_CHECK7, m_sText[11]);
+	DDX_Text(pDX, IDC_STATIC_Sockets, m_sText[12]);
     DDX_Control(pDX, IDC_BUTTON1, m_btButton[0]);
     DDX_Control(pDX, IDC_BUTTON2, m_btButton[1]);
     DDX_Control(pDX, IDC_BUTTON3, m_btButton[2]);
     DDX_Control(pDX, IDC_BUTTON4, m_btButton[3]);
-    DDX_Control(pDX, IDC_BUTTON5, m_btButton[4]);
+	DDX_Control(pDX, IDC_BUTTON5, m_btButton[4]);
+	
 }
 
 BEGIN_MESSAGE_MAP(CDlgCharItems, CDialog)
@@ -153,15 +174,13 @@ void CDlgCharItems::DrawItemXY(CPaintDC & dc, CPoint pos, const CItemView & item
 void CDlgCharItems::DrawItemsInGrid(CPaintDC & dc)
 {
 	CRect selected(0, 0, 0, 0);
-	for (size_t i = 0; i < m_vpItems.size(); ++i) {
-		if (!m_vpItems[i])
-			continue;
-		auto & itemView = *m_vpItems[i];
+	for (size_t i = 0; i < m_vItemViews.size(); ++i) {
+		const auto & itemView = m_vItemViews[i];
 		CPoint pos;
 		int gridID = INDEX(itemView.Pos);
 		if (gridID < GRID_NUMBER)    //在箱子,背包,方块里
 			pos = GRID2XY(itemView.Pos);
-		else if (gridID != 6 && gridID != 7) //身上(除了左右手)
+		else if (gridID != RIGHT_HAND && gridID != LEFT_HAND) //身上(除了左右手)
 			pos = GRID2XY(gridID, itemView.Range);
 		else {       //左右手,分I,II
 			if (m_bSecondHand != COL(itemView.Pos))
@@ -173,6 +192,13 @@ void CDlgCharItems::DrawItemsInGrid(CPaintDC & dc)
 		if (i == m_iSelectedItemIndex) {
 			CSize sz(COL(itemView.Range) * GRID_WIDTH, ROW(itemView.Range) * GRID_WIDTH);
 			selected = CRect(pos, sz);
+			//Draw gems in sockets
+			const auto & gems = itemView.vGemItems;
+			for (UINT j = 0; j < GRID_RECT[SOCKETS][2] && j < gems.size(); ++j) {
+				const auto & view = gems[j];
+				auto gemPos = GRID2XY(view.Pos);
+				DrawItemXY(dc, gemPos, view);
+			}
 		}
 	}
 	// 高亮选中的物品
@@ -195,7 +221,7 @@ WORD CDlgCharItems::HitTestItem(const CPoint & pos,WORD range)
     }
     for(int i = GRID_NUMBER;i < GRID_BODY_NUMBER;++i)   //其他
         if(m_rectGrid[i].PtInRect(pos)){
-            if(i == 6 || i == 7)    //左右手
+            if(i == RIGHT_HAND || i == LEFT_HAND)    //左右手
                 return MAKE_GRID(i,m_bSecondHand,0);
             else    //其他
                 return MAKE_GRID(i,0,0);
@@ -204,43 +230,36 @@ WORD CDlgCharItems::HitTestItem(const CPoint & pos,WORD range)
 }
 
 BOOL CDlgCharItems::PutItemInGrid(WORD itemIndex, WORD gridIndex) {
-	ASSERT(itemIndex >= 0 && itemIndex < WORD(m_vpItems.size()) && m_vpItems[itemIndex]);
+	ASSERT(itemIndex >= 0 && itemIndex < WORD(m_vItemViews.size()));
 	if (gridIndex == INVALID_ITEM)
 		return FALSE;
+	CItemView & view = m_vItemViews[itemIndex];
 	int i = INDEX(gridIndex);
 	if (i < GRID_NUMBER) {	//存储箱,背包,方块
 		int x0 = COL(gridIndex);
 		int y0 = ROW(gridIndex);
-		CItemView & rit = *m_vpItems[itemIndex];
-		if (x0 + COL(rit.Range) > GRID_RECT[i][2] ||
-			y0 + ROW(rit.Range) > GRID_RECT[i][3])
+		if (x0 + COL(view.Range) > GRID_RECT[i][2] ||
+			y0 + ROW(view.Range) > GRID_RECT[i][3])
 			return FALSE;   //物品在网格外面了
-		for (int x = 0; x < COL(rit.Range); ++x)
-			for (int y = 0; y < ROW(rit.Range); ++y)
+		for (int x = 0; x < COL(view.Range); ++x)
+			for (int y = 0; y < ROW(view.Range); ++y)
 				if (GET_GRID_ITEM(i, x0 + x, y0 + y) != INVALID_ITEM)
 					return FALSE;   //网格里有物品
-		m_vpItems[itemIndex]->Pos = gridIndex;
-		for (int x = 0; x < COL(rit.Range); ++x)
-			for (int y = 0; y < ROW(rit.Range); ++y)
+		view.Pos = gridIndex;
+		for (int x = 0; x < COL(view.Range); ++x)
+			for (int y = 0; y < ROW(view.Range); ++y)
 				SET_GRID_ITEM(i, x0 + x, y0 + y, itemIndex);
 	} else {					//身体
 		const WORD MAP[10] = { 1,2,3,4,4,5,5,6,7,8 };
-		if (m_vpItems[itemIndex]->pItem->pItemData->Equip() != MAP[i - 3])
+		if (view.Item.pItemData->Equip != MAP[i - GRID_NUMBER])
 			return FALSE;
 		int c = COL(gridIndex), r = ROW(gridIndex);
 		if (GET_GRID_ITEM(i, c, r) != INVALID_ITEM)
 			return FALSE;
-		m_vpItems[itemIndex]->Pos = MAKE_GRID(i, c, r);
+		view.Pos = MAKE_GRID(i, c, r);
 		SET_GRID_ITEM(i, c, r, itemIndex);
 	}
 	return TRUE;
-}
-
-void CDlgCharItems::DestroyAllItems()
-{
-	for(auto pItem : m_vpItems)
-		delete pItem;
-	m_vpItems.clear();
 }
 
 void CDlgCharItems::ShowItemInfoDlg(const CD2Item * pItem)
@@ -265,43 +284,42 @@ void CDlgCharItems::ShowItemInfoDlg(const CD2Item * pItem)
 
 void CDlgCharItems::ReadItemProperty(WORD itemIndex)
 {
-    ASSERT(itemIndex >= 0 && itemIndex < WORD(m_vpItems.size()) && m_vpItems[itemIndex] && m_vpItems[itemIndex]->pItem);
-    const CD2Item & rit = *m_vpItems[itemIndex]->pItem;
-    //m_sItemName = ::theApp.ItemName(rit.pItemData->NameIndex());
-    if(m_bItemSocket = rit.bSocketed)
-        m_bBaseSocket = rit.pItemInfo->pTpSpInfo->iSocket.Value();
-    m_bEthereal = rit.bEthereal;
-    //m_bItemInscribed = rit.bPersonalized;
-    if(rit.bEar){   //ear structure
-        m_bItemLevel = rit.pEar->iEarLevel;
-        m_ItemOwner = rit.pEar->sEarName;
+    ASSERT(itemIndex >= 0 && itemIndex < WORD(m_vItemViews.size()));
+    const CD2Item & item = m_vItemViews[itemIndex].Item;
+    //m_sItemName = ::theApp.ItemName(item.pItemData->NameIndex);
+    if(m_bItemSocket = item.bSocketed)
+        m_bBaseSocket = item.pItemInfo->pTpSpInfo->iSocket.Value();
+    m_bEthereal = item.bEthereal;
+    //m_bItemInscribed = item.bPersonalized;
+    if(item.bEar){   //ear structure
+        m_bItemLevel = item.pEar->iEarLevel;
+        m_ItemOwner = item.pEar->sEarName;
     }else{
-        if(IsSameType(rit.pItemInfo->sTypeName,"gld "))
-            m_wItemQuantity = rit.pItemInfo->pGold->wQuantity;
-        if(!rit.bSimple){
-            m_bItemLevel = rit.pItemInfo->pExtItemInfo->iDropLevel;
-            if(rit.bPersonalized)
-                m_ItemOwner = rit.pItemInfo->pExtItemInfo->sPersonName.Value();
-            m_cbQuality.SetCurSel(rit.pItemInfo->pExtItemInfo->iQuality - 1);
-            if(rit.pItemData->IsStacked())
-                m_wItemQuantity = rit.pItemInfo->pTpSpInfo->iQuantity.Value();
-            if(rit.pItemData->HasDef())
-                m_wItemDefence = rit.pItemInfo->pTpSpInfo->iDefence.Value() - 10;
-            if(rit.pItemData->HasDur()){
-                m_wMaxDurability = rit.pItemInfo->pTpSpInfo->iMaxDurability.Value();
+        if(IsSameType(item.pItemInfo->sTypeName,"gld "))
+            m_wItemQuantity = item.pItemInfo->pGold->wQuantity;
+        if(!item.bSimple){
+            m_bItemLevel = item.pItemInfo->pExtItemInfo->iDropLevel;
+            if(item.bPersonalized)
+                m_ItemOwner = item.pItemInfo->pExtItemInfo->sPersonName.Value();
+            m_cbQuality.SetCurSel(item.pItemInfo->pExtItemInfo->iQuality - 1);
+            if(item.pItemData->IsStacked)
+                m_wItemQuantity = item.pItemInfo->pTpSpInfo->iQuantity.Value();
+            if(item.pItemData->HasDef)
+                m_wItemDefence = item.pItemInfo->pTpSpInfo->iDefence.Value() - 10;
+            if(item.pItemData->HasDur){
+                m_wMaxDurability = item.pItemInfo->pTpSpInfo->iMaxDurability.Value();
                 if(!(m_bIndestructible = (m_wMaxDurability == 0)))
-                    m_wCurDurability = rit.pItemInfo->pTpSpInfo->iCurDur.Value();
+                    m_wCurDurability = item.pItemInfo->pTpSpInfo->iCurDur.Value();
             }
-			for (const auto & p : rit.pItemInfo->pTpSpInfo->mProperty) {
+			for (const auto & p : item.pItemInfo->pTpSpInfo->stPropertyList.mProperty) {
 				if (p.first == 194) {	//Adds X extra sockets to the item
 					m_bExtSocket = BYTE(p.second);
 				} else {
-					CString tmp;
-					tmp.Format(_T("%3d"), UINT(p.first)); //属性代码
-					int i = m_lcPropertyList.InsertItem(0, tmp);
+					int i = m_lcPropertyList.InsertItem(0, CSFormat(_T("%3d"), UINT(p.first)));	//属性代码
 					m_lcPropertyList.SetItemText(i, 1, ::theApp.PorpertyDescription(p.first, p.second)); //属性描述
 				}
 			}
+			//TODO: Set property lists
         }
     }
 
@@ -328,30 +346,33 @@ void CDlgCharItems::ResetFoundry()
 //虚函数重载
 void CDlgCharItems::UpdateUI(const CD2S_Struct & character)
 {
-    if(!m_vpItems.empty())
+    if(!m_vItemViews.empty())
         ResetAll();
-    m_vpItems.resize(character.ItemList.nItems);
+    m_vItemViews.reserve(character.ItemList.nItems);
     for(WORD i = 0;i < character.ItemList.nItems;++i){
         ASSERT(character.ItemList.vpItems[i] && _T("CDlgCharItems::UpdateUI(const CD2S_Struct & character)"));
-        CD2Item & rit = *character.ItemList.vpItems[i];
-		m_vpItems[i] = new CItemView(BMP_INDEX_BASE + rit.pItemData->PicIndex(), rit.pItemData->Range(), &rit);
-		//if(rit.bEar){				//耳朵
-        //    //...
-        //}else if(rit.pItemData){	//物品
+        CD2Item & item = *character.ItemList.vpItems[i];
+		m_vItemViews.emplace_back(BMP_INDEX_BASE + item.pItemData->PicIndex, item.pItemData->Range, item);
+		int c = 0;
+		for(auto gem : item.aGemItems)
+			if (gem) {
+				m_vItemViews.back().vGemItems.emplace_back(BMP_INDEX_BASE + gem->pItemData->PicIndex, gem->pItemData->Range, *gem);
+				m_vItemViews.back().vGemItems.back().Pos = (SOCKETS << 8) + (c++ << 4);
+			}
         int index = INVALID_ITEM,x,y;
-        switch(rit.iLocation){
+        switch(item.iLocation){
             case 0:		//grid
-                index = (rit.iStoredIn == 1 ? 1 : (rit.iStoredIn == 4 ? 2 : (rit.iStoredIn == 5 ? 0 : INVALID_ITEM)));
-                x = rit.iColumn;
-                y = rit.iRow;
+                index = (item.iStoredIn == 1 ? 1 : (item.iStoredIn == 4 ? 2 : (item.iStoredIn == 5 ? 0 : INVALID_ITEM)));
+                x = item.iColumn;
+                y = item.iRow;
                 break;
             case 1:		//equipped
-                if(rit.iPosition){
-                    if(rit.iPosition <= 10){
-                        index = rit.iPosition + 2;
+                if(item.iPosition){
+                    if(item.iPosition <= 10){
+                        index = item.iPosition + 2;
                         x = y = 0;
-                    }else if(rit.iPosition <= 12){	//左右手II
-                        index = rit.iPosition - 5;
+                    }else if(item.iPosition <= 12){	//左右手II
+                        index = item.iPosition - 5;
                         x = 1;
                         y = 0;
                     }
@@ -367,7 +388,6 @@ void CDlgCharItems::UpdateUI(const CD2S_Struct & character)
         }
 		if(index != INVALID_ITEM)
             PutItemInGrid(i,MAKE_GRID(index,x,y));
-        //}
     }
 	m_iSelectedItemIndex = INVALID_ITEM;
     Invalidate();
@@ -382,7 +402,7 @@ BOOL CDlgCharItems::GatherData(CD2S_Struct & character)
 
 void CDlgCharItems::ResetAll()
 {
-    DestroyAllItems();
+	m_vItemViews.clear();
     m_bSecondHand = FALSE;
     for(int i = 0;i < GRID_BODY_NUMBER;++i)
         std::fill(m_iGridItems[i].begin(),m_iGridItems[i].end(),INVALID_ITEM);
@@ -392,20 +412,21 @@ void CDlgCharItems::ResetAll()
 
 void CDlgCharItems::LoadText(void)
 {
-    for(int i = 0;i < 12;++i)
-        m_sText[i] = ::theApp.String(424 + i);
-    for(int i = 0;i < 5;++i)
-        m_btButton[i].SetWindowText(::theApp.String(436 + i));
+	int index = 0;
+    for(auto & text : m_sText)
+        text = ::theApp.CharItemsUI(index++);
+    for(auto & button : m_btButton)
+        button.SetWindowText(::theApp.CharItemsUI(index++));
     m_cbQuality.ResetContent();
-    for(int i = 0;i < 8;++i)
-        m_cbQuality.AddString(::theApp.String(386 + i));
+	for(UINT i = 0;i < ::theApp.ItemQualityNameSize();++i)
+		m_cbQuality.AddString(::theApp.ItemQualityName(i));
     //设置属性列表的标题文字
     LVCOLUMN col;
     col.cchTextMax = 20;
     col.mask = LVCF_TEXT;
-    col.pszText = (LPWSTR)::theApp.String(383).GetString(); 
+    col.pszText = (LPWSTR)::theApp.CharItemsUI(index++).GetString();
     m_lcPropertyList.SetColumn(0,&col);
-    col.pszText = (LPWSTR)::theApp.String(384).GetString(); 
+    col.pszText = (LPWSTR)::theApp.CharItemsUI(index++).GetString();
     m_lcPropertyList.SetColumn(1,&col);
 
 	UpdateData(FALSE);
@@ -426,7 +447,7 @@ void CDlgCharItems::OnMouseMove(UINT nFlags, CPoint point)
 	if (grid != INVALID_ITEM) {// && INDEX(grid) < GRID_BODY_NUMBER - 1){	//在非锻造台的网格范围内
 		int item = GET_GRID_ITEM(grid);
 		if (item != INVALID_ITEM) {		//悬停在物品上
-			ShowItemInfoDlg(m_vpItems[item]->pItem);
+			ShowItemInfoDlg(&m_vItemViews[item].Item);
 		} else
 			ShowItemInfoDlg(0);
 	} else
@@ -464,8 +485,8 @@ BOOL CDlgCharItems::OnInitDialog()
 {
     CPropertyDialog::OnInitDialog();
 	m_lcPropertyList.SetExtendedStyle(LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES);
-	m_lcPropertyList.InsertColumn(0, ::theApp.String(383), LVCFMT_LEFT, 60);
-	m_lcPropertyList.InsertColumn(1, ::theApp.String(384), LVCFMT_LEFT, 225);
+	m_lcPropertyList.InsertColumn(0, _T(""), LVCFMT_LEFT, 60);
+	m_lcPropertyList.InsertColumn(1, _T(""), LVCFMT_LEFT, 225);
 	m_scTrasparent.SetRange(0, 255);
 	m_scTrasparent.SetPos(200);
     LoadText();
@@ -489,7 +510,7 @@ void CDlgCharItems::OnChangeHand()
 {
     m_bSecondHand = !m_bSecondHand;
     //更新左右手
-    for(int i = 6;i < 8;++i){
+    for(int i = RIGHT_HAND;i <= LEFT_HAND;++i){
         CRect rect(GRID_RECT[i][0],GRID_RECT[i][1],0,0);
         rect.right = rect.left + GRID_RECT[i][2] * GRID_WIDTH;
         rect.bottom = rect.top + GRID_RECT[i][3] * GRID_WIDTH;
@@ -502,63 +523,63 @@ void CDlgCharItems::OnPrefixSuffix()
     std::vector<int> selIndex(10,-1);
     int itemIndex = m_iGridItems[GRID_BODY_NUMBER - 1][0];
     if(itemIndex != INVALID_ITEM){
-        CD2Item & rit = *m_vpItems[itemIndex]->pItem;
-        if(!!rit.pItemInfo && !!rit.pItemInfo->pExtItemInfo){
+        const CD2Item & item = m_vItemViews[itemIndex].Item;
+        if(!!item.pItemInfo && !!item.pItemInfo->pExtItemInfo){
             switch(m_cbQuality.GetCurSel() + 1){
                 case 1:     //low
-                    if(!!rit.pItemInfo->pExtItemInfo->loQual)
-                        selIndex[9] = rit.pItemInfo->pExtItemInfo->loQual.Value();
+                    if(item.pItemInfo->pExtItemInfo->loQual.IsValid())
+                        selIndex[9] = item.pItemInfo->pExtItemInfo->loQual.Value();
                     break;
                 case 3:     //high
-                    if(!!rit.pItemInfo->pExtItemInfo->hiQual)
-                        selIndex[9] = rit.pItemInfo->pExtItemInfo->hiQual.Value();
+                    if(item.pItemInfo->pExtItemInfo->hiQual.IsValid())
+                        selIndex[9] = item.pItemInfo->pExtItemInfo->hiQual.Value();
                     break;
                 case 4:     //magic
-                    if(!!rit.pItemInfo->pExtItemInfo->wPrefix)
-                        selIndex[2] = rit.pItemInfo->pExtItemInfo->wPrefix.Value();
-                    if(!!rit.pItemInfo->pExtItemInfo->wSuffix)
-                        selIndex[3] = rit.pItemInfo->pExtItemInfo->wSuffix.Value();
+                    if(item.pItemInfo->pExtItemInfo->wPrefix.IsValid())
+                        selIndex[2] = item.pItemInfo->pExtItemInfo->wPrefix.Value();
+                    if(item.pItemInfo->pExtItemInfo->wSuffix.IsValid())
+                        selIndex[3] = item.pItemInfo->pExtItemInfo->wSuffix.Value();
                     break;
                 case 5:     //set
                     break;
                 case 6:     //rare
-                    if(!!rit.pItemInfo->pExtItemInfo->pRareName){
-                        selIndex[0] = rit.pItemInfo->pExtItemInfo->pRareName->iName1;
-                        selIndex[1] = rit.pItemInfo->pExtItemInfo->pRareName->iName2;
-                        if(rit.pItemInfo->pExtItemInfo->pRareName->bPref1)
-                            selIndex[2] = rit.pItemInfo->pExtItemInfo->pRareName->wPref1.Value();
-                        if(rit.pItemInfo->pExtItemInfo->pRareName->bSuff1)
-                            selIndex[3] = rit.pItemInfo->pExtItemInfo->pRareName->wSuff1.Value();
-                        if(rit.pItemInfo->pExtItemInfo->pRareName->bPref2)
-                            selIndex[4] = rit.pItemInfo->pExtItemInfo->pRareName->wPref2.Value();
-                        if(rit.pItemInfo->pExtItemInfo->pRareName->bSuff2)
-                            selIndex[5] = rit.pItemInfo->pExtItemInfo->pRareName->wSuff2.Value();
-                        if(rit.pItemInfo->pExtItemInfo->pRareName->bPref3)
-                            selIndex[6] = rit.pItemInfo->pExtItemInfo->pRareName->wPref3.Value();
-                        if(rit.pItemInfo->pExtItemInfo->pRareName->bSuff3)
-                            selIndex[7] = rit.pItemInfo->pExtItemInfo->pRareName->wSuff3.Value();
+                    if(item.pItemInfo->pExtItemInfo->pRareName.IsValid()){
+                        selIndex[0] = item.pItemInfo->pExtItemInfo->pRareName->iName1;
+                        selIndex[1] = item.pItemInfo->pExtItemInfo->pRareName->iName2;
+                        if(item.pItemInfo->pExtItemInfo->pRareName->bPref1)
+                            selIndex[2] = item.pItemInfo->pExtItemInfo->pRareName->wPref1.Value();
+                        if(item.pItemInfo->pExtItemInfo->pRareName->bSuff1)
+                            selIndex[3] = item.pItemInfo->pExtItemInfo->pRareName->wSuff1.Value();
+                        if(item.pItemInfo->pExtItemInfo->pRareName->bPref2)
+                            selIndex[4] = item.pItemInfo->pExtItemInfo->pRareName->wPref2.Value();
+                        if(item.pItemInfo->pExtItemInfo->pRareName->bSuff2)
+                            selIndex[5] = item.pItemInfo->pExtItemInfo->pRareName->wSuff2.Value();
+                        if(item.pItemInfo->pExtItemInfo->pRareName->bPref3)
+                            selIndex[6] = item.pItemInfo->pExtItemInfo->pRareName->wPref3.Value();
+                        if(item.pItemInfo->pExtItemInfo->pRareName->bSuff3)
+                            selIndex[7] = item.pItemInfo->pExtItemInfo->pRareName->wSuff3.Value();
                     }
                     break;
                 case 7:     //unique
-                    if(!!rit.pItemInfo->pExtItemInfo->wUniID)
-                        selIndex[8] = rit.pItemInfo->pExtItemInfo->wUniID.Value();
+                    if(item.pItemInfo->pExtItemInfo->wUniID.IsValid())
+                        selIndex[8] = item.pItemInfo->pExtItemInfo->wUniID.Value();
                     break;
                 case 8:     //crafted
-                    if(!!rit.pItemInfo->pExtItemInfo->pCraftName){
-                        selIndex[0] = rit.pItemInfo->pExtItemInfo->pCraftName->iName1;
-                        selIndex[1] = rit.pItemInfo->pExtItemInfo->pCraftName->iName2;
-                        if(rit.pItemInfo->pExtItemInfo->pCraftName->bPref1)
-                            selIndex[2] = rit.pItemInfo->pExtItemInfo->pCraftName->wPref1.Value();
-                        if(rit.pItemInfo->pExtItemInfo->pCraftName->bSuff1)
-                            selIndex[3] = rit.pItemInfo->pExtItemInfo->pCraftName->wSuff1.Value();
-                        if(rit.pItemInfo->pExtItemInfo->pCraftName->bPref2)
-                            selIndex[4] = rit.pItemInfo->pExtItemInfo->pCraftName->wPref2.Value();
-                        if(rit.pItemInfo->pExtItemInfo->pCraftName->bSuff2)
-                            selIndex[5] = rit.pItemInfo->pExtItemInfo->pCraftName->wSuff2.Value();
-                        if(rit.pItemInfo->pExtItemInfo->pCraftName->bPref3)
-                            selIndex[6] = rit.pItemInfo->pExtItemInfo->pCraftName->wPref3.Value();
-                        if(rit.pItemInfo->pExtItemInfo->pCraftName->bSuff3)
-                            selIndex[7] = rit.pItemInfo->pExtItemInfo->pCraftName->wSuff3.Value();
+                    if(item.pItemInfo->pExtItemInfo->pCraftName.IsValid()){
+                        selIndex[0] = item.pItemInfo->pExtItemInfo->pCraftName->iName1;
+                        selIndex[1] = item.pItemInfo->pExtItemInfo->pCraftName->iName2;
+                        if(item.pItemInfo->pExtItemInfo->pCraftName->bPref1)
+                            selIndex[2] = item.pItemInfo->pExtItemInfo->pCraftName->wPref1.Value();
+                        if(item.pItemInfo->pExtItemInfo->pCraftName->bSuff1)
+                            selIndex[3] = item.pItemInfo->pExtItemInfo->pCraftName->wSuff1.Value();
+                        if(item.pItemInfo->pExtItemInfo->pCraftName->bPref2)
+                            selIndex[4] = item.pItemInfo->pExtItemInfo->pCraftName->wPref2.Value();
+                        if(item.pItemInfo->pExtItemInfo->pCraftName->bSuff2)
+                            selIndex[5] = item.pItemInfo->pExtItemInfo->pCraftName->wSuff2.Value();
+                        if(item.pItemInfo->pExtItemInfo->pCraftName->bPref3)
+                            selIndex[6] = item.pItemInfo->pExtItemInfo->pCraftName->wPref3.Value();
+                        if(item.pItemInfo->pExtItemInfo->pCraftName->bSuff3)
+                            selIndex[7] = item.pItemInfo->pExtItemInfo->pCraftName->wSuff3.Value();
                     }
                     break;
                 default:;

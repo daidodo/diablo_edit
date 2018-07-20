@@ -18,7 +18,13 @@
     <ClInclude Include="pch.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="LangData.h">
+    <ClInclude Include="quicklz.c.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="quicklz.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="compress_quicklz.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -31,7 +37,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt">
+    <Text Include="itemdata.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="property.txt">
       <Filter>资源文件</Filter>
     </Text>
     <Text Include="lang.txt">

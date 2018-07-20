@@ -154,7 +154,7 @@ void CDlgCharBasicInfo::UpdateUI(const CD2S_Struct & character)
 		case 0x59:m_sVersion = _T("Standard 1.08");break;
 		case 0x57:m_sVersion = _T("1.07/Expansion 1.08");break;
 		case 0x47:m_sVersion = _T("1.00-1.06");break;
-		default:m_sVersion = ::theApp.String(15);
+		default:m_sVersion = ::theApp.MsgUnknown();
 	}
 	m_cbCharClass.SetCurSel(character.charClass);
 	m_bLadder = (character.charType & 0x40) != 0;
@@ -212,15 +212,11 @@ BOOL CDlgCharBasicInfo::GatherData(CD2S_Struct & character)
 {
 	UpdateData(TRUE);
 	if(!CheckCharName()){
-		MessageBox(::theApp.String(16) + _T("\n\n") + 
-			::theApp.String(17) +_T("\n") + 
-			::theApp.String(18) + _T("\n") +
-			::theApp.String(19) + _T("\n") +
-			::theApp.String(20),::theApp.String(6),MB_ICONERROR);
+		MessageBox(::theApp.MsgBoxInfo(0), ::theApp.MsgError(), MB_ICONERROR);
 		return FALSE;
 	}
 	if(m_uCharLevel < 1 || m_uCharLevel > 127){
-		MessageBox(::theApp.String(21),::theApp.String(6),MB_ICONERROR);
+		MessageBox(::theApp.MsgBoxInfo(1),::theApp.MsgError(),MB_ICONERROR);
 		return FALSE;
 	}
 	if(m_dwStrength > 1023 ||
@@ -235,11 +231,11 @@ BOOL CDlgCharBasicInfo::GatherData(CD2S_Struct & character)
 		m_dwMaximumMana > 8191 ||
 		m_dwCurrentStamina > 8191 ||
 		m_dwMaximumStamina > 8191){
-			MessageBox(::theApp.String(22) +_T("\n") + ::theApp.String(23),::theApp.String(6),MB_ICONERROR);
+			MessageBox(::theApp.MsgBoxInfo(2), ::theApp.MsgError(), MB_ICONERROR);
 			return FALSE;
 	}
 	if(m_dwGoldInBody > m_dwMaxGoldInBody || m_dwGoldInStash > m_dwMaxGoldInStash){
-		MessageBox(::theApp.String(372),::theApp.String(6),MB_ICONERROR);
+		MessageBox(::theApp.MsgBoxInfo(3),::theApp.MsgError(),MB_ICONERROR);
 		return FALSE;
 	}
 	character.charClass = m_cbCharClass.GetCurSel();
@@ -325,8 +321,8 @@ void CDlgCharBasicInfo::InitUI(void)
 		}
 	}
 	if(!m_dlgTabPage){
-		m_tcBasicInfo.InsertItem(0,::theApp.String(2));
-		m_tcBasicInfo.InsertItem(1,::theApp.String(3));
+		m_tcBasicInfo.InsertItem(0, _T(""));
+		m_tcBasicInfo.InsertItem(1, _T(""));
 		//在此处添加新的属性页,并在LoadText里更改界面文字的重载入
 		m_nTabPageCount = m_tcBasicInfo.GetItemCount();
 
@@ -374,30 +370,26 @@ void CDlgCharBasicInfo::LoadText(void)
     TCITEM tci;
     tci.mask = TCIF_TEXT;
     //小站,任务
-    tci.pszText = (LPWSTR)::theApp.String(2).GetString();
+    tci.pszText = (LPWSTR)::theApp.CharBasicInfoUI(1).GetString();
     m_tcBasicInfo.SetItem(0,&tci);
-    tci.pszText = (LPWSTR)::theApp.String(3).GetString();
+    tci.pszText = (LPWSTR)::theApp.CharBasicInfoUI(2).GetString();
     m_tcBasicInfo.SetItem(1,&tci);
+	m_btnSkills.SetWindowText(::theApp.CharBasicInfoUI(3));
 
     int sel = m_cbCharClass.GetCurSel();
     m_cbCharClass.ResetContent();
-    for(int i = 0;i < 7;++i)
-        m_cbCharClass.AddString(::theApp.String(24 + i));
+    for(UINT i = 0;i < ::theApp.CLASS_NAME_SIZE;++i)
+        m_cbCharClass.AddString(::theApp.ClassName(i));
     m_cbCharClass.SetCurSel(sel);
 
     sel = m_cbLastDifficult.GetCurSel();
     m_cbLastDifficult.ResetContent();
-    m_cbLastDifficult.AddString(::theApp.String(31));
-    m_cbLastDifficult.AddString(::theApp.String(32));
-    m_cbLastDifficult.AddString(::theApp.String(33));
+	for(UINT i = 0;i < ::theApp.DifficultyNameSize();++i)
+		m_cbLastDifficult.AddString(::theApp.DifficultyName(i));
     m_cbLastDifficult.SetCurSel(sel);
 
-	for(int i = 0;i < 25;++i)
-		m_sText[i] = ::theApp.String(34 + i);
-	m_sText[25] = ::theApp.String(127);
-	m_sText[26] = ::theApp.String(128);
-	m_sText[27] = ::theApp.String(129);
-	m_btnSkills.SetWindowText(::theApp.String(4));
+	for(int i = 0;i < 28;++i)
+		m_sText[i] = ::theApp.CharBasicInfoUI(4 + i);
 
 	for(int i = 0;i < m_nTabPageCount;++i)
 		m_dlgTabPage[i]->LoadText();
@@ -410,8 +402,8 @@ void CDlgCharBasicInfo::LoadText(void)
 BOOL CDlgCharBasicInfo::OnInitDialog()
 {
 	CPropertyDialog::OnInitDialog();
-	LoadText();
 	InitUI();
+	LoadText();
 	return TRUE;
 }
 
@@ -422,7 +414,7 @@ void CDlgCharBasicInfo::OnBnClicked_Skills()
 		CDlgSkills dlgSkill(charClass,m_bSkills);
 		dlgSkill.DoModal();
 	}else
-		MessageBox(::theApp.String(130),::theApp.String(6),MB_ICONERROR);
+		MessageBox(::theApp.MsgBoxInfo(4),::theApp.MsgError(),MB_ICONERROR);
 }
 
 void CDlgCharBasicInfo::OnEnChangeLevel()

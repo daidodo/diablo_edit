@@ -1120,6 +1120,7 @@ BEGIN
     LTEXT           "Property Transparency",IDC_STATIC8,2,240,76,10
     CONTROL         "",IDC_SLIDER1,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,78,242,51,8
     CONTROL         "II",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,150,5,19,10
+    RTEXT           "Sockets",IDC_STATIC_Sockets,8,196,25,10
 END
 
 IDD_DIALOG_Suspend DIALOGEX 0, 0, 113, 53

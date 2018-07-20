@@ -160,10 +160,9 @@ void CDlgQuestInfo::ResetAll()
 void CDlgQuestInfo::LoadText(void)
 {
 	for(int i = 0;i < 28;++i)
-		m_sText[i] = ::theApp.String(99 + i);
-	m_sText[28] = ::theApp.String(31);
-	m_sText[29] = ::theApp.String(32);
-	m_sText[30] = ::theApp.String(33);
+		m_sText[i] = ::theApp.QuestName(i);
+	for (UINT i = 0; i < ::theApp.DifficultyNameSize(); ++i)
+		m_sText[28 + i] = ::theApp.DifficultyName(i);
 	UpdateData(FALSE);
 }
 

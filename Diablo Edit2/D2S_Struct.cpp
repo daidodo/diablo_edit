@@ -39,18 +39,21 @@ void CD2S_Struct::WriteFile(CFile & cf) const
 BOOL CD2S_Struct::ReadData(CInBitsStream & bs) {
 	//得到人物信息
 	bs >> dwMajic;
-	if (dwMajic != 0xAA55AA55)
-		if (MessageBox(0, ::theApp.String(13), ::theApp.String(5), MB_YESNO | MB_ICONWARNING) == IDNO)
-			return FALSE;
+	if (dwMajic != 0xAA55AA55) {
+		MessageBox(0, ::theApp.MsgBoxInfo(11), ::theApp.MsgError(), MB_ICONERROR);
+		return FALSE;
+	}
 	bs >> dwVersion >> dwSize;
-	if (bs.DataSize() != dwSize)
-		if (MessageBox(0, ::theApp.String(14), ::theApp.String(5), MB_YESNO | MB_ICONWARNING) == IDNO)
-			return FALSE;
+	if (bs.DataSize() != dwSize) {
+		MessageBox(0, ::theApp.MsgBoxInfo(12), ::theApp.MsgError(), MB_ICONERROR);
+		return FALSE;
+	}
 	const DWORD offCrc = bs.BytePos();
 	bs >> dwCRC;
-	if(!::ValidateCrc(bs.Data(), dwCRC, offCrc))	//校验CRC，会修改bs数据内容
-		if (MessageBox(0, ::theApp.String(13), ::theApp.String(5), MB_YESNO | MB_ICONWARNING) == IDNO)
-			return FALSE;
+	if (!::ValidateCrc(bs.Data(), dwCRC, offCrc)) {	//校验CRC，会修改bs数据内容
+		MessageBox(0, ::theApp.MsgBoxInfo(11), ::theApp.MsgError(), MB_ICONERROR);
+		return FALSE;
+	}
 	bs >> dwWeaponSet
 		>> Name
 		>> charType

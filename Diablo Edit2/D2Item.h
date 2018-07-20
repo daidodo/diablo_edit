@@ -45,7 +45,7 @@ struct CLongName
 //Extended Item Info
 struct CExtItemInfo
 {
-	BYTE					nGems;			//bit 108-110
+	BYTE					nGems;			//bit 108-110, 如果有孔，镶嵌的宝石数
 	DWORD					dwGUID;			//bit 111-142
 	BYTE					iDropLevel;		//bit 143-149,drop level
 	BYTE					iQuality;		/*4 bits
@@ -90,6 +90,7 @@ struct CExtItemInfo
 //Spell ID
 	CMayExist<BYTE>			bSpellID;		//5 bits,if sTypeName == "0sc"
 	BOOL IsSet() const { return iQuality == 5; }
+	int Gems() const { return nGems; }
 	void ReadData(CInBitsStream & bs, BOOL bIsCharm, BOOL bRuneWord, BOOL bPersonalized, BOOL bIsTome, BOOL bHasMonsterID, BOOL bHasSpellID);
 	void WriteData(COutBitsStream & bs, BOOL bIsCharm, BOOL bRuneWord, BOOL bPersonalized, BOOL bIsTome, BOOL bHasMonsterID, BOOL bHasSpellID) const;
 };
@@ -103,6 +104,14 @@ struct CGoldQuantity
 	void WriteData(COutBitsStream & bs) const;
 };
 
+struct CPropertyList
+{
+	std::map<WORD, DWORD>	mProperty;		//属性列表，每项（9 bits ID + VALUE)
+	WORD					iEndFlag;		//9 bits, 0x1FF, 结束标志
+	void ReadData(CInBitsStream & bs);
+	void WriteData(COutBitsStream & bs) const;
+};
+
 //Type Specific info
 struct CTypeSpecificInfo
 {
@@ -111,10 +120,11 @@ struct CTypeSpecificInfo
 	CMayExist<WORD>			iCurDur;		//9 bits,if bNoDurability == FALSE && iMaxDur > 0
 	CMayExist<BYTE>			iSocket;		//4 bits,Base Number of Sockets,基础数目,后面还有个附加数目,if bSocketed = TRUE
 	CMayExist<WORD>			iQuantity;		//9 bits,if bStacked == TRUE
-	//Set Property
+	CMayExistArray<BOOL, 5>	aHasSetPropList;//5 bits,if iQuality == 5 
 	//Rune Word Property
-	std::map<WORD,DWORD>	mProperty;		//额外属性列表，每项（9 bits ID + VALUE)
-	WORD					iEndFlag;		//9 bits, 0x1FF, 结束标志
+	CPropertyList			stPropertyList;		//属性列表
+	CMayExist<CPropertyList> apSetProperty[5];	//套装属性列表，每个列表是否存在由(aHasSetPropList[i] == TRUE)决定
+
 	void ReadData(CInBitsStream & bs, BOOL bHasDef, BOOL bHasDur, BOOL bSocketed, BOOL bIsStacked, BOOL bIsSet, BOOL bRuneWord);
 	void WriteData(COutBitsStream & bs, BOOL bHasDef, BOOL bHasDur, BOOL bSocketed, BOOL bIsStacked, BOOL bIsSet, BOOL bRuneWord) const;
 };
@@ -133,28 +143,22 @@ struct CItemInfo
 	CMayExist<CTypeSpecificInfo>	pTpSpInfo;		//如果bSimple == FALSE，则此结构存在
 	const CItemDataStruct * ReadData(CInBitsStream & bs, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed);
 	void WriteData(COutBitsStream & bs, const CItemDataStruct & itemData, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed) const;
+	BOOL IsNameValid() const;
+	BOOL IsSet() const { return pExtItemInfo.IsValid() && pExtItemInfo.Value().IsSet(); }
+	int Gems() const { return pExtItemInfo.IsValid() && pExtItemInfo.Value().Gems(); }
 };
 
 class CD2Item
 {
 //members
 public:
+	~CD2Item();
     //Quality()只作显示时,控制名字的颜色用
-	//BYTE Quality() const{return !bEar && !bSimple ? pItemInfo->pExtItemInfo->iQuality : (pItemData->IsUnique() ? 7 : 2);}
-    BYTE Quality() const{return bEar ? 2 : (pItemData->IsUnique() ? 7 : (!bEar && !bSimple ? pItemInfo->pExtItemInfo->iQuality : 2));}
+	BYTE Quality() const{return !bEar && !bSimple ? pItemInfo->pExtItemInfo->iQuality : (pItemData->IsUnique ? 7 : 2);}
 	void ReadData(CInBitsStream & bs);
 	void WriteData(COutBitsStream & bs) const;
 private:
 	void findUnknownItem(CInBitsStream & bs);
-	//	void WriteFile(CFile & cf){
-//		cf.Write(&bData[0],UINT(bData.size()));
-//		cf.Flush();
-//	}
-//	void MakeData();
-//private:
-	//static void ReadPropertyFields();
-//fields
-	//static std::vector<BYTE>	SvBitFields;	//额外属性的位长信息
 public:
 	std::vector<BYTE>		vItemData;	//如果不能识别物品,那么物品的数据将存在这里
 	const CItemDataStruct *	pItemData;	//物品的额外属性,大小,bHasDef,bNoDurability,bStacked,等.如果不能识别物品,pItemData = 0;
@@ -188,4 +192,8 @@ public:
 	BYTE	iStoredIn;			//bit 73-75,0 = equip/belt 1 = inventory 2 = ? 3 = ? 4 = cube 5 = stash
 	CMayExist<CEar>			pEar;			//如果bEar == TRUE，则此结构存在
 	CMayExist<CItemInfo>	pItemInfo;		//如果bEar == FALSE，则此结构存在
+	std::vector<CD2Item *>	aGemItems;		//如果有孔，镶嵌在孔里的装备
+	//Functions
+	BOOL IsSet() const { return pItemInfo.IsValid() && pItemInfo.Value().IsSet(); }
+	BOOL Gems() const { return pItemInfo.IsValid() && pItemInfo.Value().Gems(); }
 };
