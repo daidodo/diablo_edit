@@ -178,7 +178,7 @@ void CDlgCharItems::DrawItemsInGrid(CPaintDC & dc)
 		const auto & itemView = m_vItemViews[i];
 		CPoint pos;
 		int gridID = INDEX(itemView.Pos);
-		if (gridID < GRID_NUMBER)    //在箱子,背包,方块，孔里
+		if (gridID < GRID_NUMBER)    //在箱子,背包,方块里
 			pos = GRID2XY(itemView.Pos);
 		else if (gridID != RIGHT_HAND && gridID != LEFT_HAND) //身上(除了左右手)
 			pos = GRID2XY(gridID, itemView.Range);
@@ -192,6 +192,13 @@ void CDlgCharItems::DrawItemsInGrid(CPaintDC & dc)
 		if (i == m_iSelectedItemIndex) {
 			CSize sz(COL(itemView.Range) * GRID_WIDTH, ROW(itemView.Range) * GRID_WIDTH);
 			selected = CRect(pos, sz);
+			//Draw gems in sockets
+			const auto & gems = itemView.vGemItems;
+			for (UINT j = 0; j < GRID_RECT[SOCKETS][2] && j < gems.size(); ++j) {
+				const auto & view = gems[j];
+				auto gemPos = GRID2XY(view.Pos);
+				DrawItemXY(dc, gemPos, view);
+			}
 		}
 	}
 	// 高亮选中的物品
@@ -346,6 +353,12 @@ void CDlgCharItems::UpdateUI(const CD2S_Struct & character)
         ASSERT(character.ItemList.vpItems[i] && _T("CDlgCharItems::UpdateUI(const CD2S_Struct & character)"));
         CD2Item & item = *character.ItemList.vpItems[i];
 		m_vItemViews.emplace_back(BMP_INDEX_BASE + item.pItemData->PicIndex, item.pItemData->Range, item);
+		int c = 0;
+		for(auto gem : item.aGemItems)
+			if (gem) {
+				m_vItemViews.back().vGemItems.emplace_back(BMP_INDEX_BASE + gem->pItemData->PicIndex, gem->pItemData->Range, *gem);
+				m_vItemViews.back().vGemItems.back().Pos = (SOCKETS << 8) + (c++ << 4);
+			}
         int index = INVALID_ITEM,x,y;
         switch(item.iLocation){
             case 0:		//grid
