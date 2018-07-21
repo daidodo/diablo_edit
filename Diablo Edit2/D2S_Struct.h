@@ -102,12 +102,12 @@ struct CMercenary
 	MayExist<CItemList>	stItems;	//雇佣兵的装备列表, if wMercName != 0
 };
 
-//Golem
+//钢铁石魔（仅限死灵法师）
 struct CGolem
 {
-	WORD	wMagic;					//0x666B, "kf"
+	WORD	wMagic;				//0x666B, "kf"
 	BYTE	bHasGolem;
-	MayExist<CItemList>	stItems;	//Golem的装备列表, if bHasGolem != 0
+	MayExist<CD2Item>	pItem;	//召唤钢铁石魔的物品, if bHasGolem != 0
 };
 
 struct CD2S_Struct

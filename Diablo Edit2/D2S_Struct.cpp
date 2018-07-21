@@ -189,14 +189,14 @@ CInBitsStream & operator >>(CInBitsStream & bs, CGolem & v) {
 		throw 0;
 	}
 	if (v.bHasGolem)
-		bs >> v.stItems;
+		v.pItem.ensure().ReadData(bs);
 	return bs;
 }
 
 COutBitsStream & operator <<(COutBitsStream & bs, const CGolem & v) {
 	bs << WORD(0x666B) << v.bHasGolem;
 	if (v.bHasGolem)
-		bs << v.stItems;
+		v.pItem->WriteData(bs);
 	return bs;
 }
 
