@@ -379,10 +379,10 @@ void CD2Item::findUnknownItem(CInBitsStream & bs) {
 	DWORD from = bs.BytePos() - 13;
 	bs.AlignByte();
 	bs.SkipUntil("JM");
-	bs.Restore(vItemData, from, bs.BytePos());
-	if (!vItemData.empty()) {	//把未知的物品存储成物品文件
+	bs.Restore(vUnknownItem, from, bs.BytePos());
+	if (!vUnknownItem.empty()) {	//把未知的物品存储成物品文件
 		CFile outf(::theApp.AppPath() + _T("unknown.d2i"), CFile::modeCreate | CFile::modeWrite);
-		outf.Write(&vItemData[0], UINT(vItemData.size()));
+		outf.Write(&vUnknownItem[0], UINT(vUnknownItem.size()));
 	}
 	if (MessageBox(0, CSFormat(::theApp.MsgBoxInfo(6),
 			pItemInfo->sTypeName[0],
@@ -393,9 +393,8 @@ void CD2Item::findUnknownItem(CInBitsStream & bs) {
 		throw 0;
 }
 
-void CD2Item::ReadData(CInBitsStream & bs)
-{
-	bs>>wMajic;
+void CD2Item::ReadData(CInBitsStream & bs) {
+	bs >> wMajic;
 	if (wMajic != 0x4D4A) {
 		MessageBox(0, ::theApp.MsgBoxInfo(18), ::theApp.MsgError(), MB_ICONERROR);
 		throw 0;
@@ -444,8 +443,8 @@ void CD2Item::ReadData(CInBitsStream & bs)
 }
 
 void CD2Item::WriteData(COutBitsStream & bs) const {
-	if (!vItemData.empty()) {	//未识别物品数据
-		bs << vItemData;
+	if (!vUnknownItem.empty()) {	//未识别物品数据
+		bs << vUnknownItem;
 	} else {
 		bs << WORD(0x4D4A)
 			<< bQuest
@@ -498,8 +497,7 @@ void CItemList::ReadData(CInBitsStream & bs) {
 	for (auto & item : vpItems) {
 		if (!bs.Good())
 			break;
-		item = new CD2Item;
-		item->ReadData(bs);
+		item.ReadData(bs);
 	}
 	bs >> wEndMajic;
 	if (wEndMajic != 0x4D4A) {
@@ -511,10 +509,10 @@ void CItemList::ReadData(CInBitsStream & bs) {
 void CItemList::WriteData(COutBitsStream & bs) const {
 	bs << WORD(0x4D4A)<<WORD(vpItems.size());
 	const auto off = bs.BytePos();
-	for (auto item : vpItems) {
+	for (auto & item : vpItems) {
 		if (!bs.Good())
 			break;
-		item->WriteData(bs);
+		item.WriteData(bs);
 	}
 	bs << WORD(0x4D4A);
 }

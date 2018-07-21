@@ -12,10 +12,10 @@ struct CItemView
 	const UINT		nPicRes;			//bmp图片资源索引
 	const WORD		Range;				//自身占用网格大小,x<<4 + y
 	WORD Pos = -1;						//高8位为位置,Stash,Inventory...,低8位为坐标(x<<4 + y)
-	CD2Item & Item;						//对应的物品
+	const CD2Item & Item;				//对应的物品
 	std::vector<CItemView> vGemItems;	//镶嵌的物品View
 public:
-	CItemView(UINT resID,WORD range,CD2Item & item):nPicRes(resID),Range(range),Item(item){}
+	CItemView(UINT resID,WORD range, const CD2Item & item):nPicRes(resID),Range(range),Item(item){}
 };
 
 //内联

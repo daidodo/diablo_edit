@@ -251,7 +251,7 @@ BOOL CDlgCharItems::PutItemInGrid(WORD itemIndex, WORD gridIndex) {
 				SET_GRID_ITEM(i, x0 + x, y0 + y, itemIndex);
 	} else {					//ÉíÌå
 		const WORD MAP[10] = { 1,2,3,4,4,5,5,6,7,8 };
-		if (view.Item.pItemData->Equip != MAP[i - GRID_NUMBER])
+		if (view.Item.MetaData().Equip != MAP[i - GRID_NUMBER])
 			return FALSE;
 		int c = COL(gridIndex), r = ROW(gridIndex);
 		if (GET_GRID_ITEM(i, c, r) != INVALID_ITEM)
@@ -286,7 +286,7 @@ void CDlgCharItems::ReadItemProperty(WORD itemIndex)
 {
     ASSERT(itemIndex >= 0 && itemIndex < WORD(m_vItemViews.size()));
     const CD2Item & item = m_vItemViews[itemIndex].Item;
-    //m_sItemName = ::theApp.ItemName(item.pItemData->NameIndex);
+    //m_sItemName = ::theApp.ItemName(item.MetaData().NameIndex);
     if(m_bItemSocket = item.bSocketed)
         m_bBaseSocket = item.pItemInfo->pTpSpInfo->iSocket;
     m_bEthereal = item.bEthereal;
@@ -302,11 +302,11 @@ void CDlgCharItems::ReadItemProperty(WORD itemIndex)
             if(item.bPersonalized)
                 m_ItemOwner = &item.pItemInfo->pExtItemInfo->sPersonName[0];
             m_cbQuality.SetCurSel(item.pItemInfo->pExtItemInfo->iQuality - 1);
-            if(item.pItemData->IsStacked)
+            if(item.MetaData().IsStacked)
                 m_wItemQuantity = item.pItemInfo->pTpSpInfo->iQuantity;
-            if(item.pItemData->HasDef)
+            if(item.MetaData().HasDef)
                 m_wItemDefence = item.pItemInfo->pTpSpInfo->iDefence - 10;
-            if(item.pItemData->HasDur){
+            if(item.MetaData().HasDur){
                 m_wMaxDurability = item.pItemInfo->pTpSpInfo->iMaxDurability;
                 if(!(m_bIndestructible = (m_wMaxDurability == 0)))
                     m_wCurDurability = item.pItemInfo->pTpSpInfo->iCurDur;
@@ -350,7 +350,7 @@ void CDlgCharItems::UpdateUI(const CD2S_Struct & character)
         ResetAll();
     m_vItemViews.reserve(character.ItemList.nItems);
     for(WORD i = 0;i < character.ItemList.nItems;++i){
-        CD2Item & item = *character.ItemList.vpItems[i];
+        const CD2Item & item = character.ItemList.vpItems[i];
         int index = INVALID_ITEM,x,y;
         switch(item.iLocation){
             case 0:		//grid
@@ -379,10 +379,10 @@ void CDlgCharItems::UpdateUI(const CD2S_Struct & character)
             default:;
         }
 		if (index != INVALID_ITEM) {
-			m_vItemViews.emplace_back(BMP_INDEX_BASE + item.pItemData->PicIndex, item.pItemData->Range, item);
+			m_vItemViews.emplace_back(BMP_INDEX_BASE + item.MetaData().PicIndex, item.MetaData().Range, item);
 			int c = 0;
 			for (auto & gem : item.aGemItems) {
-				m_vItemViews.back().vGemItems.emplace_back(BMP_INDEX_BASE + gem.pItemData->PicIndex, gem.pItemData->Range, gem);
+				m_vItemViews.back().vGemItems.emplace_back(BMP_INDEX_BASE + gem.MetaData().PicIndex, gem.MetaData().Range, gem);
 				m_vItemViews.back().vGemItems.back().Pos = (SOCKETS << 8) + (c++ << 4);
 			}
 			PutItemInGrid(WORD(m_vItemViews.size() - 1), MAKE_GRID(index, x, y));

@@ -133,19 +133,8 @@ struct CItemInfo
 	BOOL IsTypeName(const char * name) const;
 };
 
-class CD2Item
+struct CD2Item
 {
-//members
-public:
-	BYTE Quality() const{return !bEar && !bSimple ? pItemInfo->pExtItemInfo->iQuality : (pItemData->IsUnique ? 7 : 2);}
-	void ReadData(CInBitsStream & bs);
-	void WriteData(COutBitsStream & bs) const;
-private:
-	void findUnknownItem(CInBitsStream & bs);
-public:
-	std::vector<BYTE>		vItemData;	//如果不能识别物品,那么物品的数据将存在这里
-	const CItemMetaData *	pItemData;	//物品的额外属性,大小,bHasDef,bNoDurability,bStacked,等.如果不能识别物品,pItemData = 0;
-	//物品信息
 	WORD	wMajic;				//0x4D4A,"JM"
 	BOOL	bQuest;				//bit 16,是否为系统装备
 	BYTE	iUNKNOWN_01;		//bit 17-19
@@ -189,17 +178,25 @@ public:
 	MayExist<CItemInfo>		pItemInfo;		//如果bEar == FALSE，则此结构存在
 	std::vector<CD2Item>	aGemItems;		//如果有孔，镶嵌在孔里的装备
 	//Functions
+	const CItemMetaData & MetaData() const { return *pItemData; }
+	BYTE Quality() const{return !bEar && !bSimple ? pItemInfo->pExtItemInfo->iQuality : (pItemData->IsUnique ? 7 : 2);}
 	BOOL IsSet() const { return pItemInfo.exist() && pItemInfo->IsSet(); }
 	BOOL Gems() const { return pItemInfo.exist() && pItemInfo->Gems(); }
+	void ReadData(CInBitsStream & bs);
+	void WriteData(COutBitsStream & bs) const;
+private:
+	void findUnknownItem(CInBitsStream & bs);
+	std::vector<BYTE>		vUnknownItem;	//如果不能识别物品,那么物品的数据将存在这里
+	const CItemMetaData *	pItemData;		//物品的额外属性,大小,bHasDef,bNoDurability,bStacked,等.如果不能识别物品,pItemData = 0;
 };
 
 struct CItemList
 {
 	//人物物品信息
-	WORD		wMajic;		//0x4D4A,"JM"
-	WORD		nItems;		//物品数目
-	std::vector<CD2Item *>	vpItems;
-	WORD		wEndMajic;	//0x4D4A,"JM"
+	WORD		wMajic;					//0x4D4A,"JM"
+	WORD		nItems;					//物品数目
+	std::vector<CD2Item>	vpItems;	//所有物品，不包括镶嵌在孔里的
+	WORD		wEndMajic;				//0x4D4A,"JM"
 	void ReadData(CInBitsStream & bs);
 	void WriteData(COutBitsStream & bs) const;
 };

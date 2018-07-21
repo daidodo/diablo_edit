@@ -83,10 +83,11 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem)
     }else{              //item structure
 		BYTE quality = pItem->Quality();
 		BYTE color = quality <= 3 ? WHITE : quality - 3;
+		auto & meta = pItem->MetaData();
 		if (pItem->IsSet())	//Set item
 			AddMsg(color, ::theApp.SetItemName(pItem->pItemInfo->pExtItemInfo->wSetID));
         //Prefix, Suffix, Name
-		__Tokens name{ ::theApp.ItemName(pItem->pItemData->NameIndex) };
+		__Tokens name{ ::theApp.ItemName(meta.NameIndex) };
         switch(quality){
         case 1:         //low
             name.push_front(::theApp.ItemSuspendUI(0));
@@ -119,19 +120,19 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem)
         }
 		AddMsg(color, text(name));
 		//Defence or Attack
-		if (pItem->pItemData->HasDef) {				//有防御值
+		if (meta.HasDef) {				//有防御值
 			AddMsg(WHITE, CSFormat(::theApp.ItemSuspendUI(2), UINT(pItem->pItemInfo->pTpSpInfo->iDefence - 10)));
-		} else if (pItem->pItemData->Damage1Min) {		//单手伤害
-			AddMsg(WHITE, CSFormat(::theApp.ItemSuspendUI(3), pItem->pItemData->Damage1Min, pItem->pItemData->Damage1Max));
-		} else if (pItem->pItemData->Damage2Min)		//双手伤害
-			AddMsg(WHITE, CSFormat(::theApp.ItemSuspendUI(4), pItem->pItemData->Damage2Min, pItem->pItemData->Damage2Max));
+		} else if (meta.Damage1Min) {		//单手伤害
+			AddMsg(WHITE, CSFormat(::theApp.ItemSuspendUI(3), meta.Damage1Min, meta.Damage1Max));
+		} else if (meta.Damage2Min)		//双手伤害
+			AddMsg(WHITE, CSFormat(::theApp.ItemSuspendUI(4), meta.Damage2Min, meta.Damage2Max));
         //Quantity
-		if (pItem->pItemData->IsStacked) {
+		if (meta.IsStacked) {
 			AddMsg(WHITE, CSFormat(::theApp.ItemSuspendUI(5), UINT(pItem->pItemInfo->pTpSpInfo->iQuantity)));
 		} else if (pItem->pItemInfo->IsTypeName("gld "))
 			AddMsg(WHITE, CSFormat(::theApp.ItemSuspendUI(5), UINT(pItem->pItemInfo->pGold->wQuantity)));
 		//Durability or Indestructible
-		if (pItem->pItemData->HasDur) {
+		if (meta.HasDur) {
 			if (pItem->pItemInfo->pTpSpInfo->iMaxDurability) {   //有耐久度
 				AddMsg(WHITE, CSFormat(::theApp.ItemSuspendUI(6),
 					UINT(pItem->pItemInfo->pTpSpInfo->iCurDur),
