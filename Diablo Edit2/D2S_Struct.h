@@ -1,7 +1,84 @@
 #pragma once
 
-#include "DataStructs.h"
-#include "ItemList.h"
+#include "D2Item.h"
+
+//任务完成信息
+struct CQuestInfoData
+{
+	WORD	wIntroduced1;		//have been introduced (by Warriv) to Act I
+	WORD	wActI[6];			//Act I, Bit 0 indicates the quest is complete,下面也一样
+	WORD	wTraval1;			//this gets set to a non-zero value after you travel from Act I to Act II.
+	WORD	wIntroduced2;		//have been introduced (by Jerhyn) to Act II
+	WORD	wActII[6];			//Act II
+	WORD	wTraval2;			//this gets set to a non-zero value after you travel from Act II to Act III.
+	WORD	wIntroduced3;		//have been introduced (by Hratli) to Act III
+	WORD	wActIII[6];			//Act III
+	WORD	wTraval3;			//this gets set to a non-zero value after you travel from Act III to Act IV.
+	WORD	wIntroduced4;		//have been introduced to Act IV
+	WORD	wActIV[3];			//Act IV
+	WORD	wTraval4;
+	WORD	unkown1[3];
+	WORD	wIntroduced5;		//this was set to 1 after completing Terror's End and talking to Cain in act IV
+	WORD	unkown2[2];
+	WORD	wActV[6];			//Act V
+	WORD	unkown3[7];
+};
+
+struct CQuestInfo
+{
+	DWORD	dwMajic;			//0x216F6F57
+	DWORD	dwActs;				//似乎总是6
+	WORD	wSize;				//Quest Info结构的总长度，0x12A(=298=4+4+2+288)
+	CQuestInfoData	QIData[3];
+};
+
+// 小站信息
+struct CWaypointData
+{
+	WORD	unkown;				//0x102;
+	BYTE	Waypoints[5];
+	BYTE	unkown2[17];		//全0
+};
+
+struct CWaypoints
+{
+	WORD	wMajic;				//0x5357
+	DWORD	unkown;
+	WORD	wSize;				//0x50
+	CWaypointData	wp[3];
+};
+
+//人物属性
+struct CPlayerStats
+{
+	static const int ARRAY_SIZE = 0x10;
+	WORD	wMajic;					//0x6667
+	DWORD	m_adwValue[ARRAY_SIZE];	/*以下为各个Value的含义：
+										0: 9 bits, + 10 bits Strength
+										1: 9 bits, + 10 bits Energy
+										2: 9 bits, + 10 bits Dexterity
+										3: 9 bits, + 10 bits Vitality
+										4: 9 bits, + 10 bits Stat Points Remaining
+										5: 9 bits, + 8 bits Skill Choices Remaining
+										6: 9 bits, + 21 bits Current Life (/256)
+										7: 9 bits, + 21 bits Maximum Life (/256)
+										8: 9 bits, + 21 bits Current Mana (/256)
+										9: 9 bits, + 21 bits Maximum Mana (/256)
+										A: 9 bits, + 21 bits Current Stamina (/256)
+										B: 9 bits, + 21 bits Maximum Stamina (/256)
+										C: 9 bits, + 7 bits Level
+										D: 9 bits, + 32 bits Experience
+										E: 9 bits, + 25 bits Gold on Person
+										F: 9 bits, + 25 bits Gold in Stash */
+	WORD iEnd;						//0x1FF: 9 bits, 结束
+};
+
+//人物技能
+struct CCharSkills
+{
+	WORD	wMagic;				//0x6669
+	BYTE	bSkillLevel[30];	//技能等级
+};
 
 struct CD2S_Struct
 {
@@ -65,7 +142,7 @@ public:
 	CPlayerStats	PlayerStats;	//人物状态信息
 	CCharSkills		Skills;			//人物技能信息
 	CItemList		ItemList;		//物品列表
-	WORD			wCorpses;		//尸体数目
 
-	std::vector<BYTE>	vLeftData;		//剩下的数据
+	WORD			wCorpses;		//尸体数目
+	std::vector<BYTE>	vLeftData;	//剩下的数据
 };
