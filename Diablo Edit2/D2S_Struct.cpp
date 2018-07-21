@@ -130,12 +130,16 @@ COutBitsStream & operator <<(COutBitsStream & bs, const CCharSkills & v) {
 
 BOOL CD2S_Struct::ReadFile(CFile & cf)
 {
+#ifndef _DEBUG
 	try{
+#endif
 		CInBitsStream bs;
 		bs.ReadFile(cf);
 		return ReadData(bs);
+#ifndef _DEBUG
 	}catch(...){}
 	return FALSE;
+#endif
 }
 
 void CD2S_Struct::WriteFile(CFile & cf) const

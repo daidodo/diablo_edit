@@ -108,8 +108,9 @@ struct CTypeSpecificInfo
 	MayExist<WORD>			iQuantity;		//9 bits,if bStacked == TRUE
 	MayExist<BOOL, 5>		aHasSetPropList;//5 bits,if iQuality == 5 
 	//Rune Word Property
-	CPropertyList			stPropertyList;		//属性列表
-	MayExist<CPropertyList> apSetProperty[5];	//套装属性列表，每个列表是否存在由(aHasSetPropList[i] == TRUE)决定
+	CPropertyList			stPropertyList;			//属性列表
+	MayExist<CPropertyList> apSetProperty[5];		//套装属性列表，每个列表是否存在由(aHasSetPropList[i] == TRUE)决定
+	MayExist<CPropertyList>	stRuneWordPropertyList;	//符文之语属性列表，if bRuneWord == TRUE
 };
 
 //ItemInfo

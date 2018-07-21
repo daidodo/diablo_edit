@@ -255,14 +255,13 @@ CInBitsStream & operator >>(CInBitsStream & bs, pair<CTypeSpecificInfo &, const 
 		for (auto & b : v.aHasSetPropList.ensure())
 			if(bs.Good())
 				bs >> b;
-	if (get<5>(t)) {	//bRuneWord, 有符文之语属性
-		//暂时不支持.......................
-	}
 	bs >> v.stPropertyList;
 	if (get<4>(t)) 	//bIsSet, 这是一个套装
 		for (size_t i = 0; bs.Good() && i < v.aHasSetPropList.size(); ++i)
 			if (v.aHasSetPropList[i])
 				bs >> v.apSetProperty[i].ensure();
+	if (get<5>(t))	//bRuneWord, 有符文之语属性
+		bs >> v.stRuneWordPropertyList;
 	return bs;
 }
 
@@ -285,14 +284,13 @@ COutBitsStream & operator <<(COutBitsStream & bs, pair<const CTypeSpecificInfo &
 		for (auto b : v.aHasSetPropList)
 			if(bs.Good())
 				bs << b;
-	if (get<5>(t)) {	//bRuneWord, 有符文之语属性
-		//暂时不支持.......................
-	}
 	bs << v.stPropertyList;
 	if (get<4>(t)) 	//bIsSet, 这是一个套装
 		for (size_t i = 0; bs.Good() && i < v.aHasSetPropList.size(); ++i)
 			if (v.aHasSetPropList[i])
 				bs << v.apSetProperty[i];
+	if (get<5>(t))	//bRuneWord, 有符文之语属性
+		bs << v.stRuneWordPropertyList;
 	return bs;
 }
 
