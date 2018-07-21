@@ -1,6 +1,11 @@
 #include "StdAfx.h"
+
+#include <iterator>
+
 #include "Diablo Edit2.h"
 #include "D2S_Struct.h"
+
+using namespace std;
 
 //d2s文件的CRC算法
 static DWORD ComputCRC(const BYTE * source, DWORD len, DWORD init) {
@@ -15,6 +20,110 @@ static BOOL ValidateCrc(std::vector<BYTE> & data, DWORD dwCrc, DWORD dwOff) {
 	ASSERT(dwOff + 4 <= data.size());
 	*reinterpret_cast<DWORD *>(&data[dwOff]) = 0;
 	return (dwCrc == ::ComputCRC(&data[0], data.size(), 0));
+}
+
+//struct CQuestInfoData
+
+CInBitsStream & operator >>(CInBitsStream & bs, CQuestInfoData & v) {
+	return bs >> v.wIntroduced1 >> v.wActI >> v.wTraval1
+		>> v.wIntroduced2 >> v.wActII >> v.wTraval2
+		>> v.wIntroduced3 >> v.wActIII >> v.wTraval3
+		>> v.wIntroduced4 >> v.wActIV >> v.wTraval4 >> v.unkown1
+		>> v.wIntroduced5 >> v.unkown2 >> v.wActV >> v.unkown3;
+}
+
+COutBitsStream & operator <<(COutBitsStream & bs, const CQuestInfoData & v) {
+	return bs << v.wIntroduced1 << v.wActI << v.wTraval1
+		<< v.wIntroduced2 << v.wActII << v.wTraval2
+		<< v.wIntroduced3 << v.wActIII << v.wTraval3
+		<< v.wIntroduced4 << v.wActIV << v.wTraval4 << v.unkown1
+		<< v.wIntroduced5 << v.unkown2 << v.wActV << v.unkown3;
+}
+
+//struct CQuestInfo
+
+CInBitsStream & operator >>(CInBitsStream & bs, CQuestInfo & v) {
+	bs >> v.dwMajic >> v.dwActs >> v.wSize;
+	if (v.dwMajic != 0x216F6F57 || v.wSize != 0x12A) {
+		MessageBox(0, ::theApp.MsgBoxInfo(13), ::theApp.MsgError(), MB_ICONERROR);
+		throw 0;
+	}
+	return bs >> v.QIData;
+}
+
+COutBitsStream & operator <<(COutBitsStream & bs, const CQuestInfo & v) {
+	return bs << DWORD(0x216F6F57) << v.dwActs << WORD(0x12A) << v.QIData;
+}
+
+//struct CWaypointData
+
+CInBitsStream & operator >>(CInBitsStream & bs, CWaypointData & v) {
+	return bs >> v.unkown >> v.Waypoints >> v.unkown2;
+}
+
+COutBitsStream & operator <<(COutBitsStream & bs, const CWaypointData & v) {
+	return bs << v.unkown << v.Waypoints << v.unkown2;
+}
+
+//struct CWaypoints
+
+CInBitsStream & operator >>(CInBitsStream & bs, CWaypoints & v) {
+	bs >> v.wMajic >> v.unkown >> v.wSize;
+	if (v.wMajic != 0x5357 || v.wSize != 0x50) {
+		MessageBox(0, ::theApp.MsgBoxInfo(14), ::theApp.MsgError(), MB_ICONERROR);
+		throw 0;
+	}
+	return bs >> v.wp;
+}
+
+COutBitsStream & operator <<(COutBitsStream & bs, const CWaypoints & v) {
+	return bs << WORD(0x5357) << v.unkown << WORD(0x50) << v.wp;
+}
+
+//CPlayerStats
+
+static const DWORD PLAYER_STATS_BITS_COUNT[CPlayerStats::ARRAY_SIZE] = {
+	10,10,10,10,10,8,
+	21,21,21,21,21,21,
+	7,32,25,25
+};
+
+CInBitsStream & operator >>(CInBitsStream & bs, CPlayerStats & v) {
+	bs >> v.wMajic;
+	if (v.wMajic != 0x6667) {
+		MessageBox(0, ::theApp.MsgBoxInfo(15), ::theApp.MsgError(), MB_ICONERROR);
+		throw 0;
+	}
+	::ZeroMemory(v.m_adwValue, sizeof(v.m_adwValue));
+	for (bs >> bits(v.iEnd, 9); bs.Good() && v.iEnd < size(v.m_adwValue); bs >> bits(v.iEnd, 9))
+		bs >> bits(v.m_adwValue[v.iEnd], PLAYER_STATS_BITS_COUNT[v.iEnd]);
+	bs.AlignByte();
+	return bs;
+}
+
+COutBitsStream & operator <<(COutBitsStream & bs, const CPlayerStats & v) {
+	bs << WORD(0x6667);
+	for (UINT i = 0; bs.Good() && i < size(v.m_adwValue); ++i)
+		if (v.m_adwValue[i])
+			bs << bits(WORD(i), 9) << bits(v.m_adwValue[i], PLAYER_STATS_BITS_COUNT[i]);
+	bs << bits<WORD>(0x1FF, 9);
+	bs.AlignByte();
+	return bs;
+}
+
+//struct CCharSkills
+
+CInBitsStream & operator >>(CInBitsStream & bs, CCharSkills & v) {
+	bs >> v.wMagic;
+	if (v.wMagic != 0x6669) {
+		MessageBox(0, ::theApp.MsgBoxInfo(16), ::theApp.MsgError(), MB_ICONERROR);
+		throw 0;
+	}
+	return bs >> v.bSkillLevel;
+}
+
+COutBitsStream & operator <<(COutBitsStream & bs, const CCharSkills & v) {
+	return bs << WORD(0x6669) << v.bSkillLevel;
 }
 
 //CD2S_Struct
@@ -81,13 +190,13 @@ BOOL CD2S_Struct::ReadData(CInBitsStream & bs) {
 		>> wMercName
 		>> wMercType
 		>> dwMercExp
-		>> unkown7;
-	QuestInfo.ReadData(bs);
-	Waypoints.ReadData(bs);
-	bs >> NPC;
-	PlayerStats.ReadData(bs);
-	Skills.ReadData(bs);
-	ItemList.ReadData(bs);
+		>> unkown7
+		>> QuestInfo
+		>> Waypoints
+		>> NPC
+		>> PlayerStats
+		>> Skills
+		>> ItemList;
 	bs >> wCorpses >> vLeftData;
 	return bs.Good();
 }
@@ -127,13 +236,13 @@ BOOL CD2S_Struct::WriteData(COutBitsStream & bs) const {
 		<< wMercName
 		<< wMercType
 		<< dwMercExp
-		<< unkown7;
-	QuestInfo.WriteData(bs);
-	Waypoints.WriteData(bs);
-	bs << NPC;
-	PlayerStats.WriteData(bs);
-	Skills.WriteData(bs);
-	ItemList.WriteData(bs);
+		<< unkown7
+		<< QuestInfo
+		<< Waypoints
+		<< NPC
+		<< PlayerStats
+		<< Skills
+		<< ItemList;
 	bs << wCorpses << vLeftData;
 	bs.AlignByte();
 	//Data size

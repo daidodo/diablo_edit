@@ -81,7 +81,7 @@ public:
 	template<typename T, int N>
 	CInBitsStream & operator >>(T (&value)[N]){
 		for(T & v : value)
-			operator >>(v);
+			*this >> v;
 		return *this;
 	}
 	template<int N>
@@ -100,11 +100,7 @@ public:
 	CInBitsStream & operator >>(BOOL & b) {return readBits(bits(b, 1));}
 	CInBitsStream & operator >>(const Bits<DWORD> & m) { return readBits(m); }
 	CInBitsStream & operator >>(const Bits<WORD> & m) { return readBits(m); }
-	CInBitsStream & operator >>(const Bits<BYTE> & m) {return readBits(m);}
-	void ReadBit(BOOL & value) { operator >>(value); }
-	void ReadBits(DWORD & value, int len) { operator >>(bits(value, len)); }
-	void ReadBits(WORD & value, int len) { operator>>(bits(value, len)); }
-	void ReadBits(BYTE & value, int len) { operator>>(bits(value, len)); }
+	CInBitsStream & operator >>(const Bits<BYTE> & m) { return readBits(m); }
 	//vector<BYTE>
 	CInBitsStream & operator >>(std::vector<BYTE> & vec){
 		if (ensure(0)) {
@@ -174,14 +170,14 @@ public:
 			cf.Flush();
 		}
 	}
-	//字节读取
+	//字节写入
 	COutBitsStream & operator <<(DWORD value) { return writePod(value); }
 	COutBitsStream & operator <<(WORD value) { return writePod(value); }
 	COutBitsStream & operator <<(BYTE value) { return writePod(value); }
 	template<typename T, int N>
 	COutBitsStream & operator <<(const T (&value)[N]) {
 		for (auto & v : value)
-			operator <<(v);
+			*this << v;
 		return *this;
 	}
 	template<int N>
@@ -201,7 +197,7 @@ public:
 		}
 		return *this;
 	}
-	//位读取
+	//位写入
 	void AlignByte() {	//按照8位进行对齐，舍弃多余的位
 		if (Good()) {
 			bytes_ += (bits_ + 7) / 8;

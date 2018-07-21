@@ -251,7 +251,7 @@ BOOL CDlgCharItems::PutItemInGrid(WORD itemIndex, WORD gridIndex) {
 				SET_GRID_ITEM(i, x0 + x, y0 + y, itemIndex);
 	} else {					//ÉíÌå
 		const WORD MAP[10] = { 1,2,3,4,4,5,5,6,7,8 };
-		if (view.Item.pItemData->Equip != MAP[i - GRID_NUMBER])
+		if (view.Item.MetaData().Equip != MAP[i - GRID_NUMBER])
 			return FALSE;
 		int c = COL(gridIndex), r = ROW(gridIndex);
 		if (GET_GRID_ITEM(i, c, r) != INVALID_ITEM)
@@ -286,30 +286,30 @@ void CDlgCharItems::ReadItemProperty(WORD itemIndex)
 {
     ASSERT(itemIndex >= 0 && itemIndex < WORD(m_vItemViews.size()));
     const CD2Item & item = m_vItemViews[itemIndex].Item;
-    //m_sItemName = ::theApp.ItemName(item.pItemData->NameIndex);
+    //m_sItemName = ::theApp.ItemName(item.MetaData().NameIndex);
     if(m_bItemSocket = item.bSocketed)
-        m_bBaseSocket = item.pItemInfo->pTpSpInfo->iSocket.Value();
+        m_bBaseSocket = item.pItemInfo->pTpSpInfo->iSocket;
     m_bEthereal = item.bEthereal;
     //m_bItemInscribed = item.bPersonalized;
     if(item.bEar){   //ear structure
         m_bItemLevel = item.pEar->iEarLevel;
         m_ItemOwner = item.pEar->sEarName;
     }else{
-        if(IsSameType(item.pItemInfo->sTypeName,"gld "))
+        if(item.pItemInfo->IsTypeName("gld "))
             m_wItemQuantity = item.pItemInfo->pGold->wQuantity;
         if(!item.bSimple){
             m_bItemLevel = item.pItemInfo->pExtItemInfo->iDropLevel;
             if(item.bPersonalized)
-                m_ItemOwner = item.pItemInfo->pExtItemInfo->sPersonName.Value();
+                m_ItemOwner = &item.pItemInfo->pExtItemInfo->sPersonName[0];
             m_cbQuality.SetCurSel(item.pItemInfo->pExtItemInfo->iQuality - 1);
-            if(item.pItemData->IsStacked)
-                m_wItemQuantity = item.pItemInfo->pTpSpInfo->iQuantity.Value();
-            if(item.pItemData->HasDef)
-                m_wItemDefence = item.pItemInfo->pTpSpInfo->iDefence.Value() - 10;
-            if(item.pItemData->HasDur){
-                m_wMaxDurability = item.pItemInfo->pTpSpInfo->iMaxDurability.Value();
+            if(item.MetaData().IsStacked)
+                m_wItemQuantity = item.pItemInfo->pTpSpInfo->iQuantity;
+            if(item.MetaData().HasDef)
+                m_wItemDefence = item.pItemInfo->pTpSpInfo->iDefence - 10;
+            if(item.MetaData().HasDur){
+                m_wMaxDurability = item.pItemInfo->pTpSpInfo->iMaxDurability;
                 if(!(m_bIndestructible = (m_wMaxDurability == 0)))
-                    m_wCurDurability = item.pItemInfo->pTpSpInfo->iCurDur.Value();
+                    m_wCurDurability = item.pItemInfo->pTpSpInfo->iCurDur;
             }
 			for (const auto & p : item.pItemInfo->pTpSpInfo->stPropertyList.mProperty) {
 				if (p.first == 194) {	//Adds X extra sockets to the item
@@ -350,15 +350,7 @@ void CDlgCharItems::UpdateUI(const CD2S_Struct & character)
         ResetAll();
     m_vItemViews.reserve(character.ItemList.nItems);
     for(WORD i = 0;i < character.ItemList.nItems;++i){
-        ASSERT(character.ItemList.vpItems[i] && _T("CDlgCharItems::UpdateUI(const CD2S_Struct & character)"));
-        CD2Item & item = *character.ItemList.vpItems[i];
-		m_vItemViews.emplace_back(BMP_INDEX_BASE + item.pItemData->PicIndex, item.pItemData->Range, item);
-		int c = 0;
-		for(auto gem : item.aGemItems)
-			if (gem) {
-				m_vItemViews.back().vGemItems.emplace_back(BMP_INDEX_BASE + gem->pItemData->PicIndex, gem->pItemData->Range, *gem);
-				m_vItemViews.back().vGemItems.back().Pos = (SOCKETS << 8) + (c++ << 4);
-			}
+        const CD2Item & item = character.ItemList.vpItems[i];
         int index = INVALID_ITEM,x,y;
         switch(item.iLocation){
             case 0:		//grid
@@ -369,7 +361,7 @@ void CDlgCharItems::UpdateUI(const CD2S_Struct & character)
             case 1:		//equipped
                 if(item.iPosition){
                     if(item.iPosition <= 10){
-                        index = item.iPosition + 2;
+                        index = item.iPosition + GRID_NUMBER - 1;
                         x = y = 0;
                     }else if(item.iPosition <= 12){	//×óÓÒÊÖII
                         index = item.iPosition - 5;
@@ -386,8 +378,15 @@ void CDlgCharItems::UpdateUI(const CD2S_Struct & character)
                 break;
             default:;
         }
-		if(index != INVALID_ITEM)
-            PutItemInGrid(i,MAKE_GRID(index,x,y));
+		if (index != INVALID_ITEM) {
+			m_vItemViews.emplace_back(BMP_INDEX_BASE + item.MetaData().PicIndex, item.MetaData().Range, item);
+			int c = 0;
+			for (auto & gem : item.aGemItems) {
+				m_vItemViews.back().vGemItems.emplace_back(BMP_INDEX_BASE + gem.MetaData().PicIndex, gem.MetaData().Range, gem);
+				m_vItemViews.back().vGemItems.back().Pos = (SOCKETS << 8) + (c++ << 4);
+			}
+			PutItemInGrid(WORD(m_vItemViews.size() - 1), MAKE_GRID(index, x, y));
+		}
     }
 	m_iSelectedItemIndex = INVALID_ITEM;
     Invalidate();
@@ -521,65 +520,65 @@ void CDlgCharItems::OnChangeHand()
 void CDlgCharItems::OnPrefixSuffix()
 {
     std::vector<int> selIndex(10,-1);
-    int itemIndex = m_iGridItems[GRID_BODY_NUMBER - 1][0];
+	int itemIndex = m_iSelectedItemIndex;
     if(itemIndex != INVALID_ITEM){
         const CD2Item & item = m_vItemViews[itemIndex].Item;
-        if(!!item.pItemInfo && !!item.pItemInfo->pExtItemInfo){
+        if(item.pItemInfo.exist() && item.pItemInfo->pExtItemInfo.exist()){
             switch(m_cbQuality.GetCurSel() + 1){
                 case 1:     //low
-                    if(item.pItemInfo->pExtItemInfo->loQual.IsValid())
-                        selIndex[9] = item.pItemInfo->pExtItemInfo->loQual.Value();
+                    if(item.pItemInfo->pExtItemInfo->loQual.exist())
+                        selIndex[9] = item.pItemInfo->pExtItemInfo->loQual;
                     break;
                 case 3:     //high
-                    if(item.pItemInfo->pExtItemInfo->hiQual.IsValid())
-                        selIndex[9] = item.pItemInfo->pExtItemInfo->hiQual.Value();
+                    if(item.pItemInfo->pExtItemInfo->hiQual.exist())
+                        selIndex[9] = item.pItemInfo->pExtItemInfo->hiQual;
                     break;
                 case 4:     //magic
-                    if(item.pItemInfo->pExtItemInfo->wPrefix.IsValid())
-                        selIndex[2] = item.pItemInfo->pExtItemInfo->wPrefix.Value();
-                    if(item.pItemInfo->pExtItemInfo->wSuffix.IsValid())
-                        selIndex[3] = item.pItemInfo->pExtItemInfo->wSuffix.Value();
+                    if(item.pItemInfo->pExtItemInfo->wPrefix.exist())
+                        selIndex[2] = item.pItemInfo->pExtItemInfo->wPrefix;
+                    if(item.pItemInfo->pExtItemInfo->wSuffix.exist())
+                        selIndex[3] = item.pItemInfo->pExtItemInfo->wSuffix;
                     break;
                 case 5:     //set
                     break;
                 case 6:     //rare
-                    if(item.pItemInfo->pExtItemInfo->pRareName.IsValid()){
+                    if(item.pItemInfo->pExtItemInfo->pRareName.exist()){
                         selIndex[0] = item.pItemInfo->pExtItemInfo->pRareName->iName1;
                         selIndex[1] = item.pItemInfo->pExtItemInfo->pRareName->iName2;
                         if(item.pItemInfo->pExtItemInfo->pRareName->bPref1)
-                            selIndex[2] = item.pItemInfo->pExtItemInfo->pRareName->wPref1.Value();
+                            selIndex[2] = item.pItemInfo->pExtItemInfo->pRareName->wPref1;
                         if(item.pItemInfo->pExtItemInfo->pRareName->bSuff1)
-                            selIndex[3] = item.pItemInfo->pExtItemInfo->pRareName->wSuff1.Value();
+                            selIndex[3] = item.pItemInfo->pExtItemInfo->pRareName->wSuff1;
                         if(item.pItemInfo->pExtItemInfo->pRareName->bPref2)
-                            selIndex[4] = item.pItemInfo->pExtItemInfo->pRareName->wPref2.Value();
+                            selIndex[4] = item.pItemInfo->pExtItemInfo->pRareName->wPref2;
                         if(item.pItemInfo->pExtItemInfo->pRareName->bSuff2)
-                            selIndex[5] = item.pItemInfo->pExtItemInfo->pRareName->wSuff2.Value();
+                            selIndex[5] = item.pItemInfo->pExtItemInfo->pRareName->wSuff2;
                         if(item.pItemInfo->pExtItemInfo->pRareName->bPref3)
-                            selIndex[6] = item.pItemInfo->pExtItemInfo->pRareName->wPref3.Value();
+                            selIndex[6] = item.pItemInfo->pExtItemInfo->pRareName->wPref3;
                         if(item.pItemInfo->pExtItemInfo->pRareName->bSuff3)
-                            selIndex[7] = item.pItemInfo->pExtItemInfo->pRareName->wSuff3.Value();
+                            selIndex[7] = item.pItemInfo->pExtItemInfo->pRareName->wSuff3;
                     }
                     break;
                 case 7:     //unique
-                    if(item.pItemInfo->pExtItemInfo->wUniID.IsValid())
-                        selIndex[8] = item.pItemInfo->pExtItemInfo->wUniID.Value();
+                    if(item.pItemInfo->pExtItemInfo->wUniID.exist())
+                        selIndex[8] = item.pItemInfo->pExtItemInfo->wUniID;
                     break;
                 case 8:     //crafted
-                    if(item.pItemInfo->pExtItemInfo->pCraftName.IsValid()){
+                    if(item.pItemInfo->pExtItemInfo->pCraftName.exist()){
                         selIndex[0] = item.pItemInfo->pExtItemInfo->pCraftName->iName1;
                         selIndex[1] = item.pItemInfo->pExtItemInfo->pCraftName->iName2;
                         if(item.pItemInfo->pExtItemInfo->pCraftName->bPref1)
-                            selIndex[2] = item.pItemInfo->pExtItemInfo->pCraftName->wPref1.Value();
+                            selIndex[2] = item.pItemInfo->pExtItemInfo->pCraftName->wPref1;
                         if(item.pItemInfo->pExtItemInfo->pCraftName->bSuff1)
-                            selIndex[3] = item.pItemInfo->pExtItemInfo->pCraftName->wSuff1.Value();
-                        if(item.pItemInfo->pExtItemInfo->pCraftName->bPref2)
-                            selIndex[4] = item.pItemInfo->pExtItemInfo->pCraftName->wPref2.Value();
+                            selIndex[3] = item.pItemInfo->pExtItemInfo->pCraftName->wSuff1;
+						if (item.pItemInfo->pExtItemInfo->pCraftName->bPref2)
+							selIndex[4] = item.pItemInfo->pExtItemInfo->pCraftName->wPref2;
                         if(item.pItemInfo->pExtItemInfo->pCraftName->bSuff2)
-                            selIndex[5] = item.pItemInfo->pExtItemInfo->pCraftName->wSuff2.Value();
+                            selIndex[5] = item.pItemInfo->pExtItemInfo->pCraftName->wSuff2;
                         if(item.pItemInfo->pExtItemInfo->pCraftName->bPref3)
-                            selIndex[6] = item.pItemInfo->pExtItemInfo->pCraftName->wPref3.Value();
+                            selIndex[6] = item.pItemInfo->pExtItemInfo->pCraftName->wPref3;
                         if(item.pItemInfo->pExtItemInfo->pCraftName->bSuff3)
-                            selIndex[7] = item.pItemInfo->pExtItemInfo->pCraftName->wSuff3.Value();
+                            selIndex[7] = item.pItemInfo->pExtItemInfo->pCraftName->wSuff3;
                     }
                     break;
                 default:;

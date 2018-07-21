@@ -93,6 +93,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -186,7 +187,6 @@
     <ClInclude Include="BinDataStream.h" />
     <ClInclude Include="D2Item.h" />
     <ClInclude Include="D2S_Struct.h" />
-    <ClInclude Include="DataStructs.h" />
     <ClInclude Include="Diablo Edit2.h" />
     <ClInclude Include="Diablo Edit2Doc.h" />
     <ClInclude Include="Diablo Edit2View.h" />
@@ -198,8 +198,7 @@
     <ClInclude Include="DlgSkills.h" />
     <ClInclude Include="DlgSuspend.h" />
     <ClInclude Include="DlgWayPoints.h" />
-    <ClInclude Include="ItemDataStruct.h" />
-    <ClInclude Include="ItemList.h" />
+    <ClInclude Include="ItemMetaData.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="MayExist.h" />
     <ClInclude Include="PropertyDialog.h" />
@@ -222,7 +221,6 @@
     <ClCompile Include="DlgSkills.cpp" />
     <ClCompile Include="DlgSuspend.cpp" />
     <ClCompile Include="DlgWayPoints.cpp" />
-    <ClCompile Include="ItemList.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="PropertyDialog.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -237,7 +235,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="itemdata.dat" />
-    <None Include="language.dat" />
     <None Include="new.dat" />
     <None Include="property.dat" />
     <None Include="res\DiabloEdit2.rc2" />
