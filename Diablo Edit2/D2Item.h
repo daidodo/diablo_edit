@@ -169,7 +169,19 @@ public:
 	BYTE	iUNKNOWN_08;		//bit 43-47
 	WORD	wVersion;			//bit 48-57
 	BYTE	iLocation;			//bit 58-60,0 = grid, 1 = equipped, 2 = on belt, 3 = ?, 4 = in hand(has been picked up by the mouse), 5 = ?, 6 = socket(glued into a socket), 7 = ?
-	BYTE	iPosition;			//bit 61-64,Body position, 01 = head(帽子), 02 = neck（项链）, 03 = tors（衣服）, 04 = rarm（右手，武器，盾）, 05 = larm（左手，武器，盾）, 06 = lrin（左手指，戒指）, 07 = rrin（右手指，戒指）, 08 = belt（腰带）, 09 = feet（鞋子）, 0a = glov（手套）, 0b = ralt（右II手，Expansion Set only）, 0c = lalt（左II手，Expansion Set only）
+	BYTE	iPosition;			/*bit 61-64,Body position,
+									01 = head(帽子)
+									02 = neck（项链）
+									03 = tors（衣服）
+									04 = rarm（右手，武器，盾）
+									05 = larm（左手，武器，盾）
+									06 = lrin（左手指，戒指）
+									07 = rrin（右手指，戒指）
+									08 = belt（腰带）
+									09 = feet（鞋子）
+									0a = glov（手套）
+									0b = ralt（右II手，Expansion Set only）
+									0c = lalt（左II手，Expansion Set only）*/
 	BYTE	iColumn;			//bit 65-68
 	BYTE	iRow;				//bit 69-72
 	BYTE	iStoredIn;			//bit 73-75,0 = equip/belt, 1 = inventory, 2 = ?, 3 = ?, 4 = cube, 5 = stash

@@ -351,12 +351,6 @@ void CDlgCharItems::UpdateUI(const CD2S_Struct & character)
     m_vItemViews.reserve(character.ItemList.nItems);
     for(WORD i = 0;i < character.ItemList.nItems;++i){
         CD2Item & item = *character.ItemList.vpItems[i];
-		m_vItemViews.emplace_back(BMP_INDEX_BASE + item.pItemData->PicIndex, item.pItemData->Range, item);
-		int c = 0;
-		for(auto & gem : item.aGemItems){
-			m_vItemViews.back().vGemItems.emplace_back(BMP_INDEX_BASE + gem.pItemData->PicIndex, gem.pItemData->Range, gem);
-			m_vItemViews.back().vGemItems.back().Pos = (SOCKETS << 8) + (c++ << 4);
-		}
         int index = INVALID_ITEM,x,y;
         switch(item.iLocation){
             case 0:		//grid
@@ -367,7 +361,7 @@ void CDlgCharItems::UpdateUI(const CD2S_Struct & character)
             case 1:		//equipped
                 if(item.iPosition){
                     if(item.iPosition <= 10){
-                        index = item.iPosition + 2;
+                        index = item.iPosition + GRID_NUMBER - 1;
                         x = y = 0;
                     }else if(item.iPosition <= 12){	//×óÓÒÊÖII
                         index = item.iPosition - 5;
@@ -384,8 +378,15 @@ void CDlgCharItems::UpdateUI(const CD2S_Struct & character)
                 break;
             default:;
         }
-		if(index != INVALID_ITEM)
-            PutItemInGrid(i,MAKE_GRID(index,x,y));
+		if (index != INVALID_ITEM) {
+			m_vItemViews.emplace_back(BMP_INDEX_BASE + item.pItemData->PicIndex, item.pItemData->Range, item);
+			int c = 0;
+			for (auto & gem : item.aGemItems) {
+				m_vItemViews.back().vGemItems.emplace_back(BMP_INDEX_BASE + gem.pItemData->PicIndex, gem.pItemData->Range, gem);
+				m_vItemViews.back().vGemItems.back().Pos = (SOCKETS << 8) + (c++ << 4);
+			}
+			PutItemInGrid(WORD(m_vItemViews.size() - 1), MAKE_GRID(index, x, y));
+		}
     }
 	m_iSelectedItemIndex = INVALID_ITEM;
     Invalidate();

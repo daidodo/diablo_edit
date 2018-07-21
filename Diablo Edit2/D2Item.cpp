@@ -335,13 +335,13 @@ void CItemInfo::WriteData(COutBitsStream & bs, const CItemMetaData & itemData, B
 	for (auto b : sTypeName)
 		bs << bits(b, 8);
 	if (!bSimple)	//物品有额外属性
-		bs<<pack(*pExtItemInfo,
+		bs << pack(*pExtItemInfo,
 			make_tuple(itemData.IsCharm,
-			bRuneWord,
-			bPersonalized,
-			itemData.IsTome,
-			itemData.HasMonsterID,
-			itemData.HasSpellID));
+				bRuneWord,
+				bPersonalized,
+				itemData.IsTome,
+				itemData.HasMonsterID,
+				itemData.HasSpellID));
 	//特殊物品类型的额外数据
 	if (IsTypeName("gld "))	//gld 的数量域
 		bs << pGold;
@@ -429,8 +429,8 @@ void CD2Item::ReadData(CInBitsStream & bs)
 	if(bEar){	//这是一个耳朵
 		bs >> pEar;
 		char buf[4] { 'e', 'a', 'r', ' ' };
-        DWORD * type = reinterpret_cast<DWORD *>(buf);
-        pItemData = ::theApp.ItemData(*type);
+        DWORD type = *reinterpret_cast<DWORD *>(buf);
+        pItemData = ::theApp.ItemData(type);
 	} else {	//这是一个物品,但是也可能为"ear "
 		pItemData = pItemInfo.ensure().ReadData(bs, bSimple, bRuneWord, bPersonalized, bSocketed);
 		if (!pItemData)
