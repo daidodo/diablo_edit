@@ -301,7 +301,7 @@ COutBitsStream & operator <<(COutBitsStream & bs, pair<const CTypeSpecificInfo &
 const CItemMetaData *  CItemInfo::ReadData(CInBitsStream & bs, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed) {
 	for (auto & b : sTypeName)
 		bs >> bits(b, 8);
-	auto pItemData = ::theApp.ItemData(dwTypeID);
+	auto pItemData = ::theApp.ItemMetaData(dwTypeID);
 	if (!pItemData)		//本程序不能识别此物品
 		return 0;
 	if (!bSimple)	//物品有额外属性
@@ -427,9 +427,7 @@ void CD2Item::ReadData(CInBitsStream & bs) {
 		>> bits(iStoredIn, 3);
 	if(bEar){	//这是一个耳朵
 		bs >> pEar;
-		char buf[4] { 'e', 'a', 'r', ' ' };
-        DWORD type = *reinterpret_cast<DWORD *>(buf);
-        pItemData = ::theApp.ItemData(type);
+        pItemData = ::theApp.ItemMetaData(0x20726165);	//"ear "
 	} else {	//这是一个物品,但是也可能为"ear "
 		pItemData = pItemInfo.ensure().ReadData(bs, bSimple, bRuneWord, bPersonalized, bSocketed);
 		if (!pItemData)
