@@ -1,8 +1,11 @@
 #pragma once
 
-struct CItemDataStruct
+#include <string>
+
+//物品属性元数据
+struct CItemMetaData
 {
-	std::string name;		//物品名字（唯一ID）, 如"elx "
+	std::string name;		//物品名字（唯一ID）, 如"elx "，DEBUG用
 	WORD PicIndex = 0;		//物品在Bitmap资源中相对第一个图片的索引偏移
 	WORD NameIndex = 0;		//物品在ItemName列表中的名字索引
 	BYTE Equip = 0;			//4 bits,物品可穿戴的位置,

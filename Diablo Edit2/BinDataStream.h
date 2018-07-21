@@ -3,8 +3,6 @@
 #include <vector>
 #include <cstring>
 
-#include "MayExist.h"
-
 // bits
 template<typename T>
 class Bits
@@ -103,10 +101,6 @@ public:
 	CInBitsStream & operator >>(const Bits<DWORD> & m) { return readBits(m); }
 	CInBitsStream & operator >>(const Bits<WORD> & m) { return readBits(m); }
 	CInBitsStream & operator >>(const Bits<BYTE> & m) { return readBits(m); }
-	template<class T>
-	CInBitsStream & operator >>(MayExist<T, 1> & m) { return readBits(m); }
-	template<typename T, int N>
-	CInBitsStream & operator >>(const Bits<MayExist<T, N>> & m) {return readBits(m);}
 	void ReadBit(BOOL & value) { operator >>(value); }
 	void ReadBits(DWORD & value, int len) { operator >>(bits(value, len)); }
 	void ReadBits(WORD & value, int len) { operator>>(bits(value, len)); }
@@ -146,14 +140,6 @@ private:
 			bits_ = (bits_ + m.bits()) % 8;
 		}
 		return *this;
-	}
-	template<typename T>
-	CInBitsStream & readBits(MayExist<T, 1> & m) {
-		return (*this >> m.ensure());
-	}
-	template<typename T>
-	CInBitsStream & readBits(const Bits<MayExist<T, 1>> & m) {
-		return (*this >> bits(m.value().ensure(), m.bits()));
 	}
 	bool ensure(DWORD bytes, DWORD bits = 0, DWORD maxBits = 0) {
 		bad_ = (bad_
@@ -229,10 +215,6 @@ public:
 	COutBitsStream & operator <<(const Bits<WORD> & m) { return writeBits(m); }
 	COutBitsStream & operator <<(const Bits<const BYTE> & m) { return writeBits(m); }
 	COutBitsStream & operator <<(const Bits<BYTE> & m) { return writeBits(m); }
-	template<class T>
-	COutBitsStream & operator <<(const MayExist<T, 1> & m) { return writeBits(m); }
-	template<typename T, int N>
-	COutBitsStream & operator <<(const Bits<const MayExist<T, N>> & m) { return writeBits(m); }
 	//vector<BYTE>
 	COutBitsStream & operator <<(const std::vector<BYTE> & data) {
 		if (ensure(data.size())) {
@@ -259,16 +241,6 @@ private:
 			bits_ = (bits_ + m.bits()) % 8;
 		}
 		return *this;
-	}
-	template<typename T>
-	COutBitsStream & writeBits(const MayExist<T, 1> & m) {
-		return (*this << *m.operator ->());
-	}
-	template<typename T>
-	COutBitsStream & writeBits(const Bits<const MayExist<T, 1>> & m) {
-		auto & e = m.value();
-		ASSERT(e.exist());
-		return (*this << bits<T>(e, m.bits()));
 	}
 	bool ensure(DWORD bytes, DWORD bits = 0, DWORD maxBits = 0) {
 		bad_ = (bad_ || !(bits > 0 ? bits <= maxBits : bits_ == 0));

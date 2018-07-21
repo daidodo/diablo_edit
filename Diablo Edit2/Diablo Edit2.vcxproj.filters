@@ -51,9 +51,6 @@
     <ClInclude Include="D2S_Struct.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="DataStructs.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="DlgCharBasicInfo.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -78,16 +75,13 @@
     <ClInclude Include="DlgWayPoints.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="ItemDataStruct.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="ItemList.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="MayExist.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="PropertyDialog.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemMetaData.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -135,9 +129,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="DlgWayPoints.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="ItemList.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="PropertyDialog.cpp">
@@ -1120,9 +1111,6 @@
       <Filter>资源文件</Filter>
     </None>
     <None Include="itemdata.dat">
-      <Filter>资源文件\Data</Filter>
-    </None>
-    <None Include="language.dat">
       <Filter>资源文件\Data</Filter>
     </None>
     <None Include="new.dat">
