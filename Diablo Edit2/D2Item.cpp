@@ -300,8 +300,18 @@ const CItemMetaData *  CItemInfo::ReadData(CInBitsStream & bs, BOOL bSimple, BOO
 	for (auto & b : sTypeName)
 		bs >> bits(b, 8);
 	auto pItemData = ::theApp.ItemMetaData(dwTypeID);
-	if (!pItemData)		//本程序不能识别此物品
-		return 0;
+	if (!pItemData) {	//本程序不能识别此物品
+		if (IsNameValid()) {
+			MessageBox(0, CSFormat(::theApp.MsgBoxInfo(6),
+				sTypeName[0],
+				sTypeName[1],
+				sTypeName[2],
+				sTypeName[3]),
+				::theApp.MsgError(), MB_ICONERROR);
+		} else
+			MessageBox(0, ::theApp.MsgBoxInfo(18), ::theApp.MsgError(), MB_ICONERROR);
+		throw 0;
+	}
 	if (!bSimple)	//物品有额外属性
 		bs >> pack(pExtItemInfo.ensure(),
 			make_tuple(pItemData->IsCharm,
@@ -371,26 +381,6 @@ BOOL CItemInfo::IsTypeName(const char * name) const {
 
 //CD2Item
 
-void CD2Item::findUnknownItem(CInBitsStream & bs) {
-	if (!pItemInfo->IsNameValid())
-		throw 0;
-	DWORD from = bs.BytePos() - 13;
-	bs.AlignByte();
-	bs.SkipUntil("JM");
-	bs.Restore(vUnknownItem, from, bs.BytePos());
-	if (!vUnknownItem.empty()) {	//把未知的物品存储成物品文件
-		CFile outf(::theApp.AppPath() + _T("unknown.d2i"), CFile::modeCreate | CFile::modeWrite);
-		outf.Write(&vUnknownItem[0], UINT(vUnknownItem.size()));
-	}
-	if (MessageBox(0, CSFormat(::theApp.MsgBoxInfo(6),
-			pItemInfo->sTypeName[0],
-			pItemInfo->sTypeName[1],
-			pItemInfo->sTypeName[2],
-			pItemInfo->sTypeName[3]),
-		::theApp.MsgWarning(), MB_YESNO | MB_ICONWARNING) == IDNO)
-		throw 0;
-}
-
 void CD2Item::ReadData(CInBitsStream & bs) {
 	bs >> wMajic;
 	if (wMajic != 0x4D4A) {
@@ -428,14 +418,12 @@ void CD2Item::ReadData(CInBitsStream & bs) {
         pItemData = ::theApp.ItemMetaData(0x20726165);	//"ear "
 	} else {	//这是一个物品,但是也可能为"ear "
 		pItemData = pItemInfo.ensure().ReadData(bs, bSimple, bRuneWord, bPersonalized, bSocketed);
-		if (!pItemData)
-			findUnknownItem(bs);
+		ASSERT(pItemData);
 	}
 	bs.AlignByte();
 	aGemItems.resize(Gems());
-	for (auto & item : aGemItems) {
+	for (auto & item : aGemItems)
 		item.ReadData(bs);
-	}
 }
 
 void CD2Item::WriteData(COutBitsStream & bs) const {
@@ -471,9 +459,8 @@ void CD2Item::WriteData(COutBitsStream & bs) const {
 			<< bits(iStoredIn, 3);
 		if (bEar) {	//这是一个耳朵
 			bs << pEar;
-		} else {	//这是一个物品
+		} else		//这是一个物品
 			pItemInfo->WriteData(bs, *pItemData, bSimple, bRuneWord, bPersonalized, bSocketed);
-		}
 	}
 	bs.AlignByte();
 	for (auto item : aGemItems)
@@ -495,11 +482,6 @@ CInBitsStream & operator >>(CInBitsStream & bs, CItemList & v){
 			break;
 		item.ReadData(bs);
 	}
-	bs >> v.wEndMajic;
-	if (v.wEndMajic != 0x4D4A) {
-		MessageBox(0, ::theApp.MsgBoxInfo(17), ::theApp.MsgError(), MB_ICONERROR);
-		throw 0;
-	}
 	return bs;
 }
 
@@ -511,7 +493,6 @@ COutBitsStream & operator <<(COutBitsStream & bs, const CItemList & v){
 			break;
 		item.WriteData(bs);
 	}
-	bs << WORD(0x4D4A);
 	return bs;
 }
 

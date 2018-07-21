@@ -130,7 +130,7 @@ struct CItemInfo
 	void WriteData(COutBitsStream & bs, const CItemMetaData & itemData, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed) const;
 	BOOL IsNameValid() const;
 	BOOL IsSet() const { return pExtItemInfo.exist() && pExtItemInfo->IsSet(); }
-	int Gems() const { return pExtItemInfo.exist() && pExtItemInfo->Gems(); }
+	int Gems() const { return (pExtItemInfo.exist() ? pExtItemInfo->Gems() : 0); }
 	BOOL IsTypeName(const char * name) const;
 };
 
@@ -182,11 +182,10 @@ struct CD2Item
 	const CItemMetaData & MetaData() const { return *pItemData; }
 	BYTE Quality() const{return !bEar && !bSimple ? pItemInfo->pExtItemInfo->iQuality : (pItemData->IsUnique ? 7 : 2);}
 	BOOL IsSet() const { return pItemInfo.exist() && pItemInfo->IsSet(); }
-	BOOL Gems() const { return pItemInfo.exist() && pItemInfo->Gems(); }
+	int Gems() const { return (pItemInfo.exist() ? pItemInfo->Gems() : 0); }
 	void ReadData(CInBitsStream & bs);
 	void WriteData(COutBitsStream & bs) const;
 private:
-	void findUnknownItem(CInBitsStream & bs);
 	std::vector<BYTE>		vUnknownItem;	//如果不能识别物品,那么物品的数据将存在这里
 	const CItemMetaData *	pItemData;		//物品的额外属性,大小,bHasDef,bNoDurability,bStacked,等.如果不能识别物品,pItemData = 0;
 };

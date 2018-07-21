@@ -126,6 +126,80 @@ COutBitsStream & operator <<(COutBitsStream & bs, const CCharSkills & v) {
 	return bs << WORD(0x6669) << v.bSkillLevel;
 }
 
+//struct CCorpseData
+
+CInBitsStream & operator >>(CInBitsStream & bs, CCorpseData & v) {
+	return bs >> v.unknown >> v.stItems;
+}
+
+COutBitsStream & operator <<(COutBitsStream & bs, const CCorpseData & v) {
+	return bs << v.unknown << v.stItems;
+}
+
+//struct CCorpse
+
+CInBitsStream & operator >>(CInBitsStream & bs, CCorpse & v) {
+	bs >> v.wMagic >> v.wCount;
+	if (v.wMagic != 0x4D4A || v.wCount > 1) {
+		MessageBox(0, ::theApp.MsgBoxInfo(19), ::theApp.MsgError(), MB_ICONERROR);
+		throw 0;
+	}
+	if (v.wCount)
+		bs >> v.pCorpseData;
+	return bs;
+}
+
+COutBitsStream & operator <<(COutBitsStream & bs, const CCorpse & v) {
+	bs << WORD(0x4D4A);
+	if (v.pCorpseData.exist())
+		bs << WORD(1) << v.pCorpseData;
+	else
+		bs << WORD(0);
+	return bs;
+}
+
+//struct CMercenary
+
+CInBitsStream & operator >>(CInBitsStream & bs, pair<CMercenary &, bool> & p) {
+	auto & v = p.first;
+	bs >> v.wMagic;
+	if (v.wMagic != 0x666A) {
+		MessageBox(0, ::theApp.MsgBoxInfo(20), ::theApp.MsgError(), MB_ICONERROR);
+		throw 0;
+	}
+	if(p.second)
+		bs >> v.stItems;
+	return bs;
+}
+
+COutBitsStream & operator <<(COutBitsStream & bs, const pair<const CMercenary &, bool> & p) {
+	auto & v = p.first;
+	bs << WORD(0x666A);
+	if (p.second)
+		bs << v.stItems;
+	return bs;
+}
+
+//struct CGolem
+
+CInBitsStream & operator >>(CInBitsStream & bs, CGolem & v) {
+	bs >> v.wMagic >> v.bHasGolem;
+	if (v.wMagic != 0x666B) {
+		MessageBox(0, ::theApp.MsgBoxInfo(21), ::theApp.MsgError(), MB_ICONERROR);
+		throw 0;
+	}
+	if (v.bHasGolem)
+		bs >> v.stItems;
+	return bs;
+}
+
+COutBitsStream & operator <<(COutBitsStream & bs, const CGolem & v) {
+	bs << WORD(0x666B) << v.bHasGolem;
+	if (v.bHasGolem)
+		bs << v.stItems;
+	return bs;
+}
+
 //CD2S_Struct
 
 BOOL CD2S_Struct::ReadFile(CFile & cf)
@@ -200,8 +274,15 @@ BOOL CD2S_Struct::ReadData(CInBitsStream & bs) {
 		>> NPC
 		>> PlayerStats
 		>> Skills
-		>> ItemList;
-	bs >> wCorpses >> vLeftData;
+		>> ItemList
+		>> stCorpses
+		>> pair<CMercenary &, bool>(stMercenary, wMercName > 0)
+		>> stGolem;
+	bs.AlignByte();
+	if (!bs.Good() || bs.DataSize() != bs.BytePos()) {
+		MessageBox(0, ::theApp.MsgBoxInfo(11), ::theApp.MsgError(), MB_ICONERROR);
+		return FALSE;
+	}
 	return bs.Good();
 }
 
@@ -246,8 +327,10 @@ BOOL CD2S_Struct::WriteData(COutBitsStream & bs) const {
 		<< NPC
 		<< PlayerStats
 		<< Skills
-		<< ItemList;
-	bs << wCorpses << vLeftData;
+		<< ItemList
+		<< stCorpses
+		<< pair<const CMercenary &, bool>(stMercenary, wMercName > 0)
+		<< stGolem;
 	bs.AlignByte();
 	//Data size
 	bs << offset_value(offSize, bs.BytePos());

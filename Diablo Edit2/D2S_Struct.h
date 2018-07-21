@@ -80,6 +80,36 @@ struct CCharSkills
 	BYTE	bSkillLevel[30];	//技能等级
 };
 
+//尸体数据
+struct CCorpseData
+{
+	BYTE		unknown[12];
+	CItemList	stItems;	//尸体身上的装备列表
+};
+
+//尸体
+struct CCorpse
+{
+	WORD		wMagic;					//0x4D4A
+	WORD		wCount;					//尸体个数, always 0 or 1
+	MayExist<CCorpseData> pCorpseData;	//尸体的数据, if wCount == 1
+};
+
+//雇佣兵
+struct CMercenary
+{
+	WORD				wMagic;		//0x666A, "jf"
+	MayExist<CItemList>	stItems;	//雇佣兵的装备列表, if wMercName != 0
+};
+
+//Golem
+struct CGolem
+{
+	WORD	wMagic;					//0x666B, "kf"
+	BYTE	bHasGolem;
+	MayExist<CItemList>	stItems;	//Golem的装备列表, if bHasGolem != 0
+};
+
 struct CD2S_Struct
 {
 //members
@@ -142,7 +172,10 @@ public:
 	CPlayerStats	PlayerStats;	//人物状态信息
 	CCharSkills		Skills;			//人物技能信息
 	CItemList		ItemList;		//物品列表
+	CCorpse		stCorpses;		//尸体
+	CMercenary		stMercenary;	//雇佣兵
+	CGolem			stGolem;		//Golem
 
-	WORD			wCorpses;		//尸体数目
-	std::vector<BYTE>	vLeftData;	//剩下的数据
+	//WORD			wCorpses;		//尸体数目
+	//std::vector<BYTE>	vLeftData;	//剩下的数据
 };

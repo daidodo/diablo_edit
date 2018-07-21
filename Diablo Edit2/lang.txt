@@ -120,6 +120,9 @@
 16	Player Skills data format error	人物技能格式错误	人物技能格式錯誤
 17	Item List data format error	物品列表格式错误	物品列表格式錯誤
 18	Item data format error	物品格式错误	物品格式錯誤
+19	Corpse data format error	尸体数据格式错误	尸體數據格式錯誤
+20	Mercenary data format error	雇佣兵数据格式错误	僱傭兵數據格式錯誤
+21	Golem data format error	Golem数据格式错误	Golem數據格式錯誤
 *=======================物品质量名字			
 0	Low	白色低级	白色低級
 1	Normal	白色普通	白色普通
