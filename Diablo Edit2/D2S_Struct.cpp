@@ -195,8 +195,8 @@ BOOL CD2S_Struct::ReadData(CInBitsStream & bs) {
 		>> Waypoints
 		>> NPC
 		>> PlayerStats
-		>> Skills;
-	ItemList.ReadData(bs);
+		>> Skills
+		>> ItemList;
 	bs >> wCorpses >> vLeftData;
 	return bs.Good();
 }
@@ -241,8 +241,8 @@ BOOL CD2S_Struct::WriteData(COutBitsStream & bs) const {
 		<< Waypoints
 		<< NPC
 		<< PlayerStats
-		<< Skills;
-	ItemList.WriteData(bs);
+		<< Skills
+		<< ItemList;
 	bs << wCorpses << vLeftData;
 	bs.AlignByte();
 	//Data size

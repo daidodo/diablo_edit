@@ -197,7 +197,8 @@ struct CItemList
 	WORD		nItems;					//物品数目
 	std::vector<CD2Item>	vpItems;	//所有物品，不包括镶嵌在孔里的
 	WORD		wEndMajic;				//0x4D4A,"JM"
-	void ReadData(CInBitsStream & bs);
-	void WriteData(COutBitsStream & bs) const;
 };
+
+CInBitsStream & operator >>(CInBitsStream & bs, CItemList & v);
+COutBitsStream & operator <<(COutBitsStream & bs, const CItemList & v);
 

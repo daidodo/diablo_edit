@@ -487,33 +487,35 @@ void CD2Item::WriteData(COutBitsStream & bs) const {
 
 // struct CItemList
 
-void CItemList::ReadData(CInBitsStream & bs) {
-	bs >> wMajic >> nItems;
-	if (wMajic != 0x4D4A) {
+CInBitsStream & operator >>(CInBitsStream & bs, CItemList & v){
+	bs >> v.wMajic >> v.nItems;
+	if (v.wMajic != 0x4D4A) {
 		MessageBox(0, ::theApp.MsgBoxInfo(17), ::theApp.MsgError(), MB_ICONERROR);
 		throw 0;
 	}
-	vpItems.resize(nItems);
-	for (auto & item : vpItems) {
+	v.vpItems.resize(v.nItems);
+	for (auto & item : v.vpItems) {
 		if (!bs.Good())
 			break;
 		item.ReadData(bs);
 	}
-	bs >> wEndMajic;
-	if (wEndMajic != 0x4D4A) {
+	bs >> v.wEndMajic;
+	if (v.wEndMajic != 0x4D4A) {
 		MessageBox(0, ::theApp.MsgBoxInfo(17), ::theApp.MsgError(), MB_ICONERROR);
 		throw 0;
 	}
+	return bs;
 }
 
-void CItemList::WriteData(COutBitsStream & bs) const {
-	bs << WORD(0x4D4A)<<WORD(vpItems.size());
+COutBitsStream & operator <<(COutBitsStream & bs, const CItemList & v){
+	bs << WORD(0x4D4A)<<WORD(v.vpItems.size());
 	const auto off = bs.BytePos();
-	for (auto & item : vpItems) {
+	for (auto & item : v.vpItems) {
 		if (!bs.Good())
 			break;
 		item.WriteData(bs);
 	}
 	bs << WORD(0x4D4A);
+	return bs;
 }
 
