@@ -275,7 +275,7 @@ BOOL CD2S_Struct::ReadData(CInBitsStream & bs) {
 		>> PlayerStats
 		>> Skills
 		>> ItemList
-		>> stCorpses
+		>> stCorpse
 		>> pair<CMercenary &, bool>(stMercenary, wMercName > 0)
 		>> stGolem;
 	bs.AlignByte();
@@ -328,7 +328,7 @@ BOOL CD2S_Struct::WriteData(COutBitsStream & bs) const {
 		<< PlayerStats
 		<< Skills
 		<< ItemList
-		<< stCorpses
+		<< stCorpse
 		<< pair<const CMercenary &, bool>(stMercenary, wMercName > 0)
 		<< stGolem;
 	bs.AlignByte();

@@ -172,10 +172,7 @@ public:
 	CPlayerStats	PlayerStats;	//人物状态信息
 	CCharSkills		Skills;			//人物技能信息
 	CItemList		ItemList;		//物品列表
-	CCorpse		stCorpses;		//尸体
+	CCorpse			stCorpse;		//尸体
 	CMercenary		stMercenary;	//雇佣兵
 	CGolem			stGolem;		//Golem
-
-	//WORD			wCorpses;		//尸体数目
-	//std::vector<BYTE>	vLeftData;	//剩下的数据
 };
