@@ -108,7 +108,7 @@ class CDlgCharItems : public CPropertyDialog
 	CSliderCtrl m_scTrasparent;			//属性悬浮窗的透明度
 
 	//界面文字
-	CString m_sText[13];
+	CString m_sText[14];
 	CButton m_btButton[5];
 
 	//鼠标

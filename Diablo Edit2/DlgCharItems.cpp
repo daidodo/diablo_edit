@@ -59,7 +59,7 @@ const WORD	CDlgCharItems::POSITION_RECT[CDlgCharItems::POSITION_END][4] = {
     {300,165,2,1},	//腰带		
     {400,155,2,2},	//鞋子
     {200,155,2,2},	//手套
-	{480,35,2,4},	//被鼠标拿起
+	{480,30,2,4},	//被鼠标拿起
 };
 
 IMPLEMENT_DYNAMIC(CDlgCharItems, CPropertyDialog)
@@ -142,6 +142,7 @@ void CDlgCharItems::DoDataExchange(CDataExchange* pDX)
     DDX_Text(pDX, IDC_CHECK6, m_sText[10]);
 	DDX_Text(pDX, IDC_CHECK7, m_sText[11]);
 	DDX_Text(pDX, IDC_STATIC_Sockets, m_sText[12]);
+	DDX_Text(pDX, IDC_STATIC_Mouse, m_sText[13]);
     DDX_Control(pDX, IDC_BUTTON1, m_btButton[0]);
     DDX_Control(pDX, IDC_BUTTON2, m_btButton[1]);
     DDX_Control(pDX, IDC_BUTTON3, m_btButton[2]);
