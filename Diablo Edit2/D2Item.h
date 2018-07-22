@@ -1,11 +1,11 @@
 #pragma once
 
-#include <vector>
-#include <map>
-
-#include "ItemMetaData.h"
+#include "MetaData.h"
 #include "MayExist.h"
 #include "BinDataStream.h"
+
+#include <vector>
+#include <map>
 
 //Ear
 struct CEar

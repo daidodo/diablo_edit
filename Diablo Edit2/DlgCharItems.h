@@ -92,10 +92,8 @@ private:
 	CRect m_rectGrid[GRID_BODY_NUMBER];				//网格区域,箱子0,口袋1,方块2，孔3
 	std::vector<std::vector<WORD>> m_iGridItems;	//网格内的物品的m_vItemViews索引
 	BOOL m_bSecondHand = FALSE;						//是否显示II手武器
-
 	//鼠标
 	CPoint m_pMouse;				//鼠标位置
-
 	//铸造台
 	WORD m_iSelectedItemIndex = INVALID_ITEM;	//当前选中的物品在m_vItemViews中的索引
 	//CString m_sItemName;			//物品名字
@@ -113,12 +111,10 @@ private:
 	short m_wCurDurability = 0;		//当前耐久度
 	short m_wMaxDurability = 0;		//最大耐久度
 	CListCtrl m_lcPropertyList;		//物品属性列表
-
 	//悬浮窗
 	CDlgSuspend * m_pDlgItemInfo = 0;	//显示物品信息的悬浮窗口
 	BOOL m_bNotShowItemInfoDlg;			//是否不显示物品信息悬浮窗
 	CSliderCtrl m_scTrasparent;			//属性悬浮窗的透明度
-
 	//界面文字
     CString m_sText[13];
     CButton m_btButton[5];
