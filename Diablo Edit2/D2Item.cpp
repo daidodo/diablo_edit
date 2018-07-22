@@ -476,8 +476,8 @@ CInBitsStream & operator >>(CInBitsStream & bs, CItemList & v){
 		MessageBox(0, ::theApp.MsgBoxInfo(17), ::theApp.MsgError(), MB_ICONERROR);
 		throw 0;
 	}
-	v.vpItems.resize(v.nItems);
-	for (auto & item : v.vpItems) {
+	v.vItems.resize(v.nItems);
+	for (auto & item : v.vItems) {
 		if (!bs.Good())
 			break;
 		item.ReadData(bs);
@@ -486,9 +486,9 @@ CInBitsStream & operator >>(CInBitsStream & bs, CItemList & v){
 }
 
 COutBitsStream & operator <<(COutBitsStream & bs, const CItemList & v){
-	bs << WORD(0x4D4A)<<WORD(v.vpItems.size());
+	bs << WORD(0x4D4A)<<WORD(v.vItems.size());
 	const auto off = bs.BytePos();
-	for (auto & item : v.vpItems) {
+	for (auto & item : v.vItems) {
 		if (!bs.Good())
 			break;
 		item.WriteData(bs);

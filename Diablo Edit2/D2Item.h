@@ -193,10 +193,10 @@ private:
 struct CItemList
 {
 	//人物物品信息
-	WORD		wMajic;					//0x4D4A,"JM"
-	WORD		nItems;					//物品数目
-	std::vector<CD2Item>	vpItems;	//所有物品，不包括镶嵌在孔里的
-	WORD		wEndMajic;				//0x4D4A,"JM"
+	WORD		wMajic;				//0x4D4A,"JM"
+	WORD		nItems;				//物品数目
+	std::vector<CD2Item> vItems;	//所有物品，不包括镶嵌在孔里的
+	WORD		wEndMajic;			//0x4D4A,"JM"
 };
 
 CInBitsStream & operator >>(CInBitsStream & bs, CItemList & v);
