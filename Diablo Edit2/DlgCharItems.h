@@ -31,12 +31,37 @@ class CDlgCharItems : public CPropertyDialog
 {
 	DECLARE_DYNAMIC(CDlgCharItems)
 //自定义常量
+	//物品的位置
+	enum EPosition {
+		STASH,				//箱子
+		INVENTORY,			//口袋
+		CUBE,				//方块
+		IN_BELT,			//腰带
+		SOCKET,				//镶嵌在孔里
+
+		GRID_COUNT,			//网格类型位置数量
+
+		HEAD = GRID_COUNT,	//头
+		NECK,				//项链
+		BODY,				//身体
+		RIGHT_HAND,			//武器右(I & II)
+		LEFT_HAND,			//武器左(I && II)
+		RIGHT_RING,			//戒指右
+		LEFT_RING,			//戒指左
+		BELT,				//腰带
+		FOOT,				//鞋子
+		GLOVE,				//手套
+
+		POSITION_END		//所有位置总数
+	};
+	const static UINT	BMP_INDEX_BASE = IDB_BITMAP0;	//所有物品图片资源的起始编号
+	const static BYTE	GRID_WIDTH = 30;				//每个网格的边长(像素)
+	const static WORD	POSITION_RECT[POSITION_END][4];	//每个位置(EPosition)在UI的起始坐标(像素),列数,行数(x,y,col,row)
+
+
 	const static WORD	INVALID_ITEM = -1;
-	const static UINT	BMP_INDEX_BASE = IDB_BITMAP0;			//所有物品图片资源的起始编号
-	const static BYTE	GRID_WIDTH = 30;						//每格边长
-	const static BYTE	GRID_NUMBER = 4;						//存储网格个数
+	const static BYTE	GRID_NUMBER = GRID_COUNT;				//存储网格个数
 	const static BYTE	GRID_BODY_NUMBER = GRID_NUMBER + 10;    //GRID_NUMBER + 身体穿戴部位数
-	const static WORD	GRID_RECT[GRID_BODY_NUMBER][4];			//网格起始坐标,列数,行数(x,y,col,row)
 public:
 	CDlgCharItems(CWnd* pParent = NULL);   // 标准构造函数
 	virtual ~CDlgCharItems();
@@ -70,11 +95,11 @@ private:
 	}
 	CPoint GRID2XY(WORD gridID,WORD range) const{	//已知身体部位编号,根据物品大小决定图像位置，只能用于身体部位
 		ASSERT(gridID >= GRID_NUMBER && GRID_NUMBER < GRID_BODY_NUMBER);
-		return CPoint(GRID_RECT[gridID][0] + (GRID_RECT[gridID][2] - COL(range)) * GRID_WIDTH / 2,
-			GRID_RECT[gridID][1] + (GRID_RECT[gridID][3] - ROW(range)) * GRID_WIDTH / 2);
+		return CPoint(POSITION_RECT[gridID][0] + (POSITION_RECT[gridID][2] - COL(range)) * GRID_WIDTH / 2,
+			POSITION_RECT[gridID][1] + (POSITION_RECT[gridID][3] - ROW(range)) * GRID_WIDTH / 2);
 	}
 	void SET_GRID_ITEM(int i,int x,int y,int itemIndex){		//设置网格位置的物品m_vItemViews索引,INVALID_ITEM表示没有
-		m_iGridItems[i][x + y * GRID_RECT[i][2]] = itemIndex;
+		m_iGridItems[i][x + y * POSITION_RECT[i][2]] = itemIndex;
 	}
 	void SET_GRID_ITEM(WORD gridIndex,int itemIndex){
 		SET_GRID_ITEM(INDEX(gridIndex),COL(gridIndex),ROW(gridIndex),itemIndex);
@@ -83,7 +108,7 @@ private:
 		return GET_GRID_ITEM(INDEX(gridIndex),COL(gridIndex),ROW(gridIndex));
 	}
 	int GET_GRID_ITEM(int i,int x,int y) const{
-		return m_iGridItems[i][x + y * GRID_RECT[i][2]];
+		return m_iGridItems[i][x + y * POSITION_RECT[i][2]];
 	}
 // 自定义成员
 private: 

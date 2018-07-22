@@ -10,7 +10,7 @@ using namespace std;
 
 // CDlgCharItems 对话框
 
-//和GRID_RECT要对应
+//和POSITION_RECT要对应
 enum {
 	STASH,		//箱子
 	INVENTORY,	//口袋
@@ -28,11 +28,12 @@ enum {
     GLOVE,		//手套
 };
 
-const WORD	CDlgCharItems::GRID_RECT[CDlgCharItems::GRID_BODY_NUMBER][4] = {
+const WORD	CDlgCharItems::POSITION_RECT[CDlgCharItems::POSITION_END][4] = {
     {10,5,6,8},		//箱子			left,top,col,row
     {10,255,10,4},	//口袋
-    {340,255,3,4},	//方块
-	{70,385,8,1},	//孔
+	{320,255,3,4},	//方块
+	{420,255,4,4},	//腰带里
+	{510,35,1,6},	//孔
     {300,5,2,2},	//头
     {365,30,1,1},	//项链
     {300,70,2,3},	//身体
@@ -53,14 +54,14 @@ CDlgCharItems::CDlgCharItems(CWnd* pParent /*=NULL*/)
 {
     //网格
     for(int i = 0;i < GRID_BODY_NUMBER;++i){
-        m_rectGrid[i].left = GRID_RECT[i][0];
-        m_rectGrid[i].top = GRID_RECT[i][1];
-        m_rectGrid[i].right = GRID_RECT[i][0] + GRID_WIDTH * GRID_RECT[i][2];
-        m_rectGrid[i].bottom = GRID_RECT[i][1] + GRID_WIDTH * GRID_RECT[i][3];
+        m_rectGrid[i].left = POSITION_RECT[i][0];
+        m_rectGrid[i].top = POSITION_RECT[i][1];
+        m_rectGrid[i].right = POSITION_RECT[i][0] + GRID_WIDTH * POSITION_RECT[i][2];
+        m_rectGrid[i].bottom = POSITION_RECT[i][1] + GRID_WIDTH * POSITION_RECT[i][3];
     }
     m_iGridItems.resize(GRID_BODY_NUMBER);
     for(int i = 0;i < GRID_NUMBER;++i)
-        m_iGridItems[i].resize(GRID_RECT[i][2]  * GRID_RECT[i][3],INVALID_ITEM);
+        m_iGridItems[i].resize(POSITION_RECT[i][2]  * POSITION_RECT[i][3],INVALID_ITEM);
     for(int i = GRID_NUMBER;i < GRID_BODY_NUMBER;++i)
         m_iGridItems[i].resize(1,INVALID_ITEM);
     //武器II
@@ -194,7 +195,7 @@ void CDlgCharItems::DrawItemsInGrid(CPaintDC & dc)
 			selected = CRect(pos, sz);
 			//Draw gems in sockets
 			const auto & gems = itemView.vGemItems;
-			for (UINT j = 0; j < GRID_RECT[SOCKETS][2] && j < gems.size(); ++j) {
+			for (UINT j = 0; j < POSITION_RECT[SOCKETS][2] && j < gems.size(); ++j) {
 				const auto & view = gems[j];
 				auto gemPos = GRID2XY(view.Pos);
 				DrawItemXY(dc, gemPos, view);
@@ -238,8 +239,8 @@ BOOL CDlgCharItems::PutItemInGrid(WORD itemIndex, WORD gridIndex) {
 	if (i < GRID_NUMBER) {	//存储箱,背包,方块
 		int x0 = COL(gridIndex);
 		int y0 = ROW(gridIndex);
-		if (x0 + COL(view.Range) > GRID_RECT[i][2] ||
-			y0 + ROW(view.Range) > GRID_RECT[i][3])
+		if (x0 + COL(view.Range) > POSITION_RECT[i][2] ||
+			y0 + ROW(view.Range) > POSITION_RECT[i][3])
 			return FALSE;   //物品在网格外面了
 		for (int x = 0; x < COL(view.Range); ++x)
 			for (int y = 0; y < ROW(view.Range); ++y)
@@ -510,9 +511,9 @@ void CDlgCharItems::OnChangeHand()
     m_bSecondHand = !m_bSecondHand;
     //更新左右手
     for(int i = RIGHT_HAND;i <= LEFT_HAND;++i){
-        CRect rect(GRID_RECT[i][0],GRID_RECT[i][1],0,0);
-        rect.right = rect.left + GRID_RECT[i][2] * GRID_WIDTH;
-        rect.bottom = rect.top + GRID_RECT[i][3] * GRID_WIDTH;
+        CRect rect(POSITION_RECT[i][0],POSITION_RECT[i][1],0,0);
+        rect.right = rect.left + POSITION_RECT[i][2] * GRID_WIDTH;
+        rect.bottom = rect.top + POSITION_RECT[i][3] * GRID_WIDTH;
         InvalidateRect(&rect);
     }
 }
