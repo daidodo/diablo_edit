@@ -8,31 +8,29 @@
 
 using namespace std;
 
+//struct CItemView
+
+CItemView::CItemView(CD2Item & item, int pos, int x, int y)
+	: Item(item)
+	, nPicRes(IDB_BITMAP0 + item.MetaData().PicIndex)
+	, iPosition(pos)
+	, iGridX(x)
+	, iGridY(y)
+	, iGridWidth((item.MetaData().Range >> 4) & 0xF)
+	, iGridHeight(item.MetaData().Range & 0xF)
+{
+	ASSERT(0 <= pos);
+	ASSERT(0 < iGridWidth && 0 < iGridHeight);
+}
+
 // CDlgCharItems 对话框
 
-//和GRID_RECT要对应
-enum {
-	STASH,		//箱子
-	INVENTORY,	//口袋
-	CUBE,		//方块
-	SOCKETS,	//孔
-	HEAD,		//头
-	NECK,		//项链
-    BODY,		//身体
-    RIGHT_HAND,	//武器右
-    LEFT_HAND,	//武器左
-    RIGHT_RING,	//戒指右
-    LEFT_RING,	//戒指左
-    BELT,		//腰带		
-    FOOT,		//鞋子
-    GLOVE,		//手套
-};
-
-const WORD	CDlgCharItems::GRID_RECT[CDlgCharItems::GRID_BODY_NUMBER][4] = {
+const WORD	CDlgCharItems::POSITION_RECT[CDlgCharItems::POSITION_END][4] = {
     {10,5,6,8},		//箱子			left,top,col,row
     {10,255,10,4},	//口袋
-    {340,255,3,4},	//方块
-	{70,385,8,1},	//孔
+	{320,255,3,4},	//方块
+	{420,255,4,4},	//腰带里
+	{70,385,6,1},	//孔
     {300,5,2,2},	//头
     {365,30,1,1},	//项链
     {300,70,2,3},	//身体
@@ -43,7 +41,7 @@ const WORD	CDlgCharItems::GRID_RECT[CDlgCharItems::GRID_BODY_NUMBER][4] = {
     {300,165,2,1},	//腰带		
     {400,155,2,2},	//鞋子
     {200,155,2,2},	//手套
-    //{805,30,2,4},	//铸造台
+	{480,30,2,4},	//被鼠标拿起
 };
 
 IMPLEMENT_DYNAMIC(CDlgCharItems, CPropertyDialog)
@@ -51,25 +49,26 @@ IMPLEMENT_DYNAMIC(CDlgCharItems, CPropertyDialog)
 CDlgCharItems::CDlgCharItems(CWnd* pParent /*=NULL*/)
     : CPropertyDialog(CDlgCharItems::IDD, pParent)
 {
-    //网格
-    for(int i = 0;i < GRID_BODY_NUMBER;++i){
-        m_rectGrid[i].left = GRID_RECT[i][0];
-        m_rectGrid[i].top = GRID_RECT[i][1];
-        m_rectGrid[i].right = GRID_RECT[i][0] + GRID_WIDTH * GRID_RECT[i][2];
-        m_rectGrid[i].bottom = GRID_RECT[i][1] + GRID_WIDTH * GRID_RECT[i][3];
-    }
-    m_iGridItems.resize(GRID_BODY_NUMBER);
-    for(int i = 0;i < GRID_NUMBER;++i)
-        m_iGridItems[i].resize(GRID_RECT[i][2]  * GRID_RECT[i][3],INVALID_ITEM);
-    for(int i = GRID_NUMBER;i < GRID_BODY_NUMBER;++i)
-        m_iGridItems[i].resize(1,INVALID_ITEM);
-    //武器II
-    m_iGridItems[RIGHT_HAND].push_back(INVALID_ITEM);
-    m_iGridItems[LEFT_HAND].push_back(INVALID_ITEM);
-}
+	//m_rectGrid
+	for (UINT i = 0; i < size(m_rectGrid); ++i) {
+		m_rectGrid[i].left = POSITION_RECT[i][0];
+		m_rectGrid[i].top = POSITION_RECT[i][1];
+		m_rectGrid[i].right = POSITION_RECT[i][0] + GRID_WIDTH * POSITION_RECT[i][2];
+		m_rectGrid[i].bottom = POSITION_RECT[i][1] + GRID_WIDTH * POSITION_RECT[i][3];
+	}
+	//m_vGridItems
+	m_vGridItems.resize(POSITION_END);
+	for (UINT i = 0; i < size(m_vGridItems); ++i)
+		if (i < GRID_COUNT)
+			m_vGridItems[i].resize(POSITION_RECT[i][2] * POSITION_RECT[i][3], -1);
+		else
+			m_vGridItems[i].resize(1, -1);
+	//武器II
+	m_vGridItems[RIGHT_HAND].push_back(-1);
+	m_vGridItems[LEFT_HAND].push_back(-1);
+ }
 
-CDlgCharItems::~CDlgCharItems()
-{
+CDlgCharItems::~CDlgCharItems() {
 	delete m_pDlgItemInfo;
 }
 
@@ -110,12 +109,12 @@ void CDlgCharItems::DoDataExchange(CDataExchange* pDX)
     DDX_Text(pDX, IDC_CHECK6, m_sText[10]);
 	DDX_Text(pDX, IDC_CHECK7, m_sText[11]);
 	DDX_Text(pDX, IDC_STATIC_Sockets, m_sText[12]);
+	DDX_Text(pDX, IDC_STATIC_Mouse, m_sText[13]);
     DDX_Control(pDX, IDC_BUTTON1, m_btButton[0]);
     DDX_Control(pDX, IDC_BUTTON2, m_btButton[1]);
     DDX_Control(pDX, IDC_BUTTON3, m_btButton[2]);
     DDX_Control(pDX, IDC_BUTTON4, m_btButton[3]);
 	DDX_Control(pDX, IDC_BUTTON5, m_btButton[4]);
-	
 }
 
 BEGIN_MESSAGE_MAP(CDlgCharItems, CDialog)
@@ -130,8 +129,126 @@ BEGIN_MESSAGE_MAP(CDlgCharItems, CDialog)
     ON_WM_RBUTTONUP()
 END_MESSAGE_MAP()
 
+void CDlgCharItems::UpdateUI(CD2S_Struct & character) {
+	m_vItemViews.clear();
+	m_vItemViews.reserve(character.ItemList.vItems.size());
+	for (UINT i = 0; i < character.ItemList.vItems.size(); ++i) {
+		auto & item = character.ItemList.vItems[i];
+		int pos = -1, x = 0, y = 0;	//物品的位置(EPosition)和坐标
+		switch (item.iLocation) {
+			case 0:		//grid
+				pos = (item.iStoredIn == 1 ? INVENTORY : (item.iStoredIn == 4 ? CUBE : (item.iStoredIn == 5 ? STASH : -1)));
+				x = item.iColumn;
+				y = item.iRow;
+				break;
+			case 1:		//equipped
+				pos = item.iPosition;
+				if (0 < pos && pos <= 10)
+					pos += GRID_COUNT - 1;
+				else if (pos <= 12) {	//左右手II
+					pos += GRID_COUNT - 8;
+					x = 1;
+				} else
+					pos = -1;
+				break;
+			case 2:		//in belt(物品排列方式与其他网格不同)
+				pos = IN_BELT;
+				x = item.iColumn % 4;
+				y = POSITION_RECT[pos][3] - item.iColumn / 4 - 1;
+				break;
+			case 4:		//in hand(鼠标)
+				pos = IN_MOUSE;
+				break;
+			default:;
+		}
+		if (pos < 0)
+			ASSERT(FALSE && _T("Invalid item position"));
+		auto & meta = item.MetaData();
+		auto & view = m_vItemViews.emplace_back(item, pos, x, y);
+		UpdateGridItem(int(m_vItemViews.size() - 1), pos, x, y);
+		//Gems
+		x = 0;
+		for (auto & gem : item.aGemItems)
+			view.vGemItems.emplace_back(gem, IN_SOCKET, x++, 0);
+	}
+	m_iSelectedItemIndex = m_iSelectedSocketIndex = -1;
+	Invalidate();
+}
+
+int CDlgCharItems::GetGridItemIndex(int pos, int x, int y) const {
+	ASSERT(0 <= pos && pos < int(m_vGridItems.size()));
+	ASSERT(0 <= x && 0 <= y);
+	const UINT idx = x + y * POSITION_RECT[pos][2];
+	auto & grid = m_vGridItems[pos];
+	ASSERT(idx < grid.size());
+	return grid[idx];
+}
+
+void CDlgCharItems::SetGridItemIndex(int pos, int x, int y, int index) {
+	ASSERT(0 <= pos && pos < int(m_vGridItems.size()));
+	ASSERT(0 <= x && 0 <= y);
+	const UINT idx = x + y * POSITION_RECT[pos][2];
+	auto & grid = m_vGridItems[pos];
+	ASSERT(idx < grid.size());
+	grid[idx] = index;
+}
+
+CPoint CDlgCharItems::GetItemPositionXY(const CItemView & view) const {
+	ASSERT(0 <= view.iPosition && view.iPosition < POSITION_END);
+	auto & p = POSITION_RECT[view.iPosition];
+	if (view.iPosition < GRID_COUNT)
+		return CPoint(p[0] + view.iGridX * GRID_WIDTH, p[1] + view.iGridY * GRID_WIDTH);
+	int x = p[0] + (p[2] - view.iGridWidth) * GRID_WIDTH / 2;
+	int y = p[1] + (p[3] - view.iGridHeight) * GRID_WIDTH / 2;
+	return CPoint(x, y);
+}
+
+const CItemView & CDlgCharItems::SelectedItemView() const {
+	ASSERT(0 <= m_iSelectedItemIndex && m_iSelectedItemIndex < int(m_vItemViews.size()));
+	return m_vItemViews[m_iSelectedItemIndex];
+}
+
+CItemView & CDlgCharItems::SelectedItemView() {
+	ASSERT(0 <= m_iSelectedItemIndex && m_iSelectedItemIndex < int(m_vItemViews.size()));
+	return m_vItemViews[m_iSelectedItemIndex];
+}
+
+BOOL CDlgCharItems::UpdateGridItem(int index, int pos, int x, int y) {
+	ASSERT(0 <= index && index < int(m_vItemViews.size()));
+	ASSERT(0 <= pos && pos < POSITION_END);
+	ASSERT(0 <= x && 0 <= y);
+	auto & view = m_vItemViews[index];
+	const auto equip = view.Item.MetaData().Equip;	//物品的可穿戴位置
+	if (pos < GRID_COUNT) {	//带网格的位置
+		if (x + view.iGridWidth > POSITION_RECT[pos][2] || y + view.iGridHeight > POSITION_RECT[pos][3])
+			return FALSE;	//物品在网格外面
+		if (pos == IN_BELT && equip != 9)
+			return FALSE;	//物品不能放到腰带里
+		for (int i = 0; i < view.iGridWidth; ++i)
+			for (int j = 0; j < view.iGridHeight; ++j)
+				if (-1 != GetGridItemIndex(pos, x + i, y + j))
+					return FALSE;	//网格里有物品
+		for (int i = 0; i < view.iGridWidth; ++i)
+			for (int j = 0; j < view.iGridHeight; ++j)
+				SetGridItemIndex(pos, x + i, y + j, index);
+	} else {	//身体部位和鼠标
+		if (pos != IN_MOUSE) {
+			const BYTE EQUIP[] = { 1,2,3,4,4,5,5,6,7,8 };	//网格位置对应的物品可穿戴类型
+			if (equip != EQUIP[pos - HEAD])
+				return FALSE;	//物品不能穿戴到指定部位
+		}
+		if (-1 != GetGridItemIndex(pos, x, y))
+			return FALSE;	//已穿戴物品
+		SetGridItemIndex(pos, x, y, index);
+	}
+	view.iPosition = pos;
+	view.iGridX = x;
+	view.iGridY = y;
+	return TRUE;
+}
+
 //画一个网格或矩形
-void DrawGrid(CPaintDC & dc, const CRect & rect, int intervalX = 0, int intervalY = 0)
+static void DrawGrid(CPaintDC & dc, const CRect & rect, int intervalX = 0, int intervalY = 0)
 {
 	if (intervalX == 0)
 		intervalX = rect.Width();
@@ -151,119 +268,88 @@ void CDlgCharItems::DrawGrids(CPaintDC & dc)
 {
     CPen pen(PS_SOLID,1,RGB(0,200,100));
     CPen * pOld = dc.SelectObject(&pen);
-	//储存箱，口袋，方块
-    for(int i = 0;i < GRID_NUMBER;++i)
-		::DrawGrid(dc, m_rectGrid[i], GRID_WIDTH, GRID_WIDTH);
-    //身体部位
-    for(int i = GRID_NUMBER;i < GRID_BODY_NUMBER;++i)
-		::DrawGrid(dc, m_rectGrid[i]);
+    for(int i = 0;i < POSITION_END;++i)
+		if(i < GRID_COUNT)
+			::DrawGrid(dc, m_rectGrid[i], GRID_WIDTH, GRID_WIDTH);
+		else
+			::DrawGrid(dc, m_rectGrid[i]);
 	dc.SelectObject(pOld);
 }
 
-void CDlgCharItems::DrawItemXY(CPaintDC & dc, CPoint pos, const CItemView & itemView)
+void CDlgCharItems::DrawItemXY(CPaintDC & dc, CPoint pos, const CItemView & view) const
 {
 	CBitmap bmp;
 	CDC memDC;
-	bmp.LoadBitmap(itemView.nPicRes);
+	bmp.LoadBitmap(view.nPicRes);
 	memDC.CreateCompatibleDC(&dc);
 	CBitmap* pOld = memDC.SelectObject(&bmp);
-	dc.BitBlt(pos.x, pos.y, COL(itemView.Range) * GRID_WIDTH, ROW(itemView.Range) * GRID_WIDTH, &memDC, 0, 0, SRCCOPY);
+	auto sz = view.ViewSize();
+	dc.BitBlt(pos.x, pos.y, sz.cx,sz.cy, &memDC, 0, 0, SRCCOPY);
 	memDC.SelectObject(pOld);
 }
 
-void CDlgCharItems::DrawItemsInGrid(CPaintDC & dc)
+void CDlgCharItems::DrawAllItemsInGrid(CPaintDC & dc) const
 {
-	CRect selected(0, 0, 0, 0);
+	CRect selectedGrid(0, 0, 0, 0), selectedSocket(0, 0, 0, 0);
 	for (size_t i = 0; i < m_vItemViews.size(); ++i) {
-		const auto & itemView = m_vItemViews[i];
-		CPoint pos;
-		int gridID = INDEX(itemView.Pos);
-		if (gridID < GRID_NUMBER)    //在箱子,背包,方块里
-			pos = GRID2XY(itemView.Pos);
-		else if (gridID != RIGHT_HAND && gridID != LEFT_HAND) //身上(除了左右手)
-			pos = GRID2XY(gridID, itemView.Range);
-		else {       //左右手,分I,II
-			if (m_bSecondHand != COL(itemView.Pos))
-				continue;
-			pos = GRID2XY(gridID, itemView.Range);
-		}
-		DrawItemXY(dc, pos, itemView);
-
-		if (i == m_iSelectedItemIndex) {
-			CSize sz(COL(itemView.Range) * GRID_WIDTH, ROW(itemView.Range) * GRID_WIDTH);
-			selected = CRect(pos, sz);
+		auto & view = m_vItemViews[i];
+		if ((RIGHT_HAND == view.iPosition || LEFT_HAND == view.iPosition)
+			&& view.iGridX != (m_bSecondHand ? 1 : 0))	//在左右手上，分I, II显示不同物品
+			continue;
+		auto pos = GetItemPositionXY(view);
+		DrawItemXY(dc, pos, view);
+		if (i == m_iSelectedItemIndex) {	//选中的物品
+			selectedGrid = CRect(pos, view.ViewSize());
 			//Draw gems in sockets
-			const auto & gems = itemView.vGemItems;
-			for (UINT j = 0; j < GRID_RECT[SOCKETS][2] && j < gems.size(); ++j) {
-				const auto & view = gems[j];
-				auto gemPos = GRID2XY(view.Pos);
-				DrawItemXY(dc, gemPos, view);
+			auto & gems = view.vGemItems;
+			for (UINT j = 0; j < POSITION_RECT[IN_SOCKET][2] && j < gems.size(); ++j) {
+				auto & gemView = gems[j];
+				pos = GetItemPositionXY(gemView);
+				DrawItemXY(dc, pos, gemView);
+				if (j == m_iSelectedSocketIndex)	//选中的宝石
+					selectedSocket = CRect(pos, gemView.ViewSize());
 			}
 		}
 	}
-	// 高亮选中的物品
-	if (selected.top != 0) {
-		CPen pen(PS_SOLID, 2, RGB(255, 0, 0));
+	// 高亮选中的宝石
+	const int PEN_WIDTH = 2;
+	if (selectedSocket.top) {
+		CPen pen(PS_SOLID, PEN_WIDTH, RGB(255, 0, 0));
 		CPen * pOld = dc.SelectObject(&pen);
-		DrawGrid(dc, selected);
+		DrawGrid(dc, selectedSocket);
+		dc.SelectObject(pOld);
+	}
+	// 高亮选中的物品
+	if (selectedGrid.top) {
+		CPen pen(PS_SOLID, PEN_WIDTH, selectedSocket.top ? RGB(220, 50, 100) : RGB(255, 0, 0));
+		CPen * pOld = dc.SelectObject(&pen);
+		DrawGrid(dc, selectedGrid);
 		dc.SelectObject(pOld);
 	}
 }
 
-WORD CDlgCharItems::HitTestItem(const CPoint & pos,WORD range)
-{
-    for(int i = 0;i < GRID_NUMBER;++i){ //箱子,背包,方块
-        if(m_rectGrid[i].PtInRect(pos)){
-            int x = (pos.x - GRID_WIDTH * (COL(range) - 1) / 2 - m_rectGrid[i].left) / GRID_WIDTH;
-            int y = (pos.y - GRID_WIDTH * (ROW(range) - 1) / 2 - m_rectGrid[i].top) / GRID_WIDTH;
-            return MAKE_GRID(i,x,y);
-        }
-    }
-    for(int i = GRID_NUMBER;i < GRID_BODY_NUMBER;++i)   //其他
-        if(m_rectGrid[i].PtInRect(pos)){
-            if(i == RIGHT_HAND || i == LEFT_HAND)    //左右手
-                return MAKE_GRID(i,m_bSecondHand,0);
-            else    //其他
-                return MAKE_GRID(i,0,0);
-        }
-    return INVALID_ITEM;
-}
-
-BOOL CDlgCharItems::PutItemInGrid(WORD itemIndex, WORD gridIndex) {
-	ASSERT(itemIndex >= 0 && itemIndex < WORD(m_vItemViews.size()));
-	if (gridIndex == INVALID_ITEM)
-		return FALSE;
-	CItemView & view = m_vItemViews[itemIndex];
-	int i = INDEX(gridIndex);
-	if (i < GRID_NUMBER) {	//存储箱,背包,方块
-		int x0 = COL(gridIndex);
-		int y0 = ROW(gridIndex);
-		if (x0 + COL(view.Range) > GRID_RECT[i][2] ||
-			y0 + ROW(view.Range) > GRID_RECT[i][3])
-			return FALSE;   //物品在网格外面了
-		for (int x = 0; x < COL(view.Range); ++x)
-			for (int y = 0; y < ROW(view.Range); ++y)
-				if (GET_GRID_ITEM(i, x0 + x, y0 + y) != INVALID_ITEM)
-					return FALSE;   //网格里有物品
-		view.Pos = gridIndex;
-		for (int x = 0; x < COL(view.Range); ++x)
-			for (int y = 0; y < ROW(view.Range); ++y)
-				SET_GRID_ITEM(i, x0 + x, y0 + y, itemIndex);
-	} else {					//身体
-		const WORD MAP[10] = { 1,2,3,4,4,5,5,6,7,8 };
-		if (view.Item.MetaData().Equip != MAP[i - GRID_NUMBER])
-			return FALSE;
-		int c = COL(gridIndex), r = ROW(gridIndex);
-		if (GET_GRID_ITEM(i, c, r) != INVALID_ITEM)
-			return FALSE;
-		view.Pos = MAKE_GRID(i, c, r);
-		SET_GRID_ITEM(i, c, r, itemIndex);
+tuple<int, int, int> CDlgCharItems::HitTestPosition(CPoint pos) const {
+	for (int i = 0; i < GRID_COUNT; ++i) {
+		auto & rect = m_rectGrid[i];
+		if (rect.PtInRect(pos)) {
+			const int x = (pos.x - rect.left) / GRID_WIDTH;
+			const int y = (pos.y - rect.top) / GRID_WIDTH;
+			return make_tuple(i, x, y);
+		}
 	}
-	return TRUE;
+	for (int i = HEAD; i < POSITION_END; ++i) {
+		auto & rect = m_rectGrid[i];
+		if (rect.PtInRect(pos)) {
+			if (RIGHT_HAND == i || LEFT_HAND == i)
+				return make_tuple(i, (m_bSecondHand ? 1 : 0), 0);
+			else
+				return make_tuple(i, 0, 0);
+		}
+	}
+	return make_tuple(-1, -1, -1);
 }
 
-void CDlgCharItems::ShowItemInfoDlg(const CD2Item * pItem)
-{
+void CDlgCharItems::ShowItemInfoDlg(const CD2Item * pItem){
     if(!m_bNotShowItemInfoDlg && pItem && (!m_pDlgItemInfo || pItem != m_pDlgItemInfo->GetItemPtr())){
         if(!m_pDlgItemInfo){
             m_pDlgItemInfo = new CDlgSuspend(this,m_scTrasparent.GetPos());
@@ -273,7 +359,7 @@ void CDlgCharItems::ShowItemInfoDlg(const CD2Item * pItem)
         CRect rect,rect1;
         m_pDlgItemInfo->GetWindowRect(&rect);
         GetWindowRect(&rect1);
-        m_pDlgItemInfo->MoveWindow(rect1.left + 475,rect1.top,rect.Width(),rect.Height(),TRUE);
+		m_pDlgItemInfo->MoveWindow(rect1.left + INFO_WINDOW_LEFT, rect1.top, rect.Width(), rect.Height(), TRUE);
         m_pDlgItemInfo->ShowWindow(SW_SHOWNOACTIVATE); //显示对话框
         m_pDlgItemInfo->Invalidate();
     }else if(!pItem && m_pDlgItemInfo){
@@ -282,10 +368,8 @@ void CDlgCharItems::ShowItemInfoDlg(const CD2Item * pItem)
     }
 }
 
-void CDlgCharItems::ReadItemProperty(WORD itemIndex)
-{
-    ASSERT(itemIndex >= 0 && itemIndex < WORD(m_vItemViews.size()));
-    const CD2Item & item = m_vItemViews[itemIndex].Item;
+void CDlgCharItems::ReadItemProperty(const CD2Item & item) {
+
     //m_sItemName = ::theApp.ItemName(item.MetaData().NameIndex);
     if(m_bItemSocket = item.bSocketed)
         m_bBaseSocket = item.pItemInfo->pTpSpInfo->iSocket;
@@ -340,56 +424,8 @@ void CDlgCharItems::ResetFoundry()
     m_wItemDefence = 0;
     m_wMaxDurability = m_wCurDurability = 0;
     m_lcPropertyList.DeleteAllItems();
-    UpdateData(FALSE);
-}
 
-//虚函数重载
-void CDlgCharItems::UpdateUI(const CD2S_Struct & character)
-{
-    if(!m_vItemViews.empty())
-        ResetAll();
-    m_vItemViews.reserve(character.ItemList.nItems);
-    for(WORD i = 0;i < character.ItemList.nItems;++i){
-        const CD2Item & item = character.ItemList.vpItems[i];
-        int index = INVALID_ITEM,x,y;
-        switch(item.iLocation){
-            case 0:		//grid
-                index = (item.iStoredIn == 1 ? 1 : (item.iStoredIn == 4 ? 2 : (item.iStoredIn == 5 ? 0 : INVALID_ITEM)));
-                x = item.iColumn;
-                y = item.iRow;
-                break;
-            case 1:		//equipped
-                if(item.iPosition){
-                    if(item.iPosition <= 10){
-                        index = item.iPosition + GRID_NUMBER - 1;
-                        x = y = 0;
-                    }else if(item.iPosition <= 12){	//左右手II
-                        index = item.iPosition - 5;
-                        x = 1;
-                        y = 0;
-                    }
-                }
-                break;
-            case 2:		//in belt
-                break;
-            case 4:		//in hand(鼠标)
-                break;
-            case 6:		//glued into a socket
-                break;
-            default:;
-        }
-		if (index != INVALID_ITEM) {
-			m_vItemViews.emplace_back(BMP_INDEX_BASE + item.MetaData().PicIndex, item.MetaData().Range, item);
-			int c = 0;
-			for (auto & gem : item.aGemItems) {
-				m_vItemViews.back().vGemItems.emplace_back(BMP_INDEX_BASE + gem.MetaData().PicIndex, gem.MetaData().Range, gem);
-				m_vItemViews.back().vGemItems.back().Pos = (SOCKETS << 8) + (c++ << 4);
-			}
-			PutItemInGrid(WORD(m_vItemViews.size() - 1), MAKE_GRID(index, x, y));
-		}
-    }
-	m_iSelectedItemIndex = INVALID_ITEM;
-    Invalidate();
+    UpdateData(FALSE);
 }
 
 BOOL CDlgCharItems::GatherData(CD2S_Struct & character)
@@ -402,10 +438,14 @@ BOOL CDlgCharItems::GatherData(CD2S_Struct & character)
 void CDlgCharItems::ResetAll()
 {
 	m_vItemViews.clear();
+	for (auto & grid : m_vGridItems)
+		fill(grid.begin(), grid.end(), -1);
     m_bSecondHand = FALSE;
-    for(int i = 0;i < GRID_BODY_NUMBER;++i)
-        std::fill(m_iGridItems[i].begin(),m_iGridItems[i].end(),INVALID_ITEM);
-    ResetFoundry();
+	m_iSelectedItemIndex = m_iSelectedSocketIndex = -1;
+	delete m_pDlgItemInfo;
+	m_pDlgItemInfo = 0;
+	ResetFoundry();
+
     Invalidate();
 }
 
@@ -436,21 +476,29 @@ void CDlgCharItems::LoadText(void)
 void CDlgCharItems::OnPaint()
 {
     CPaintDC dc(this);
-    DrawGrids(dc);					//画储存箱
-    DrawItemsInGrid(dc);			//画网格里的物品
+    DrawGrids(dc);
+    DrawAllItemsInGrid(dc);	//画网格里的物品
 }
 
 void CDlgCharItems::OnMouseMove(UINT nFlags, CPoint point)
 {
-	int grid = HitTestItem(point);
-	if (grid != INVALID_ITEM) {// && INDEX(grid) < GRID_BODY_NUMBER - 1){	//在非锻造台的网格范围内
-		int item = GET_GRID_ITEM(grid);
-		if (item != INVALID_ITEM) {		//悬停在物品上
-			ShowItemInfoDlg(&m_vItemViews[item].Item);
-		} else
-			ShowItemInfoDlg(0);
-	} else
-		ShowItemInfoDlg(0);
+	const CD2Item * item = 0;
+	auto t = HitTestPosition(point);
+	const int pos = get<0>(t), x = get<1>(t), y = get<2>(t);
+	if (0 <= pos) {		//在有效网格里
+		const int index = GetGridItemIndex(pos, x, y);
+		if (0 <= index) {	//有物品
+			if (IN_SOCKET == pos) {	//镶嵌的宝石
+				const auto & gems = SelectedItemView().vGemItems;
+				ASSERT(index < int(gems.size()));
+				item = &gems[index].Item;
+			} else {	//其他物品
+				ASSERT(index < int(m_vItemViews.size()));
+				item = &m_vItemViews[index].Item;
+			}
+		}
+	}
+	ShowItemInfoDlg(item);
 
 	m_pMouse = point;
 	UpdateData(FALSE);
@@ -459,19 +507,35 @@ void CDlgCharItems::OnMouseMove(UINT nFlags, CPoint point)
 
 void CDlgCharItems::OnLButtonDown(UINT nFlags, CPoint point)
 {
-	int grid = HitTestItem(point);
-	if (grid != INVALID_ITEM) {		//在网格范围内
-		int item = GET_GRID_ITEM(grid);
-		if (item != INVALID_ITEM && item != m_iSelectedItemIndex) {	//点中了另一件物品
-			if (m_iSelectedItemIndex != INVALID_ITEM)
+	auto t = HitTestPosition(point);
+	const int pos = get<0>(t), x = get<1>(t), y = get<2>(t);
+	if (IN_SOCKET == pos) {
+		const int index = GetGridItemIndex(pos, x, y);
+		if (0 <= index && index != m_iSelectedSocketIndex) {
+			ResetFoundry();
+			const auto & gems = SelectedItemView().vGemItems;
+			ASSERT(0 <= index && index < int(gems.size()));
+			m_iSelectedSocketIndex = index;
+			ReadItemProperty(gems[m_iSelectedSocketIndex].Item);
+			Invalidate();
+		}
+	} else if (0 <= pos) {
+		const int index = GetGridItemIndex(pos, x, y);
+		if (0 <= index && (index != m_iSelectedItemIndex || 0 <= m_iSelectedSocketIndex)) {
+			if (0 <= m_iSelectedItemIndex)
 				ResetFoundry();
-			m_iSelectedItemIndex = item;
-			ReadItemProperty(m_iSelectedItemIndex);
+			ASSERT(0 <= index && index < int(m_vItemViews.size()));
+			const auto & view = m_vItemViews[index];
+			m_iSelectedItemIndex = index;
+			m_iSelectedSocketIndex = -1;
+			ReadItemProperty(view.Item);
+			//设置镶嵌的物品
+			for (int i = 0; i < int(m_vGridItems[IN_SOCKET].size()); ++i)
+				SetGridItemIndex(IN_SOCKET, i, 0, (i < int(view.vGemItems.size()) ? i : -1));
 			Invalidate();
 		}
 	}
-   
-    CPropertyDialog::OnLButtonDown(nFlags, point);
+	CPropertyDialog::OnLButtonDown(nFlags, point);
 }
 
 void CDlgCharItems::OnRButtonUp(UINT nFlags, CPoint point)
@@ -495,8 +559,8 @@ BOOL CDlgCharItems::OnInitDialog()
 void CDlgCharItems::OnShowWindow(BOOL bShow, UINT nStatus)
 {
     CPropertyDialog::OnShowWindow(bShow, nStatus);
-    if(!bShow)			//在少数情况下，会出现隐藏物品属性窗口时悬浮窗还在的情况
-        ShowItemInfoDlg(0);
+    //if(!bShow)			//在少数情况下，会出现隐藏物品属性窗口时悬浮窗还在的情况
+    //    ShowItemInfoDlg(0);
 }
 
 void CDlgCharItems::OnBnClickedCheck2()
@@ -510,9 +574,9 @@ void CDlgCharItems::OnChangeHand()
     m_bSecondHand = !m_bSecondHand;
     //更新左右手
     for(int i = RIGHT_HAND;i <= LEFT_HAND;++i){
-        CRect rect(GRID_RECT[i][0],GRID_RECT[i][1],0,0);
-        rect.right = rect.left + GRID_RECT[i][2] * GRID_WIDTH;
-        rect.bottom = rect.top + GRID_RECT[i][3] * GRID_WIDTH;
+        CRect rect(POSITION_RECT[i][0],POSITION_RECT[i][1],0,0);
+        rect.right = rect.left + POSITION_RECT[i][2] * GRID_WIDTH;
+        rect.bottom = rect.top + POSITION_RECT[i][3] * GRID_WIDTH;
         InvalidateRect(&rect);
     }
 }
@@ -521,70 +585,70 @@ void CDlgCharItems::OnPrefixSuffix()
 {
     std::vector<int> selIndex(10,-1);
 	int itemIndex = m_iSelectedItemIndex;
-    if(itemIndex != INVALID_ITEM){
-        const CD2Item & item = m_vItemViews[itemIndex].Item;
-        if(item.pItemInfo.exist() && item.pItemInfo->pExtItemInfo.exist()){
-            switch(m_cbQuality.GetCurSel() + 1){
-                case 1:     //low
-                    if(item.pItemInfo->pExtItemInfo->loQual.exist())
-                        selIndex[9] = item.pItemInfo->pExtItemInfo->loQual;
-                    break;
-                case 3:     //high
-                    if(item.pItemInfo->pExtItemInfo->hiQual.exist())
-                        selIndex[9] = item.pItemInfo->pExtItemInfo->hiQual;
-                    break;
-                case 4:     //magic
-                    if(item.pItemInfo->pExtItemInfo->wPrefix.exist())
-                        selIndex[2] = item.pItemInfo->pExtItemInfo->wPrefix;
-                    if(item.pItemInfo->pExtItemInfo->wSuffix.exist())
-                        selIndex[3] = item.pItemInfo->pExtItemInfo->wSuffix;
-                    break;
-                case 5:     //set
-                    break;
-                case 6:     //rare
-                    if(item.pItemInfo->pExtItemInfo->pRareName.exist()){
-                        selIndex[0] = item.pItemInfo->pExtItemInfo->pRareName->iName1;
-                        selIndex[1] = item.pItemInfo->pExtItemInfo->pRareName->iName2;
-                        if(item.pItemInfo->pExtItemInfo->pRareName->bPref1)
-                            selIndex[2] = item.pItemInfo->pExtItemInfo->pRareName->wPref1;
-                        if(item.pItemInfo->pExtItemInfo->pRareName->bSuff1)
-                            selIndex[3] = item.pItemInfo->pExtItemInfo->pRareName->wSuff1;
-                        if(item.pItemInfo->pExtItemInfo->pRareName->bPref2)
-                            selIndex[4] = item.pItemInfo->pExtItemInfo->pRareName->wPref2;
-                        if(item.pItemInfo->pExtItemInfo->pRareName->bSuff2)
-                            selIndex[5] = item.pItemInfo->pExtItemInfo->pRareName->wSuff2;
-                        if(item.pItemInfo->pExtItemInfo->pRareName->bPref3)
-                            selIndex[6] = item.pItemInfo->pExtItemInfo->pRareName->wPref3;
-                        if(item.pItemInfo->pExtItemInfo->pRareName->bSuff3)
-                            selIndex[7] = item.pItemInfo->pExtItemInfo->pRareName->wSuff3;
-                    }
-                    break;
-                case 7:     //unique
-                    if(item.pItemInfo->pExtItemInfo->wUniID.exist())
-                        selIndex[8] = item.pItemInfo->pExtItemInfo->wUniID;
-                    break;
-                case 8:     //crafted
-                    if(item.pItemInfo->pExtItemInfo->pCraftName.exist()){
-                        selIndex[0] = item.pItemInfo->pExtItemInfo->pCraftName->iName1;
-                        selIndex[1] = item.pItemInfo->pExtItemInfo->pCraftName->iName2;
-                        if(item.pItemInfo->pExtItemInfo->pCraftName->bPref1)
-                            selIndex[2] = item.pItemInfo->pExtItemInfo->pCraftName->wPref1;
-                        if(item.pItemInfo->pExtItemInfo->pCraftName->bSuff1)
-                            selIndex[3] = item.pItemInfo->pExtItemInfo->pCraftName->wSuff1;
-						if (item.pItemInfo->pExtItemInfo->pCraftName->bPref2)
-							selIndex[4] = item.pItemInfo->pExtItemInfo->pCraftName->wPref2;
-                        if(item.pItemInfo->pExtItemInfo->pCraftName->bSuff2)
-                            selIndex[5] = item.pItemInfo->pExtItemInfo->pCraftName->wSuff2;
-                        if(item.pItemInfo->pExtItemInfo->pCraftName->bPref3)
-                            selIndex[6] = item.pItemInfo->pExtItemInfo->pCraftName->wPref3;
-                        if(item.pItemInfo->pExtItemInfo->pCraftName->bSuff3)
-                            selIndex[7] = item.pItemInfo->pExtItemInfo->pCraftName->wSuff3;
-                    }
-                    break;
-                default:;
-            }
-        }
-    }
-    CDlgPrefixSuffix dlgPrefix(m_cbQuality.GetCurSel() + 1,&selIndex[0],this);
-    dlgPrefix.DoModal();
+    //if(itemIndex != INVALID_ITEM){
+    //    const CD2Item & item = m_vItemViews1[itemIndex].Item;
+    //    if(item.pItemInfo.exist() && item.pItemInfo->pExtItemInfo.exist()){
+    //        switch(m_cbQuality.GetCurSel() + 1){
+    //            case 1:     //low
+    //                if(item.pItemInfo->pExtItemInfo->loQual.exist())
+    //                    selIndex[9] = item.pItemInfo->pExtItemInfo->loQual;
+    //                break;
+    //            case 3:     //high
+    //                if(item.pItemInfo->pExtItemInfo->hiQual.exist())
+    //                    selIndex[9] = item.pItemInfo->pExtItemInfo->hiQual;
+    //                break;
+    //            case 4:     //magic
+    //                if(item.pItemInfo->pExtItemInfo->wPrefix.exist())
+    //                    selIndex[2] = item.pItemInfo->pExtItemInfo->wPrefix;
+    //                if(item.pItemInfo->pExtItemInfo->wSuffix.exist())
+    //                    selIndex[3] = item.pItemInfo->pExtItemInfo->wSuffix;
+    //                break;
+    //            case 5:     //set
+    //                break;
+    //            case 6:     //rare
+    //                if(item.pItemInfo->pExtItemInfo->pRareName.exist()){
+    //                    selIndex[0] = item.pItemInfo->pExtItemInfo->pRareName->iName1;
+    //                    selIndex[1] = item.pItemInfo->pExtItemInfo->pRareName->iName2;
+    //                    if(item.pItemInfo->pExtItemInfo->pRareName->bPref1)
+    //                        selIndex[2] = item.pItemInfo->pExtItemInfo->pRareName->wPref1;
+    //                    if(item.pItemInfo->pExtItemInfo->pRareName->bSuff1)
+    //                        selIndex[3] = item.pItemInfo->pExtItemInfo->pRareName->wSuff1;
+    //                    if(item.pItemInfo->pExtItemInfo->pRareName->bPref2)
+    //                        selIndex[4] = item.pItemInfo->pExtItemInfo->pRareName->wPref2;
+    //                    if(item.pItemInfo->pExtItemInfo->pRareName->bSuff2)
+    //                        selIndex[5] = item.pItemInfo->pExtItemInfo->pRareName->wSuff2;
+    //                    if(item.pItemInfo->pExtItemInfo->pRareName->bPref3)
+    //                        selIndex[6] = item.pItemInfo->pExtItemInfo->pRareName->wPref3;
+    //                    if(item.pItemInfo->pExtItemInfo->pRareName->bSuff3)
+    //                        selIndex[7] = item.pItemInfo->pExtItemInfo->pRareName->wSuff3;
+    //                }
+    //                break;
+    //            case 7:     //unique
+    //                if(item.pItemInfo->pExtItemInfo->wUniID.exist())
+    //                    selIndex[8] = item.pItemInfo->pExtItemInfo->wUniID;
+    //                break;
+    //            case 8:     //crafted
+    //                if(item.pItemInfo->pExtItemInfo->pCraftName.exist()){
+    //                    selIndex[0] = item.pItemInfo->pExtItemInfo->pCraftName->iName1;
+    //                    selIndex[1] = item.pItemInfo->pExtItemInfo->pCraftName->iName2;
+    //                    if(item.pItemInfo->pExtItemInfo->pCraftName->bPref1)
+    //                        selIndex[2] = item.pItemInfo->pExtItemInfo->pCraftName->wPref1;
+    //                    if(item.pItemInfo->pExtItemInfo->pCraftName->bSuff1)
+    //                        selIndex[3] = item.pItemInfo->pExtItemInfo->pCraftName->wSuff1;
+				//		if (item.pItemInfo->pExtItemInfo->pCraftName->bPref2)
+				//			selIndex[4] = item.pItemInfo->pExtItemInfo->pCraftName->wPref2;
+    //                    if(item.pItemInfo->pExtItemInfo->pCraftName->bSuff2)
+    //                        selIndex[5] = item.pItemInfo->pExtItemInfo->pCraftName->wSuff2;
+    //                    if(item.pItemInfo->pExtItemInfo->pCraftName->bPref3)
+    //                        selIndex[6] = item.pItemInfo->pExtItemInfo->pCraftName->wPref3;
+    //                    if(item.pItemInfo->pExtItemInfo->pCraftName->bSuff3)
+    //                        selIndex[7] = item.pItemInfo->pExtItemInfo->pCraftName->wSuff3;
+    //                }
+    //                break;
+    //            default:;
+    //        }
+    //    }
+    //}
+    //CDlgPrefixSuffix dlgPrefix(m_cbQuality.GetCurSel() + 1,&selIndex[0],this);
+    //dlgPrefix.DoModal();
 }

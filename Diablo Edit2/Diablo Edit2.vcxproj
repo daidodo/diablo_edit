@@ -198,7 +198,7 @@
     <ClInclude Include="DlgSkills.h" />
     <ClInclude Include="DlgSuspend.h" />
     <ClInclude Include="DlgWayPoints.h" />
-    <ClInclude Include="ItemMetaData.h" />
+    <ClInclude Include="MetaData.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="MayExist.h" />
     <ClInclude Include="PropertyDialog.h" />
@@ -222,6 +222,7 @@
     <ClCompile Include="DlgSuspend.cpp" />
     <ClCompile Include="DlgWayPoints.cpp" />
     <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="MetaData.cpp" />
     <ClCompile Include="PropertyDialog.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

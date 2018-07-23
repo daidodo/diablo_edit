@@ -123,7 +123,7 @@ BEGIN_MESSAGE_MAP(CDlgWayPoints, CDialog)
 	ON_BN_CLICKED(IDC_CHECK0, &CDlgWayPoints::OnBnClicked_SelAll)
 END_MESSAGE_MAP()
 
-void CDlgWayPoints::UpdateUI(const CD2S_Struct & character)
+void CDlgWayPoints::UpdateUI(CD2S_Struct & character)
 {
 	for(int i = 0;i < 3;++i){
 		::CopyMemory(m_byteOriginData[i],character.Waypoints.wp[i].Waypoints,sizeof(m_byteOriginData[0]));

@@ -93,13 +93,13 @@ COutBitsStream & operator <<(COutBitsStream & bs, const CGoldQuantity & v) {
 
 CInBitsStream & operator >>(CInBitsStream & bs, CPropertyList & v) {
 	for (bs >> bits(v.iEndFlag, 9); bs.Good() && v.iEndFlag < 0x1FF; bs >> bits(v.iEndFlag, 9))
-		bs >> bits(v.mProperty[v.iEndFlag], ::theApp.PropertyData(v.iEndFlag).Bits());
+		bs >> bits(v.mProperty[v.iEndFlag], ::theApp.PropertyMetaData(v.iEndFlag).Bits());
 	return bs;
 }
 
 COutBitsStream & operator <<(COutBitsStream & bs, const CPropertyList & v) {
 	for (auto & p : v.mProperty)
-		bs << bits(p.first, 9) << bits(p.second, ::theApp.PropertyData(p.first).Bits());
+		bs << bits(p.first, 9) << bits(p.second, ::theApp.PropertyMetaData(p.first).Bits());
 	return bs << bits<WORD>(0x1FF, 9);
 }
 
@@ -476,8 +476,8 @@ CInBitsStream & operator >>(CInBitsStream & bs, CItemList & v){
 		MessageBox(0, ::theApp.MsgBoxInfo(17), ::theApp.MsgError(), MB_ICONERROR);
 		throw 0;
 	}
-	v.vpItems.resize(v.nItems);
-	for (auto & item : v.vpItems) {
+	v.vItems.resize(v.nItems);
+	for (auto & item : v.vItems) {
 		if (!bs.Good())
 			break;
 		item.ReadData(bs);
@@ -486,9 +486,9 @@ CInBitsStream & operator >>(CInBitsStream & bs, CItemList & v){
 }
 
 COutBitsStream & operator <<(COutBitsStream & bs, const CItemList & v){
-	bs << WORD(0x4D4A)<<WORD(v.vpItems.size());
+	bs << WORD(0x4D4A)<<WORD(v.vItems.size());
 	const auto off = bs.BytePos();
-	for (auto & item : v.vpItems) {
+	for (auto & item : v.vItems) {
 		if (!bs.Good())
 			break;
 		item.WriteData(bs);

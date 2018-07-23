@@ -1,8 +1,10 @@
 #pragma once
 
+#include "stdafx.h"
 #include <string>
+#include <vector>
 
-//物品属性元数据
+//物品元数据
 struct CItemMetaData
 {
 	std::string name;		//物品名字（唯一ID）, 如"elx "，DEBUG用
@@ -33,3 +35,17 @@ struct CItemMetaData
 	UINT Damage2Min = 0;	//武器的双手最低伤害
 	UINT Damage2Max = 0;	//武器的双手最高伤害
 };
+
+//属性元数据
+class CPropertyMetaData
+{
+	std::vector<std::pair<int, int>> fields_;
+	int bitsSum_ = 0;
+public:
+	CPropertyMetaData() {}
+	CPropertyMetaData(std::vector<std::pair<int, int>> fields);
+	int Bits() const { return bitsSum_; }
+	std::vector<int> Parse(DWORD value) const;
+};
+
+CString CSFormat(LPCTSTR lpszFormat, ...);

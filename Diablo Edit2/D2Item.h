@@ -1,11 +1,11 @@
 #pragma once
 
-#include <vector>
-#include <map>
-
-#include "ItemMetaData.h"
+#include "MetaData.h"
 #include "MayExist.h"
 #include "BinDataStream.h"
+
+#include <vector>
+#include <map>
 
 //Ear
 struct CEar
@@ -104,7 +104,7 @@ struct CTypeSpecificInfo
 	MayExist<WORD>			iDefence;		//11 bits,实际防御值+10,if bHasDef = TRUE
 	MayExist<WORD>			iMaxDurability;	//8 bits,if bNoDurability == FALSE
 	MayExist<WORD>			iCurDur;		//9 bits,if bNoDurability == FALSE && iMaxDur > 0
-	MayExist<BYTE>			iSocket;		//4 bits,Base Number of Sockets,基础数目,后面还有个附加数目,if bSocketed = TRUE
+	MayExist<BYTE>			iSocket;		//4 bits,基础孔数(0-6),属性列表里可以有附加孔数(总数不超过6),if bSocketed = TRUE
 	MayExist<WORD>			iQuantity;		//9 bits,if bStacked == TRUE
 	MayExist<BOOL, 5>		aHasSetPropList;//5 bits,if iQuality == 5 
 	//Rune Word Property
@@ -193,10 +193,10 @@ private:
 struct CItemList
 {
 	//人物物品信息
-	WORD		wMajic;					//0x4D4A,"JM"
-	WORD		nItems;					//物品数目
-	std::vector<CD2Item>	vpItems;	//所有物品，不包括镶嵌在孔里的
-	WORD		wEndMajic;				//0x4D4A,"JM"
+	WORD		wMajic;				//0x4D4A,"JM"
+	WORD		nItems;				//物品数目
+	std::vector<CD2Item> vItems;	//所有物品，不包括镶嵌在孔里的
+	WORD		wEndMajic;			//0x4D4A,"JM"
 };
 
 CInBitsStream & operator >>(CInBitsStream & bs, CItemList & v);
