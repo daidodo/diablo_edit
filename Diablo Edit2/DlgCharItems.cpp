@@ -25,9 +25,9 @@ CItemView::CItemView(CD2Item & item, int pos, int x, int y)
 
 // CDlgCharItems 对话框
 
+//left,top,col,row
 const WORD	CDlgCharItems::POSITION_RECT[CDlgCharItems::POSITION_END][4] = {
-    {10,5,6,8},		//箱子			left,top,col,row
-    {10,255,10,4},	//口袋
+    {10,5,6,8},		//箱子    {10,255,10,4},	//口袋
 	{320,255,3,4},	//方块
 	{420,255,4,4},	//腰带里
 	{70,385,6,1},	//孔
@@ -78,43 +78,45 @@ void CDlgCharItems::DoDataExchange(CDataExchange* pDX)
     DDX_Text(pDX, IDC_STATIC_x, m_pMouse.x);
     DDX_Text(pDX, IDC_STATIC_y, m_pMouse.y);
     DDX_Check(pDX, IDC_CHECK2, m_bNotShowItemInfoDlg);
-    DDX_Control(pDX, IDC_LIST1, m_lcPropertyList);
-    DDX_Control(pDX, IDC_COMBO1, m_cbQuality);
-    //DDX_Text(pDX, IDC_EDIT1, m_sItemName);
-    DDX_Text(pDX, IDC_EDIT2, m_bItemLevel);
-    //DDX_Check(pDX, IDC_CHECK3, m_bItemInscribed);
-    DDX_Text(pDX, IDC_EDIT4, m_ItemOwner);
-    DDV_MaxChars(pDX, m_ItemOwner, 15);
-    DDX_Check(pDX, IDC_CHECK5, m_bItemSocket);
-    DDX_Text(pDX, IDC_EDIT5, m_bBaseSocket);
-    DDX_Text(pDX, IDC_EDIT7, m_bExtSocket);
-    DDX_Text(pDX, IDC_EDIT8, m_wItemQuantity);
-    DDX_Text(pDX, IDC_EDIT9, m_wItemDefence);
-    DDX_Check(pDX, IDC_CHECK6, m_bEthereal);
-    DDX_Check(pDX, IDC_CHECK7, m_bIndestructible);
-    DDX_Text(pDX, IDC_EDIT12, m_wCurDurability);
-    DDX_Text(pDX, IDC_EDIT44, m_wMaxDurability);
+    //DDX_Control(pDX, IDC_LIST1, m_lcPropertyList);
+    //DDX_Control(pDX, IDC_COMBO1, m_cbQuality);
+    ////DDX_Text(pDX, IDC_EDIT1, m_sItemName);
+    //DDX_Text(pDX, IDC_EDIT2, m_bItemLevel);
+    ////DDX_Check(pDX, IDC_CHECK3, m_bItemInscribed);
+    //DDX_Text(pDX, IDC_EDIT4, m_ItemOwner);
+    //DDV_MaxChars(pDX, m_ItemOwner, 15);
+    //DDX_Check(pDX, IDC_CHECK5, m_bItemSocket);
+    //DDX_Text(pDX, IDC_EDIT5, m_bBaseSocket);
+    //DDX_Text(pDX, IDC_EDIT7, m_bExtSocket);
+    //DDX_Text(pDX, IDC_EDIT8, m_wItemQuantity);
+    //DDX_Text(pDX, IDC_EDIT9, m_wItemDefence);
+    //DDX_Check(pDX, IDC_CHECK6, m_bEthereal);
+    //DDX_Check(pDX, IDC_CHECK7, m_bIndestructible);
+    //DDX_Text(pDX, IDC_EDIT12, m_wCurDurability);
+    //DDX_Text(pDX, IDC_EDIT44, m_wMaxDurability);
     DDX_Control(pDX, IDC_SLIDER1, m_scTrasparent);
     DDX_Check(pDX, IDC_CHECK1, m_bSecondHand);
-    DDX_Text(pDX, IDC_STATIC1, m_sText[0]);
-    DDX_Text(pDX, IDC_STATIC2, m_sText[1]);
-    DDX_Text(pDX, IDC_STATIC3, m_sText[2]);
-    DDX_Text(pDX, IDC_STATIC4, m_sText[3]);
-    DDX_Text(pDX, IDC_STATIC5, m_sText[4]);
-    DDX_Text(pDX, IDC_STATIC6, m_sText[5]);
-    DDX_Text(pDX, IDC_STATIC7, m_sText[6]);
-    DDX_Text(pDX, IDC_STATIC8, m_sText[7]);
-    DDX_Text(pDX, IDC_CHECK2, m_sText[8]);
-    DDX_Text(pDX, IDC_CHECK5, m_sText[9]);
-    DDX_Text(pDX, IDC_CHECK6, m_sText[10]);
-	DDX_Text(pDX, IDC_CHECK7, m_sText[11]);
-	DDX_Text(pDX, IDC_STATIC_Sockets, m_sText[12]);
-	DDX_Text(pDX, IDC_STATIC_Mouse, m_sText[13]);
-    DDX_Control(pDX, IDC_BUTTON1, m_btButton[0]);
-    DDX_Control(pDX, IDC_BUTTON2, m_btButton[1]);
-    DDX_Control(pDX, IDC_BUTTON3, m_btButton[2]);
-    DDX_Control(pDX, IDC_BUTTON4, m_btButton[3]);
-	DDX_Control(pDX, IDC_BUTTON5, m_btButton[4]);
+ //   DDX_Text(pDX, IDC_STATIC1, m_sText[0]);
+ //   DDX_Text(pDX, IDC_STATIC2, m_sText[1]);
+ //   DDX_Text(pDX, IDC_STATIC3, m_sText[2]);
+ //   DDX_Text(pDX, IDC_STATIC4, m_sText[3]);
+ //   DDX_Text(pDX, IDC_STATIC5, m_sText[4]);
+ //   DDX_Text(pDX, IDC_STATIC6, m_sText[5]);
+ //   DDX_Text(pDX, IDC_STATIC7, m_sText[6]);
+ //   DDX_Text(pDX, IDC_STATIC8, m_sText[7]);
+ //   DDX_Text(pDX, IDC_CHECK2, m_sText[8]);
+ //   DDX_Text(pDX, IDC_CHECK5, m_sText[9]);
+ //   DDX_Text(pDX, IDC_CHECK6, m_sText[10]);
+	//DDX_Text(pDX, IDC_CHECK7, m_sText[11]);
+	DDX_Text(pDX, IDC_STATIC_Sockets, m_sText[0]);
+	DDX_Text(pDX, IDC_STATIC_Mouse, m_sText[1]);
+	DDX_Text(pDX, IDC_STATIC_Cube, m_sText[2]);
+	DDX_Text(pDX, IDC_STATIC_Belt, m_sText[3]);
+ //   DDX_Control(pDX, IDC_BUTTON1, m_btButton[0]);
+ //   DDX_Control(pDX, IDC_BUTTON2, m_btButton[1]);
+ //   DDX_Control(pDX, IDC_BUTTON3, m_btButton[2]);
+ //   DDX_Control(pDX, IDC_BUTTON4, m_btButton[3]);
+	//DDX_Control(pDX, IDC_BUTTON5, m_btButton[4]);
 }
 
 BEGIN_MESSAGE_MAP(CDlgCharItems, CDialog)
@@ -203,14 +205,17 @@ CPoint CDlgCharItems::GetItemPositionXY(const CItemView & view) const {
 	return CPoint(x, y);
 }
 
-const CItemView & CDlgCharItems::SelectedItemView() const {
-	ASSERT(0 <= m_iSelectedItemIndex && m_iSelectedItemIndex < int(m_vItemViews.size()));
-	return m_vItemViews[m_iSelectedItemIndex];
+const CItemView * CDlgCharItems::SelectedParentItemView() const {
+	if(0 <= m_iSelectedItemIndex && m_iSelectedItemIndex < int(m_vItemViews.size()))
+		return &m_vItemViews[m_iSelectedItemIndex];
+	return 0;
 }
 
-CItemView & CDlgCharItems::SelectedItemView() {
-	ASSERT(0 <= m_iSelectedItemIndex && m_iSelectedItemIndex < int(m_vItemViews.size()));
-	return m_vItemViews[m_iSelectedItemIndex];
+const CItemView * CDlgCharItems::SelectedItemView() const {
+	const auto parent = SelectedParentItemView();
+	if(parent && 0 <= m_iSelectedSocketIndex && m_iSelectedSocketIndex < int(parent->vGemItems.size()))
+		return &parent->vGemItems[m_iSelectedSocketIndex];
+	return parent;
 }
 
 BOOL CDlgCharItems::UpdateGridItem(int index, int pos, int x, int y) {
@@ -370,62 +375,62 @@ void CDlgCharItems::ShowItemInfoDlg(const CD2Item * pItem){
 
 void CDlgCharItems::ReadItemProperty(const CD2Item & item) {
 
-    //m_sItemName = ::theApp.ItemName(item.MetaData().NameIndex);
-    if(m_bItemSocket = item.bSocketed)
-        m_bBaseSocket = item.pItemInfo->pTpSpInfo->iSocket;
-    m_bEthereal = item.bEthereal;
-    //m_bItemInscribed = item.bPersonalized;
-    if(item.bEar){   //ear structure
-        m_bItemLevel = item.pEar->iEarLevel;
-        m_ItemOwner = item.pEar->sEarName;
-    }else{
-        if(item.pItemInfo->IsTypeName("gld "))
-            m_wItemQuantity = item.pItemInfo->pGold->wQuantity;
-        if(!item.bSimple){
-            m_bItemLevel = item.pItemInfo->pExtItemInfo->iDropLevel;
-            if(item.bPersonalized)
-                m_ItemOwner = &item.pItemInfo->pExtItemInfo->sPersonName[0];
-            m_cbQuality.SetCurSel(item.pItemInfo->pExtItemInfo->iQuality - 1);
-            if(item.MetaData().IsStacked)
-                m_wItemQuantity = item.pItemInfo->pTpSpInfo->iQuantity;
-            if(item.MetaData().HasDef)
-                m_wItemDefence = item.pItemInfo->pTpSpInfo->iDefence - 10;
-            if(item.MetaData().HasDur){
-                m_wMaxDurability = item.pItemInfo->pTpSpInfo->iMaxDurability;
-                if(!(m_bIndestructible = (m_wMaxDurability == 0)))
-                    m_wCurDurability = item.pItemInfo->pTpSpInfo->iCurDur;
-            }
-			for (const auto & p : item.pItemInfo->pTpSpInfo->stPropertyList.mProperty) {
-				if (p.first == 194) {	//Adds X extra sockets to the item
-					m_bExtSocket = BYTE(p.second);
-				} else {
-					int i = m_lcPropertyList.InsertItem(0, CSFormat(_T("%3d"), UINT(p.first)));	//属性代码
-					m_lcPropertyList.SetItemText(i, 1, ::theApp.PorpertyDescription(p.first, p.second)); //属性描述
-				}
-			}
-			//TODO: Set property lists
-        }
-    }
+   // //m_sItemName = ::theApp.ItemName(item.MetaData().NameIndex);
+   // if(m_bItemSocket = item.bSocketed)
+   //     m_bBaseSocket = item.pItemInfo->pTpSpInfo->iSocket;
+   // m_bEthereal = item.bEthereal;
+   // //m_bItemInscribed = item.bPersonalized;
+   // if(item.bEar){   //ear structure
+   //     m_bItemLevel = item.pEar->iEarLevel;
+   //     m_ItemOwner = item.pEar->sEarName;
+   // }else{
+   //     if(item.pItemInfo->IsTypeName("gld "))
+   //         m_wItemQuantity = item.pItemInfo->pGold->wQuantity;
+   //     if(!item.bSimple){
+   //         m_bItemLevel = item.pItemInfo->pExtItemInfo->iDropLevel;
+   //         if(item.bPersonalized)
+   //             m_ItemOwner = &item.pItemInfo->pExtItemInfo->sPersonName[0];
+   //         m_cbQuality.SetCurSel(item.pItemInfo->pExtItemInfo->iQuality - 1);
+   //         if(item.MetaData().IsStacked)
+   //             m_wItemQuantity = item.pItemInfo->pTpSpInfo->iQuantity;
+   //         if(item.MetaData().HasDef)
+   //             m_wItemDefence = item.pItemInfo->pTpSpInfo->iDefence - 10;
+   //         if(item.MetaData().HasDur){
+   //             m_wMaxDurability = item.pItemInfo->pTpSpInfo->iMaxDurability;
+   //             if(!(m_bIndestructible = (m_wMaxDurability == 0)))
+   //                 m_wCurDurability = item.pItemInfo->pTpSpInfo->iCurDur;
+   //         }
+			//for (const auto & p : item.pItemInfo->pTpSpInfo->stPropertyList.mProperty) {
+			//	if (p.first == 194) {	//Adds X extra sockets to the item
+			//		m_bExtSocket = BYTE(p.second);
+			//	} else {
+			//		int i = m_lcPropertyList.InsertItem(0, CSFormat(_T("%3d"), UINT(p.first)));	//属性代码
+			//		m_lcPropertyList.SetItemText(i, 1, ::theApp.PorpertyDescription(p.first, p.second)); //属性描述
+			//	}
+			//}
+			////TODO: Set property lists
+   //     }
+   // }
 
-    UpdateData(FALSE);
+   // UpdateData(FALSE);
 }
 
 void CDlgCharItems::ResetFoundry()
 {
-    //m_sItemName = _T("");
-    m_bItemSocket = FALSE;
-    m_bBaseSocket = m_bExtSocket = 0;
-    m_bEthereal = FALSE;
-    //m_bItemInscribed = FALSE;
-    m_bItemLevel = 0;
-    m_ItemOwner = _T("");
-    m_wItemQuantity = 0;
-    m_cbQuality.SetCurSel(-1);
-    m_wItemDefence = 0;
-    m_wMaxDurability = m_wCurDurability = 0;
-    m_lcPropertyList.DeleteAllItems();
+    ////m_sItemName = _T("");
+    //m_bItemSocket = FALSE;
+    //m_bBaseSocket = m_bExtSocket = 0;
+    //m_bEthereal = FALSE;
+    ////m_bItemInscribed = FALSE;
+    //m_bItemLevel = 0;
+    //m_ItemOwner = _T("");
+    //m_wItemQuantity = 0;
+    //m_cbQuality.SetCurSel(-1);
+    //m_wItemDefence = 0;
+    //m_wMaxDurability = m_wCurDurability = 0;
+    //m_lcPropertyList.DeleteAllItems();
 
-    UpdateData(FALSE);
+    //UpdateData(FALSE);
 }
 
 BOOL CDlgCharItems::GatherData(CD2S_Struct & character)
@@ -454,19 +459,17 @@ void CDlgCharItems::LoadText(void)
 	int index = 0;
     for(auto & text : m_sText)
         text = ::theApp.CharItemsUI(index++);
-    for(auto & button : m_btButton)
-        button.SetWindowText(::theApp.CharItemsUI(index++));
-    m_cbQuality.ResetContent();
-	for(UINT i = 0;i < ::theApp.ItemQualityNameSize();++i)
-		m_cbQuality.AddString(::theApp.ItemQualityName(i));
+    //m_cbQuality.ResetContent();
+	//for(UINT i = 0;i < ::theApp.ItemQualityNameSize();++i)
+	//	m_cbQuality.AddString(::theApp.ItemQualityName(i));
     //设置属性列表的标题文字
-    LVCOLUMN col;
+    /*LVCOLUMN col;
     col.cchTextMax = 20;
     col.mask = LVCF_TEXT;
     col.pszText = (LPWSTR)::theApp.CharItemsUI(index++).GetString();
     m_lcPropertyList.SetColumn(0,&col);
     col.pszText = (LPWSTR)::theApp.CharItemsUI(index++).GetString();
-    m_lcPropertyList.SetColumn(1,&col);
+    m_lcPropertyList.SetColumn(1,&col);*/
 
 	UpdateData(FALSE);
 }
@@ -489,7 +492,7 @@ void CDlgCharItems::OnMouseMove(UINT nFlags, CPoint point)
 		const int index = GetGridItemIndex(pos, x, y);
 		if (0 <= index) {	//有物品
 			if (IN_SOCKET == pos) {	//镶嵌的宝石
-				const auto & gems = SelectedItemView().vGemItems;
+				auto & gems = SelectedParentItemView()->vGemItems;
 				ASSERT(index < int(gems.size()));
 				item = &gems[index].Item;
 			} else {	//其他物品
@@ -513,7 +516,7 @@ void CDlgCharItems::OnLButtonDown(UINT nFlags, CPoint point)
 		const int index = GetGridItemIndex(pos, x, y);
 		if (0 <= index && index != m_iSelectedSocketIndex) {
 			ResetFoundry();
-			const auto & gems = SelectedItemView().vGemItems;
+			auto & gems = SelectedParentItemView()->vGemItems;
 			ASSERT(0 <= index && index < int(gems.size()));
 			m_iSelectedSocketIndex = index;
 			ReadItemProperty(gems[m_iSelectedSocketIndex].Item);
@@ -547,9 +550,9 @@ void CDlgCharItems::OnRButtonUp(UINT nFlags, CPoint point)
 BOOL CDlgCharItems::OnInitDialog()
 {
     CPropertyDialog::OnInitDialog();
-	m_lcPropertyList.SetExtendedStyle(LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES);
+	/*m_lcPropertyList.SetExtendedStyle(LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES);
 	m_lcPropertyList.InsertColumn(0, _T(""), LVCFMT_LEFT, 60);
-	m_lcPropertyList.InsertColumn(1, _T(""), LVCFMT_LEFT, 225);
+	m_lcPropertyList.InsertColumn(1, _T(""), LVCFMT_LEFT, 225);*/
 	m_scTrasparent.SetRange(0, 255);
 	m_scTrasparent.SetPos(200);
     LoadText();
@@ -584,71 +587,71 @@ void CDlgCharItems::OnChangeHand()
 void CDlgCharItems::OnPrefixSuffix()
 {
     std::vector<int> selIndex(10,-1);
-	int itemIndex = m_iSelectedItemIndex;
-    //if(itemIndex != INVALID_ITEM){
-    //    const CD2Item & item = m_vItemViews1[itemIndex].Item;
-    //    if(item.pItemInfo.exist() && item.pItemInfo->pExtItemInfo.exist()){
-    //        switch(m_cbQuality.GetCurSel() + 1){
-    //            case 1:     //low
-    //                if(item.pItemInfo->pExtItemInfo->loQual.exist())
-    //                    selIndex[9] = item.pItemInfo->pExtItemInfo->loQual;
-    //                break;
-    //            case 3:     //high
-    //                if(item.pItemInfo->pExtItemInfo->hiQual.exist())
-    //                    selIndex[9] = item.pItemInfo->pExtItemInfo->hiQual;
-    //                break;
-    //            case 4:     //magic
-    //                if(item.pItemInfo->pExtItemInfo->wPrefix.exist())
-    //                    selIndex[2] = item.pItemInfo->pExtItemInfo->wPrefix;
-    //                if(item.pItemInfo->pExtItemInfo->wSuffix.exist())
-    //                    selIndex[3] = item.pItemInfo->pExtItemInfo->wSuffix;
-    //                break;
-    //            case 5:     //set
-    //                break;
-    //            case 6:     //rare
-    //                if(item.pItemInfo->pExtItemInfo->pRareName.exist()){
-    //                    selIndex[0] = item.pItemInfo->pExtItemInfo->pRareName->iName1;
-    //                    selIndex[1] = item.pItemInfo->pExtItemInfo->pRareName->iName2;
-    //                    if(item.pItemInfo->pExtItemInfo->pRareName->bPref1)
-    //                        selIndex[2] = item.pItemInfo->pExtItemInfo->pRareName->wPref1;
-    //                    if(item.pItemInfo->pExtItemInfo->pRareName->bSuff1)
-    //                        selIndex[3] = item.pItemInfo->pExtItemInfo->pRareName->wSuff1;
-    //                    if(item.pItemInfo->pExtItemInfo->pRareName->bPref2)
-    //                        selIndex[4] = item.pItemInfo->pExtItemInfo->pRareName->wPref2;
-    //                    if(item.pItemInfo->pExtItemInfo->pRareName->bSuff2)
-    //                        selIndex[5] = item.pItemInfo->pExtItemInfo->pRareName->wSuff2;
-    //                    if(item.pItemInfo->pExtItemInfo->pRareName->bPref3)
-    //                        selIndex[6] = item.pItemInfo->pExtItemInfo->pRareName->wPref3;
-    //                    if(item.pItemInfo->pExtItemInfo->pRareName->bSuff3)
-    //                        selIndex[7] = item.pItemInfo->pExtItemInfo->pRareName->wSuff3;
-    //                }
-    //                break;
-    //            case 7:     //unique
-    //                if(item.pItemInfo->pExtItemInfo->wUniID.exist())
-    //                    selIndex[8] = item.pItemInfo->pExtItemInfo->wUniID;
-    //                break;
-    //            case 8:     //crafted
-    //                if(item.pItemInfo->pExtItemInfo->pCraftName.exist()){
-    //                    selIndex[0] = item.pItemInfo->pExtItemInfo->pCraftName->iName1;
-    //                    selIndex[1] = item.pItemInfo->pExtItemInfo->pCraftName->iName2;
-    //                    if(item.pItemInfo->pExtItemInfo->pCraftName->bPref1)
-    //                        selIndex[2] = item.pItemInfo->pExtItemInfo->pCraftName->wPref1;
-    //                    if(item.pItemInfo->pExtItemInfo->pCraftName->bSuff1)
-    //                        selIndex[3] = item.pItemInfo->pExtItemInfo->pCraftName->wSuff1;
-				//		if (item.pItemInfo->pExtItemInfo->pCraftName->bPref2)
-				//			selIndex[4] = item.pItemInfo->pExtItemInfo->pCraftName->wPref2;
-    //                    if(item.pItemInfo->pExtItemInfo->pCraftName->bSuff2)
-    //                        selIndex[5] = item.pItemInfo->pExtItemInfo->pCraftName->wSuff2;
-    //                    if(item.pItemInfo->pExtItemInfo->pCraftName->bPref3)
-    //                        selIndex[6] = item.pItemInfo->pExtItemInfo->pCraftName->wPref3;
-    //                    if(item.pItemInfo->pExtItemInfo->pCraftName->bSuff3)
-    //                        selIndex[7] = item.pItemInfo->pExtItemInfo->pCraftName->wSuff3;
-    //                }
-    //                break;
-    //            default:;
-    //        }
-    //    }
-    //}
-    //CDlgPrefixSuffix dlgPrefix(m_cbQuality.GetCurSel() + 1,&selIndex[0],this);
-    //dlgPrefix.DoModal();
+	auto view = SelectedItemView();
+    if(view){
+        auto & item = view->Item;
+        if(item.pItemInfo.exist() && item.pItemInfo->pExtItemInfo.exist()){
+            switch(m_cbQuality.GetCurSel() + 1){
+                case 1:     //low
+                    if(item.pItemInfo->pExtItemInfo->loQual.exist())
+                        selIndex[9] = item.pItemInfo->pExtItemInfo->loQual;
+                    break;
+                case 3:     //high
+                    if(item.pItemInfo->pExtItemInfo->hiQual.exist())
+                        selIndex[9] = item.pItemInfo->pExtItemInfo->hiQual;
+                    break;
+                case 4:     //magic
+                    if(item.pItemInfo->pExtItemInfo->wPrefix.exist())
+                        selIndex[2] = item.pItemInfo->pExtItemInfo->wPrefix;
+                    if(item.pItemInfo->pExtItemInfo->wSuffix.exist())
+                        selIndex[3] = item.pItemInfo->pExtItemInfo->wSuffix;
+                    break;
+                case 5:     //set
+                    break;
+                case 6:     //rare
+                    if(item.pItemInfo->pExtItemInfo->pRareName.exist()){
+                        selIndex[0] = item.pItemInfo->pExtItemInfo->pRareName->iName1;
+                        selIndex[1] = item.pItemInfo->pExtItemInfo->pRareName->iName2;
+                        if(item.pItemInfo->pExtItemInfo->pRareName->bPref1)
+                            selIndex[2] = item.pItemInfo->pExtItemInfo->pRareName->wPref1;
+                        if(item.pItemInfo->pExtItemInfo->pRareName->bSuff1)
+                            selIndex[3] = item.pItemInfo->pExtItemInfo->pRareName->wSuff1;
+                        if(item.pItemInfo->pExtItemInfo->pRareName->bPref2)
+                            selIndex[4] = item.pItemInfo->pExtItemInfo->pRareName->wPref2;
+                        if(item.pItemInfo->pExtItemInfo->pRareName->bSuff2)
+                            selIndex[5] = item.pItemInfo->pExtItemInfo->pRareName->wSuff2;
+                        if(item.pItemInfo->pExtItemInfo->pRareName->bPref3)
+                            selIndex[6] = item.pItemInfo->pExtItemInfo->pRareName->wPref3;
+                        if(item.pItemInfo->pExtItemInfo->pRareName->bSuff3)
+                            selIndex[7] = item.pItemInfo->pExtItemInfo->pRareName->wSuff3;
+                    }
+                    break;
+                case 7:     //unique
+                    if(item.pItemInfo->pExtItemInfo->wUniID.exist())
+                        selIndex[8] = item.pItemInfo->pExtItemInfo->wUniID;
+                    break;
+                case 8:     //crafted
+                    if(item.pItemInfo->pExtItemInfo->pCraftName.exist()){
+                        selIndex[0] = item.pItemInfo->pExtItemInfo->pCraftName->iName1;
+                        selIndex[1] = item.pItemInfo->pExtItemInfo->pCraftName->iName2;
+                        if(item.pItemInfo->pExtItemInfo->pCraftName->bPref1)
+                            selIndex[2] = item.pItemInfo->pExtItemInfo->pCraftName->wPref1;
+                        if(item.pItemInfo->pExtItemInfo->pCraftName->bSuff1)
+                            selIndex[3] = item.pItemInfo->pExtItemInfo->pCraftName->wSuff1;
+						if (item.pItemInfo->pExtItemInfo->pCraftName->bPref2)
+							selIndex[4] = item.pItemInfo->pExtItemInfo->pCraftName->wPref2;
+                        if(item.pItemInfo->pExtItemInfo->pCraftName->bSuff2)
+                            selIndex[5] = item.pItemInfo->pExtItemInfo->pCraftName->wSuff2;
+                        if(item.pItemInfo->pExtItemInfo->pCraftName->bPref3)
+                            selIndex[6] = item.pItemInfo->pExtItemInfo->pCraftName->wPref3;
+                        if(item.pItemInfo->pExtItemInfo->pCraftName->bSuff3)
+                            selIndex[7] = item.pItemInfo->pExtItemInfo->pCraftName->wSuff3;
+                    }
+                    break;
+                default:;
+            }
+        }
+    }
+    CDlgPrefixSuffix dlgPrefix(m_cbQuality.GetCurSel() + 1,&selIndex[0],this);
+    dlgPrefix.DoModal();
 }

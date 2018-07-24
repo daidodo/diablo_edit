@@ -10,6 +10,26 @@
 8	Cold Resist	冰冷抵抗	冰冷抵抗
 9	Lightning Resist	闪电抵抗	閃電抵抗
 10	Normal	普通	普通
+			
+100	Foundry	铸造台	鑄造臺
+101	Level	等级	等級
+102	Owner	拥有者	擁有者
+103	Quality	质量	質量
+104	Defence	防御	防御
+105	Quantity	数量	數量
+106	Durability	耐久度	耐久度
+107	Property Transparency	属性悬浮窗透明度	屬性懸浮窗透明度
+108	Hide	隐藏	隱藏
+109	Socket	有孔	有孔
+110	Indestructible	不可修复	不可修復
+111	Ethereal	不可破坏	不可破壞
+112	Found	锻造	鑄造
+113	Prefix Suffix	前后缀	前后綴
+114	Add	添加	添加
+115	Edit	编辑	編輯
+116	Delete	删除	刪除
+117	Code	代码	代碼
+118	Description	说明	説明
 *=======================其他窗口UI			
 0	Please Choose a character class	请选择角色	請選擇角色
 1	Amazon Skills	亚马逊技能	亞馬遜技能
@@ -47,27 +67,10 @@
 9	Unique Name	暗金名	暗金名
 10	Sub Type	子类	子類
 *=======================角色装备信息UI			
-0	Foundry	铸造台	鑄造臺
-1	Level	等级	等級
-2	Owner	拥有者	擁有者
-3	Quality	质量	質量
-4	Defence	防御	防御
-5	Quantity	数量	數量
-6	Durability	耐久度	耐久度
-7	Property Transparency	属性悬浮窗透明度	屬性懸浮窗透明度
-8	Hide	隐藏	隱藏
-9	Socket	有孔	有孔
-10	Indestructible	不可修复	不可修復
-11	Ethereal	不可破坏	不可破壞
-12	Sockets	孔	孔
-13	Mouse	鼠标	鼠標
-14	Found	锻造	鑄造
-15	Prefix Suffix	前后缀	前后綴
-16	Add	添加	添加
-17	Edit	编辑	編輯
-18	Delete	删除	刪除
-19	Code	代码	代碼
-20	Description	说明	説明
+0	Sockets	孔	孔
+1	Mouse	鼠标	鼠標
+2	Cube	方块	方塊
+3	Belt	腰带	腰帶
 *=======================角色基本信息UI			
 0	Basic Info	基本信息	基本信息
 1	Waypoints	小站	小站

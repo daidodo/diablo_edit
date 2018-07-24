@@ -65,8 +65,6 @@ class CDlgCharItems : public CPropertyDialog
 	int GetGridItemIndex(int pos, int x, int y) const;		//得到网格位置的物品的m_vItemViews索引, -1表示没有
 	void SetGridItemIndex(int pos, int x, int y, int index);//设置网格位置的物品的m_vItemViews1索引, -1表示没有
 	CPoint GetItemPositionXY(const CItemView & view) const;	//得到物品的实际像素坐标
-	const CItemView & SelectedItemView() const;				//当前选中的物品视图
-	CItemView & SelectedItemView();
 	
 	//铸造台
 	int m_iSelectedItemIndex = -1;	//选中的物品在m_vItemViews中的索引
@@ -87,6 +85,8 @@ class CDlgCharItems : public CPropertyDialog
 	CListCtrl m_lcPropertyList;		//物品属性列表
 	void ResetFoundry();			//初始化铸造台
 	void ReadItemProperty(const CD2Item & item);  //读取物品的属性，并显示在锻造台
+	const CItemView * SelectedParentItemView() const;	//当前选中的父物品视图，没有返回0
+	const CItemView * SelectedItemView() const;			//当前选中的物品视图，没有返回0
 
 	//悬浮窗
 	static const int INFO_WINDOW_LEFT = 550;	//悬浮窗的位置X
@@ -96,8 +96,8 @@ class CDlgCharItems : public CPropertyDialog
 	void ShowItemInfoDlg(const CD2Item * pItem);//显示/隐藏(pItem = 0)物品信息悬浮窗口
 
 	//界面文字
-	CString m_sText[14];
-	CButton m_btButton[5];
+	CString m_sText[4];
+	//CButton m_btButton[5];
 
 	//鼠标
 	CPoint m_pMouse;	//鼠标位置
