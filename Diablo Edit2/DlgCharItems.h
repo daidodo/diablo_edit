@@ -11,6 +11,7 @@
 
 enum EEquip;
 enum EPosition;
+enum EPositionType;
 
 //物品的视图
 struct CItemView
@@ -26,23 +27,46 @@ struct CItemView
 	CSize ViewSize() const;
 };
 
+//网格位置的视图
+class GridView
+{
+	std::vector<int> vItemIndex;	//网格内的物品在m_vItemViews里索引；如果是镶嵌的物品，则是CItemView::vGemItems的索引；-1表示没有
+	const EPosition iPosition;		//位置索引
+	const EPositionType iType;		//位置的类型，PositionType()
+	const int iCol, iRow;			//行列数
+public:
+	const CRect Rect;				//大小与位置
+	const EEquip iEquip;			//可装备的物品类型
+	BOOL bEnabled;					//是否启用（可交互）
+	GridView(EPosition pos, int left, int top, int col, int row);
+	BOOL IsGrid() const { return iType == 0; }	//是否分成单个网格
+	BOOL CanEquip(EEquip equip) const { return (equip & iEquip) != 0; }	//是否可穿戴
+	int ItemIndex(int x, int y) const;			//返回指定坐标的物品索引
+	void ItemIndex(int x, int y, int index);	//设置指定坐标的物品索引
+	CPoint IndexToXY(int x, int y, int width, int height) const;	//指定坐标和大小，得到物品的像素位置
+	std::tuple<int, int, int> XYToPositionIndex(CPoint pos, BOOL II, BOOL corpseII) const;	//根据物品UI像素，得到位置索引和坐标
+	BOOL PutItem(int index, int x, int y, int width, int height, EEquip equip);	//将物品放到指定位置，考虑空闲、大小、穿戴类型；返回是否成功
+	void Reset();					//清空网格
+};
+
 // CDlgCharItems 对话框
 
 class CDlgCharItems : public CPropertyDialog
 {
 	DECLARE_DYNAMIC(CDlgCharItems)
 
-	std::vector<CRect> m_vRectGrid;						//将POSITION_RECT转换成CRect, 方便使用
-	void DrawGrids(CPaintDC & dc);						//画所有网格
+	std::vector<GridView> m_vGridView;		//所有网格的信息
+	void DrawGrids(CPaintDC & dc);			//画所有网格
 	
 	//物品和位置
 	std::vector<CItemView> m_vItemViews;					//所有的物品,除了镶嵌在孔里的
-	std::vector<std::vector<int>> m_vGridItems;				//网格内的物品在m_vItemViews里索引；如果是镶嵌的物品，则是CItemView::vGemItems的索引；-1表示没有
+	BOOL m_bHasCorpse = FALSE;								//有尸体
 	BOOL m_bSecondHand = FALSE;								//是否显示II手武器
-	BOOL UpdateGridItem(int index, EPosition pos, int x, int y);	//将index物品放进网格位置(pos, x, y)，返回是否成功
+	BOOL m_bCorpseSecondHand = FALSE;						//是否显示尸体的II手武器
+	BOOL UpdateGridItem(EPosition pos, int x, int y, int index);	//将index物品放进网格位置(pos, x, y)，返回是否成功
 	int GetGridItemIndex(EPosition pos, int x, int y) const;		//得到网格位置的物品的m_vItemViews索引, -1表示没有
-	void SetGridItemIndex(EPosition pos, int x, int y, int index);//设置网格位置的物品的m_vItemViews1索引, -1表示没有
-	CPoint GetItemPositionXY(const CItemView & view) const;	//得到物品的实际像素坐标
+	void SetGridItemIndex(EPosition pos, int x, int y, int index);	//设置网格位置的物品的m_vItemViews1索引, -1表示没有
+	CPoint GetItemPositionXY(const CItemView & view) const;			//得到物品的实际像素坐标
 	
 	//铸造台
 	int m_iSelectedItemIndex = -1;	//选中的物品在m_vItemViews中的索引
@@ -110,4 +134,6 @@ public:
 	afx_msg void OnBnClickedCheck2();
     afx_msg void OnChangeHand();
     //afx_msg void OnPrefixSuffix();
+	afx_msg void OnChangeCorpseHand();
+	afx_msg void OnChangeCorpse();
 };

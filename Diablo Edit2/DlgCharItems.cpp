@@ -12,6 +12,8 @@ const int GRID_WIDTH = 30;		//每个网格的边长(像素)
 
 //物品能装备的位置
 enum EEquip {
+	E_ANY = -1,				//可接受任意物品
+
 	E_STORAGE = 1,			//不可穿戴，只能放在存储箱里
 	E_HEAD = 1 << 1,		//头盔
 	E_NECK = 1 << 2,		//项链
@@ -53,31 +55,77 @@ enum EPosition {
 
 	IN_MOUSE,			//被鼠标拿起
 
-	POSITION_END		//所有位置总数
+	CORPSE_HEAD,		//尸体的头
+	CORPSE_NECK,		//尸体的项链
+	CORPSE_BODY,		//尸体的身体
+	CORPSE_RIGHT_HAND,	//尸体的武器右(I & II)
+	CORPSE_LEFT_HAND,	//尸体的武器左(I & II)
+	CORPSE_RIGHT_RING,	//尸体的戒指右
+	CORPSE_LEFT_RING,	//尸体的戒指左
+	CORPSE_BELT,		//尸体的腰带
+	CORPSE_FOOT,		//尸体的鞋子
+	CORPSE_GLOVE,		//尸体的手套
+
+	CORPSE_END,
+
+	POSITION_END = CORPSE_END,		//所有位置总数
 };
+
+static BOOL IsCorpse(EPosition pos) { return CORPSE_HEAD <= pos && pos < CORPSE_END; }
+
+//位置类型
+enum EPositionType {
+	PT_GRID,		//网格（分成单个格子）
+	PT_WHOLE,		//整体一格
+	PT_II,			//左右手，分I和II
+	PT_CORPSE_II,	//尸体的左右手，分I和II
+};
+
+static EPositionType PositionType(EPosition pos) {
+	if (pos < GRID_COUNT)
+		return PT_GRID;
+	if (RIGHT_HAND == pos || LEFT_HAND == pos)
+		return PT_II;
+	if (CORPSE_RIGHT_HAND == pos || CORPSE_LEFT_HAND == pos)
+		return PT_CORPSE_II;
+	return PT_WHOLE;
+}
 
 //每个位置(EPosition)在UI的起始坐标(像素),列数,行数
-//left,top,col,row
-const WORD POSITION_RECT[POSITION_END][4] = {
-	{10,5,6,8},		//箱子
-	{10,255,10,4},	//口袋
-	{320,255,3,4},	//方块
-	{420,255,4,4},	//腰带里
-	{70,385,6,1},	//孔
-	{300,5,2,2},	//头
-	{365,30,1,1},	//项链
-	{300,70,2,3},	//身体
-	{200,30,2,4},	//武器右
-	{400,30,2,4},	//武器左
-	{265,165,1,1},	//戒指右
-	{365,165,1,1},	//戒指左
-	{300,165,2,1},	//腰带		
-	{400,155,2,2},	//鞋子
-	{200,155,2,2},	//手套
-	{480,30,2,4},	//被鼠标拿起
+//left,top,col,row,equip
+const WORD POSITION_INFO[POSITION_END][5] = {
+	{10,5,6,8,E_ANY},		//箱子
+	{10,255,10,4,E_ANY},	//口袋
+	{320,255,3,4,E_ANY},	//方块
+	{420,255,4,4,E_IN_BELT},//腰带里
+	{70,385,6,1,E_SOCKET},	//孔
+
+	{300,5,2,2,E_HEAD},		//头
+	{365,30,1,1,E_NECK},	//项链
+	{300,70,2,3,E_BODY},	//身体
+	{200,30,2,4,E_HAND},	//武器右
+	{400,30,2,4,E_HAND},	//武器左
+	{265,165,1,1,E_RING},	//戒指右
+	{365,165,1,1,E_RING},	//戒指左
+	{300,165,2,1,E_BELT},	//腰带		
+	{400,155,2,2,E_FOOT},	//鞋子
+	{200,155,2,2,E_GLOVE},	//手套
+
+	{480,30,2,4,E_ANY},		//被鼠标拿起
+
+	{660,35,2,2,E_HEAD},	//尸体的头
+	{725,60,1,1,E_NECK},	//尸体的项链
+	{660,100,2,3,E_BODY},	//尸体的身体
+	{560,60,2,4,E_HAND},	//尸体的武器右
+	{760,60,2,4,E_HAND},	//尸体的武器左
+	{625,195,1,1,E_RING},	//尸体的戒指右
+	{725,195,1,1,E_RING},	//尸体的戒指左
+	{660,195,2,1,E_BELT},	//尸体的腰带		
+	{760,185,2,2,E_FOOT},	//尸体的鞋子
+	{560,185,2,2,E_GLOVE},	//尸体的手套
 };
 
-tuple<EPosition, int, int> ItemToPosition(int iLocation, int iPosition, int iColumn, int iRow, int iStoredIn) {
+tuple<EPosition, int, int> ItemToPosition(int iLocation, int iPosition, int iColumn, int iRow, int iStoredIn, bool corpse = false) {
 	int pos = -1, x = 0, y = 0;	//物品的位置(EPosition)和坐标
 	switch (iLocation) {
 		case 0:		//grid
@@ -88,9 +136,9 @@ tuple<EPosition, int, int> ItemToPosition(int iLocation, int iPosition, int iCol
 		case 1:		//equipped
 			pos = iPosition;
 			if (0 < pos && pos <= 10)
-				pos += GRID_COUNT - 1;
+				pos += GRID_COUNT - 1 + (corpse ? CORPSE_HEAD - HEAD : 0);
 			else if (pos <= 12) {	//左右手II
-				pos += GRID_COUNT - 8;
+				pos += GRID_COUNT - 8 + (corpse ? CORPSE_HEAD - HEAD : 0);
 				x = 1;
 			} else
 				pos = -1;
@@ -98,7 +146,7 @@ tuple<EPosition, int, int> ItemToPosition(int iLocation, int iPosition, int iCol
 		case 2:		//in belt(物品排列方式与其他网格不同)
 			pos = IN_BELT;
 			x = iColumn % 4;
-			y = POSITION_RECT[pos][3] - iColumn / 4 - 1;
+			y = POSITION_INFO[pos][3] - iColumn / 4 - 1;
 			break;
 		case 4:		//in hand(鼠标)
 			pos = IN_MOUSE;
@@ -108,6 +156,16 @@ tuple<EPosition, int, int> ItemToPosition(int iLocation, int iPosition, int iCol
 	if (pos < 0)
 		ASSERT(FALSE && _T("Invalid item position"));
 	return make_tuple(EPosition(pos), x, y);
+}
+
+static EEquip PositionToEquip(EPosition pos) {
+	ASSERT(pos < POSITION_END);
+	return EEquip(POSITION_INFO[pos][4]);
+}
+
+static EEquip PositionToRow(EPosition pos) {
+	ASSERT(pos < POSITION_END);
+	return EEquip(POSITION_INFO[pos][3]);
 }
 
 //struct CItemView
@@ -127,6 +185,88 @@ CItemView::CItemView(CD2Item & item, EEquip equip, EPosition pos, int x, int y)
 
 CSize CItemView::ViewSize() const { return CSize(iGridWidth * GRID_WIDTH, iGridHeight*GRID_WIDTH); }
 
+//struct GridView
+
+GridView::GridView(EPosition pos, int left, int top, int col, int row)
+	: Rect(left, top, left + GRID_WIDTH * col, top + GRID_WIDTH * row)
+	, iPosition(pos)
+	, iType(PositionType(pos))
+	, iCol(col)
+	, iRow(row)
+	, iEquip(PositionToEquip(pos))
+	, bEnabled(!IsCorpse(pos))
+	, vItemIndex((PT_GRID == iType ? col * row : (PT_WHOLE == iType ? 1 : 2), -1)
+{}
+
+int GridView::ItemIndex(int x, int y) const {
+	ASSERT(0 <= x && 0 <= y);
+	const UINT idx = x + y * iCol;
+	ASSERT(idx < vItemIndex.size());
+	return vItemIndex[idx];
+}
+
+void GridView::ItemIndex(int x, int y, int index) {
+	ASSERT(0 <= x && 0 <= y);
+	const UINT idx = x + y * iCol;
+	ASSERT(idx < vItemIndex.size());
+	vItemIndex[idx] = index;
+}
+
+CPoint GridView::IndexToXY(int x, int y, int width, int height) const {
+	ASSERT(0 <= x && 0 <= y);
+	ASSERT(0 <= width && width <= iCol);
+	ASSERT(0 <= height && height <= iRow);
+	if(IsGrid())
+		return CPoint(Rect.left + x * GRID_WIDTH, Rect.top + y * GRID_WIDTH);
+	x = Rect.left + (iCol - width) * GRID_WIDTH / 2;
+	y = Rect.top + (iRow - height) * GRID_WIDTH / 2;
+	return CPoint(x, y);
+}
+
+tuple<int, int, int> GridView::XYToPositionIndex(CPoint pos, BOOL II, BOOL corpseII) const {
+	ASSERT(0 <= pos.x && 0 <= pos.y);
+	if (IsGrid()) {
+		int x = (pos.x - Rect.left) / GRID_WIDTH;
+		int y = (pos.y - Rect.top) / GRID_WIDTH;
+		ASSERT(0 <= x && x < iCol);
+		ASSERT(0 <= y && x < iRow);
+		return make_tuple(iPosition, x, y);
+	} else if(PT_II == iType){
+		return make_tuple(iPosition, (II ? 1 : 0), 0);
+	} else if (PT_CORPSE_II == iType) 
+		return make_tuple(iPosition, (corpseII ? 1 : 0), 0);
+	return make_tuple(iPosition, 0, 0);
+}
+
+BOOL GridView::PutItem(int index, int x, int y, int width, int height, EEquip equip) {
+	ASSERT(0 <= index);
+	ASSERT(0 <= x && 0 <= y);
+	ASSERT(0 <= width && 0 <= height);
+	if (!CanEquip(equip))
+		return FALSE;	//不能穿戴在此位置
+	if (IsGrid()) {
+		if (x + width > iCol || y + height > iRow)
+			return FALSE;	//物品在网格外面
+		for (int i = 0; i < width; ++i)
+			for (int j = 0; j < height; ++j)
+				if (ItemIndex(x + i, y + j) >= 0)
+					return FALSE;	//网格里有物品
+		for (int i = 0; i < width; ++i)
+			for (int j = 0; j < height; ++j)
+				ItemIndex(x + i, y + j, index);
+	} else {
+		if (ItemIndex(x, y) >= 0)
+			return FALSE;	//网格里有物品
+		ItemIndex(x, y, index);
+	}
+	return TRUE;
+}
+
+void GridView::Reset() {
+	bEnabled = !IsCorpse(iPosition);
+	fill(vItemIndex.begin(), vItemIndex.end(), -1);
+}
+
 // CDlgCharItems 对话框
 
 IMPLEMENT_DYNAMIC(CDlgCharItems, CPropertyDialog)
@@ -134,70 +274,60 @@ IMPLEMENT_DYNAMIC(CDlgCharItems, CPropertyDialog)
 CDlgCharItems::CDlgCharItems(CWnd* pParent /*=NULL*/)
     : CPropertyDialog(CDlgCharItems::IDD, pParent)
 {
-	//m_vRectGrid
-	for (auto & p : POSITION_RECT) {
-		auto left = p[0];
-		auto top = p[1];
-		auto right = p[0] + GRID_WIDTH * p[2];
-		auto bottom = p[1] + GRID_WIDTH * p[3];
-		m_vRectGrid.emplace_back(left, top, right, bottom);
+	//m_vGridView
+	int i = 0;
+	for (auto & p : POSITION_INFO) {
+		auto pos = EPosition(i++);
+		m_vGridView.emplace_back(pos, p[0], p[1], p[2], p[3], p[4]);
 	}
-	//m_vGridItems
-	m_vGridItems.resize(POSITION_END);
-	for (UINT i = 0; i < size(m_vGridItems); ++i)
-		if (i < GRID_COUNT)
-			m_vGridItems[i].resize(POSITION_RECT[i][2] * POSITION_RECT[i][3], -1);
-		else
-			m_vGridItems[i].resize(1, -1);
-	//武器II
-	m_vGridItems[RIGHT_HAND].push_back(-1);
-	m_vGridItems[LEFT_HAND].push_back(-1);
  }
 
 void CDlgCharItems::DoDataExchange(CDataExchange* pDX)
 {
-    CDialog::DoDataExchange(pDX);
-    DDX_Text(pDX, IDC_STATIC_x, m_pMouse.x);
-    DDX_Text(pDX, IDC_STATIC_y, m_pMouse.y);
-    DDX_Check(pDX, IDC_CHECK2, m_bNotShowItemInfoDlg);
-    //DDX_Control(pDX, IDC_LIST1, m_lcPropertyList);
-    //DDX_Control(pDX, IDC_COMBO1, m_cbQuality);
-    ////DDX_Text(pDX, IDC_EDIT1, m_sItemName);
-    //DDX_Text(pDX, IDC_EDIT2, m_bItemLevel);
-    ////DDX_Check(pDX, IDC_CHECK3, m_bItemInscribed);
-    //DDX_Text(pDX, IDC_EDIT4, m_ItemOwner);
-    //DDV_MaxChars(pDX, m_ItemOwner, 15);
-    //DDX_Check(pDX, IDC_CHECK5, m_bItemSocket);
-    //DDX_Text(pDX, IDC_EDIT5, m_bBaseSocket);
-    //DDX_Text(pDX, IDC_EDIT7, m_bExtSocket);
-    //DDX_Text(pDX, IDC_EDIT8, m_wItemQuantity);
-    //DDX_Text(pDX, IDC_EDIT9, m_wItemDefence);
-    //DDX_Check(pDX, IDC_CHECK6, m_bEthereal);
-    //DDX_Check(pDX, IDC_CHECK7, m_bIndestructible);
-    //DDX_Text(pDX, IDC_EDIT12, m_wCurDurability);
-    //DDX_Text(pDX, IDC_EDIT44, m_wMaxDurability);
-    DDX_Control(pDX, IDC_SLIDER1, m_scTrasparent);
-    DDX_Check(pDX, IDC_CHECK1, m_bSecondHand);
- //   DDX_Text(pDX, IDC_STATIC1, m_sText[0]);
- //   DDX_Text(pDX, IDC_STATIC2, m_sText[1]);
- //   DDX_Text(pDX, IDC_STATIC3, m_sText[2]);
- //   DDX_Text(pDX, IDC_STATIC4, m_sText[3]);
- //   DDX_Text(pDX, IDC_STATIC5, m_sText[4]);
- //   DDX_Text(pDX, IDC_STATIC6, m_sText[5]);
- //   DDX_Text(pDX, IDC_STATIC7, m_sText[6]);
- //   DDX_Text(pDX, IDC_STATIC8, m_sText[7]);
- //   DDX_Text(pDX, IDC_CHECK2, m_sText[8]);
- //   DDX_Text(pDX, IDC_CHECK5, m_sText[9]);
- //   DDX_Text(pDX, IDC_CHECK6, m_sText[10]);
+	CDialog::DoDataExchange(pDX);
+	DDX_Text(pDX, IDC_STATIC_x, m_pMouse.x);
+	DDX_Text(pDX, IDC_STATIC_y, m_pMouse.y);
+	DDX_Check(pDX, IDC_CHECK2, m_bNotShowItemInfoDlg);
+	//DDX_Control(pDX, IDC_LIST1, m_lcPropertyList);
+	//DDX_Control(pDX, IDC_COMBO1, m_cbQuality);
+	////DDX_Text(pDX, IDC_EDIT1, m_sItemName);
+	//DDX_Text(pDX, IDC_EDIT2, m_bItemLevel);
+	////DDX_Check(pDX, IDC_CHECK3, m_bItemInscribed);
+	//DDX_Text(pDX, IDC_EDIT4, m_ItemOwner);
+	//DDV_MaxChars(pDX, m_ItemOwner, 15);
+	//DDX_Check(pDX, IDC_CHECK5, m_bItemSocket);
+	//DDX_Text(pDX, IDC_EDIT5, m_bBaseSocket);
+	//DDX_Text(pDX, IDC_EDIT7, m_bExtSocket);
+	//DDX_Text(pDX, IDC_EDIT8, m_wItemQuantity);
+	//DDX_Text(pDX, IDC_EDIT9, m_wItemDefence);
+	//DDX_Check(pDX, IDC_CHECK6, m_bEthereal);
+	//DDX_Check(pDX, IDC_CHECK7, m_bIndestructible);
+	//DDX_Text(pDX, IDC_EDIT12, m_wCurDurability);
+	//DDX_Text(pDX, IDC_EDIT44, m_wMaxDurability);
+	DDX_Control(pDX, IDC_SLIDER1, m_scTrasparent);
+	DDX_Check(pDX, IDC_CHECK1, m_bSecondHand);
+	DDX_Check(pDX, IDC_CHECK4, m_bCorpseSecondHand);
+	DDX_Check(pDX, IDC_CHECK_Corpse, m_bHasCorpse);
+	//   DDX_Text(pDX, IDC_STATIC1, m_sText[0]);
+	//   DDX_Text(pDX, IDC_STATIC2, m_sText[1]);
+	//   DDX_Text(pDX, IDC_STATIC3, m_sText[2]);
+	//   DDX_Text(pDX, IDC_STATIC4, m_sText[3]);
+	//   DDX_Text(pDX, IDC_STATIC5, m_sText[4]);
+	//   DDX_Text(pDX, IDC_STATIC6, m_sText[5]);
+	//   DDX_Text(pDX, IDC_STATIC7, m_sText[6]);
+	//   DDX_Text(pDX, IDC_STATIC8, m_sText[7]);
+	//   DDX_Text(pDX, IDC_CHECK2, m_sText[8]);
+	//   DDX_Text(pDX, IDC_CHECK5, m_sText[9]);
+	//   DDX_Text(pDX, IDC_CHECK6, m_sText[10]);
 	//DDX_Text(pDX, IDC_CHECK7, m_sText[11]);
 	DDX_Text(pDX, IDC_STATIC_Sockets, m_sText[0]);
 	DDX_Text(pDX, IDC_STATIC_Mouse, m_sText[1]);
 	DDX_Text(pDX, IDC_STATIC_Cube, m_sText[2]);
 	DDX_Text(pDX, IDC_STATIC_Belt, m_sText[3]);
- //   DDX_Control(pDX, IDC_BUTTON1, m_btButton[0]);
- //   DDX_Control(pDX, IDC_BUTTON2, m_btButton[1]);
- //   DDX_Control(pDX, IDC_BUTTON3, m_btButton[2]);
- //   DDX_Control(pDX, IDC_BUTTON4, m_btButton[3]);
+	//   DDX_Control(pDX, IDC_BUTTON1, m_btButton[0]);
+	//   DDX_Control(pDX, IDC_BUTTON2, m_btButton[1]);
+	//   DDX_Control(pDX, IDC_BUTTON3, m_btButton[2]);
+	//   DDX_Control(pDX, IDC_BUTTON4, m_btButton[3]);
 	//DDX_Control(pDX, IDC_BUTTON5, m_btButton[4]);
 }
 
@@ -211,52 +341,52 @@ BEGIN_MESSAGE_MAP(CDlgCharItems, CDialog)
     ON_BN_CLICKED(IDC_CHECK1, &CDlgCharItems::OnChangeHand)
     //ON_BN_CLICKED(IDC_BUTTON2, &CDlgCharItems::OnPrefixSuffix)
     ON_WM_RBUTTONUP()
+	ON_BN_CLICKED(IDC_CHECK4, &CDlgCharItems::OnChangeCorpseHand)
+	ON_BN_CLICKED(IDC_CHECK_Corpse, &CDlgCharItems::OnChangeCorpse)
 END_MESSAGE_MAP()
 
 void CDlgCharItems::UpdateUI(CD2S_Struct & character) {
 	m_vItemViews.clear();
-	m_vItemViews.reserve(character.ItemList.vItems.size());
+	//Character items
 	for (UINT i = 0; i < character.ItemList.vItems.size(); ++i) {
 		auto & item = character.ItemList.vItems[i];
 		auto t = ItemToPosition(item.iLocation, item.iPosition, item.iColumn, item.iRow, item.iStoredIn);
 		auto equip = ItemToEquip(item.MetaData().Equip);
 		auto & view = m_vItemViews.emplace_back(item, equip, get<0>(t), get<1>(t), get<2>(t));
-		UpdateGridItem(int(m_vItemViews.size() - 1), view.iPosition, view.iGridX, view.iGridY);
+		UpdateGridItem(view.iPosition, view.iGridX, view.iGridY, int(m_vItemViews.size() - 1));
 		//Gems
 		int j = 0;
 		for (auto & gem : item.aGemItems)
 			view.vGemItems.emplace_back(gem, ItemToEquip(gem.MetaData().Equip), IN_SOCKET, j++, 0);
 	}
+	//Corpse items
+	if (character.stCorpse.pCorpseData.exist())
+		if (!m_bHasCorpse)
+			OnChangeCorpse();
+		for (auto & item : character.stCorpse.pCorpseData->stItems.vItems) {
+			auto t = ItemToPosition(item.iLocation, item.iPosition, item.iColumn, item.iRow, item.iStoredIn, true);
+			auto equip = ItemToEquip(item.MetaData().Equip);
+			auto & view = m_vItemViews.emplace_back(item, equip, get<0>(t), get<1>(t), get<2>(t));
+			UpdateGridItem(view.iPosition, view.iGridX, view.iGridY, int(m_vItemViews.size() - 1));
+		}
+
 	m_iSelectedItemIndex = m_iSelectedSocketIndex = -1;
 	Invalidate();
 }
 
 int CDlgCharItems::GetGridItemIndex(EPosition pos, int x, int y) const {
 	ASSERT(pos < POSITION_END);
-	ASSERT(0 <= x && 0 <= y);
-	const UINT idx = x + y * POSITION_RECT[pos][2];
-	auto & grid = m_vGridItems[pos];
-	ASSERT(idx < grid.size());
-	return grid[idx];
+	return m_vGridView[pos].ItemIndex(x, y);
 }
 
 void CDlgCharItems::SetGridItemIndex(EPosition pos, int x, int y, int index) {
 	ASSERT(pos < POSITION_END);
-	ASSERT(0 <= x && 0 <= y);
-	const UINT idx = x + y * POSITION_RECT[pos][2];
-	auto & grid = m_vGridItems[pos];
-	ASSERT(idx < grid.size());
-	grid[idx] = index;
+	return m_vGridView[pos].ItemIndex(x, y, index);
 }
 
 CPoint CDlgCharItems::GetItemPositionXY(const CItemView & view) const {
 	ASSERT(view.iPosition < POSITION_END);
-	auto & p = POSITION_RECT[view.iPosition];
-	if (view.iPosition < GRID_COUNT)
-		return CPoint(p[0] + view.iGridX * GRID_WIDTH, p[1] + view.iGridY * GRID_WIDTH);
-	int x = p[0] + (p[2] - view.iGridWidth) * GRID_WIDTH / 2;
-	int y = p[1] + (p[3] - view.iGridHeight) * GRID_WIDTH / 2;
-	return CPoint(x, y);
+	return m_vGridView[view.iPosition].IndexToXY(view.iGridX, view.iGridY, view.iGridWidth, view.iGridHeight);
 }
 
 const CItemView * CDlgCharItems::SelectedParentItemView() const {
@@ -272,34 +402,14 @@ const CItemView * CDlgCharItems::SelectedItemView() const {
 	return parent;
 }
 
-BOOL CDlgCharItems::UpdateGridItem(int index, EPosition pos, int x, int y) {
-	ASSERT(0 <= index && index < int(m_vItemViews.size()));
+BOOL CDlgCharItems::UpdateGridItem(EPosition pos, int x, int y, int index) {
 	ASSERT(pos < POSITION_END);
-	ASSERT(0 <= x && 0 <= y);
+	ASSERT(0 <= index && index < int(m_vItemViews.size()));
 	auto & view = m_vItemViews[index];
 	const auto equip = view.Item.MetaData().Equip;	//物品的可穿戴位置
-	if (pos < GRID_COUNT) {	//带网格的位置
-		if (x + view.iGridWidth > POSITION_RECT[pos][2] || y + view.iGridHeight > POSITION_RECT[pos][3])
-			return FALSE;	//物品在网格外面
-		if (pos == IN_BELT && equip != 9)
-			return FALSE;	//物品不能放到腰带里
-		for (int i = 0; i < view.iGridWidth; ++i)
-			for (int j = 0; j < view.iGridHeight; ++j)
-				if (-1 != GetGridItemIndex(pos, x + i, y + j))
-					return FALSE;	//网格里有物品
-		for (int i = 0; i < view.iGridWidth; ++i)
-			for (int j = 0; j < view.iGridHeight; ++j)
-				SetGridItemIndex(pos, x + i, y + j, index);
-	} else {	//身体部位和鼠标
-		if (pos != IN_MOUSE) {
-			const BYTE EQUIP[] = { 1,2,3,4,4,5,5,6,7,8 };	//网格位置对应的物品可穿戴类型
-			if (equip != EQUIP[pos - HEAD])
-				return FALSE;	//物品不能穿戴到指定部位
-		}
-		if (-1 != GetGridItemIndex(pos, x, y))
-			return FALSE;	//已穿戴物品
-		SetGridItemIndex(pos, x, y, index);
-	}
+	auto & grid = m_vGridView[pos];
+	if (!grid.PutItem(index, x, y, view.iGridWidth, view.iGridHeight, EEquip(equip)))
+		return FALSE;
 	view.iPosition = pos;
 	view.iGridX = x;
 	view.iGridY = y;
@@ -327,11 +437,11 @@ void CDlgCharItems::DrawGrids(CPaintDC & dc)
 {
     CPen pen(PS_SOLID,1,RGB(0,200,100));
     CPen * pOld = dc.SelectObject(&pen);
-    for(int i = 0;i < POSITION_END;++i)
-		if(i < GRID_COUNT)
-			::DrawGrid(dc, m_vRectGrid[i], GRID_WIDTH, GRID_WIDTH);
+	for (const auto & g : m_vGridView)
+		if(g.IsGrid())
+			::DrawGrid(dc, g.Rect, GRID_WIDTH, GRID_WIDTH);
 		else
-			::DrawGrid(dc, m_vRectGrid[i]);
+			::DrawGrid(dc, g.Rect);
 	dc.SelectObject(pOld);
 }
 
@@ -352,8 +462,12 @@ void CDlgCharItems::DrawAllItemsInGrid(CPaintDC & dc) const
 	CRect selectedGrid(0, 0, 0, 0), selectedSocket(0, 0, 0, 0);
 	for (size_t i = 0; i < m_vItemViews.size(); ++i) {
 		auto & view = m_vItemViews[i];
+		//在左右手上，分I, II显示不同物品，包括尸体
 		if ((RIGHT_HAND == view.iPosition || LEFT_HAND == view.iPosition)
-			&& view.iGridX != (m_bSecondHand ? 1 : 0))	//在左右手上，分I, II显示不同物品
+			&& view.iGridX != (m_bSecondHand ? 1 : 0))
+			continue;
+		if ((CORPSE_RIGHT_HAND == view.iPosition || CORPSE_LEFT_HAND == view.iPosition)
+			&& view.iGridX != (m_bCorpseSecondHand ? 1 : 0))
 			continue;
 		auto pos = GetItemPositionXY(view);
 		DrawItemXY(dc, pos, view);
@@ -361,7 +475,7 @@ void CDlgCharItems::DrawAllItemsInGrid(CPaintDC & dc) const
 			selectedGrid = CRect(pos, view.ViewSize());
 			//Draw gems in sockets
 			auto & gems = view.vGemItems;
-			for (UINT j = 0; j < POSITION_RECT[IN_SOCKET][2] && j < gems.size(); ++j) {
+			for (UINT j = 0; j < gems.size(); ++j) {
 				auto & gemView = gems[j];
 				pos = GetItemPositionXY(gemView);
 				DrawItemXY(dc, pos, gemView);
@@ -388,23 +502,9 @@ void CDlgCharItems::DrawAllItemsInGrid(CPaintDC & dc) const
 }
 
 tuple<int, int, int> CDlgCharItems::HitTestPosition(CPoint pos) const {
-	for (int i = 0; i < GRID_COUNT; ++i) {
-		auto & rect = m_vRectGrid[i];
-		if (rect.PtInRect(pos)) {
-			const int x = (pos.x - rect.left) / GRID_WIDTH;
-			const int y = (pos.y - rect.top) / GRID_WIDTH;
-			return make_tuple(i, x, y);
-		}
-	}
-	for (int i = HEAD; i < POSITION_END; ++i) {
-		auto & rect = m_vRectGrid[i];
-		if (rect.PtInRect(pos)) {
-			if (RIGHT_HAND == i || LEFT_HAND == i)
-				return make_tuple(i, (m_bSecondHand ? 1 : 0), 0);
-			else
-				return make_tuple(i, 0, 0);
-		}
-	}
+	for (auto & g : m_vGridView)
+		if (g.Rect.PtInRect(pos))
+			return g.XYToPositionIndex(pos, m_bSecondHand, m_bCorpseSecondHand);
 	return make_tuple(-1, -1, -1);
 }
 
@@ -495,9 +595,9 @@ BOOL CDlgCharItems::GatherData(CD2S_Struct & character)
 void CDlgCharItems::ResetAll()
 {
 	m_vItemViews.clear();
-	for (auto & grid : m_vGridItems)
-		fill(grid.begin(), grid.end(), -1);
-    m_bSecondHand = FALSE;
+	for (auto & grid : m_vGridView)
+		grid.Reset();
+	m_bSecondHand = m_bCorpseSecondHand = FALSE;
 	m_iSelectedItemIndex = m_iSelectedSocketIndex = -1;
 	m_pDlgItemInfo.reset();
 	ResetFoundry();
@@ -626,13 +726,16 @@ void CDlgCharItems::OnBnClickedCheck2()
 void CDlgCharItems::OnChangeHand()
 {
     m_bSecondHand = !m_bSecondHand;
-    //更新左右手
-    for(int i = RIGHT_HAND;i <= LEFT_HAND;++i){
-        CRect rect(POSITION_RECT[i][0],POSITION_RECT[i][1],0,0);
-        rect.right = rect.left + POSITION_RECT[i][2] * GRID_WIDTH;
-        rect.bottom = rect.top + POSITION_RECT[i][3] * GRID_WIDTH;
-        InvalidateRect(&rect);
-    }
+    //更新UI
+	InvalidateRect(&m_vGridView[RIGHT_HAND].Rect);
+	InvalidateRect(&m_vGridView[LEFT_HAND].Rect);
+ }
+
+void CDlgCharItems::OnChangeCorpseHand() {
+	m_bCorpseSecondHand = !m_bCorpseSecondHand;
+	//更新UI
+	InvalidateRect(&m_vGridView[CORPSE_RIGHT_HAND].Rect);
+	InvalidateRect(&m_vGridView[CORPSE_LEFT_HAND].Rect);
 }
 
 //void CDlgCharItems::OnPrefixSuffix()
@@ -706,3 +809,11 @@ void CDlgCharItems::OnChangeHand()
 //    CDlgPrefixSuffix dlgPrefix(m_cbQuality.GetCurSel() + 1,&selIndex[0],this);
 //    dlgPrefix.DoModal();
 //}
+
+
+
+void CDlgCharItems::OnChangeCorpse() {
+	m_bHasCorpse = !m_bHasCorpse;
+	for (int i = CORPSE_HEAD; i < CORPSE_END; ++i)
+		m_vGridView[i].bEnabled = m_bHasCorpse;
+}
