@@ -8,53 +8,139 @@
 
 using namespace std;
 
+const int GRID_WIDTH = 30;		//每个网格的边长(像素)
+
+//物品能装备的位置
+enum EEquip {
+	E_STORAGE = 1,			//不可穿戴，只能放在存储箱里
+	E_HEAD = 1 << 1,		//头盔
+	E_NECK = 1 << 2,		//项链
+	E_BODY = 1 << 3,		//衣服
+	E_HAND = 1 << 4,		//武器和盾牌
+	E_RING = 1 << 5,		//戒指
+	E_BELT = 1 << 6,		//腰带
+	E_FOOT = 1 << 7,		//鞋子
+	E_GLOVE = 1 << 8,		//手套
+	E_IN_BELT = 1 << 9,		//放在腰带里（药品等）
+	E_SOCKET = 1 << 10,		//可镶嵌（珠宝，符文等）
+};
+
+static EEquip ItemToEquip(int iEquip) {
+	ASSERT(0 <= iEquip && iEquip <= 10);
+	return EEquip(1 << iEquip);
+}
+
+//所有网格位置
+enum EPosition {
+	STASH,				//箱子
+	INVENTORY,			//口袋
+	CUBE,				//方块
+	IN_BELT,			//腰带里
+	IN_SOCKET,			//镶嵌在孔里
+
+	GRID_COUNT,			//网格类型位置数量
+
+	HEAD = GRID_COUNT,	//头
+	NECK,				//项链
+	BODY,				//身体
+	RIGHT_HAND,			//武器右(I & II)
+	LEFT_HAND,			//武器左(I & II)
+	RIGHT_RING,			//戒指右
+	LEFT_RING,			//戒指左
+	BELT,				//腰带
+	FOOT,				//鞋子
+	GLOVE,				//手套
+
+	IN_MOUSE,			//被鼠标拿起
+
+	POSITION_END		//所有位置总数
+};
+
+//每个位置(EPosition)在UI的起始坐标(像素),列数,行数
+//left,top,col,row
+const WORD POSITION_RECT[POSITION_END][4] = {
+	{10,5,6,8},		//箱子
+	{10,255,10,4},	//口袋
+	{320,255,3,4},	//方块
+	{420,255,4,4},	//腰带里
+	{70,385,6,1},	//孔
+	{300,5,2,2},	//头
+	{365,30,1,1},	//项链
+	{300,70,2,3},	//身体
+	{200,30,2,4},	//武器右
+	{400,30,2,4},	//武器左
+	{265,165,1,1},	//戒指右
+	{365,165,1,1},	//戒指左
+	{300,165,2,1},	//腰带		
+	{400,155,2,2},	//鞋子
+	{200,155,2,2},	//手套
+	{480,30,2,4},	//被鼠标拿起
+};
+
+tuple<EPosition, int, int> ItemToPosition(int iLocation, int iPosition, int iColumn, int iRow, int iStoredIn) {
+	int pos = -1, x = 0, y = 0;	//物品的位置(EPosition)和坐标
+	switch (iLocation) {
+		case 0:		//grid
+			pos = (iStoredIn == 1 ? INVENTORY : (iStoredIn == 4 ? CUBE : (iStoredIn == 5 ? STASH : -1)));
+			x = iColumn;
+			y = iRow;
+			break;
+		case 1:		//equipped
+			pos = iPosition;
+			if (0 < pos && pos <= 10)
+				pos += GRID_COUNT - 1;
+			else if (pos <= 12) {	//左右手II
+				pos += GRID_COUNT - 8;
+				x = 1;
+			} else
+				pos = -1;
+			break;
+		case 2:		//in belt(物品排列方式与其他网格不同)
+			pos = IN_BELT;
+			x = iColumn % 4;
+			y = POSITION_RECT[pos][3] - iColumn / 4 - 1;
+			break;
+		case 4:		//in hand(鼠标)
+			pos = IN_MOUSE;
+			break;
+		default:;
+	}
+	if (pos < 0)
+		ASSERT(FALSE && _T("Invalid item position"));
+	return make_tuple(EPosition(pos), x, y);
+}
+
 //struct CItemView
 
-CItemView::CItemView(CD2Item & item, int pos, int x, int y)
+CItemView::CItemView(CD2Item & item, EEquip equip, EPosition pos, int x, int y)
 	: Item(item)
 	, nPicRes(IDB_BITMAP0 + item.MetaData().PicIndex)
+	, iEquip(equip)
 	, iPosition(pos)
 	, iGridX(x)
 	, iGridY(y)
 	, iGridWidth((item.MetaData().Range >> 4) & 0xF)
 	, iGridHeight(item.MetaData().Range & 0xF)
 {
-	ASSERT(0 <= pos);
 	ASSERT(0 < iGridWidth && 0 < iGridHeight);
 }
 
-// CDlgCharItems 对话框
+CSize CItemView::ViewSize() const { return CSize(iGridWidth * GRID_WIDTH, iGridHeight*GRID_WIDTH); }
 
-//left,top,col,row
-const WORD	CDlgCharItems::POSITION_RECT[CDlgCharItems::POSITION_END][4] = {
-    {10,5,6,8},		//箱子    {10,255,10,4},	//口袋
-	{320,255,3,4},	//方块
-	{420,255,4,4},	//腰带里
-	{70,385,6,1},	//孔
-    {300,5,2,2},	//头
-    {365,30,1,1},	//项链
-    {300,70,2,3},	//身体
-    {200,30,2,4},	//武器右
-    {400,30,2,4},	//武器左
-    {265,165,1,1},	//戒指右
-    {365,165,1,1},	//戒指左
-    {300,165,2,1},	//腰带		
-    {400,155,2,2},	//鞋子
-    {200,155,2,2},	//手套
-	{480,30,2,4},	//被鼠标拿起
-};
+// CDlgCharItems 对话框
 
 IMPLEMENT_DYNAMIC(CDlgCharItems, CPropertyDialog)
 
 CDlgCharItems::CDlgCharItems(CWnd* pParent /*=NULL*/)
     : CPropertyDialog(CDlgCharItems::IDD, pParent)
 {
-	//m_rectGrid
-	for (UINT i = 0; i < size(m_rectGrid); ++i) {
-		m_rectGrid[i].left = POSITION_RECT[i][0];
-		m_rectGrid[i].top = POSITION_RECT[i][1];
-		m_rectGrid[i].right = POSITION_RECT[i][0] + GRID_WIDTH * POSITION_RECT[i][2];
-		m_rectGrid[i].bottom = POSITION_RECT[i][1] + GRID_WIDTH * POSITION_RECT[i][3];
+	//m_vRectGrid
+	for (auto & p : POSITION_RECT) {
+		auto left = p[0];
+		auto top = p[1];
+		auto right = p[0] + GRID_WIDTH * p[2];
+		auto bottom = p[1] + GRID_WIDTH * p[3];
+		m_vRectGrid.emplace_back(left, top, right, bottom);
 	}
 	//m_vGridItems
 	m_vGridItems.resize(POSITION_END);
@@ -67,10 +153,6 @@ CDlgCharItems::CDlgCharItems(CWnd* pParent /*=NULL*/)
 	m_vGridItems[RIGHT_HAND].push_back(-1);
 	m_vGridItems[LEFT_HAND].push_back(-1);
  }
-
-CDlgCharItems::~CDlgCharItems() {
-	delete m_pDlgItemInfo;
-}
 
 void CDlgCharItems::DoDataExchange(CDataExchange* pDX)
 {
@@ -127,7 +209,7 @@ BEGIN_MESSAGE_MAP(CDlgCharItems, CDialog)
     ON_WM_SHOWWINDOW()
     ON_BN_CLICKED(IDC_CHECK2, &CDlgCharItems::OnBnClickedCheck2)
     ON_BN_CLICKED(IDC_CHECK1, &CDlgCharItems::OnChangeHand)
-    ON_BN_CLICKED(IDC_BUTTON2, &CDlgCharItems::OnPrefixSuffix)
+    //ON_BN_CLICKED(IDC_BUTTON2, &CDlgCharItems::OnPrefixSuffix)
     ON_WM_RBUTTONUP()
 END_MESSAGE_MAP()
 
@@ -136,49 +218,21 @@ void CDlgCharItems::UpdateUI(CD2S_Struct & character) {
 	m_vItemViews.reserve(character.ItemList.vItems.size());
 	for (UINT i = 0; i < character.ItemList.vItems.size(); ++i) {
 		auto & item = character.ItemList.vItems[i];
-		int pos = -1, x = 0, y = 0;	//物品的位置(EPosition)和坐标
-		switch (item.iLocation) {
-			case 0:		//grid
-				pos = (item.iStoredIn == 1 ? INVENTORY : (item.iStoredIn == 4 ? CUBE : (item.iStoredIn == 5 ? STASH : -1)));
-				x = item.iColumn;
-				y = item.iRow;
-				break;
-			case 1:		//equipped
-				pos = item.iPosition;
-				if (0 < pos && pos <= 10)
-					pos += GRID_COUNT - 1;
-				else if (pos <= 12) {	//左右手II
-					pos += GRID_COUNT - 8;
-					x = 1;
-				} else
-					pos = -1;
-				break;
-			case 2:		//in belt(物品排列方式与其他网格不同)
-				pos = IN_BELT;
-				x = item.iColumn % 4;
-				y = POSITION_RECT[pos][3] - item.iColumn / 4 - 1;
-				break;
-			case 4:		//in hand(鼠标)
-				pos = IN_MOUSE;
-				break;
-			default:;
-		}
-		if (pos < 0)
-			ASSERT(FALSE && _T("Invalid item position"));
-		auto & meta = item.MetaData();
-		auto & view = m_vItemViews.emplace_back(item, pos, x, y);
-		UpdateGridItem(int(m_vItemViews.size() - 1), pos, x, y);
+		auto t = ItemToPosition(item.iLocation, item.iPosition, item.iColumn, item.iRow, item.iStoredIn);
+		auto equip = ItemToEquip(item.MetaData().Equip);
+		auto & view = m_vItemViews.emplace_back(item, equip, get<0>(t), get<1>(t), get<2>(t));
+		UpdateGridItem(int(m_vItemViews.size() - 1), view.iPosition, view.iGridX, view.iGridY);
 		//Gems
-		x = 0;
+		int j = 0;
 		for (auto & gem : item.aGemItems)
-			view.vGemItems.emplace_back(gem, IN_SOCKET, x++, 0);
+			view.vGemItems.emplace_back(gem, ItemToEquip(gem.MetaData().Equip), IN_SOCKET, j++, 0);
 	}
 	m_iSelectedItemIndex = m_iSelectedSocketIndex = -1;
 	Invalidate();
 }
 
-int CDlgCharItems::GetGridItemIndex(int pos, int x, int y) const {
-	ASSERT(0 <= pos && pos < int(m_vGridItems.size()));
+int CDlgCharItems::GetGridItemIndex(EPosition pos, int x, int y) const {
+	ASSERT(pos < POSITION_END);
 	ASSERT(0 <= x && 0 <= y);
 	const UINT idx = x + y * POSITION_RECT[pos][2];
 	auto & grid = m_vGridItems[pos];
@@ -186,8 +240,8 @@ int CDlgCharItems::GetGridItemIndex(int pos, int x, int y) const {
 	return grid[idx];
 }
 
-void CDlgCharItems::SetGridItemIndex(int pos, int x, int y, int index) {
-	ASSERT(0 <= pos && pos < int(m_vGridItems.size()));
+void CDlgCharItems::SetGridItemIndex(EPosition pos, int x, int y, int index) {
+	ASSERT(pos < POSITION_END);
 	ASSERT(0 <= x && 0 <= y);
 	const UINT idx = x + y * POSITION_RECT[pos][2];
 	auto & grid = m_vGridItems[pos];
@@ -196,7 +250,7 @@ void CDlgCharItems::SetGridItemIndex(int pos, int x, int y, int index) {
 }
 
 CPoint CDlgCharItems::GetItemPositionXY(const CItemView & view) const {
-	ASSERT(0 <= view.iPosition && view.iPosition < POSITION_END);
+	ASSERT(view.iPosition < POSITION_END);
 	auto & p = POSITION_RECT[view.iPosition];
 	if (view.iPosition < GRID_COUNT)
 		return CPoint(p[0] + view.iGridX * GRID_WIDTH, p[1] + view.iGridY * GRID_WIDTH);
@@ -218,9 +272,9 @@ const CItemView * CDlgCharItems::SelectedItemView() const {
 	return parent;
 }
 
-BOOL CDlgCharItems::UpdateGridItem(int index, int pos, int x, int y) {
+BOOL CDlgCharItems::UpdateGridItem(int index, EPosition pos, int x, int y) {
 	ASSERT(0 <= index && index < int(m_vItemViews.size()));
-	ASSERT(0 <= pos && pos < POSITION_END);
+	ASSERT(pos < POSITION_END);
 	ASSERT(0 <= x && 0 <= y);
 	auto & view = m_vItemViews[index];
 	const auto equip = view.Item.MetaData().Equip;	//物品的可穿戴位置
@@ -275,9 +329,9 @@ void CDlgCharItems::DrawGrids(CPaintDC & dc)
     CPen * pOld = dc.SelectObject(&pen);
     for(int i = 0;i < POSITION_END;++i)
 		if(i < GRID_COUNT)
-			::DrawGrid(dc, m_rectGrid[i], GRID_WIDTH, GRID_WIDTH);
+			::DrawGrid(dc, m_vRectGrid[i], GRID_WIDTH, GRID_WIDTH);
 		else
-			::DrawGrid(dc, m_rectGrid[i]);
+			::DrawGrid(dc, m_vRectGrid[i]);
 	dc.SelectObject(pOld);
 }
 
@@ -335,7 +389,7 @@ void CDlgCharItems::DrawAllItemsInGrid(CPaintDC & dc) const
 
 tuple<int, int, int> CDlgCharItems::HitTestPosition(CPoint pos) const {
 	for (int i = 0; i < GRID_COUNT; ++i) {
-		auto & rect = m_rectGrid[i];
+		auto & rect = m_vRectGrid[i];
 		if (rect.PtInRect(pos)) {
 			const int x = (pos.x - rect.left) / GRID_WIDTH;
 			const int y = (pos.y - rect.top) / GRID_WIDTH;
@@ -343,7 +397,7 @@ tuple<int, int, int> CDlgCharItems::HitTestPosition(CPoint pos) const {
 		}
 	}
 	for (int i = HEAD; i < POSITION_END; ++i) {
-		auto & rect = m_rectGrid[i];
+		auto & rect = m_vRectGrid[i];
 		if (rect.PtInRect(pos)) {
 			if (RIGHT_HAND == i || LEFT_HAND == i)
 				return make_tuple(i, (m_bSecondHand ? 1 : 0), 0);
@@ -357,7 +411,7 @@ tuple<int, int, int> CDlgCharItems::HitTestPosition(CPoint pos) const {
 void CDlgCharItems::ShowItemInfoDlg(const CD2Item * pItem){
     if(!m_bNotShowItemInfoDlg && pItem && (!m_pDlgItemInfo || pItem != m_pDlgItemInfo->GetItemPtr())){
         if(!m_pDlgItemInfo){
-            m_pDlgItemInfo = new CDlgSuspend(this,m_scTrasparent.GetPos());
+			m_pDlgItemInfo = make_unique<CDlgSuspend>(this, m_scTrasparent.GetPos());
             m_pDlgItemInfo->Create(CDlgSuspend::IDD,NULL);
         }
         LONG height = m_pDlgItemInfo->GetItemInfo(pItem);
@@ -367,10 +421,8 @@ void CDlgCharItems::ShowItemInfoDlg(const CD2Item * pItem){
 		m_pDlgItemInfo->MoveWindow(rect1.left + INFO_WINDOW_LEFT, rect1.top, rect.Width(), rect.Height(), TRUE);
         m_pDlgItemInfo->ShowWindow(SW_SHOWNOACTIVATE); //显示对话框
         m_pDlgItemInfo->Invalidate();
-    }else if(!pItem && m_pDlgItemInfo){
-        delete m_pDlgItemInfo;
-        m_pDlgItemInfo = 0;
-    }
+    }else if(!pItem && m_pDlgItemInfo)
+        m_pDlgItemInfo.reset();
 }
 
 void CDlgCharItems::ReadItemProperty(const CD2Item & item) {
@@ -447,8 +499,7 @@ void CDlgCharItems::ResetAll()
 		fill(grid.begin(), grid.end(), -1);
     m_bSecondHand = FALSE;
 	m_iSelectedItemIndex = m_iSelectedSocketIndex = -1;
-	delete m_pDlgItemInfo;
-	m_pDlgItemInfo = 0;
+	m_pDlgItemInfo.reset();
 	ResetFoundry();
 
     Invalidate();
@@ -489,7 +540,7 @@ void CDlgCharItems::OnMouseMove(UINT nFlags, CPoint point)
 	auto t = HitTestPosition(point);
 	const int pos = get<0>(t), x = get<1>(t), y = get<2>(t);
 	if (0 <= pos) {		//在有效网格里
-		const int index = GetGridItemIndex(pos, x, y);
+		const int index = GetGridItemIndex(EPosition(pos), x, y);
 		if (0 <= index) {	//有物品
 			if (IN_SOCKET == pos) {	//镶嵌的宝石
 				auto & gems = SelectedParentItemView()->vGemItems;
@@ -513,7 +564,7 @@ void CDlgCharItems::OnLButtonDown(UINT nFlags, CPoint point)
 	auto t = HitTestPosition(point);
 	const int pos = get<0>(t), x = get<1>(t), y = get<2>(t);
 	if (IN_SOCKET == pos) {
-		const int index = GetGridItemIndex(pos, x, y);
+		const int index = GetGridItemIndex(IN_SOCKET, x, y);
 		if (0 <= index && index != m_iSelectedSocketIndex) {
 			ResetFoundry();
 			auto & gems = SelectedParentItemView()->vGemItems;
@@ -523,7 +574,7 @@ void CDlgCharItems::OnLButtonDown(UINT nFlags, CPoint point)
 			Invalidate();
 		}
 	} else if (0 <= pos) {
-		const int index = GetGridItemIndex(pos, x, y);
+		const int index = GetGridItemIndex(EPosition(pos), x, y);
 		if (0 <= index && (index != m_iSelectedItemIndex || 0 <= m_iSelectedSocketIndex)) {
 			if (0 <= m_iSelectedItemIndex)
 				ResetFoundry();
@@ -584,74 +635,74 @@ void CDlgCharItems::OnChangeHand()
     }
 }
 
-void CDlgCharItems::OnPrefixSuffix()
-{
-    std::vector<int> selIndex(10,-1);
-	auto view = SelectedItemView();
-    if(view){
-        auto & item = view->Item;
-        if(item.pItemInfo.exist() && item.pItemInfo->pExtItemInfo.exist()){
-            switch(m_cbQuality.GetCurSel() + 1){
-                case 1:     //low
-                    if(item.pItemInfo->pExtItemInfo->loQual.exist())
-                        selIndex[9] = item.pItemInfo->pExtItemInfo->loQual;
-                    break;
-                case 3:     //high
-                    if(item.pItemInfo->pExtItemInfo->hiQual.exist())
-                        selIndex[9] = item.pItemInfo->pExtItemInfo->hiQual;
-                    break;
-                case 4:     //magic
-                    if(item.pItemInfo->pExtItemInfo->wPrefix.exist())
-                        selIndex[2] = item.pItemInfo->pExtItemInfo->wPrefix;
-                    if(item.pItemInfo->pExtItemInfo->wSuffix.exist())
-                        selIndex[3] = item.pItemInfo->pExtItemInfo->wSuffix;
-                    break;
-                case 5:     //set
-                    break;
-                case 6:     //rare
-                    if(item.pItemInfo->pExtItemInfo->pRareName.exist()){
-                        selIndex[0] = item.pItemInfo->pExtItemInfo->pRareName->iName1;
-                        selIndex[1] = item.pItemInfo->pExtItemInfo->pRareName->iName2;
-                        if(item.pItemInfo->pExtItemInfo->pRareName->bPref1)
-                            selIndex[2] = item.pItemInfo->pExtItemInfo->pRareName->wPref1;
-                        if(item.pItemInfo->pExtItemInfo->pRareName->bSuff1)
-                            selIndex[3] = item.pItemInfo->pExtItemInfo->pRareName->wSuff1;
-                        if(item.pItemInfo->pExtItemInfo->pRareName->bPref2)
-                            selIndex[4] = item.pItemInfo->pExtItemInfo->pRareName->wPref2;
-                        if(item.pItemInfo->pExtItemInfo->pRareName->bSuff2)
-                            selIndex[5] = item.pItemInfo->pExtItemInfo->pRareName->wSuff2;
-                        if(item.pItemInfo->pExtItemInfo->pRareName->bPref3)
-                            selIndex[6] = item.pItemInfo->pExtItemInfo->pRareName->wPref3;
-                        if(item.pItemInfo->pExtItemInfo->pRareName->bSuff3)
-                            selIndex[7] = item.pItemInfo->pExtItemInfo->pRareName->wSuff3;
-                    }
-                    break;
-                case 7:     //unique
-                    if(item.pItemInfo->pExtItemInfo->wUniID.exist())
-                        selIndex[8] = item.pItemInfo->pExtItemInfo->wUniID;
-                    break;
-                case 8:     //crafted
-                    if(item.pItemInfo->pExtItemInfo->pCraftName.exist()){
-                        selIndex[0] = item.pItemInfo->pExtItemInfo->pCraftName->iName1;
-                        selIndex[1] = item.pItemInfo->pExtItemInfo->pCraftName->iName2;
-                        if(item.pItemInfo->pExtItemInfo->pCraftName->bPref1)
-                            selIndex[2] = item.pItemInfo->pExtItemInfo->pCraftName->wPref1;
-                        if(item.pItemInfo->pExtItemInfo->pCraftName->bSuff1)
-                            selIndex[3] = item.pItemInfo->pExtItemInfo->pCraftName->wSuff1;
-						if (item.pItemInfo->pExtItemInfo->pCraftName->bPref2)
-							selIndex[4] = item.pItemInfo->pExtItemInfo->pCraftName->wPref2;
-                        if(item.pItemInfo->pExtItemInfo->pCraftName->bSuff2)
-                            selIndex[5] = item.pItemInfo->pExtItemInfo->pCraftName->wSuff2;
-                        if(item.pItemInfo->pExtItemInfo->pCraftName->bPref3)
-                            selIndex[6] = item.pItemInfo->pExtItemInfo->pCraftName->wPref3;
-                        if(item.pItemInfo->pExtItemInfo->pCraftName->bSuff3)
-                            selIndex[7] = item.pItemInfo->pExtItemInfo->pCraftName->wSuff3;
-                    }
-                    break;
-                default:;
-            }
-        }
-    }
-    CDlgPrefixSuffix dlgPrefix(m_cbQuality.GetCurSel() + 1,&selIndex[0],this);
-    dlgPrefix.DoModal();
-}
+//void CDlgCharItems::OnPrefixSuffix()
+//{
+//    std::vector<int> selIndex(10,-1);
+//	auto view = SelectedItemView();
+//    if(view){
+//        auto & item = view->Item;
+//        if(item.pItemInfo.exist() && item.pItemInfo->pExtItemInfo.exist()){
+//            switch(m_cbQuality.GetCurSel() + 1){
+//                case 1:     //low
+//                    if(item.pItemInfo->pExtItemInfo->loQual.exist())
+//                        selIndex[9] = item.pItemInfo->pExtItemInfo->loQual;
+//                    break;
+//                case 3:     //high
+//                    if(item.pItemInfo->pExtItemInfo->hiQual.exist())
+//                        selIndex[9] = item.pItemInfo->pExtItemInfo->hiQual;
+//                    break;
+//                case 4:     //magic
+//                    if(item.pItemInfo->pExtItemInfo->wPrefix.exist())
+//                        selIndex[2] = item.pItemInfo->pExtItemInfo->wPrefix;
+//                    if(item.pItemInfo->pExtItemInfo->wSuffix.exist())
+//                        selIndex[3] = item.pItemInfo->pExtItemInfo->wSuffix;
+//                    break;
+//                case 5:     //set
+//                    break;
+//                case 6:     //rare
+//                    if(item.pItemInfo->pExtItemInfo->pRareName.exist()){
+//                        selIndex[0] = item.pItemInfo->pExtItemInfo->pRareName->iName1;
+//                        selIndex[1] = item.pItemInfo->pExtItemInfo->pRareName->iName2;
+//                        if(item.pItemInfo->pExtItemInfo->pRareName->bPref1)
+//                            selIndex[2] = item.pItemInfo->pExtItemInfo->pRareName->wPref1;
+//                        if(item.pItemInfo->pExtItemInfo->pRareName->bSuff1)
+//                            selIndex[3] = item.pItemInfo->pExtItemInfo->pRareName->wSuff1;
+//                        if(item.pItemInfo->pExtItemInfo->pRareName->bPref2)
+//                            selIndex[4] = item.pItemInfo->pExtItemInfo->pRareName->wPref2;
+//                        if(item.pItemInfo->pExtItemInfo->pRareName->bSuff2)
+//                            selIndex[5] = item.pItemInfo->pExtItemInfo->pRareName->wSuff2;
+//                        if(item.pItemInfo->pExtItemInfo->pRareName->bPref3)
+//                            selIndex[6] = item.pItemInfo->pExtItemInfo->pRareName->wPref3;
+//                        if(item.pItemInfo->pExtItemInfo->pRareName->bSuff3)
+//                            selIndex[7] = item.pItemInfo->pExtItemInfo->pRareName->wSuff3;
+//                    }
+//                    break;
+//                case 7:     //unique
+//                    if(item.pItemInfo->pExtItemInfo->wUniID.exist())
+//                        selIndex[8] = item.pItemInfo->pExtItemInfo->wUniID;
+//                    break;
+//                case 8:     //crafted
+//                    if(item.pItemInfo->pExtItemInfo->pCraftName.exist()){
+//                        selIndex[0] = item.pItemInfo->pExtItemInfo->pCraftName->iName1;
+//                        selIndex[1] = item.pItemInfo->pExtItemInfo->pCraftName->iName2;
+//                        if(item.pItemInfo->pExtItemInfo->pCraftName->bPref1)
+//                            selIndex[2] = item.pItemInfo->pExtItemInfo->pCraftName->wPref1;
+//                        if(item.pItemInfo->pExtItemInfo->pCraftName->bSuff1)
+//                            selIndex[3] = item.pItemInfo->pExtItemInfo->pCraftName->wSuff1;
+//						if (item.pItemInfo->pExtItemInfo->pCraftName->bPref2)
+//							selIndex[4] = item.pItemInfo->pExtItemInfo->pCraftName->wPref2;
+//                        if(item.pItemInfo->pExtItemInfo->pCraftName->bSuff2)
+//                            selIndex[5] = item.pItemInfo->pExtItemInfo->pCraftName->wSuff2;
+//                        if(item.pItemInfo->pExtItemInfo->pCraftName->bPref3)
+//                            selIndex[6] = item.pItemInfo->pExtItemInfo->pCraftName->wPref3;
+//                        if(item.pItemInfo->pExtItemInfo->pCraftName->bSuff3)
+//                            selIndex[7] = item.pItemInfo->pExtItemInfo->pCraftName->wSuff3;
+//                    }
+//                    break;
+//                default:;
+//            }
+//        }
+//    }
+//    CDlgPrefixSuffix dlgPrefix(m_cbQuality.GetCurSel() + 1,&selIndex[0],this);
+//    dlgPrefix.DoModal();
+//}

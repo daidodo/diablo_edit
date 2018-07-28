@@ -7,19 +7,23 @@
 #include "DlgPrefixSuffix.h"
 
 #include <tuple>
+#include <memory>
 
-const int GRID_WIDTH = 30;		//每个网格的边长(像素)
+enum EEquip;
+enum EPosition;
 
 //物品的视图
 struct CItemView
 {
 	CD2Item & Item;						//对应的物品
 	const UINT nPicRes;					//bmp图片资源索引
-	int iPosition, iGridX, iGridY;		//物品位置(CDlgCharItems::EPosition), 以及网格坐标
+	const EEquip iEquip;				//物品可装备的位置
+	EPosition iPosition;				//物品位置
+	int iGridX, iGridY;					//网格坐标
 	const int iGridWidth, iGridHeight;	//自身占用网格大小
 	std::vector<CItemView> vGemItems;	//镶嵌的物品View
-	CItemView(CD2Item & item, int pos, int x, int y);
-	CSize ViewSize() const { return CSize(iGridWidth * GRID_WIDTH, iGridHeight*GRID_WIDTH); }
+	CItemView(CD2Item & item, EEquip equip, EPosition pos, int x, int y);
+	CSize ViewSize() const;
 };
 
 // CDlgCharItems 对话框
@@ -28,42 +32,16 @@ class CDlgCharItems : public CPropertyDialog
 {
 	DECLARE_DYNAMIC(CDlgCharItems)
 
-	//网格位置
-	enum EPosition {
-		STASH,				//箱子
-		INVENTORY,			//口袋
-		CUBE,				//方块
-		IN_BELT,			//腰带里
-		IN_SOCKET,			//镶嵌在孔里
-
-		GRID_COUNT,			//网格类型位置数量
-
-		HEAD = GRID_COUNT,	//头
-		NECK,				//项链
-		BODY,				//身体
-		RIGHT_HAND,			//武器右(I & II)
-		LEFT_HAND,			//武器左(I & II)
-		RIGHT_RING,			//戒指右
-		LEFT_RING,			//戒指左
-		BELT,				//腰带
-		FOOT,				//鞋子
-		GLOVE,				//手套
-
-		IN_MOUSE,			//被鼠标拿起
-
-		POSITION_END		//所有位置总数
-	};
-	const static WORD	POSITION_RECT[POSITION_END][4];	//每个位置(EPosition)在UI的起始坐标(像素),列数,行数(x,y,col,row)
-	CRect m_rectGrid[POSITION_END];						//将POSITION_RECT转换成CRect, 方便使用
+	std::vector<CRect> m_vRectGrid;						//将POSITION_RECT转换成CRect, 方便使用
 	void DrawGrids(CPaintDC & dc);						//画所有网格
 	
 	//物品和位置
 	std::vector<CItemView> m_vItemViews;					//所有的物品,除了镶嵌在孔里的
 	std::vector<std::vector<int>> m_vGridItems;				//网格内的物品在m_vItemViews里索引；如果是镶嵌的物品，则是CItemView::vGemItems的索引；-1表示没有
 	BOOL m_bSecondHand = FALSE;								//是否显示II手武器
-	BOOL UpdateGridItem(int index, int pos, int x, int y);	//将index物品放进网格位置(pos, x, y)，返回是否成功
-	int GetGridItemIndex(int pos, int x, int y) const;		//得到网格位置的物品的m_vItemViews索引, -1表示没有
-	void SetGridItemIndex(int pos, int x, int y, int index);//设置网格位置的物品的m_vItemViews1索引, -1表示没有
+	BOOL UpdateGridItem(int index, EPosition pos, int x, int y);	//将index物品放进网格位置(pos, x, y)，返回是否成功
+	int GetGridItemIndex(EPosition pos, int x, int y) const;		//得到网格位置的物品的m_vItemViews索引, -1表示没有
+	void SetGridItemIndex(EPosition pos, int x, int y, int index);//设置网格位置的物品的m_vItemViews1索引, -1表示没有
 	CPoint GetItemPositionXY(const CItemView & view) const;	//得到物品的实际像素坐标
 	
 	//铸造台
@@ -90,7 +68,7 @@ class CDlgCharItems : public CPropertyDialog
 
 	//悬浮窗
 	static const int INFO_WINDOW_LEFT = 550;	//悬浮窗的位置X
-	CDlgSuspend * m_pDlgItemInfo = 0;			//显示物品信息的悬浮窗口
+	std::unique_ptr<CDlgSuspend> m_pDlgItemInfo;//显示物品信息的悬浮窗口
 	BOOL m_bNotShowItemInfoDlg;					//是否隐藏物品信息悬浮窗
 	CSliderCtrl m_scTrasparent;					//属性悬浮窗的透明度
 	void ShowItemInfoDlg(const CD2Item * pItem);//显示/隐藏(pItem = 0)物品信息悬浮窗口
@@ -104,7 +82,7 @@ class CDlgCharItems : public CPropertyDialog
 	std::tuple<int, int, int> HitTestPosition(CPoint pos) const;	//由像素XY得到网格位置
 public:
 	CDlgCharItems(CWnd* pParent = NULL);   // 标准构造函数
-	virtual ~CDlgCharItems();
+	virtual ~CDlgCharItems() {};
 // 对话框数据
 	enum { IDD = IDD_DIALOG_CharItems };
 protected:
@@ -131,5 +109,5 @@ public:
 	afx_msg void OnShowWindow(BOOL bShow, UINT nStatus);
 	afx_msg void OnBnClickedCheck2();
     afx_msg void OnChangeHand();
-    afx_msg void OnPrefixSuffix();
+    //afx_msg void OnPrefixSuffix();
 };
