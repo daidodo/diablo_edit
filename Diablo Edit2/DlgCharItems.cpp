@@ -8,7 +8,7 @@
 
 using namespace std;
 
-const int GRID_WIDTH = 30;		//每个网格的边长(像素)
+const int GRID_WIDTH = 30;	//每个网格的边长(像素)
 
 //物品能装备的位置
 enum EEquip {
@@ -703,14 +703,16 @@ void CDlgCharItems::OnLButtonDown(UINT nFlags, CPoint point)
 				}
 				m_iPickedItemIndex = index;
 				m_hCursor = CreateAlphaCursor(*view);  //设置鼠标为物品图片
-				grid.ItemIndex(-1, view->iGridX, view->iGridY, view->iGridWidth, view->iGridHeight);
-				view->iPosition = IN_MOUSE;
+				//grid.ItemIndex(-1, view->iGridX, view->iGridY, view->iGridWidth, view->iGridHeight);
+				//view->iPosition = IN_MOUSE;
 				ShowItemInfoDlg(0);
 				Invalidate();
 			}
 		}
 	} else {	//已经拿起了一个物品
-
+		::DestroyIcon(m_hCursor);
+		m_hCursor = ::LoadCursor(0, IDC_ARROW);
+		m_iPickedItemIndex = -1;
 	}
 
 	//auto t = HitTestPosition(point);
@@ -872,7 +874,8 @@ HCURSOR CDlgCharItems::CreateAlphaCursor(const CItemView & itemView) {
 	auto sz = itemView.ViewSize();
 	// Load bitmap
 	CBitmap bmp;
-	bmp.LoadBitmap(itemView.nPicRes);
+	if (!bmp.LoadBitmap(itemView.nPicRes))
+		ASSERT(FALSE);
 	// Create an empty mask bitmap.
 	CBitmap monobmp;
 	monobmp.CreateBitmap(sz.cx, sz.cx, 1, 1, NULL);
