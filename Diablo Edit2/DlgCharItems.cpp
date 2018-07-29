@@ -53,7 +53,6 @@ enum EPosition {
 	FOOT,				//鞋子
 	GLOVE,				//手套
 
-	IN_MOUSE,			//被鼠标拿起
 
 	CORPSE_HEAD,		//尸体的头
 	CORPSE_NECK,		//尸体的项链
@@ -68,22 +67,29 @@ enum EPosition {
 
 	CORPSE_END,
 
-	POSITION_END = CORPSE_END,		//所有位置总数
+	POSITION_END = CORPSE_END,	//所有网格位置总数
+
+	IN_MOUSE = POSITION_END,	//被鼠标拿起
 };
 
 static BOOL IsCorpse(EPosition pos) { return CORPSE_HEAD <= pos && pos < CORPSE_END; }
 
+static BOOL IsInMouse(EPosition pos) { return IN_MOUSE == pos; }
+
 //位置类型
 enum EPositionType {
-	PT_GRID,		//网格（分成单个格子）
+	PT_STORAGE,		//存储箱
+	PT_IN_SOCKET,	//镶嵌的孔
 	PT_WHOLE,		//整体一格
 	PT_II,			//左右手，分I和II
 	PT_CORPSE_II,	//尸体的左右手，分I和II
 };
 
 static EPositionType PositionType(EPosition pos) {
+	if (IN_SOCKET == pos)
+		return PT_IN_SOCKET;
 	if (pos < GRID_COUNT)
-		return PT_GRID;
+		return PT_STORAGE;
 	if (RIGHT_HAND == pos || LEFT_HAND == pos)
 		return PT_II;
 	if (CORPSE_RIGHT_HAND == pos || CORPSE_LEFT_HAND == pos)
@@ -91,9 +97,15 @@ static EPositionType PositionType(EPosition pos) {
 	return PT_WHOLE;
 }
 
+static BOOL IsGrid(EPositionType type) { return (PT_STORAGE == type || PT_IN_SOCKET == type); }
+
+static BOOL IsSockets(EPositionType type) { return (IN_SOCKET == type); }
+
+static BOOL HasII(EPositionType type) { return (PT_II == type || PT_CORPSE_II == type); }
+
 //每个位置(EPosition)在UI的起始坐标(像素),列数,行数
 //left,top,col,row,equip
-const WORD POSITION_INFO[POSITION_END][5] = {
+const int POSITION_INFO[POSITION_END][5] = {
 	{10,5,6,8,E_ANY},		//箱子
 	{10,255,10,4,E_ANY},	//口袋
 	{320,255,3,4,E_ANY},	//方块
@@ -111,8 +123,6 @@ const WORD POSITION_INFO[POSITION_END][5] = {
 	{400,155,2,2,E_FOOT},	//鞋子
 	{200,155,2,2,E_GLOVE},	//手套
 
-	{480,30,2,4,E_ANY},		//被鼠标拿起
-
 	{660,35,2,2,E_HEAD},	//尸体的头
 	{725,60,1,1,E_NECK},	//尸体的项链
 	{660,100,2,3,E_BODY},	//尸体的身体
@@ -124,6 +134,27 @@ const WORD POSITION_INFO[POSITION_END][5] = {
 	{760,185,2,2,E_FOOT},	//尸体的鞋子
 	{560,185,2,2,E_GLOVE},	//尸体的手套
 };
+
+static CRect PositionToRect(EPosition pos) {
+	ASSERT(pos < POSITION_END);
+	auto & p = POSITION_INFO[pos];
+	return CRect(p[0], p[1], p[0] + GRID_WIDTH * p[2], p[1] + GRID_WIDTH * p[3]);
+}
+
+static EEquip PositionToCol(EPosition pos) {
+	ASSERT(pos < POSITION_END);
+	return EEquip(POSITION_INFO[pos][2]);
+}
+
+static EEquip PositionToRow(EPosition pos) {
+	ASSERT(pos < POSITION_END);
+	return EEquip(POSITION_INFO[pos][3]);
+}
+
+static EEquip PositionToEquip(EPosition pos) {
+	ASSERT(pos < POSITION_END);
+	return EEquip(POSITION_INFO[pos][4]);
+}
 
 tuple<EPosition, int, int> ItemToPosition(int iLocation, int iPosition, int iColumn, int iRow, int iStoredIn, bool corpse = false) {
 	int pos = -1, x = 0, y = 0;	//物品的位置(EPosition)和坐标
@@ -158,16 +189,6 @@ tuple<EPosition, int, int> ItemToPosition(int iLocation, int iPosition, int iCol
 	return make_tuple(EPosition(pos), x, y);
 }
 
-static EEquip PositionToEquip(EPosition pos) {
-	ASSERT(pos < POSITION_END);
-	return EEquip(POSITION_INFO[pos][4]);
-}
-
-static EEquip PositionToRow(EPosition pos) {
-	ASSERT(pos < POSITION_END);
-	return EEquip(POSITION_INFO[pos][3]);
-}
-
 //struct CItemView
 
 CItemView::CItemView(CD2Item & item, EEquip equip, EPosition pos, int x, int y)
@@ -187,16 +208,21 @@ CSize CItemView::ViewSize() const { return CSize(iGridWidth * GRID_WIDTH, iGridH
 
 //struct GridView
 
-GridView::GridView(EPosition pos, int left, int top, int col, int row)
-	: Rect(left, top, left + GRID_WIDTH * col, top + GRID_WIDTH * row)
-	, iPosition(pos)
+GridView::GridView(EPosition pos)
+	: iPosition(pos)
 	, iType(PositionType(pos))
-	, iCol(col)
-	, iRow(row)
+	, iCol(PositionToCol(pos))
+	, iRow(PositionToRow(pos))
+	, Rect(PositionToRect(pos))
 	, iEquip(PositionToEquip(pos))
 	, bEnabled(!IsCorpse(pos))
-	, vItemIndex((PT_GRID == iType ? col * row : (PT_WHOLE == iType ? 1 : 2), -1)
-{}
+{
+	vItemIndex.resize((IsGrid() ? iCol * iRow : (::HasII(iType) ? 2 : 1)), -1);
+}
+
+BOOL GridView::IsGrid() const { return ::IsGrid(iType); }
+
+BOOL GridView::IsSockets() const { return ::IsSockets(iType); }
 
 int GridView::ItemIndex(int x, int y) const {
 	ASSERT(0 <= x && 0 <= y);
@@ -205,17 +231,28 @@ int GridView::ItemIndex(int x, int y) const {
 	return vItemIndex[idx];
 }
 
-void GridView::ItemIndex(int x, int y, int index) {
-	ASSERT(0 <= x && 0 <= y);
+void GridView::ItemIndex(int index, int x, int y) {
+	ASSERT(0 <= x && x < iCol);
+	ASSERT(0 <= y && y < iRow);
 	const UINT idx = x + y * iCol;
 	ASSERT(idx < vItemIndex.size());
 	vItemIndex[idx] = index;
 }
 
+void GridView::ItemIndex(int index, int x, int y, int width, int height) {
+	ASSERT(0 < width && 0 < height);
+	if (IsGrid())
+		for (int i = 0; i < width; ++i)
+			for (int j = 0; j < height; ++j)
+				ItemIndex(index, x + i, y + j);
+	else
+		ItemIndex(index, x, y);
+}
+
 CPoint GridView::IndexToXY(int x, int y, int width, int height) const {
 	ASSERT(0 <= x && 0 <= y);
-	ASSERT(0 <= width && width <= iCol);
-	ASSERT(0 <= height && height <= iRow);
+	ASSERT(0 < width && width <= iCol);
+	ASSERT(0 < height && height <= iRow);
 	if(IsGrid())
 		return CPoint(Rect.left + x * GRID_WIDTH, Rect.top + y * GRID_WIDTH);
 	x = Rect.left + (iCol - width) * GRID_WIDTH / 2;
@@ -229,7 +266,7 @@ tuple<int, int, int> GridView::XYToPositionIndex(CPoint pos, BOOL II, BOOL corps
 		int x = (pos.x - Rect.left) / GRID_WIDTH;
 		int y = (pos.y - Rect.top) / GRID_WIDTH;
 		ASSERT(0 <= x && x < iCol);
-		ASSERT(0 <= y && x < iRow);
+		ASSERT(0 <= y && y < iRow);
 		return make_tuple(iPosition, x, y);
 	} else if(PT_II == iType){
 		return make_tuple(iPosition, (II ? 1 : 0), 0);
@@ -241,7 +278,7 @@ tuple<int, int, int> GridView::XYToPositionIndex(CPoint pos, BOOL II, BOOL corps
 BOOL GridView::PutItem(int index, int x, int y, int width, int height, EEquip equip) {
 	ASSERT(0 <= index);
 	ASSERT(0 <= x && 0 <= y);
-	ASSERT(0 <= width && 0 <= height);
+	ASSERT(0 < width && 0 < height);
 	if (!CanEquip(equip))
 		return FALSE;	//不能穿戴在此位置
 	if (IsGrid()) {
@@ -251,13 +288,11 @@ BOOL GridView::PutItem(int index, int x, int y, int width, int height, EEquip eq
 			for (int j = 0; j < height; ++j)
 				if (ItemIndex(x + i, y + j) >= 0)
 					return FALSE;	//网格里有物品
-		for (int i = 0; i < width; ++i)
-			for (int j = 0; j < height; ++j)
-				ItemIndex(x + i, y + j, index);
+		ItemIndex(index, x, y, width, height);
 	} else {
 		if (ItemIndex(x, y) >= 0)
 			return FALSE;	//网格里有物品
-		ItemIndex(x, y, index);
+		ItemIndex(index, x, y);
 	}
 	return TRUE;
 }
@@ -274,12 +309,11 @@ IMPLEMENT_DYNAMIC(CDlgCharItems, CPropertyDialog)
 CDlgCharItems::CDlgCharItems(CWnd* pParent /*=NULL*/)
     : CPropertyDialog(CDlgCharItems::IDD, pParent)
 {
-	//m_vGridView
-	int i = 0;
-	for (auto & p : POSITION_INFO) {
-		auto pos = EPosition(i++);
-		m_vGridView.emplace_back(pos, p[0], p[1], p[2], p[3], p[4]);
-	}
+	//鼠标
+	m_hCursor = ::LoadCursor(0, IDC_ARROW);
+	//网格
+	for(int i = STASH;i < POSITION_END;++i)
+		m_vGridView.emplace_back(EPosition(i));
  }
 
 void CDlgCharItems::DoDataExchange(CDataExchange* pDX)
@@ -335,8 +369,8 @@ BEGIN_MESSAGE_MAP(CDlgCharItems, CDialog)
     ON_WM_PAINT()
     ON_WM_MOUSEMOVE()
     ON_WM_LBUTTONDOWN()
-//    ON_WM_SETCURSOR()
-    ON_WM_SHOWWINDOW()
+	ON_WM_SETCURSOR()
+	ON_WM_SHOWWINDOW()
     ON_BN_CLICKED(IDC_CHECK2, &CDlgCharItems::OnBnClickedCheck2)
     ON_BN_CLICKED(IDC_CHECK1, &CDlgCharItems::OnChangeHand)
     //ON_BN_CLICKED(IDC_BUTTON2, &CDlgCharItems::OnPrefixSuffix)
@@ -346,42 +380,40 @@ BEGIN_MESSAGE_MAP(CDlgCharItems, CDialog)
 END_MESSAGE_MAP()
 
 void CDlgCharItems::UpdateUI(CD2S_Struct & character) {
-	m_vItemViews.clear();
+	ResetAll();
 	//Character items
-	for (UINT i = 0; i < character.ItemList.vItems.size(); ++i) {
-		auto & item = character.ItemList.vItems[i];
-		auto t = ItemToPosition(item.iLocation, item.iPosition, item.iColumn, item.iRow, item.iStoredIn);
-		auto equip = ItemToEquip(item.MetaData().Equip);
-		auto & view = m_vItemViews.emplace_back(item, equip, get<0>(t), get<1>(t), get<2>(t));
-		UpdateGridItem(view.iPosition, view.iGridX, view.iGridY, int(m_vItemViews.size() - 1));
+	for (auto & item : character.ItemList.vItems) {
+		auto & view = AddItemInGrid(item);
 		//Gems
 		int j = 0;
 		for (auto & gem : item.aGemItems)
 			view.vGemItems.emplace_back(gem, ItemToEquip(gem.MetaData().Equip), IN_SOCKET, j++, 0);
 	}
 	//Corpse items
-	if (character.stCorpse.pCorpseData.exist())
+	if (character.stCorpse.pCorpseData.exist()) {
 		if (!m_bHasCorpse)
 			OnChangeCorpse();
-		for (auto & item : character.stCorpse.pCorpseData->stItems.vItems) {
-			auto t = ItemToPosition(item.iLocation, item.iPosition, item.iColumn, item.iRow, item.iStoredIn, true);
-			auto equip = ItemToEquip(item.MetaData().Equip);
-			auto & view = m_vItemViews.emplace_back(item, equip, get<0>(t), get<1>(t), get<2>(t));
-			UpdateGridItem(view.iPosition, view.iGridX, view.iGridY, int(m_vItemViews.size() - 1));
-		}
+		for (auto & item : character.stCorpse.pCorpseData->stItems.vItems)
+			AddItemInGrid(item);
+	}
 
-	m_iSelectedItemIndex = m_iSelectedSocketIndex = -1;
 	Invalidate();
 }
 
-int CDlgCharItems::GetGridItemIndex(EPosition pos, int x, int y) const {
-	ASSERT(pos < POSITION_END);
-	return m_vGridView[pos].ItemIndex(x, y);
-}
-
-void CDlgCharItems::SetGridItemIndex(EPosition pos, int x, int y, int index) {
-	ASSERT(pos < POSITION_END);
-	return m_vGridView[pos].ItemIndex(x, y, index);
+CItemView & CDlgCharItems::AddItemInGrid(CD2Item & item) {
+	EEquip equip = ItemToEquip(item.MetaData().Equip);
+	auto t = ItemToPosition(item.iLocation, item.iPosition, item.iColumn, item.iRow, item.iStoredIn);
+	EPosition pos = get<0>(t);
+	int x = get<1>(t), y = get<2>(t);
+	auto & view = m_vItemViews.emplace_back(item, equip, pos, x, y);
+	int index = m_vItemViews.size() - 1;
+	if (::IsInMouse(pos)) {
+		ASSERT(m_iPickedItemIndex < 0);
+		m_iPickedItemIndex = index;
+		m_hCursor = CreateAlphaCursor(view);
+	}else if (!m_vGridView[pos].PutItem(index, x, y, view.iGridWidth, view.iGridHeight, equip))
+		ASSERT(FALSE && _T("Cannot put item in grid"));
+	return view;
 }
 
 CPoint CDlgCharItems::GetItemPositionXY(const CItemView & view) const {
@@ -389,32 +421,18 @@ CPoint CDlgCharItems::GetItemPositionXY(const CItemView & view) const {
 	return m_vGridView[view.iPosition].IndexToXY(view.iGridX, view.iGridY, view.iGridWidth, view.iGridHeight);
 }
 
-const CItemView * CDlgCharItems::SelectedParentItemView() const {
+CItemView * CDlgCharItems::SelectedParentItemView() {
 	if(0 <= m_iSelectedItemIndex && m_iSelectedItemIndex < int(m_vItemViews.size()))
 		return &m_vItemViews[m_iSelectedItemIndex];
 	return 0;
 }
 
-const CItemView * CDlgCharItems::SelectedItemView() const {
-	const auto parent = SelectedParentItemView();
-	if(parent && 0 <= m_iSelectedSocketIndex && m_iSelectedSocketIndex < int(parent->vGemItems.size()))
-		return &parent->vGemItems[m_iSelectedSocketIndex];
-	return parent;
-}
-
-BOOL CDlgCharItems::UpdateGridItem(EPosition pos, int x, int y, int index) {
-	ASSERT(pos < POSITION_END);
-	ASSERT(0 <= index && index < int(m_vItemViews.size()));
-	auto & view = m_vItemViews[index];
-	const auto equip = view.Item.MetaData().Equip;	//物品的可穿戴位置
-	auto & grid = m_vGridView[pos];
-	if (!grid.PutItem(index, x, y, view.iGridWidth, view.iGridHeight, EEquip(equip)))
-		return FALSE;
-	view.iPosition = pos;
-	view.iGridX = x;
-	view.iGridY = y;
-	return TRUE;
-}
+//const CItemView * CDlgCharItems::SelectedItemView() const {
+//	const auto parent = SelectedParentItemView();
+//	if(parent && 0 <= m_iSelectedSocketIndex && m_iSelectedSocketIndex < int(parent->vGemItems.size()))
+//		return &parent->vGemItems[m_iSelectedSocketIndex];
+//	return parent;
+//}
 
 //画一个网格或矩形
 static void DrawGrid(CPaintDC & dc, const CRect & rect, int intervalX = 0, int intervalY = 0)
@@ -448,8 +466,8 @@ void CDlgCharItems::DrawGrids(CPaintDC & dc)
 void CDlgCharItems::DrawItemXY(CPaintDC & dc, CPoint pos, const CItemView & view) const
 {
 	CBitmap bmp;
-	CDC memDC;
 	bmp.LoadBitmap(view.nPicRes);
+	CDC memDC;
 	memDC.CreateCompatibleDC(&dc);
 	CBitmap* pOld = memDC.SelectObject(&bmp);
 	auto sz = view.ViewSize();
@@ -468,6 +486,8 @@ void CDlgCharItems::DrawAllItemsInGrid(CPaintDC & dc) const
 			continue;
 		if ((CORPSE_RIGHT_HAND == view.iPosition || CORPSE_LEFT_HAND == view.iPosition)
 			&& view.iGridX != (m_bCorpseSecondHand ? 1 : 0))
+			continue;
+		if (::IsInMouse(view.iPosition))
 			continue;
 		auto pos = GetItemPositionXY(view);
 		DrawItemXY(dc, pos, view);
@@ -600,9 +620,11 @@ void CDlgCharItems::ResetAll()
 	m_bSecondHand = m_bCorpseSecondHand = FALSE;
 	m_iSelectedItemIndex = m_iSelectedSocketIndex = -1;
 	m_pDlgItemInfo.reset();
-	ResetFoundry();
-
-    Invalidate();
+	if (m_iPickedItemIndex >= 0) {
+		::DestroyIcon(m_hCursor);
+		m_hCursor = ::LoadCursor(0, IDC_ARROW);
+		m_iPickedItemIndex = -1;
+	}
 }
 
 void CDlgCharItems::LoadText(void)
@@ -636,24 +658,26 @@ void CDlgCharItems::OnPaint()
 
 void CDlgCharItems::OnMouseMove(UINT nFlags, CPoint point)
 {
-	const CD2Item * item = 0;
-	auto t = HitTestPosition(point);
-	const int pos = get<0>(t), x = get<1>(t), y = get<2>(t);
-	if (0 <= pos) {		//在有效网格里
-		const int index = GetGridItemIndex(EPosition(pos), x, y);
-		if (0 <= index) {	//有物品
-			if (IN_SOCKET == pos) {	//镶嵌的宝石
-				auto & gems = SelectedParentItemView()->vGemItems;
-				ASSERT(index < int(gems.size()));
-				item = &gems[index].Item;
-			} else {	//其他物品
-				ASSERT(index < int(m_vItemViews.size()));
-				item = &m_vItemViews[index].Item;
+	if (m_iPickedItemIndex < 0) {	//未拿起物品
+		const CD2Item * item = 0;
+		auto t = HitTestPosition(point);
+		const int pos = get<0>(t), x = get<1>(t), y = get<2>(t);
+		if (0 <= pos) {		//在有效网格里
+			auto & grid = m_vGridView[pos];
+			int index = grid.ItemIndex(x, y);
+			if (0 <= index) {	//有物品
+				if (grid.IsSockets()) {	//镶嵌的宝石
+					auto & gems = SelectedParentItemView()->vGemItems;
+					ASSERT(index < int(gems.size()));
+					item = &gems[index].Item;
+				} else {	//其他物品
+					ASSERT(index < int(m_vItemViews.size()));
+					item = &m_vItemViews[index].Item;
+				}
 			}
 		}
+		ShowItemInfoDlg(item);
 	}
-	ShowItemInfoDlg(item);
-
 	m_pMouse = point;
 	UpdateData(FALSE);
 	CPropertyDialog::OnMouseMove(nFlags, point);
@@ -661,34 +685,62 @@ void CDlgCharItems::OnMouseMove(UINT nFlags, CPoint point)
 
 void CDlgCharItems::OnLButtonDown(UINT nFlags, CPoint point)
 {
-	auto t = HitTestPosition(point);
-	const int pos = get<0>(t), x = get<1>(t), y = get<2>(t);
-	if (IN_SOCKET == pos) {
-		const int index = GetGridItemIndex(IN_SOCKET, x, y);
-		if (0 <= index && index != m_iSelectedSocketIndex) {
-			ResetFoundry();
-			auto & gems = SelectedParentItemView()->vGemItems;
-			ASSERT(0 <= index && index < int(gems.size()));
-			m_iSelectedSocketIndex = index;
-			ReadItemProperty(gems[m_iSelectedSocketIndex].Item);
-			Invalidate();
+	if (m_iPickedItemIndex < 0) {	//未拿起物品
+		auto t = HitTestPosition(point);
+		const int pos = get<0>(t), x = get<1>(t), y = get<2>(t);
+		if (pos >= 0) {		//在网格范围内
+			auto & grid = m_vGridView[pos];
+			int index = grid.ItemIndex(x, y);
+			if (index >= 0) {	//点中了物品
+				CItemView * view = 0;
+				if (grid.IsSockets()) {	//是镶嵌的宝石
+					auto & gems = SelectedParentItemView()->vGemItems;
+					ASSERT(index < int(gems.size()));
+					view = &gems[index];
+				} else {	//其他物品
+					ASSERT(index < int(m_vItemViews.size()));
+					view = &m_vItemViews[index];
+				}
+				grid.ItemIndex(-1, view->iGridX, view->iGridY, view->iGridWidth, view->iGridHeight);
+				m_iPickedItemIndex = index;
+				m_hCursor = CreateAlphaCursor(*view);  //设置鼠标为物品图片
+				view->iPosition = IN_MOUSE;
+				ShowItemInfoDlg(0);
+				Invalidate();
+			}
 		}
-	} else if (0 <= pos) {
-		const int index = GetGridItemIndex(EPosition(pos), x, y);
-		if (0 <= index && (index != m_iSelectedItemIndex || 0 <= m_iSelectedSocketIndex)) {
-			if (0 <= m_iSelectedItemIndex)
-				ResetFoundry();
-			ASSERT(0 <= index && index < int(m_vItemViews.size()));
-			const auto & view = m_vItemViews[index];
-			m_iSelectedItemIndex = index;
-			m_iSelectedSocketIndex = -1;
-			ReadItemProperty(view.Item);
-			//设置镶嵌的物品
-			for (int i = 0; i < int(m_vGridItems[IN_SOCKET].size()); ++i)
-				SetGridItemIndex(IN_SOCKET, i, 0, (i < int(view.vGemItems.size()) ? i : -1));
-			Invalidate();
-		}
+	} else {	//已经拿起了一个物品
+
 	}
+
+	//auto t = HitTestPosition(point);
+	//const int pos = get<0>(t), x = get<1>(t), y = get<2>(t);
+	//if (IN_SOCKET == pos) {
+	//	const int index = GetGridItemIndex(IN_SOCKET, x, y);
+	//	if (0 <= index && index != m_iSelectedSocketIndex) {
+	//		ResetFoundry();
+	//		auto & gems = SelectedParentItemView()->vGemItems;
+	//		ASSERT(0 <= index && index < int(gems.size()));
+	//		m_iSelectedSocketIndex = index;
+	//		ReadItemProperty(gems[m_iSelectedSocketIndex].Item);
+	//		Invalidate();
+	//	}
+	//} else if (0 <= pos) {
+	//	const int index = GetGridItemIndex(EPosition(pos), x, y);
+	//	if (0 <= index && (index != m_iSelectedItemIndex || 0 <= m_iSelectedSocketIndex)) {
+	//		if (0 <= m_iSelectedItemIndex)
+	//			ResetFoundry();
+	//		ASSERT(0 <= index && index < int(m_vItemViews.size()));
+	//		const auto & view = m_vItemViews[index];
+	//		m_iSelectedItemIndex = index;
+	//		m_iSelectedSocketIndex = -1;
+	//		ReadItemProperty(view.Item);
+	//		//设置镶嵌的物品
+	//		for (int i = 0; i < int(m_vGridItems[IN_SOCKET].size()); ++i)
+	//			SetGridItemIndex(IN_SOCKET, i, 0, (i < int(view.vGemItems.size()) ? i : -1));
+	//		Invalidate();
+	//	}
+	//}
 	CPropertyDialog::OnLButtonDown(nFlags, point);
 }
 
@@ -810,10 +862,36 @@ void CDlgCharItems::OnChangeCorpseHand() {
 //    dlgPrefix.DoModal();
 //}
 
-
-
 void CDlgCharItems::OnChangeCorpse() {
 	m_bHasCorpse = !m_bHasCorpse;
 	for (int i = CORPSE_HEAD; i < CORPSE_END; ++i)
 		m_vGridView[i].bEnabled = m_bHasCorpse;
 }
+
+HCURSOR CDlgCharItems::CreateAlphaCursor(const CItemView & itemView) {
+	auto sz = itemView.ViewSize();
+	// Load bitmap
+	CBitmap bmp;
+	bmp.LoadBitmap(itemView.nPicRes);
+	// Create an empty mask bitmap.
+	CBitmap monobmp;
+	monobmp.CreateBitmap(sz.cx, sz.cx, 1, 1, NULL);
+	// Icon header
+	ICONINFO ii;
+	ii.fIcon = FALSE;  // Change fIcon to TRUE to create an alpha icon
+	ii.xHotspot = sz.cx >> 1;
+	ii.yHotspot = sz.cx >> 1;
+	ii.hbmMask = monobmp;
+	ii.hbmColor = bmp;
+	// Create the alpha cursor with the alpha DIB section, and return it.
+	return CreateIconIndirect(&ii);
+}
+
+BOOL CDlgCharItems::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message) {
+	if (nHitTest == HTCLIENT) {
+		::SetCursor(m_hCursor);
+		return TRUE;
+	}
+	return CPropertyDialog::OnSetCursor(pWnd, nHitTest, message);
+}
+

@@ -38,11 +38,13 @@ public:
 	const CRect Rect;				//大小与位置
 	const EEquip iEquip;			//可装备的物品类型
 	BOOL bEnabled;					//是否启用（可交互）
-	GridView(EPosition pos, int left, int top, int col, int row);
-	BOOL IsGrid() const { return iType == 0; }	//是否分成单个网格
+	explicit GridView(EPosition pos);
+	BOOL IsGrid() const;			//是否分成单个网格
+	BOOL IsSockets() const;			//是否为镶嵌的孔
 	BOOL CanEquip(EEquip equip) const { return (equip & iEquip) != 0; }	//是否可穿戴
 	int ItemIndex(int x, int y) const;			//返回指定坐标的物品索引
-	void ItemIndex(int x, int y, int index);	//设置指定坐标的物品索引
+	void ItemIndex(int index, int x, int y);	//设置指定坐标的物品索引
+	void ItemIndex(int index, int x, int y, int width, int height);	//设置指定坐标和范围的物品索引
 	CPoint IndexToXY(int x, int y, int width, int height) const;	//指定坐标和大小，得到物品的像素位置
 	std::tuple<int, int, int> XYToPositionIndex(CPoint pos, BOOL II, BOOL corpseII) const;	//根据物品UI像素，得到位置索引和坐标
 	BOOL PutItem(int index, int x, int y, int width, int height, EEquip equip);	//将物品放到指定位置，考虑空闲、大小、穿戴类型；返回是否成功
@@ -63,10 +65,8 @@ class CDlgCharItems : public CPropertyDialog
 	BOOL m_bHasCorpse = FALSE;								//有尸体
 	BOOL m_bSecondHand = FALSE;								//是否显示II手武器
 	BOOL m_bCorpseSecondHand = FALSE;						//是否显示尸体的II手武器
-	BOOL UpdateGridItem(EPosition pos, int x, int y, int index);	//将index物品放进网格位置(pos, x, y)，返回是否成功
-	int GetGridItemIndex(EPosition pos, int x, int y) const;		//得到网格位置的物品的m_vItemViews索引, -1表示没有
-	void SetGridItemIndex(EPosition pos, int x, int y, int index);	//设置网格位置的物品的m_vItemViews1索引, -1表示没有
-	CPoint GetItemPositionXY(const CItemView & view) const;			//得到物品的实际像素坐标
+	CItemView & AddItemInGrid(CD2Item & item);				//将物品添加到网格中
+	CPoint GetItemPositionXY(const CItemView & view) const;	//得到物品的实际像素坐标
 	
 	//铸造台
 	int m_iSelectedItemIndex = -1;	//选中的物品在m_vItemViews中的索引
@@ -86,9 +86,9 @@ class CDlgCharItems : public CPropertyDialog
 	short m_wMaxDurability = 0;		//最大耐久度
 	CListCtrl m_lcPropertyList;		//物品属性列表
 	void ResetFoundry();			//初始化铸造台
-	void ReadItemProperty(const CD2Item & item);  //读取物品的属性，并显示在锻造台
-	const CItemView * SelectedParentItemView() const;	//当前选中的父物品视图，没有返回0
-	const CItemView * SelectedItemView() const;			//当前选中的物品视图，没有返回0
+	void ReadItemProperty(const CD2Item & item);	//读取物品的属性，并显示在锻造台
+	CItemView * SelectedParentItemView();			//当前选中的父物品视图，没有返回0
+	//const CItemView * SelectedItemView() const;			//当前选中的物品视图，没有返回0
 
 	//悬浮窗
 	static const int INFO_WINDOW_LEFT = 550;	//悬浮窗的位置X
@@ -102,8 +102,11 @@ class CDlgCharItems : public CPropertyDialog
 	//CButton m_btButton[5];
 
 	//鼠标
-	CPoint m_pMouse;	//鼠标位置
-	std::tuple<int, int, int> HitTestPosition(CPoint pos) const;	//由像素XY得到网格位置
+	int m_iPickedItemIndex = -1;	//当前鼠标拿起的物品在m_vItemViews中的索引
+	HCURSOR m_hCursor;				//鼠标
+	CPoint m_pMouse;				//鼠标位置
+	std::tuple<int, int, int> HitTestPosition(CPoint pos) const;//由像素XY得到网格位置
+	HCURSOR CreateAlphaCursor(const CItemView & itemView);		//把物品bmp转换成鼠标句柄
 public:
 	CDlgCharItems(CWnd* pParent = NULL);   // 标准构造函数
 	virtual ~CDlgCharItems() {};
@@ -136,4 +139,5 @@ public:
     //afx_msg void OnPrefixSuffix();
 	afx_msg void OnChangeCorpseHand();
 	afx_msg void OnChangeCorpse();
+	afx_msg BOOL OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message);
 };
