@@ -870,24 +870,27 @@ void CDlgCharItems::OnChangeCorpse() {
 		m_vGridView[i].bEnabled = m_bHasCorpse;
 }
 
-HCURSOR CDlgCharItems::CreateAlphaCursor(const CItemView & itemView) {
-	auto sz = itemView.ViewSize();
+static HCURSOR CreateCursorFromBitmap(int picIndex, CSize sz) {
 	// Load bitmap
 	CBitmap bmp;
-	if (!bmp.LoadBitmap(itemView.nPicRes))
+	if (!bmp.LoadBitmap(picIndex))
 		ASSERT(FALSE);
 	// Create an empty mask bitmap.
 	CBitmap monobmp;
-	monobmp.CreateBitmap(sz.cx, sz.cx, 1, 1, NULL);
+	monobmp.CreateBitmap(sz.cx, sz.cy, 1, 1, NULL);
 	// Icon header
 	ICONINFO ii;
 	ii.fIcon = FALSE;  // Change fIcon to TRUE to create an alpha icon
 	ii.xHotspot = sz.cx >> 1;
-	ii.yHotspot = sz.cx >> 1;
+	ii.yHotspot = sz.cy >> 1;
 	ii.hbmMask = monobmp;
 	ii.hbmColor = bmp;
 	// Create the alpha cursor with the alpha DIB section, and return it.
-	return CreateIconIndirect(&ii);
+	return ::CreateIconIndirect(&ii);
+}
+
+HCURSOR CDlgCharItems::CreateAlphaCursor(const CItemView & itemView) {
+	return ::CreateCursorFromBitmap(itemView.nPicRes, itemView.ViewSize());
 }
 
 BOOL CDlgCharItems::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message) {
