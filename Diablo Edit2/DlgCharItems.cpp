@@ -99,7 +99,7 @@ static EPositionType PositionType(EPosition pos) {
 
 static BOOL IsGrid(EPositionType type) { return (PT_STORAGE == type || PT_IN_SOCKET == type); }
 
-static BOOL IsSockets(EPositionType type) { return (IN_SOCKET == type); }
+static BOOL IsSockets(EPositionType type) { return (PT_IN_SOCKET == type); }
 
 static BOOL HasII(EPositionType type) { return (PT_II == type || PT_CORPSE_II == type); }
 
@@ -394,15 +394,15 @@ void CDlgCharItems::UpdateUI(CD2S_Struct & character) {
 		if (!m_bHasCorpse)
 			OnChangeCorpse();
 		for (auto & item : character.stCorpse.pCorpseData->stItems.vItems)
-			AddItemInGrid(item);
+			AddItemInGrid(item, TRUE);
 	}
 
 	Invalidate();
 }
 
-CItemView & CDlgCharItems::AddItemInGrid(CD2Item & item) {
+CItemView & CDlgCharItems::AddItemInGrid(CD2Item & item, BOOL corpse) {
 	EEquip equip = ItemToEquip(item.MetaData().Equip);
-	auto t = ItemToPosition(item.iLocation, item.iPosition, item.iColumn, item.iRow, item.iStoredIn);
+	auto t = ItemToPosition(item.iLocation, item.iPosition, item.iColumn, item.iRow, item.iStoredIn, corpse);
 	EPosition pos = get<0>(t);
 	int x = get<1>(t), y = get<2>(t);
 	auto & view = m_vItemViews.emplace_back(item, equip, pos, x, y);
@@ -701,9 +701,9 @@ void CDlgCharItems::OnLButtonDown(UINT nFlags, CPoint point)
 					ASSERT(index < int(m_vItemViews.size()));
 					view = &m_vItemViews[index];
 				}
-				grid.ItemIndex(-1, view->iGridX, view->iGridY, view->iGridWidth, view->iGridHeight);
 				m_iPickedItemIndex = index;
 				m_hCursor = CreateAlphaCursor(*view);  //设置鼠标为物品图片
+				grid.ItemIndex(-1, view->iGridX, view->iGridY, view->iGridWidth, view->iGridHeight);
 				view->iPosition = IN_MOUSE;
 				ShowItemInfoDlg(0);
 				Invalidate();

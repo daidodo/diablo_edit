@@ -65,7 +65,7 @@ class CDlgCharItems : public CPropertyDialog
 	BOOL m_bHasCorpse = FALSE;								//有尸体
 	BOOL m_bSecondHand = FALSE;								//是否显示II手武器
 	BOOL m_bCorpseSecondHand = FALSE;						//是否显示尸体的II手武器
-	CItemView & AddItemInGrid(CD2Item & item);				//将物品添加到网格中
+	CItemView & AddItemInGrid(CD2Item & item, BOOL corpse = FALSE);	//将物品添加到网格中
 	CPoint GetItemPositionXY(const CItemView & view) const;	//得到物品的实际像素坐标
 	
 	//铸造台
