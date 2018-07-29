@@ -46,7 +46,7 @@ public:
 	void ItemIndex(int index, int x, int y);	//设置指定坐标的物品索引
 	void ItemIndex(int index, int x, int y, int width, int height);	//设置指定坐标和范围的物品索引
 	CPoint IndexToXY(int x, int y, int width, int height) const;	//指定坐标和大小，得到物品的像素位置
-	std::tuple<int, int, int> XYToPositionIndex(CPoint pos, BOOL II, BOOL corpseII) const;	//根据物品UI像素，得到位置索引和坐标
+	std::tuple<int, int, int> XYToPositionIndex(CPoint pos, BOOL II, BOOL corpseII, int col, int row) const;	//根据物品UI像素，得到位置索引和坐标
 	BOOL PutItem(int index, int x, int y, int width, int height, EEquip equip);	//将物品放到指定位置，考虑空闲、大小、穿戴类型；返回是否成功
 	void Reset();					//清空网格
 };
@@ -105,7 +105,7 @@ class CDlgCharItems : public CPropertyDialog
 	int m_iPickedItemIndex = -1;	//当前鼠标拿起的物品在m_vItemViews中的索引
 	HCURSOR m_hCursor;				//鼠标
 	CPoint m_pMouse;				//鼠标位置
-	std::tuple<int, int, int> HitTestPosition(CPoint pos) const;//由像素XY得到网格位置
+	std::tuple<int, int, int> HitTestPosition(CPoint pos, int col = 1, int row = 1) const;	//由像素XY和物品大小得到网格位置
 	HCURSOR CreateAlphaCursor(const CItemView & itemView);		//把物品bmp转换成鼠标句柄
 public:
 	CDlgCharItems(CWnd* pParent = NULL);   // 标准构造函数

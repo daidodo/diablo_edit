@@ -260,11 +260,12 @@ CPoint GridView::IndexToXY(int x, int y, int width, int height) const {
 	return CPoint(x, y);
 }
 
-tuple<int, int, int> GridView::XYToPositionIndex(CPoint pos, BOOL II, BOOL corpseII) const {
+tuple<int, int, int> GridView::XYToPositionIndex(CPoint pos, BOOL II, BOOL corpseII, int col, int row) const {
 	ASSERT(0 <= pos.x && 0 <= pos.y);
+	ASSERT(0 < col && 0 < row);
 	if (IsGrid()) {
-		int x = (pos.x - Rect.left) / GRID_WIDTH;
-		int y = (pos.y - Rect.top) / GRID_WIDTH;
+		int x = (pos.x - (col - 1) * GRID_WIDTH / 2 - Rect.left) / GRID_WIDTH;
+		int y = (pos.y - (row - 1) * GRID_WIDTH / 2 - Rect.top) / GRID_WIDTH;
 		ASSERT(0 <= x && x < iCol);
 		ASSERT(0 <= y && y < iRow);
 		return make_tuple(iPosition, x, y);
@@ -521,10 +522,10 @@ void CDlgCharItems::DrawAllItemsInGrid(CPaintDC & dc) const
 	}
 }
 
-tuple<int, int, int> CDlgCharItems::HitTestPosition(CPoint pos) const {
+tuple<int, int, int> CDlgCharItems::HitTestPosition(CPoint pos, int col, int row) const {
 	for (auto & g : m_vGridView)
-		if (g.Rect.PtInRect(pos))
-			return g.XYToPositionIndex(pos, m_bSecondHand, m_bCorpseSecondHand);
+		if (g.bEnabled && g.Rect.PtInRect(pos))
+			return g.XYToPositionIndex(pos, m_bSecondHand, m_bCorpseSecondHand, col, row);
 	return make_tuple(-1, -1, -1);
 }
 
@@ -703,16 +704,29 @@ void CDlgCharItems::OnLButtonDown(UINT nFlags, CPoint point)
 				}
 				m_iPickedItemIndex = index;
 				m_hCursor = CreateAlphaCursor(*view);  //设置鼠标为物品图片
-				//grid.ItemIndex(-1, view->iGridX, view->iGridY, view->iGridWidth, view->iGridHeight);
-				//view->iPosition = IN_MOUSE;
+				grid.ItemIndex(-1, view->iGridX, view->iGridY, view->iGridWidth, view->iGridHeight);
+				view->iPosition = IN_MOUSE;
 				ShowItemInfoDlg(0);
 				Invalidate();
 			}
 		}
 	} else {	//已经拿起了一个物品
-		::DestroyIcon(m_hCursor);
-		m_hCursor = ::LoadCursor(0, IDC_ARROW);
-		m_iPickedItemIndex = -1;
+		ASSERT(m_iPickedItemIndex < int(m_vItemViews.size()));
+		auto & view = m_vItemViews[m_iPickedItemIndex];
+		auto t = HitTestPosition(point, view.iGridWidth, view.iGridHeight);
+		const int pos = get<0>(t), x = get<1>(t), y = get<2>(t);
+		if (pos >= 0) {		//在网格范围内
+			auto & grid = m_vGridView[pos];
+			if (grid.PutItem(m_iPickedItemIndex, x, y, view.iGridWidth, view.iGridHeight, view.iEquip)) {	//可以放入
+				view.iPosition = EPosition(pos);
+				view.iGridX = x;
+				view.iGridY = y;
+				::DestroyIcon(m_hCursor);
+				m_hCursor = ::LoadCursor(0, IDC_ARROW);
+				m_iPickedItemIndex = -1;
+				Invalidate();
+			}
+		}
 	}
 
 	//auto t = HitTestPosition(point);
