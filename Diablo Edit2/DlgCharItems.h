@@ -109,7 +109,7 @@ class CDlgCharItems : public CPropertyDialog
 	HCURSOR CreateAlphaCursor(const CItemView & itemView);		//把物品bmp转换成鼠标句柄
 public:
 	CDlgCharItems(CWnd* pParent = NULL);   // 标准构造函数
-	virtual ~CDlgCharItems() {};
+	virtual ~CDlgCharItems() { ResetAll(); };
 // 对话框数据
 	enum { IDD = IDD_DIALOG_CharItems };
 protected:
