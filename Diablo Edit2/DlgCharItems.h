@@ -108,21 +108,19 @@ class CDlgCharItems : public CPropertyDialog
 	HCURSOR m_hCursor;				//鼠标
 	CPoint m_pMouse;				//鼠标位置
 	std::tuple<int, int, int> HitTestPosition(CPoint pos, int col = 1, int row = 1) const;	//由像素XY和物品大小得到网格位置
-	HCURSOR CreateAlphaCursor(const CItemView & itemView);		//把物品bmp转换成鼠标句柄
+	HCURSOR CreateAlphaCursor(const CItemView & itemView);	//把物品bmp转换成鼠标句柄
 public:
+	//对话框数据
+	enum { IDD = IDD_DIALOG_CharItems };
 	CDlgCharItems(CWnd* pParent = NULL);   // 标准构造函数
 	virtual ~CDlgCharItems() { ResetAll(); };
-// 对话框数据
-	enum { IDD = IDD_DIALOG_CharItems };
-protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 支持
-public:
-	// 自定义函数
-	// 虚函数
+	//虚函数
 	void UpdateUI(CD2S_Struct & character);
 	BOOL GatherData(CD2S_Struct & character);
 	void ResetAll();
 	void LoadText(void);	//加载控件的字符串内容
+protected:
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 支持
 private:
 	// UI
 	void DrawItemXY(CPaintDC & dc, CPoint pos, const CItemView & itemView) const;	//在绝对坐标点画物品
@@ -130,7 +128,6 @@ private:
 
 	DECLARE_MESSAGE_MAP()
 	afx_msg void OnPaint();
-public:
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
     afx_msg void OnRButtonUp(UINT nFlags, CPoint point);
