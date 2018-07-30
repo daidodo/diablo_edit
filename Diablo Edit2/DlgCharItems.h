@@ -92,11 +92,12 @@ class CDlgCharItems : public CPropertyDialog
 	//const CItemView * SelectedItemView() const;			//当前选中的物品视图，没有返回0
 
 	//悬浮窗
-	static const int INFO_WINDOW_LEFT = 550;	//悬浮窗的位置X
+	static const int INFO_WINDOW_LEFT = 50;		//左边悬浮窗的位置X
+	static const int INFO_WINDOW_RIGHT = 550;	//右边悬浮窗的位置X
 	std::unique_ptr<CDlgSuspend> m_pDlgItemInfo;//显示物品信息的悬浮窗口
 	BOOL m_bNotShowItemInfoDlg;					//是否隐藏物品信息悬浮窗
 	CSliderCtrl m_scTrasparent;					//属性悬浮窗的透明度
-	void ShowItemInfoDlg(const CD2Item * pItem);//显示/隐藏(pItem = 0)物品信息悬浮窗口
+	void ShowItemInfoDlg(const CD2Item * pItem, int x);	//显示/隐藏(pItem = 0)物品信息悬浮窗口。x用来选择窗口位置
 
 	//界面文字
 	CString m_sText[6];

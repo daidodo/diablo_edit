@@ -565,17 +565,22 @@ tuple<int, int, int> CDlgCharItems::HitTestPosition(CPoint pos, int col, int row
 	return make_tuple(-1, -1, -1);
 }
 
-void CDlgCharItems::ShowItemInfoDlg(const CD2Item * pItem){
+void CDlgCharItems::ShowItemInfoDlg(const CD2Item * pItem, int x){
     if(!m_bNotShowItemInfoDlg && pItem && (!m_pDlgItemInfo || pItem != m_pDlgItemInfo->GetItemPtr())){
         if(!m_pDlgItemInfo){
 			m_pDlgItemInfo = make_unique<CDlgSuspend>(this, m_scTrasparent.GetPos());
             m_pDlgItemInfo->Create(CDlgSuspend::IDD,NULL);
         }
-        LONG height = m_pDlgItemInfo->GetItemInfo(pItem);
+        m_pDlgItemInfo->GetItemInfo(pItem);
         CRect rect,rect1;
         m_pDlgItemInfo->GetWindowRect(&rect);
         GetWindowRect(&rect1);
-		m_pDlgItemInfo->MoveWindow(rect1.left + INFO_WINDOW_LEFT, rect1.top, rect.Width(), rect.Height(), TRUE);
+		//Adjust Suspend Window position
+		if (x < INFO_WINDOW_RIGHT - GRID_WIDTH * 2)
+			rect1.left += INFO_WINDOW_RIGHT;
+		else
+			rect1.left += INFO_WINDOW_LEFT;
+		m_pDlgItemInfo->MoveWindow(rect1.left, rect1.top, rect.Width(), rect.Height(), TRUE);
         m_pDlgItemInfo->ShowWindow(SW_SHOWNOACTIVATE); //显示对话框
         m_pDlgItemInfo->Invalidate();
     }else if(!pItem && m_pDlgItemInfo)
@@ -713,7 +718,7 @@ void CDlgCharItems::OnMouseMove(UINT nFlags, CPoint point)
 				}
 			}
 		}
-		ShowItemInfoDlg(item);
+		ShowItemInfoDlg(item, point.x);
 	}
 	m_pMouse = point;
 	UpdateData(FALSE);
@@ -742,7 +747,7 @@ void CDlgCharItems::OnLButtonDown(UINT nFlags, CPoint point)
 				m_hCursor = CreateAlphaCursor(*view);  //设置鼠标为物品图片
 				grid.ItemIndex(-1, view->iGridX, view->iGridY, view->iGridWidth, view->iGridHeight);
 				view->iPosition = IN_MOUSE;
-				ShowItemInfoDlg(0);
+				ShowItemInfoDlg(0, 0);
 				Invalidate();
 			}
 		}
