@@ -61,12 +61,13 @@ class CDlgCharItems : public CPropertyDialog
 	void DrawGrids(CPaintDC & dc);			//画所有网格
 	
 	//物品和位置
-	std::vector<CItemView> m_vItemViews;					//所有的物品,除了镶嵌在孔里的
-	BOOL m_bHasCorpse = FALSE;								//有尸体
-	BOOL m_bSecondHand = FALSE;								//是否显示II手武器
-	BOOL m_bCorpseSecondHand = FALSE;						//是否显示尸体的II手武器
-	CItemView & AddItemInGrid(CD2Item & item, BOOL corpse = FALSE);	//将物品添加到网格中
-	CPoint GetItemPositionXY(const CItemView & view) const;	//得到物品的实际像素坐标
+	std::vector<CItemView> m_vItemViews;	//所有的物品,除了镶嵌在孔里的
+	BOOL m_bHasCorpse = FALSE;				//是否有尸体
+	BOOL m_bSecondHand = FALSE;				//是否显示II手武器
+	BOOL m_bCorpseSecondHand = FALSE;		//是否显示尸体的II手武器
+	BOOL m_bHasMercenary = FALSE;			//是否有雇佣兵
+	CItemView & AddItemInGrid(CD2Item & item, int body);	//将物品添加到网格中, body: 0-人物本身，1-尸体，2-雇佣兵，3-Golem
+	CPoint GetItemPositionXY(const CItemView & view) const;			//得到物品的实际像素坐标
 	
 	//铸造台
 	int m_iSelectedItemIndex = -1;	//选中的物品在m_vItemViews中的索引
@@ -98,7 +99,7 @@ class CDlgCharItems : public CPropertyDialog
 	void ShowItemInfoDlg(const CD2Item * pItem);//显示/隐藏(pItem = 0)物品信息悬浮窗口
 
 	//界面文字
-	CString m_sText[4];
+	CString m_sText[6];
 	//CButton m_btButton[5];
 
 	//鼠标
@@ -140,4 +141,5 @@ public:
 	afx_msg void OnChangeCorpseHand();
 	afx_msg void OnChangeCorpse();
 	afx_msg BOOL OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message);
+	afx_msg void OnChangeMercenary();
 };

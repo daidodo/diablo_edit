@@ -68,9 +68,11 @@
 10	Sub Type	子类	子類
 *=======================角色装备信息UI			
 0	Sockets	孔	孔
-1	Mouse	鼠标	鼠標
+1	Iron Golem	金属石魔	金屬石魔
 2	Cube	方块	方塊
 3	Belt	腰带	腰帶
+4	Corpse	尸体	尸體
+5	Mercenary	雇佣兵	僱傭兵
 *=======================角色基本信息UI			
 0	Basic Info	基本信息	基本信息
 1	Waypoints	小站	小站

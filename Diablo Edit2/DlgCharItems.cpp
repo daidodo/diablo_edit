@@ -39,8 +39,7 @@ enum EPosition {
 	CUBE,				//方块
 	IN_BELT,			//腰带里
 	IN_SOCKET,			//镶嵌在孔里
-
-	GRID_COUNT,			//网格类型位置数量
+	GRID_COUNT,
 
 	HEAD = GRID_COUNT,	//头
 	NECK,				//项链
@@ -53,7 +52,6 @@ enum EPosition {
 	FOOT,				//鞋子
 	GLOVE,				//手套
 
-
 	CORPSE_HEAD,		//尸体的头
 	CORPSE_NECK,		//尸体的项链
 	CORPSE_BODY,		//尸体的身体
@@ -64,10 +62,17 @@ enum EPosition {
 	CORPSE_BELT,		//尸体的腰带
 	CORPSE_FOOT,		//尸体的鞋子
 	CORPSE_GLOVE,		//尸体的手套
-
 	CORPSE_END,
 
-	POSITION_END = CORPSE_END,	//所有网格位置总数
+	MERCENARY_HEAD = CORPSE_END,//雇佣兵的头
+	MERCENARY_BODY,				//雇佣兵的身体
+	MERCENARY_RIGHT_HAND,		//雇佣兵的武器右
+	MERCENARY_LEFT_HAND,		//雇佣兵的武器左
+	MERCENARY_END,
+
+	GOLEM = MERCENARY_END,		//生成金属石魔的物品
+
+	POSITION_END,		//所有网格位置总数
 
 	IN_MOUSE = POSITION_END,	//被鼠标拿起
 };
@@ -133,6 +138,13 @@ const int POSITION_INFO[POSITION_END][5] = {
 	{660,195,2,1,E_BELT},	//尸体的腰带		
 	{760,185,2,2,E_FOOT},	//尸体的鞋子
 	{560,185,2,2,E_GLOVE},	//尸体的手套
+
+	{660,285,2,2,E_HEAD},	//雇佣兵的头
+	{660,350,2,3,E_BODY},	//雇佣兵的身体
+	{560,320,2,4,E_HAND},	//雇佣兵的武器右
+	{760,320,2,4,E_HAND},	//雇佣兵的武器左
+
+	{850,35,2,4,E_ANY},		//生成金属石魔的物品
 };
 
 static CRect PositionToRect(EPosition pos) {
@@ -156,7 +168,10 @@ static EEquip PositionToEquip(EPosition pos) {
 	return EEquip(POSITION_INFO[pos][4]);
 }
 
-tuple<EPosition, int, int> ItemToPosition(int iLocation, int iPosition, int iColumn, int iRow, int iStoredIn, bool corpse = false) {
+//body: 0-人物本身，1-尸体，2-雇佣兵，3-Golem
+tuple<EPosition, int, int> ItemToPosition(int iLocation, int iPosition, int iColumn, int iRow, int iStoredIn, int body) {
+	if (3 == body)
+		return make_tuple(GOLEM, 0, 0);
 	int pos = -1, x = 0, y = 0;	//物品的位置(EPosition)和坐标
 	switch (iLocation) {
 		case 0:		//grid
@@ -165,14 +180,21 @@ tuple<EPosition, int, int> ItemToPosition(int iLocation, int iPosition, int iCol
 			y = iRow;
 			break;
 		case 1:		//equipped
-			pos = iPosition;
-			if (0 < pos && pos <= 10)
-				pos += GRID_COUNT - 1 + (corpse ? CORPSE_HEAD - HEAD : 0);
-			else if (pos <= 12) {	//左右手II
-				pos += GRID_COUNT - 8 + (corpse ? CORPSE_HEAD - HEAD : 0);
-				x = 1;
-			} else
-				pos = -1;
+			if (0 < iPosition && iPosition <= 12) {
+				x = (iPosition <= 10 ? 0 : 1);
+				pos = iPosition  + GRID_COUNT - 1 - 7 * x;
+				if (1 == body)
+					pos += CORPSE_HEAD - HEAD;
+				else if (body == 2) {
+					switch (pos) {
+						case HEAD:pos = MERCENARY_HEAD; break;
+						case BODY:pos = MERCENARY_BODY; break;
+						case RIGHT_HAND:pos = MERCENARY_RIGHT_HAND; break;
+						case LEFT_HAND:pos = MERCENARY_LEFT_HAND; break;
+						default:ASSERT(FALSE && _T("Invalid body position of mercenary"));
+					}
+				}
+			}
 			break;
 		case 2:		//in belt(物品排列方式与其他网格不同)
 			pos = IN_BELT;
@@ -343,6 +365,7 @@ void CDlgCharItems::DoDataExchange(CDataExchange* pDX)
 	DDX_Check(pDX, IDC_CHECK1, m_bSecondHand);
 	DDX_Check(pDX, IDC_CHECK4, m_bCorpseSecondHand);
 	DDX_Check(pDX, IDC_CHECK_Corpse, m_bHasCorpse);
+	DDX_Check(pDX, IDC_CHECK_Mercenary, m_bHasMercenary);
 	//   DDX_Text(pDX, IDC_STATIC1, m_sText[0]);
 	//   DDX_Text(pDX, IDC_STATIC2, m_sText[1]);
 	//   DDX_Text(pDX, IDC_STATIC3, m_sText[2]);
@@ -356,9 +379,11 @@ void CDlgCharItems::DoDataExchange(CDataExchange* pDX)
 	//   DDX_Text(pDX, IDC_CHECK6, m_sText[10]);
 	//DDX_Text(pDX, IDC_CHECK7, m_sText[11]);
 	DDX_Text(pDX, IDC_STATIC_Sockets, m_sText[0]);
-	DDX_Text(pDX, IDC_STATIC_Mouse, m_sText[1]);
+	DDX_Text(pDX, IDC_STATIC_Golem, m_sText[1]);
 	DDX_Text(pDX, IDC_STATIC_Cube, m_sText[2]);
 	DDX_Text(pDX, IDC_STATIC_Belt, m_sText[3]);
+	DDX_Text(pDX, IDC_CHECK_Corpse, m_sText[4]);
+	DDX_Text(pDX, IDC_CHECK_Mercenary, m_sText[5]);
 	//   DDX_Control(pDX, IDC_BUTTON1, m_btButton[0]);
 	//   DDX_Control(pDX, IDC_BUTTON2, m_btButton[1]);
 	//   DDX_Control(pDX, IDC_BUTTON3, m_btButton[2]);
@@ -378,13 +403,14 @@ BEGIN_MESSAGE_MAP(CDlgCharItems, CDialog)
     ON_WM_RBUTTONUP()
 	ON_BN_CLICKED(IDC_CHECK4, &CDlgCharItems::OnChangeCorpseHand)
 	ON_BN_CLICKED(IDC_CHECK_Corpse, &CDlgCharItems::OnChangeCorpse)
+	ON_BN_CLICKED(IDC_CHECK_Mercenary, &CDlgCharItems::OnChangeMercenary)
 END_MESSAGE_MAP()
 
 void CDlgCharItems::UpdateUI(CD2S_Struct & character) {
 	ResetAll();
 	//Character items
 	for (auto & item : character.ItemList.vItems) {
-		auto & view = AddItemInGrid(item);
+		auto & view = AddItemInGrid(item, 0);
 		//Gems
 		int j = 0;
 		for (auto & gem : item.aGemItems)
@@ -395,15 +421,25 @@ void CDlgCharItems::UpdateUI(CD2S_Struct & character) {
 		if (!m_bHasCorpse)
 			OnChangeCorpse();
 		for (auto & item : character.stCorpse.pCorpseData->stItems.vItems)
-			AddItemInGrid(item, TRUE);
+			AddItemInGrid(item, 1);
 	}
+	//Mercenary items
+	if (character.stMercenary.stItems.exist()) {
+		if (!m_bHasMercenary)
+			OnChangeMercenary();
+		for (auto & item : character.stMercenary.stItems->vItems)
+			AddItemInGrid(item, 2);
+	}
+	//Golem
+	if (character.stGolem.pItem.exist())
+		AddItemInGrid(*character.stGolem.pItem, 3);
 
 	Invalidate();
 }
 
-CItemView & CDlgCharItems::AddItemInGrid(CD2Item & item, BOOL corpse) {
+CItemView & CDlgCharItems::AddItemInGrid(CD2Item & item, int body) {
 	EEquip equip = ItemToEquip(item.MetaData().Equip);
-	auto t = ItemToPosition(item.iLocation, item.iPosition, item.iColumn, item.iRow, item.iStoredIn, corpse);
+	auto t = ItemToPosition(item.iLocation, item.iPosition, item.iColumn, item.iRow, item.iStoredIn, body);
 	EPosition pos = get<0>(t);
 	int x = get<1>(t), y = get<2>(t);
 	auto & view = m_vItemViews.emplace_back(item, equip, pos, x, y);
@@ -884,6 +920,13 @@ void CDlgCharItems::OnChangeCorpse() {
 		m_vGridView[i].bEnabled = m_bHasCorpse;
 }
 
+void CDlgCharItems::OnChangeMercenary() {
+	m_bHasMercenary = !m_bHasMercenary;
+	for (int i = MERCENARY_HEAD; i < MERCENARY_END; ++i)
+		m_vGridView[i].bEnabled = m_bHasMercenary;
+
+}
+
 static HCURSOR CreateCursorFromBitmap(int picIndex, CSize sz) {
 	// Load bitmap
 	CBitmap bmp;
@@ -914,4 +957,3 @@ BOOL CDlgCharItems::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message) {
 	}
 	return CPropertyDialog::OnSetCursor(pWnd, nHitTest, message);
 }
-

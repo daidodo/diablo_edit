@@ -1093,12 +1093,12 @@ BEGIN
     CONTROL         "",IDC_SLIDER1,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,78,242,51,8
     CONTROL         "II",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,150,5,19,10
     RTEXT           "Sockets",IDC_STATIC_Sockets,10,196,25,10
-    CTEXT           "Mouse",IDC_STATIC_Mouse,278,4,25,10
+    CTEXT           "Iron Golem",IDC_STATIC_Golem,480,3,44,10
     CTEXT           "Cube",IDC_STATIC_Cube,194,115,25,10
     CTEXT           "Belt",IDC_STATIC_Belt,259,115,25,10
     CONTROL         "Corpse",IDC_CHECK_Corpse,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,379,2,39,10
     CONTROL         "II",IDC_CHECK4,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,356,19,19,10
-    CONTROL         "Mercenary",IDC_CHECK_Corpse2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,378,129,50,10
+    CONTROL         "Mercenary",IDC_CHECK_Mercenary,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,378,129,50,10
 END
 
 IDD_DIALOG_Suspend DIALOGEX 0, 0, 113, 53
