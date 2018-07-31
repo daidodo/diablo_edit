@@ -31,7 +31,9 @@ public:
 	bool exist() const { return !v_.empty(); }
 	//void operator =(const T & v) { v_.front() = v; }
 	const T * operator ->() const { return &operator *(); }
+	T * operator ->() { return &operator *(); }
 	const T & operator *() const { return v_.front(); }
+	T & operator *() { return v_.front(); }
 };
 
 template<class T>
