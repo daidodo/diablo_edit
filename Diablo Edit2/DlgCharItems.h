@@ -66,12 +66,11 @@ class CDlgCharItems : public CPropertyDialog
 	BOOL m_bSecondHand = FALSE;				//是否显示II手武器
 	BOOL m_bCorpseSecondHand = FALSE;		//是否显示尸体的II手武器
 	BOOL m_bHasMercenary = FALSE;			//是否有雇佣兵
-	CItemView & AddItemInGrid(CD2Item & item, int body);	//将物品添加到网格中, body: 0-人物本身，1-尸体，2-雇佣兵，3-Golem
+	void AddItemInGrid(CD2Item & item, int body);	//将物品添加到网格中, body: 0-人物本身，1-尸体，2-雇佣兵，3-Golem
 	CPoint GetItemPositionXY(const CItemView & view) const;			//得到物品的实际像素坐标
-	
+
 	//铸造台
-	int m_iSelectedItemIndex = -1;	//选中的物品在m_vItemViews中的索引
-	int m_iSelectedSocketIndex = -1;//选中的物品镶嵌在孔里时，对应孔的索引(m_iSelectedItemIndex表示带孔的物品)
+
 	BYTE m_bItemLevel = 0;			//物品等级
 	CComboBox m_cbQuality;			//物品质量
 	//BOOL m_bItemInscribed;		//已经个人化
@@ -104,9 +103,11 @@ class CDlgCharItems : public CPropertyDialog
 	//CButton m_btButton[5];
 
 	//鼠标
-	int m_iPickedItemIndex = -1;	//当前鼠标拿起的物品在m_vItemViews中的索引
-	HCURSOR m_hCursor;				//鼠标
-	CPoint m_pMouse;				//鼠标位置
+	int m_iSelectedItemIndex = -1;		//选中的物品在m_vItemViews中的索引
+	int m_iSelectedSocketIndex = -1;	//选中的物品镶嵌在孔里时，对应孔的索引(m_iSelectedItemIndex表示带孔的物品)
+	int m_iPickedItemIndex = -1;		//当前鼠标拿起的物品在m_vItemViews中的索引
+	HCURSOR m_hCursor;					//鼠标
+	CPoint m_pMouse;					//鼠标位置
 	std::tuple<int, int, int> HitTestPosition(CPoint pos, int col = 1, int row = 1) const;	//由像素XY和物品大小得到网格位置
 	HCURSOR CreateAlphaCursor(const CItemView & itemView);	//把物品bmp转换成鼠标句柄
 public:
