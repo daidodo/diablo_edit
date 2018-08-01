@@ -27,9 +27,11 @@ enum EEquip {
 	E_SOCKET = 1 << 10,		//可镶嵌（珠宝，符文等）
 };
 
-static EEquip ItemToEquip(int iEquip) {
-	ASSERT(0 <= iEquip && iEquip <= 10);
-	return EEquip(1 << iEquip);
+static EEquip ItemToEquip(const CItemMetaData & meta) {
+	if (0 == meta.Equip)
+		return (meta.IsGem ? E_SOCKET : E_STORAGE);
+	ASSERT(meta.Equip <= 10);
+	return EEquip(1 << meta.Equip);
 }
 
 //所有网格位置
@@ -439,7 +441,7 @@ void CDlgCharItems::UpdateUI(CD2S_Struct & character) {
 }
 
 void CDlgCharItems::AddItemInGrid(CD2Item & item, int body) {
-	EEquip equip = ItemToEquip(item.MetaData().Equip);
+	EEquip equip = ItemToEquip(item.MetaData());
 	auto t = ItemToPosition(item.iLocation, item.iPosition, item.iColumn, item.iRow, item.iStoredIn, body);
 	EPosition pos = get<0>(t);
 	const int x = get<1>(t), y = get<2>(t);
@@ -457,7 +459,7 @@ void CDlgCharItems::AddItemInGrid(CD2Item & item, int body) {
 		int i = 0;
 		for (auto & gem : item.aGemItems) {
 			m_vItemViews[index].vGemItems[i] = m_vItemViews.size();
-			m_vItemViews.emplace_back(gem, ItemToEquip(gem.MetaData().Equip), IN_SOCKET, i++, 0);
+			m_vItemViews.emplace_back(gem, ItemToEquip(gem.MetaData()), IN_SOCKET, i++, 0);
 		}
 	}
 }
