@@ -37,6 +37,20 @@
 3	&Paste	粘贴(&P)	粘貼(&P)
 4	&Modify	修改物品(&M)	修改物品(&M)
 5	&Remove	删除物品(&R)	刪除物品(&R)
+*=======================系统菜单			
+0	&File	文件(&F)	文件(&F)
+1	&View	视图(&V)	視圖(&V)
+2	&Help	帮助(&H)	幫助(&H)
+3	&New	新建(&N)	新建(&N)
+4	&Open	打开(&O)	打開(&O)
+5	&Save	保存(&S)	保存(&S)
+6	Save &As …	另存为(&A)…	另存為(&A)…
+7	&Close	关闭(&C)	關閉(&C)
+8	E&xit	退出(&X)	退出(&X)
+9	Tool &Bar	工具栏(&B)	工具欄(&B)
+10	S&tatus Bar	状态栏(&T)	狀態欄(&T)
+11	&Language	语言(&L)	語言(&L)
+12	&About Diablo Edit …	关于Diablo Edit(&A) …	關於Diablo Edit(&A) …
 *=======================其他窗口UI			
 0	Please Choose a character class	请选择角色	請選擇角色
 1	Amazon Skills	亚马逊技能	亞馬遜技能
