@@ -147,4 +147,10 @@ private:
 	afx_msg void OnChangeMercenary();
 public:
 	afx_msg void OnContextMenu(CWnd* /*pWnd*/, CPoint /*point*/);
+	afx_msg void OnItemImport();
+	afx_msg void OnItemExport();
+	afx_msg void OnItemCopy();
+	afx_msg void OnItemPaste();
+	afx_msg void OnItemModify();
+	afx_msg void OnItemRemove();
 };

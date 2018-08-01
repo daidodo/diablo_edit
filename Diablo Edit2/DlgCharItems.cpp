@@ -8,6 +8,14 @@
 
 using namespace std;
 
+//Popup menu item IDs
+#define ID_ITEM_IMPORT                  100
+#define ID_ITEM_EXPORT                  101
+#define ID_ITEM_COPY                    102
+#define ID_ITEM_PASTE                   103
+#define ID_ITEM_MODIFY                  104
+#define ID_ITEM_REMOVE                  105
+
 const int GRID_WIDTH = 30;	//每个网格的边长(像素)
 
 //物品能装备的位置
@@ -413,6 +421,12 @@ BEGIN_MESSAGE_MAP(CDlgCharItems, CDialog)
 	ON_BN_CLICKED(IDC_CHECK_Corpse, &CDlgCharItems::OnChangeCorpse)
 	ON_BN_CLICKED(IDC_CHECK_Mercenary, &CDlgCharItems::OnChangeMercenary)
 	ON_WM_CONTEXTMENU()
+	ON_COMMAND(ID_ITEM_IMPORT, &CDlgCharItems::OnItemImport)
+	ON_COMMAND(ID_ITEM_EXPORT, &CDlgCharItems::OnItemExport)
+	ON_COMMAND(ID_ITEM_COPY, &CDlgCharItems::OnItemCopy)
+	ON_COMMAND(ID_ITEM_PASTE, &CDlgCharItems::OnItemPaste)
+	ON_COMMAND(ID_ITEM_MODIFY, &CDlgCharItems::OnItemModify)
+	ON_COMMAND(ID_ITEM_REMOVE, &CDlgCharItems::OnItemRemove)
 END_MESSAGE_MAP()
 
 void CDlgCharItems::UpdateUI(CD2S_Struct & character) {
@@ -838,19 +852,37 @@ void CDlgCharItems::OnRButtonUp(UINT nFlags, CPoint point)
 
 void CDlgCharItems::OnContextMenu(CWnd* /*pWnd*/, CPoint point) {
 	if (m_bHasCharacter && m_iPickedItemIndex < 0) {	//未拿起物品
+		/*	创建弹出菜单：
+				Import
+				Export
+				---
+				Copy
+				Paste
+				---
+				Modify
+				Remove
+		*/
 		CMenu menu;
-		menu.LoadMenu(IDR_POPUP_ITEM);
-		CMenu * mnuPopupMenu = menu.GetSubMenu(0);
-		ASSERT(mnuPopupMenu);
-		//Customize menu
-		mnuPopupMenu->EnableMenuItem(ID_ITEM_IMPORT, (m_bClickOnItem ? MF_DISABLED : MF_ENABLED));
-		mnuPopupMenu->EnableMenuItem(ID_ITEM_EXPORT, (m_bClickOnItem ? MF_ENABLED : MF_DISABLED));
-		mnuPopupMenu->EnableMenuItem(ID_ITEM_COPY, (m_bClickOnItem ? MF_ENABLED : MF_DISABLED));
-		mnuPopupMenu->EnableMenuItem(ID_ITEM_PASTE, (0 <= m_iCopiedItemIndex ? MF_ENABLED : MF_DISABLED));
-		mnuPopupMenu->EnableMenuItem(ID_ITEM_MODIFY, (m_bClickOnItem ? MF_ENABLED : MF_DISABLED));
-		mnuPopupMenu->EnableMenuItem(ID_ITEM_REMOVE, (m_bClickOnItem ? MF_ENABLED : MF_DISABLED));
-		//Show menu
-		mnuPopupMenu->TrackPopupMenu(TPM_LEFTALIGN | TPM_RIGHTBUTTON, point.x, point.y, this);
+		menu.CreatePopupMenu();
+		ASSERT(::IsMenu(menu.m_hMenu));
+		//Texts
+		menu.AppendMenu(MF_STRING, ID_ITEM_IMPORT, ::theApp.CharItemPopupMenu(0));
+		menu.AppendMenu(MF_STRING, ID_ITEM_EXPORT, ::theApp.CharItemPopupMenu(1));
+		menu.AppendMenu(MF_SEPARATOR);
+		menu.AppendMenu(MF_STRING, ID_ITEM_COPY, ::theApp.CharItemPopupMenu(2));
+		menu.AppendMenu(MF_STRING, ID_ITEM_PASTE, ::theApp.CharItemPopupMenu(3));
+		menu.AppendMenu(MF_SEPARATOR);
+		menu.AppendMenu(MF_STRING, ID_ITEM_MODIFY, ::theApp.CharItemPopupMenu(4));
+		menu.AppendMenu(MF_STRING, ID_ITEM_REMOVE, ::theApp.CharItemPopupMenu(5));
+		//Appearance
+		menu.EnableMenuItem(ID_ITEM_IMPORT, (m_bClickOnItem ? MF_DISABLED : MF_ENABLED));
+		menu.EnableMenuItem(ID_ITEM_EXPORT, (m_bClickOnItem ? MF_ENABLED : MF_DISABLED));
+		menu.EnableMenuItem(ID_ITEM_COPY, (m_bClickOnItem ? MF_ENABLED : MF_DISABLED));
+		menu.EnableMenuItem(ID_ITEM_PASTE, (0 <= m_iCopiedItemIndex ? MF_ENABLED : MF_DISABLED));
+		menu.EnableMenuItem(ID_ITEM_MODIFY, (m_bClickOnItem ? MF_ENABLED : MF_DISABLED));
+		menu.EnableMenuItem(ID_ITEM_REMOVE, (m_bClickOnItem ? MF_ENABLED : MF_DISABLED));
+
+		menu.TrackPopupMenu(TPM_LEFTALIGN | TPM_RIGHTBUTTON, point.x, point.y, this);
 	}
 }
 
@@ -1008,4 +1040,35 @@ BOOL CDlgCharItems::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message) {
 		return TRUE;
 	}
 	return CPropertyDialog::OnSetCursor(pWnd, nHitTest, message);
+}
+
+
+void CDlgCharItems::OnItemImport() {
+	// TODO: 在此添加命令处理程序代码
+	MessageBox(_T("Hi"));
+}
+
+
+void CDlgCharItems::OnItemExport() {
+	// TODO: 在此添加命令处理程序代码
+}
+
+
+void CDlgCharItems::OnItemCopy() {
+	// TODO: 在此添加命令处理程序代码
+}
+
+
+void CDlgCharItems::OnItemPaste() {
+	// TODO: 在此添加命令处理程序代码
+}
+
+
+void CDlgCharItems::OnItemModify() {
+	// TODO: 在此添加命令处理程序代码
+}
+
+
+void CDlgCharItems::OnItemRemove() {
+	// TODO: 在此添加命令处理程序代码
 }

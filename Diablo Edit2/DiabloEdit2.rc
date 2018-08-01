@@ -1444,37 +1444,6 @@ END
 /////////////////////////////////////////////////////////////////////////////
 
 
-/////////////////////////////////////////////////////////////////////////////
-// 英语(美国) resources
-
-#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
-LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
-#pragma code_page(1252)
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// Menu
-//
-
-IDR_POPUP_ITEM MENU
-BEGIN
-    POPUP "&Item"
-    BEGIN
-        MENUITEM "&Import",                     ID_ITEM_IMPORT
-        MENUITEM "&Export",                     ID_ITEM_EXPORT
-        MENUITEM SEPARATOR
-        MENUITEM "&Copy",                       ID_ITEM_COPY
-        MENUITEM "&Paste",                      ID_ITEM_PASTE
-        MENUITEM SEPARATOR
-        MENUITEM "&Modify",                     ID_ITEM_MODIFY
-        MENUITEM "&Remove",                     ID_ITEM_REMOVE
-    END
-END
-
-#endif    // 英语(美国) resources
-/////////////////////////////////////////////////////////////////////////////
-
-
 
 #ifndef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////

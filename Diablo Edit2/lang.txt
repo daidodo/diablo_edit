@@ -30,6 +30,13 @@
 116	Delete	删除	刪除
 117	Code	代码	代碼
 118	Description	说明	説明
+*=======================角色物品UI弹出菜单			
+0	&Import	导入物品(&I)	導入物品(&I)
+1	&Export	导出物品(&E)	導出物品(&E)
+2	&Copy	复制(&C)	複製(&C)
+3	&Paste	粘贴(&P)	粘貼(&P)
+4	&Modify	修改物品(&M)	修改物品(&M)
+5	&Remove	删除物品(&R)	刪除物品(&R)
 *=======================其他窗口UI			
 0	Please Choose a character class	请选择角色	請選擇角色
 1	Amazon Skills	亚马逊技能	亞馬遜技能
