@@ -45,6 +45,8 @@ struct CPropertyList
 {
 	std::map<WORD, DWORD>	mProperty;		//属性列表，每项（9 bits ID + VALUE)
 	WORD					iEndFlag;		//9 bits, 0x1FF, 结束标志
+	//Functons:
+	int ExtSockets() const;		//属性列表里的额外孔数
 };
 
 //Extended Item Info
@@ -111,6 +113,8 @@ struct CTypeSpecificInfo
 	CPropertyList			stPropertyList;			//属性列表
 	MayExist<CPropertyList> apSetProperty[5];		//套装属性列表，每个列表是否存在由(aHasSetPropList[i] == TRUE)决定
 	MayExist<CPropertyList>	stRuneWordPropertyList;	//符文之语属性列表，if bRuneWord == TRUE
+	//Functions:
+	int Sockets() const;
 };
 
 //ItemInfo
@@ -131,6 +135,7 @@ struct CItemInfo
 	BOOL IsNameValid() const;
 	BOOL IsSet() const { return pExtItemInfo.exist() && pExtItemInfo->IsSet(); }
 	int Gems() const { return (pExtItemInfo.exist() ? pExtItemInfo->Gems() : 0); }
+	int Sockets() const { return (pTpSpInfo.exist() ? pTpSpInfo->Sockets() : 0); }
 	BOOL IsTypeName(const char * name) const;
 };
 
@@ -183,6 +188,7 @@ struct CD2Item
 	BYTE Quality() const{return !bEar && !bSimple ? pItemInfo->pExtItemInfo->iQuality : (pItemData->IsUnique ? 7 : 2);}
 	BOOL IsSet() const { return pItemInfo.exist() && pItemInfo->IsSet(); }
 	int Gems() const { return (pItemInfo.exist() ? pItemInfo->Gems() : 0); }
+	int Sockets() const { return (bSocketed && pItemInfo.exist() ? pItemInfo->Sockets() : 0); }	//物品的孔数总和（包括属性增加的孔）
 	void ReadData(CInBitsStream & bs);
 	void WriteData(COutBitsStream & bs) const;
 private:

@@ -103,6 +103,11 @@ COutBitsStream & operator <<(COutBitsStream & bs, const CPropertyList & v) {
 	return bs << bits<WORD>(0x1FF, 9);
 }
 
+int CPropertyList::ExtSockets() const {
+	auto wh = mProperty.find(194);	//194是额外孔属性ID
+	return (wh == mProperty.end() ? 0 : wh->second);
+}
+
 //pack
 
 template<class V, class T>
@@ -292,6 +297,17 @@ COutBitsStream & operator <<(COutBitsStream & bs, pair<const CTypeSpecificInfo &
 	if (get<5>(t))	//bRuneWord, 有符文之语属性
 		bs << v.stRuneWordPropertyList;
 	return bs;
+}
+
+int CTypeSpecificInfo::Sockets() const {
+	int s = iSocket;
+	s += stPropertyList.ExtSockets();
+	for (auto & p : apSetProperty)
+		if (p.exist())
+			s += p->ExtSockets();
+	if (stRuneWordPropertyList.exist())
+		s += stRuneWordPropertyList->ExtSockets();
+	return min(s, 6);	//最多孔数不超过6
 }
 
 // struct CItemInfo
