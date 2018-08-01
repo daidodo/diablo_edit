@@ -59,6 +59,7 @@ class CDlgCharItems : public CPropertyDialog
 
 	std::vector<GridView> m_vGridView;		//所有网格的信息
 	void DrawGrids(CPaintDC & dc);			//画所有网格
+	BOOL m_bHasCharacter = FALSE;			//是否加载了人物
 	
 	//物品和位置
 	std::vector<CItemView> m_vItemViews;	//所有的物品,除了镶嵌在孔里的
@@ -110,11 +111,14 @@ class CDlgCharItems : public CPropertyDialog
 	std::tuple<int, int, int> HitTestPosition(CPoint pos, int col = 1, int row = 1) const;	//由像素XY和物品大小得到网格位置
 	HCURSOR CreateAlphaCursor(const CItemView & itemView);	//把物品bmp转换成鼠标句柄
 	BOOL PutItemInGrid(EPosition pos, int x, int y);	//尝试将已拿起的物品放到指定位置（不包括鼠标）
+
+	//弹出菜单
+	BOOL m_bClickOnItem = FALSE;		//是否点中了物品
+	int m_iCopiedItemIndex = -1;		//复制的物品在m_vItemViews中的索引，-1为没有
 public:
 	//对话框数据
 	enum { IDD = IDD_DIALOG_CharItems };
 	CDlgCharItems(CWnd* pParent = NULL);   // 标准构造函数
-	virtual ~CDlgCharItems() { ResetAll(); };
 	//虚函数
 	void UpdateUI(CD2S_Struct & character);
 	BOOL GatherData(CD2S_Struct & character);
@@ -141,4 +145,6 @@ private:
 	afx_msg void OnChangeCorpse();
 	afx_msg BOOL OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message);
 	afx_msg void OnChangeMercenary();
+public:
+	afx_msg void OnContextMenu(CWnd* /*pWnd*/, CPoint /*point*/);
 };

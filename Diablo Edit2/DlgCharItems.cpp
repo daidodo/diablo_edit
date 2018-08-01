@@ -412,6 +412,7 @@ BEGIN_MESSAGE_MAP(CDlgCharItems, CDialog)
 	ON_BN_CLICKED(IDC_CHECK4, &CDlgCharItems::OnChangeCorpseHand)
 	ON_BN_CLICKED(IDC_CHECK_Corpse, &CDlgCharItems::OnChangeCorpse)
 	ON_BN_CLICKED(IDC_CHECK_Mercenary, &CDlgCharItems::OnChangeMercenary)
+	ON_WM_CONTEXTMENU()
 END_MESSAGE_MAP()
 
 void CDlgCharItems::UpdateUI(CD2S_Struct & character) {
@@ -437,6 +438,7 @@ void CDlgCharItems::UpdateUI(CD2S_Struct & character) {
 	if (character.stGolem.pItem.exist())
 		AddItemInGrid(*character.stGolem.pItem, 3);
 
+	m_bHasCharacter = TRUE;
 	Invalidate();
 }
 
@@ -680,6 +682,8 @@ void CDlgCharItems::ResetAll()
 		m_hCursor = ::LoadCursor(0, IDC_ARROW);
 		m_iPickedItemIndex = -1;
 	}
+	m_bHasCharacter = FALSE;
+	Invalidate();
 }
 
 void CDlgCharItems::LoadText(void)
@@ -802,6 +806,7 @@ void CDlgCharItems::OnLButtonDown(UINT nFlags, CPoint point)
 
 void CDlgCharItems::OnRButtonUp(UINT nFlags, CPoint point)
 {
+	m_bClickOnItem = FALSE;
 	if (m_iPickedItemIndex < 0) {	//未拿起物品
 		auto t = HitTestPosition(point);
 		const int pos = get<0>(t), x = get<1>(t), y = get<2>(t);
@@ -809,6 +814,7 @@ void CDlgCharItems::OnRButtonUp(UINT nFlags, CPoint point)
 			auto & grid = m_vGridView[pos];
 			int index = grid.ItemIndex(x, y);
 			if (index >= 0) {	//点中了物品
+				m_bClickOnItem = TRUE;
 				if (grid.IsSockets()) {	//是镶嵌的宝石
 					if (index != m_iSelectedSocketIndex) {
 						m_iSelectedSocketIndex = index;
@@ -828,6 +834,24 @@ void CDlgCharItems::OnRButtonUp(UINT nFlags, CPoint point)
 		}
 	}
     CPropertyDialog::OnRButtonUp(nFlags, point);
+}
+
+void CDlgCharItems::OnContextMenu(CWnd* /*pWnd*/, CPoint point) {
+	if (m_bHasCharacter && m_iPickedItemIndex < 0) {	//未拿起物品
+		CMenu menu;
+		menu.LoadMenu(IDR_POPUP_ITEM);
+		CMenu * mnuPopupMenu = menu.GetSubMenu(0);
+		ASSERT(mnuPopupMenu);
+		//Customize menu
+		mnuPopupMenu->EnableMenuItem(ID_ITEM_IMPORT, (m_bClickOnItem ? MF_DISABLED : MF_ENABLED));
+		mnuPopupMenu->EnableMenuItem(ID_ITEM_EXPORT, (m_bClickOnItem ? MF_ENABLED : MF_DISABLED));
+		mnuPopupMenu->EnableMenuItem(ID_ITEM_COPY, (m_bClickOnItem ? MF_ENABLED : MF_DISABLED));
+		mnuPopupMenu->EnableMenuItem(ID_ITEM_PASTE, (0 <= m_iCopiedItemIndex ? MF_ENABLED : MF_DISABLED));
+		mnuPopupMenu->EnableMenuItem(ID_ITEM_MODIFY, (m_bClickOnItem ? MF_ENABLED : MF_DISABLED));
+		mnuPopupMenu->EnableMenuItem(ID_ITEM_REMOVE, (m_bClickOnItem ? MF_ENABLED : MF_DISABLED));
+		//Show menu
+		mnuPopupMenu->TrackPopupMenu(TPM_LEFTALIGN | TPM_RIGHTBUTTON, point.x, point.y, this);
+	}
 }
 
 BOOL CDlgCharItems::OnInitDialog()
