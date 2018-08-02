@@ -1043,37 +1043,30 @@ BOOL CDlgCharItems::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message) {
 	return CPropertyDialog::OnSetCursor(pWnd, nHitTest, message);
 }
 
-
 void CDlgCharItems::OnItemImport() {
 	// TODO: 在此添加命令处理程序代码
 	MessageBox(_T("Hi"));
 }
 
-
 void CDlgCharItems::OnItemExport() {
 	// TODO: 在此添加命令处理程序代码
 }
-
 
 void CDlgCharItems::OnItemCopy() {
 	// TODO: 在此添加命令处理程序代码
 }
 
-
 void CDlgCharItems::OnItemPaste() {
 	// TODO: 在此添加命令处理程序代码
 }
-
 
 void CDlgCharItems::OnItemModify() {
 	// TODO: 在此添加命令处理程序代码
 }
 
-
 void CDlgCharItems::OnItemRemove() {
 	// TODO: 在此添加命令处理程序代码
 }
-
 
 void CDlgCharItems::OnMenuSelect(UINT nItemID, UINT nFlags, HMENU hSysMenu) {
 	CPropertyDialog::OnMenuSelect(nItemID, nFlags, hSysMenu);
