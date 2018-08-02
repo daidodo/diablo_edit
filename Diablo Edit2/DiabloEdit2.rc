@@ -755,7 +755,6 @@ BEGIN
             MENUITEM "语言一",                         ID_LANGUAGE1
             MENUITEM "语言二",                         ID_LANGUAGE2
             MENUITEM "语言三",                         ID_LANGUAGE3
-            MENUITEM "语言四",                         32783
         END
     END
     POPUP "帮助(&H)"
@@ -1350,17 +1349,7 @@ END
 
 STRINGTABLE
 BEGIN
-    ID_FILE_NEW             "创建新文档\n新建"
-    ID_FILE_OPEN            "打开现有文档\n打开"
     ID_FILE_CLOSE           "关闭活动文档\n关闭"
-    ID_FILE_SAVE            "保存活动文档\n保存"
-    ID_FILE_SAVE_AS         "用新名称保存活动文档\n另存为"
-END
-
-STRINGTABLE
-BEGIN
-    ID_APP_ABOUT            "显示程序信息、版本号和版权\n关于"
-    ID_APP_EXIT             "退出应用程序；提示保存文档\n退出"
 END
 
 STRINGTABLE
@@ -1407,12 +1396,6 @@ BEGIN
     ID_EDIT_SELECT_ALL      "选定整个文档\n全选"
     ID_EDIT_UNDO            "撤消上一操作\n撤消"
     ID_EDIT_REDO            "恢复上次撤消的操作\n重做"
-END
-
-STRINGTABLE
-BEGIN
-    ID_VIEW_TOOLBAR         "显示或隐藏工具栏\n切换工具栏"
-    ID_VIEW_STATUS_BAR      "显示或隐藏状态栏\n切换状态栏"
 END
 
 STRINGTABLE

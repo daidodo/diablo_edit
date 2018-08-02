@@ -427,6 +427,7 @@ BEGIN_MESSAGE_MAP(CDlgCharItems, CDialog)
 	ON_COMMAND(ID_ITEM_PASTE, &CDlgCharItems::OnItemPaste)
 	ON_COMMAND(ID_ITEM_MODIFY, &CDlgCharItems::OnItemModify)
 	ON_COMMAND(ID_ITEM_REMOVE, &CDlgCharItems::OnItemRemove)
+	ON_WM_MENUSELECT()
 END_MESSAGE_MAP()
 
 void CDlgCharItems::UpdateUI(CD2S_Struct & character) {
@@ -1071,4 +1072,18 @@ void CDlgCharItems::OnItemModify() {
 
 void CDlgCharItems::OnItemRemove() {
 	// TODO: 在此添加命令处理程序代码
+}
+
+
+void CDlgCharItems::OnMenuSelect(UINT nItemID, UINT nFlags, HMENU hSysMenu) {
+	CPropertyDialog::OnMenuSelect(nItemID, nFlags, hSysMenu);
+	CFrameWnd & frame = *GetParentFrame();
+	switch (nItemID) {
+		case ID_ITEM_IMPORT:	frame.SetMessageText(::theApp.MenuPrompt(9)); break;
+		case ID_ITEM_EXPORT:	frame.SetMessageText(::theApp.MenuPrompt(10)); break;
+		case ID_ITEM_COPY:		frame.SetMessageText(::theApp.MenuPrompt(11)); break;
+		case ID_ITEM_PASTE:		frame.SetMessageText(::theApp.MenuPrompt(12)); break;
+		case ID_ITEM_MODIFY:	frame.SetMessageText(::theApp.MenuPrompt(13)); break;
+		case ID_ITEM_REMOVE:	frame.SetMessageText(::theApp.MenuPrompt(14)); break;
+	}
 }

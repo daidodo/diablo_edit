@@ -153,4 +153,5 @@ public:
 	afx_msg void OnItemPaste();
 	afx_msg void OnItemModify();
 	afx_msg void OnItemRemove();
+	afx_msg void OnMenuSelect(UINT nItemID, UINT nFlags, HMENU hSysMenu);
 };
