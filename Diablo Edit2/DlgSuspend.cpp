@@ -14,6 +14,8 @@ using namespace std;
 typedef deque<CString> __Tokens;
 // CDlgSuspend 对话框
 
+enum { WHITE, BLUE, GREEN, RARE, UNIQUE, CRAFT };	//颜色索引
+
 const COLORREF	CDlgSuspend::FONT_COLOR[] = {
 	RGB(255,255,255),		//白色
 	RGB(0,0,255),			//蓝色
