@@ -97,6 +97,7 @@ struct CExtItemInfo
 	//Spell ID
 	MayExist<BYTE>			bSpellID;		//5 bits,if sTypeName == "0sc"
 	BOOL IsSet() const { return iQuality == 5; }
+	int RuneWordId() const { ASSERT(wRune.exist()); return (wRune & 0xFFF); }
 	int Gems() const { return nGems; }
 };
 
@@ -134,6 +135,7 @@ struct CItemInfo
 	void WriteData(COutBitsStream & bs, const CItemMetaData & itemData, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed) const;
 	BOOL IsNameValid() const;
 	BOOL IsSet() const { return pExtItemInfo.exist() && pExtItemInfo->IsSet(); }
+	int RuneWordId() const { ASSERT(pExtItemInfo.exist()); return pExtItemInfo->RuneWordId(); }
 	int Gems() const { return (pExtItemInfo.exist() ? pExtItemInfo->Gems() : 0); }
 	int Sockets() const { return (pTpSpInfo.exist() ? pTpSpInfo->Sockets() : 0); }
 	BOOL IsTypeName(const char * name) const;
@@ -187,6 +189,8 @@ struct CD2Item
 	const CItemMetaData & MetaData() const { return *pItemData; }
 	BYTE Quality() const{return !bEar && !bSimple ? pItemInfo->pExtItemInfo->iQuality : (pItemData->IsUnique ? 7 : 2);}
 	BOOL IsSet() const { return pItemInfo.exist() && pItemInfo->IsSet(); }
+	BOOL IsRuneWord() const { return bRuneWord; }
+	int RuneWordId() const { ASSERT(IsRuneWord() && pItemInfo.exist()); return pItemInfo->RuneWordId(); }
 	int Gems() const { return (pItemInfo.exist() ? pItemInfo->Gems() : 0); }
 	int Sockets() const { return (bSocketed && pItemInfo.exist() ? pItemInfo->Sockets() : 0); }	//物品的孔数总和（包括属性增加的孔）
 	void ReadData(CInBitsStream & bs);

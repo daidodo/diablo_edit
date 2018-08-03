@@ -86,7 +86,9 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem)
 		auto & meta = pItem->MetaData();
 		if (pItem->IsSet())	//Set item
 			AddMsg(color, ::theApp.SetItemName(pItem->pItemInfo->pExtItemInfo->wSetID));
-        //Prefix, Suffix, Name
+		else if (pItem->IsRuneWord())
+			AddMsg(UNIQUE, ::theApp.RuneWordName(pItem->RuneWordId()) + _T(" (Rune Word)"));
+		//Prefix, Suffix, Name
 		__Tokens name{ ::theApp.ItemName(meta.NameIndex) };
         switch(quality){
         case 1:         //low
@@ -149,7 +151,8 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem)
 				for (size_t i = 0; i < std::size(setProps); ++i)
 					if (setProps[i].exist())
 						AddPropertyList(GREEN, *setProps[i], socketnum);
-			}
+			} else if (pItem->IsRuneWord())
+				AddPropertyList(BLUE, *pItem->pItemInfo->pTpSpInfo->stRuneWordPropertyList, socketnum);
 		}
         //Ethereal
         if(pItem->bEthereal)
