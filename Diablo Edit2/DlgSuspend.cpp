@@ -103,9 +103,6 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem)
 			name.push_front(::theApp.MagicPrefix(pItem->pItemInfo->pExtItemInfo->wPrefix));
             name.push_back(::theApp.MagicSuffix(pItem->pItemInfo->pExtItemInfo->wSuffix));
             break;
-        case 5:         //set(ÔÝ²»Ö§³Ö)
-			//TODO
-            break;
         case 6:{        //rare
 			const auto & rare = *pItem->pItemInfo->pExtItemInfo->pRareName;
 			__Tokens title{ ::theApp.RareCraftedName(rare.iName1), ::theApp.RareCraftedName(rare.iName2) };
