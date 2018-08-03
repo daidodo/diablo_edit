@@ -23,8 +23,11 @@ struct CItemView
 	int iGridX, iGridY;					//网格坐标
 	const int iGridWidth, iGridHeight;	//自身占用网格大小
 	std::vector<int> vGemItems;			//镶嵌的物品在m_vItemViews的索引，-1表示没有
+	//Functions:
 	CItemView(CD2Item & item, EEquip equip, EPosition pos, int x, int y);
 	CSize ViewSize() const;
+	CString ItemName() const { return Item.ItemName(); }
+	CD2Item UpdatedItem(const std::vector<CItemView> & vItemViews) const;
 };
 
 //网格位置的视图
@@ -87,8 +90,6 @@ class CDlgCharItems : public CPropertyDialog
 	CListCtrl m_lcPropertyList;		//物品属性列表
 	void ResetFoundry();			//初始化铸造台
 	void ReadItemProperty(const CD2Item & item);	//读取物品的属性，并显示在锻造台
-	CItemView & SelectedParentItemView();			//当前选中的父物品视图
-	//const CItemView * SelectedItemView() const;	//当前选中的物品视图，没有返回0
 
 	//悬浮窗
 	static const int INFO_WINDOW_LEFT = 50;		//左边悬浮窗的位置X
@@ -108,9 +109,11 @@ class CDlgCharItems : public CPropertyDialog
 	int m_iPickedItemIndex = -1;		//当前鼠标拿起的物品在m_vItemViews中的索引
 	HCURSOR m_hCursor;					//鼠标
 	CPoint m_pMouse;					//鼠标位置
+	CItemView & SelectedParentItemView();			//当前选中的父物品视图
+	CItemView & SelectedItemView();					//当前选中的物品视图
 	std::tuple<int, int, int> HitTestPosition(CPoint pos, int col = 1, int row = 1) const;	//由像素XY和物品大小得到网格位置
 	HCURSOR CreateAlphaCursor(const CItemView & itemView);	//把物品bmp转换成鼠标句柄
-	BOOL PutItemInGrid(EPosition pos, int x, int y);	//尝试将已拿起的物品放到指定位置（不包括鼠标）
+	BOOL PutItemInGrid(EPosition pos, int x, int y);		//尝试将已拿起的物品放到指定位置（不包括鼠标）
 
 	//弹出菜单
 	BOOL m_bClickOnItem = FALSE;		//是否点中了物品

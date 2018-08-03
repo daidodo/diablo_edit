@@ -193,6 +193,7 @@ struct CD2Item
 	int RuneWordId() const { ASSERT(IsRuneWord() && pItemInfo.exist()); return pItemInfo->RuneWordId(); }
 	int Gems() const { return (pItemInfo.exist() ? pItemInfo->Gems() : 0); }
 	int Sockets() const { return (bSocketed && pItemInfo.exist() ? pItemInfo->Sockets() : 0); }	//物品的孔数总和（包括属性增加的孔）
+	CString ItemName() const;
 	void ReadData(CInBitsStream & bs);
 	void WriteData(COutBitsStream & bs) const;
 private:

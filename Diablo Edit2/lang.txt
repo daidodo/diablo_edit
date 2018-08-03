@@ -4323,7 +4323,7 @@
 76	Tal Rasha's Fire-Spun Cloth		
 77	Tal Rasha's Adjudication		
 78	Tal Rasha's Lidless Eye		
-79	Tal Rasha's Howling Wind		
+79	Tal Rasha's Guardianship		
 80	Tal Rasha's Horadric Crest		
 81	Griswold's Valor		
 82	Griswold's Heart		

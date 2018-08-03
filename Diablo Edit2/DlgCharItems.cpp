@@ -181,7 +181,7 @@ static EEquip PositionToEquip(EPosition pos) {
 }
 
 //body: 0-人物本身，1-尸体，2-雇佣兵，3-Golem
-tuple<EPosition, int, int> ItemToPosition(int iLocation, int iPosition, int iColumn, int iRow, int iStoredIn, int body) {
+static tuple<EPosition, int, int> ItemToPosition(int iLocation, int iPosition, int iColumn, int iRow, int iStoredIn, int body) {
 	if (3 == body)
 		return make_tuple(GOLEM, 0, 0);
 	int pos = -1, x = 0, y = 0;	//物品的位置(EPosition)和坐标
@@ -211,7 +211,7 @@ tuple<EPosition, int, int> ItemToPosition(int iLocation, int iPosition, int iCol
 		case 2:		//in belt(物品排列方式与其他网格不同)
 			pos = IN_BELT;
 			x = iColumn % 4;
-			y = POSITION_INFO[pos][3] - iColumn / 4 - 1;
+			y = 3 - iColumn / 4;
 			break;
 		case 4:		//in hand(鼠标)
 			pos = IN_MOUSE;
@@ -221,6 +221,48 @@ tuple<EPosition, int, int> ItemToPosition(int iLocation, int iPosition, int iCol
 	if (pos < 0)
 		ASSERT(FALSE && _T("Invalid item position"));
 	return make_tuple(EPosition(pos), x, y);
+}
+
+static tuple<int, int, int, int, int> PositionToItem(EPosition pos, int x, int y) {
+	ASSERT(0 <= x && 0 <= y);
+	int loc = 0, body = 0, col = 0, row = 0, store = 0;
+	switch (pos) {
+		//grid
+		case STASH:		col = x, row = y, store = 5; break;
+		case INVENTORY:	col = x, row = y, store = 1; break;
+		case CUBE:		col = x, row = y, store = 4; break;
+		case IN_BELT:	loc = 2, col = (3 - y) * 4 + x; break;
+		case IN_SOCKET:	loc = 6, col = x; break;
+		//body
+		case RIGHT_HAND:
+		case LEFT_HAND:	body = (1 == x ? 7 : 0);	//II hand adjustment
+		case HEAD:
+		case NECK:
+		case BODY:
+		case RIGHT_RING:
+		case LEFT_RING:
+		case BELT:
+		case GLOVE:		loc = 1, body += pos - HEAD + 1; break;
+		//corpse
+		case CORPSE_RIGHT_HAND:
+		case CORPSE_LEFT_HAND:	body = (1 == x ? 7 : 0);	//II hand adjustment
+		case CORPSE_HEAD:
+		case CORPSE_NECK:
+		case CORPSE_BODY:
+		case CORPSE_RIGHT_RING:
+		case CORPSE_LEFT_RING:
+		case CORPSE_BELT:
+		case CORPSE_FOOT:
+		case CORPSE_GLOVE:		loc = 1, body += pos - CORPSE_HEAD + 1; break;
+		//mercenary
+		case MERCENARY_HEAD:		loc = 1, body = 1; break;
+		case MERCENARY_BODY:		loc = 1, body = 3; break;
+		case MERCENARY_RIGHT_HAND:	loc = 1, body = 4; break;
+		case MERCENARY_LEFT_HAND:	loc = 1, body = 5; break;
+		//other
+		case IN_MOUSE:	loc = 4; break;
+	}
+	return make_tuple(loc, body, col, row, store);
 }
 
 //struct CItemView
@@ -241,6 +283,26 @@ CItemView::CItemView(CD2Item & item, EEquip equip, EPosition pos, int x, int y)
 }
 
 CSize CItemView::ViewSize() const { return CSize(iGridWidth * GRID_WIDTH, iGridHeight*GRID_WIDTH); }
+
+CD2Item CItemView::UpdatedItem(const std::vector<CItemView> & vItemViews) const {
+	CD2Item item(Item);
+	//update position
+	const auto t = PositionToItem(iPosition, iGridX, iGridY);
+	item.iLocation = get<0>(t);
+	item.iPosition = get<1>(t);
+	item.iColumn = get<2>(t);
+	item.iRow = get<3>(t);
+	item.iStoredIn = get<4>(t);
+	//update gems
+	item.aGemItems.clear();
+	for (int i : vGemItems) {
+		if (i < 0)
+			continue;
+		ASSERT(i < int(vItemViews.size()));
+		item.aGemItems.push_back(vItemViews[i].UpdatedItem(vItemViews));
+	}
+	return item;
+}
 
 //struct GridView
 
@@ -473,10 +535,11 @@ void CDlgCharItems::AddItemInGrid(CD2Item & item, int body) {
 	//Sockets & Gems
 	if (!item.aGemItems.empty()) {
 		ASSERT(item.aGemItems.size() <= m_vItemViews[index].vGemItems.size());
-		int i = 0;
 		for (auto & gem : item.aGemItems) {
-			m_vItemViews[index].vGemItems[i] = m_vItemViews.size();
-			m_vItemViews.emplace_back(gem, ItemToEquip(gem.MetaData()), IN_SOCKET, i++, 0);
+			ASSERT(0 <= gem.iColumn && gem.iColumn < int(m_vItemViews[index].vGemItems.size()));
+			ASSERT(m_vItemViews[index].vGemItems[gem.iColumn] < 0);
+			m_vItemViews[index].vGemItems[gem.iColumn] = m_vItemViews.size();
+			m_vItemViews.emplace_back(gem, ItemToEquip(gem.MetaData()), IN_SOCKET, gem.iColumn, 0);
 		}
 	}
 }
@@ -491,12 +554,12 @@ CItemView & CDlgCharItems::SelectedParentItemView() {
 	return m_vItemViews[m_iSelectedItemIndex];
 }
 
-//const CItemView * CDlgCharItems::SelectedItemView() const {
-//	const auto parent = SelectedParentItemView();
-//	if(parent && 0 <= m_iSelectedSocketIndex && m_iSelectedSocketIndex < int(parent->vGemItems.size()))
-//		return &parent->vGemItems[m_iSelectedSocketIndex];
-//	return parent;
-//}
+CItemView & CDlgCharItems::SelectedItemView() {
+	if (m_iSelectedSocketIndex < 0)
+		return SelectedParentItemView();
+	ASSERT(m_iSelectedSocketIndex < int(m_vItemViews.size()));
+	return m_vItemViews[m_iSelectedSocketIndex];
+}
 
 //画一个网格或矩形
 static void DrawGrid(CPaintDC & dc, const CRect & rect, int intervalX = 0, int intervalY = 0)
@@ -1062,7 +1125,16 @@ void CDlgCharItems::OnItemImport() {
 }
 
 void CDlgCharItems::OnItemExport() {
-	// TODO: 在此添加命令处理程序代码
+	//update item
+	const auto & view = SelectedItemView();
+	COutBitsStream bs;
+	view.UpdatedItem(m_vItemViews).WriteData(bs);
+	//serialize to file
+	if (bs.Good() && bs.BytePos() > 0) {
+		CFileDialog save_item(FALSE, 0, view.ItemName() + _T(".d2i"), OFN_OVERWRITEPROMPT | OFN_PATHMUSTEXIST, _T("Diablo II Item(*.d2i)|*.d2i|All File(*.*)|*.*||"));
+		if (save_item.DoModal() == IDOK)
+			bs.WriteFile(CFile(save_item.GetPathName(), CFile::modeCreate | CFile::modeWrite));
+	}
 }
 
 void CDlgCharItems::OnItemCopy() {

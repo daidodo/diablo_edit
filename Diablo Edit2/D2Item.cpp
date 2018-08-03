@@ -5,6 +5,7 @@
 #include <fstream>
 #include <iterator>
 #include <cstring>
+#include <deque>
 
 using namespace std;
 
@@ -396,6 +397,64 @@ BOOL CItemInfo::IsTypeName(const char * name) const {
 }
 
 //CD2Item
+
+typedef deque<CString> __Tokens;
+
+static CString text(const __Tokens & tokens) {
+	CString ret;
+	int i = 0;
+	for (auto & t : tokens) {
+		if (t.IsEmpty())
+			continue;
+		if (i++)
+			ret += _T(" ");
+		ret += t;
+	}
+	return ret;
+}
+
+CString CD2Item::ItemName() const {
+	if (bEar)	//¶ú¶ä
+		return CSFormat(::theApp.ItemSuspendUI(10), CString(pEar->sEarName));
+	__Tokens name{ ::theApp.ItemName(MetaData().NameIndex) };
+	if (!bSimple) {
+		ASSERT(pItemInfo->pExtItemInfo.exist());
+		switch (pItemInfo->pExtItemInfo->iQuality) {
+			case 1:		//low
+				name.push_front(::theApp.ItemSuspendUI(0));
+				break;
+			case 3:		 //high
+				name.push_front(::theApp.ItemSuspendUI(1));
+				break;
+			case 4:		//magic
+				name.push_front(::theApp.MagicPrefix(pItemInfo->pExtItemInfo->wPrefix));
+				name.push_back(::theApp.MagicSuffix(pItemInfo->pExtItemInfo->wSuffix));
+				break;
+			case 5:		//set
+				name.push_front(::theApp.SetItemName(pItemInfo->pExtItemInfo->wSetID));
+				break;
+			case 6:
+			{	//rare
+				const auto & rare = *pItemInfo->pExtItemInfo->pRareName;
+				name.insert(name.begin(), { ::theApp.RareCraftedName(rare.iName1), ::theApp.RareCraftedName(rare.iName2) });
+				break;
+			}
+			case 7:		//unique
+				name.push_front(::theApp.UniqueName(pItemInfo->pExtItemInfo->wUniID));
+				break;
+			case 8:
+			{	//crafted
+				const auto & craft = *pItemInfo->pExtItemInfo->pCraftName;
+				name.insert(name.begin(), { ::theApp.RareCraftedName(craft.iName1), ::theApp.RareCraftedName(craft.iName2) });
+				break;;
+			}
+			default:
+				if (IsRuneWord())
+					name.push_front(::theApp.RuneWordName(RuneWordId()));
+		}
+	}
+	return text(name);
+}
 
 void CD2Item::ReadData(CInBitsStream & bs) {
 	bs >> wMajic;
