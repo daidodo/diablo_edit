@@ -267,7 +267,7 @@ static tuple<int, int, int, int, int> PositionToItem(EPosition pos, int x, int y
 
 //struct CItemView
 
-CItemView::CItemView(CD2Item & item, EEquip equip, EPosition pos, int x, int y)
+CItemView::CItemView(const CD2Item & item, EEquip equip, EPosition pos, int x, int y)
 	: Item(item)
 	, nPicRes(IDB_BITMAP0 + item.MetaData().PicIndex)
 	, iEquip(equip)
@@ -492,7 +492,7 @@ BEGIN_MESSAGE_MAP(CDlgCharItems, CDialog)
 	ON_WM_MENUSELECT()
 END_MESSAGE_MAP()
 
-void CDlgCharItems::UpdateUI(CD2S_Struct & character) {
+void CDlgCharItems::UpdateUI(const CD2S_Struct & character) {
 	ResetAll();
 	//Character items
 	for (auto & item : character.ItemList.vItems) 
@@ -519,7 +519,7 @@ void CDlgCharItems::UpdateUI(CD2S_Struct & character) {
 	Invalidate();
 }
 
-void CDlgCharItems::AddItemInGrid(CD2Item & item, int body) {
+void CDlgCharItems::AddItemInGrid(const CD2Item & item, int body) {
 	EEquip equip = ItemToEquip(item.MetaData());
 	auto t = ItemToPosition(item.iLocation, item.iPosition, item.iColumn, item.iRow, item.iStoredIn, body);
 	EPosition pos = get<0>(t);
@@ -1120,21 +1120,24 @@ BOOL CDlgCharItems::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message) {
 }
 
 void CDlgCharItems::OnItemImport() {
-	// TODO: 在此添加命令处理程序代码
-	MessageBox(_T("Hi"));
+	CFileDialog open(TRUE, _T("d2i"), 0, OFN_HIDEREADONLY | OFN_FILEMUSTEXIST, _T("Diablo II Item(*.d2i)|*.d2i|All File(*.*)|*.*||"));
+	if (open.DoModal() == IDOK) {
+		CD2Item item;
+		if (item.ReadFile(CFile(open.GetPathName(), CFile::modeRead))) {
+			item.iLocation = 4;	//设置物品被鼠标拿起
+			AddItemInGrid(item, 0);
+		}
+	}
 }
 
 void CDlgCharItems::OnItemExport() {
 	//update item
 	const auto & view = SelectedItemView();
-	COutBitsStream bs;
-	view.UpdatedItem(m_vItemViews).WriteData(bs);
+	const auto item = view.UpdatedItem(m_vItemViews);
 	//serialize to file
-	if (bs.Good() && bs.BytePos() > 0) {
-		CFileDialog save_item(FALSE, 0, view.ItemName() + _T(".d2i"), OFN_OVERWRITEPROMPT | OFN_PATHMUSTEXIST, _T("Diablo II Item(*.d2i)|*.d2i|All File(*.*)|*.*||"));
-		if (save_item.DoModal() == IDOK)
-			bs.WriteFile(CFile(save_item.GetPathName(), CFile::modeCreate | CFile::modeWrite));
-	}
+	CFileDialog save_item(FALSE, 0, view.ItemName() + _T(".d2i"), OFN_OVERWRITEPROMPT | OFN_PATHMUSTEXIST, _T("Diablo II Item(*.d2i)|*.d2i|All File(*.*)|*.*||"));
+	if (save_item.DoModal() == IDOK)
+		item.WriteFile(CFile(save_item.GetPathName(), CFile::modeCreate | CFile::modeWrite));
 }
 
 void CDlgCharItems::OnItemCopy() {

@@ -21,7 +21,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 // 自定义函数
 public:
-	void UpdateUI(CD2S_Struct & character);
+	void UpdateUI(const CD2S_Struct & character);
 	BOOL GatherData(CD2S_Struct & character);
 	void ResetAll();
 	void LoadText(void);

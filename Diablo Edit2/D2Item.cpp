@@ -543,6 +543,23 @@ void CD2Item::WriteData(COutBitsStream & bs) const {
 			item.WriteData(bs);
 }
 
+BOOL CD2Item::ReadFile(CFile & file) {
+	CInBitsStream bs;
+	bs.ReadFile(file);
+	try {
+		ReadData(bs);
+	} catch (...) {
+		return FALSE;
+	}
+	return TRUE;
+}
+
+void CD2Item::WriteFile(CFile & file) const {
+	COutBitsStream bs;
+	WriteData(bs);
+	bs.WriteFile(file);
+}
+
 // struct CItemList
 
 CInBitsStream & operator >>(CInBitsStream & bs, CItemList & v){

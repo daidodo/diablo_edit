@@ -16,7 +16,7 @@ enum EPositionType;
 //物品的视图
 struct CItemView
 {
-	CD2Item & Item;						//对应的物品
+	CD2Item Item;						//对应的物品
 	const UINT nPicRes;					//bmp图片资源索引
 	const EEquip iEquip;				//物品可装备的位置
 	EPosition iPosition;				//物品位置
@@ -24,7 +24,7 @@ struct CItemView
 	const int iGridWidth, iGridHeight;	//自身占用网格大小
 	std::vector<int> vGemItems;			//镶嵌的物品在m_vItemViews的索引，-1表示没有
 	//Functions:
-	CItemView(CD2Item & item, EEquip equip, EPosition pos, int x, int y);
+	CItemView(const CD2Item & item, EEquip equip, EPosition pos, int x, int y);
 	CSize ViewSize() const;
 	CString ItemName() const { return Item.ItemName(); }
 	CD2Item UpdatedItem(const std::vector<CItemView> & vItemViews) const;
@@ -70,7 +70,7 @@ class CDlgCharItems : public CPropertyDialog
 	BOOL m_bSecondHand = FALSE;				//是否显示II手武器
 	BOOL m_bCorpseSecondHand = FALSE;		//是否显示尸体的II手武器
 	BOOL m_bHasMercenary = FALSE;			//是否有雇佣兵
-	void AddItemInGrid(CD2Item & item, int body);			//将物品添加到网格中, body: 0-人物本身，1-尸体，2-雇佣兵，3-Golem
+	void AddItemInGrid(const CD2Item & item, int body);		//将物品添加到网格中, body: 0-人物本身，1-尸体，2-雇佣兵，3-Golem
 	CPoint GetItemPositionXY(const CItemView & view) const;	//得到物品的实际像素坐标
 
 	//铸造台
@@ -123,7 +123,7 @@ public:
 	enum { IDD = IDD_DIALOG_CharItems };
 	CDlgCharItems(CWnd* pParent = NULL);   // 标准构造函数
 	//虚函数
-	void UpdateUI(CD2S_Struct & character);
+	void UpdateUI(const CD2S_Struct & character);
 	BOOL GatherData(CD2S_Struct & character);
 	void ResetAll();
 	void LoadText(void);	//加载控件的字符串内容

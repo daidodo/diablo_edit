@@ -146,7 +146,7 @@ BEGIN_MESSAGE_MAP(CDlgCharBasicInfo, CDialog)
 END_MESSAGE_MAP()
 
 // 更新显示的人物信息
-void CDlgCharBasicInfo::UpdateUI(CD2S_Struct & character)
+void CDlgCharBasicInfo::UpdateUI(const CD2S_Struct & character)
 {
 	switch(character.dwVersion){
 		case 0x60:m_sVersion = _T("1.10");break;

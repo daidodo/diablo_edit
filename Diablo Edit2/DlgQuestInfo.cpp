@@ -109,7 +109,7 @@ BEGIN_MESSAGE_MAP(CDlgQuestInfo, CDialog)
 	ON_BN_CLICKED(IDC_RADIO3, &CDlgQuestInfo::OnBnClicked_Hell)
 END_MESSAGE_MAP()
 
-void CDlgQuestInfo::UpdateUI(CD2S_Struct & character)
+void CDlgQuestInfo::UpdateUI(const CD2S_Struct & character)
 {
 	for(int i = 0;i < 3;++i){
 		for(int j = 0;j < 6;++j){

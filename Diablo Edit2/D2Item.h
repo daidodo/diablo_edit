@@ -196,6 +196,8 @@ struct CD2Item
 	CString ItemName() const;
 	void ReadData(CInBitsStream & bs);
 	void WriteData(COutBitsStream & bs) const;
+	BOOL ReadFile(CFile & file);
+	void WriteFile(CFile & file) const;
 private:
 	std::vector<BYTE>		vUnknownItem;	//如果不能识别物品,那么物品的数据将存在这里
 	const CItemMetaData *	pItemData;		//物品的额外属性,大小,bHasDef,bNoDurability,bStacked,等.如果不能识别物品,pItemData = 0;
