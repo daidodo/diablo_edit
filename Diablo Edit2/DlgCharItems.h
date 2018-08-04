@@ -16,15 +16,18 @@ enum EPositionType;
 //物品的视图
 struct CItemView
 {
-	CD2Item & Item;						//对应的物品
+	CD2Item Item;						//对应的物品
 	const UINT nPicRes;					//bmp图片资源索引
 	const EEquip iEquip;				//物品可装备的位置
 	EPosition iPosition;				//物品位置
 	int iGridX, iGridY;					//网格坐标
 	const int iGridWidth, iGridHeight;	//自身占用网格大小
 	std::vector<int> vGemItems;			//镶嵌的物品在m_vItemViews的索引，-1表示没有
-	CItemView(CD2Item & item, EEquip equip, EPosition pos, int x, int y);
+	//Functions:
+	CItemView(const CD2Item & item, EEquip equip, EPosition pos, int x, int y);
 	CSize ViewSize() const;
+	CString ItemName() const { return Item.ItemName(); }
+	CD2Item UpdatedItem(const std::vector<CItemView> & vItemViews) const;
 };
 
 //网格位置的视图
@@ -59,6 +62,7 @@ class CDlgCharItems : public CPropertyDialog
 
 	std::vector<GridView> m_vGridView;		//所有网格的信息
 	void DrawGrids(CPaintDC & dc);			//画所有网格
+	BOOL m_bHasCharacter = FALSE;			//是否加载了人物
 	
 	//物品和位置
 	std::vector<CItemView> m_vItemViews;	//所有的物品,除了镶嵌在孔里的
@@ -66,7 +70,8 @@ class CDlgCharItems : public CPropertyDialog
 	BOOL m_bSecondHand = FALSE;				//是否显示II手武器
 	BOOL m_bCorpseSecondHand = FALSE;		//是否显示尸体的II手武器
 	BOOL m_bHasMercenary = FALSE;			//是否有雇佣兵
-	void AddItemInGrid(CD2Item & item, int body);			//将物品添加到网格中, body: 0-人物本身，1-尸体，2-雇佣兵，3-Golem
+	void AddItemInGrid(const CD2Item & item, int body);		//将物品添加到网格中, body: 0-人物本身，1-尸体，2-雇佣兵，3-Golem
+	void RecycleItemFromGrid(CItemView & view);				//将物品从网格移除
 	CPoint GetItemPositionXY(const CItemView & view) const;	//得到物品的实际像素坐标
 
 	//铸造台
@@ -86,8 +91,6 @@ class CDlgCharItems : public CPropertyDialog
 	CListCtrl m_lcPropertyList;		//物品属性列表
 	void ResetFoundry();			//初始化铸造台
 	void ReadItemProperty(const CD2Item & item);	//读取物品的属性，并显示在锻造台
-	CItemView & SelectedParentItemView();			//当前选中的父物品视图
-	//const CItemView * SelectedItemView() const;	//当前选中的物品视图，没有返回0
 
 	//悬浮窗
 	static const int INFO_WINDOW_LEFT = 50;		//左边悬浮窗的位置X
@@ -107,16 +110,21 @@ class CDlgCharItems : public CPropertyDialog
 	int m_iPickedItemIndex = -1;		//当前鼠标拿起的物品在m_vItemViews中的索引
 	HCURSOR m_hCursor;					//鼠标
 	CPoint m_pMouse;					//鼠标位置
+	CItemView & SelectedParentItemView();			//当前选中的父物品视图
+	CItemView & SelectedItemView();					//当前选中的物品视图
 	std::tuple<int, int, int> HitTestPosition(CPoint pos, int col = 1, int row = 1) const;	//由像素XY和物品大小得到网格位置
 	HCURSOR CreateAlphaCursor(const CItemView & itemView);	//把物品bmp转换成鼠标句柄
-	BOOL PutItemInGrid(EPosition pos, int x, int y);	//尝试将已拿起的物品放到指定位置（不包括鼠标）
+	BOOL PutItemInGrid(EPosition pos, int x, int y);		//尝试将已拿起的物品放到指定位置（不包括鼠标）
+
+	//弹出菜单
+	BOOL m_bClickOnItem = FALSE;		//当前鼠标是否点中了物品
+	int m_iCopiedItemIndex = -1;		//复制的物品在m_vItemViews中的索引，-1为没有
 public:
 	//对话框数据
 	enum { IDD = IDD_DIALOG_CharItems };
 	CDlgCharItems(CWnd* pParent = NULL);   // 标准构造函数
-	virtual ~CDlgCharItems() { ResetAll(); };
 	//虚函数
-	void UpdateUI(CD2S_Struct & character);
+	void UpdateUI(const CD2S_Struct & character);
 	BOOL GatherData(CD2S_Struct & character);
 	void ResetAll();
 	void LoadText(void);	//加载控件的字符串内容
@@ -141,4 +149,13 @@ private:
 	afx_msg void OnChangeCorpse();
 	afx_msg BOOL OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message);
 	afx_msg void OnChangeMercenary();
+public:
+	afx_msg void OnContextMenu(CWnd* /*pWnd*/, CPoint /*point*/);
+	afx_msg void OnItemImport();
+	afx_msg void OnItemExport();
+	afx_msg void OnItemCopy();
+	afx_msg void OnItemPaste();
+	afx_msg void OnItemModify();
+	afx_msg void OnItemRemove();
+	afx_msg void OnMenuSelect(UINT nItemID, UINT nFlags, HMENU hSysMenu);
 };

@@ -8,6 +8,14 @@
 
 using namespace std;
 
+//Popup menu item IDs
+#define ID_ITEM_IMPORT                  100
+#define ID_ITEM_EXPORT                  101
+#define ID_ITEM_COPY                    102
+#define ID_ITEM_PASTE                   103
+#define ID_ITEM_MODIFY                  104
+#define ID_ITEM_REMOVE                  105
+
 const int GRID_WIDTH = 30;	//每个网格的边长(像素)
 
 //物品能装备的位置
@@ -77,6 +85,7 @@ enum EPosition {
 	POSITION_END,		//所有网格位置总数
 
 	IN_MOUSE = POSITION_END,	//被鼠标拿起
+	IN_RECYCLE,					//被删除
 };
 
 static BOOL IsCorpse(EPosition pos) { return CORPSE_HEAD <= pos && pos < CORPSE_END; }
@@ -84,6 +93,8 @@ static BOOL IsCorpse(EPosition pos) { return CORPSE_HEAD <= pos && pos < CORPSE_
 static BOOL IsInMouse(EPosition pos) { return IN_MOUSE == pos; }
 
 static BOOL IsInSocket(EPosition pos) { return IN_SOCKET == pos; }
+
+static BOOL IsInRecycle(EPosition pos) { return IN_RECYCLE == pos; }
 
 //位置类型
 enum EPositionType {
@@ -173,7 +184,7 @@ static EEquip PositionToEquip(EPosition pos) {
 }
 
 //body: 0-人物本身，1-尸体，2-雇佣兵，3-Golem
-tuple<EPosition, int, int> ItemToPosition(int iLocation, int iPosition, int iColumn, int iRow, int iStoredIn, int body) {
+static tuple<EPosition, int, int> ItemToPosition(int iLocation, int iPosition, int iColumn, int iRow, int iStoredIn, int body) {
 	if (3 == body)
 		return make_tuple(GOLEM, 0, 0);
 	int pos = -1, x = 0, y = 0;	//物品的位置(EPosition)和坐标
@@ -203,7 +214,7 @@ tuple<EPosition, int, int> ItemToPosition(int iLocation, int iPosition, int iCol
 		case 2:		//in belt(物品排列方式与其他网格不同)
 			pos = IN_BELT;
 			x = iColumn % 4;
-			y = POSITION_INFO[pos][3] - iColumn / 4 - 1;
+			y = 3 - iColumn / 4;
 			break;
 		case 4:		//in hand(鼠标)
 			pos = IN_MOUSE;
@@ -215,9 +226,51 @@ tuple<EPosition, int, int> ItemToPosition(int iLocation, int iPosition, int iCol
 	return make_tuple(EPosition(pos), x, y);
 }
 
+static tuple<int, int, int, int, int> PositionToItem(EPosition pos, int x, int y) {
+	ASSERT(0 <= x && 0 <= y);
+	int loc = 0, body = 0, col = 0, row = 0, store = 0;
+	switch (pos) {
+		//grid
+		case STASH:		col = x, row = y, store = 5; break;
+		case INVENTORY:	col = x, row = y, store = 1; break;
+		case CUBE:		col = x, row = y, store = 4; break;
+		case IN_BELT:	loc = 2, col = (3 - y) * 4 + x; break;
+		case IN_SOCKET:	loc = 6, col = x; break;
+		//body
+		case RIGHT_HAND:
+		case LEFT_HAND:	body = (1 == x ? 7 : 0);	//II hand adjustment
+		case HEAD:
+		case NECK:
+		case BODY:
+		case RIGHT_RING:
+		case LEFT_RING:
+		case BELT:
+		case GLOVE:		loc = 1, body += pos - HEAD + 1; break;
+		//corpse
+		case CORPSE_RIGHT_HAND:
+		case CORPSE_LEFT_HAND:	body = (1 == x ? 7 : 0);	//II hand adjustment
+		case CORPSE_HEAD:
+		case CORPSE_NECK:
+		case CORPSE_BODY:
+		case CORPSE_RIGHT_RING:
+		case CORPSE_LEFT_RING:
+		case CORPSE_BELT:
+		case CORPSE_FOOT:
+		case CORPSE_GLOVE:		loc = 1, body += pos - CORPSE_HEAD + 1; break;
+		//mercenary
+		case MERCENARY_HEAD:		loc = 1, body = 1; break;
+		case MERCENARY_BODY:		loc = 1, body = 3; break;
+		case MERCENARY_RIGHT_HAND:	loc = 1, body = 4; break;
+		case MERCENARY_LEFT_HAND:	loc = 1, body = 5; break;
+		//other
+		case IN_MOUSE:	loc = 4; break;
+	}
+	return make_tuple(loc, body, col, row, store);
+}
+
 //struct CItemView
 
-CItemView::CItemView(CD2Item & item, EEquip equip, EPosition pos, int x, int y)
+CItemView::CItemView(const CD2Item & item, EEquip equip, EPosition pos, int x, int y)
 	: Item(item)
 	, nPicRes(IDB_BITMAP0 + item.MetaData().PicIndex)
 	, iEquip(equip)
@@ -233,6 +286,26 @@ CItemView::CItemView(CD2Item & item, EEquip equip, EPosition pos, int x, int y)
 }
 
 CSize CItemView::ViewSize() const { return CSize(iGridWidth * GRID_WIDTH, iGridHeight*GRID_WIDTH); }
+
+CD2Item CItemView::UpdatedItem(const std::vector<CItemView> & vItemViews) const {
+	CD2Item item(Item);
+	//update position
+	const auto t = PositionToItem(iPosition, iGridX, iGridY);
+	item.iLocation = get<0>(t);
+	item.iPosition = get<1>(t);
+	item.iColumn = get<2>(t);
+	item.iRow = get<3>(t);
+	item.iStoredIn = get<4>(t);
+	//update gems
+	item.aGemItems.clear();
+	for (int i : vGemItems) {
+		if (i < 0)
+			continue;
+		ASSERT(i < int(vItemViews.size()));
+		item.aGemItems.push_back(vItemViews[i].UpdatedItem(vItemViews));
+	}
+	return item;
+}
 
 //struct GridView
 
@@ -412,9 +485,17 @@ BEGIN_MESSAGE_MAP(CDlgCharItems, CDialog)
 	ON_BN_CLICKED(IDC_CHECK4, &CDlgCharItems::OnChangeCorpseHand)
 	ON_BN_CLICKED(IDC_CHECK_Corpse, &CDlgCharItems::OnChangeCorpse)
 	ON_BN_CLICKED(IDC_CHECK_Mercenary, &CDlgCharItems::OnChangeMercenary)
+	ON_WM_CONTEXTMENU()
+	ON_COMMAND(ID_ITEM_IMPORT, &CDlgCharItems::OnItemImport)
+	ON_COMMAND(ID_ITEM_EXPORT, &CDlgCharItems::OnItemExport)
+	ON_COMMAND(ID_ITEM_COPY, &CDlgCharItems::OnItemCopy)
+	ON_COMMAND(ID_ITEM_PASTE, &CDlgCharItems::OnItemPaste)
+	ON_COMMAND(ID_ITEM_MODIFY, &CDlgCharItems::OnItemModify)
+	ON_COMMAND(ID_ITEM_REMOVE, &CDlgCharItems::OnItemRemove)
+	ON_WM_MENUSELECT()
 END_MESSAGE_MAP()
 
-void CDlgCharItems::UpdateUI(CD2S_Struct & character) {
+void CDlgCharItems::UpdateUI(const CD2S_Struct & character) {
 	ResetAll();
 	//Character items
 	for (auto & item : character.ItemList.vItems) 
@@ -437,10 +518,11 @@ void CDlgCharItems::UpdateUI(CD2S_Struct & character) {
 	if (character.stGolem.pItem.exist())
 		AddItemInGrid(*character.stGolem.pItem, 3);
 
+	m_bHasCharacter = TRUE;
 	Invalidate();
 }
 
-void CDlgCharItems::AddItemInGrid(CD2Item & item, int body) {
+void CDlgCharItems::AddItemInGrid(const CD2Item & item, int body) {
 	EEquip equip = ItemToEquip(item.MetaData());
 	auto t = ItemToPosition(item.iLocation, item.iPosition, item.iColumn, item.iRow, item.iStoredIn, body);
 	EPosition pos = get<0>(t);
@@ -456,12 +538,20 @@ void CDlgCharItems::AddItemInGrid(CD2Item & item, int body) {
 	//Sockets & Gems
 	if (!item.aGemItems.empty()) {
 		ASSERT(item.aGemItems.size() <= m_vItemViews[index].vGemItems.size());
-		int i = 0;
 		for (auto & gem : item.aGemItems) {
-			m_vItemViews[index].vGemItems[i] = m_vItemViews.size();
-			m_vItemViews.emplace_back(gem, ItemToEquip(gem.MetaData()), IN_SOCKET, i++, 0);
+			ASSERT(0 <= gem.iColumn && gem.iColumn < int(m_vItemViews[index].vGemItems.size()));
+			ASSERT(m_vItemViews[index].vGemItems[gem.iColumn] < 0);
+			m_vItemViews[index].vGemItems[gem.iColumn] = m_vItemViews.size();
+			m_vItemViews.emplace_back(gem, ItemToEquip(gem.MetaData()), IN_SOCKET, gem.iColumn, 0);
 		}
 	}
+}
+
+void CDlgCharItems::RecycleItemFromGrid(CItemView & view) {
+	ASSERT(view.iPosition < POSITION_END);
+	auto & grid = m_vGridView[view.iPosition];
+	grid.ItemIndex(-1, view.iGridX, view.iGridY, view.iGridWidth, view.iGridHeight);
+	view.iPosition = IN_RECYCLE;
 }
 
 CPoint CDlgCharItems::GetItemPositionXY(const CItemView & view) const {
@@ -474,12 +564,12 @@ CItemView & CDlgCharItems::SelectedParentItemView() {
 	return m_vItemViews[m_iSelectedItemIndex];
 }
 
-//const CItemView * CDlgCharItems::SelectedItemView() const {
-//	const auto parent = SelectedParentItemView();
-//	if(parent && 0 <= m_iSelectedSocketIndex && m_iSelectedSocketIndex < int(parent->vGemItems.size()))
-//		return &parent->vGemItems[m_iSelectedSocketIndex];
-//	return parent;
-//}
+CItemView & CDlgCharItems::SelectedItemView() {
+	if (m_iSelectedSocketIndex < 0)
+		return SelectedParentItemView();
+	ASSERT(m_iSelectedSocketIndex < int(m_vItemViews.size()));
+	return m_vItemViews[m_iSelectedSocketIndex];
+}
 
 //画一个网格或矩形
 static void DrawGrid(CPaintDC & dc, const CRect & rect, int intervalX = 0, int intervalY = 0)
@@ -527,16 +617,18 @@ void CDlgCharItems::DrawAllItemsInGrid(CPaintDC & dc) const
 	CRect selectedGrid(0, 0, 0, 0), selectedSocket(0, 0, 0, 0);
 	for (size_t i = 0; i < m_vItemViews.size(); ++i) {
 		auto & view = m_vItemViews[i];
+		if (::IsInRecycle(view.iPosition))
+			continue;	//被删除
+		if (::IsInMouse(view.iPosition))
+			continue;	//被鼠标拿起
+		if (::IsInSocket(view.iPosition))
+			continue;	//镶嵌在孔里
 		//在左右手上，分I, II显示不同物品，包括尸体
 		if ((RIGHT_HAND == view.iPosition || LEFT_HAND == view.iPosition)
 			&& view.iGridX != (m_bSecondHand ? 1 : 0))
 			continue;
 		if ((CORPSE_RIGHT_HAND == view.iPosition || CORPSE_LEFT_HAND == view.iPosition)
 			&& view.iGridX != (m_bCorpseSecondHand ? 1 : 0))
-			continue;
-		if (::IsInMouse(view.iPosition))
-			continue;
-		if (::IsInSocket(view.iPosition))
 			continue;
 		auto pos = GetItemPositionXY(view);
 		DrawItemXY(dc, pos, view);
@@ -680,6 +772,8 @@ void CDlgCharItems::ResetAll()
 		m_hCursor = ::LoadCursor(0, IDC_ARROW);
 		m_iPickedItemIndex = -1;
 	}
+	m_bHasCharacter = FALSE;
+	Invalidate();
 }
 
 void CDlgCharItems::LoadText(void)
@@ -700,6 +794,19 @@ void CDlgCharItems::LoadText(void)
     m_lcPropertyList.SetColumn(1,&col);*/
 
 	UpdateData(FALSE);
+}
+
+void CDlgCharItems::OnMenuSelect(UINT nItemID, UINT nFlags, HMENU hSysMenu) {
+	CPropertyDialog::OnMenuSelect(nItemID, nFlags, hSysMenu);
+	CFrameWnd & frame = *GetParentFrame();
+	switch (nItemID) {
+		case ID_ITEM_IMPORT:	frame.SetMessageText(::theApp.MenuPrompt(9)); break;
+		case ID_ITEM_EXPORT:	frame.SetMessageText(::theApp.MenuPrompt(10)); break;
+		case ID_ITEM_COPY:		frame.SetMessageText(::theApp.MenuPrompt(11)); break;
+		case ID_ITEM_PASTE:		frame.SetMessageText(::theApp.MenuPrompt(12)); break;
+		case ID_ITEM_MODIFY:	frame.SetMessageText(::theApp.MenuPrompt(13)); break;
+		case ID_ITEM_REMOVE:	frame.SetMessageText(::theApp.MenuPrompt(14)); break;
+	}
 }
 
 // CDlgCharItems 消息处理程序
@@ -802,6 +909,7 @@ void CDlgCharItems::OnLButtonDown(UINT nFlags, CPoint point)
 
 void CDlgCharItems::OnRButtonUp(UINT nFlags, CPoint point)
 {
+	m_bClickOnItem = FALSE;
 	if (m_iPickedItemIndex < 0) {	//未拿起物品
 		auto t = HitTestPosition(point);
 		const int pos = get<0>(t), x = get<1>(t), y = get<2>(t);
@@ -809,6 +917,7 @@ void CDlgCharItems::OnRButtonUp(UINT nFlags, CPoint point)
 			auto & grid = m_vGridView[pos];
 			int index = grid.ItemIndex(x, y);
 			if (index >= 0) {	//点中了物品
+				m_bClickOnItem = TRUE;
 				if (grid.IsSockets()) {	//是镶嵌的宝石
 					if (index != m_iSelectedSocketIndex) {
 						m_iSelectedSocketIndex = index;
@@ -828,6 +937,42 @@ void CDlgCharItems::OnRButtonUp(UINT nFlags, CPoint point)
 		}
 	}
     CPropertyDialog::OnRButtonUp(nFlags, point);
+}
+
+void CDlgCharItems::OnContextMenu(CWnd* /*pWnd*/, CPoint point) {
+	if (m_bHasCharacter && m_iPickedItemIndex < 0) {	//未拿起物品
+		/*	创建弹出菜单：
+				Import
+				Export
+				---
+				Copy
+				Paste
+				---
+				Modify
+				Remove
+		*/
+		CMenu menu;
+		menu.CreatePopupMenu();
+		ASSERT(::IsMenu(menu.m_hMenu));
+		//Texts
+		menu.AppendMenu(MF_STRING, ID_ITEM_IMPORT, ::theApp.CharItemPopupMenu(0));
+		menu.AppendMenu(MF_STRING, ID_ITEM_EXPORT, ::theApp.CharItemPopupMenu(1));
+		menu.AppendMenu(MF_SEPARATOR);
+		menu.AppendMenu(MF_STRING, ID_ITEM_COPY, ::theApp.CharItemPopupMenu(2));
+		menu.AppendMenu(MF_STRING, ID_ITEM_PASTE, ::theApp.CharItemPopupMenu(3));
+		menu.AppendMenu(MF_SEPARATOR);
+		menu.AppendMenu(MF_STRING, ID_ITEM_MODIFY, ::theApp.CharItemPopupMenu(4));
+		menu.AppendMenu(MF_STRING, ID_ITEM_REMOVE, ::theApp.CharItemPopupMenu(5));
+		//Appearance
+		menu.EnableMenuItem(ID_ITEM_IMPORT, (m_bClickOnItem ? MF_DISABLED : MF_ENABLED));
+		menu.EnableMenuItem(ID_ITEM_EXPORT, (m_bClickOnItem ? MF_ENABLED : MF_DISABLED));
+		menu.EnableMenuItem(ID_ITEM_COPY, (m_bClickOnItem ? MF_ENABLED : MF_DISABLED));
+		menu.EnableMenuItem(ID_ITEM_PASTE, (0 <= m_iCopiedItemIndex ? MF_ENABLED : MF_DISABLED));
+		menu.EnableMenuItem(ID_ITEM_MODIFY, (m_bClickOnItem ? MF_ENABLED : MF_DISABLED));
+		menu.EnableMenuItem(ID_ITEM_REMOVE, (m_bClickOnItem ? MF_ENABLED : MF_DISABLED));
+
+		menu.TrackPopupMenu(TPM_LEFTALIGN | TPM_RIGHTBUTTON, point.x, point.y, this);
+	}
 }
 
 BOOL CDlgCharItems::OnInitDialog()
@@ -984,4 +1129,58 @@ BOOL CDlgCharItems::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message) {
 		return TRUE;
 	}
 	return CPropertyDialog::OnSetCursor(pWnd, nHitTest, message);
+}
+
+void CDlgCharItems::OnItemImport() {
+	CFileDialog open(TRUE, _T("d2i"), 0, OFN_HIDEREADONLY | OFN_FILEMUSTEXIST, _T("Diablo II Item(*.d2i)|*.d2i|All File(*.*)|*.*||"));
+	if (open.DoModal() == IDOK) {
+		CD2Item item;
+		if (item.ReadFile(CFile(open.GetPathName(), CFile::modeRead))) {
+			item.iLocation = 4;	//设置物品被鼠标拿起
+			AddItemInGrid(item, 0);
+		}
+	}
+}
+
+void CDlgCharItems::OnItemExport() {
+	//update item
+	const auto & view = SelectedItemView();
+	const auto item = view.UpdatedItem(m_vItemViews);
+	//serialize to file
+	CFileDialog save_item(FALSE, 0, view.ItemName() + _T(".d2i"), OFN_OVERWRITEPROMPT | OFN_PATHMUSTEXIST, _T("Diablo II Item(*.d2i)|*.d2i|All File(*.*)|*.*||"));
+	if (save_item.DoModal() == IDOK)
+		item.WriteFile(CFile(save_item.GetPathName(), CFile::modeCreate | CFile::modeWrite));
+}
+
+void CDlgCharItems::OnItemCopy() {
+	m_iCopiedItemIndex = (0 <= m_iSelectedSocketIndex ? m_iSelectedSocketIndex : m_iSelectedItemIndex);
+	OnItemPaste();
+}
+
+void CDlgCharItems::OnItemPaste() {
+	ASSERT(0 <= m_iCopiedItemIndex && m_iCopiedItemIndex < int(m_vItemViews.size()));
+	CD2Item item(m_vItemViews[m_iCopiedItemIndex].Item);
+	item.iLocation = 4;	//设置物品被鼠标拿起
+	AddItemInGrid(item, 0);
+}
+
+void CDlgCharItems::OnItemModify() {
+	// TODO: 在此添加命令处理程序代码
+}
+
+void CDlgCharItems::OnItemRemove() {
+	auto & view = SelectedItemView();
+	if (::IsInSocket(view.iPosition)) {	//删除镶嵌的宝石
+		auto & gems = SelectedParentItemView().vGemItems;
+		ASSERT(0 <= view.iGridX && view.iGridX < int(gems.size()));
+		gems[view.iGridX] = -1;
+	}else	//删除其他物品
+		for (int i : view.vGemItems) {	//先删除镶嵌的宝石
+			if (i < 0)
+				continue;
+			ASSERT(i < int(m_vItemViews.size()));
+			RecycleItemFromGrid(m_vItemViews[i]);
+		}
+	RecycleItemFromGrid(view);
+	Invalidate();
 }

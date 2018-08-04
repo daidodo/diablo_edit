@@ -12,7 +12,7 @@ public:
 	CPropertyDialog(UINT nIDTemplate,CWnd* pParent = NULL);   // 标准构造函数
 	virtual ~CPropertyDialog();
 // 自定义函数
-	virtual void UpdateUI(CD2S_Struct & character) = 0;
+	virtual void UpdateUI(const CD2S_Struct & character) = 0;
 	virtual BOOL GatherData(CD2S_Struct & character) = 0;
 	virtual void ResetAll() = 0;
 	virtual void LoadText() = 0;	//加载控件的字符串内容

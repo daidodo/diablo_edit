@@ -30,6 +30,43 @@
 116	Delete	删除	刪除
 117	Code	代码	代碼
 118	Description	说明	説明
+*=======================菜单项的提示信息			
+0	Create a new character	创建新角色	創建新角色
+1	Open an existing character	打开现有角色	打開現有角色
+2	Save current character	保存当前角色	保存當前角色
+3	Save current character to another file	用新文件保存当前角色	用新文件保存當前角色
+4	Close current character	关闭当前角色；提示保存	關閉當前角色；提示保存
+5	Exit the application	退出应用程序；提示保存	退出應用程序；提示保存
+6	Show/Hide toolbar	显示或隐藏工具栏	顯示或隱藏工具欄
+7	Show/Hide status bar	显示或隐藏状态栏	顯示或隱藏狀態欄
+8	"Show application info, version and license"	显示程序信息、版本号和版权	顯示程序信息、版本號和版權
+9	Import an item from file	从文件导入一件装备	從文件導入一件裝備
+10	Save the item to a file	将装备导出到文件	將裝備導出到文件
+11	Copy the item	复制装备	複製裝備
+12	Paste the item copied	粘贴已复制的装备	粘貼已複製的裝備
+13	Modify the item	修改装备的属性	修改裝備的屬性
+14	Remove the item	删除装备	刪除裝備
+*=======================角色物品UI弹出菜单			
+0	&Import	导入(&I)	導入(&I)
+1	&Export	导出(&E)	導出(&E)
+2	&Copy	复制(&C)	複製(&C)
+3	&Paste	粘贴(&P)	粘貼(&P)
+4	&Modify	修改(&M)	修改(&M)
+5	&Remove	删除(&R)	刪除(&R)
+*=======================系统菜单			
+0	&File	文件(&F)	文件(&F)
+1	&View	视图(&V)	視圖(&V)
+2	&Help	帮助(&H)	幫助(&H)
+3	&New	新建(&N)	新建(&N)
+4	&Open	打开(&O)	打開(&O)
+5	&Save	保存(&S)	保存(&S)
+6	Save &As …	另存为(&A)…	另存為(&A)…
+7	&Close	关闭(&C)	關閉(&C)
+8	E&xit	退出(&X)	退出(&X)
+9	Tool &Bar	工具栏(&B)	工具欄(&B)
+10	S&tatus Bar	状态栏(&T)	狀態欄(&T)
+11	&Language	语言(&L)	語言(&L)
+12	&About Diablo Edit …	关于Diablo Edit(&A) …	關於Diablo Edit(&A) …
 *=======================其他窗口UI			
 0	Please Choose a character class	请选择角色	請選擇角色
 1	Amazon Skills	亚马逊技能	亞馬遜技能
@@ -4286,7 +4323,7 @@
 76	Tal Rasha's Fire-Spun Cloth		
 77	Tal Rasha's Adjudication		
 78	Tal Rasha's Lidless Eye		
-79	Tal Rasha's Howling Wind		
+79	Tal Rasha's Guardianship		
 80	Tal Rasha's Horadric Crest		
 81	Griswold's Valor		
 82	Griswold's Heart		
@@ -4334,3 +4371,82 @@
 124	McAuley's Riprap		
 125	McAuley's Taboo		
 126	McAuley's Superstition		
+*=======================以下是符文之语名字(Rune Name)			
+27	Ancient's Pledge		
+30	Beast		
+32	Black		
+34	Bone		
+35	Bramble		
+36	Brand		
+37	Breath of the Dying		
+39	Call to Arms		
+40	Chains of Honor		
+42	Chaos		
+43	Crescent Moon		
+46	Death		
+51	Destruction		
+52	Doom		
+53	Dragon		
+55	Dream		
+56	Duress		
+57	Edge		
+59	Enigma		
+60	Enlightenment		
+62	Eternity		
+63	Exile		
+64	Faith		
+65	Famine		
+67	Fortitude		
+70	Fury		
+71	Gloom		
+73	Grief		
+74	Hand of Justice		
+75	Harmory		
+77	Heart of the Oak		
+80	Holy Thunder		
+81	Honor		
+85	Ice		
+86	Infinity		
+88	Insight		
+91	King's Grace		
+92	Kingslayer		
+95	Last Wish		
+97	Lawbringer		
+98	Leaf		
+100	Lionheart		
+101	Lore		
+106	Malice		
+107	Melody		
+108	Memory		
+112	Myth		
+113	Nadir		
+116	Oath		
+117	Obedience		
+120	Passion		
+123	Peace		
+124	Winter		
+128	Phoenix		
+134	Pride		
+135	Principle		
+137	Prudence		
+141	Radiance		
+142	Rain		
+145	Rhyme		
+146	Rift		
+147	Sanctuary		
+151	Silence		
+153	Smoke		
+155	Spirit		
+156	Splendor		
+158	Stealth		
+159	Steel		
+162	Stone		
+164	Strength		
+173	Treachery		
+179	Venom		
+185	Wealth		
+187	White		
+188	Wind		
+193	Wrath		
+195	Zephyr		
+2718	Delirium		
