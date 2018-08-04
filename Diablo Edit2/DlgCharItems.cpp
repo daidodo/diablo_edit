@@ -85,6 +85,7 @@ enum EPosition {
 	POSITION_END,		//所有网格位置总数
 
 	IN_MOUSE = POSITION_END,	//被鼠标拿起
+	IN_RECYCLE,					//被删除
 };
 
 static BOOL IsCorpse(EPosition pos) { return CORPSE_HEAD <= pos && pos < CORPSE_END; }
@@ -92,6 +93,8 @@ static BOOL IsCorpse(EPosition pos) { return CORPSE_HEAD <= pos && pos < CORPSE_
 static BOOL IsInMouse(EPosition pos) { return IN_MOUSE == pos; }
 
 static BOOL IsInSocket(EPosition pos) { return IN_SOCKET == pos; }
+
+static BOOL IsInRecycle(EPosition pos) { return IN_RECYCLE == pos; }
 
 //位置类型
 enum EPositionType {
@@ -544,6 +547,13 @@ void CDlgCharItems::AddItemInGrid(const CD2Item & item, int body) {
 	}
 }
 
+void CDlgCharItems::RecycleItemFromGrid(CItemView & view) {
+	ASSERT(view.iPosition < POSITION_END);
+	auto & grid = m_vGridView[view.iPosition];
+	grid.ItemIndex(-1, view.iGridX, view.iGridY, view.iGridWidth, view.iGridHeight);
+	view.iPosition = IN_RECYCLE;
+}
+
 CPoint CDlgCharItems::GetItemPositionXY(const CItemView & view) const {
 	ASSERT(view.iPosition < POSITION_END);
 	return m_vGridView[view.iPosition].IndexToXY(view.iGridX, view.iGridY, view.iGridWidth, view.iGridHeight);
@@ -607,16 +617,18 @@ void CDlgCharItems::DrawAllItemsInGrid(CPaintDC & dc) const
 	CRect selectedGrid(0, 0, 0, 0), selectedSocket(0, 0, 0, 0);
 	for (size_t i = 0; i < m_vItemViews.size(); ++i) {
 		auto & view = m_vItemViews[i];
+		if (::IsInRecycle(view.iPosition))
+			continue;	//被删除
+		if (::IsInMouse(view.iPosition))
+			continue;	//被鼠标拿起
+		if (::IsInSocket(view.iPosition))
+			continue;	//镶嵌在孔里
 		//在左右手上，分I, II显示不同物品，包括尸体
 		if ((RIGHT_HAND == view.iPosition || LEFT_HAND == view.iPosition)
 			&& view.iGridX != (m_bSecondHand ? 1 : 0))
 			continue;
 		if ((CORPSE_RIGHT_HAND == view.iPosition || CORPSE_LEFT_HAND == view.iPosition)
 			&& view.iGridX != (m_bCorpseSecondHand ? 1 : 0))
-			continue;
-		if (::IsInMouse(view.iPosition))
-			continue;
-		if (::IsInSocket(view.iPosition))
 			continue;
 		auto pos = GetItemPositionXY(view);
 		DrawItemXY(dc, pos, view);
@@ -1157,5 +1169,18 @@ void CDlgCharItems::OnItemModify() {
 }
 
 void CDlgCharItems::OnItemRemove() {
-	// TODO: 在此添加命令处理程序代码
+	auto & view = SelectedItemView();
+	if (::IsInSocket(view.iPosition)) {	//删除镶嵌的宝石
+		auto & gems = SelectedParentItemView().vGemItems;
+		ASSERT(0 <= view.iGridX && view.iGridX < int(gems.size()));
+		gems[view.iGridX] = -1;
+	}else	//删除其他物品
+		for (int i : view.vGemItems) {	//先删除镶嵌的宝石
+			if (i < 0)
+				continue;
+			ASSERT(i < int(m_vItemViews.size()));
+			RecycleItemFromGrid(m_vItemViews[i]);
+		}
+	RecycleItemFromGrid(view);
+	Invalidate();
 }
