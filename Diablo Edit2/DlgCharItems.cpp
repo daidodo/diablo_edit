@@ -1141,11 +1141,15 @@ void CDlgCharItems::OnItemExport() {
 }
 
 void CDlgCharItems::OnItemCopy() {
-	// TODO: 在此添加命令处理程序代码
+	m_iCopiedItemIndex = (0 <= m_iSelectedSocketIndex ? m_iSelectedSocketIndex : m_iSelectedItemIndex);
+	OnItemPaste();
 }
 
 void CDlgCharItems::OnItemPaste() {
-	// TODO: 在此添加命令处理程序代码
+	ASSERT(0 <= m_iCopiedItemIndex && m_iCopiedItemIndex < int(m_vItemViews.size()));
+	CD2Item item(m_vItemViews[m_iCopiedItemIndex].Item);
+	item.iLocation = 4;	//设置物品被鼠标拿起
+	AddItemInGrid(item, 0);
 }
 
 void CDlgCharItems::OnItemModify() {

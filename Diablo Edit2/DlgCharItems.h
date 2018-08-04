@@ -116,7 +116,7 @@ class CDlgCharItems : public CPropertyDialog
 	BOOL PutItemInGrid(EPosition pos, int x, int y);		//尝试将已拿起的物品放到指定位置（不包括鼠标）
 
 	//弹出菜单
-	BOOL m_bClickOnItem = FALSE;		//是否点中了物品
+	BOOL m_bClickOnItem = FALSE;		//当前鼠标是否点中了物品
 	int m_iCopiedItemIndex = -1;		//复制的物品在m_vItemViews中的索引，-1为没有
 public:
 	//对话框数据
