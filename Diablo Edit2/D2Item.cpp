@@ -300,15 +300,16 @@ COutBitsStream & operator <<(COutBitsStream & bs, pair<const CTypeSpecificInfo &
 	return bs;
 }
 
-int CTypeSpecificInfo::Sockets() const {
-	int s = iSocket;
-	s += stPropertyList.ExtSockets();
+pair<int, int> CTypeSpecificInfo::Sockets() const {
+	const int b = min(6, (iSocket.exist() ? iSocket : 0));
+	int e = stPropertyList.ExtSockets();
 	for (auto & p : apSetProperty)
 		if (p.exist())
-			s += p->ExtSockets();
+			e += p->ExtSockets();
 	if (stRuneWordPropertyList.exist())
-		s += stRuneWordPropertyList->ExtSockets();
-	return min(s, 6);	//最多孔数不超过6
+		e += stRuneWordPropertyList->ExtSockets();
+	e = min(6 - b, e);
+	return make_pair(b, e);	//最多孔数不超过6
 }
 
 // struct CItemInfo

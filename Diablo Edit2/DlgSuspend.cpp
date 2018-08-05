@@ -65,12 +65,12 @@ void CDlgSuspend::AddMsg(BYTE color, const CString & msg) {
 		m_sItemMsg.emplace_back(color, msg);
 }
 
-void CDlgSuspend::AddPropertyList(BYTE color, const CPropertyList & propList, UINT & sockets) {
-	for (const auto & p : propList.mProperty)
+void CDlgSuspend::AddPropertyList(BYTE color, const CPropertyList & propList) {
+	for (const auto & p : propList.mProperty) {
 		if (p.first == 194)     //extend sockets
-			sockets += p.second;
-		else
-			AddMsg(color, ::theApp.PorpertyDescription(p.first, p.second));
+			continue;
+		AddMsg(color, ::theApp.PorpertyDescription(p.first, p.second));
+	}
 }
 
 LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem)
@@ -131,7 +131,7 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem)
 		AddMsg(color, text(name));
 		//Defence or Attack
 		if (meta.HasDef) {				//有防御值
-			AddMsg(WHITE, CSFormat(::theApp.ItemSuspendUI(2), UINT(pItem->pItemInfo->pTpSpInfo->iDefence - 10)));
+			AddMsg(WHITE, CSFormat(::theApp.ItemSuspendUI(2), UINT(pItem->pItemInfo->pTpSpInfo->GetDefence())));
 		} else if (meta.Damage1Min) {	//单手伤害
 			AddMsg(WHITE, CSFormat(::theApp.ItemSuspendUI(3), meta.Damage1Min, meta.Damage1Max));
 		} else if (meta.Damage2Min)		//双手伤害
@@ -151,25 +151,22 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem)
 				AddMsg(BLUE, ::theApp.ItemSuspendUI(7));
 		}
         //Property
-		UINT socketnum = 0;   //sockets num
 		if (!pItem->bSimple) {
-			AddPropertyList(BLUE, pItem->pItemInfo->pTpSpInfo->stPropertyList, socketnum);
+			AddPropertyList(BLUE, pItem->pItemInfo->pTpSpInfo->stPropertyList);
 			if (pItem->IsSet()) {
 				auto & setProps = pItem->pItemInfo->pTpSpInfo->apSetProperty;
 				for (size_t i = 0; i < std::size(setProps); ++i)
 					if (setProps[i].exist())
-						AddPropertyList(GREEN, *setProps[i], socketnum);
+						AddPropertyList(GREEN, *setProps[i]);
 			} else if (pItem->IsRuneWord())
-				AddPropertyList(BLUE, *pItem->pItemInfo->pTpSpInfo->stRuneWordPropertyList, socketnum);
+				AddPropertyList(BLUE, *pItem->pItemInfo->pTpSpInfo->stRuneWordPropertyList);
 		}
         //Ethereal
         if(pItem->bEthereal)
 			AddMsg(BLUE,::theApp.ItemSuspendUI(8));
         //Socket
-        if(pItem->bSocketed){
-            socketnum += pItem->pItemInfo->pTpSpInfo->iSocket;
-			AddMsg(BLUE, CSFormat(::theApp.ItemSuspendUI(9), pItem->pItemInfo->pExtItemInfo->nGems, socketnum));
-        }
+        if(pItem->bSocketed)
+			AddMsg(BLUE, CSFormat(::theApp.ItemSuspendUI(9), pItem->pItemInfo->pExtItemInfo->nGems, pItem->Sockets()));
     }
 	//根据信息条数和长度决定窗体长度和宽度
 	LONG maxLen = accumulate(m_sItemMsg.begin(), m_sItemMsg.end(), 0, [](LONG m, auto & a) {return max(m, a.second.GetLength()); });

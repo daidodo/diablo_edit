@@ -5,6 +5,7 @@
 #include "Diablo Edit2.h"
 #include "DlgPrefixSuffix.h"
 
+using namespace std;
 
 // CDlgPrefixSuffix ¶Ô»°¿ò
 
@@ -55,7 +56,7 @@ BOOL CDlgPrefixSuffix::OnInitDialog()
 {
     CDialog::OnInitDialog();
     SetWindowText(::theApp.PrefixSuffixUI(0));
-    for(int i = 0;i < 10;++i)
+    for(int i = 0;i < int(size(m_sText));++i)
         m_sText[i] = ::theApp.PrefixSuffixUI(1 + i);
     switch(m_nQuality){
         case 1:case 3:{ //low or high

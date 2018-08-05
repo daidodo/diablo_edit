@@ -78,6 +78,26 @@
 7	Assassin Skills	刺客技能	刺客技能
 8	All	全部	全部
 9	Items	物品	物品
+*=======================铸造台窗口UI			
+0	Level	等级	等級
+1	Owner	拥有者	擁有者
+2	Class	角色	角色
+3	Unidentified	未辨识	未辨識
+4	Ethereal	无形	無形
+5	Durability	耐久度	耐久度
+6	Indestructible	无法破坏	無法破壞
+7	Quantity	数量	數量
+8	Quality	质量	質量
+9	Sockets	镶孔	鑲孔
+10	Defence	防御	防禦
+11	Monster	怪物	怪物
+12	First Name	名字一	名字1
+13	Second Name	名字二	名字2
+14	Sub Type	子类	子類
+15	Prefix 1	前缀1	前綴1
+16	Suffix 1	后缀1	後綴1
+17	Set Name	套装名称	套裝名字
+18	Unique Name	暗金装备	暗金裝備
 *=======================物品属性悬浮窗口UI			
 0	Crude	粗糙的	粗糙的
 1	Superior	超强的	超強的
@@ -172,8 +192,8 @@
 2	High	白色高级	白色高級
 3	Magical	蓝色魔法	藍色魔法
 4	Set	绿色套装	綠色套裝
-5	Rare	黄金	黃金
-6	Unique	暗金	暗金
+5	Rare	黄金装备	黃金裝備
+6	Unique	暗金装备	暗金裝備
 7	Crafted	橙色合成	橙色合成
 *=======================游戏难度			
 0	Normal	普通	普通

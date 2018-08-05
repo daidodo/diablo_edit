@@ -192,6 +192,7 @@
     <ClInclude Include="Diablo Edit2View.h" />
     <ClInclude Include="DlgCharBasicInfo.h" />
     <ClInclude Include="DlgCharItems.h" />
+    <ClInclude Include="DlgFoundry.h" />
     <ClInclude Include="DlgPrefixSuffix.h" />
     <ClInclude Include="DlgQuestInfo.h" />
     <ClInclude Include="DlgSelectChar.h" />
@@ -215,6 +216,7 @@
     <ClCompile Include="Diablo Edit2View.cpp" />
     <ClCompile Include="DlgCharBasicInfo.cpp" />
     <ClCompile Include="DlgCharItems.cpp" />
+    <ClCompile Include="DlgFoundry.cpp" />
     <ClCompile Include="DlgPrefixSuffix.cpp" />
     <ClCompile Include="DlgQuestInfo.cpp" />
     <ClCompile Include="DlgSelectChar.cpp" />

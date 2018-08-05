@@ -93,7 +93,7 @@ struct CExtItemInfo
 	//Monster ID
 	MayExist<WORD>			wMonsterID;		//10 bits,if sTypeName是身体器官
 	//Charm
-	MayExist<WORD>			wCharm;			//12 bits,if sTypeName == "cm1" || "cm2" || "cm3"
+	MayExist<WORD>			wCharm;			//12 bits,if iQuality == 2 && sTypeName == "cm1" || "cm2" || "cm3"
 	//Spell ID
 	MayExist<BYTE>			bSpellID;		//5 bits,if sTypeName == "0sc"
 	BOOL IsSet() const { return iQuality == 5; }
@@ -115,7 +115,10 @@ struct CTypeSpecificInfo
 	MayExist<CPropertyList> apSetProperty[5];		//套装属性列表，每个列表是否存在由(aHasSetPropList[i] == TRUE)决定
 	MayExist<CPropertyList>	stRuneWordPropertyList;	//符文之语属性列表，if bRuneWord == TRUE
 	//Functions:
-	int Sockets() const;
+	std::pair<int, int> Sockets() const;	//return: {base sockets, ext sockets}
+	int TotalSockets() const { auto s = Sockets(); return s.first + s.second; }
+	int GetDefence() const { ASSERT(iDefence.exist()); return iDefence - 10; }
+	void SetDefence(int def) { iDefence.ensure() = def + 10; }
 };
 
 //ItemInfo
@@ -137,7 +140,7 @@ struct CItemInfo
 	BOOL IsSet() const { return pExtItemInfo.exist() && pExtItemInfo->IsSet(); }
 	int RuneWordId() const { ASSERT(pExtItemInfo.exist()); return pExtItemInfo->RuneWordId(); }
 	int Gems() const { return (pExtItemInfo.exist() ? pExtItemInfo->Gems() : 0); }
-	int Sockets() const { return (pTpSpInfo.exist() ? pTpSpInfo->Sockets() : 0); }
+	int Sockets() const { return (pTpSpInfo.exist() ? pTpSpInfo->TotalSockets() : 0); }
 	BOOL IsTypeName(const char * name) const;
 };
 
@@ -190,6 +193,7 @@ struct CD2Item
 	BYTE Quality() const{return !bEar && !bSimple ? pItemInfo->pExtItemInfo->iQuality : (pItemData->IsUnique ? 7 : 2);}
 	BOOL IsSet() const { return pItemInfo.exist() && pItemInfo->IsSet(); }
 	BOOL IsRuneWord() const { return bRuneWord; }
+	BOOL IsEditable() const { return !bQuest; }
 	int RuneWordId() const { ASSERT(IsRuneWord() && pItemInfo.exist()); return pItemInfo->RuneWordId(); }
 	int Gems() const { return (pItemInfo.exist() ? pItemInfo->Gems() : 0); }
 	int Sockets() const { return (bSocketed && pItemInfo.exist() ? pItemInfo->Sockets() : 0); }	//物品的孔数总和（包括属性增加的孔）

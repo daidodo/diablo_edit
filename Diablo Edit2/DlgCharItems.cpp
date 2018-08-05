@@ -5,6 +5,7 @@
 
 #include "Diablo Edit2.h"
 #include "DlgCharItems.h"
+#include "DlgFoundry.h"
 
 using namespace std;
 
@@ -799,7 +800,7 @@ void CDlgCharItems::LoadText(void)
 void CDlgCharItems::OnMenuSelect(UINT nItemID, UINT nFlags, HMENU hSysMenu) {
 	CPropertyDialog::OnMenuSelect(nItemID, nFlags, hSysMenu);
 	CFrameWnd & frame = *GetParentFrame();
-	switch (nItemID) {
+	switch (nItemID) {	//Tips message
 		case ID_ITEM_IMPORT:	frame.SetMessageText(::theApp.MenuPrompt(9)); break;
 		case ID_ITEM_EXPORT:	frame.SetMessageText(::theApp.MenuPrompt(10)); break;
 		case ID_ITEM_COPY:		frame.SetMessageText(::theApp.MenuPrompt(11)); break;
@@ -968,7 +969,7 @@ void CDlgCharItems::OnContextMenu(CWnd* /*pWnd*/, CPoint point) {
 		menu.EnableMenuItem(ID_ITEM_EXPORT, (m_bClickOnItem ? MF_ENABLED : MF_DISABLED));
 		menu.EnableMenuItem(ID_ITEM_COPY, (m_bClickOnItem ? MF_ENABLED : MF_DISABLED));
 		menu.EnableMenuItem(ID_ITEM_PASTE, (0 <= m_iCopiedItemIndex ? MF_ENABLED : MF_DISABLED));
-		menu.EnableMenuItem(ID_ITEM_MODIFY, (m_bClickOnItem ? MF_ENABLED : MF_DISABLED));
+		menu.EnableMenuItem(ID_ITEM_MODIFY, (m_bClickOnItem && SelectedItemView().Item.IsEditable() ? MF_ENABLED : MF_DISABLED));
 		menu.EnableMenuItem(ID_ITEM_REMOVE, (m_bClickOnItem ? MF_ENABLED : MF_DISABLED));
 
 		menu.TrackPopupMenu(TPM_LEFTALIGN | TPM_RIGHTBUTTON, point.x, point.y, this);
@@ -1165,7 +1166,8 @@ void CDlgCharItems::OnItemPaste() {
 }
 
 void CDlgCharItems::OnItemModify() {
-	// TODO: 在此添加命令处理程序代码
+	CDlgFoundry dlg(SelectedItemView().Item, this);
+	dlg.DoModal();
 }
 
 void CDlgCharItems::OnItemRemove() {

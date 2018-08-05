@@ -84,6 +84,9 @@
     <ClInclude Include="MetaData.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="DlgFoundry.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Diablo Edit2.cpp">
@@ -138,6 +141,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="MetaData.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgFoundry.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

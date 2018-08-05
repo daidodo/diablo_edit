@@ -15,7 +15,8 @@ class MayExist : std::vector<T>
 	typedef std::vector<T> __Base;
 public:
 	std::vector<T> & ensure() { resize(N); return *this; }
-	bool exist() const { return !.empty(); }
+	bool exist() const { return !__Base::empty(); }
+	operator const T *() const { return &operator [](0); }
 	using __Base::begin;
 	using __Base::end;
 	using __Base::size;
