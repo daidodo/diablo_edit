@@ -147,7 +147,7 @@ struct CItemInfo
 struct CD2Item
 {
 	WORD	wMajic;				//0x4D4A,"JM"
-	BOOL	bQuest;				//bit 16,是否为系统装备
+	BOOL	bQuest;				//bit 16,是否为系统装备(从商店买的？)
 	BYTE	iUNKNOWN_01;		//bit 17-19
 	BOOL	bIdentified;		//bit 20,是否已经辨识
 	BYTE	iUNKNOWN_02;		//bit 21-23
@@ -193,7 +193,7 @@ struct CD2Item
 	BYTE Quality() const{return !bEar && !bSimple ? pItemInfo->pExtItemInfo->iQuality : (pItemData->IsUnique ? 7 : 2);}
 	BOOL IsSet() const { return pItemInfo.exist() && pItemInfo->IsSet(); }
 	BOOL IsRuneWord() const { return bRuneWord; }
-	BOOL IsEditable() const { return !bQuest; }
+	BOOL IsEditable() const { return TRUE; }
 	int RuneWordId() const { ASSERT(IsRuneWord() && pItemInfo.exist()); return pItemInfo->RuneWordId(); }
 	int Gems() const { return (pItemInfo.exist() ? pItemInfo->Gems() : 0); }
 	int Sockets() const { return (bSocketed && pItemInfo.exist() ? pItemInfo->Sockets() : 0); }	//物品的孔数总和（包括属性增加的孔）
