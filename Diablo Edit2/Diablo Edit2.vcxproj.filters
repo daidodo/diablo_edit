@@ -78,13 +78,16 @@
     <ClInclude Include="MayExist.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="PropertyDialog.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="MetaData.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="DlgFoundry.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgPropertyList.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterDialogBase.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -134,9 +137,6 @@
     <ClCompile Include="DlgWayPoints.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="PropertyDialog.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="BinDataStream.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -144,6 +144,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="DlgFoundry.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgPropertyList.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterDialogBase.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

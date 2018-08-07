@@ -1,11 +1,11 @@
 #pragma once
 
-#include "PropertyDialog.h"
+#include "CharacterDialogBase.h"
 #include "afxwin.h"
 
 // CDlgWayPoints ¶Ô»°¿ò
 
-class CDlgWayPoints : public CPropertyDialog
+class CDlgWayPoints : public CCharacterDialogBase
 {
 	DECLARE_DYNAMIC(CDlgWayPoints)
 

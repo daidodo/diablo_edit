@@ -1,10 +1,10 @@
 #pragma once
 
-#include "PropertyDialog.h"
+#include "CharacterDialogBase.h"
 
 // CDlgQuestInfo ¶Ô»°¿ò
 
-class CDlgQuestInfo : public CPropertyDialog
+class CDlgQuestInfo : public CCharacterDialogBase
 {
 	DECLARE_DYNAMIC(CDlgQuestInfo)
 

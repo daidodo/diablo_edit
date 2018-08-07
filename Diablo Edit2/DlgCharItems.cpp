@@ -406,10 +406,10 @@ void GridView::Reset() {
 
 // CDlgCharItems 对话框
 
-IMPLEMENT_DYNAMIC(CDlgCharItems, CPropertyDialog)
+IMPLEMENT_DYNAMIC(CDlgCharItems, CCharacterDialogBase)
 
 CDlgCharItems::CDlgCharItems(CWnd* pParent /*=NULL*/)
-    : CPropertyDialog(CDlgCharItems::IDD, pParent)
+    : CCharacterDialogBase(CDlgCharItems::IDD, pParent)
 {
 	//鼠标
 	m_hCursor = ::LoadCursor(0, IDC_ARROW);
@@ -798,7 +798,7 @@ void CDlgCharItems::LoadText(void)
 }
 
 void CDlgCharItems::OnMenuSelect(UINT nItemID, UINT nFlags, HMENU hSysMenu) {
-	CPropertyDialog::OnMenuSelect(nItemID, nFlags, hSysMenu);
+	CCharacterDialogBase::OnMenuSelect(nItemID, nFlags, hSysMenu);
 	CFrameWnd & frame = *GetParentFrame();
 	switch (nItemID) {	//Tips message
 		case ID_ITEM_IMPORT:	frame.SetMessageText(::theApp.MenuPrompt(9)); break;
@@ -837,7 +837,7 @@ void CDlgCharItems::OnMouseMove(UINT nFlags, CPoint point)
 	}
 	m_pMouse = point;
 	UpdateData(FALSE);
-	CPropertyDialog::OnMouseMove(nFlags, point);
+	CCharacterDialogBase::OnMouseMove(nFlags, point);
 }
 
 BOOL CDlgCharItems::PutItemInGrid(EPosition pos, int x, int y) {
@@ -905,7 +905,7 @@ void CDlgCharItems::OnLButtonDown(UINT nFlags, CPoint point)
 			}
 		}
 	}
-	CPropertyDialog::OnLButtonDown(nFlags, point);
+	CCharacterDialogBase::OnLButtonDown(nFlags, point);
 }
 
 void CDlgCharItems::OnRButtonUp(UINT nFlags, CPoint point)
@@ -937,7 +937,7 @@ void CDlgCharItems::OnRButtonUp(UINT nFlags, CPoint point)
 			}
 		}
 	}
-    CPropertyDialog::OnRButtonUp(nFlags, point);
+    CCharacterDialogBase::OnRButtonUp(nFlags, point);
 }
 
 void CDlgCharItems::OnContextMenu(CWnd* /*pWnd*/, CPoint point) {
@@ -978,7 +978,7 @@ void CDlgCharItems::OnContextMenu(CWnd* /*pWnd*/, CPoint point) {
 
 BOOL CDlgCharItems::OnInitDialog()
 {
-    CPropertyDialog::OnInitDialog();
+    CCharacterDialogBase::OnInitDialog();
 	/*m_lcPropertyList.SetExtendedStyle(LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES);
 	m_lcPropertyList.InsertColumn(0, _T(""), LVCFMT_LEFT, 60);
 	m_lcPropertyList.InsertColumn(1, _T(""), LVCFMT_LEFT, 225);*/
@@ -990,7 +990,7 @@ BOOL CDlgCharItems::OnInitDialog()
 
 void CDlgCharItems::OnShowWindow(BOOL bShow, UINT nStatus)
 {
-    CPropertyDialog::OnShowWindow(bShow, nStatus);
+    CCharacterDialogBase::OnShowWindow(bShow, nStatus);
     //if(!bShow)			//在少数情况下，会出现隐藏物品属性窗口时悬浮窗还在的情况
     //    ShowItemInfoDlg(0);
 }
@@ -1129,7 +1129,7 @@ BOOL CDlgCharItems::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message) {
 		::SetCursor(m_hCursor);
 		return TRUE;
 	}
-	return CPropertyDialog::OnSetCursor(pWnd, nHitTest, message);
+	return CCharacterDialogBase::OnSetCursor(pWnd, nHitTest, message);
 }
 
 void CDlgCharItems::OnItemImport() {

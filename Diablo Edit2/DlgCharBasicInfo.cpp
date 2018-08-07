@@ -23,10 +23,10 @@ const DWORD	CDlgCharBasicInfo::LEVEL_AND_EXPERIENCE[100] = {
 
 // CDlgCharBasicInfo 对话框
 
-IMPLEMENT_DYNAMIC(CDlgCharBasicInfo, CPropertyDialog)
+IMPLEMENT_DYNAMIC(CDlgCharBasicInfo, CCharacterDialogBase)
 
 CDlgCharBasicInfo::CDlgCharBasicInfo(CWnd* pParent /*=NULL*/)
-	: CPropertyDialog(CDlgCharBasicInfo::IDD, pParent)
+	: CCharacterDialogBase(CDlgCharBasicInfo::IDD, pParent)
 	, m_dlgTabPage(0)
 	, m_sVersion(_T(""))
 	, m_sName(_T(""))
@@ -326,12 +326,12 @@ void CDlgCharBasicInfo::InitUI(void)
 		//在此处添加新的属性页,并在LoadText里更改界面文字的重载入
 		m_nTabPageCount = m_tcBasicInfo.GetItemCount();
 
-		m_dlgTabPage = new CPropertyDialog*[m_nTabPageCount];
+		m_dlgTabPage = new CCharacterDialogBase*[m_nTabPageCount];
 		m_dlgTabPage[0] = new CDlgWayPoints;
-		m_dlgTabPage[0]->Create(CDlgWayPoints::IDD,GetDlgItem(IDC_TAB1));
+		m_dlgTabPage[0]->Create(CDlgWayPoints::IDD, &m_tcBasicInfo);
 		m_dlgTabPage[0]->ShowWindow(SW_HIDE);
 		m_dlgTabPage[1] = new CDlgQuestInfo;
-		m_dlgTabPage[1]->Create(CDlgQuestInfo::IDD,GetDlgItem(IDC_TAB1));
+		m_dlgTabPage[1]->Create(CDlgQuestInfo::IDD, &m_tcBasicInfo);
 		m_dlgTabPage[1]->ShowWindow(SW_HIDE);
 		//在此处添加新的属性窗体
 
@@ -401,7 +401,7 @@ void CDlgCharBasicInfo::LoadText(void)
 
 BOOL CDlgCharBasicInfo::OnInitDialog()
 {
-	CPropertyDialog::OnInitDialog();
+	CCharacterDialogBase::OnInitDialog();
 	InitUI();
 	LoadText();
 	return TRUE;
@@ -431,7 +431,7 @@ void CDlgCharBasicInfo::OnEnChangeLevel()
 
 void CDlgCharBasicInfo::OnPaint()
 {
-	CPropertyDialog::OnPaint();
+	CCharacterDialogBase::OnPaint();
 	CRect rect;
 	GetClientRect(&rect);
 	rect.top += 235;

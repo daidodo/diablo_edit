@@ -8,10 +8,10 @@
 
 // CDlgWayPoints ¶Ô»°¿ò
 
-IMPLEMENT_DYNAMIC(CDlgWayPoints, CPropertyDialog)
+IMPLEMENT_DYNAMIC(CDlgWayPoints, CCharacterDialogBase)
 
 CDlgWayPoints::CDlgWayPoints(CWnd* pParent /*=NULL*/)
-	: CPropertyDialog(CDlgWayPoints::IDD, pParent)
+	: CCharacterDialogBase(CDlgWayPoints::IDD, pParent)
 	, m_nLevel(0)
 {
 	::ZeroMemory(m_bUIData,sizeof(m_bUIData));
@@ -248,7 +248,7 @@ void CDlgWayPoints::OnBnClicked_SelAll()
 
 BOOL CDlgWayPoints::OnInitDialog()
 {
-	CPropertyDialog::OnInitDialog();
+	CCharacterDialogBase::OnInitDialog();
 	LoadText();
 	return TRUE;
 }

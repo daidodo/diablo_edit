@@ -2,7 +2,7 @@
 
 #include "afxcmn.h"
 #include "afxwin.h"
-#include "PropertyDialog.h"
+#include "CharacterDialogBase.h"
 #include "DlgSuspend.h"
 #include "DlgPrefixSuffix.h"
 
@@ -56,7 +56,7 @@ public:
 
 // CDlgCharItems ¶Ô»°¿ò
 
-class CDlgCharItems : public CPropertyDialog
+class CDlgCharItems : public CCharacterDialogBase
 {
 	DECLARE_DYNAMIC(CDlgCharItems)
 
