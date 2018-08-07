@@ -96,15 +96,18 @@
 16	Suffix 1	后缀1	後綴1
 17	Set Name	套装名称	套裝名字
 18	Unique Name	暗金装备	暗金裝備
-19	Properties	属性	屬性
-20	Set 1	套装1	套裝1
-21	Set 2	套装2	套裝2
-22	Set 3	套装3	套裝3
-23	Set 4	套装4	套裝4
-24	Set 5	套装5	套裝5
-25	Rune Word	符文之语	符文之語
-26	Code	代码	代碼
-27	Description	说明	説明
+19	Parameter 1	参数1	參數1
+20	Parameter 2	参数2	參數2
+21	Parameter 3	参数3	參數3
+22	Properties	属性	屬性
+23	Set 1	套装1	套裝1
+24	Set 2	套装2	套裝2
+25	Set 3	套装3	套裝3
+26	Set 4	套装4	套裝4
+27	Set 5	套装5	套裝5
+28	Rune Word	符文之语	符文之語
+29	Code	代码	代碼
+30	Description	说明	説明
 *=======================物品属性悬浮窗口UI			
 0	Crude	粗糙的	粗糙的
 1	Superior	超强的	超強的
