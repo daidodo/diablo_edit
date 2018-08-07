@@ -47,6 +47,7 @@ struct CPropertyList
 	WORD					iEndFlag;		//9 bits, 0x1FF, 结束标志
 	//Functons:
 	int ExtSockets() const;		//属性列表里的额外孔数
+	BOOL IsIndestructible() const { return (mProperty.find(152) != mProperty.end()); }
 };
 
 //Extended Item Info
@@ -119,6 +120,7 @@ struct CTypeSpecificInfo
 	int TotalSockets() const { auto s = Sockets(); return s.first + s.second; }
 	int GetDefence() const { ASSERT(iDefence.exist()); return iDefence - 10; }
 	void SetDefence(int def) { iDefence.ensure() = def + 10; }
+	BOOL IsIndestructible() const;
 };
 
 //ItemInfo

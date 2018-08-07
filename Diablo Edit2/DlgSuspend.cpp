@@ -67,7 +67,7 @@ void CDlgSuspend::AddMsg(BYTE color, const CString & msg) {
 
 void CDlgSuspend::AddPropertyList(BYTE color, const CPropertyList & propList) {
 	for (const auto & p : propList.mProperty) {
-		if (p.first == 194)     //extend sockets
+		if (p.first == 194 || p.first == 152)     //extend sockets & indestructible
 			continue;
 		AddMsg(color, ::theApp.PorpertyDescription(p.first, p.second));
 	}
@@ -143,7 +143,7 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem)
 			AddMsg(WHITE, CSFormat(::theApp.ItemSuspendUI(5), UINT(pItem->pItemInfo->pGold->wQuantity)));
 		//Durability or Indestructible
 		if (meta.HasDur) {
-			if (pItem->pItemInfo->pTpSpInfo->iMaxDurability) {   //有耐久度
+			if (!pItem->pItemInfo->pTpSpInfo->IsIndestructible()) {   //有耐久度
 				AddMsg(WHITE, CSFormat(::theApp.ItemSuspendUI(6),
 					UINT(pItem->pItemInfo->pTpSpInfo->iCurDur),
 					UINT(pItem->pItemInfo->pTpSpInfo->iMaxDurability)));

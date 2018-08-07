@@ -979,9 +979,6 @@ void CDlgCharItems::OnContextMenu(CWnd* /*pWnd*/, CPoint point) {
 BOOL CDlgCharItems::OnInitDialog()
 {
     CCharacterDialogBase::OnInitDialog();
-	/*m_lcPropertyList.SetExtendedStyle(LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES);
-	m_lcPropertyList.InsertColumn(0, _T(""), LVCFMT_LEFT, 60);
-	m_lcPropertyList.InsertColumn(1, _T(""), LVCFMT_LEFT, 225);*/
 	m_scTrasparent.SetRange(0, 255);
 	m_scTrasparent.SetPos(200);
     LoadText();

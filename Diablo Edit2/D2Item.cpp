@@ -312,6 +312,18 @@ pair<int, int> CTypeSpecificInfo::Sockets() const {
 	return make_pair(b, e);	//最多孔数不超过6
 }
 
+BOOL CTypeSpecificInfo::IsIndestructible() const {
+	if ((iMaxDurability.exist() && 0 == iMaxDurability) || stPropertyList.IsIndestructible())
+		return TRUE;
+	for (auto & p : apSetProperty)
+		if (p.exist() && p->IsIndestructible())
+			return TRUE;
+	if (stRuneWordPropertyList.exist() && stRuneWordPropertyList->IsIndestructible())
+		return TRUE;
+	return FALSE;
+}
+
+
 // struct CItemInfo
 
 const CItemMetaData *  CItemInfo::ReadData(CInBitsStream & bs, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed) {
