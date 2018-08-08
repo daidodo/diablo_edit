@@ -194,7 +194,6 @@
     <ClInclude Include="DlgCharItems.h" />
     <ClInclude Include="DlgFoundry.h" />
     <ClInclude Include="DlgPrefixSuffix.h" />
-    <ClInclude Include="DlgPropertyList.h" />
     <ClInclude Include="DlgQuestInfo.h" />
     <ClInclude Include="DlgSelectChar.h" />
     <ClInclude Include="DlgSkills.h" />
@@ -219,7 +218,6 @@
     <ClCompile Include="DlgCharItems.cpp" />
     <ClCompile Include="DlgFoundry.cpp" />
     <ClCompile Include="DlgPrefixSuffix.cpp" />
-    <ClCompile Include="DlgPropertyList.cpp" />
     <ClCompile Include="DlgQuestInfo.cpp" />
     <ClCompile Include="DlgSelectChar.cpp" />
     <ClCompile Include="DlgSkills.cpp" />

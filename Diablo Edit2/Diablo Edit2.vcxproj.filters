@@ -84,9 +84,6 @@
     <ClInclude Include="DlgFoundry.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="DlgPropertyList.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="CharacterDialogBase.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -144,9 +141,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="DlgFoundry.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="DlgPropertyList.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="CharacterDialogBase.cpp">
