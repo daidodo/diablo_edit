@@ -725,7 +725,7 @@ void CDlgCharItems::ReadItemProperty(const CD2Item & item) {
 			//		m_bExtSocket = BYTE(p.second);
 			//	} else {
 			//		int i = m_lcPropertyList.InsertItem(0, CSFormat(_T("%3d"), UINT(p.first)));	//属性代码
-			//		m_lcPropertyList.SetItemText(i, 1, ::theApp.PorpertyDescription(p.first, p.second)); //属性描述
+			//		m_lcPropertyList.SetItemText(i, 1, ::theApp.PropertyDescription(p.first, p.second)); //属性描述
 			//	}
 			//}
 			////TODO: Set property lists

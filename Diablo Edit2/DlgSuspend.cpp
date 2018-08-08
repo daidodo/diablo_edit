@@ -69,7 +69,7 @@ void CDlgSuspend::AddPropertyList(BYTE color, const CPropertyList & propList) {
 	for (const auto & p : propList.mProperty) {
 		if (p.first == 194 || p.first == 152)     //extend sockets & indestructible
 			continue;
-		AddMsg(color, ::theApp.PorpertyDescription(p.first, p.second));
+		AddMsg(color, ::theApp.PropertyDescription(p.first, p.second));
 	}
 }
 
