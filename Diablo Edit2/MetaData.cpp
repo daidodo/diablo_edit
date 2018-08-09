@@ -44,6 +44,21 @@ vector<tuple<int, int, int>> CPropertyMetaData::GetParams(DWORD value) const {
 	return move(ret);
 }
 
+int CPropertyMetaData::GetValue(const std::vector<int> & params) const {
+	int r = 0, i = -1, s = 0;
+	for (auto & f : fields_) {
+		if (f.bits < 1)
+			break;
+		if(++i >= int(params.size()))
+			return -1;
+		if (params[i] < f.min || f.max < params[i])
+			return -1;
+		r += params[i] << s;
+		s += f.bits;
+	}
+	return r;
+}
+
 //CSFormat
 
 CString CSFormat(LPCTSTR lpszFormat, ...) {

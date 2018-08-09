@@ -59,6 +59,7 @@ public:
 	int Bits() const { return bitsSum_; }
 	std::vector<int> Parse(DWORD value) const;
 	std::vector<std::tuple<int, int, int>> GetParams(DWORD value) const;
+	int GetValue(const std::vector<int> & params) const;
 	int DefaultValue() const { return def_; }
 };
 
