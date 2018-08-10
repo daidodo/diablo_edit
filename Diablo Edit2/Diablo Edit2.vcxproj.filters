@@ -19,6 +19,9 @@
     <Filter Include="资源文件\Data">
       <UniqueIdentifier>{d4637e01-c222-4660-aca9-4b4c2cb3ca48}</UniqueIdentifier>
     </Filter>
+    <Filter Include="资源文件\Design">
+      <UniqueIdentifier>{dca09949-53bf-4d7a-94a8-b721e3442d20}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Diablo Edit2.h">
@@ -1133,5 +1136,10 @@
     <ResourceCompile Include="DiabloEdit2.rc">
       <Filter>资源文件</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Design\item.txt">
+      <Filter>资源文件\Design</Filter>
+    </Text>
   </ItemGroup>
 </Project>

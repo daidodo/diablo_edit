@@ -566,6 +566,9 @@
     <Image Include="res\Diablo Edit2Doc.ico" />
     <Image Include="res\Toolbar.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Design\item.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
