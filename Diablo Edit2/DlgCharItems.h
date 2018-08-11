@@ -27,6 +27,7 @@ struct CItemView
 	CItemView(const CD2Item & item, EEquip equip, EPosition pos, int x, int y);
 	CSize ViewSize() const;
 	CString ItemName() const { return Item.ItemName(); }
+	int GemCount() const;				//镶嵌的宝石数量
 	const CD2Item & UpdateItem(std::vector<CItemView> & vItemViews);	//根据UI更新物品数据（位置，镶嵌宝石等）
 };
 
@@ -68,7 +69,7 @@ class CDlgCharItems : public CCharacterDialogBase
 	std::vector<CItemView> m_vItemViews;	//所有的物品,除了镶嵌在孔里的
 	BOOL m_bHasCorpse = FALSE;				//是否有尸体
 	BOOL m_bSecondHand = FALSE;				//是否显示II手武器
-	BOOL m_bCorpseSecondHand = FALSE;		//是否显示尸体的II手武器
+	CButton m_chCorpseSecondHand;			//是否显示尸体的II手武器
 	BOOL m_bHasMercenary = FALSE;			//是否有雇佣兵
 	void AddItemInGrid(const CD2Item & item, int body);		//将物品添加到网格中, body: 0-人物本身，1-尸体，2-雇佣兵，3-Golem
 	void RecycleItemFromGrid(CItemView & view);				//将物品从网格移除
@@ -98,11 +99,7 @@ class CDlgCharItems : public CCharacterDialogBase
 	std::unique_ptr<CDlgSuspend> m_pDlgItemInfo;//显示物品信息的悬浮窗口
 	BOOL m_bNotShowItemInfoDlg;					//是否隐藏物品信息悬浮窗
 	CSliderCtrl m_scTrasparent;					//属性悬浮窗的透明度
-	void ShowItemInfoDlg(const CD2Item * pItem, int x);	//显示/隐藏(pItem = 0)物品信息悬浮窗口。x用来选择窗口位置
-
-	//界面文字
-	CString m_sText[6];
-	//CButton m_btButton[5];
+	void ShowItemInfoDlg(const CD2Item * pItem, int x, int gems);	//显示/隐藏(pItem = 0)物品信息悬浮窗口。x用来选择窗口位置，gems为镶嵌宝石数量
 
 	//鼠标
 	int m_iSelectedItemIndex = -1;		//选中的物品在m_vItemViews中的索引
@@ -116,9 +113,17 @@ class CDlgCharItems : public CCharacterDialogBase
 	HCURSOR CreateAlphaCursor(const CItemView & itemView);	//把物品bmp转换成鼠标句柄
 	BOOL PutItemInGrid(EPosition pos, int x, int y);		//尝试将已拿起的物品放到指定位置（不包括鼠标）
 
+	//界面文字
+	CString m_sText[9];
+
 	//弹出菜单
 	BOOL m_bClickOnItem = FALSE;		//当前鼠标是否点中了物品
 	int m_iCopiedItemIndex = -1;		//复制的物品在m_vItemViews中的索引，-1为没有
+
+	//雇佣兵
+	CComboBox m_cbMercName;
+	CComboBox m_cbMercType;
+	CEdit m_edMercExp;
 public:
 	//对话框数据
 	enum { IDD = IDD_DIALOG_CharItems };
@@ -136,20 +141,19 @@ private:
 	void DrawAllItemsInGrid(CPaintDC & dc) const;		//画网格内的所有物品，如果选中的物品镶嵌了物品，也要画出来
 
 	DECLARE_MESSAGE_MAP()
+public:
+	virtual BOOL OnInitDialog();
 	afx_msg void OnPaint();
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
     afx_msg void OnRButtonUp(UINT nFlags, CPoint point);
-	virtual BOOL OnInitDialog();
 	afx_msg void OnShowWindow(BOOL bShow, UINT nStatus);
 	afx_msg void OnBnClickedCheck2();
     afx_msg void OnChangeHand();
-    //afx_msg void OnPrefixSuffix();
 	afx_msg void OnChangeCorpseHand();
 	afx_msg void OnChangeCorpse();
 	afx_msg BOOL OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message);
 	afx_msg void OnChangeMercenary();
-public:
 	afx_msg void OnContextMenu(CWnd* /*pWnd*/, CPoint /*point*/);
 	afx_msg void OnItemImport();
 	afx_msg void OnItemExport();

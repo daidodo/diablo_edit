@@ -93,6 +93,8 @@ struct CCorpse
 	WORD		wMagic;					//0x4D4A
 	WORD		wCount;					//尸体个数, always 0 or 1
 	MayExist<CCorpseData> pCorpseData;	//尸体的数据, if wCount == 1
+	//Function:
+	BOOL HasCorpse() const { return wCount > 0 && pCorpseData.exist(); }
 };
 
 //雇佣兵
@@ -115,6 +117,8 @@ struct CD2S_Struct
 //members
 	BOOL ReadFile(CFile & cf);
 	void WriteFile(CFile & cf) const;
+	BOOL HasCorpse() const { return stCorpse.HasCorpse(); }
+	BOOL HasMercenary() const { return wMercName > 0; }
 private:
 	BOOL ReadData(CInBitsStream & bs);
 	BOOL WriteData(COutBitsStream & bs) const;

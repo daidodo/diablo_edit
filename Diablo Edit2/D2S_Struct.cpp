@@ -275,8 +275,8 @@ BOOL CD2S_Struct::ReadData(CInBitsStream & bs) {
 		>> PlayerStats
 		>> Skills
 		>> ItemList
-		>> stCorpse
-		>> pair<CMercenary &, bool>(stMercenary, wMercName > 0)
+		>> stCorpse;
+	bs >> pair<CMercenary &, bool>(stMercenary, HasMercenary())
 		>> stGolem;
 	bs.AlignByte();
 	if (!bs.Good() || bs.DataSize() != bs.BytePos()) {
@@ -328,8 +328,8 @@ BOOL CD2S_Struct::WriteData(COutBitsStream & bs) const {
 		<< PlayerStats
 		<< Skills
 		<< ItemList
-		<< stCorpse
-		<< pair<const CMercenary &, bool>(stMercenary, wMercName > 0)
+		<< stCorpse;
+	bs << pair<const CMercenary &, bool>(stMercenary, HasMercenary())
 		<< stGolem;
 	bs.AlignByte();
 	//Data size

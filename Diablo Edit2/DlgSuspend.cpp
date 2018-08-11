@@ -74,7 +74,7 @@ void CDlgSuspend::AddPropertyList(BYTE color, const CPropertyList & propList) {
 	}
 }
 
-LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem)
+LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem, int iGems)
 {
 	ASSERT(pItem);
 	m_pItem = pItem;
@@ -166,8 +166,11 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem)
         if(pItem->bEthereal)
 			AddMsg(BLUE,::theApp.ItemSuspendUI(8));
         //Socket
-        if(pItem->bSocketed)
-			AddMsg(BLUE, CSFormat(::theApp.ItemSuspendUI(9), pItem->pItemInfo->pExtItemInfo->nGems, pItem->Sockets()));
+		if (pItem->bSocketed) {
+			const int s = pItem->Sockets();
+			ASSERT(0 < s && iGems <= s);
+			AddMsg(BLUE, CSFormat(::theApp.ItemSuspendUI(9), iGems, s));
+		}
     }
 	if(!pItem->bIdentified)
 		AddMsg(RED, ::theApp.ItemSuspendUI(12));

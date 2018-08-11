@@ -91,6 +91,8 @@ enum EPosition {
 
 static BOOL IsCorpse(EPosition pos) { return CORPSE_HEAD <= pos && pos < CORPSE_END; }
 
+static BOOL IsMercenary(EPosition pos) { return MERCENARY_HEAD <= pos && pos < MERCENARY_END; }
+
 static BOOL IsInMouse(EPosition pos) { return IN_MOUSE == pos; }
 
 static BOOL IsInSocket(EPosition pos) { return IN_SOCKET == pos; }
@@ -288,6 +290,14 @@ CItemView::CItemView(const CD2Item & item, EEquip equip, EPosition pos, int x, i
 
 CSize CItemView::ViewSize() const { return CSize(iGridWidth * GRID_WIDTH, iGridHeight*GRID_WIDTH); }
 
+int CItemView::GemCount() const {
+	int r = 0;
+	for (int i : vGemItems)
+		if (0 <= i)
+			++r;
+	return r;
+}
+
 const CD2Item & CItemView::UpdateItem(std::vector<CItemView> & vItemViews) {
 	//update position
 	const auto t = PositionToItem(iPosition, iGridX, iGridY);
@@ -399,7 +409,6 @@ BOOL GridView::PutItem(int index, int x, int y, int width, int height, EEquip eq
 }
 
 void GridView::Reset() {
-	bEnabled = !IsCorpse(iPosition);
 	fill(vItemIndex.begin(), vItemIndex.end(), -1);
 }
 
@@ -426,50 +435,23 @@ void CDlgCharItems::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_STATIC_x, m_pMouse.x);
 	DDX_Text(pDX, IDC_STATIC_y, m_pMouse.y);
 	DDX_Check(pDX, IDC_CHECK2, m_bNotShowItemInfoDlg);
-	//DDX_Control(pDX, IDC_LIST1, m_lcPropertyList);
-	//DDX_Control(pDX, IDC_COMBO1, m_cbQuality);
-	////DDX_Text(pDX, IDC_EDIT1, m_sItemName);
-	//DDX_Text(pDX, IDC_EDIT2, m_bItemLevel);
-	////DDX_Check(pDX, IDC_CHECK3, m_bItemInscribed);
-	//DDX_Text(pDX, IDC_EDIT4, m_ItemOwner);
-	//DDV_MaxChars(pDX, m_ItemOwner, 15);
-	//DDX_Check(pDX, IDC_CHECK5, m_bItemSocket);
-	//DDX_Text(pDX, IDC_EDIT5, m_bBaseSocket);
-	//DDX_Text(pDX, IDC_EDIT7, m_bExtSocket);
-	//DDX_Text(pDX, IDC_EDIT8, m_wItemQuantity);
-	//DDX_Text(pDX, IDC_EDIT9, m_wItemDefence);
-	//DDX_Check(pDX, IDC_CHECK6, m_bEthereal);
-	//DDX_Check(pDX, IDC_CHECK7, m_bIndestructible);
-	//DDX_Text(pDX, IDC_EDIT12, m_wCurDurability);
-	//DDX_Text(pDX, IDC_EDIT44, m_wMaxDurability);
 	DDX_Control(pDX, IDC_SLIDER1, m_scTrasparent);
 	DDX_Check(pDX, IDC_CHECK1, m_bSecondHand);
-	DDX_Check(pDX, IDC_CHECK4, m_bCorpseSecondHand);
 	DDX_Check(pDX, IDC_CHECK_Corpse, m_bHasCorpse);
 	DDX_Check(pDX, IDC_CHECK_Mercenary, m_bHasMercenary);
-	//   DDX_Text(pDX, IDC_STATIC1, m_sText[0]);
-	//   DDX_Text(pDX, IDC_STATIC2, m_sText[1]);
-	//   DDX_Text(pDX, IDC_STATIC3, m_sText[2]);
-	//   DDX_Text(pDX, IDC_STATIC4, m_sText[3]);
-	//   DDX_Text(pDX, IDC_STATIC5, m_sText[4]);
-	//   DDX_Text(pDX, IDC_STATIC6, m_sText[5]);
-	//   DDX_Text(pDX, IDC_STATIC7, m_sText[6]);
-	//   DDX_Text(pDX, IDC_STATIC8, m_sText[7]);
-	//   DDX_Text(pDX, IDC_CHECK2, m_sText[8]);
-	//   DDX_Text(pDX, IDC_CHECK5, m_sText[9]);
-	//   DDX_Text(pDX, IDC_CHECK6, m_sText[10]);
-	//DDX_Text(pDX, IDC_CHECK7, m_sText[11]);
 	DDX_Text(pDX, IDC_STATIC_Sockets, m_sText[0]);
 	DDX_Text(pDX, IDC_STATIC_Golem, m_sText[1]);
 	DDX_Text(pDX, IDC_STATIC_Cube, m_sText[2]);
 	DDX_Text(pDX, IDC_STATIC_Belt, m_sText[3]);
 	DDX_Text(pDX, IDC_CHECK_Corpse, m_sText[4]);
 	DDX_Text(pDX, IDC_CHECK_Mercenary, m_sText[5]);
-	//   DDX_Control(pDX, IDC_BUTTON1, m_btButton[0]);
-	//   DDX_Control(pDX, IDC_BUTTON2, m_btButton[1]);
-	//   DDX_Control(pDX, IDC_BUTTON3, m_btButton[2]);
-	//   DDX_Control(pDX, IDC_BUTTON4, m_btButton[3]);
-	//DDX_Control(pDX, IDC_BUTTON5, m_btButton[4]);
+	DDX_Text(pDX, IDC_STATIC_MERC_NAME, m_sText[6]);
+	DDX_Text(pDX, IDC_STATIC_MERC_TYPE, m_sText[7]);
+	DDX_Text(pDX, IDC_STATIC_MERC_EXP, m_sText[8]);
+	DDX_Control(pDX, IDC_COMBO_MERC_NAME, m_cbMercName);
+	DDX_Control(pDX, IDC_COMBO_MERC_TYPE, m_cbMercType);
+	DDX_Control(pDX, IDC_EDIT_MERC_EXP, m_edMercExp);
+	DDX_Control(pDX, IDC_CHECK4, m_chCorpseSecondHand);
 }
 
 BEGIN_MESSAGE_MAP(CDlgCharItems, CDialog)
@@ -480,7 +462,6 @@ BEGIN_MESSAGE_MAP(CDlgCharItems, CDialog)
 	ON_WM_SHOWWINDOW()
     ON_BN_CLICKED(IDC_CHECK2, &CDlgCharItems::OnBnClickedCheck2)
     ON_BN_CLICKED(IDC_CHECK1, &CDlgCharItems::OnChangeHand)
-    //ON_BN_CLICKED(IDC_BUTTON2, &CDlgCharItems::OnPrefixSuffix)
     ON_WM_RBUTTONUP()
 	ON_BN_CLICKED(IDC_CHECK4, &CDlgCharItems::OnChangeCorpseHand)
 	ON_BN_CLICKED(IDC_CHECK_Corpse, &CDlgCharItems::OnChangeCorpse)
@@ -497,20 +478,22 @@ END_MESSAGE_MAP()
 
 void CDlgCharItems::UpdateUI(const CD2S_Struct & character) {
 	ResetAll();
+	m_bHasCharacter = TRUE;
 	//Character items
 	for (auto & item : character.ItemList.vItems) 
 		AddItemInGrid(item, 0);
 	//Corpse items
-	if (character.stCorpse.pCorpseData.exist()) {
+	if (character.HasCorpse()) {
 		if (!m_bHasCorpse)
 			OnChangeCorpse();
 		for (auto & item : character.stCorpse.pCorpseData->stItems.vItems)
 			AddItemInGrid(item, 1);
 	}
 	//Mercenary items
-	if (character.stMercenary.stItems.exist()) {
+	if (character.HasMercenary()) {
 		if (!m_bHasMercenary)
 			OnChangeMercenary();
+		ASSERT(character.stMercenary.stItems.exist());
 		for (auto & item : character.stMercenary.stItems->vItems)
 			AddItemInGrid(item, 2);
 	}
@@ -518,7 +501,6 @@ void CDlgCharItems::UpdateUI(const CD2S_Struct & character) {
 	if (character.stGolem.pItem.exist())
 		AddItemInGrid(*character.stGolem.pItem, 3);
 
-	m_bHasCharacter = TRUE;
 	Invalidate();
 }
 
@@ -628,7 +610,7 @@ void CDlgCharItems::DrawAllItemsInGrid(CPaintDC & dc) const
 			&& view.iGridX != (m_bSecondHand ? 1 : 0))
 			continue;
 		if ((CORPSE_RIGHT_HAND == view.iPosition || CORPSE_LEFT_HAND == view.iPosition)
-			&& view.iGridX != (m_bCorpseSecondHand ? 1 : 0))
+			&& view.iGridX != (m_chCorpseSecondHand.GetCheck() ? 1 : 0))
 			continue;
 		auto pos = GetItemPositionXY(view);
 		DrawItemXY(dc, pos, view);
@@ -665,18 +647,18 @@ void CDlgCharItems::DrawAllItemsInGrid(CPaintDC & dc) const
 
 tuple<int, int, int> CDlgCharItems::HitTestPosition(CPoint pos, int col, int row) const {
 	for (auto & g : m_vGridView)
-		if (g.bEnabled && g.Rect.PtInRect(pos))
-			return g.XYToPositionIndex(pos, m_bSecondHand, m_bCorpseSecondHand, col, row);
+		if (g.Rect.PtInRect(pos))
+			return g.XYToPositionIndex(pos, m_bSecondHand, m_chCorpseSecondHand.GetCheck(), col, row);
 	return make_tuple(-1, -1, -1);
 }
 
-void CDlgCharItems::ShowItemInfoDlg(const CD2Item * pItem, int x){
+void CDlgCharItems::ShowItemInfoDlg(const CD2Item * pItem, int x, int gems){
     if(!m_bNotShowItemInfoDlg && pItem && (!m_pDlgItemInfo || pItem != m_pDlgItemInfo->GetItemPtr())){
         if(!m_pDlgItemInfo){
 			m_pDlgItemInfo = make_unique<CDlgSuspend>(this, m_scTrasparent.GetPos());
             m_pDlgItemInfo->Create(CDlgSuspend::IDD,NULL);
         }
-        m_pDlgItemInfo->GetItemInfo(pItem);
+        m_pDlgItemInfo->GetItemInfo(pItem, gems);
         CRect rect,rect1;
         m_pDlgItemInfo->GetWindowRect(&rect);
         GetWindowRect(&rect1);
@@ -764,7 +746,8 @@ void CDlgCharItems::ResetAll()
 	m_vItemViews.clear();
 	for (auto & grid : m_vGridView)
 		grid.Reset();
-	m_bSecondHand = m_bCorpseSecondHand = FALSE;
+	m_bSecondHand = FALSE;
+	m_chCorpseSecondHand.SetCheck(FALSE);
 	m_iSelectedItemIndex = m_iSelectedSocketIndex = -1;
 	m_pDlgItemInfo.reset();
 	if (m_iPickedItemIndex >= 0) {
@@ -781,17 +764,7 @@ void CDlgCharItems::LoadText(void)
 	int index = 0;
     for(auto & text : m_sText)
         text = ::theApp.CharItemsUI(index++);
-    //m_cbQuality.ResetContent();
-	//for(UINT i = 0;i < ::theApp.ItemQualityNameSize();++i)
-	//	m_cbQuality.AddString(::theApp.ItemQualityName(i));
-    //设置属性列表的标题文字
-    /*LVCOLUMN col;
-    col.cchTextMax = 20;
-    col.mask = LVCF_TEXT;
-    col.pszText = (LPWSTR)::theApp.CharItemsUI(index++).GetString();
-    m_lcPropertyList.SetColumn(0,&col);
-    col.pszText = (LPWSTR)::theApp.CharItemsUI(index++).GetString();
-    m_lcPropertyList.SetColumn(1,&col);*/
+	//TODO: reload mercenary combox
 
 	UpdateData(FALSE);
 }
@@ -822,6 +795,7 @@ void CDlgCharItems::OnMouseMove(UINT nFlags, CPoint point)
 {
 	if (m_iPickedItemIndex < 0) {	//未拿起物品
 		const CD2Item * item = 0;
+		int gems = 0;
 		auto t = HitTestPosition(point);
 		const int pos = get<0>(t), x = get<1>(t), y = get<2>(t);
 		if (0 <= pos) {		//在有效网格里
@@ -830,9 +804,10 @@ void CDlgCharItems::OnMouseMove(UINT nFlags, CPoint point)
 			if (0 <= index) {	//有物品
 				ASSERT(index < int(m_vItemViews.size()));
 				item = &m_vItemViews[index].Item;
+				gems = m_vItemViews[index].GemCount();
 			}
 		}
-		ShowItemInfoDlg(item, point.x);
+		ShowItemInfoDlg(item, point.x, gems);
 	}
 	m_pMouse = point;
 	UpdateData(FALSE);
@@ -863,21 +838,23 @@ void CDlgCharItems::OnLButtonDown(UINT nFlags, CPoint point)
 		const int pos = get<0>(t), x = get<1>(t), y = get<2>(t);
 		if (pos >= 0) {		//在网格范围内
 			auto & grid = m_vGridView[pos];
-			int index = grid.ItemIndex(x, y);
-			if (index >= 0) {	//点中了物品
-				ASSERT(index < int(m_vItemViews.size()));
-				if (grid.IsSockets()) {	//拿起镶嵌的宝石
-					auto & gems = SelectedParentItemView().vGemItems;
-					ASSERT(x < int(gems.size()));
-					gems[x] = -1;
+			if (grid.bEnabled) {
+				int index = grid.ItemIndex(x, y);
+				if (index >= 0) {	//点中了物品
+					ASSERT(index < int(m_vItemViews.size()));
+					if (grid.IsSockets()) {	//拿起镶嵌的宝石
+						auto & gems = SelectedParentItemView().vGemItems;
+						ASSERT(x < int(gems.size()));
+						gems[x] = -1;
+					}
+					auto & view = m_vItemViews[index];
+					m_iPickedItemIndex = index;
+					m_hCursor = CreateAlphaCursor(view);  //设置鼠标为物品图片
+					grid.ItemIndex(-1, view.iGridX, view.iGridY, view.iGridWidth, view.iGridHeight);
+					view.iPosition = IN_MOUSE;
+					ShowItemInfoDlg(0, 0, 0);
+					Invalidate();
 				}
-				auto & view = m_vItemViews[index];
-				m_iPickedItemIndex = index;
-				m_hCursor = CreateAlphaCursor(view);  //设置鼠标为物品图片
-				grid.ItemIndex(-1, view.iGridX, view.iGridY, view.iGridWidth, view.iGridHeight);
-				view.iPosition = IN_MOUSE;
-				ShowItemInfoDlg(0, 0);
-				Invalidate();
 			}
 		}
 	} else {	//放下物品
@@ -887,20 +864,22 @@ void CDlgCharItems::OnLButtonDown(UINT nFlags, CPoint point)
 		const int pos = get<0>(t), x = get<1>(t), y = get<2>(t);
 		if (pos >= 0) {		//在网格范围内
 			auto & grid = m_vGridView[pos];
-			if (grid.IsSockets()) {	//给物品镶嵌宝石
-				if (0 <= m_iSelectedItemIndex	//有选中物品
+			if (grid.bEnabled) {
+				if (grid.IsSockets()) {	//给物品镶嵌宝石
+					if (0 <= m_iSelectedItemIndex	//有选中物品
 						&& x < int(SelectedParentItemView().vGemItems.size())	//有足够的孔数
 						&& PutItemInGrid(EPosition(pos), x, y)) {
-					//镶嵌成功
-					SelectedParentItemView().vGemItems[x] = m_iPickedItemIndex;
+						//镶嵌成功
+						SelectedParentItemView().vGemItems[x] = m_iPickedItemIndex;
+						m_iPickedItemIndex = -1;
+						Invalidate();
+					}
+				} else if (PutItemInGrid(EPosition(pos), x, y)) {	//可以放入
+					if (m_iSelectedSocketIndex == m_iPickedItemIndex)	//将镶嵌的宝石抠出来了
+						m_iSelectedSocketIndex = -1;
 					m_iPickedItemIndex = -1;
 					Invalidate();
 				}
-			} else if (PutItemInGrid(EPosition(pos), x, y)) {	//可以放入
-				if (m_iSelectedSocketIndex == m_iPickedItemIndex)	//将镶嵌的宝石抠出来了
-					m_iSelectedSocketIndex = -1;
-				m_iPickedItemIndex = -1;
-				Invalidate();
 			}
 		}
 	}
@@ -915,23 +894,25 @@ void CDlgCharItems::OnRButtonUp(UINT nFlags, CPoint point)
 		const int pos = get<0>(t), x = get<1>(t), y = get<2>(t);
 		if (pos >= 0) {		//在网格范围内
 			auto & grid = m_vGridView[pos];
-			int index = grid.ItemIndex(x, y);
-			if (index >= 0) {	//点中了物品
-				m_bClickOnItem = TRUE;
-				if (grid.IsSockets()) {	//是镶嵌的宝石
-					if (index != m_iSelectedSocketIndex) {
-						m_iSelectedSocketIndex = index;
+			if (grid.bEnabled) {
+				int index = grid.ItemIndex(x, y);
+				if (index >= 0) {	//点中了物品
+					m_bClickOnItem = TRUE;
+					if (grid.IsSockets()) {	//是镶嵌的宝石
+						if (index != m_iSelectedSocketIndex) {
+							m_iSelectedSocketIndex = index;
+							Invalidate();
+						}
+					} else if (index != m_iSelectedItemIndex || 0 <= m_iSelectedSocketIndex) {	//其他物品
+						if (index != m_iSelectedItemIndex) {
+							const auto & view = m_vItemViews[index];
+							for (int i = 0; i < PositionToCol(IN_SOCKET); ++i)
+								m_vGridView[IN_SOCKET].ItemIndex((i < int(view.vGemItems.size()) ? view.vGemItems[i] : -1), i, 0);
+						}
+						m_iSelectedItemIndex = index;
+						m_iSelectedSocketIndex = -1;
 						Invalidate();
 					}
-				} else if (index != m_iSelectedItemIndex || 0 <= m_iSelectedSocketIndex) {	//其他物品
-					if (index != m_iSelectedItemIndex) {
-						const auto & view = m_vItemViews[index];
-						for (int i = 0; i < PositionToCol(IN_SOCKET); ++i)
-							m_vGridView[IN_SOCKET].ItemIndex((i < int(view.vGemItems.size()) ? view.vGemItems[i] : -1), i, 0);
-					}
-					m_iSelectedItemIndex = index;
-					m_iSelectedSocketIndex = -1;
-					Invalidate();
 				}
 			}
 		}
@@ -994,11 +975,14 @@ void CDlgCharItems::OnShowWindow(BOOL bShow, UINT nStatus)
 void CDlgCharItems::OnBnClickedCheck2()
 {
     m_bNotShowItemInfoDlg = !m_bNotShowItemInfoDlg;
-    UpdateData(TRUE);
 }
 
 void CDlgCharItems::OnChangeHand()
 {
+	if (!m_bHasCharacter) {	//Don't change if there is no character
+		UpdateData(FALSE);
+		return;
+	}
     m_bSecondHand = !m_bSecondHand;
     //更新UI
 	InvalidateRect(&m_vGridView[RIGHT_HAND].Rect);
@@ -1006,95 +990,47 @@ void CDlgCharItems::OnChangeHand()
  }
 
 void CDlgCharItems::OnChangeCorpseHand() {
-	m_bCorpseSecondHand = !m_bCorpseSecondHand;
 	//更新UI
 	InvalidateRect(&m_vGridView[CORPSE_RIGHT_HAND].Rect);
 	InvalidateRect(&m_vGridView[CORPSE_LEFT_HAND].Rect);
 }
 
-//void CDlgCharItems::OnPrefixSuffix()
-//{
-//    std::vector<int> selIndex(10,-1);
-//	auto view = SelectedItemView();
-//    if(view){
-//        auto & item = view->Item;
-//        if(item.pItemInfo.exist() && item.pItemInfo->pExtItemInfo.exist()){
-//            switch(m_cbQuality.GetCurSel() + 1){
-//                case 1:     //low
-//                    if(item.pItemInfo->pExtItemInfo->loQual.exist())
-//                        selIndex[9] = item.pItemInfo->pExtItemInfo->loQual;
-//                    break;
-//                case 3:     //high
-//                    if(item.pItemInfo->pExtItemInfo->hiQual.exist())
-//                        selIndex[9] = item.pItemInfo->pExtItemInfo->hiQual;
-//                    break;
-//                case 4:     //magic
-//                    if(item.pItemInfo->pExtItemInfo->wPrefix.exist())
-//                        selIndex[2] = item.pItemInfo->pExtItemInfo->wPrefix;
-//                    if(item.pItemInfo->pExtItemInfo->wSuffix.exist())
-//                        selIndex[3] = item.pItemInfo->pExtItemInfo->wSuffix;
-//                    break;
-//                case 5:     //set
-//                    break;
-//                case 6:     //rare
-//                    if(item.pItemInfo->pExtItemInfo->pRareName.exist()){
-//                        selIndex[0] = item.pItemInfo->pExtItemInfo->pRareName->iName1;
-//                        selIndex[1] = item.pItemInfo->pExtItemInfo->pRareName->iName2;
-//                        if(item.pItemInfo->pExtItemInfo->pRareName->bPref1)
-//                            selIndex[2] = item.pItemInfo->pExtItemInfo->pRareName->wPref1;
-//                        if(item.pItemInfo->pExtItemInfo->pRareName->bSuff1)
-//                            selIndex[3] = item.pItemInfo->pExtItemInfo->pRareName->wSuff1;
-//                        if(item.pItemInfo->pExtItemInfo->pRareName->bPref2)
-//                            selIndex[4] = item.pItemInfo->pExtItemInfo->pRareName->wPref2;
-//                        if(item.pItemInfo->pExtItemInfo->pRareName->bSuff2)
-//                            selIndex[5] = item.pItemInfo->pExtItemInfo->pRareName->wSuff2;
-//                        if(item.pItemInfo->pExtItemInfo->pRareName->bPref3)
-//                            selIndex[6] = item.pItemInfo->pExtItemInfo->pRareName->wPref3;
-//                        if(item.pItemInfo->pExtItemInfo->pRareName->bSuff3)
-//                            selIndex[7] = item.pItemInfo->pExtItemInfo->pRareName->wSuff3;
-//                    }
-//                    break;
-//                case 7:     //unique
-//                    if(item.pItemInfo->pExtItemInfo->wUniID.exist())
-//                        selIndex[8] = item.pItemInfo->pExtItemInfo->wUniID;
-//                    break;
-//                case 8:     //crafted
-//                    if(item.pItemInfo->pExtItemInfo->pCraftName.exist()){
-//                        selIndex[0] = item.pItemInfo->pExtItemInfo->pCraftName->iName1;
-//                        selIndex[1] = item.pItemInfo->pExtItemInfo->pCraftName->iName2;
-//                        if(item.pItemInfo->pExtItemInfo->pCraftName->bPref1)
-//                            selIndex[2] = item.pItemInfo->pExtItemInfo->pCraftName->wPref1;
-//                        if(item.pItemInfo->pExtItemInfo->pCraftName->bSuff1)
-//                            selIndex[3] = item.pItemInfo->pExtItemInfo->pCraftName->wSuff1;
-//						if (item.pItemInfo->pExtItemInfo->pCraftName->bPref2)
-//							selIndex[4] = item.pItemInfo->pExtItemInfo->pCraftName->wPref2;
-//                        if(item.pItemInfo->pExtItemInfo->pCraftName->bSuff2)
-//                            selIndex[5] = item.pItemInfo->pExtItemInfo->pCraftName->wSuff2;
-//                        if(item.pItemInfo->pExtItemInfo->pCraftName->bPref3)
-//                            selIndex[6] = item.pItemInfo->pExtItemInfo->pCraftName->wPref3;
-//                        if(item.pItemInfo->pExtItemInfo->pCraftName->bSuff3)
-//                            selIndex[7] = item.pItemInfo->pExtItemInfo->pCraftName->wSuff3;
-//                    }
-//                    break;
-//                default:;
-//            }
-//        }
-//    }
-//    CDlgPrefixSuffix dlgPrefix(m_cbQuality.GetCurSel() + 1,&selIndex[0],this);
-//    dlgPrefix.DoModal();
-//}
-
 void CDlgCharItems::OnChangeCorpse() {
+	if (!m_bHasCharacter) {	//Don't change if there is no character
+		UpdateData(FALSE);
+		return;
+	}
 	m_bHasCorpse = !m_bHasCorpse;
 	for (int i = CORPSE_HEAD; i < CORPSE_END; ++i)
 		m_vGridView[i].bEnabled = m_bHasCorpse;
+	m_chCorpseSecondHand.EnableWindow(m_bHasCorpse);
+	//de-select item on corpse
+	if (!m_bHasCorpse && 0 <= m_iSelectedItemIndex
+			&& IsCorpse(SelectedParentItemView().iPosition)) {
+		m_iSelectedItemIndex = m_iSelectedSocketIndex = -1;
+		m_vGridView[IN_SOCKET].Reset();
+		Invalidate();
+	}
 }
 
 void CDlgCharItems::OnChangeMercenary() {
+	if (!m_bHasCharacter) {	//Don't change if there is no character
+		UpdateData(FALSE);
+		return;
+	}
 	m_bHasMercenary = !m_bHasMercenary;
 	for (int i = MERCENARY_HEAD; i < MERCENARY_END; ++i)
 		m_vGridView[i].bEnabled = m_bHasMercenary;
-
+	m_cbMercName.EnableWindow(m_bHasMercenary);
+	m_cbMercType.EnableWindow(m_bHasMercenary);
+	m_edMercExp.EnableWindow(m_bHasMercenary);
+	//de-select item on mercenary
+	if (!m_bHasMercenary && 0 <= m_iSelectedItemIndex
+			&& IsMercenary(SelectedParentItemView().iPosition)) {
+		m_iSelectedItemIndex = m_iSelectedSocketIndex = -1;
+		m_vGridView[IN_SOCKET].Reset();
+		Invalidate();
+	}
 }
 
 static HCURSOR CreateCursorFromBitmap(int picIndex, CSize sz) {
@@ -1162,24 +1098,27 @@ void CDlgCharItems::OnItemPaste() {
 }
 
 void CDlgCharItems::OnItemModify() {
-	ShowItemInfoDlg(0, 0);	//Hide suspend window
+	ShowItemInfoDlg(0, 0, 0);	//Hide suspend window
 	CDlgFoundry dlg(SelectedItemView().Item, this);
 	dlg.DoModal();
 }
 
 void CDlgCharItems::OnItemRemove() {
 	auto & view = SelectedItemView();
+	m_iSelectedSocketIndex = -1;
 	if (::IsInSocket(view.iPosition)) {	//删除镶嵌的宝石
 		auto & gems = SelectedParentItemView().vGemItems;
 		ASSERT(0 <= view.iGridX && view.iGridX < int(gems.size()));
 		gems[view.iGridX] = -1;
-	}else	//删除其他物品
+	} else {	//删除其他物品
 		for (int i : view.vGemItems) {	//先删除镶嵌的宝石
 			if (i < 0)
 				continue;
 			ASSERT(i < int(m_vItemViews.size()));
 			RecycleItemFromGrid(m_vItemViews[i]);
 		}
+		m_iSelectedItemIndex = -1;
+	}
 	RecycleItemFromGrid(view);
 	Invalidate();
 }
