@@ -122,7 +122,7 @@ void CDlgSkills::OnBnClickedOk()
 	//数据有效性检验
 	for(int i = 0;i < SKILL_SIZE;++i)
 		if(m_pSkills[i] > 127){
-			::MessageBox(0, ::theApp.MsgBoxInfo(5),::theApp.MsgWarning(),MB_ICONWARNING);
+			MessageBox(::theApp.MsgBoxInfo(5),::theApp.MsgWarning(),MB_ICONWARNING);
 			return;
 		}
 	for(int i = 0;i < SKILL_SIZE;++i)
@@ -134,7 +134,7 @@ void CDlgSkills::OnBnClickedButton1()
 {
 	UpdateData(TRUE);
 	if(m_bAll > 127)
-		::MessageBox(0, ::theApp.MsgBoxInfo(5),::theApp.MsgWarning(),MB_ICONWARNING);
+		MessageBox(::theApp.MsgBoxInfo(5),::theApp.MsgWarning(),MB_ICONWARNING);
 	else{
 		::FillMemory(m_pSkills,sizeof(m_pSkills),m_bAll);
 		UpdateData(FALSE);

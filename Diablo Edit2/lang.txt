@@ -222,8 +222,9 @@
 43	Invalid unique item name index	暗金物品索引错误	暗金物品索引錯誤
 44	Invalid magic prefix index	物品魔法前缀索引错误	物品魔法前綴索引錯誤
 45	Invalid magic suffix index	物品魔法后缀索引错误	物品魔法後綴索引錯誤
+46	Invalid mercenary type index	雇佣兵类型错误	僱傭兵類型錯誤
+47	Invalid mercenary name index	雇佣兵名字错误	僱傭兵名字錯誤
 *=======================Barbarian类型雇佣兵名字			
-0	Varaya		
 1	Khan	可汗	
 2	Klisk		
 3	Bors		
@@ -291,7 +292,6 @@
 65	Bill		
 66	Theodoric		
 *=======================Eastern Sorceror类型雇佣兵名字			
-0	Jelani		
 1	Barani		
 2	Jabari		
 3	Devak		
@@ -312,7 +312,6 @@
 18	Flux		
 19	Scorch		
 *=======================Desert Mercenary类型雇佣兵名字			
-0	Hazade		
 1	Alhizeer		
 2	Azrael		
 3	Ahsab		
@@ -334,7 +333,6 @@
 19	Waheed		
 20	Vikhyat		
 *=======================Rogue Scouts类型雇佣兵名字			
-0	Aliza		
 1	Amplisa		
 2	Annor		
 3	Abhaya		

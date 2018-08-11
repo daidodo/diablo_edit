@@ -219,6 +219,8 @@ struct CItemList
 	WORD		nItems;				//物品数目
 	std::vector<CD2Item> vItems;	//所有物品，不包括镶嵌在孔里的
 	WORD		wEndMajic;			//0x4D4A,"JM"
+	//Functions:
+	void SwapItems(CItemList & list) { vItems.swap(list.vItems); }
 };
 
 CInBitsStream & operator >>(CInBitsStream & bs, CItemList & v);

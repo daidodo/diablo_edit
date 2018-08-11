@@ -101,32 +101,15 @@ static BOOL IsInSocket(EPosition pos) { return IN_SOCKET == pos; }
 
 static BOOL IsInRecycle(EPosition pos) { return IN_RECYCLE == pos; }
 
-//位置类型
-enum EPositionType {
-	PT_STORAGE,		//存储箱
-	PT_IN_SOCKET,	//镶嵌的孔
-	PT_WHOLE,		//整体一格
-	PT_II,			//左右手，分I和II
-	PT_CORPSE_II,	//尸体的左右手，分I和II
-};
+static BOOL HasNormalII(EPosition pos) { return RIGHT_HAND == pos || LEFT_HAND == pos; }
 
-static EPositionType PositionType(EPosition pos) {
-	if (IN_SOCKET == pos)
-		return PT_IN_SOCKET;
-	if (pos < GRID_COUNT)
-		return PT_STORAGE;
-	if (RIGHT_HAND == pos || LEFT_HAND == pos)
-		return PT_II;
-	if (CORPSE_RIGHT_HAND == pos || CORPSE_LEFT_HAND == pos)
-		return PT_CORPSE_II;
-	return PT_WHOLE;
-}
+static BOOL HasCorpseII(EPosition pos) { return CORPSE_RIGHT_HAND == pos || CORPSE_LEFT_HAND == pos; }
 
-static BOOL IsGrid(EPositionType type) { return (PT_STORAGE == type || PT_IN_SOCKET == type); }
+static BOOL HasII(EPosition pos) { return HasNormalII(pos) || HasCorpseII(pos); }
 
-static BOOL IsSockets(EPositionType type) { return (PT_IN_SOCKET == type); }
+static BOOL IsGrid(EPosition pos) { return pos < GRID_COUNT; }
 
-static BOOL HasII(EPositionType type) { return (PT_II == type || PT_CORPSE_II == type); }
+static BOOL IsGolem(EPosition pos) { return GOLEM == pos; }
 
 //每个位置(EPosition)在UI的起始坐标(像素),列数,行数
 //left,top,col,row,equip
@@ -250,6 +233,7 @@ static tuple<int, int, int, int, int> PositionToItem(EPosition pos, int x, int y
 		case RIGHT_RING:
 		case LEFT_RING:
 		case BELT:
+		case FOOT:
 		case GLOVE:		loc = 1, body += pos - HEAD + 1; break;
 		//corpse
 		case CORPSE_RIGHT_HAND:
@@ -310,12 +294,18 @@ const CD2Item & CItemView::UpdateItem(std::vector<CItemView> & vItemViews) {
 	Item.iStoredIn = get<4>(t);
 	//update gems
 	Item.aGemItems.clear();
+	int gems = 0;
 	for (int i : vGemItems) {
 		if (i < 0)
 			continue;
 		ASSERT(i < int(vItemViews.size()));
 		Item.aGemItems.push_back(vItemViews[i].UpdateItem(vItemViews));
+		++gems;
 	}
+	if (Item.pItemInfo.exist() && Item.pItemInfo->pExtItemInfo.exist()) {
+		Item.pItemInfo->pExtItemInfo->nGems = gems;
+	} else
+		ASSERT(0 == gems);
 	return Item;
 }
 
@@ -323,18 +313,17 @@ const CD2Item & CItemView::UpdateItem(std::vector<CItemView> & vItemViews) {
 
 GridView::GridView(EPosition pos)
 	: iPosition(pos)
-	, iType(PositionType(pos))
 	, iCol(PositionToCol(pos))
 	, iRow(PositionToRow(pos))
 	, Rect(PositionToRect(pos))
 	, iEquip(PositionToEquip(pos))
 {
-	vItemIndex.resize((IsGrid() ? iCol * iRow : (::HasII(iType) ? 2 : 1)), -1);
+	vItemIndex.resize((IsGrid() ? iCol * iRow : (::HasII(pos) ? 2 : 1)), -1);
 }
 
-BOOL GridView::IsGrid() const { return ::IsGrid(iType); }
+BOOL GridView::IsGrid() const { return ::IsGrid(iPosition); }
 
-BOOL GridView::IsSockets() const { return ::IsSockets(iType); }
+BOOL GridView::IsSockets() const { return ::IsInSocket(iPosition); }
 
 int GridView::ItemIndex(int x, int y) const {
 	ASSERT(0 <= x && 0 <= y);
@@ -381,9 +370,9 @@ tuple<int, int, int> GridView::XYToPositionIndex(CPoint pos, BOOL II, BOOL corps
 		ASSERT(0 <= x && x < iCol);
 		ASSERT(0 <= y && y < iRow);
 		return make_tuple(iPosition, x, y);
-	} else if(PT_II == iType){
+	} else if(HasNormalII(iPosition)){
 		return make_tuple(iPosition, (II ? 1 : 0), 0);
-	} else if (PT_CORPSE_II == iType) 
+	} else if (HasCorpseII(iPosition))
 		return make_tuple(iPosition, (corpseII ? 1 : 0), 0);
 	return make_tuple(iPosition, 0, 0);
 }
@@ -512,8 +501,67 @@ void CDlgCharItems::UpdateUI(const CD2S_Struct & character) {
 	//Golem
 	if (character.stGolem.pItem.exist())
 		AddItemInGrid(*character.stGolem.pItem, 3);
-
 	Invalidate();
+}
+
+BOOL CDlgCharItems::GatherData(CD2S_Struct & character) {
+	UpdateData(TRUE);
+	//validate
+	if (m_bHasMercenary) {
+		if (m_cbMercType.GetCurSel() < 0) {
+			MessageBox(::theApp.MsgBoxInfo(46), ::theApp.MsgError(), MB_ICONERROR);
+			return FALSE;
+		}
+		if (m_cbMercName.GetCurSel() < 1) {
+			MessageBox(::theApp.MsgBoxInfo(47), ::theApp.MsgError(), MB_ICONERROR);
+			return FALSE;
+		}
+	}
+	//gather all items
+	CItemList normal, corpse, merc;
+	MayExist<CD2Item> golem;
+	for (auto & view : m_vItemViews) {
+		if (IsInRecycle(view.iPosition) || IsInSocket(view.iPosition))
+			continue;
+		auto & item = view.UpdateItem(m_vItemViews);
+		if (::IsCorpse(view.iPosition)) {	// corpse items
+			corpse.vItems.push_back(item);
+		} else if (::IsMercenary(view.iPosition)) {	//mercenary items
+			merc.vItems.push_back(item);
+		} else if(::IsGolem(view.iPosition)) {
+			ASSERT(!golem.exist());
+			golem.ensure() = item;
+		} else
+			normal.vItems.push_back(item);
+	}
+	character.ItemList.SwapItems(normal);
+	//corpse
+	if (m_bHasCorpse) {
+		character.stCorpse.wCount = 1;
+		character.stCorpse.pCorpseData.ensure().stItems.SwapItems(corpse);
+	} else {
+		character.stCorpse.wCount = 0;
+		character.stCorpse.pCorpseData.reset();
+	}
+	//mercenary
+	if (m_bHasMercenary) {
+		character.wMercType = m_cbMercType.GetCurSel();
+		character.wMercName = m_cbMercName.GetCurSel();
+		character.dwMercExp = intOf(m_edMercExp);
+		character.bMercDead = m_chMercDead.GetCheck();
+		character.stMercenary.stItems.ensure().SwapItems(merc);
+	} else {
+		character.dwMercControl = 0;
+		character.wMercType = 0;
+		character.wMercName = 0;
+		character.dwMercExp = 0;
+		character.bMercDead = FALSE;
+		character.stMercenary.stItems.reset();
+	}
+	//golem
+	character.stGolem.bHasGolem = golem.exist();
+	character.stGolem.pItem.swap(golem);
+	return TRUE;
 }
 
 void CDlgCharItems::AddItemInGrid(const CD2Item & item, int body) {
@@ -684,13 +732,6 @@ void CDlgCharItems::ShowItemInfoDlg(const CD2Item * pItem, int x, int gems){
         m_pDlgItemInfo->Invalidate();
     }else if(!pItem && m_pDlgItemInfo)
         m_pDlgItemInfo.reset();
-}
-
-BOOL CDlgCharItems::GatherData(CD2S_Struct & character)
-{
-	// TODO:
-
-    return TRUE;
 }
 
 void CDlgCharItems::ResetAll()

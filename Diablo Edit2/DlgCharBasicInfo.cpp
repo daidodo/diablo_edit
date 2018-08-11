@@ -212,11 +212,11 @@ BOOL CDlgCharBasicInfo::GatherData(CD2S_Struct & character)
 {
 	UpdateData(TRUE);
 	if(!::SetCharName(character.Name, m_sName)){
-		::MessageBox(0, ::theApp.MsgBoxInfo(0), ::theApp.MsgError(), MB_ICONERROR);
+		MessageBox(::theApp.MsgBoxInfo(0), ::theApp.MsgError(), MB_ICONERROR);
 		return FALSE;
 	}
 	if(m_uCharLevel < 1 || m_uCharLevel > 127){
-		::MessageBox(0, ::theApp.MsgBoxInfo(1),::theApp.MsgError(),MB_ICONERROR);
+		MessageBox(::theApp.MsgBoxInfo(1),::theApp.MsgError(),MB_ICONERROR);
 		return FALSE;
 	}
 	if(m_dwStrength > 1023 ||
@@ -231,11 +231,11 @@ BOOL CDlgCharBasicInfo::GatherData(CD2S_Struct & character)
 		m_dwMaximumMana > 8191 ||
 		m_dwCurrentStamina > 8191 ||
 		m_dwMaximumStamina > 8191){
-			::MessageBox(0, ::theApp.MsgBoxInfo(2), ::theApp.MsgError(), MB_ICONERROR);
+			MessageBox(::theApp.MsgBoxInfo(2), ::theApp.MsgError(), MB_ICONERROR);
 			return FALSE;
 	}
 	if(m_dwGoldInBody > m_dwMaxGoldInBody || m_dwGoldInStash > m_dwMaxGoldInStash){
-		::MessageBox(0, ::theApp.MsgBoxInfo(3),::theApp.MsgError(),MB_ICONERROR);
+		MessageBox(::theApp.MsgBoxInfo(3),::theApp.MsgError(),MB_ICONERROR);
 		return FALSE;
 	}
 	character.charClass = m_cbCharClass.GetCurSel();
@@ -386,7 +386,7 @@ void CDlgCharBasicInfo::OnBnClicked_Skills()
 		CDlgSkills dlgSkill(charClass,m_bSkills);
 		dlgSkill.DoModal();
 	}else
-		::MessageBox(0, ::theApp.MsgBoxInfo(4),::theApp.MsgError(),MB_ICONERROR);
+		MessageBox(::theApp.MsgBoxInfo(4),::theApp.MsgError(),MB_ICONERROR);
 }
 
 void CDlgCharBasicInfo::OnEnChangeLevel()

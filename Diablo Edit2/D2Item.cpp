@@ -191,8 +191,7 @@ CInBitsStream & operator >>(CInBitsStream & bs, pair<CExtItemInfo &, const T &> 
 			bs >> v.pCraftName;
 			break;
 		default:
-			::MessageBox(0, CSFormat(::theApp.MsgBoxInfo(7), UINT(v.iQuality)), 0, MB_OK);
-			throw 0;
+			throw CSFormat(::theApp.MsgBoxInfo(7), UINT(v.iQuality));
 	}
 	if (get<1>(t))	//bRuneWord
 		bs >> bits(v.wRune, 16);
@@ -252,8 +251,7 @@ COutBitsStream & operator <<(COutBitsStream & bs, pair<const CExtItemInfo &, con
 			bs << v.pCraftName;
 			break;
 		default:
-			::MessageBox(0, CSFormat(::theApp.MsgBoxInfo(7), UINT(v.iQuality)), 0, MB_OK);
-			throw 0;
+			ASSERT(FALSE && _T("Invalid item quality"));
 	}
 	if (get<1>(t))	//bRuneWord
 		bs << bits(v.wRune, 16);
@@ -363,15 +361,9 @@ const CItemMetaData *  CItemInfo::ReadData(CInBitsStream & bs, BOOL bSimple, BOO
 	auto pItemData = ::theApp.ItemMetaData(dwTypeID);
 	if (!pItemData) {	//本程序不能识别此物品
 		if (IsNameValid()) {
-			::MessageBox(0, CSFormat(::theApp.MsgBoxInfo(6),
-				sTypeName[0],
-				sTypeName[1],
-				sTypeName[2],
-				sTypeName[3]),
-				::theApp.MsgError(), MB_ICONERROR);
+			throw CSFormat(::theApp.MsgBoxInfo(6), sTypeName[0], sTypeName[1], sTypeName[2], sTypeName[3]);
 		} else
-			::MessageBox(0, ::theApp.MsgBoxInfo(18), ::theApp.MsgError(), MB_ICONERROR);
-		throw 0;
+			throw ::theApp.MsgBoxInfo(18);
 	}
 	if (!bSimple)	//物品有额外属性
 		bs >> pack(pExtItemInfo.ensure(),
@@ -498,10 +490,8 @@ CString CD2Item::ItemName() const {
 
 void CD2Item::ReadData(CInBitsStream & bs) {
 	bs >> wMajic;
-	if (wMajic != 0x4D4A) {
-		::MessageBox(0, ::theApp.MsgBoxInfo(18), ::theApp.MsgError(), MB_ICONERROR);
-		throw 0;
-	}
+	if (wMajic != 0x4D4A)
+		throw ::theApp.MsgBoxInfo(18);
 	bs >> bQuest
 		>> bits(iUNKNOWN_01, 3)
 		>> bIdentified
@@ -604,10 +594,8 @@ void CD2Item::WriteFile(CFile & file) const {
 
 CInBitsStream & operator >>(CInBitsStream & bs, CItemList & v){
 	bs >> v.wMajic >> v.nItems;
-	if (v.wMajic != 0x4D4A) {
-		::MessageBox(0, ::theApp.MsgBoxInfo(17), ::theApp.MsgError(), MB_ICONERROR);
-		throw 0;
-	}
+	if (v.wMajic != 0x4D4A)
+		throw ::theApp.MsgBoxInfo(17);
 	v.vItems.resize(v.nItems);
 	for (auto & item : v.vItems) {
 		if (!bs.Good())

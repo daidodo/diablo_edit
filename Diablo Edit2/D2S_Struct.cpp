@@ -44,10 +44,8 @@ COutBitsStream & operator <<(COutBitsStream & bs, const CQuestInfoData & v) {
 
 CInBitsStream & operator >>(CInBitsStream & bs, CQuestInfo & v) {
 	bs >> v.dwMajic >> v.dwActs >> v.wSize;
-	if (v.dwMajic != 0x216F6F57 || v.wSize != 0x12A) {
-		::MessageBox(0, ::theApp.MsgBoxInfo(13), ::theApp.MsgError(), MB_ICONERROR);
-		throw 0;
-	}
+	if (v.dwMajic != 0x216F6F57 || v.wSize != 0x12A)
+		throw ::theApp.MsgBoxInfo(13);
 	return bs >> v.QIData;
 }
 
@@ -69,10 +67,8 @@ COutBitsStream & operator <<(COutBitsStream & bs, const CWaypointData & v) {
 
 CInBitsStream & operator >>(CInBitsStream & bs, CWaypoints & v) {
 	bs >> v.wMajic >> v.unkown >> v.wSize;
-	if (v.wMajic != 0x5357 || v.wSize != 0x50) {
-		::MessageBox(0, ::theApp.MsgBoxInfo(14), ::theApp.MsgError(), MB_ICONERROR);
-		throw 0;
-	}
+	if (v.wMajic != 0x5357 || v.wSize != 0x50)
+		throw ::theApp.MsgBoxInfo(14);
 	return bs >> v.wp;
 }
 
@@ -90,10 +86,8 @@ static const DWORD PLAYER_STATS_BITS_COUNT[CPlayerStats::ARRAY_SIZE] = {
 
 CInBitsStream & operator >>(CInBitsStream & bs, CPlayerStats & v) {
 	bs >> v.wMajic;
-	if (v.wMajic != 0x6667) {
-		::MessageBox(0, ::theApp.MsgBoxInfo(15), ::theApp.MsgError(), MB_ICONERROR);
-		throw 0;
-	}
+	if (v.wMajic != 0x6667)
+		throw ::theApp.MsgBoxInfo(15);
 	::ZeroMemory(v.m_adwValue, sizeof(v.m_adwValue));
 	for (bs >> bits(v.iEnd, 9); bs.Good() && v.iEnd < size(v.m_adwValue); bs >> bits(v.iEnd, 9))
 		bs >> bits(v.m_adwValue[v.iEnd], PLAYER_STATS_BITS_COUNT[v.iEnd]);
@@ -115,10 +109,8 @@ COutBitsStream & operator <<(COutBitsStream & bs, const CPlayerStats & v) {
 
 CInBitsStream & operator >>(CInBitsStream & bs, CCharSkills & v) {
 	bs >> v.wMagic;
-	if (v.wMagic != 0x6669) {
-		::MessageBox(0, ::theApp.MsgBoxInfo(16), ::theApp.MsgError(), MB_ICONERROR);
-		throw 0;
-	}
+	if (v.wMagic != 0x6669)
+		throw ::theApp.MsgBoxInfo(16);
 	return bs >> v.bSkillLevel;
 }
 
@@ -140,10 +132,8 @@ COutBitsStream & operator <<(COutBitsStream & bs, const CCorpseData & v) {
 
 CInBitsStream & operator >>(CInBitsStream & bs, CCorpse & v) {
 	bs >> v.wMagic >> v.wCount;
-	if (v.wMagic != 0x4D4A || v.wCount > 1) {
-		::MessageBox(0, ::theApp.MsgBoxInfo(19), ::theApp.MsgError(), MB_ICONERROR);
-		throw 0;
-	}
+	if (v.wMagic != 0x4D4A || v.wCount > 1)
+		throw ::theApp.MsgBoxInfo(19);
 	if (v.wCount)
 		bs >> v.pCorpseData;
 	return bs;
@@ -163,10 +153,8 @@ COutBitsStream & operator <<(COutBitsStream & bs, const CCorpse & v) {
 CInBitsStream & operator >>(CInBitsStream & bs, pair<CMercenary &, bool> & p) {
 	auto & v = p.first;
 	bs >> v.wMagic;
-	if (v.wMagic != 0x666A) {
-		::MessageBox(0, ::theApp.MsgBoxInfo(20), ::theApp.MsgError(), MB_ICONERROR);
-		throw 0;
-	}
+	if (v.wMagic != 0x666A)
+		throw ::theApp.MsgBoxInfo(20);
 	if(p.second)
 		bs >> v.stItems;
 	return bs;
@@ -184,10 +172,8 @@ COutBitsStream & operator <<(COutBitsStream & bs, const pair<const CMercenary &,
 
 CInBitsStream & operator >>(CInBitsStream & bs, CGolem & v) {
 	bs >> v.wMagic >> v.bHasGolem;
-	if (v.wMagic != 0x666B) {
-		::MessageBox(0, ::theApp.MsgBoxInfo(21), ::theApp.MsgError(), MB_ICONERROR);
-		throw 0;
-	}
+	if (v.wMagic != 0x666B)
+		throw ::theApp.MsgBoxInfo(21);
 	if (v.bHasGolem)
 		v.pItem.ensure().ReadData(bs);
 	return bs;
@@ -202,45 +188,33 @@ COutBitsStream & operator <<(COutBitsStream & bs, const CGolem & v) {
 
 //CD2S_Struct
 
-BOOL CD2S_Struct::ReadFile(CFile & cf)
+void CD2S_Struct::ReadFile(const CString & path)
 {
-#ifndef _DEBUG
-	try{
-#endif
-		CInBitsStream bs;
-		bs.ReadFile(cf);
-		return ReadData(bs);
-#ifndef _DEBUG
-	}catch(...){}
-	return FALSE;
-#endif
+	CInBitsStream bs;
+	bs.ReadFile(CFile(path, CFile::modeRead));
+	ReadData(bs);
 }
 
-void CD2S_Struct::WriteFile(CFile & cf) const
-{
-	COutBitsStream	bs;
-	if (WriteData(bs)) 
-		bs.WriteFile(cf);
+void CD2S_Struct::WriteFile(const CString & path) const {
+	COutBitsStream bs;
+	if (!WriteData(bs))
+		return;
+	bs.WriteFile(CFile(path, CFile::modeCreate | CFile::modeWrite));
 }
 
-BOOL CD2S_Struct::ReadData(CInBitsStream & bs) {
+
+void CD2S_Struct::ReadData(CInBitsStream & bs) {
 	//得到人物信息
 	bs >> dwMajic;
-	if (dwMajic != 0xAA55AA55) {
-		::MessageBox(0, ::theApp.MsgBoxInfo(11), ::theApp.MsgError(), MB_ICONERROR);
-		return FALSE;
-	}
+	if (dwMajic != 0xAA55AA55)
+		throw ::theApp.MsgBoxInfo(11);
 	bs >> dwVersion >> dwSize;
-	if (bs.DataSize() != dwSize) {
-		::MessageBox(0, ::theApp.MsgBoxInfo(12), ::theApp.MsgError(), MB_ICONERROR);
-		return FALSE;
-	}
+	if (bs.DataSize() != dwSize)
+		throw ::theApp.MsgBoxInfo(12);
 	const DWORD offCrc = bs.BytePos();
 	bs >> dwCRC;
-	if (!::ValidateCrc(bs.Data(), dwCRC, offCrc)) {	//校验CRC，会修改bs数据内容
-		::MessageBox(0, ::theApp.MsgBoxInfo(11), ::theApp.MsgError(), MB_ICONERROR);
-		return FALSE;
-	}
+	if (!::ValidateCrc(bs.Data(), dwCRC, offCrc))	//校验CRC，会修改bs数据内容
+		throw ::theApp.MsgBoxInfo(11);
 	bs >> dwWeaponSet
 		>> Name
 		>> charType
@@ -279,11 +253,8 @@ BOOL CD2S_Struct::ReadData(CInBitsStream & bs) {
 	bs >> pair<CMercenary &, bool>(stMercenary, HasMercenary())
 		>> stGolem;
 	bs.AlignByte();
-	if (!bs.Good() || bs.DataSize() != bs.BytePos()) {
-		::MessageBox(0, ::theApp.MsgBoxInfo(11), ::theApp.MsgError(), MB_ICONERROR);
-		return FALSE;
-	}
-	return bs.Good();
+	if (!bs.Good() || bs.DataSize() != bs.BytePos())
+		throw ::theApp.MsgBoxInfo(11);
 }
 
 BOOL CD2S_Struct::WriteData(COutBitsStream & bs) const {

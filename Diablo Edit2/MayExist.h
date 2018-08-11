@@ -50,6 +50,7 @@ public:
 	T * operator ->() { return &operator *(); }
 	const T & operator *() const { return v_.front(); }
 	T & operator *() { return v_.front(); }
+	void swap(MayExist & a) { v_.swap(a.v_); }
 };
 
 template<class T>

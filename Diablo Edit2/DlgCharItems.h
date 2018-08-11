@@ -10,7 +10,6 @@
 
 enum EEquip;
 enum EPosition;
-enum EPositionType;
 
 //物品的视图
 struct CItemView
@@ -35,12 +34,12 @@ class GridView
 {
 	std::vector<int> vItemIndex;	//网格内的物品在m_vItemViews里索引；-1表示没有
 	const EPosition iPosition;		//位置索引
-	const EPositionType iType;		//位置的类型，PositionType()
 	const int iCol, iRow;			//行列数
 public:
 	const CRect Rect;				//大小与位置
 	const EEquip iEquip;			//可装备的物品类型
 	BOOL bEnabled = TRUE;			//是否启用（可交互）
+	//Functions:
 	explicit GridView(EPosition pos);
 	BOOL IsGrid() const;			//是否分成单个网格
 	BOOL IsSockets() const;			//是否为镶嵌的孔
@@ -69,7 +68,6 @@ class CDlgCharItems : public CCharacterDialogBase
 	BOOL m_bHasCorpse = FALSE;				//是否有尸体
 	BOOL m_bSecondHand = FALSE;				//是否显示II手武器
 	CButton m_chCorpseSecondHand;			//是否显示尸体的II手武器
-	BOOL m_bHasMercenary = FALSE;			//是否有雇佣兵
 	void AddItemInGrid(const CD2Item & item, int body);		//将物品添加到网格中, body: 0-人物本身，1-尸体，2-雇佣兵，3-Golem
 	void RecycleItemFromGrid(CItemView & view);				//将物品从网格移除
 	CPoint GetItemPositionXY(const CItemView & view) const;	//得到物品的实际像素坐标
@@ -102,6 +100,7 @@ class CDlgCharItems : public CCharacterDialogBase
 	int m_iCopiedItemIndex = -1;		//复制的物品在m_vItemViews中的索引，-1为没有
 
 	//雇佣兵
+	BOOL m_bHasMercenary = FALSE;		//是否有雇佣兵
 	CComboBox m_cbMercType;				//类型索引
 	CComboBox m_cbMercName;				//名字索引，根据类型索引变化
 	CEdit m_edMercExp;					//经验
