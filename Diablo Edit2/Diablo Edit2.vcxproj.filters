@@ -60,9 +60,6 @@
     <ClInclude Include="DlgCharItems.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="DlgPrefixSuffix.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="DlgQuestInfo.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -117,9 +114,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="DlgCharItems.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="DlgPrefixSuffix.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="DlgQuestInfo.cpp">

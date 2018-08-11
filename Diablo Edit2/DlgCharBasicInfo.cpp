@@ -376,7 +376,6 @@ BOOL CDlgCharBasicInfo::OnInitDialog()
 {
 	CCharacterDialogBase::OnInitDialog();
 	InitUI();
-	LoadText();
 	return TRUE;
 }
 

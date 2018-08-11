@@ -244,11 +244,3 @@ void CDlgWayPoints::OnBnClicked_SelAll()
 	}
 	UpdateData(FALSE);
 }
-
-
-BOOL CDlgWayPoints::OnInitDialog()
-{
-	CCharacterDialogBase::OnInitDialog();
-	LoadText();
-	return TRUE;
-}

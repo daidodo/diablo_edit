@@ -37,6 +37,5 @@ public:
 	afx_msg void OnBnClicked_Normal();
 	afx_msg void OnBnClicked_Nightmare();
 	afx_msg void OnBnClicked_Hell();
-	virtual BOOL OnInitDialog();
 };
 

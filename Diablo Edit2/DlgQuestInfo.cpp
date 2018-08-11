@@ -203,10 +203,3 @@ void CDlgQuestInfo::OnBnClicked_Hell()
 		UpdateData(FALSE);
 	}
 }
-
-BOOL CDlgQuestInfo::OnInitDialog()
-{
-	CCharacterDialogBase::OnInitDialog();
-	LoadText();
-	return TRUE;
-}

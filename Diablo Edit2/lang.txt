@@ -138,6 +138,10 @@
 3	Belt	腰带	腰帶
 4	Corpse	尸体	尸體
 5	Mercenary	雇佣兵	僱傭兵
+6	Name	姓名	姓名
+7	Type	类型	類型
+8	Exp.	经验	經驗
+9	Dead	死亡	死亡
 *=======================角色基本信息UI			
 0	Basic Info	基本信息	基本信息
 1	Waypoints	小站	小站
@@ -218,6 +222,190 @@
 43	Invalid unique item name index	暗金物品索引错误	暗金物品索引錯誤
 44	Invalid magic prefix index	物品魔法前缀索引错误	物品魔法前綴索引錯誤
 45	Invalid magic suffix index	物品魔法后缀索引错误	物品魔法後綴索引錯誤
+*=======================Barbarian类型雇佣兵名字			
+0	Varaya		
+1	Khan	可汗	
+2	Klisk		
+3	Bors		
+4	Brom		
+5	Wiglaf		
+6	Hrothgar		
+7	Scyld		
+8	Healfdane		
+9	Heorogar		
+10	Halgaunt		
+11	Hygelac		
+12	Egtheow		
+13	Bohdan		
+14	Wulfgar		
+15	Hild		
+16	Heatholaf		
+17	Weder		
+18	Vikhyat		
+19	Unferth		
+20	Sigemund		
+21	Heremod		
+22	Hengest		
+23	Folcwald		
+24	Frisian		
+25	Hnaef		
+26	Guthlaf		
+27	Oslaf		
+28	Yrmenlaf		
+29	Garmund		
+30	Freawaru		
+31	Eadgils		
+32	Onela		
+33	Damien		
+34	Erfor		
+35	Weohstan		
+36	Wulf		
+37	Bulwye		
+38	Lief		
+39	Magnus		
+40	Klatu		
+41	Drus		
+42	Hoku		
+43	Kord		
+44	Uther		
+45	Ip		
+46	Ulf		
+47	Tharr		
+48	Kaelim		
+49	Ulric		
+50	Alaric		
+51	Ethelred		
+52	Caden		
+53	Elgifu		
+54	Tostig		
+55	Alcuin		
+56	Emund		
+57	Sigurd		
+58	Gorm		
+59	Hollis		
+60	Ragnar		
+61	Torkel		
+62	Wulfstan		
+63	Alban		
+64	Barloc		
+65	Bill		
+66	Theodoric		
+*=======================Eastern Sorceror类型雇佣兵名字			
+0	Jelani		
+1	Barani		
+2	Jabari		
+3	Devak		
+4	Raldin		
+5	Telash		
+6	Ajheed		
+7	Narphet		
+8	Khaleel		
+9	Phaet		
+10	Geshef		
+11	Vanji		
+12	Haphet		
+13	Thadar		
+14	Yatiraj		
+15	Rhadge		
+16	Yashied		
+17	Jarulf		
+18	Flux		
+19	Scorch		
+*=======================Desert Mercenary类型雇佣兵名字			
+0	Hazade		
+1	Alhizeer		
+2	Azrael		
+3	Ahsab		
+4	Chalan		
+5	Haseen		
+6	Razan		
+7	Emilio		
+8	Pratham		
+9	Fazel		
+10	Jemali		
+11	Kasim		
+12	Gulzar		
+13	Mizan		
+14	Leharas		
+15	Durga		
+16	Neeraj		
+17	Ilzan		
+18	Zanarhi		
+19	Waheed		
+20	Vikhyat		
+*=======================Rogue Scouts类型雇佣兵名字			
+0	Aliza		
+1	Amplisa		
+2	Annor		
+3	Abhaya		
+4	Elly		
+5	Paige		
+6	Basanti		
+7	Blaise		
+8	Kyoko		
+9	Klaudia		
+10	Kundri		
+11	Kyle		
+12	Visala		
+13	Elexa		
+14	Floria		
+15	Fiona		
+16	Gwinni		
+17	Gaile		
+18	Hannah		
+19	Heather		
+20	Iantha		
+21	Diane		
+22	Isolde		
+23	Divo		
+24	Ithera		
+25	Itonya		
+26	Liene		
+27	Maeko		
+28	Mahala		
+29	Liaza		
+30	Meghan		
+31	Olena		
+32	Oriana		
+33	Ryann		
+34	Rozene		
+35	Raissa		
+36	Sharyn		
+37	Shikha		
+38	Debi		
+39	Tylena		
+40	Wendy		
+*=======================雇佣兵类型名字			
+0	Scout - Normal - Fire Arrow		
+1	Scout - Normal - Cold Arrow		
+2	Scout - Nightmare - Fire Arrow		
+3	Scout - Nightmare - Cold Arrow		
+4	Scout - Hell - Fire Arrow		
+5	Scout - Hell - Cold Arrow		
+6	Mercenary - Normal - Combat		
+7	Mercenary - Normal - Defensive		
+8	Mercenary - Normal - Offensive		
+9	Mercenary - Nightmare - Combat		
+10	Mercenary - Nightmare - Defensive		
+11	Mercenary - Nightmare - Offensive		
+12	Mercenary - Hell - Combat		
+13	Mercenary - Hell - Defensive	沙漠雇佣兵 - 地狱 - 防御型	
+14	Mercenary - Hell - Offensive		
+15	Sorceror - Normal - Fire Spells		
+16	Sorceror - Normal - Cold Spells		
+17	Sorceror - Normal - Lightning Spells		
+18	Sorceror - Nightmare - Fire Spells		
+19	Sorceror - Nightmare - Cold Spells		
+20	Sorceror - Nightmare - Lightning Spells		
+21	Sorceror - Hell - Fire Spells		
+22	Sorceror - Hell - Cold Spells		
+23	Sorceror - Hell - Lightning Spells		
+24	Barbarian - Normal		
+25	Barbarian - Normal		
+26	Barbarian - Nightmare		
+27	Barbarian - Nightmare		
+28	Barbarian - Hell		
+29	Barbarian - Hell		
 *=======================物品质量名字			
 0	Low	白色低级	白色低級
 1	Normal	白色普通	白色普通

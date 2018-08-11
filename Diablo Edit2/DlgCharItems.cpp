@@ -7,6 +7,8 @@
 #include "DlgCharItems.h"
 #include "DlgFoundry.h"
 
+#include <functional>
+
 using namespace std;
 
 //Popup menu item IDs
@@ -448,10 +450,12 @@ void CDlgCharItems::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_STATIC_MERC_NAME, m_sText[6]);
 	DDX_Text(pDX, IDC_STATIC_MERC_TYPE, m_sText[7]);
 	DDX_Text(pDX, IDC_STATIC_MERC_EXP, m_sText[8]);
+	DDX_Text(pDX, IDC_CHECK3, m_sText[9]);
 	DDX_Control(pDX, IDC_COMBO_MERC_NAME, m_cbMercName);
 	DDX_Control(pDX, IDC_COMBO_MERC_TYPE, m_cbMercType);
 	DDX_Control(pDX, IDC_EDIT_MERC_EXP, m_edMercExp);
 	DDX_Control(pDX, IDC_CHECK4, m_chCorpseSecondHand);
+	DDX_Control(pDX, IDC_CHECK3, m_chMercDead);
 }
 
 BEGIN_MESSAGE_MAP(CDlgCharItems, CDialog)
@@ -474,6 +478,7 @@ BEGIN_MESSAGE_MAP(CDlgCharItems, CDialog)
 	ON_COMMAND(ID_ITEM_MODIFY, &CDlgCharItems::OnItemModify)
 	ON_COMMAND(ID_ITEM_REMOVE, &CDlgCharItems::OnItemRemove)
 	ON_WM_MENUSELECT()
+	ON_CBN_SELCHANGE(IDC_COMBO_MERC_TYPE, &CDlgCharItems::OnCbnSelchangeComboMercType)
 END_MESSAGE_MAP()
 
 void CDlgCharItems::UpdateUI(const CD2S_Struct & character) {
@@ -489,10 +494,17 @@ void CDlgCharItems::UpdateUI(const CD2S_Struct & character) {
 		for (auto & item : character.stCorpse.pCorpseData->stItems.vItems)
 			AddItemInGrid(item, 1);
 	}
-	//Mercenary items
+	//Mercenary
 	if (character.HasMercenary()) {
 		if (!m_bHasMercenary)
 			OnChangeMercenary();
+		ASSERT(character.wMercType < m_cbMercType.GetCount());
+		m_cbMercType.SetCurSel(character.wMercType);
+		OnCbnSelchangeComboMercType();
+		ASSERT(character.wMercName < m_cbMercName.GetCount());
+		m_cbMercName.SetCurSel(character.wMercName);
+		m_edMercExp.SetWindowText(CSFormat(_T("%d"), character.dwMercExp));
+		m_chMercDead.SetCheck(character.bMercDead);
 		ASSERT(character.stMercenary.stItems.exist());
 		for (auto & item : character.stMercenary.stItems->vItems)
 			AddItemInGrid(item, 2);
@@ -674,66 +686,6 @@ void CDlgCharItems::ShowItemInfoDlg(const CD2Item * pItem, int x, int gems){
         m_pDlgItemInfo.reset();
 }
 
-void CDlgCharItems::ReadItemProperty(const CD2Item & item) {
-
-   // //m_sItemName = ::theApp.ItemName(item.MetaData().NameIndex);
-   // if(m_bItemSocket = item.bSocketed)
-   //     m_bBaseSocket = item.pItemInfo->pTpSpInfo->iSocket;
-   // m_bEthereal = item.bEthereal;
-   // //m_bItemInscribed = item.bPersonalized;
-   // if(item.bEar){   //ear structure
-   //     m_bItemLevel = item.pEar->iEarLevel;
-   //     m_ItemOwner = item.pEar->sEarName;
-   // }else{
-   //     if(item.pItemInfo->IsTypeName("gld "))
-   //         m_wItemQuantity = item.pItemInfo->pGold->wQuantity;
-   //     if(!item.bSimple){
-   //         m_bItemLevel = item.pItemInfo->pExtItemInfo->iDropLevel;
-   //         if(item.bPersonalized)
-   //             m_ItemOwner = &item.pItemInfo->pExtItemInfo->sPersonName[0];
-   //         m_cbQuality.SetCurSel(item.pItemInfo->pExtItemInfo->iQuality - 1);
-   //         if(item.MetaData().IsStacked)
-   //             m_wItemQuantity = item.pItemInfo->pTpSpInfo->iQuantity;
-   //         if(item.MetaData().HasDef)
-   //             m_wItemDefence = item.pItemInfo->pTpSpInfo->iDefence - 10;
-   //         if(item.MetaData().HasDur){
-   //             m_wMaxDurability = item.pItemInfo->pTpSpInfo->iMaxDurability;
-   //             if(!(m_bIndestructible = (m_wMaxDurability == 0)))
-   //                 m_wCurDurability = item.pItemInfo->pTpSpInfo->iCurDur;
-   //         }
-			//for (const auto & p : item.pItemInfo->pTpSpInfo->stPropertyList.mProperty) {
-			//	if (p.first == 194) {	//Adds X extra sockets to the item
-			//		m_bExtSocket = BYTE(p.second);
-			//	} else {
-			//		int i = m_lcPropertyList.InsertItem(0, CSFormat(_T("%3d"), UINT(p.first)));	//属性代码
-			//		m_lcPropertyList.SetItemText(i, 1, ::theApp.PropertyDescription(p.first, p.second)); //属性描述
-			//	}
-			//}
-			////TODO: Set property lists
-   //     }
-   // }
-
-   // UpdateData(FALSE);
-}
-
-void CDlgCharItems::ResetFoundry()
-{
-    ////m_sItemName = _T("");
-    //m_bItemSocket = FALSE;
-    //m_bBaseSocket = m_bExtSocket = 0;
-    //m_bEthereal = FALSE;
-    ////m_bItemInscribed = FALSE;
-    //m_bItemLevel = 0;
-    //m_ItemOwner = _T("");
-    //m_wItemQuantity = 0;
-    //m_cbQuality.SetCurSel(-1);
-    //m_wItemDefence = 0;
-    //m_wMaxDurability = m_wCurDurability = 0;
-    //m_lcPropertyList.DeleteAllItems();
-
-    //UpdateData(FALSE);
-}
-
 BOOL CDlgCharItems::GatherData(CD2S_Struct & character)
 {
 	// TODO:
@@ -759,13 +711,26 @@ void CDlgCharItems::ResetAll()
 	Invalidate();
 }
 
+static void loadTextMercCB(CComboBox & cb, int sz, function<CString (int i)> name) {
+	int sel = cb.GetCurSel();			//保存当前选中项
+	for (; 0 < cb.GetCount();)			//删除旧项
+		cb.DeleteString(0);
+	const auto left = cb.GetCount();
+	ASSERT(cb.GetCount() == 0);
+	for (int i = 0; i < sz; ++i)		//更新文字
+		cb.InsertString(i, name(i));
+	if (sz > 0)							//重新设置选择项
+		cb.SetCurSel(min(sel, sz - 1));
+}
+
 void CDlgCharItems::LoadText(void)
 {
 	int index = 0;
     for(auto & text : m_sText)
-        text = ::theApp.CharItemsUI(index++);
-	//TODO: reload mercenary combox
-
+		text = ::theApp.CharItemsUI(index++);
+	loadTextMercCB(m_cbMercType, ::theApp.MercenaryTypeNameSize(), [](int i) {return ::theApp.MercenaryTypeName(i); });
+	m_iMercNameGroup = -1;	//force reloading merc name list
+	OnCbnSelchangeComboMercType();
 	UpdateData(FALSE);
 }
 
@@ -961,7 +926,6 @@ BOOL CDlgCharItems::OnInitDialog()
     CCharacterDialogBase::OnInitDialog();
 	m_scTrasparent.SetRange(0, 255);
 	m_scTrasparent.SetPos(200);
-    LoadText();
     return TRUE;
 }
 
@@ -1024,6 +988,7 @@ void CDlgCharItems::OnChangeMercenary() {
 	m_cbMercName.EnableWindow(m_bHasMercenary);
 	m_cbMercType.EnableWindow(m_bHasMercenary);
 	m_edMercExp.EnableWindow(m_bHasMercenary);
+	m_chMercDead.EnableWindow(m_bHasMercenary);
 	//de-select item on mercenary
 	if (!m_bHasMercenary && 0 <= m_iSelectedItemIndex
 			&& IsMercenary(SelectedParentItemView().iPosition)) {
@@ -1121,4 +1086,27 @@ void CDlgCharItems::OnItemRemove() {
 	}
 	RecycleItemFromGrid(view);
 	Invalidate();
+}
+
+static int mercNameGroup(int type) {
+	if (type < 0)
+		return - 1;
+	const int INDEX[] = {5, 14, 23};
+	return lower_bound(begin(INDEX), end(INDEX), type, less<int>()) - begin(INDEX);
+}
+
+void CDlgCharItems::OnCbnSelchangeComboMercType() {
+	const int g = mercNameGroup(m_cbMercType.GetCurSel());
+	if (m_iMercNameGroup == g)
+		return;
+	//change merc name list
+	switch (g) {
+		case 0:loadTextMercCB(m_cbMercName, ::theApp.MercenaryNameScoutSize(), [](int i) {return ::theApp.MercenaryScoutName(i); }); break;
+		case 1:loadTextMercCB(m_cbMercName, ::theApp.MercenaryNameMercSize(), [](int i) {return ::theApp.MercenaryMercName(i); }); break;
+		case 2:loadTextMercCB(m_cbMercName, ::theApp.MercenaryNameSorcerorSize(), [](int i) {return ::theApp.MercenarySorcerorName(i); }); break;
+		case 3:loadTextMercCB(m_cbMercName, ::theApp.MercenaryNameBarbarianSize(), [](int i) {return ::theApp.MercenaryBarbarianName(i); }); break;
+		default:loadTextMercCB(m_cbMercName, 0, [](int i) {return _T(""); });
+	}
+	m_iMercNameGroup = g;
+	m_cbMercName.Invalidate();
 }

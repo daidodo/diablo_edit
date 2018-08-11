@@ -4,7 +4,6 @@
 #include "afxwin.h"
 #include "CharacterDialogBase.h"
 #include "DlgSuspend.h"
-#include "DlgPrefixSuffix.h"
 
 #include <tuple>
 #include <memory>
@@ -75,24 +74,6 @@ class CDlgCharItems : public CCharacterDialogBase
 	void RecycleItemFromGrid(CItemView & view);				//将物品从网格移除
 	CPoint GetItemPositionXY(const CItemView & view) const;	//得到物品的实际像素坐标
 
-	//铸造台
-	BYTE m_bItemLevel = 0;			//物品等级
-	CComboBox m_cbQuality;			//物品质量
-	//BOOL m_bItemInscribed;		//已经个人化
-	CString m_ItemOwner = _T("");	//装备主人,包括个人化后的玩家名字,耳朵的主人等
-	BOOL m_bItemSocket = FALSE;		//有孔
-	BYTE m_bBaseSocket = 0;			//基础孔数
-	BYTE m_bExtSocket = 0;			//额外孔数
-	BOOL m_bEthereal = FALSE;		//无形,不可修复
-	BOOL m_bIndestructible = FALSE;	//不可破坏
-	short m_wItemQuantity = 0;		//数量,如果有的话
-	short m_wItemDefence = 0;		//防御值,如果有的话
-	short m_wCurDurability = 0;		//当前耐久度
-	short m_wMaxDurability = 0;		//最大耐久度
-	CListCtrl m_lcPropertyList;		//物品属性列表
-	void ResetFoundry();			//初始化铸造台
-	void ReadItemProperty(const CD2Item & item);	//读取物品的属性，并显示在锻造台
-
 	//悬浮窗
 	static const int INFO_WINDOW_LEFT = 50;		//左边悬浮窗的位置X
 	static const int INFO_WINDOW_RIGHT = 550;	//右边悬浮窗的位置X
@@ -107,27 +88,29 @@ class CDlgCharItems : public CCharacterDialogBase
 	int m_iPickedItemIndex = -1;		//当前鼠标拿起的物品在m_vItemViews中的索引
 	HCURSOR m_hCursor;					//鼠标
 	CPoint m_pMouse;					//鼠标位置
-	CItemView & SelectedParentItemView();			//当前选中的父物品视图
-	CItemView & SelectedItemView();					//当前选中的物品视图
+	CItemView & SelectedParentItemView();//当前选中的父物品视图
+	CItemView & SelectedItemView();		//当前选中的物品视图
 	std::tuple<int, int, int> HitTestPosition(CPoint pos, int col = 1, int row = 1) const;	//由像素XY和物品大小得到网格位置
 	HCURSOR CreateAlphaCursor(const CItemView & itemView);	//把物品bmp转换成鼠标句柄
 	BOOL PutItemInGrid(EPosition pos, int x, int y);		//尝试将已拿起的物品放到指定位置（不包括鼠标）
 
 	//界面文字
-	CString m_sText[9];
+	CString m_sText[10];
 
 	//弹出菜单
 	BOOL m_bClickOnItem = FALSE;		//当前鼠标是否点中了物品
 	int m_iCopiedItemIndex = -1;		//复制的物品在m_vItemViews中的索引，-1为没有
 
 	//雇佣兵
-	CComboBox m_cbMercName;
-	CComboBox m_cbMercType;
-	CEdit m_edMercExp;
+	CComboBox m_cbMercType;				//类型索引
+	CComboBox m_cbMercName;				//名字索引，根据类型索引变化
+	CEdit m_edMercExp;					//经验
+	CButton m_chMercDead;				//是否死亡
+	int m_iMercNameGroup = -1;			//雇佣兵的名字所在的组
 public:
 	//对话框数据
 	enum { IDD = IDD_DIALOG_CharItems };
-	CDlgCharItems(CWnd* pParent = NULL);   // 标准构造函数
+	CDlgCharItems(CWnd* pParent = NULL);
 	//虚函数
 	void UpdateUI(const CD2S_Struct & character);
 	BOOL GatherData(CD2S_Struct & character);
@@ -154,7 +137,7 @@ public:
 	afx_msg void OnChangeCorpse();
 	afx_msg BOOL OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message);
 	afx_msg void OnChangeMercenary();
-	afx_msg void OnContextMenu(CWnd* /*pWnd*/, CPoint /*point*/);
+	afx_msg void OnContextMenu(CWnd* pWnd, CPoint point);
 	afx_msg void OnItemImport();
 	afx_msg void OnItemExport();
 	afx_msg void OnItemCopy();
@@ -162,4 +145,5 @@ public:
 	afx_msg void OnItemModify();
 	afx_msg void OnItemRemove();
 	afx_msg void OnMenuSelect(UINT nItemID, UINT nFlags, HMENU hSysMenu);
+	afx_msg void OnCbnSelchangeComboMercType();
 };
