@@ -798,14 +798,13 @@ CAPTION "关于 Diablo Edit"
 FONT 9, "宋体", 0, 0, 0x1
 BEGIN
     ICON            IDR_MAINFRAME,IDC_STATIC,11,11,20,20
-    LTEXT           "Diablo Edit 2.0 版",IDC_STATIC,40,10,119,8,SS_NOPREFIX
-    LTEXT           "Copyright (C) 2007",IDC_STATIC,40,25,119,8
+    LTEXT           "Diablo Edit 3.0 版",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2018",IDC_STATIC,40,25,119,8
     DEFPUSHBUTTON   "确定",IDOK,178,7,50,16,WS_GROUP
     LTEXT           "作者: DoZerg",IDC_STATIC,168,90,52,9
-    LTEXT           "开发环境：Windows XP SP2",IDC_STATIC,25,51,100,10
-    LTEXT           "开发工具：Visual Studio 2005",IDC_STATIC,25,63,152,10
+    LTEXT           "开发环境：Windows XP SP2 / Window 10",IDC_STATIC,25,51,172,10
+    LTEXT           "开发工具：Visual Studio 2005 / 2017",IDC_STATIC,25,63,169,10
     LTEXT           "Diablo版本：Diablo II Expansion Set v1.10",IDC_STATIC,25,75,193,10
-    LTEXT           "2007-06",IDC_STATIC,176,102,52,9
 END
 
 IDD_DIALOG_BasicCharInfo DIALOGEX 0, 0, 502, 300
@@ -1344,6 +1343,11 @@ BEGIN
 END
 
 IDD_DIALOG_WayPoints AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_ABOUTBOX AFX_DIALOG_LAYOUT
 BEGIN
     0
 END
