@@ -1,10 +1,10 @@
 #pragma once
 
-#include "PropertyDialog.h"
+#include "CharacterDialogBase.h"
 
 // CDlgQuestInfo ¶Ô»°¿ò
 
-class CDlgQuestInfo : public CPropertyDialog
+class CDlgQuestInfo : public CCharacterDialogBase
 {
 	DECLARE_DYNAMIC(CDlgQuestInfo)
 
@@ -37,6 +37,5 @@ public:
 	afx_msg void OnBnClicked_Normal();
 	afx_msg void OnBnClicked_Nightmare();
 	afx_msg void OnBnClicked_Hell();
-	virtual BOOL OnInitDialog();
 };
 

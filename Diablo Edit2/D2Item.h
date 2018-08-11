@@ -7,6 +7,9 @@
 #include <vector>
 #include <map>
 
+//检查并设置人物姓名
+BOOL SetCharName(BYTE (&dest)[16], const CString & src);
+
 //Ear
 struct CEar
 {
@@ -47,6 +50,7 @@ struct CPropertyList
 	WORD					iEndFlag;		//9 bits, 0x1FF, 结束标志
 	//Functons:
 	int ExtSockets() const;		//属性列表里的额外孔数
+	BOOL IsIndestructible() const { return (mProperty.find(152) != mProperty.end()); }
 };
 
 //Extended Item Info
@@ -93,7 +97,7 @@ struct CExtItemInfo
 	//Monster ID
 	MayExist<WORD>			wMonsterID;		//10 bits,if sTypeName是身体器官
 	//Charm
-	MayExist<WORD>			wCharm;			//12 bits,if sTypeName == "cm1" || "cm2" || "cm3"
+	MayExist<WORD>			wCharm;			//12 bits,if iQuality == 2 && sTypeName == "cm1" || "cm2" || "cm3"
 	//Spell ID
 	MayExist<BYTE>			bSpellID;		//5 bits,if sTypeName == "0sc"
 	BOOL IsSet() const { return iQuality == 5; }
@@ -106,7 +110,7 @@ struct CTypeSpecificInfo
 {
 	MayExist<WORD>			iDefence;		//11 bits,实际防御值+10,if bHasDef = TRUE
 	MayExist<WORD>			iMaxDurability;	//8 bits,if bNoDurability == FALSE
-	MayExist<WORD>			iCurDur;		//9 bits,if bNoDurability == FALSE && iMaxDur > 0
+	MayExist<WORD>			iCurDur;		//9 bits,if iMaxDur > 0
 	MayExist<BYTE>			iSocket;		//4 bits,基础孔数(0-6),属性列表里可以有附加孔数(总数不超过6),if bSocketed = TRUE
 	MayExist<WORD>			iQuantity;		//9 bits,if bStacked == TRUE
 	MayExist<BOOL, 5>		aHasSetPropList;//5 bits,if iQuality == 5 
@@ -115,7 +119,11 @@ struct CTypeSpecificInfo
 	MayExist<CPropertyList> apSetProperty[5];		//套装属性列表，每个列表是否存在由(aHasSetPropList[i] == TRUE)决定
 	MayExist<CPropertyList>	stRuneWordPropertyList;	//符文之语属性列表，if bRuneWord == TRUE
 	//Functions:
-	int Sockets() const;
+	std::pair<int, int> Sockets() const;	//return: {base sockets, ext sockets}
+	int TotalSockets() const { auto s = Sockets(); return s.first + s.second; }
+	int GetDefence() const { ASSERT(iDefence.exist()); return iDefence - 10; }
+	void SetDefence(int def) { iDefence.ensure() = def + 10; }
+	BOOL IsIndestructible() const;
 };
 
 //ItemInfo
@@ -135,16 +143,16 @@ struct CItemInfo
 	void WriteData(COutBitsStream & bs, const CItemMetaData & itemData, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed) const;
 	BOOL IsNameValid() const;
 	BOOL IsSet() const { return pExtItemInfo.exist() && pExtItemInfo->IsSet(); }
+	BOOL IsGold() const { return ::memcmp(sTypeName, "gld ", sizeof sTypeName) == 0; }
 	int RuneWordId() const { ASSERT(pExtItemInfo.exist()); return pExtItemInfo->RuneWordId(); }
 	int Gems() const { return (pExtItemInfo.exist() ? pExtItemInfo->Gems() : 0); }
-	int Sockets() const { return (pTpSpInfo.exist() ? pTpSpInfo->Sockets() : 0); }
-	BOOL IsTypeName(const char * name) const;
+	int Sockets() const { return (pTpSpInfo.exist() ? pTpSpInfo->TotalSockets() : 0); }
 };
 
 struct CD2Item
 {
 	WORD	wMajic;				//0x4D4A,"JM"
-	BOOL	bQuest;				//bit 16,是否为系统装备
+	BOOL	bQuest;				//bit 16,是否为系统装备(从商店买的？)
 	BYTE	iUNKNOWN_01;		//bit 17-19
 	BOOL	bIdentified;		//bit 20,是否已经辨识
 	BYTE	iUNKNOWN_02;		//bit 21-23
@@ -190,6 +198,7 @@ struct CD2Item
 	BYTE Quality() const{return !bEar && !bSimple ? pItemInfo->pExtItemInfo->iQuality : (pItemData->IsUnique ? 7 : 2);}
 	BOOL IsSet() const { return pItemInfo.exist() && pItemInfo->IsSet(); }
 	BOOL IsRuneWord() const { return bRuneWord; }
+	BOOL IsEditable() const { return TRUE; }
 	int RuneWordId() const { ASSERT(IsRuneWord() && pItemInfo.exist()); return pItemInfo->RuneWordId(); }
 	int Gems() const { return (pItemInfo.exist() ? pItemInfo->Gems() : 0); }
 	int Sockets() const { return (bSocketed && pItemInfo.exist() ? pItemInfo->Sockets() : 0); }	//物品的孔数总和（包括属性增加的孔）
@@ -210,6 +219,8 @@ struct CItemList
 	WORD		nItems;				//物品数目
 	std::vector<CD2Item> vItems;	//所有物品，不包括镶嵌在孔里的
 	WORD		wEndMajic;			//0x4D4A,"JM"
+	//Functions:
+	void SwapItems(CItemList & list) { vItems.swap(list.vItems); }
 };
 
 CInBitsStream & operator >>(CInBitsStream & bs, CItemList & v);

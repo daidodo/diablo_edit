@@ -2,15 +2,15 @@
 
 #include "D2S_Struct.h"
 
-// CPropertyDialog 对话框
+// CCharacterDialogBase 对话框
 
-class CPropertyDialog : public CDialog
+class CCharacterDialogBase : public CDialog
 {
-	DECLARE_DYNAMIC(CPropertyDialog)
+	DECLARE_DYNAMIC(CCharacterDialogBase)
 
 public:
-	CPropertyDialog(UINT nIDTemplate,CWnd* pParent = NULL);   // 标准构造函数
-	virtual ~CPropertyDialog();
+	CCharacterDialogBase(UINT nIDTemplate,CWnd* pParent = NULL);   // 标准构造函数
+	virtual ~CCharacterDialogBase();
 // 自定义函数
 	virtual void UpdateUI(const CD2S_Struct & character) = 0;
 	virtual BOOL GatherData(CD2S_Struct & character) = 0;

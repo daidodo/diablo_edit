@@ -1,6 +1,5 @@
 #pragma once
 
-#include "PropertyDialog.h"
 #include "afxcmn.h"
 
 // CDlgSkills ¶Ô»°¿ò

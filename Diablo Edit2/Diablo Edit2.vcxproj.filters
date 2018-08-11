@@ -19,6 +19,9 @@
     <Filter Include="资源文件\Data">
       <UniqueIdentifier>{d4637e01-c222-4660-aca9-4b4c2cb3ca48}</UniqueIdentifier>
     </Filter>
+    <Filter Include="资源文件\Design">
+      <UniqueIdentifier>{dca09949-53bf-4d7a-94a8-b721e3442d20}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Diablo Edit2.h">
@@ -57,9 +60,6 @@
     <ClInclude Include="DlgCharItems.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="DlgPrefixSuffix.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="DlgQuestInfo.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -78,10 +78,13 @@
     <ClInclude Include="MayExist.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="PropertyDialog.h">
+    <ClInclude Include="MetaData.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="MetaData.h">
+    <ClInclude Include="DlgFoundry.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterDialogBase.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -113,9 +116,6 @@
     <ClCompile Include="DlgCharItems.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="DlgPrefixSuffix.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="DlgQuestInfo.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -131,13 +131,16 @@
     <ClCompile Include="DlgWayPoints.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="PropertyDialog.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="BinDataStream.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="MetaData.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgFoundry.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterDialogBase.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1127,5 +1130,10 @@
     <ResourceCompile Include="DiabloEdit2.rc">
       <Filter>资源文件</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Design\item.txt">
+      <Filter>资源文件\Design</Filter>
+    </Text>
   </ItemGroup>
 </Project>

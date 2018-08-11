@@ -1,0 +1,50 @@
+1. 系统装备（不可编辑）
+2. 耳朵
+	* sPersonName
+	* 等级
+	* 职业
+3. Gold
+	* 数量
+4. 其他
+	sPersonName
+	无形
+	不可破坏/durability/maxDurability
+	基础孔+扩展孔
+	defence
+	iQuantity
+	已辨识
+	wMonsterID
+	
+	quality:
+		low/high/normal/magical/rare/crafted
+
+	propertyList
+		
+	* low/high quality
+		subType
+	* normal quality
+	* magical
+		prefix
+		suffix
+	* set
+		setId（不可编辑）
+		setPropertyList[5]
+	* rare
+		rareName(LongName)
+	* unique
+		uniqueId（不可编辑）
+	* crafted
+		craftedName(LongName)
+	* runeWord
+		runeWordId（不可编辑）
+		runeWordPropertyList
+
+LongName:
+	FirstName
+	SecondName
+	Prefix1
+	Suffix1
+	Prefix2
+	Suffix2
+	Prefix3
+	Suffix3

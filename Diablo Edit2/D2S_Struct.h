@@ -93,6 +93,8 @@ struct CCorpse
 	WORD		wMagic;					//0x4D4A
 	WORD		wCount;					//尸体个数, always 0 or 1
 	MayExist<CCorpseData> pCorpseData;	//尸体的数据, if wCount == 1
+	//Function:
+	BOOL HasCorpse() const { return wCount > 0 && pCorpseData.exist(); }
 };
 
 //雇佣兵
@@ -102,7 +104,7 @@ struct CMercenary
 	MayExist<CItemList>	stItems;	//雇佣兵的装备列表, if wMercName != 0
 };
 
-//钢铁石魔（仅限死灵法师）
+//钢铁石魔
 struct CGolem
 {
 	WORD	wMagic;				//0x666B, "kf"
@@ -113,10 +115,12 @@ struct CGolem
 struct CD2S_Struct
 {
 //members
-	BOOL ReadFile(CFile & cf);
-	void WriteFile(CFile & cf) const;
+	void ReadFile(const CString & path);
+	void WriteFile(const CString & path) const;
+	BOOL HasCorpse() const { return stCorpse.HasCorpse(); }
+	BOOL HasMercenary() const { return wMercName > 0; }
 private:
-	BOOL ReadData(CInBitsStream & bs);
+	void ReadData(CInBitsStream & bs);
 	BOOL WriteData(COutBitsStream & bs) const;
 public:
 	//人物信息

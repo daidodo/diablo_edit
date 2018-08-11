@@ -28,8 +28,6 @@
 114	Add	添加	添加
 115	Edit	编辑	編輯
 116	Delete	删除	刪除
-117	Code	代码	代碼
-118	Description	说明	説明
 *=======================菜单项的提示信息			
 0	Create a new character	创建新角色	創建新角色
 1	Open an existing character	打开现有角色	打開現有角色
@@ -78,6 +76,35 @@
 7	Assassin Skills	刺客技能	刺客技能
 8	All	全部	全部
 9	Items	物品	物品
+*=======================铸造台窗口UI			
+0	Level	等级	等級
+1	Owner	拥有者	擁有者
+2	Class	角色	角色
+3	Unidentified	未辨识	未辨識
+4	Ethereal	无形	無形
+5	Durability	耐久度	耐久度
+6	Indestructible	无法破坏	無法破壞
+7	Quantity	数量	數量
+8	Quality	质量	質量
+9	Sockets	镶孔	鑲孔
+10	Defence	防御	防禦
+11	Monster	怪物	怪物
+12	First Name	名字一	名字1
+13	Second Name	名字二	名字2
+14	Sub Type	子类	子類
+15	Prefix 1	前缀1	前綴1
+16	Suffix 1	后缀1	後綴1
+17	Set Name	套装名称	套裝名字
+18	Unique Name	暗金装备	暗金裝備
+19	Properties	属性	屬性
+20	Set 1	套装1	套裝1
+21	Set 2	套装2	套裝2
+22	Set 3	套装3	套裝3
+23	Set 4	套装4	套裝4
+24	Set 5	套装5	套裝5
+25	Rune Word	符文之语	符文之語
+26	Code	代码	代碼
+27	Description	说明	説明
 *=======================物品属性悬浮窗口UI			
 0	Crude	粗糙的	粗糙的
 1	Superior	超强的	超強的
@@ -91,10 +118,11 @@
 9	Sockets(%d/%d)	有凹槽(%d/%d)	有凹槽(%d/%d)
 10	%s's Ear	(%s)的耳朵	(%s)的耳朵
 11	Level %d	%d级	%d級
+12	Unidentified	未辨识	未辨識
 *=======================物品前后缀窗口UI			
 0	Item Prefix Suffix	物品前后缀名	物品前后綴名
 1	First Name	名	名
-2	Last Name	称	稱
+2	Last Name	姓	姓
 3	Prefix1	前缀1	前綴1
 4	Suffix1	后缀1	后綴1
 5	Prefix2	前缀2	前綴2
@@ -110,6 +138,10 @@
 3	Belt	腰带	腰帶
 4	Corpse	尸体	尸體
 5	Mercenary	雇佣兵	僱傭兵
+6	Name	姓名	姓名
+7	Type	类型	類型
+8	Exp.	经验	經驗
+9	Dead	死亡	死亡
 *=======================角色基本信息UI			
 0	Basic Info	基本信息	基本信息
 1	Waypoints	小站	小站
@@ -144,7 +176,7 @@
 30	Gold in person	身上金钱	身上金錢
 31	Gold in stash	箱子金钱	箱子金錢
 *=======================对话框消息			
-0	"Character name format error\nLenght:  2-15 chars\nContent: a-z,A-Z,-,_\nCaution: name string starts and ends with chars,\nonly one '-' or '_' is allowed"	"人物名字格式错误\n长度：2-15字符\n包括：a-z,A-Z,-,_\n注意：名字必须以字母开头和结尾，\n中间只允许有一个'-'或'_'符号"	"人物名字格式錯誤\n長度：2-15字符\n包括：a-z,A-Z,-,_\n注意：名字必須以字母開頭和結尾\n中間只允許有一個'-'或'_'符號"
+0	"Character name format error\nLength:  2-15 chars\nContent: a-z,A-Z,-,_\nCaution: name string starts and ends with chars,\nonly one '-' or '_' is allowed"	"人物名字格式错误\n长度：2-15个字符\n包括：a-z,A-Z,-,_\n注意：名字必须以字母开头和结尾，\n中间只允许有一个'-'或'_'符号"	"人物名字格式錯誤\n長度：2-15個字符\n包括：a-z,A-Z,-,_\n注意：名字必須以字母開頭和結尾\n中間只允許有一個'-'或'_'符號"
 1	Character level is between 1-127	人物等级必须在1-127之间	人物等級必須在1-127之間
 2	"Strength, Energy, Dexterity, Vitality and Stat Points is between 0-1023\nLife, Mana and Stamina is between 0-8191\nSkill Points is between 0-255"	力量、敏捷、体力、精力和状态点数必须在0-1023之间\n耐力、生命和法力值必须在0-8191之间\n技能点数必须在0-255之间	力量、敏捷、體力、精力和狀態點數值必須在0-1023之間\n耐力、生命和法力值必須在0-8191之間\n技能點數值必須在0-255之間
 3	Too many golds in person or stash	身上或箱子的金钱数过多	身上或箱子的金錢數過多
@@ -166,14 +198,220 @@
 19	Corpse data format error	尸体数据格式错误	尸體數據格式錯誤
 20	Mercenary data format error	雇佣兵数据格式错误	僱傭兵數據格式錯誤
 21	Golem data format error	Golem数据格式错误	Golem數據格式錯誤
+22	Ear level must be between 1 and 99	耳朵等级必须在1和99之间	耳朵等級必須在1和99之間
+23	Invalid character class	人物角色错误	人物角色錯誤
+24	Item drop level must be between 1 and 99	物品掉落等级必须在1和99之间	物品掉落等級必須在1和99之間
+25	Invalid item quality	物品质量错误	物品質量錯誤
+26	Invalid item subtype	物品子类错误	物品子類錯誤
+27	Personalized name format error\nRequirement: 1-15 regular characters	个性化名字格式错误\n要求：1-15个英文字符	個性化名字格式錯誤\n要求：1-15個英文字符
+28	Item defence must be between 10 and 2057	物品防御必须在10到2057之间	物品防禦必須在10到2057之間
+29	Item max durability must be between 0 and 255	物品最大耐久度必须在0到255之间	物品最大耐久度必須在0到255之間
+30	Item durability must be within max durability	物品耐久度必须在最大值范围内	物品耐久度必須在最大值範圍內
+31	Item sockets count must be within 6	物品最多只能有6个孔	物品最多只能有6個孔
+32	Quantity must be between 0 and 511	数量值必须在0到511之间	數量值必須在0到511之間
+33	Invalid monster name index	怪物名字索引错误	怪物名字所以錯誤
+34	Invalid first name index	物品名索引错误	物品名索引錯誤
+35	Invalid last name index	物品姓索引错误	物品姓索引錯誤
+36	Invalid prefix 1 index	物品前缀1索引错误	物品前綴1索引錯誤
+37	Invalid prefix 2 index	物品前缀2索引错误	物品前綴2索引錯誤
+38	Invalid prefix 3 index	物品前缀3索引错误	物品前綴3索引錯誤
+39	Invalid suffix 1 index	物品后缀1索引错误	物品後綴1索引錯誤
+40	Invalid suffix 2 index	物品后缀2索引错误	物品後綴2索引錯誤
+41	Invalid suffix 3 index	物品后缀3索引错误	物品後綴3索引錯誤
+42	Invalid set item name index	套装物品索引错误	套裝物品索引錯誤
+43	Invalid unique item name index	暗金物品索引错误	暗金物品索引錯誤
+44	Invalid magic prefix index	物品魔法前缀索引错误	物品魔法前綴索引錯誤
+45	Invalid magic suffix index	物品魔法后缀索引错误	物品魔法後綴索引錯誤
+46	Invalid mercenary type index	雇佣兵类型错误	僱傭兵類型錯誤
+47	Invalid mercenary name index	雇佣兵名字错误	僱傭兵名字錯誤
+*=======================Barbarian类型雇佣兵名字			
+1	Khan	可汗	
+2	Klisk		
+3	Bors		
+4	Brom		
+5	Wiglaf		
+6	Hrothgar		
+7	Scyld		
+8	Healfdane		
+9	Heorogar		
+10	Halgaunt		
+11	Hygelac		
+12	Egtheow		
+13	Bohdan		
+14	Wulfgar		
+15	Hild		
+16	Heatholaf		
+17	Weder		
+18	Vikhyat		
+19	Unferth		
+20	Sigemund		
+21	Heremod		
+22	Hengest		
+23	Folcwald		
+24	Frisian		
+25	Hnaef		
+26	Guthlaf		
+27	Oslaf		
+28	Yrmenlaf		
+29	Garmund		
+30	Freawaru		
+31	Eadgils		
+32	Onela		
+33	Damien		
+34	Erfor		
+35	Weohstan		
+36	Wulf		
+37	Bulwye		
+38	Lief		
+39	Magnus		
+40	Klatu		
+41	Drus		
+42	Hoku		
+43	Kord		
+44	Uther		
+45	Ip		
+46	Ulf		
+47	Tharr		
+48	Kaelim		
+49	Ulric		
+50	Alaric		
+51	Ethelred		
+52	Caden		
+53	Elgifu		
+54	Tostig		
+55	Alcuin		
+56	Emund		
+57	Sigurd		
+58	Gorm		
+59	Hollis		
+60	Ragnar		
+61	Torkel		
+62	Wulfstan		
+63	Alban		
+64	Barloc		
+65	Bill		
+66	Theodoric		
+*=======================Eastern Sorceror类型雇佣兵名字			
+1	Barani		
+2	Jabari		
+3	Devak		
+4	Raldin		
+5	Telash		
+6	Ajheed		
+7	Narphet		
+8	Khaleel		
+9	Phaet		
+10	Geshef		
+11	Vanji		
+12	Haphet		
+13	Thadar		
+14	Yatiraj		
+15	Rhadge		
+16	Yashied		
+17	Jarulf		
+18	Flux		
+19	Scorch		
+*=======================Desert Mercenary类型雇佣兵名字			
+1	Alhizeer		
+2	Azrael		
+3	Ahsab		
+4	Chalan		
+5	Haseen		
+6	Razan		
+7	Emilio		
+8	Pratham		
+9	Fazel		
+10	Jemali		
+11	Kasim		
+12	Gulzar		
+13	Mizan		
+14	Leharas		
+15	Durga		
+16	Neeraj		
+17	Ilzan		
+18	Zanarhi		
+19	Waheed		
+20	Vikhyat		
+*=======================Rogue Scouts类型雇佣兵名字			
+1	Amplisa		
+2	Annor		
+3	Abhaya		
+4	Elly		
+5	Paige		
+6	Basanti		
+7	Blaise		
+8	Kyoko		
+9	Klaudia		
+10	Kundri		
+11	Kyle		
+12	Visala		
+13	Elexa		
+14	Floria		
+15	Fiona		
+16	Gwinni		
+17	Gaile		
+18	Hannah		
+19	Heather		
+20	Iantha		
+21	Diane		
+22	Isolde		
+23	Divo		
+24	Ithera		
+25	Itonya		
+26	Liene		
+27	Maeko		
+28	Mahala		
+29	Liaza		
+30	Meghan		
+31	Olena		
+32	Oriana		
+33	Ryann		
+34	Rozene		
+35	Raissa		
+36	Sharyn		
+37	Shikha		
+38	Debi		
+39	Tylena		
+40	Wendy		
+*=======================雇佣兵类型名字			
+0	Scout - Normal - Fire Arrow		
+1	Scout - Normal - Cold Arrow		
+2	Scout - Nightmare - Fire Arrow		
+3	Scout - Nightmare - Cold Arrow		
+4	Scout - Hell - Fire Arrow		
+5	Scout - Hell - Cold Arrow		
+6	Mercenary - Normal - Combat		
+7	Mercenary - Normal - Defensive		
+8	Mercenary - Normal - Offensive		
+9	Mercenary - Nightmare - Combat		
+10	Mercenary - Nightmare - Defensive		
+11	Mercenary - Nightmare - Offensive		
+12	Mercenary - Hell - Combat		
+13	Mercenary - Hell - Defensive	沙漠雇佣兵 - 地狱 - 防御型	
+14	Mercenary - Hell - Offensive		
+15	Sorceror - Normal - Fire Spells		
+16	Sorceror - Normal - Cold Spells		
+17	Sorceror - Normal - Lightning Spells		
+18	Sorceror - Nightmare - Fire Spells		
+19	Sorceror - Nightmare - Cold Spells		
+20	Sorceror - Nightmare - Lightning Spells		
+21	Sorceror - Hell - Fire Spells		
+22	Sorceror - Hell - Cold Spells		
+23	Sorceror - Hell - Lightning Spells		
+24	Barbarian - Normal		
+25	Barbarian - Normal		
+26	Barbarian - Nightmare		
+27	Barbarian - Nightmare		
+28	Barbarian - Hell		
+29	Barbarian - Hell		
 *=======================物品质量名字			
 0	Low	白色低级	白色低級
 1	Normal	白色普通	白色普通
 2	High	白色高级	白色高級
 3	Magical	蓝色魔法	藍色魔法
 4	Set	绿色套装	綠色套裝
-5	Rare	黄金	黃金
-6	Unique	暗金	暗金
+5	Rare	黄金装备	黃金裝備
+6	Unique	暗金装备	暗金裝備
 7	Crafted	橙色合成	橙色合成
 *=======================游戏难度			
 0	Normal	普通	普通

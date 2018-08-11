@@ -1,12 +1,12 @@
 #pragma once
 
-#include "PropertyDialog.h"
+#include "CharacterDialogBase.h"
 #include "afxwin.h"
 #include "afxcmn.h"
 
 // CDlgCharBasicInfo 对话框
 
-class CDlgCharBasicInfo : public CPropertyDialog
+class CDlgCharBasicInfo : public CCharacterDialogBase
 {
 	DECLARE_DYNAMIC(CDlgCharBasicInfo)
 
@@ -29,7 +29,7 @@ private:
 	CButton m_btnSkills;
 	CString m_sGoldinPer;
 	CString m_sGoldinStash;
-	CPropertyDialog	** m_dlgTabPage;
+	CCharacterDialogBase	** m_dlgTabPage;
 	CTabCtrl m_tcBasicInfo;
 	int	m_nTabCurSel,m_nTabPageCount;
 	//人物信息
@@ -73,7 +73,6 @@ public:
 	void LoadText(void);	//加载控件的字符串内容
 private:
 	void InitUI(void);
-	BOOL CheckCharName(void);
 public:
 	virtual BOOL OnInitDialog();
 	afx_msg void OnBnClicked_Skills();

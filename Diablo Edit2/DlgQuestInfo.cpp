@@ -15,10 +15,10 @@ const WORD CDlgQuestInfo::QUEST_COMPLETE[27] = {
 
 // CDlgQuestInfo ¶Ô»°¿ò
 
-IMPLEMENT_DYNAMIC(CDlgQuestInfo, CPropertyDialog)
+IMPLEMENT_DYNAMIC(CDlgQuestInfo, CCharacterDialogBase)
 
 CDlgQuestInfo::CDlgQuestInfo(CWnd* pParent /*=NULL*/)
-	: CPropertyDialog(CDlgQuestInfo::IDD, pParent)
+	: CCharacterDialogBase(CDlgQuestInfo::IDD, pParent)
 	, m_nLevel(0)
 {
 	::ZeroMemory(m_bUIData,sizeof(m_bUIData));
@@ -202,11 +202,4 @@ void CDlgQuestInfo::OnBnClicked_Hell()
 		::CopyMemory(m_bUIData,m_bQuestInfo[2],sizeof(m_bUIData));
 		UpdateData(FALSE);
 	}
-}
-
-BOOL CDlgQuestInfo::OnInitDialog()
-{
-	CPropertyDialog::OnInitDialog();
-	LoadText();
-	return TRUE;
 }

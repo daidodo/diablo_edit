@@ -23,10 +23,10 @@ const DWORD	CDlgCharBasicInfo::LEVEL_AND_EXPERIENCE[100] = {
 
 // CDlgCharBasicInfo 对话框
 
-IMPLEMENT_DYNAMIC(CDlgCharBasicInfo, CPropertyDialog)
+IMPLEMENT_DYNAMIC(CDlgCharBasicInfo, CCharacterDialogBase)
 
 CDlgCharBasicInfo::CDlgCharBasicInfo(CWnd* pParent /*=NULL*/)
-	: CPropertyDialog(CDlgCharBasicInfo::IDD, pParent)
+	: CCharacterDialogBase(CDlgCharBasicInfo::IDD, pParent)
 	, m_dlgTabPage(0)
 	, m_sVersion(_T(""))
 	, m_sName(_T(""))
@@ -211,7 +211,7 @@ void CDlgCharBasicInfo::UpdateUI(const CD2S_Struct & character)
 BOOL CDlgCharBasicInfo::GatherData(CD2S_Struct & character)
 {
 	UpdateData(TRUE);
-	if(!CheckCharName()){
+	if(!::SetCharName(character.Name, m_sName)){
 		MessageBox(::theApp.MsgBoxInfo(0), ::theApp.MsgError(), MB_ICONERROR);
 		return FALSE;
 	}
@@ -243,9 +243,6 @@ BOOL CDlgCharBasicInfo::GatherData(CD2S_Struct & character)
 	m_bExpansion ? character.charType |= 0x20 : character.charType &= ~0x20;
 	m_bHardcore ? character.charType |= 4 : character.charType &= ~4;
 	m_bDiedBefore ? character.charType |= 8 : character.charType &= ~8;
-	::ZeroMemory(character.Name,sizeof(character.Name));
-	for(int i = 0;i < m_sName.GetLength();++i)
-		(character.Name)[i] = char(m_sName[i]);
 	//character.charTitle
 	character.dwTime = DWORD(m_tTime.GetTime());
 	character.dwWeaponSet = m_cbWeaponSet.GetCurSel();
@@ -326,12 +323,12 @@ void CDlgCharBasicInfo::InitUI(void)
 		//在此处添加新的属性页,并在LoadText里更改界面文字的重载入
 		m_nTabPageCount = m_tcBasicInfo.GetItemCount();
 
-		m_dlgTabPage = new CPropertyDialog*[m_nTabPageCount];
+		m_dlgTabPage = new CCharacterDialogBase*[m_nTabPageCount];
 		m_dlgTabPage[0] = new CDlgWayPoints;
-		m_dlgTabPage[0]->Create(CDlgWayPoints::IDD,GetDlgItem(IDC_TAB1));
+		m_dlgTabPage[0]->Create(CDlgWayPoints::IDD, &m_tcBasicInfo);
 		m_dlgTabPage[0]->ShowWindow(SW_HIDE);
 		m_dlgTabPage[1] = new CDlgQuestInfo;
-		m_dlgTabPage[1]->Create(CDlgQuestInfo::IDD,GetDlgItem(IDC_TAB1));
+		m_dlgTabPage[1]->Create(CDlgQuestInfo::IDD, &m_tcBasicInfo);
 		m_dlgTabPage[1]->ShowWindow(SW_HIDE);
 		//在此处添加新的属性窗体
 
@@ -339,30 +336,6 @@ void CDlgCharBasicInfo::InitUI(void)
 		m_tcBasicInfo.SetCurSel(m_nTabCurSel);
 		m_dlgTabPage[m_nTabCurSel]->ShowWindow(SW_SHOW);
 	}
-}
-
-static inline BOOL IsLetter(TCHAR ch)
-{
-	return (ch >= _T('a') && ch <= _T('z')) || (ch >= _T('A') && ch <= _T('Z'));
-}
-static inline BOOL IsDash(TCHAR ch)
-{
-	return ch == _T('-') || ch == _T('_');
-}
-
-BOOL CDlgCharBasicInfo::CheckCharName(void)
-{
-	int len = m_sName.GetLength();
-	if(len >= 2 && IsLetter(m_sName[0]) && IsLetter(m_sName[1]) && IsLetter(m_sName[len - 1])){
-		for(int i = 2,j = 0;i < len;++i)
-			if(IsDash(m_sName[i])){
-				if(++j > 1)
-					return FALSE;
-			}else if(!IsLetter(m_sName[i]))
-				return FALSE;
-		return TRUE;
-	}
-	return FALSE;
 }
 
 void CDlgCharBasicInfo::LoadText(void)
@@ -401,9 +374,8 @@ void CDlgCharBasicInfo::LoadText(void)
 
 BOOL CDlgCharBasicInfo::OnInitDialog()
 {
-	CPropertyDialog::OnInitDialog();
+	CCharacterDialogBase::OnInitDialog();
 	InitUI();
-	LoadText();
 	return TRUE;
 }
 
@@ -431,7 +403,7 @@ void CDlgCharBasicInfo::OnEnChangeLevel()
 
 void CDlgCharBasicInfo::OnPaint()
 {
-	CPropertyDialog::OnPaint();
+	CCharacterDialogBase::OnPaint();
 	CRect rect;
 	GetClientRect(&rect);
 	rect.top += 235;

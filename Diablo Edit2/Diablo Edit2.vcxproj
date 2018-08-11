@@ -192,7 +192,7 @@
     <ClInclude Include="Diablo Edit2View.h" />
     <ClInclude Include="DlgCharBasicInfo.h" />
     <ClInclude Include="DlgCharItems.h" />
-    <ClInclude Include="DlgPrefixSuffix.h" />
+    <ClInclude Include="DlgFoundry.h" />
     <ClInclude Include="DlgQuestInfo.h" />
     <ClInclude Include="DlgSelectChar.h" />
     <ClInclude Include="DlgSkills.h" />
@@ -201,7 +201,7 @@
     <ClInclude Include="MetaData.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="MayExist.h" />
-    <ClInclude Include="PropertyDialog.h" />
+    <ClInclude Include="CharacterDialogBase.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -215,7 +215,7 @@
     <ClCompile Include="Diablo Edit2View.cpp" />
     <ClCompile Include="DlgCharBasicInfo.cpp" />
     <ClCompile Include="DlgCharItems.cpp" />
-    <ClCompile Include="DlgPrefixSuffix.cpp" />
+    <ClCompile Include="DlgFoundry.cpp" />
     <ClCompile Include="DlgQuestInfo.cpp" />
     <ClCompile Include="DlgSelectChar.cpp" />
     <ClCompile Include="DlgSkills.cpp" />
@@ -223,7 +223,7 @@
     <ClCompile Include="DlgWayPoints.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="MetaData.cpp" />
-    <ClCompile Include="PropertyDialog.cpp" />
+    <ClCompile Include="CharacterDialogBase.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -563,6 +563,9 @@
     <Image Include="res\Diablo Edit2.ico" />
     <Image Include="res\Diablo Edit2Doc.ico" />
     <Image Include="res\Toolbar.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Design\item.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -39,16 +39,28 @@ struct CItemMetaData
 	UINT Damage2Max = 0;	//武器的双手最高伤害
 };
 
+//属性的参数
+struct CPropertyField
+{
+	int bits, base, min, max;
+	//Functions:
+	const CPropertyField & Normalze();
+};
+
 //属性元数据
 class CPropertyMetaData
 {
-	std::vector<std::pair<int, int>> fields_;
+	std::vector<CPropertyField> fields_;
+	int def_ = 0;
 	int bitsSum_ = 0;
 public:
 	CPropertyMetaData() {}
-	CPropertyMetaData(std::vector<std::pair<int, int>> fields);
+	CPropertyMetaData(const std::vector<CPropertyField> & fields, int def);
 	int Bits() const { return bitsSum_; }
 	std::vector<int> Parse(DWORD value) const;
+	std::vector<std::tuple<int, int, int>> GetParams(DWORD value) const;
+	int GetValue(const std::vector<int> & params) const;
+	int DefaultValue() const { return def_; }
 };
 
 CString CSFormat(LPCTSTR lpszFormat, ...);
