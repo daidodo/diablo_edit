@@ -14,13 +14,27 @@ class MayExist : std::vector<T>
 	static_assert(N > 0);
 	typedef std::vector<T> __Base;
 public:
-	std::vector<T> & ensure() { resize(N); return *this; }
+	__Base & ensure() { resize(N); return *this; }
+	void reset() { __Base::clear(); }
 	bool exist() const { return !__Base::empty(); }
-	operator const T *() const { return &operator [](0); }
 	using __Base::begin;
 	using __Base::end;
 	using __Base::size;
 	using __Base::operator [];
+};
+
+template<int N>
+class MayExist<BYTE, N> : std::vector<BYTE>
+{
+	static_assert(N > 0);
+	typedef std::vector<BYTE> __Base;
+public:
+	__Base & ensure() { resize(N); return *this; }
+	void reset() { __Base::clear(); }
+	bool exist() const { return !__Base::empty(); }
+	operator CString() const { return CString(&operator [](0)); }
+	using __Base::begin;
+	using __Base::end;
 };
 
 template<class T>
@@ -29,6 +43,7 @@ class MayExist<T, 1>
 	std::vector<T> v_;
 public:
 	T & ensure() { v_.resize(1); return v_.front(); }
+	void reset() { v_.clear(); }
 	bool exist() const { return !v_.empty(); }
 	//void operator =(const T & v) { v_.front() = v; }
 	const T * operator ->() const { return &operator *(); }
@@ -54,6 +69,7 @@ COutBitsStream & operator <<(COutBitsStream & bs, const MayExist<T, 1> & v) {
 		bool e_ = false;								\
 	public:												\
 		T & ensure() { e_ = true; return v_; }			\
+		void reset() { e_ = false; v_ = 0; }			\
 		bool exist() const { return e_; }				\
 		T operator =(T v) { assert(e_); v_ = v; }		\
 		MayExist & operator =(const MayExist & a) {		\

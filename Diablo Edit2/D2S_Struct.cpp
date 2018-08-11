@@ -45,7 +45,7 @@ COutBitsStream & operator <<(COutBitsStream & bs, const CQuestInfoData & v) {
 CInBitsStream & operator >>(CInBitsStream & bs, CQuestInfo & v) {
 	bs >> v.dwMajic >> v.dwActs >> v.wSize;
 	if (v.dwMajic != 0x216F6F57 || v.wSize != 0x12A) {
-		MessageBox(0, ::theApp.MsgBoxInfo(13), ::theApp.MsgError(), MB_ICONERROR);
+		::MessageBox(0, ::theApp.MsgBoxInfo(13), ::theApp.MsgError(), MB_ICONERROR);
 		throw 0;
 	}
 	return bs >> v.QIData;
@@ -70,7 +70,7 @@ COutBitsStream & operator <<(COutBitsStream & bs, const CWaypointData & v) {
 CInBitsStream & operator >>(CInBitsStream & bs, CWaypoints & v) {
 	bs >> v.wMajic >> v.unkown >> v.wSize;
 	if (v.wMajic != 0x5357 || v.wSize != 0x50) {
-		MessageBox(0, ::theApp.MsgBoxInfo(14), ::theApp.MsgError(), MB_ICONERROR);
+		::MessageBox(0, ::theApp.MsgBoxInfo(14), ::theApp.MsgError(), MB_ICONERROR);
 		throw 0;
 	}
 	return bs >> v.wp;
@@ -91,7 +91,7 @@ static const DWORD PLAYER_STATS_BITS_COUNT[CPlayerStats::ARRAY_SIZE] = {
 CInBitsStream & operator >>(CInBitsStream & bs, CPlayerStats & v) {
 	bs >> v.wMajic;
 	if (v.wMajic != 0x6667) {
-		MessageBox(0, ::theApp.MsgBoxInfo(15), ::theApp.MsgError(), MB_ICONERROR);
+		::MessageBox(0, ::theApp.MsgBoxInfo(15), ::theApp.MsgError(), MB_ICONERROR);
 		throw 0;
 	}
 	::ZeroMemory(v.m_adwValue, sizeof(v.m_adwValue));
@@ -116,7 +116,7 @@ COutBitsStream & operator <<(COutBitsStream & bs, const CPlayerStats & v) {
 CInBitsStream & operator >>(CInBitsStream & bs, CCharSkills & v) {
 	bs >> v.wMagic;
 	if (v.wMagic != 0x6669) {
-		MessageBox(0, ::theApp.MsgBoxInfo(16), ::theApp.MsgError(), MB_ICONERROR);
+		::MessageBox(0, ::theApp.MsgBoxInfo(16), ::theApp.MsgError(), MB_ICONERROR);
 		throw 0;
 	}
 	return bs >> v.bSkillLevel;
@@ -141,7 +141,7 @@ COutBitsStream & operator <<(COutBitsStream & bs, const CCorpseData & v) {
 CInBitsStream & operator >>(CInBitsStream & bs, CCorpse & v) {
 	bs >> v.wMagic >> v.wCount;
 	if (v.wMagic != 0x4D4A || v.wCount > 1) {
-		MessageBox(0, ::theApp.MsgBoxInfo(19), ::theApp.MsgError(), MB_ICONERROR);
+		::MessageBox(0, ::theApp.MsgBoxInfo(19), ::theApp.MsgError(), MB_ICONERROR);
 		throw 0;
 	}
 	if (v.wCount)
@@ -164,7 +164,7 @@ CInBitsStream & operator >>(CInBitsStream & bs, pair<CMercenary &, bool> & p) {
 	auto & v = p.first;
 	bs >> v.wMagic;
 	if (v.wMagic != 0x666A) {
-		MessageBox(0, ::theApp.MsgBoxInfo(20), ::theApp.MsgError(), MB_ICONERROR);
+		::MessageBox(0, ::theApp.MsgBoxInfo(20), ::theApp.MsgError(), MB_ICONERROR);
 		throw 0;
 	}
 	if(p.second)
@@ -185,7 +185,7 @@ COutBitsStream & operator <<(COutBitsStream & bs, const pair<const CMercenary &,
 CInBitsStream & operator >>(CInBitsStream & bs, CGolem & v) {
 	bs >> v.wMagic >> v.bHasGolem;
 	if (v.wMagic != 0x666B) {
-		MessageBox(0, ::theApp.MsgBoxInfo(21), ::theApp.MsgError(), MB_ICONERROR);
+		::MessageBox(0, ::theApp.MsgBoxInfo(21), ::theApp.MsgError(), MB_ICONERROR);
 		throw 0;
 	}
 	if (v.bHasGolem)
@@ -227,18 +227,18 @@ BOOL CD2S_Struct::ReadData(CInBitsStream & bs) {
 	//得到人物信息
 	bs >> dwMajic;
 	if (dwMajic != 0xAA55AA55) {
-		MessageBox(0, ::theApp.MsgBoxInfo(11), ::theApp.MsgError(), MB_ICONERROR);
+		::MessageBox(0, ::theApp.MsgBoxInfo(11), ::theApp.MsgError(), MB_ICONERROR);
 		return FALSE;
 	}
 	bs >> dwVersion >> dwSize;
 	if (bs.DataSize() != dwSize) {
-		MessageBox(0, ::theApp.MsgBoxInfo(12), ::theApp.MsgError(), MB_ICONERROR);
+		::MessageBox(0, ::theApp.MsgBoxInfo(12), ::theApp.MsgError(), MB_ICONERROR);
 		return FALSE;
 	}
 	const DWORD offCrc = bs.BytePos();
 	bs >> dwCRC;
 	if (!::ValidateCrc(bs.Data(), dwCRC, offCrc)) {	//校验CRC，会修改bs数据内容
-		MessageBox(0, ::theApp.MsgBoxInfo(11), ::theApp.MsgError(), MB_ICONERROR);
+		::MessageBox(0, ::theApp.MsgBoxInfo(11), ::theApp.MsgError(), MB_ICONERROR);
 		return FALSE;
 	}
 	bs >> dwWeaponSet
@@ -280,7 +280,7 @@ BOOL CD2S_Struct::ReadData(CInBitsStream & bs) {
 		>> stGolem;
 	bs.AlignByte();
 	if (!bs.Good() || bs.DataSize() != bs.BytePos()) {
-		MessageBox(0, ::theApp.MsgBoxInfo(11), ::theApp.MsgError(), MB_ICONERROR);
+		::MessageBox(0, ::theApp.MsgBoxInfo(11), ::theApp.MsgError(), MB_ICONERROR);
 		return FALSE;
 	}
 	return bs.Good();

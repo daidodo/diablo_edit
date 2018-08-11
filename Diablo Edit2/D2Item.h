@@ -7,6 +7,9 @@
 #include <vector>
 #include <map>
 
+//检查并设置人物姓名
+BOOL SetCharName(BYTE (&dest)[16], const CString & src);
+
 //Ear
 struct CEar
 {
@@ -107,7 +110,7 @@ struct CTypeSpecificInfo
 {
 	MayExist<WORD>			iDefence;		//11 bits,实际防御值+10,if bHasDef = TRUE
 	MayExist<WORD>			iMaxDurability;	//8 bits,if bNoDurability == FALSE
-	MayExist<WORD>			iCurDur;		//9 bits,if bNoDurability == FALSE && iMaxDur > 0
+	MayExist<WORD>			iCurDur;		//9 bits,if iMaxDur > 0
 	MayExist<BYTE>			iSocket;		//4 bits,基础孔数(0-6),属性列表里可以有附加孔数(总数不超过6),if bSocketed = TRUE
 	MayExist<WORD>			iQuantity;		//9 bits,if bStacked == TRUE
 	MayExist<BOOL, 5>		aHasSetPropList;//5 bits,if iQuality == 5 
@@ -140,10 +143,10 @@ struct CItemInfo
 	void WriteData(COutBitsStream & bs, const CItemMetaData & itemData, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed) const;
 	BOOL IsNameValid() const;
 	BOOL IsSet() const { return pExtItemInfo.exist() && pExtItemInfo->IsSet(); }
+	BOOL IsGold() const { return ::memcmp(sTypeName, "gld ", sizeof sTypeName) == 0; }
 	int RuneWordId() const { ASSERT(pExtItemInfo.exist()); return pExtItemInfo->RuneWordId(); }
 	int Gems() const { return (pExtItemInfo.exist() ? pExtItemInfo->Gems() : 0); }
 	int Sockets() const { return (pTpSpInfo.exist() ? pTpSpInfo->TotalSockets() : 0); }
-	BOOL IsTypeName(const char * name) const;
 };
 
 struct CD2Item

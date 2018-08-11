@@ -121,7 +121,7 @@
 *=======================物品前后缀窗口UI			
 0	Item Prefix Suffix	物品前后缀名	物品前后綴名
 1	First Name	名	名
-2	Last Name	称	稱
+2	Last Name	姓	姓
 3	Prefix1	前缀1	前綴1
 4	Suffix1	后缀1	后綴1
 5	Prefix2	前缀2	前綴2
@@ -171,7 +171,7 @@
 30	Gold in person	身上金钱	身上金錢
 31	Gold in stash	箱子金钱	箱子金錢
 *=======================对话框消息			
-0	"Character name format error\nLenght:  2-15 chars\nContent: a-z,A-Z,-,_\nCaution: name string starts and ends with chars,\nonly one '-' or '_' is allowed"	"人物名字格式错误\n长度：2-15字符\n包括：a-z,A-Z,-,_\n注意：名字必须以字母开头和结尾，\n中间只允许有一个'-'或'_'符号"	"人物名字格式錯誤\n長度：2-15字符\n包括：a-z,A-Z,-,_\n注意：名字必須以字母開頭和結尾\n中間只允許有一個'-'或'_'符號"
+0	"Character name format error\nLength:  2-15 chars\nContent: a-z,A-Z,-,_\nCaution: name string starts and ends with chars,\nonly one '-' or '_' is allowed"	"人物名字格式错误\n长度：2-15个字符\n包括：a-z,A-Z,-,_\n注意：名字必须以字母开头和结尾，\n中间只允许有一个'-'或'_'符号"	"人物名字格式錯誤\n長度：2-15個字符\n包括：a-z,A-Z,-,_\n注意：名字必須以字母開頭和結尾\n中間只允許有一個'-'或'_'符號"
 1	Character level is between 1-127	人物等级必须在1-127之间	人物等級必須在1-127之間
 2	"Strength, Energy, Dexterity, Vitality and Stat Points is between 0-1023\nLife, Mana and Stamina is between 0-8191\nSkill Points is between 0-255"	力量、敏捷、体力、精力和状态点数必须在0-1023之间\n耐力、生命和法力值必须在0-8191之间\n技能点数必须在0-255之间	力量、敏捷、體力、精力和狀態點數值必須在0-1023之間\n耐力、生命和法力值必須在0-8191之間\n技能點數值必須在0-255之間
 3	Too many golds in person or stash	身上或箱子的金钱数过多	身上或箱子的金錢數過多
@@ -193,6 +193,30 @@
 19	Corpse data format error	尸体数据格式错误	尸體數據格式錯誤
 20	Mercenary data format error	雇佣兵数据格式错误	僱傭兵數據格式錯誤
 21	Golem data format error	Golem数据格式错误	Golem數據格式錯誤
+22	Ear level must be between 1 and 99	耳朵等级必须在1和99之间	耳朵等級必須在1和99之間
+23	Invalid character class	人物角色错误	人物角色錯誤
+24	Item drop level must be between 1 and 99	物品掉落等级必须在1和99之间	物品掉落等級必須在1和99之間
+25	Invalid item quality	物品质量错误	物品質量錯誤
+26	Invalid item subtype	物品子类错误	物品子類錯誤
+27	Personalized name format error\nRequirement: 1-15 regular characters	个性化名字格式错误\n要求：1-15个英文字符	個性化名字格式錯誤\n要求：1-15個英文字符
+28	Item defence must be between 10 and 2057	物品防御必须在10到2057之间	物品防禦必須在10到2057之間
+29	Item max durability must be between 0 and 255	物品最大耐久度必须在0到255之间	物品最大耐久度必須在0到255之間
+30	Item durability must be within max durability	物品耐久度必须在最大值范围内	物品耐久度必須在最大值範圍內
+31	Item sockets count must be within 6	物品最多只能有6个孔	物品最多只能有6個孔
+32	Quantity must be between 0 and 511	数量值必须在0到511之间	數量值必須在0到511之間
+33	Invalid monster name index	怪物名字索引错误	怪物名字所以錯誤
+34	Invalid first name index	物品名索引错误	物品名索引錯誤
+35	Invalid last name index	物品姓索引错误	物品姓索引錯誤
+36	Invalid prefix 1 index	物品前缀1索引错误	物品前綴1索引錯誤
+37	Invalid prefix 2 index	物品前缀2索引错误	物品前綴2索引錯誤
+38	Invalid prefix 3 index	物品前缀3索引错误	物品前綴3索引錯誤
+39	Invalid suffix 1 index	物品后缀1索引错误	物品後綴1索引錯誤
+40	Invalid suffix 2 index	物品后缀2索引错误	物品後綴2索引錯誤
+41	Invalid suffix 3 index	物品后缀3索引错误	物品後綴3索引錯誤
+42	Invalid set item name index	套装物品索引错误	套裝物品索引錯誤
+43	Invalid unique item name index	暗金物品索引错误	暗金物品索引錯誤
+44	Invalid magic prefix index	物品魔法前缀索引错误	物品魔法前綴索引錯誤
+45	Invalid magic suffix index	物品魔法后缀索引错误	物品魔法後綴索引錯誤
 *=======================物品质量名字			
 0	Low	白色低级	白色低級
 1	Normal	白色普通	白色普通

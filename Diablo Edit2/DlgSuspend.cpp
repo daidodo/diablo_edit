@@ -139,7 +139,7 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem)
         //Quantity
 		if (meta.IsStacked) {
 			AddMsg(WHITE, CSFormat(::theApp.ItemSuspendUI(5), UINT(pItem->pItemInfo->pTpSpInfo->iQuantity)));
-		} else if (pItem->pItemInfo->IsTypeName("gld "))
+		} else if (pItem->pItemInfo->IsGold())
 			AddMsg(WHITE, CSFormat(::theApp.ItemSuspendUI(5), UINT(pItem->pItemInfo->pGold->wQuantity)));
 		//Durability or Indestructible
 		if (meta.HasDur) {

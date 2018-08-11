@@ -73,7 +73,6 @@ public:
 	void LoadText(void);	//加载控件的字符串内容
 private:
 	void InitUI(void);
-	BOOL CheckCharName(void);
 public:
 	virtual BOOL OnInitDialog();
 	afx_msg void OnBnClicked_Skills();

@@ -211,12 +211,12 @@ void CDlgCharBasicInfo::UpdateUI(const CD2S_Struct & character)
 BOOL CDlgCharBasicInfo::GatherData(CD2S_Struct & character)
 {
 	UpdateData(TRUE);
-	if(!CheckCharName()){
-		MessageBox(::theApp.MsgBoxInfo(0), ::theApp.MsgError(), MB_ICONERROR);
+	if(!::SetCharName(character.Name, m_sName)){
+		::MessageBox(0, ::theApp.MsgBoxInfo(0), ::theApp.MsgError(), MB_ICONERROR);
 		return FALSE;
 	}
 	if(m_uCharLevel < 1 || m_uCharLevel > 127){
-		MessageBox(::theApp.MsgBoxInfo(1),::theApp.MsgError(),MB_ICONERROR);
+		::MessageBox(0, ::theApp.MsgBoxInfo(1),::theApp.MsgError(),MB_ICONERROR);
 		return FALSE;
 	}
 	if(m_dwStrength > 1023 ||
@@ -231,11 +231,11 @@ BOOL CDlgCharBasicInfo::GatherData(CD2S_Struct & character)
 		m_dwMaximumMana > 8191 ||
 		m_dwCurrentStamina > 8191 ||
 		m_dwMaximumStamina > 8191){
-			MessageBox(::theApp.MsgBoxInfo(2), ::theApp.MsgError(), MB_ICONERROR);
+			::MessageBox(0, ::theApp.MsgBoxInfo(2), ::theApp.MsgError(), MB_ICONERROR);
 			return FALSE;
 	}
 	if(m_dwGoldInBody > m_dwMaxGoldInBody || m_dwGoldInStash > m_dwMaxGoldInStash){
-		MessageBox(::theApp.MsgBoxInfo(3),::theApp.MsgError(),MB_ICONERROR);
+		::MessageBox(0, ::theApp.MsgBoxInfo(3),::theApp.MsgError(),MB_ICONERROR);
 		return FALSE;
 	}
 	character.charClass = m_cbCharClass.GetCurSel();
@@ -243,9 +243,6 @@ BOOL CDlgCharBasicInfo::GatherData(CD2S_Struct & character)
 	m_bExpansion ? character.charType |= 0x20 : character.charType &= ~0x20;
 	m_bHardcore ? character.charType |= 4 : character.charType &= ~4;
 	m_bDiedBefore ? character.charType |= 8 : character.charType &= ~8;
-	::ZeroMemory(character.Name,sizeof(character.Name));
-	for(int i = 0;i < m_sName.GetLength();++i)
-		(character.Name)[i] = char(m_sName[i]);
 	//character.charTitle
 	character.dwTime = DWORD(m_tTime.GetTime());
 	character.dwWeaponSet = m_cbWeaponSet.GetCurSel();
@@ -341,30 +338,6 @@ void CDlgCharBasicInfo::InitUI(void)
 	}
 }
 
-static inline BOOL IsLetter(TCHAR ch)
-{
-	return (ch >= _T('a') && ch <= _T('z')) || (ch >= _T('A') && ch <= _T('Z'));
-}
-static inline BOOL IsDash(TCHAR ch)
-{
-	return ch == _T('-') || ch == _T('_');
-}
-
-BOOL CDlgCharBasicInfo::CheckCharName(void)
-{
-	int len = m_sName.GetLength();
-	if(len >= 2 && IsLetter(m_sName[0]) && IsLetter(m_sName[1]) && IsLetter(m_sName[len - 1])){
-		for(int i = 2,j = 0;i < len;++i)
-			if(IsDash(m_sName[i])){
-				if(++j > 1)
-					return FALSE;
-			}else if(!IsLetter(m_sName[i]))
-				return FALSE;
-		return TRUE;
-	}
-	return FALSE;
-}
-
 void CDlgCharBasicInfo::LoadText(void)
 {
     TCITEM tci;
@@ -414,7 +387,7 @@ void CDlgCharBasicInfo::OnBnClicked_Skills()
 		CDlgSkills dlgSkill(charClass,m_bSkills);
 		dlgSkill.DoModal();
 	}else
-		MessageBox(::theApp.MsgBoxInfo(4),::theApp.MsgError(),MB_ICONERROR);
+		::MessageBox(0, ::theApp.MsgBoxInfo(4),::theApp.MsgError(),MB_ICONERROR);
 }
 
 void CDlgCharBasicInfo::OnEnChangeLevel()

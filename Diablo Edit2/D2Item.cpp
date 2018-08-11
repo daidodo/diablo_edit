@@ -9,6 +9,38 @@
 
 using namespace std;
 
+static inline BOOL isLetter(TCHAR ch) {
+	return (ch >= _T('a') && ch <= _T('z')) || (ch >= _T('A') && ch <= _T('Z'));
+}
+
+static inline BOOL isDash(TCHAR ch) {
+	return ch == _T('-') || ch == _T('_');
+}
+
+BOOL checkCharName(const CString & name) {
+	int len = name.GetLength();
+	if (len >= 2 && len < 16 && isLetter(name[0]) && isLetter(name[1]) && isLetter(name[len - 1])) {
+		for (int i = 2, j = 0; i < len; ++i)
+			if (isDash(name[i])) {
+				if (++j > 1)
+					return FALSE;
+			} else if (!isLetter(name[i]))
+				return FALSE;
+			return TRUE;
+	}
+	return FALSE;
+}
+
+BOOL SetCharName(BYTE (&dest)[16], const CString & src) {
+	ASSERT(dest);
+	if (!checkCharName(src))
+		return FALSE;
+	::ZeroMemory(dest, sizeof(dest));
+	for (int i = 0; i < src.GetLength(); ++i)
+		dest[i] = char(src[i]);
+	return TRUE;
+}
+
 // struct CEar
 
 CInBitsStream & operator >>(CInBitsStream & bs, CEar & v) {
@@ -323,7 +355,6 @@ BOOL CTypeSpecificInfo::IsIndestructible() const {
 	return FALSE;
 }
 
-
 // struct CItemInfo
 
 const CItemMetaData *  CItemInfo::ReadData(CInBitsStream & bs, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed) {
@@ -332,14 +363,14 @@ const CItemMetaData *  CItemInfo::ReadData(CInBitsStream & bs, BOOL bSimple, BOO
 	auto pItemData = ::theApp.ItemMetaData(dwTypeID);
 	if (!pItemData) {	//本程序不能识别此物品
 		if (IsNameValid()) {
-			MessageBox(0, CSFormat(::theApp.MsgBoxInfo(6),
+			::MessageBox(0, CSFormat(::theApp.MsgBoxInfo(6),
 				sTypeName[0],
 				sTypeName[1],
 				sTypeName[2],
 				sTypeName[3]),
 				::theApp.MsgError(), MB_ICONERROR);
 		} else
-			MessageBox(0, ::theApp.MsgBoxInfo(18), ::theApp.MsgError(), MB_ICONERROR);
+			::MessageBox(0, ::theApp.MsgBoxInfo(18), ::theApp.MsgError(), MB_ICONERROR);
 		throw 0;
 	}
 	if (!bSimple)	//物品有额外属性
@@ -351,7 +382,7 @@ const CItemMetaData *  CItemInfo::ReadData(CInBitsStream & bs, BOOL bSimple, BOO
 			pItemData->HasMonsterID,
 			pItemData->HasSpellID));
 	//特殊物品类型的额外数据
-	if (IsTypeName("gld "))	//gld 的数量域
+	if (IsGold())	//gld 的数量域
 		bs >> pGold;
 	bs >> bHasRand;
 	if (bHasRand)
@@ -381,7 +412,7 @@ void CItemInfo::WriteData(COutBitsStream & bs, const CItemMetaData & itemData, B
 				itemData.HasMonsterID,
 				itemData.HasSpellID));
 	//特殊物品类型的额外数据
-	if (IsTypeName("gld "))	//gld 的数量域
+	if (IsGold())	//gld 的数量域
 		bs << pGold;
 	bs << bHasRand;
 	if (bHasRand)
@@ -403,10 +434,6 @@ BOOL CItemInfo::IsNameValid() const {
 		if(c != ' ' && (c < 'a' || c > 'z'))
 			return FALSE;
 	return TRUE;
-}
-
-BOOL CItemInfo::IsTypeName(const char * name) const {
-	return memcmp(sTypeName, name, size(sTypeName)) == 0;
 }
 
 //CD2Item
@@ -472,7 +499,7 @@ CString CD2Item::ItemName() const {
 void CD2Item::ReadData(CInBitsStream & bs) {
 	bs >> wMajic;
 	if (wMajic != 0x4D4A) {
-		MessageBox(0, ::theApp.MsgBoxInfo(18), ::theApp.MsgError(), MB_ICONERROR);
+		::MessageBox(0, ::theApp.MsgBoxInfo(18), ::theApp.MsgError(), MB_ICONERROR);
 		throw 0;
 	}
 	bs >> bQuest
@@ -578,7 +605,7 @@ void CD2Item::WriteFile(CFile & file) const {
 CInBitsStream & operator >>(CInBitsStream & bs, CItemList & v){
 	bs >> v.wMajic >> v.nItems;
 	if (v.wMajic != 0x4D4A) {
-		MessageBox(0, ::theApp.MsgBoxInfo(17), ::theApp.MsgError(), MB_ICONERROR);
+		::MessageBox(0, ::theApp.MsgBoxInfo(17), ::theApp.MsgError(), MB_ICONERROR);
 		throw 0;
 	}
 	v.vItems.resize(v.nItems);
