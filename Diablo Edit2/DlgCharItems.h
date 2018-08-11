@@ -27,7 +27,7 @@ struct CItemView
 	CItemView(const CD2Item & item, EEquip equip, EPosition pos, int x, int y);
 	CSize ViewSize() const;
 	CString ItemName() const { return Item.ItemName(); }
-	CD2Item UpdatedItem(const std::vector<CItemView> & vItemViews) const;
+	const CD2Item & UpdateItem(std::vector<CItemView> & vItemViews);	//根据UI更新物品数据（位置，镶嵌宝石等）
 };
 
 //网格位置的视图

@@ -83,7 +83,7 @@ enum EPosition {
 
 	GOLEM = MERCENARY_END,		//生成金属石魔的物品
 
-	POSITION_END,		//所有网格位置总数
+	POSITION_END,				//所有网格位置总数
 
 	IN_MOUSE = POSITION_END,	//被鼠标拿起
 	IN_RECYCLE,					//被删除
@@ -288,24 +288,23 @@ CItemView::CItemView(const CD2Item & item, EEquip equip, EPosition pos, int x, i
 
 CSize CItemView::ViewSize() const { return CSize(iGridWidth * GRID_WIDTH, iGridHeight*GRID_WIDTH); }
 
-CD2Item CItemView::UpdatedItem(const std::vector<CItemView> & vItemViews) const {
-	CD2Item item(Item);
+const CD2Item & CItemView::UpdateItem(std::vector<CItemView> & vItemViews) {
 	//update position
 	const auto t = PositionToItem(iPosition, iGridX, iGridY);
-	item.iLocation = get<0>(t);
-	item.iPosition = get<1>(t);
-	item.iColumn = get<2>(t);
-	item.iRow = get<3>(t);
-	item.iStoredIn = get<4>(t);
+	Item.iLocation = get<0>(t);
+	Item.iPosition = get<1>(t);
+	Item.iColumn = get<2>(t);
+	Item.iRow = get<3>(t);
+	Item.iStoredIn = get<4>(t);
 	//update gems
-	item.aGemItems.clear();
+	Item.aGemItems.clear();
 	for (int i : vGemItems) {
 		if (i < 0)
 			continue;
 		ASSERT(i < int(vItemViews.size()));
-		item.aGemItems.push_back(vItemViews[i].UpdatedItem(vItemViews));
+		Item.aGemItems.push_back(vItemViews[i].UpdateItem(vItemViews));
 	}
-	return item;
+	return Item;
 }
 
 //struct GridView
@@ -1142,8 +1141,8 @@ void CDlgCharItems::OnItemImport() {
 
 void CDlgCharItems::OnItemExport() {
 	//update item
-	const auto & view = SelectedItemView();
-	const auto item = view.UpdatedItem(m_vItemViews);
+	auto & view = SelectedItemView();
+	auto & item = view.UpdateItem(m_vItemViews);
 	//serialize to file
 	CFileDialog save_item(FALSE, 0, view.ItemName() + _T(".d2i"), OFN_OVERWRITEPROMPT | OFN_PATHMUSTEXIST, _T("Diablo II Item(*.d2i)|*.d2i|All File(*.*)|*.*||"));
 	if (save_item.DoModal() == IDOK)

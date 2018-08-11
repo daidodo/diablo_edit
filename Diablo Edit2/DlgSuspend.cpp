@@ -14,7 +14,7 @@ using namespace std;
 typedef deque<CString> __Tokens;
 // CDlgSuspend 对话框
 
-enum { WHITE, BLUE, GREEN, RARE, UNIQUE, CRAFT };	//颜色索引
+enum { WHITE, BLUE, GREEN, RARE, UNIQUE, CRAFT, RED };	//颜色索引
 
 const COLORREF	CDlgSuspend::FONT_COLOR[] = {
 	RGB(255,255,255),		//白色
@@ -23,6 +23,7 @@ const COLORREF	CDlgSuspend::FONT_COLOR[] = {
 	RGB(255,255,0),			//黄金色
 	RGB(0x94,0x80,0x64),	//暗金色
 	RGB(255,128,0),			//橙色
+	RGB(255, 0, 0),			//红色
 };
 
 IMPLEMENT_DYNAMIC(CDlgSuspend, CDialog)
@@ -168,6 +169,8 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem)
         if(pItem->bSocketed)
 			AddMsg(BLUE, CSFormat(::theApp.ItemSuspendUI(9), pItem->pItemInfo->pExtItemInfo->nGems, pItem->Sockets()));
     }
+	if(!pItem->bIdentified)
+		AddMsg(RED, ::theApp.ItemSuspendUI(12));
 	//根据信息条数和长度决定窗体长度和宽度
 	LONG maxLen = accumulate(m_sItemMsg.begin(), m_sItemMsg.end(), 0, [](LONG m, auto & a) {return max(m, a.second.GetLength()); });
 	CRect rect;

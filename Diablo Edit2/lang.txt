@@ -118,6 +118,7 @@
 9	Sockets(%d/%d)	有凹槽(%d/%d)	有凹槽(%d/%d)
 10	%s's Ear	(%s)的耳朵	(%s)的耳朵
 11	Level %d	%d级	%d級
+12	Unidentified	未辨识	未辨識
 *=======================物品前后缀窗口UI			
 0	Item Prefix Suffix	物品前后缀名	物品前后綴名
 1	First Name	名	名
