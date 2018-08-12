@@ -754,10 +754,7 @@ void CDlgCharItems::ResetAll()
 
 static void loadTextMercCB(CComboBox & cb, int sz, function<CString (int i)> name) {
 	int sel = cb.GetCurSel();			//保存当前选中项
-	for (; 0 < cb.GetCount();)			//删除旧项
-		cb.DeleteString(0);
-	const auto left = cb.GetCount();
-	ASSERT(cb.GetCount() == 0);
+	cb.ResetContent();					//删除旧项
 	for (int i = 0; i < sz; ++i)		//更新文字
 		cb.InsertString(i, name(i));
 	if (sz > 0)							//重新设置选择项

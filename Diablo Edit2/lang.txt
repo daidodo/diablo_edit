@@ -1500,7 +1500,7 @@
 104	Bypass Demons		
 105	%+d%% Faster Cast Rate		
 106	Bypass Beast		
-107	%+d to %s(%s only)		
+107	%+d to %s (%s only)		
 108	Slain Monsters Rest In Peace %+d		
 109	Curse Resist %+d		
 110	Poison Length Reduced by %+d%%		
