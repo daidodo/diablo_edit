@@ -202,8 +202,19 @@ void CD2S_Struct::WriteFile(const CString & path) const {
 	bs.WriteFile(CFile(path, CFile::modeCreate | CFile::modeWrite));
 }
 
+void CD2S_Struct::Reset() {
+	QuestInfo.Reset();
+	Waypoints.Reset();
+	PlayerStats.Reset();
+	Skills.Reset();
+	ItemList.Reset();
+	stCorpse.Reset();
+	stMercenary.Reset();
+	stGolem.Reset();
+}
 
 void CD2S_Struct::ReadData(CInBitsStream & bs) {
+	Reset();
 	//得到人物信息
 	bs >> dwMajic;
 	if (dwMajic != 0xAA55AA55)

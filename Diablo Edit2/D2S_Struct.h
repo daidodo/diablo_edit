@@ -30,6 +30,8 @@ struct CQuestInfo
 	DWORD	dwActs;				//似乎总是6
 	WORD	wSize;				//Quest Info结构的总长度，0x12A(=298=4+4+2+288)
 	CQuestInfoData	QIData[3];
+	//Functions:
+	void Reset() {}
 };
 
 // 小站信息
@@ -46,6 +48,8 @@ struct CWaypoints
 	DWORD	unkown;
 	WORD	wSize;				//0x50
 	CWaypointData	wp[3];
+	//Functions:
+	void Reset() {}
 };
 
 //人物属性
@@ -71,6 +75,8 @@ struct CPlayerStats
 										E: 9 bits, + 25 bits Gold on Person
 										F: 9 bits, + 25 bits Gold in Stash */
 	WORD iEnd;						//0x1FF: 9 bits, 结束
+	//Functions:
+	void Reset() {}
 };
 
 //人物技能
@@ -78,6 +84,8 @@ struct CCharSkills
 {
 	WORD	wMagic;				//0x6669
 	BYTE	bSkillLevel[30];	//技能等级
+	//Functions:
+	void Reset() {}
 };
 
 //尸体数据
@@ -95,6 +103,7 @@ struct CCorpse
 	MayExist<CCorpseData> pCorpseData;	//尸体的数据, if wCount == 1
 	//Function:
 	BOOL HasCorpse() const { return wCount > 0 && pCorpseData.exist(); }
+	void Reset() { pCorpseData.reset(); }
 };
 
 //雇佣兵
@@ -102,6 +111,8 @@ struct CMercenary
 {
 	WORD				wMagic;		//0x666A, "jf"
 	MayExist<CItemList>	stItems;	//雇佣兵的装备列表, if wMercName != 0
+	//Function:
+	void Reset() { stItems.reset(); }
 };
 
 //钢铁石魔
@@ -110,6 +121,8 @@ struct CGolem
 	WORD	wMagic;				//0x666B, "kf"
 	BYTE	bHasGolem;
 	MayExist<CD2Item>	pItem;	//召唤钢铁石魔的物品, if bHasGolem != 0
+	//Function:
+	void Reset() { bHasGolem = FALSE; pItem.reset(); }
 };
 
 struct CD2S_Struct
@@ -119,6 +132,7 @@ struct CD2S_Struct
 	void WriteFile(const CString & path) const;
 	BOOL HasCorpse() const { return stCorpse.HasCorpse(); }
 	BOOL HasMercenary() const { return wMercName > 0; }
+	void Reset();
 private:
 	void ReadData(CInBitsStream & bs);
 	BOOL WriteData(COutBitsStream & bs) const;

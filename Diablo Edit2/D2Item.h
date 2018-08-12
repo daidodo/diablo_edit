@@ -221,6 +221,7 @@ struct CItemList
 	WORD		wEndMajic;			//0x4D4A,"JM"
 	//Functions:
 	void SwapItems(CItemList & list) { vItems.swap(list.vItems); }
+	void Reset() { vItems.clear(); }
 };
 
 CInBitsStream & operator >>(CInBitsStream & bs, CItemList & v);
