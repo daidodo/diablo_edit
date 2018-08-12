@@ -141,6 +141,11 @@ int CPropertyList::ExtSockets() const {
 	return (wh == mProperty.end() ? 0 : wh->second);
 }
 
+BOOL CPropertyList::IsIndestructible() const {
+	auto wh = mProperty.find(152);	//152是不可破坏属性ID
+	return (wh == mProperty.end() ? FALSE : (wh->second != 0));
+}
+
 //pack
 
 template<class V, class T>

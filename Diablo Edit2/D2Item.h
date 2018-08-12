@@ -49,8 +49,8 @@ struct CPropertyList
 	std::map<WORD, DWORD>	mProperty;		//属性列表，每项（9 bits ID + VALUE)
 	WORD					iEndFlag;		//9 bits, 0x1FF, 结束标志
 	//Functons:
-	int ExtSockets() const;		//属性列表里的额外孔数
-	BOOL IsIndestructible() const { return (mProperty.find(152) != mProperty.end()); }
+	int ExtSockets() const;			//属性列表里的额外孔数
+	BOOL IsIndestructible() const;	//属性列表里的不可破坏属性
 };
 
 //Extended Item Info
