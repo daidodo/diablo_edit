@@ -124,11 +124,10 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem, int iGems)
 					AddMsg(color, text(title));
 					break;
 				}
-				default:
-					if (pItem->IsRuneWord())
-						AddMsg(UNIQUE, ::theApp.RuneWordName(pItem->RuneWordId()) + _T(" (Rune Word)"));
 			}
 		}
+		if (quality <= 3 && pItem->IsRuneWord())
+			AddMsg(UNIQUE, ::theApp.RuneWordName(pItem->RuneWordId()) + _T(" (Rune Word)"));
 		AddMsg(color, text(name));
 		//Defence or Attack
 		if (meta.HasDef) {				//”–∑¿”˘÷µ
