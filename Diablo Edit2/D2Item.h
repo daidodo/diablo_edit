@@ -144,6 +144,7 @@ struct CItemInfo
 	BOOL IsNameValid() const;
 	BOOL IsSet() const { return pExtItemInfo.exist() && pExtItemInfo->IsSet(); }
 	BOOL IsGold() const { return ::memcmp(sTypeName, "gld ", sizeof sTypeName) == 0; }
+	BOOL IsBox() const { return ::memcmp(sTypeName, "box ", sizeof sTypeName) == 0; }			//是否赫拉迪卡方块
 	int RuneWordId() const { ASSERT(pExtItemInfo.exist()); return pExtItemInfo->RuneWordId(); }
 	int Gems() const { return (pExtItemInfo.exist() ? pExtItemInfo->Gems() : 0); }
 	int Sockets() const { return (pTpSpInfo.exist() ? pTpSpInfo->TotalSockets() : 0); }
@@ -203,7 +204,8 @@ struct CD2Item
 	int Gems() const { return (pItemInfo.exist() ? pItemInfo->Gems() : 0); }
 	int Sockets() const { return (bSocketed && pItemInfo.exist() ? pItemInfo->Sockets() : 0); }	//物品的孔数总和（包括属性增加的孔）
 	CString ItemName() const;
-	int GemIndexMax() const;
+	int GemIndexMax() const;	//镶嵌宝石位置索引最大值，没有返回-1
+	BOOL IsBox() const { return pItemInfo.exist() && pItemInfo->IsBox(); }	//是否赫拉迪卡方块
 	void ReadData(CInBitsStream & bs);
 	void WriteData(COutBitsStream & bs) const;
 	BOOL ReadFile(CFile & file);

@@ -935,6 +935,7 @@ void CDlgCharItems::OnContextMenu(CWnd* /*pWnd*/, CPoint point) {
 				Modify
 				Remove
 		*/
+		const auto & view = SelectedItemView();
 		CMenu menu;
 		menu.CreatePopupMenu();
 		ASSERT(::IsMenu(menu.m_hMenu));
@@ -950,7 +951,7 @@ void CDlgCharItems::OnContextMenu(CWnd* /*pWnd*/, CPoint point) {
 		//Appearance
 		menu.EnableMenuItem(ID_ITEM_IMPORT, (m_bClickOnItem ? MF_DISABLED : MF_ENABLED));
 		menu.EnableMenuItem(ID_ITEM_EXPORT, (m_bClickOnItem ? MF_ENABLED : MF_DISABLED));
-		menu.EnableMenuItem(ID_ITEM_COPY, (m_bClickOnItem ? MF_ENABLED : MF_DISABLED));
+		menu.EnableMenuItem(ID_ITEM_COPY, (m_bClickOnItem && !view.Item.IsBox() ? MF_ENABLED : MF_DISABLED));
 		menu.EnableMenuItem(ID_ITEM_PASTE, (0 <= m_iCopiedItemIndex ? MF_ENABLED : MF_DISABLED));
 		menu.EnableMenuItem(ID_ITEM_MODIFY, (m_bClickOnItem && SelectedItemView().Item.IsEditable() ? MF_ENABLED : MF_DISABLED));
 		menu.EnableMenuItem(ID_ITEM_REMOVE, (m_bClickOnItem ? MF_ENABLED : MF_DISABLED));
