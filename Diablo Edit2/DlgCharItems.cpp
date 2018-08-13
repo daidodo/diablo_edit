@@ -151,7 +151,7 @@ const int POSITION_INFO[POSITION_END][5] = {
 	{560,320,2,4,E_HAND},	//雇佣兵的武器右
 	{760,320,2,4,E_HAND},	//雇佣兵的武器左
 
-	{850,35,2,4,E_ANY},		//生成金属石魔的物品
+	{480,30,2,4,E_ANY},		//生成金属石魔的物品
 };
 
 static CRect PositionToRect(EPosition pos) {
