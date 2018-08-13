@@ -444,11 +444,14 @@ void CDlgCharItems::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_STATIC_MERC_TYPE, m_sText[7]);
 	DDX_Text(pDX, IDC_STATIC_MERC_EXP, m_sText[8]);
 	DDX_Text(pDX, IDC_CHECK3, m_sText[9]);
+	DDX_Text(pDX, IDC_STATIC_RECYCLE, m_sText[10]);
+	DDX_Text(pDX, IDC_BUTTON_RESUME, m_sText[11]);
 	DDX_Control(pDX, IDC_COMBO_MERC_NAME, m_cbMercName);
 	DDX_Control(pDX, IDC_COMBO_MERC_TYPE, m_cbMercType);
 	DDX_Control(pDX, IDC_EDIT_MERC_EXP, m_edMercExp);
 	DDX_Control(pDX, IDC_CHECK4, m_chCorpseSecondHand);
 	DDX_Control(pDX, IDC_CHECK3, m_chMercDead);
+	DDX_Control(pDX, IDC_LIST1, m_lbRecycle);
 }
 
 BEGIN_MESSAGE_MAP(CDlgCharItems, CDialog)
@@ -593,11 +596,15 @@ void CDlgCharItems::AddItemInGrid(const CD2Item & item, int body) {
 	}
 }
 
-void CDlgCharItems::RecycleItemFromGrid(CItemView & view) {
+void CDlgCharItems::RecycleItemFromGrid(UINT index) {
+	ASSERT(index < m_vItemViews.size());
+	auto & view = m_vItemViews[index];
 	ASSERT(view.iPosition < POSITION_END);
 	auto & grid = m_vGridView[view.iPosition];
 	grid.ItemIndex(-1, view.iGridX, view.iGridY, view.iGridWidth, view.iGridHeight);
 	view.iPosition = IN_RECYCLE;
+	const int i = m_lbRecycle.AddString(view.Item.ItemName());
+	m_lbRecycle.SetItemData(i, index);
 }
 
 CPoint CDlgCharItems::GetItemPositionXY(const CItemView & view) const {
@@ -929,6 +936,10 @@ void CDlgCharItems::OnRButtonUp(UINT nFlags, CPoint point)
 
 void CDlgCharItems::OnContextMenu(CWnd* /*pWnd*/, CPoint point) {
 	if (m_bHasCharacter && m_iPickedItemIndex < 0) {	//未拿起物品
+		CRect rect;
+		m_lbRecycle.GetWindowRect(&rect);
+		if (rect.PtInRect(point))
+			return;	//Inside of Recycle list
 		/*	创建弹出菜单：
 				Import
 				Export
@@ -958,6 +969,7 @@ void CDlgCharItems::OnContextMenu(CWnd* /*pWnd*/, CPoint point) {
 		menu.EnableMenuItem(ID_ITEM_PASTE, (0 <= m_iCopiedItemIndex ? MF_ENABLED : MF_DISABLED));
 		menu.EnableMenuItem(ID_ITEM_MODIFY, (m_bClickOnItem && SelectedItemView().Item.IsEditable() ? MF_ENABLED : MF_DISABLED));
 		menu.EnableMenuItem(ID_ITEM_REMOVE, (m_bClickOnItem ? MF_ENABLED : MF_DISABLED));
+		m_bClickOnItem = FALSE;
 
 		menu.TrackPopupMenu(TPM_LEFTALIGN | TPM_RIGHTBUTTON, point.x, point.y, this);
 	}
@@ -1114,21 +1126,20 @@ void CDlgCharItems::OnItemModify() {
 
 void CDlgCharItems::OnItemRemove() {
 	auto & view = SelectedItemView();
+	int idx = m_iSelectedSocketIndex;
 	m_iSelectedSocketIndex = -1;
 	if (::IsInSocket(view.iPosition)) {	//删除镶嵌的宝石
 		auto & gems = SelectedParentItemView().vGemItems;
 		ASSERT(0 <= view.iGridX && view.iGridX < int(gems.size()));
 		gems[view.iGridX] = -1;
 	} else {	//删除其他物品
-		for (int i : view.vGemItems) {	//先删除镶嵌的宝石
-			if (i < 0)
-				continue;
-			ASSERT(i < int(m_vItemViews.size()));
-			RecycleItemFromGrid(m_vItemViews[i]);
-		}
+		for (int i : view.vGemItems)	//先删除镶嵌的宝石
+			if (0 <= i)
+				RecycleItemFromGrid(i);
+		idx = m_iSelectedItemIndex;
 		m_iSelectedItemIndex = -1;
 	}
-	RecycleItemFromGrid(view);
+	RecycleItemFromGrid(idx);
 	Invalidate();
 }
 
