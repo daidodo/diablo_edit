@@ -21,7 +21,7 @@ using namespace std;
 
 const int GRID_WIDTH = 30;	//每个网格的边长(像素)
 
-//物品能装备的位置
+//物品类型和能装备的位置
 enum EEquip {
 	E_ANY = -1,				//可接受任意物品
 
@@ -36,9 +36,13 @@ enum EEquip {
 	E_GLOVE = 1 << 8,		//手套
 	E_IN_BELT = 1 << 9,		//放在腰带里（药品等）
 	E_SOCKET = 1 << 10,		//可镶嵌（珠宝，符文等）
+	E_A_BOX = 1 << 11,		//该物品是赫拉迪卡方块
 };
 
-static EEquip ItemToEquip(const CItemMetaData & meta) {
+static EEquip ItemToEquip(const CD2Item & item) {
+	if (item.IsBox())
+		return E_A_BOX;
+	auto & meta = item.MetaData();
 	if (0 == meta.Equip)
 		return (meta.IsGem ? E_SOCKET : E_STORAGE);
 	ASSERT(meta.Equip <= 10);
@@ -116,7 +120,7 @@ static BOOL IsGolem(EPosition pos) { return GOLEM == pos; }
 const int POSITION_INFO[POSITION_END][5] = {
 	{10,5,6,8,E_ANY},		//箱子
 	{10,255,10,4,E_ANY},	//口袋
-	{320,255,3,4,E_ANY},	//方块
+	{320,255,3,4,~E_A_BOX},	//方块
 	{420,255,4,4,E_IN_BELT},//腰带里
 	{70,385,6,1,E_SOCKET},	//孔
 
@@ -156,14 +160,14 @@ static CRect PositionToRect(EPosition pos) {
 	return CRect(p[0], p[1], p[0] + GRID_WIDTH * p[2], p[1] + GRID_WIDTH * p[3]);
 }
 
-static EEquip PositionToCol(EPosition pos) {
+static int PositionToCol(EPosition pos) {
 	ASSERT(pos < POSITION_END);
-	return EEquip(POSITION_INFO[pos][2]);
+	return POSITION_INFO[pos][2];
 }
 
-static EEquip PositionToRow(EPosition pos) {
+static int PositionToRow(EPosition pos) {
 	ASSERT(pos < POSITION_END);
-	return EEquip(POSITION_INFO[pos][3]);
+	return POSITION_INFO[pos][3];
 }
 
 static EEquip PositionToEquip(EPosition pos) {
@@ -565,7 +569,7 @@ BOOL CDlgCharItems::GatherData(CD2S_Struct & character) {
 }
 
 void CDlgCharItems::AddItemInGrid(const CD2Item & item, int body) {
-	EEquip equip = ItemToEquip(item.MetaData());
+	EEquip equip = ItemToEquip(item);
 	auto t = ItemToPosition(item.iLocation, item.iPosition, item.iColumn, item.iRow, item.iStoredIn, body);
 	EPosition pos = get<0>(t);
 	const int x = get<1>(t), y = get<2>(t);
@@ -584,7 +588,7 @@ void CDlgCharItems::AddItemInGrid(const CD2Item & item, int body) {
 			ASSERT(0 <= gem.iColumn && gem.iColumn < int(m_vItemViews[index].vGemItems.size()));
 			ASSERT(m_vItemViews[index].vGemItems[gem.iColumn] < 0);
 			m_vItemViews[index].vGemItems[gem.iColumn] = m_vItemViews.size();
-			m_vItemViews.emplace_back(gem, ItemToEquip(gem.MetaData()), IN_SOCKET, gem.iColumn, 0);
+			m_vItemViews.emplace_back(gem, ItemToEquip(gem), IN_SOCKET, gem.iColumn, 0);
 		}
 	}
 }
@@ -935,7 +939,6 @@ void CDlgCharItems::OnContextMenu(CWnd* /*pWnd*/, CPoint point) {
 				Modify
 				Remove
 		*/
-		const auto & view = SelectedItemView();
 		CMenu menu;
 		menu.CreatePopupMenu();
 		ASSERT(::IsMenu(menu.m_hMenu));
@@ -951,7 +954,7 @@ void CDlgCharItems::OnContextMenu(CWnd* /*pWnd*/, CPoint point) {
 		//Appearance
 		menu.EnableMenuItem(ID_ITEM_IMPORT, (m_bClickOnItem ? MF_DISABLED : MF_ENABLED));
 		menu.EnableMenuItem(ID_ITEM_EXPORT, (m_bClickOnItem ? MF_ENABLED : MF_DISABLED));
-		menu.EnableMenuItem(ID_ITEM_COPY, (m_bClickOnItem && !view.Item.IsBox() ? MF_ENABLED : MF_DISABLED));
+		menu.EnableMenuItem(ID_ITEM_COPY, (m_bClickOnItem && !SelectedItemView().Item.IsBox() ? MF_ENABLED : MF_DISABLED));
 		menu.EnableMenuItem(ID_ITEM_PASTE, (0 <= m_iCopiedItemIndex ? MF_ENABLED : MF_DISABLED));
 		menu.EnableMenuItem(ID_ITEM_MODIFY, (m_bClickOnItem && SelectedItemView().Item.IsEditable() ? MF_ENABLED : MF_DISABLED));
 		menu.EnableMenuItem(ID_ITEM_REMOVE, (m_bClickOnItem ? MF_ENABLED : MF_DISABLED));
