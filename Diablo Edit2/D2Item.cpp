@@ -493,6 +493,13 @@ CString CD2Item::ItemName() const {
 	return text(name);
 }
 
+int CD2Item::GemIndexMax() const {
+	int r = -1;
+	for (auto & i : aGemItems)
+		r = max(r, i.iColumn);
+	return r;
+}
+
 void CD2Item::ReadData(CInBitsStream & bs) {
 	bs >> wMajic;
 	if (wMajic != 0x4D4A)

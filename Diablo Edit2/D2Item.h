@@ -203,6 +203,7 @@ struct CD2Item
 	int Gems() const { return (pItemInfo.exist() ? pItemInfo->Gems() : 0); }
 	int Sockets() const { return (bSocketed && pItemInfo.exist() ? pItemInfo->Sockets() : 0); }	//物品的孔数总和（包括属性增加的孔）
 	CString ItemName() const;
+	int GemIndexMax() const;
 	void ReadData(CInBitsStream & bs);
 	void WriteData(COutBitsStream & bs) const;
 	BOOL ReadFile(CFile & file);

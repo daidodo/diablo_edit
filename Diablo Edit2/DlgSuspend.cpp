@@ -89,6 +89,7 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem, int iGems)
 		auto & meta = pItem->MetaData();
 		__Tokens name{ ::theApp.ItemName(meta.NameIndex) };
 		if (!pItem->bSimple) {
+			ASSERT(1 <= quality && quality <= 8);
 			//Prefix, Suffix, Name
 			switch (quality) {
 				case 1:		//low

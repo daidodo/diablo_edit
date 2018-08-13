@@ -1102,7 +1102,9 @@ void CDlgCharItems::OnItemPaste() {
 
 void CDlgCharItems::OnItemModify() {
 	ShowItemInfoDlg(0, 0, 0);	//Hide suspend window
-	CDlgFoundry dlg(SelectedItemView().Item, this);
+	auto & view = SelectedItemView();
+	view.UpdateItem(m_vItemViews);
+	CDlgFoundry dlg(view.Item, this);
 	dlg.DoModal();
 }
 
