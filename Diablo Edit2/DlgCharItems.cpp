@@ -984,7 +984,7 @@ void CDlgCharItems::OnContextMenu(CWnd* /*pWnd*/, CPoint point) {
 BOOL CDlgCharItems::OnInitDialog()
 {
     CCharacterDialogBase::OnInitDialog();
-	m_lstRecycle.InsertColumn(0, _T(""), LVCFMT_LEFT, 150);
+	m_lstRecycle.InsertColumn(0, _T(""), LVCFMT_LEFT, 140);
 	m_scTrasparent.SetRange(0, 255);
 	m_scTrasparent.SetPos(200);
     return TRUE;
