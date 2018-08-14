@@ -444,14 +444,13 @@ void CDlgCharItems::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_STATIC_MERC_TYPE, m_sText[7]);
 	DDX_Text(pDX, IDC_STATIC_MERC_EXP, m_sText[8]);
 	DDX_Text(pDX, IDC_CHECK3, m_sText[9]);
-	DDX_Text(pDX, IDC_STATIC_RECYCLE, m_sText[10]);
-	DDX_Text(pDX, IDC_BUTTON_RESUME, m_sText[11]);
+	DDX_Text(pDX, IDC_STATIC_TIP, m_sText[10]);
 	DDX_Control(pDX, IDC_COMBO_MERC_NAME, m_cbMercName);
 	DDX_Control(pDX, IDC_COMBO_MERC_TYPE, m_cbMercType);
 	DDX_Control(pDX, IDC_EDIT_MERC_EXP, m_edMercExp);
 	DDX_Control(pDX, IDC_CHECK4, m_chCorpseSecondHand);
 	DDX_Control(pDX, IDC_CHECK3, m_chMercDead);
-	DDX_Control(pDX, IDC_LIST1, m_lbRecycle);
+	DDX_Control(pDX, IDC_LIST_RECYCLE, m_lstRecycle);
 }
 
 BEGIN_MESSAGE_MAP(CDlgCharItems, CDialog)
@@ -603,8 +602,8 @@ void CDlgCharItems::RecycleItemFromGrid(UINT index) {
 	auto & grid = m_vGridView[view.iPosition];
 	grid.ItemIndex(-1, view.iGridX, view.iGridY, view.iGridWidth, view.iGridHeight);
 	view.iPosition = IN_RECYCLE;
-	const int i = m_lbRecycle.AddString(view.Item.ItemName());
-	m_lbRecycle.SetItemData(i, index);
+	const int i = m_lstRecycle.InsertItem(0, view.Item.ItemName());
+	m_lstRecycle.SetItemData(i, index);
 }
 
 CPoint CDlgCharItems::GetItemPositionXY(const CItemView & view) const {
@@ -777,6 +776,19 @@ void CDlgCharItems::LoadText(void)
 	int index = 0;
     for(auto & text : m_sText)
 		text = ::theApp.CharItemsUI(index++);
+	//Recycle header text
+	LVCOLUMN c;
+	c.mask = LVCF_TEXT;
+	CString text = ::theApp.CharItemsUI(index++);
+	c.pszText = text.GetBuffer();
+	m_lstRecycle.SetColumn(0, &c);
+	//Recycle items' name
+	for (int i = 0; i < m_lstRecycle.GetItemCount(); ++i) {
+		const UINT idx = m_lstRecycle.GetItemData(i);
+		ASSERT(idx < m_vItemViews.size());
+		m_lstRecycle.SetItemText(i, 0, m_vItemViews[idx].Item.ItemName());
+	}
+	//Mercenary ComboBoxes
 	loadTextMercCB(m_cbMercType, ::theApp.MercenaryTypeNameSize(), [](int i) {return ::theApp.MercenaryTypeName(i); });
 	m_iMercNameGroup = -1;	//force reloading merc name list
 	OnCbnSelchangeComboMercType();
@@ -937,7 +949,7 @@ void CDlgCharItems::OnRButtonUp(UINT nFlags, CPoint point)
 void CDlgCharItems::OnContextMenu(CWnd* /*pWnd*/, CPoint point) {
 	if (m_bHasCharacter && m_iPickedItemIndex < 0) {	//未拿起物品
 		CRect rect;
-		m_lbRecycle.GetWindowRect(&rect);
+		m_lstRecycle.GetWindowRect(&rect);
 		if (rect.PtInRect(point))
 			return;	//Inside of Recycle list
 		/*	创建弹出菜单：
@@ -978,6 +990,7 @@ void CDlgCharItems::OnContextMenu(CWnd* /*pWnd*/, CPoint point) {
 BOOL CDlgCharItems::OnInitDialog()
 {
     CCharacterDialogBase::OnInitDialog();
+	m_lstRecycle.InsertColumn(0, _T(""), LVCFMT_LEFT, 150);
 	m_scTrasparent.SetRange(0, 255);
 	m_scTrasparent.SetPos(200);
     return TRUE;

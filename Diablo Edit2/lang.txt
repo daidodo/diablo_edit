@@ -143,8 +143,8 @@
 7	Type	类型	類型
 8	Exp.	经验	經驗
 9	Dead	死亡	死亡
-10	Recycle	回收站	回收站
-11	Resume	还原	還原
+10	Double click to resume	双击还原物品	雙擊還原物品
+11	Recycle	回收站	回收站
 *=======================角色基本信息UI			
 0	Basic Info	基本信息	基本信息
 1	Waypoints	小站	小站

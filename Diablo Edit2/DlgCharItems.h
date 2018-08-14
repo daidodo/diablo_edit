@@ -93,7 +93,7 @@ class CDlgCharItems : public CCharacterDialogBase
 	BOOL PutItemInGrid(EPosition pos, int x, int y);		//尝试将已拿起的物品放到指定位置（不包括鼠标）
 
 	//界面文字
-	CString m_sText[12];
+	CString m_sText[11];
 
 	//弹出菜单
 	BOOL m_bClickOnItem = FALSE;		//当前鼠标是否点中了物品
@@ -108,7 +108,7 @@ class CDlgCharItems : public CCharacterDialogBase
 	int m_iMercNameGroup = -1;			//雇佣兵的名字所在的组
 
 	//Recycle
-	CListBox m_lbRecycle;
+	CListCtrl m_lstRecycle;
 
 public:
 	//对话框数据
