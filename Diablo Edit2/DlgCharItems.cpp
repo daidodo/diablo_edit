@@ -474,6 +474,7 @@ BEGIN_MESSAGE_MAP(CDlgCharItems, CDialog)
 	ON_COMMAND(ID_ITEM_REMOVE, &CDlgCharItems::OnItemRemove)
 	ON_WM_MENUSELECT()
 	ON_CBN_SELCHANGE(IDC_COMBO_MERC_TYPE, &CDlgCharItems::OnCbnSelchangeComboMercType)
+	ON_NOTIFY(NM_CLICK, IDC_LIST_RECYCLE, &CDlgCharItems::OnNMClickListRecycle)
 END_MESSAGE_MAP()
 
 void CDlgCharItems::UpdateUI(const CD2S_Struct & character) {
@@ -593,17 +594,6 @@ void CDlgCharItems::AddItemInGrid(const CD2Item & item, int body) {
 			m_vItemViews.emplace_back(gem, ItemToEquip(gem), IN_SOCKET, gem.iColumn, 0);
 		}
 	}
-}
-
-void CDlgCharItems::RecycleItemFromGrid(UINT index) {
-	ASSERT(index < m_vItemViews.size());
-	auto & view = m_vItemViews[index];
-	ASSERT(view.iPosition < POSITION_END);
-	auto & grid = m_vGridView[view.iPosition];
-	grid.ItemIndex(-1, view.iGridX, view.iGridY, view.iGridWidth, view.iGridHeight);
-	view.iPosition = IN_RECYCLE;
-	const int i = m_lstRecycle.InsertItem(0, view.Item.ItemName());
-	m_lstRecycle.SetItemData(i, index);
 }
 
 CPoint CDlgCharItems::GetItemPositionXY(const CItemView & view) const {
@@ -1137,6 +1127,31 @@ void CDlgCharItems::OnItemModify() {
 	dlg.DoModal();
 }
 
+void CDlgCharItems::RecycleItem(int index) {
+	ASSERT(0 <= index && index < int(m_vItemViews.size()));
+	auto & view = m_vItemViews[index];
+	//先删除镶嵌的宝石
+	for (int i : view.vGemItems)
+		if (0 <= i)
+			RecycleItem(i);
+	ASSERT(view.iPosition != IN_RECYCLE);
+	view.iPosition = IN_RECYCLE;
+	const int i = m_lstRecycle.InsertItem(m_lstRecycle.GetItemCount(), view.Item.ItemName());
+	m_lstRecycle.SetItemData(i, index);
+}
+
+void CDlgCharItems::RecycleItemFromGrid(UINT index) {
+	ASSERT(index < m_vItemViews.size());
+	auto & view = m_vItemViews[index];
+	ASSERT(view.iPosition < POSITION_END);
+	auto & grid = m_vGridView[view.iPosition];
+	grid.ItemIndex(-1, view.iGridX, view.iGridY, view.iGridWidth, view.iGridHeight);
+	ASSERT(view.iPosition != IN_RECYCLE);
+	view.iPosition = IN_RECYCLE;
+	const int i = m_lstRecycle.InsertItem(m_lstRecycle.GetItemCount(), view.Item.ItemName());
+	m_lstRecycle.SetItemData(i, index);
+}
+
 void CDlgCharItems::OnItemRemove() {
 	auto & view = SelectedItemView();
 	int idx = m_iSelectedSocketIndex;
@@ -1177,4 +1192,23 @@ void CDlgCharItems::OnCbnSelchangeComboMercType() {
 	}
 	m_iMercNameGroup = g;
 	m_cbMercName.Invalidate();
+}
+
+
+void CDlgCharItems::OnNMClickListRecycle(NMHDR *pNMHDR, LRESULT *pResult) {
+	//LPNMITEMACTIVATE pNMItemActivate = reinterpret_cast<LPNMITEMACTIVATE>(pNMHDR);
+	if (0 <= m_iPickedItemIndex) {	//拿起了物品，将物品放入回收站
+		RecycleItem(m_iPickedItemIndex);
+		//reset cursor
+		::DestroyIcon(m_hCursor);
+		m_hCursor = ::LoadCursor(0, IDC_ARROW);
+		//reset selected item
+		if (m_iPickedItemIndex == m_iSelectedSocketIndex)
+			m_iSelectedSocketIndex = -1;
+		else if(m_iPickedItemIndex == m_iSelectedItemIndex)
+			m_iSelectedItemIndex = m_iSelectedSocketIndex = -1;
+		//reset picked item
+		m_iPickedItemIndex = -1;
+	}
+	*pResult = 0;
 }

@@ -69,7 +69,6 @@ class CDlgCharItems : public CCharacterDialogBase
 	BOOL m_bSecondHand = FALSE;				//是否显示II手武器
 	CButton m_chCorpseSecondHand;			//是否显示尸体的II手武器
 	void AddItemInGrid(const CD2Item & item, int body);		//将物品添加到网格中, body: 0-人物本身，1-尸体，2-雇佣兵，3-Golem
-	void RecycleItemFromGrid(UINT index);	//将指定索引物品从网格移除
 	CPoint GetItemPositionXY(const CItemView & view) const;	//得到物品的实际像素坐标
 
 	//悬浮窗
@@ -109,6 +108,8 @@ class CDlgCharItems : public CCharacterDialogBase
 
 	//Recycle
 	CListCtrl m_lstRecycle;
+	void RecycleItemFromGrid(UINT index);	//将指定索引物品从网格移除，并放到回收站
+	void RecycleItem(int index);			//将指定索引物品放入回收站
 
 public:
 	//对话框数据
@@ -149,4 +150,5 @@ public:
 	afx_msg void OnItemRemove();
 	afx_msg void OnMenuSelect(UINT nItemID, UINT nFlags, HMENU hSysMenu);
 	afx_msg void OnCbnSelchangeComboMercType();
+	afx_msg void OnNMClickListRecycle(NMHDR *pNMHDR, LRESULT *pResult);
 };
