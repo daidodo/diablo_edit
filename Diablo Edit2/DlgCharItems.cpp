@@ -475,6 +475,7 @@ BEGIN_MESSAGE_MAP(CDlgCharItems, CDialog)
 	ON_WM_MENUSELECT()
 	ON_CBN_SELCHANGE(IDC_COMBO_MERC_TYPE, &CDlgCharItems::OnCbnSelchangeComboMercType)
 	ON_NOTIFY(NM_CLICK, IDC_LIST_RECYCLE, &CDlgCharItems::OnNMClickListRecycle)
+	ON_NOTIFY(NM_DBLCLK, IDC_LIST_RECYCLE, &CDlgCharItems::OnNMDblclkListRecycle)
 END_MESSAGE_MAP()
 
 void CDlgCharItems::UpdateUI(const CD2S_Struct & character) {
@@ -1196,9 +1197,9 @@ void CDlgCharItems::OnNMClickListRecycle(NMHDR *pNMHDR, LRESULT *pResult) {
 	//LPNMITEMACTIVATE pNMItemActivate = reinterpret_cast<LPNMITEMACTIVATE>(pNMHDR);
 	if (0 <= m_iPickedItemIndex) {	//拿起了物品，将物品放入回收站
 		auto & view = PickedItemView();
-		for (auto & v : view.vGemItems)
-			if(v >= 0)
-				RecycleItem(v, FALSE);
+		for (int i : view.vGemItems)
+			if(i >= 0)
+				RecycleItem(i, FALSE);
 		RecycleItem(m_iPickedItemIndex, TRUE);
 		//reset cursor
 		::DestroyIcon(m_hCursor);
@@ -1210,6 +1211,30 @@ void CDlgCharItems::OnNMClickListRecycle(NMHDR *pNMHDR, LRESULT *pResult) {
 			m_iSelectedItemIndex = m_iSelectedSocketIndex = -1;
 		//reset picked item
 		m_iPickedItemIndex = -1;
+	}
+	*pResult = 0;
+}
+
+void CDlgCharItems::OnNMDblclkListRecycle(NMHDR *pNMHDR, LRESULT *pResult) {
+	LPNMITEMACTIVATE pNMItemActivate = reinterpret_cast<LPNMITEMACTIVATE>(pNMHDR);
+	const int item = pNMItemActivate->iItem;
+	if (item >= 0 && m_iPickedItemIndex < 0) {	//双击有效项并且未拿起物品
+		const UINT idx = m_lstRecycle.GetItemData(item);
+		ASSERT(idx < m_vItemViews.size());
+		auto & view = m_vItemViews[idx];
+		//resume gems
+		for (int i : view.vGemItems) {
+			if (i < 0)
+				continue;
+			ASSERT(i < int(m_vItemViews.size()));
+			m_vItemViews[i].iPosition = IN_SOCKET;
+		}
+		//resume item to mouse
+		view.iPosition = IN_MOUSE;
+		m_hCursor = CreateAlphaCursor(view);  //设置鼠标为物品图片
+		m_iPickedItemIndex = idx;
+		//delelte item in recycle list
+		m_lstRecycle.DeleteItem(item);
 	}
 	*pResult = 0;
 }

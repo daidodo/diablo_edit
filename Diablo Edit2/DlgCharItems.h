@@ -152,4 +152,5 @@ public:
 	afx_msg void OnMenuSelect(UINT nItemID, UINT nFlags, HMENU hSysMenu);
 	afx_msg void OnCbnSelchangeComboMercType();
 	afx_msg void OnNMClickListRecycle(NMHDR *pNMHDR, LRESULT *pResult);
+	afx_msg void OnNMDblclkListRecycle(NMHDR *pNMHDR, LRESULT *pResult);
 };
