@@ -444,11 +444,13 @@ void CDlgCharItems::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_STATIC_MERC_TYPE, m_sText[7]);
 	DDX_Text(pDX, IDC_STATIC_MERC_EXP, m_sText[8]);
 	DDX_Text(pDX, IDC_CHECK3, m_sText[9]);
+	DDX_Text(pDX, IDC_STATIC_TIP, m_sText[10]);
 	DDX_Control(pDX, IDC_COMBO_MERC_NAME, m_cbMercName);
 	DDX_Control(pDX, IDC_COMBO_MERC_TYPE, m_cbMercType);
 	DDX_Control(pDX, IDC_EDIT_MERC_EXP, m_edMercExp);
 	DDX_Control(pDX, IDC_CHECK4, m_chCorpseSecondHand);
 	DDX_Control(pDX, IDC_CHECK3, m_chMercDead);
+	DDX_Control(pDX, IDC_LIST_RECYCLE, m_lstRecycle);
 }
 
 BEGIN_MESSAGE_MAP(CDlgCharItems, CDialog)
@@ -472,6 +474,8 @@ BEGIN_MESSAGE_MAP(CDlgCharItems, CDialog)
 	ON_COMMAND(ID_ITEM_REMOVE, &CDlgCharItems::OnItemRemove)
 	ON_WM_MENUSELECT()
 	ON_CBN_SELCHANGE(IDC_COMBO_MERC_TYPE, &CDlgCharItems::OnCbnSelchangeComboMercType)
+	ON_NOTIFY(NM_CLICK, IDC_LIST_RECYCLE, &CDlgCharItems::OnNMClickListRecycle)
+	ON_NOTIFY(NM_DBLCLK, IDC_LIST_RECYCLE, &CDlgCharItems::OnNMDblclkListRecycle)
 END_MESSAGE_MAP()
 
 void CDlgCharItems::UpdateUI(const CD2S_Struct & character) {
@@ -593,13 +597,6 @@ void CDlgCharItems::AddItemInGrid(const CD2Item & item, int body) {
 	}
 }
 
-void CDlgCharItems::RecycleItemFromGrid(CItemView & view) {
-	ASSERT(view.iPosition < POSITION_END);
-	auto & grid = m_vGridView[view.iPosition];
-	grid.ItemIndex(-1, view.iGridX, view.iGridY, view.iGridWidth, view.iGridHeight);
-	view.iPosition = IN_RECYCLE;
-}
-
 CPoint CDlgCharItems::GetItemPositionXY(const CItemView & view) const {
 	ASSERT(view.iPosition < POSITION_END);
 	return m_vGridView[view.iPosition].IndexToXY(view.iGridX, view.iGridY, view.iGridWidth, view.iGridHeight);
@@ -615,6 +612,11 @@ CItemView & CDlgCharItems::SelectedItemView() {
 		return SelectedParentItemView();
 	ASSERT(m_iSelectedSocketIndex < int(m_vItemViews.size()));
 	return m_vItemViews[m_iSelectedSocketIndex];
+}
+
+CItemView & CDlgCharItems::PickedItemView() {
+	ASSERT(0 <= m_iPickedItemIndex && m_iPickedItemIndex < int(m_vItemViews.size()));
+	return m_vItemViews[m_iPickedItemIndex];
 }
 
 //画一个网格或矩形
@@ -770,6 +772,19 @@ void CDlgCharItems::LoadText(void)
 	int index = 0;
     for(auto & text : m_sText)
 		text = ::theApp.CharItemsUI(index++);
+	//Recycle header text
+	LVCOLUMN c;
+	c.mask = LVCF_TEXT;
+	CString text = ::theApp.CharItemsUI(index++);
+	c.pszText = text.GetBuffer();
+	m_lstRecycle.SetColumn(0, &c);
+	//Recycle items' name
+	for (int i = 0; i < m_lstRecycle.GetItemCount(); ++i) {
+		const UINT idx = m_lstRecycle.GetItemData(i);
+		ASSERT(idx < m_vItemViews.size());
+		m_lstRecycle.SetItemText(i, 0, m_vItemViews[idx].Item.ItemName());
+	}
+	//Mercenary ComboBoxes
 	loadTextMercCB(m_cbMercType, ::theApp.MercenaryTypeNameSize(), [](int i) {return ::theApp.MercenaryTypeName(i); });
 	m_iMercNameGroup = -1;	//force reloading merc name list
 	OnCbnSelchangeComboMercType();
@@ -822,9 +837,8 @@ void CDlgCharItems::OnMouseMove(UINT nFlags, CPoint point)
 }
 
 BOOL CDlgCharItems::PutItemInGrid(EPosition pos, int x, int y) {
-	ASSERT(0 <= m_iPickedItemIndex && m_iPickedItemIndex < int(m_vItemViews.size()));
 	ASSERT(pos < POSITION_END);
-	auto & view = m_vItemViews[m_iPickedItemIndex];
+	auto & view = PickedItemView();
 	auto & grid = m_vGridView[pos];
 	if (!grid.PutItem(m_iPickedItemIndex, x, y, view.iGridWidth, view.iGridHeight, view.iEquip))
 		return FALSE;
@@ -865,8 +879,7 @@ void CDlgCharItems::OnLButtonDown(UINT nFlags, CPoint point)
 			}
 		}
 	} else {	//放下物品
-		ASSERT(m_iPickedItemIndex < int(m_vItemViews.size()));
-		auto & view = m_vItemViews[m_iPickedItemIndex];
+		auto & view = PickedItemView();
 		auto t = HitTestPosition(point, view.iGridWidth, view.iGridHeight);
 		const int pos = get<0>(t), x = get<1>(t), y = get<2>(t);
 		if (pos >= 0) {		//在网格范围内
@@ -929,6 +942,10 @@ void CDlgCharItems::OnRButtonUp(UINT nFlags, CPoint point)
 
 void CDlgCharItems::OnContextMenu(CWnd* /*pWnd*/, CPoint point) {
 	if (m_bHasCharacter && m_iPickedItemIndex < 0) {	//未拿起物品
+		CRect rect;
+		m_lstRecycle.GetWindowRect(&rect);
+		if (rect.PtInRect(point))
+			return;	//Inside of Recycle list
 		/*	创建弹出菜单：
 				Import
 				Export
@@ -958,6 +975,7 @@ void CDlgCharItems::OnContextMenu(CWnd* /*pWnd*/, CPoint point) {
 		menu.EnableMenuItem(ID_ITEM_PASTE, (0 <= m_iCopiedItemIndex ? MF_ENABLED : MF_DISABLED));
 		menu.EnableMenuItem(ID_ITEM_MODIFY, (m_bClickOnItem && SelectedItemView().Item.IsEditable() ? MF_ENABLED : MF_DISABLED));
 		menu.EnableMenuItem(ID_ITEM_REMOVE, (m_bClickOnItem ? MF_ENABLED : MF_DISABLED));
+		m_bClickOnItem = FALSE;
 
 		menu.TrackPopupMenu(TPM_LEFTALIGN | TPM_RIGHTBUTTON, point.x, point.y, this);
 	}
@@ -966,6 +984,7 @@ void CDlgCharItems::OnContextMenu(CWnd* /*pWnd*/, CPoint point) {
 BOOL CDlgCharItems::OnInitDialog()
 {
     CCharacterDialogBase::OnInitDialog();
+	m_lstRecycle.InsertColumn(0, _T(""), LVCFMT_LEFT, 140);
 	m_scTrasparent.SetRange(0, 255);
 	m_scTrasparent.SetPos(200);
     return TRUE;
@@ -1112,23 +1131,42 @@ void CDlgCharItems::OnItemModify() {
 	dlg.DoModal();
 }
 
+void CDlgCharItems::RecycleItem(UINT index, BOOL showOnList) {
+	ASSERT(index < m_vItemViews.size());
+	auto & view = m_vItemViews[index];
+	ASSERT(view.iPosition != IN_RECYCLE);
+	view.iPosition = IN_RECYCLE;
+	if (showOnList) {
+		const int i = m_lstRecycle.InsertItem(m_lstRecycle.GetItemCount(), view.Item.ItemName());
+		m_lstRecycle.SetItemData(i, index);
+	}
+}
+
+void CDlgCharItems::RecycleItemFromGrid(UINT index, BOOL showOnList) {
+	ASSERT(index < m_vItemViews.size());
+	auto & view = m_vItemViews[index];
+	ASSERT(view.iPosition < POSITION_END);
+	auto & grid = m_vGridView[view.iPosition];
+	grid.ItemIndex(-1, view.iGridX, view.iGridY, view.iGridWidth, view.iGridHeight);
+	RecycleItem(index, showOnList);
+}
+
 void CDlgCharItems::OnItemRemove() {
 	auto & view = SelectedItemView();
+	int idx = m_iSelectedSocketIndex;
 	m_iSelectedSocketIndex = -1;
 	if (::IsInSocket(view.iPosition)) {	//删除镶嵌的宝石
 		auto & gems = SelectedParentItemView().vGemItems;
 		ASSERT(0 <= view.iGridX && view.iGridX < int(gems.size()));
 		gems[view.iGridX] = -1;
 	} else {	//删除其他物品
-		for (int i : view.vGemItems) {	//先删除镶嵌的宝石
-			if (i < 0)
-				continue;
-			ASSERT(i < int(m_vItemViews.size()));
-			RecycleItemFromGrid(m_vItemViews[i]);
-		}
+		for (int i : view.vGemItems)	//先删除镶嵌的宝石
+			if (0 <= i)
+				RecycleItemFromGrid(i, FALSE);	//镶嵌的物品不显示在回收站列表里
+		idx = m_iSelectedItemIndex;
 		m_iSelectedItemIndex = -1;
 	}
-	RecycleItemFromGrid(view);
+	RecycleItemFromGrid(idx, TRUE);
 	Invalidate();
 }
 
@@ -1153,4 +1191,50 @@ void CDlgCharItems::OnCbnSelchangeComboMercType() {
 	}
 	m_iMercNameGroup = g;
 	m_cbMercName.Invalidate();
+}
+
+void CDlgCharItems::OnNMClickListRecycle(NMHDR *pNMHDR, LRESULT *pResult) {
+	//LPNMITEMACTIVATE pNMItemActivate = reinterpret_cast<LPNMITEMACTIVATE>(pNMHDR);
+	if (0 <= m_iPickedItemIndex) {	//拿起了物品，将物品放入回收站
+		auto & view = PickedItemView();
+		for (int i : view.vGemItems)
+			if(i >= 0)
+				RecycleItem(i, FALSE);
+		RecycleItem(m_iPickedItemIndex, TRUE);
+		//reset cursor
+		::DestroyIcon(m_hCursor);
+		m_hCursor = ::LoadCursor(0, IDC_ARROW);
+		//reset selected item
+		if (m_iPickedItemIndex == m_iSelectedSocketIndex)
+			m_iSelectedSocketIndex = -1;
+		else if(m_iPickedItemIndex == m_iSelectedItemIndex)
+			m_iSelectedItemIndex = m_iSelectedSocketIndex = -1;
+		//reset picked item
+		m_iPickedItemIndex = -1;
+	}
+	*pResult = 0;
+}
+
+void CDlgCharItems::OnNMDblclkListRecycle(NMHDR *pNMHDR, LRESULT *pResult) {
+	LPNMITEMACTIVATE pNMItemActivate = reinterpret_cast<LPNMITEMACTIVATE>(pNMHDR);
+	const int item = pNMItemActivate->iItem;
+	if (item >= 0 && m_iPickedItemIndex < 0) {	//双击有效项并且未拿起物品
+		const UINT idx = m_lstRecycle.GetItemData(item);
+		ASSERT(idx < m_vItemViews.size());
+		auto & view = m_vItemViews[idx];
+		//resume gems
+		for (int i : view.vGemItems) {
+			if (i < 0)
+				continue;
+			ASSERT(i < int(m_vItemViews.size()));
+			m_vItemViews[i].iPosition = IN_SOCKET;
+		}
+		//resume item to mouse
+		view.iPosition = IN_MOUSE;
+		m_hCursor = CreateAlphaCursor(view);  //设置鼠标为物品图片
+		m_iPickedItemIndex = idx;
+		//delelte item in recycle list
+		m_lstRecycle.DeleteItem(item);
+	}
+	*pResult = 0;
 }

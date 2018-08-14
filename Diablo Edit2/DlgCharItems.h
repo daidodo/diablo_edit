@@ -69,7 +69,6 @@ class CDlgCharItems : public CCharacterDialogBase
 	BOOL m_bSecondHand = FALSE;				//是否显示II手武器
 	CButton m_chCorpseSecondHand;			//是否显示尸体的II手武器
 	void AddItemInGrid(const CD2Item & item, int body);		//将物品添加到网格中, body: 0-人物本身，1-尸体，2-雇佣兵，3-Golem
-	void RecycleItemFromGrid(CItemView & view);				//将物品从网格移除
 	CPoint GetItemPositionXY(const CItemView & view) const;	//得到物品的实际像素坐标
 
 	//悬浮窗
@@ -88,12 +87,13 @@ class CDlgCharItems : public CCharacterDialogBase
 	CPoint m_pMouse;					//鼠标位置
 	CItemView & SelectedParentItemView();//当前选中的父物品视图
 	CItemView & SelectedItemView();		//当前选中的物品视图
+	CItemView & PickedItemView();		//当前选中的物品视图
 	std::tuple<int, int, int> HitTestPosition(CPoint pos, int col = 1, int row = 1) const;	//由像素XY和物品大小得到网格位置
 	HCURSOR CreateAlphaCursor(const CItemView & itemView);	//把物品bmp转换成鼠标句柄
 	BOOL PutItemInGrid(EPosition pos, int x, int y);		//尝试将已拿起的物品放到指定位置（不包括鼠标）
 
 	//界面文字
-	CString m_sText[10];
+	CString m_sText[11];
 
 	//弹出菜单
 	BOOL m_bClickOnItem = FALSE;		//当前鼠标是否点中了物品
@@ -106,6 +106,12 @@ class CDlgCharItems : public CCharacterDialogBase
 	CEdit m_edMercExp;					//经验
 	CButton m_chMercDead;				//是否死亡
 	int m_iMercNameGroup = -1;			//雇佣兵的名字所在的组
+
+	//Recycle
+	CListCtrl m_lstRecycle;
+	void RecycleItemFromGrid(UINT index, BOOL showOnList);	//将指定索引物品从网格移除并回收，recycle表示是否加入回收站列表
+	void RecycleItem(UINT index, BOOL showOnList);			//回收指定索引物品，recycle表示是否加入回收站列表
+
 public:
 	//对话框数据
 	enum { IDD = IDD_DIALOG_CharItems };
@@ -145,4 +151,6 @@ public:
 	afx_msg void OnItemRemove();
 	afx_msg void OnMenuSelect(UINT nItemID, UINT nFlags, HMENU hSysMenu);
 	afx_msg void OnCbnSelchangeComboMercType();
+	afx_msg void OnNMClickListRecycle(NMHDR *pNMHDR, LRESULT *pResult);
+	afx_msg void OnNMDblclkListRecycle(NMHDR *pNMHDR, LRESULT *pResult);
 };
