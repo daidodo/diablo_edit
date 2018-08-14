@@ -87,6 +87,7 @@ class CDlgCharItems : public CCharacterDialogBase
 	CPoint m_pMouse;					//鼠标位置
 	CItemView & SelectedParentItemView();//当前选中的父物品视图
 	CItemView & SelectedItemView();		//当前选中的物品视图
+	CItemView & PickedItemView();		//当前选中的物品视图
 	std::tuple<int, int, int> HitTestPosition(CPoint pos, int col = 1, int row = 1) const;	//由像素XY和物品大小得到网格位置
 	HCURSOR CreateAlphaCursor(const CItemView & itemView);	//把物品bmp转换成鼠标句柄
 	BOOL PutItemInGrid(EPosition pos, int x, int y);		//尝试将已拿起的物品放到指定位置（不包括鼠标）
@@ -108,8 +109,8 @@ class CDlgCharItems : public CCharacterDialogBase
 
 	//Recycle
 	CListCtrl m_lstRecycle;
-	void RecycleItemFromGrid(UINT index);	//将指定索引物品从网格移除，并放到回收站
-	void RecycleItem(int index);			//将指定索引物品放入回收站
+	void RecycleItemFromGrid(UINT index, BOOL showOnList);	//将指定索引物品从网格移除并回收，recycle表示是否加入回收站列表
+	void RecycleItem(UINT index, BOOL showOnList);			//回收指定索引物品，recycle表示是否加入回收站列表
 
 public:
 	//对话框数据

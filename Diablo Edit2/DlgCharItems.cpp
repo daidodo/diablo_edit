@@ -613,6 +613,11 @@ CItemView & CDlgCharItems::SelectedItemView() {
 	return m_vItemViews[m_iSelectedSocketIndex];
 }
 
+CItemView & CDlgCharItems::PickedItemView() {
+	ASSERT(0 <= m_iPickedItemIndex && m_iPickedItemIndex < int(m_vItemViews.size()));
+	return m_vItemViews[m_iPickedItemIndex];
+}
+
 //画一个网格或矩形
 static void DrawGrid(CPaintDC & dc, const CRect & rect, int intervalX = 0, int intervalY = 0)
 {
@@ -831,9 +836,8 @@ void CDlgCharItems::OnMouseMove(UINT nFlags, CPoint point)
 }
 
 BOOL CDlgCharItems::PutItemInGrid(EPosition pos, int x, int y) {
-	ASSERT(0 <= m_iPickedItemIndex && m_iPickedItemIndex < int(m_vItemViews.size()));
 	ASSERT(pos < POSITION_END);
-	auto & view = m_vItemViews[m_iPickedItemIndex];
+	auto & view = PickedItemView();
 	auto & grid = m_vGridView[pos];
 	if (!grid.PutItem(m_iPickedItemIndex, x, y, view.iGridWidth, view.iGridHeight, view.iEquip))
 		return FALSE;
@@ -874,8 +878,7 @@ void CDlgCharItems::OnLButtonDown(UINT nFlags, CPoint point)
 			}
 		}
 	} else {	//放下物品
-		ASSERT(m_iPickedItemIndex < int(m_vItemViews.size()));
-		auto & view = m_vItemViews[m_iPickedItemIndex];
+		auto & view = PickedItemView();
 		auto t = HitTestPosition(point, view.iGridWidth, view.iGridHeight);
 		const int pos = get<0>(t), x = get<1>(t), y = get<2>(t);
 		if (pos >= 0) {		//在网格范围内
@@ -1127,29 +1130,24 @@ void CDlgCharItems::OnItemModify() {
 	dlg.DoModal();
 }
 
-void CDlgCharItems::RecycleItem(int index) {
-	ASSERT(0 <= index && index < int(m_vItemViews.size()));
+void CDlgCharItems::RecycleItem(UINT index, BOOL showOnList) {
+	ASSERT(index < m_vItemViews.size());
 	auto & view = m_vItemViews[index];
-	//先删除镶嵌的宝石
-	for (int i : view.vGemItems)
-		if (0 <= i)
-			RecycleItem(i);
 	ASSERT(view.iPosition != IN_RECYCLE);
 	view.iPosition = IN_RECYCLE;
-	const int i = m_lstRecycle.InsertItem(m_lstRecycle.GetItemCount(), view.Item.ItemName());
-	m_lstRecycle.SetItemData(i, index);
+	if (showOnList) {
+		const int i = m_lstRecycle.InsertItem(m_lstRecycle.GetItemCount(), view.Item.ItemName());
+		m_lstRecycle.SetItemData(i, index);
+	}
 }
 
-void CDlgCharItems::RecycleItemFromGrid(UINT index) {
+void CDlgCharItems::RecycleItemFromGrid(UINT index, BOOL showOnList) {
 	ASSERT(index < m_vItemViews.size());
 	auto & view = m_vItemViews[index];
 	ASSERT(view.iPosition < POSITION_END);
 	auto & grid = m_vGridView[view.iPosition];
 	grid.ItemIndex(-1, view.iGridX, view.iGridY, view.iGridWidth, view.iGridHeight);
-	ASSERT(view.iPosition != IN_RECYCLE);
-	view.iPosition = IN_RECYCLE;
-	const int i = m_lstRecycle.InsertItem(m_lstRecycle.GetItemCount(), view.Item.ItemName());
-	m_lstRecycle.SetItemData(i, index);
+	RecycleItem(index, showOnList);
 }
 
 void CDlgCharItems::OnItemRemove() {
@@ -1163,11 +1161,11 @@ void CDlgCharItems::OnItemRemove() {
 	} else {	//删除其他物品
 		for (int i : view.vGemItems)	//先删除镶嵌的宝石
 			if (0 <= i)
-				RecycleItemFromGrid(i);
+				RecycleItemFromGrid(i, FALSE);	//镶嵌的物品不显示在回收站列表里
 		idx = m_iSelectedItemIndex;
 		m_iSelectedItemIndex = -1;
 	}
-	RecycleItemFromGrid(idx);
+	RecycleItemFromGrid(idx, TRUE);
 	Invalidate();
 }
 
@@ -1194,11 +1192,14 @@ void CDlgCharItems::OnCbnSelchangeComboMercType() {
 	m_cbMercName.Invalidate();
 }
 
-
 void CDlgCharItems::OnNMClickListRecycle(NMHDR *pNMHDR, LRESULT *pResult) {
 	//LPNMITEMACTIVATE pNMItemActivate = reinterpret_cast<LPNMITEMACTIVATE>(pNMHDR);
 	if (0 <= m_iPickedItemIndex) {	//拿起了物品，将物品放入回收站
-		RecycleItem(m_iPickedItemIndex);
+		auto & view = PickedItemView();
+		for (auto & v : view.vGemItems)
+			if(v >= 0)
+				RecycleItem(v, FALSE);
+		RecycleItem(m_iPickedItemIndex, TRUE);
 		//reset cursor
 		::DestroyIcon(m_hCursor);
 		m_hCursor = ::LoadCursor(0, IDC_ARROW);
