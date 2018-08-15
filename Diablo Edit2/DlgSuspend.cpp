@@ -14,7 +14,7 @@ using namespace std;
 typedef deque<CString> __Tokens;
 // CDlgSuspend 对话框
 
-enum { WHITE, BLUE, GREEN, RARE, UNIQUE, CRAFT, RED };	//颜色索引
+enum { WHITE, BLUE, GREEN, RARE, UNIQUE, CRAFT, RED, GRAY };	//颜色索引
 
 const COLORREF	CDlgSuspend::FONT_COLOR[] = {
 	RGB(255,255,255),		//白色
@@ -24,6 +24,7 @@ const COLORREF	CDlgSuspend::FONT_COLOR[] = {
 	RGB(0x94,0x80,0x64),	//暗金色
 	RGB(255,128,0),			//橙色
 	RGB(255, 0, 0),			//红色
+	RGB(100, 100, 100),		//灰色
 };
 
 IMPLEMENT_DYNAMIC(CDlgSuspend, CDialog)
@@ -85,7 +86,7 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem, int iGems)
 		AddMsg(WHITE, CSFormat(::theApp.ItemSuspendUI(11), pItem->pEar->iEarLevel));
     }else{              //item structure
 		BYTE quality = pItem->Quality();
-		BYTE color = quality <= 3 ? WHITE : quality - 3;
+		BYTE color = (quality <= 3 ? (pItem->bEthereal ? GRAY : WHITE) : quality - 3);
 		auto & meta = pItem->MetaData();
 		__Tokens name{ ::theApp.ItemName(meta.NameIndex) };
 		if (!pItem->bSimple) {
@@ -127,8 +128,10 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem, int iGems)
 				}
 			}
 		}
-		if (quality <= 3 && pItem->IsRuneWord())
-			AddMsg(UNIQUE, ::theApp.RuneWordName(pItem->RuneWordId()) + _T(" (Rune Word)"));
+		if (quality <= 3 && pItem->IsRuneWord()) {
+			AddMsg(UNIQUE, ::theApp.RuneWordName(pItem->RuneWordId()));
+			color = GRAY;
+		}
 		AddMsg(color, text(name));
 		//Defence or Attack
 		if (meta.HasDef) {				//有防御值
