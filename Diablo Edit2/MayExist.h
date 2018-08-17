@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <cassert>
+#include <utility>
 
 #include "BinDataStream.h"
 
@@ -42,7 +43,12 @@ class MayExist<T, 1>
 {
 	std::vector<T> v_;
 public:
-	T & ensure() { v_.resize(1); return v_.front(); }
+	template<class ...A>
+	T & ensure(A &&... args) {
+		if(v_.empty())
+			v_.emplace_back(std::forward<A>(args)...);
+		return v_.front();
+	}
 	void reset() { v_.clear(); }
 	bool exist() const { return !v_.empty(); }
 	//void operator =(const T & v) { v_.front() = v; }
@@ -69,7 +75,9 @@ COutBitsStream & operator <<(COutBitsStream & bs, const MayExist<T, 1> & v) {
 		T v_ = 0;										\
 		bool e_ = false;								\
 	public:												\
-		T & ensure() { e_ = true; return v_; }			\
+		T & ensure(T v = 0) {							\
+			v_ = v, e_ = true; return v_;				\
+		}												\
 		void reset() { e_ = false; v_ = 0; }			\
 		bool exist() const { return e_; }				\
 		T operator =(T v) { assert(e_); v_ = v; }		\
