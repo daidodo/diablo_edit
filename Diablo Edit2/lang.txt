@@ -851,66 +851,66 @@
 76	Diamond		鑽石
 77	Flawless Diamond		無瑕疵的鑽石
 78	Perfect Diamond		完美的鑽石
-79	Minor Healing Potion		
-80	Light Healing Potion		
-81	Healing Potion		
-82	Greater Healing Potion		
-83	Super Healing Potion		
-84	Minor Mana Potion		
-85	Light Mana Potion		
-86	Mana Potion		
-87	Greater Mana Potion		
-88	Super Mana Potion		
-89	Chipped Skull		
-90	Flawed Skull		
-91	Skull		
-92	Flawless Skull		
-93	Perfect Skull		
-94	Herb		
-95	Small Charm		
-96	Large Charm		
-97	Grand Charm		
-98	Small Red Potion		
-99	Large Red Potion		
-100	Small Blue Potion		
-101	Large Blue Potion		
-102	El Rune		
-103	Eld Rune		
-104	Tir Rune		
-105	Nef Rune		
-106	Eth Rune		
-107	Ith Rune		
-108	Tal Rune		
-109	Ral Rune		
-110	Ort Rune		
-111	Thul Rune		
-112	Amn Rune		
-113	Sol Rune		
-114	Shael Rune		
-115	Dol Rune		
-116	Hel Rune		
-117	Io Rune		
-118	Lum Rune		
-119	Ko Rune		
-120	Fal Rune		
-121	Lem Rune		
-122	Pul Rune		
-123	Um Rune		
-124	Mal Rune		
-125	Ist Rune		
-126	Gul Rune		
-127	Vex Rune		
-128	Ohm Rune		
-129	Lo Rune		
-130	Sur Rune		
-131	Ber Rune		
-132	Jah Rune		
-133	Cham Rune		
-134	Zod Rune		
-135	Jewel		
-136	Malah's Potion		
-137	Scroll of Knowledge		
-138	Scroll of Resistances		
+79	Minor Healing Potion		輕微治療藥劑
+80	Light Healing Potion		輕型治療藥劑
+81	Healing Potion		治療藥劑
+82	Greater Healing Potion		強力藥劑
+83	Super Healing Potion		超級治療藥劑
+84	Minor Mana Potion		輕微法力藥劑
+85	Light Mana Potion		輕型法力藥劑
+86	Mana Potion		法力藥劑
+87	Greater Mana Potion		強力法力藥劑
+88	Super Mana Potion		超級法力藥劑
+89	Chipped Skull		碎裂的骷髏
+90	Flawed Skull		裂開的骷髏
+91	Skull		骷髏
+92	Flawless Skull		無瑕疵的骷髏
+93	Perfect Skull		完美的骷髏
+94	Herb		藥草
+95	Small Charm		小護身符
+96	Large Charm		大型護身符
+97	Grand Charm		超大型護身符
+98	Small Red Potion		一股邪惡力量
+99	Large Red Potion		一股邪惡力量
+100	Small Blue Potion		一股邪惡力量
+101	Large Blue Potion		一股邪惡力量
+102	El Rune		符文：El
+103	Eld Rune		符文：Eld
+104	Tir Rune		符文：Tir
+105	Nef Rune		符文：Nef
+106	Eth Rune		符文：Eth
+107	Ith Rune		符文：Ith
+108	Tal Rune		符文：Tal
+109	Ral Rune		符文：Ral
+110	Ort Rune		符文：Ort
+111	Thul Rune		符文：Thul
+112	Amn Rune		符文：Amn
+113	Sol Rune		符文：Sol
+114	Shael Rune		符文：Shael
+115	Dol Rune		符文：Dol
+116	Hel Rune		符文：Hel
+117	Io Rune		符文：Io
+118	Lum Rune		符文：Lum
+119	Ko Rune		符文：Ko
+120	Fal Rune		符文：Fal
+121	Lem Rune		符文：Lem
+122	Pul Rune		符文：Pul
+123	Um Rune		符文：Um
+124	Mal Rune		符文：Mal
+125	Ist Rune		符文：Ist
+126	Gul Rune		符文：Gul
+127	Vex Rune		符文：Vex
+128	Ohm Rune		符文：Ohm
+129	Lo Rune		符文：Lo
+130	Sur Rune		符文：Sur
+131	Ber Rune		符文：Ber
+132	Jah Rune		符文：Jah
+133	Cham Rune		符文：Cham
+134	Zod Rune		符文：Zod
+135	Jewel		寶石
+136	Malah's Potion		馬拉之藥
+137	Scroll of Knowledge		知識卷軸
+138	Scroll of Resistances		抵抗卷軸
 139	Cap		
 140	Skull Cap		
 141	Helm		

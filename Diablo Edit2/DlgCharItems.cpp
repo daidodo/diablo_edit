@@ -757,6 +757,7 @@ void CDlgCharItems::ResetAll()
 		m_hCursor = ::LoadCursor(0, IDC_ARROW);
 		m_iPickedItemIndex = -1;
 	}
+	m_lstRecycle.DeleteAllItems();
 	m_bHasCharacter = FALSE;
 	Invalidate();
 }
