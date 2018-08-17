@@ -194,6 +194,7 @@
     <ClInclude Include="DlgCharBasicInfo.h" />
     <ClInclude Include="DlgCharItems.h" />
     <ClInclude Include="DlgFoundry.h" />
+    <ClInclude Include="DlgNewItem.h" />
     <ClInclude Include="DlgQuestInfo.h" />
     <ClInclude Include="DlgSelectChar.h" />
     <ClInclude Include="DlgSkills.h" />
@@ -217,6 +218,7 @@
     <ClCompile Include="DlgCharBasicInfo.cpp" />
     <ClCompile Include="DlgCharItems.cpp" />
     <ClCompile Include="DlgFoundry.cpp" />
+    <ClCompile Include="DlgNewItem.cpp" />
     <ClCompile Include="DlgQuestInfo.cpp" />
     <ClCompile Include="DlgSelectChar.cpp" />
     <ClCompile Include="DlgSkills.cpp" />

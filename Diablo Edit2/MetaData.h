@@ -7,9 +7,10 @@
 //物品元数据
 struct CItemMetaData
 {
-#ifdef _DEBUG
-	std::string name;		//物品名字（唯一ID）, 如"elx "，DEBUG用
-#endif
+	union {
+		BYTE sTypeName[4];	//物品名字（唯一ID）, 如"elx "
+		DWORD dwTypeID;
+	};
 	WORD PicIndex = 0;		//物品在Bitmap资源中相对第一个图片的索引偏移
 	WORD NameIndex = 0;		//物品在ItemName列表中的名字索引
 	BYTE Equip = 0;			//4 bits,物品可穿戴的位置,
@@ -24,13 +25,15 @@ struct CItemMetaData
 							//	8	手套
 							//	9	放在腰带里
 	BYTE Range = 0;			//4 bits物品本身占用网格大小
+	BOOL Simple = FALSE;	//物品是否有Smiple标志
+	BOOL Normal = FALSE;	//质量只能是normal，除去Simple物品
+	BOOL White = FALSE;		//质量只能是low, normal, high（白色），除去Simple和Normal物品
 	BOOL HasDef = FALSE;	//有防御值
 	BOOL HasDur = FALSE;	//有耐久度
 	BOOL IsStacked = FALSE;	//有数量
-	BOOL IsTome = FALSE;	//是回城书或辨识书,有iTome(5 bits)域
-	BOOL HasMonsterID = FALSE;	//有wMonsterID(10 bits)域
+	BOOL HasMonsterID = FALSE;//有wMonsterID(10 bits)域
 	BOOL IsCharm = FALSE;	//是护身符(放在身上加属性的),有wCharm域
-	BOOL HasSpellID = FALSE;//有bSpellID域
+	UINT SpellId = 0;		//0：没有SpellId域；其他：SpellId + 1
 	BOOL IsUnique = FALSE;	//是否是Unique物品(在没有iQuality域情况下)
 	BOOL IsGem = FALSE;		//是否是宝石（可镶嵌）
 	UINT Damage1Min = 0;	//武器的单手最低伤害

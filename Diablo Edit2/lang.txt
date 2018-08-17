@@ -43,14 +43,16 @@
 11	Copy the item	复制装备	複製裝備
 12	Paste the item copied	粘贴已复制的装备	粘貼已複製的裝備
 13	Modify the item	修改装备的属性	修改裝備的屬性
-14	Remove the item	删除装备	刪除裝備
+14	Create a new item	创建新装备	創建新裝備
+15	Remove the item	删除装备	刪除裝備
 *=======================角色物品UI弹出菜单			
 0	&Import	导入(&I)	導入(&I)
 1	&Export	导出(&E)	導出(&E)
 2	&Copy	复制(&C)	複製(&C)
 3	&Paste	粘贴(&P)	粘貼(&P)
 4	&Modify	修改(&M)	修改(&M)
-5	&Remove	删除(&R)	刪除(&R)
+5	&New	新建(&N)	新建(&N)
+6	&Remove	删除(&R)	刪除(&R)
 *=======================系统菜单			
 0	&File	文件(&F)	文件(&F)
 1	&View	视图(&V)	視圖(&V)
@@ -76,6 +78,10 @@
 7	Assassin Skills	刺客技能	刺客技能
 8	All	全部	全部
 9	Items	物品	物品
+*=======================新建物品窗口UI			
+0	New Item	创建物品	創建物品
+1	Create	创建	創建
+2	Cancel	取消	取消
 *=======================铸造台窗口UI			
 0	Level	等级	等級
 1	Owner	拥有者	擁有者
@@ -97,15 +103,17 @@
 17	Set Name	套装名称	套裝名字
 18	Unique Name	暗金装备	暗金裝備
 19	Rune Word	符文之语	符文之語
-20	Properties	属性	屬性
-21	Set 1	套装1	套裝1
-22	Set 2	套装2	套裝2
-23	Set 3	套装3	套裝3
-24	Set 4	套装4	套裝4
-25	Set 5	套装5	套裝5
-26	Rune Word	符文之语	符文之語
-27	Code	代码	代碼
-28	Description	说明	説明
+20	Save	保存	保存
+21	Cancel	取消	取消
+22	Properties	属性	屬性
+23	Set 1	套装1	套裝1
+24	Set 2	套装2	套裝2
+25	Set 3	套装3	套裝3
+26	Set 4	套装4	套裝4
+27	Set 5	套装5	套裝5
+28	Rune Word	符文之语	符文之語
+29	Code	代码	代碼
+30	Description	说明	説明
 *=======================物品属性悬浮窗口UI			
 0	Crude	粗糙的	粗糙的
 1	Superior	超强的	超強的
@@ -120,18 +128,6 @@
 10	%s's Ear	(%s)的耳朵	(%s)的耳朵
 11	Level %d	%d级	%d級
 12	Unidentified	未辨识	未辨識
-*=======================物品前后缀窗口UI			
-0	Item Prefix Suffix	物品前后缀名	物品前后綴名
-1	First Name	名	名
-2	Last Name	姓	姓
-3	Prefix1	前缀1	前綴1
-4	Suffix1	后缀1	后綴1
-5	Prefix2	前缀2	前綴2
-6	Suffix2	后缀2	后綴2
-7	Prefix3	前缀3	前綴3
-8	Suffix3	后缀3	后綴3
-9	Unique Name	暗金名	暗金名
-10	Sub Type	子类	子類
 *=======================角色装备信息UI			
 0	Sockets	孔	孔
 1	Iron Golem	金属石魔	金屬石魔
@@ -408,6 +404,33 @@
 27	Barbarian - Nightmare		
 28	Barbarian - Hell		
 29	Barbarian - Hell		
+*=======================物品种类名字			
+0	General items	一般物品	一般物品
+1	Helmets	头盔	頭盔
+2	Helmets (Barbarian only)	野蛮人专用头盔	野蠻人專用頭盔
+3	Helmets (Druid only)	德鲁伊专用头盔	德魯伊專用頭盔
+4	Gloves	手套	手套
+5	Boots	鞋子	鞋子
+6	Belts	腰带	腰帶
+7	Armors	护甲	護甲
+8	Shields	盾牌	盾牌
+9	Shields (Paladin only)	圣骑士专用盾牌	聖騎士專用盾牌
+10	Shields (Necromancer only)	死灵法师专用盾牌	死靈法師專用盾牌
+11	Axes	斧头	斧頭
+12	Wands (Necromancer only)	死灵法师专用法杖	死靈法師專用法杖
+13	Clubs	棍棒	棍棒
+14	Scepters (Paladin only)	圣骑士专用杖	聖騎士專用杖
+15	Swords	刀剑	刀劍
+16	Knifes	飞刀	飛刀
+17	Javelins	标枪	標槍
+18	Spears	长矛	長矛
+19	Staffs (Sorceress only)	法师专用法杖	法師專用法杖
+20	Bows	弓弩	弓弩
+21	Poisons	毒药	毒藥
+22	Quest Items	任务物品	任務物品
+23	Claws (Assasin only)	刺客专用刀爪	刺客專用刀爪
+24	Orbs (Sorceress only)	法师专用球	法師專用球
+25	Bow and spears (Amazon only)	亚马逊专用弓和矛	亞馬遜專用弓和矛
 *=======================物品质量名字			
 0	Low	白色低级	白色低級
 1	Normal	白色普通	白色普通
@@ -749,85 +772,85 @@
 5	Druid	德鲁依	德魯依
 6	Assassin	刺客	刺客
 *=======================以下是物品名称			
-0	Elixir		
-1	Healing Potion		
-2	Mana Potion		
-3	Full Healing Potion		
-4	Full Mana Potion		
-5	Stamina Potion		
-6	Antidote Potion		
-7	Rejuvenation Potion		
-8	Full Rejuvenation Potion		
-9	Thawing Potion		
-10	Town Portal Book		
-11	Identify Book		
-12	Amulet		
-13	Top of The Horadric Staff		
-14	Ring		
-15	Gold		
-16	Scroll of Jnifuss		
-17	Key To The Cairn Stones		
-18	Arrows		
-19	Torch		
-20	Bolts		
-21	Town Portal Scroll		
-22	Identify Scroll		
-23	Heart		
-24	Brain		
-25	Jawbone		
-26	Eye		
-27	Horn		
-28	Tail		
-29	Flag		
-30	Fang		
-31	Quill		
-32	Soul		
-33	Scalp		
-34	Spleen		
-35	Key		
-36	The Black Tower Key		
-37	Potion of Life		
-38	Jade Figurine		
-39	Gold Bird		
-40	Lam esen's tome		
-41	Horadric Cube		
-42	Horadric Scroll		
-43	Mephisto SoulStone		
-44	Book of Skill		
-45	Khalim Eye		
-46	Khalim Heart		
-47	Khalim Brain		
-48	Ear		
-49	Chipped Amethyst		
-50	Flawed Amethyst		
-51	Amethyst		
-52	Flawless Amethyst		
-53	Perfect Amethyst		
-54	Chipped Topaz		
-55	Flawed Topaz		
-56	Topaz		
-57	Flawless Topaz		
-58	Perfect Topaz		
-59	Chipped Saphire		
-60	Flawed Saphire		
-61	Saphire		
-62	Flawless Saphire		
-63	Perfect Saphire		
-64	Chipped Emerald		
-65	Flawed Emerald		
-66	Emerald		
-67	Flawless Emerald		
-68	Perfect Emerald		
-69	Chipped Ruby		
-70	Flawed Ruby		
-71	Ruby		
-72	Flawless Ruby		
-73	Perfect Ruby		
-74	Chipped Diamond		
-75	Flawed Diamond		
-76	Diamond		
-77	Flawless Diamond		
-78	Perfect Diamond		
+0	Elixir		靈藥
+1	Healing Potion		一股邪惡力量
+2	Mana Potion		一股邪惡力量
+3	Full Healing Potion		一股邪惡力量
+4	Full Mana Potion		一股邪惡力量
+5	Stamina Potion		體力藥劑
+6	Antidote Potion		解毒藥劑
+7	Rejuvenation Potion		回復活力藥劑
+8	Full Rejuvenation Potion		全面回復活力藥劑
+9	Thawing Potion		溶解藥劑
+10	Town Portal Book		城鎮傳送之書
+11	Identify Book		辨識之書
+12	Amulet		護身符
+13	Top of The Horadric Staff		赫拉迪克之杖頂端
+14	Ring		戒指
+15	Gold		黃金
+16	Scroll of Jnifuss		艾尼弗斯卷軸
+17	Key To The Cairn Stones		石塚之鑰
+18	Arrows		箭矢
+19	Torch		火焰
+20	Bolts		十字弓彈
+21	Town Portal Scroll		城鎮傳送卷軸
+22	Identify Scroll		辨識卷軸
+23	Heart		心臟
+24	Brain		腦
+25	Jawbone		顎骨
+26	Eye		眼球
+27	Horn		角
+28	Tail		尾巴
+29	Flag		旗幟
+30	Fang		尖牙
+31	Quill		硬毛
+32	Soul		靈魂
+33	Scalp		頭皮
+34	Spleen		脾臟
+35	Key		鑰匙
+36	The Black Tower Key		黑塔之鑰
+37	Potion of Life		生命藥劑
+38	Jade Figurine		玉製小人
+39	Gold Bird		黃金鳥
+40	Lam esen's tome		藍.伊森之書
+41	Horadric Cube		赫拉迪克方塊
+42	Horadric Scroll		赫拉迪克卷軸
+43	Mephisto SoulStone		墨菲斯托的靈魂之石
+44	Book of Skill		技能之書
+45	Khalim Eye		克林姆的眼球
+46	Khalim Heart		克林姆的心臟
+47	Khalim Brain		克林姆的大腦
+48	Ear		耳朵
+49	Chipped Amethyst		碎裂的紫寶石
+50	Flawed Amethyst		裂開的紫寶石
+51	Amethyst		紫寶石
+52	Flawless Amethyst		無瑕疵的紫寶石
+53	Perfect Amethyst		完美的紫寶石
+54	Chipped Topaz		碎裂的黄寶石
+55	Flawed Topaz		裂開的黄寶石
+56	Topaz		黄寶石
+57	Flawless Topaz		無瑕疵的黄寶石
+58	Perfect Topaz		完美的黄寶石
+59	Chipped Saphire		碎裂的藍寶石
+60	Flawed Saphire		裂開的藍寶石
+61	Saphire		藍寶石
+62	Flawless Saphire		無瑕疵的藍寶石
+63	Perfect Saphire		完美的藍寶石
+64	Chipped Emerald		碎裂的綠寶石
+65	Flawed Emerald		裂開的綠寶石
+66	Emerald		綠寶石
+67	Flawless Emerald		無瑕疵的綠寶石
+68	Perfect Emerald		完美的綠寶石
+69	Chipped Ruby		碎裂的紅寶石
+70	Flawed Ruby		裂開的紅寶石
+71	Ruby		紅寶石
+72	Flawless Ruby		無瑕疵的紅寶石
+73	Perfect Ruby		完美的紅寶石
+74	Chipped Diamond		碎裂的鑽石
+75	Flawed Diamond		裂開的鑽石
+76	Diamond		鑽石
+77	Flawless Diamond		無瑕疵的鑽石
+78	Perfect Diamond		完美的鑽石
 79	Minor Healing Potion		
 80	Light Healing Potion		
 81	Healing Potion		

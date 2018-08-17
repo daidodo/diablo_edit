@@ -87,6 +87,9 @@
     <ClInclude Include="CharacterDialogBase.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="DlgNewItem.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Diablo Edit2.cpp">
@@ -141,6 +144,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="CharacterDialogBase.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgNewItem.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

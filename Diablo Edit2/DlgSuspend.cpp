@@ -85,43 +85,49 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem, int iGems)
 		AddMsg(WHITE, ::theApp.ClassName(pItem->pEar->iEarClass));
 		AddMsg(WHITE, CSFormat(::theApp.ItemSuspendUI(11), pItem->pEar->iEarLevel));
     }else{              //item structure
-		BYTE quality = pItem->Quality();
-		BYTE color = (quality <= 3 ? (pItem->bEthereal ? GRAY : WHITE) : quality - 3);
 		auto & meta = pItem->MetaData();
+		BYTE quality = pItem->Quality();
+		BYTE color = (meta.IsUnique ? UNIQUE : (quality <= 3 ? (pItem->bEthereal ? GRAY : WHITE) : quality - 3));
 		__Tokens name{ ::theApp.ItemName(meta.NameIndex) };
 		if (!pItem->bSimple) {
 			ASSERT(1 <= quality && quality <= 8);
+			ASSERT(pItem->pItemInfo->pExtItemInfo.exist());
+			auto & extInfo = *pItem->pItemInfo->pExtItemInfo;
 			//Prefix, Suffix, Name
 			switch (quality) {
 				case 1:		//low
 					name.push_front(::theApp.ItemSuspendUI(0));
 					break;
+				case 2:		//normal
+					if(extInfo.wMonsterID.exist())
+						name.push_front(::theApp.MonsterName(extInfo.wMonsterID));
+					break;
 				case 3:		//high
 					name.push_front(::theApp.ItemSuspendUI(1));
 					break;
 				case 4:		//magic
-					name.push_front(::theApp.MagicPrefix(pItem->pItemInfo->pExtItemInfo->wPrefix));
-					name.push_back(::theApp.MagicSuffix(pItem->pItemInfo->pExtItemInfo->wSuffix));
+					name.push_front(::theApp.MagicPrefix(extInfo.wPrefix));
+					name.push_back(::theApp.MagicSuffix(extInfo.wSuffix));
 					break;
 				case 5:		//set
-					AddMsg(color, ::theApp.SetItemName(pItem->pItemInfo->pExtItemInfo->wSetID));
+					AddMsg(color, ::theApp.SetItemName(extInfo.wSetID));
 					break;
 				case 6:
 				{	//rare
-					const auto & rare = *pItem->pItemInfo->pExtItemInfo->pRareName;
+					const auto & rare = *extInfo.pRareName;
 					__Tokens title{ ::theApp.RareCraftedName(rare.iName1), ::theApp.RareCraftedName(rare.iName2) };
 					AddMsg(color, text(title));
 					break;
 				}
 				case 7:
 				{	//unique
-					CString title = ::theApp.UniqueName(pItem->pItemInfo->pExtItemInfo->wUniID);
+					CString title = ::theApp.UniqueName(extInfo.wUniID);
 					AddMsg(color, title);
 					break;
 				}
 				case 8:
 				{	//crafted
-					const auto & craft = *pItem->pItemInfo->pExtItemInfo->pCraftName;
+					const auto & craft = *extInfo.pCraftName;
 					__Tokens title{ ::theApp.RareCraftedName(craft.iName1), ::theApp.RareCraftedName(craft.iName2) };
 					AddMsg(color, text(title));
 					break;

@@ -13,9 +13,11 @@ BOOL SetCharName(BYTE (&dest)[16], const CString & src);
 //Ear
 struct CEar
 {
-	BYTE	iEarClass;		//3 bits
-	BYTE	iEarLevel;		//7 bits
+	BYTE	iEarClass = 0;	//3 bits
+	BYTE	iEarLevel = 1;	//7 bits
 	BYTE	sEarName[16];	//7 bit * Count, 以0x00结束
+	//Functions:
+	explicit CEar(const char * name = 0);
 };
 
 //Item Long Name
@@ -40,8 +42,8 @@ struct CLongName
 //Gold Quantity
 struct CGoldQuantity
 {
-	BOOL	bNotGold;		//1 bit
-	WORD	wQuantity;		//12 bits,黄金数量
+	BOOL	bNotGold = FALSE;	//1 bit
+	WORD	wQuantity = 0;		//12 bits,黄金数量
 };
 
 struct CPropertyList
@@ -56,22 +58,21 @@ struct CPropertyList
 //Extended Item Info
 struct CExtItemInfo
 {
-	BYTE					nGems;			//bit 108-110, 如果有孔，镶嵌的宝石数
+	BYTE					nGems = 0;		//bit 108-110, 如果有孔，镶嵌的宝石数
 	DWORD					dwGUID;			//bit 111-142
-	BYTE					iDropLevel;		//bit 143-149,drop level
-	BYTE					iQuality;		/*4 bits
-											1	low quality
-											2	normal
-											3	high quality(白色)
-											4	magically enhanced(魔法,蓝色)
-											5	part of a set(套装,绿色)
-											6	rare(黄金)
-											7	unique(暗金)
-											8	crafted(合成，橙色)
-											//*/
-	BOOL					bVarGfx;		//1 bit
+	BYTE					iDropLevel = 1;	//bit 143-149,drop level
+	BYTE					iQuality = 2;	/*4 bits
+												1	low quality
+												2	normal
+												3	high quality(白色)
+												4	magically enhanced(魔法,蓝色)
+												5	part of a set(套装,绿色)
+												6	rare(黄金)
+												7	unique(暗金)
+												8	crafted(合成，橙色) */
+	BOOL					bVarGfx = FALSE;//1 bit
 	MayExist<BYTE>			iVarGfx;		//3 bits,如果bVarGfx == TRUE,此结构存在,似乎表示物品的图片索引
-	BOOL					bClass;			//1 bit,Class Info Flag
+	BOOL					bClass = FALSE;	//1 bit,Class Info Flag
 	MayExist<WORD>			wClass;			//11 bits,Class Info,如果bClass == TRUE,此结构存在
 	//Low Quality
 	MayExist<BYTE>			loQual;			//3 bits,Low Quality sub-type,如果iQuality == 1,此结构存在
@@ -92,14 +93,14 @@ struct CExtItemInfo
 	MayExist<WORD>			wRune;			//16 bits,Rune word,if bRuneWord == TRUE;
 	//Personalized
 	MayExist<BYTE, 16>		sPersonName;	//和sEarName相同，每字符占7bits，以0x00结束,if bPersonalized == TRUE
-	//Tome
-	MayExist<BYTE>			iTome;			//5 bits,if sTypeName = "tbk " or "ibk "
 	//Monster ID
 	MayExist<WORD>			wMonsterID;		//10 bits,if sTypeName是身体器官
 	//Charm
-	MayExist<WORD>			wCharm;			//12 bits,if iQuality == 2 && sTypeName == "cm1" || "cm2" || "cm3"
+	MayExist<WORD>			wCharm;			//12 bits,if iQuality == 2 && IsCharm == TRUE
 	//Spell ID
-	MayExist<BYTE>			bSpellID;		//5 bits,if sTypeName == "0sc"
+	MayExist<BYTE>			iSpellID;		//5 bits,if SpellId > 0
+	//Functions:
+	explicit CExtItemInfo(const CItemMetaData * meta = 0);
 	BOOL IsSet() const { return iQuality == 5; }
 	int RuneWordId() const { ASSERT(wRune.exist()); return (wRune & 0xFFF); }
 	int Gems() const { return nGems; }
@@ -119,6 +120,7 @@ struct CTypeSpecificInfo
 	MayExist<CPropertyList> apSetProperty[5];		//套装属性列表，每个列表是否存在由(aHasSetPropList[i] == TRUE)决定
 	MayExist<CPropertyList>	stRuneWordPropertyList;	//符文之语属性列表，if bRuneWord == TRUE
 	//Functions:
+	explicit CTypeSpecificInfo(const CItemMetaData * meta = 0);
 	std::pair<int, int> Sockets() const;	//return: {base sockets, ext sockets}
 	int TotalSockets() const { auto s = Sockets(); return s.first + s.second; }
 	int GetDefence() const { ASSERT(iDefence.exist()); return iDefence - 10; }
@@ -135,10 +137,11 @@ struct CItemInfo
 	};
 	MayExist<CExtItemInfo>			pExtItemInfo;	//如果bSimple == FALSE，则此结构存在
 	MayExist<CGoldQuantity>			pGold;			//如果sTypeName == "gld "，则此结构存在
-	BOOL							bHasRand;		//1 bit
+	BOOL							bHasRand = FALSE;//1 bit
 	MayExist<DWORD, 3>				pTmStFlag;		//如果bHasRand == TRUE，则此结构存在
 	MayExist<CTypeSpecificInfo>		pTpSpInfo;		//如果bSimple == FALSE，则此结构存在
 	//Functions:
+	explicit CItemInfo(const CItemMetaData * meta = 0);
 	const CItemMetaData * ReadData(CInBitsStream & bs, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed);
 	void WriteData(COutBitsStream & bs, const CItemMetaData & itemData, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed) const;
 	BOOL IsNameValid() const;
@@ -152,49 +155,50 @@ struct CItemInfo
 
 struct CD2Item
 {
-	WORD	wMajic;				//0x4D4A,"JM"
-	BOOL	bQuest;				//bit 16,是否为系统装备(从商店买的？)
-	BYTE	iUNKNOWN_01;		//bit 17-19
-	BOOL	bIdentified;		//bit 20,是否已经辨识
-	BYTE	iUNKNOWN_02;		//bit 21-23
-	BOOL	bIllegalInventory;	//bit 24
-	BYTE	iUNKNOWN_10;		//bit 25,26
-	BOOL	bSocketed;			//bit 27,是否有孔
-	BYTE	iUNKNOWN_03;		//bit 28,29
-	BOOL	bBadEquipped;		//bit 30
-	BOOL	iUNKNOWN_04;		//bit 31
-	BOOL	bEar;				//bit 32
-	BOOL	bNewbie;			//bit 33
-	BYTE	iUNKNOWN_05;		//bit 34-36
-	BOOL	bSimple;			//bit 37
-	BOOL	bEthereal;			//bit 38
-	BOOL	iUNKNOWN_06;		//bit 39,总是1
-	BOOL	bPersonalized;		//bit 40
-	BOOL	iUNKNOWN_07;		//bit 41
-	BOOL	bRuneWord;			//bit 42
-	BYTE	iUNKNOWN_08;		//bit 43-47
-	WORD	wVersion;			//bit 48-57
-	BYTE	iLocation;			//bit 58-60,0 = grid, 1 = equipped, 2 = on belt, 3 = ?, 4 = in hand(has been picked up by the mouse), 5 = ?, 6 = socket(glued into a socket), 7 = ?
-	BYTE	iPosition;			/*bit 61-64,Body position,
-									01 = head(帽子)
-									02 = neck（项链）
-									03 = tors（衣服）
-									04 = rarm（右手，武器，盾）
-									05 = larm（左手，武器，盾）
-									06 = lrin（左手指，戒指）
-									07 = rrin（右手指，戒指）
-									08 = belt（腰带）
-									09 = feet（鞋子）
-									0a = glov（手套）
-									0b = ralt（右II手，Expansion Set only）
-									0c = lalt（左II手，Expansion Set only）*/
-	BYTE	iColumn;			//bit 65-68
-	BYTE	iRow;				//bit 69-72
-	BYTE	iStoredIn;			//bit 73-75,0 = equip/belt, 1 = inventory, 2 = ?, 3 = ?, 4 = cube, 5 = stash
-	MayExist<CEar>			pEar;			//如果bEar == TRUE，则此结构存在
-	MayExist<CItemInfo>		pItemInfo;		//如果bEar == FALSE，则此结构存在
-	std::vector<CD2Item>	aGemItems;		//如果有孔，镶嵌在孔里的装备
+	WORD	wMajic = 0x4D4A;		//0x4D4A,"JM"
+	BOOL	bQuest = FALSE;			//bit 16,是否为系统装备(从商店买的？)
+	BYTE	iUNKNOWN_01 = 0;		//bit 17-19
+	BOOL	bIdentified = TRUE;		//bit 20,是否已经辨识
+	BYTE	iUNKNOWN_02 = 0;		//bit 21-23
+	BOOL	bIllegalInventory = FALSE;//bit 24
+	BYTE	iUNKNOWN_10 = 0;		//bit 25,26
+	BOOL	bSocketed = FALSE;		//bit 27,是否有孔
+	BYTE	iUNKNOWN_03 = 0;		//bit 28,29
+	BOOL	bBadEquipped = FALSE;	//bit 30
+	BOOL	iUNKNOWN_04 = FALSE;	//bit 31
+	BOOL	bEar = FALSE;			//bit 32
+	BOOL	bNewbie = FALSE;		//bit 33
+	BYTE	iUNKNOWN_05 = 0;		//bit 34-36
+	BOOL	bSimple = TRUE;			//bit 37
+	BOOL	bEthereal = FALSE;		//bit 38
+	BOOL	iUNKNOWN_06 = TRUE;		//bit 39,总是1
+	BOOL	bPersonalized = FALSE;	//bit 40
+	BOOL	iUNKNOWN_07 = FALSE;	//bit 41
+	BOOL	bRuneWord = FALSE;		//bit 42
+	BYTE	iUNKNOWN_08 = 0;		//bit 43-47
+	WORD	wVersion = 101;			//bit 48-57
+	BYTE	iLocation = 0;			//bit 58-60,0 = grid, 1 = equipped, 2 = on belt, 3 = ?, 4 = in hand(has been picked up by the mouse), 5 = ?, 6 = socket(glued into a socket), 7 = ?
+	BYTE	iPosition = 0;			/*bit 61-64,Body position,
+										01 = head(帽子)
+										02 = neck（项链）
+										03 = tors（衣服）
+										04 = rarm（右手，武器，盾）
+										05 = larm（左手，武器，盾）
+										06 = lrin（左手指，戒指）
+										07 = rrin（右手指，戒指）
+										08 = belt（腰带）
+										09 = feet（鞋子）
+										0a = glov（手套）
+										0b = ralt（右II手，Expansion Set only）
+										0c = lalt（左II手，Expansion Set only）*/
+	BYTE	iColumn = 0;			//bit 65-68
+	BYTE	iRow = 0;				//bit 69-72
+	BYTE	iStoredIn = 1;			//bit 73-75,0 = equip/belt, 1 = inventory, 2 = ?, 3 = ?, 4 = cube, 5 = stash
+	MayExist<CEar>			pEar;		//如果bEar == TRUE，则此结构存在
+	MayExist<CItemInfo>		pItemInfo;	//如果bEar == FALSE，则此结构存在
+	std::vector<CD2Item>	aGemItems;	//如果有孔，镶嵌在孔里的装备
 	//Functions
+	explicit CD2Item(DWORD type = 0);
 	const CItemMetaData & MetaData() const { return *pItemData; }
 	BYTE Quality() const{return !bEar && !bSimple ? pItemInfo->pExtItemInfo->iQuality : (pItemData->IsUnique ? 7 : 2);}
 	BOOL IsSet() const { return pItemInfo.exist() && pItemInfo->IsSet(); }

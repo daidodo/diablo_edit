@@ -148,6 +148,7 @@ public:
 	afx_msg void OnItemCopy();
 	afx_msg void OnItemPaste();
 	afx_msg void OnItemModify();
+	afx_msg void OnItemNew();
 	afx_msg void OnItemRemove();
 	afx_msg void OnMenuSelect(UINT nItemID, UINT nFlags, HMENU hSysMenu);
 	afx_msg void OnCbnSelchangeComboMercType();

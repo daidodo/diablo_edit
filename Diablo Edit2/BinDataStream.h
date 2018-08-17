@@ -142,10 +142,12 @@ private:
 		bad_ = (bad_
 			|| !(bits > 0 ? bits <= maxBits : bits_ == 0)
 			|| !(bytes_ + bytes + (bits_ + bits + 7) / 8 <= data_.size()));
+		assert(!bad_);
 		return !bad_;
 	}
 	bool ensurePos(DWORD pos) {
 		bad_ = (bad_ || pos > data_.size());
+		assert(!bad_);
 		return !bad_;
 	}
 };

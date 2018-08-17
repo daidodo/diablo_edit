@@ -6,8 +6,22 @@
 #include <iterator>
 #include <cstring>
 #include <deque>
+#include <random>
+#include <ctime>
 
 using namespace std;
+
+class CRandom {
+	mt19937 r_;
+	uniform_int_distribution<DWORD>	dw_;
+public:
+	CRandom() {
+		r_.seed(random_device()());
+	}
+	DWORD dwValue() { return dw_(r_); }
+};
+
+static CRandom g_rand;
 
 static inline BOOL isLetter(TCHAR ch) {
 	return (ch >= _T('a') && ch <= _T('z')) || (ch >= _T('A') && ch <= _T('Z'));
@@ -42,6 +56,11 @@ BOOL SetCharName(BYTE (&dest)[16], const CString & src) {
 }
 
 // struct CEar
+
+CEar::CEar(const char * name) {
+	if (name)
+		::memcpy(sEarName, name, min(size(sEarName), strlen(name) + 1));
+}
 
 CInBitsStream & operator >>(CInBitsStream & bs, CEar & v) {
 	bs >> bits(v.iEarClass, 3) >> bits(v.iEarLevel, 7);
@@ -125,14 +144,20 @@ COutBitsStream & operator <<(COutBitsStream & bs, const CGoldQuantity & v) {
 //struct CPropertyList
 
 CInBitsStream & operator >>(CInBitsStream & bs, CPropertyList & v) {
-	for (bs >> bits(v.iEndFlag, 9); bs.Good() && v.iEndFlag < 0x1FF; bs >> bits(v.iEndFlag, 9))
-		bs >> bits(v.mProperty[v.iEndFlag], ::theApp.PropertyMetaData(v.iEndFlag).Bits());
+	for (bs >> bits(v.iEndFlag, 9); bs.Good() && v.iEndFlag < 0x1FF; bs >> bits(v.iEndFlag, 9)) {
+		const int b = ::theApp.PropertyMetaData(v.iEndFlag).Bits();
+		if (b > 0)
+			bs >> bits(v.mProperty[v.iEndFlag], b);
+	}
 	return bs;
 }
 
 COutBitsStream & operator <<(COutBitsStream & bs, const CPropertyList & v) {
-	for (auto & p : v.mProperty)
-		bs << bits(p.first, 9) << bits(p.second, ::theApp.PropertyMetaData(p.first).Bits());
+	for (auto & p : v.mProperty) {
+		const int b = ::theApp.PropertyMetaData(p.first).Bits();
+		if (b > 0)
+			bs << bits(p.first, 9) << bits(p.second, b);
+	}
 	return bs << bits<WORD>(0x1FF, 9);
 }
 
@@ -154,6 +179,18 @@ static pair<V &, const T &> pack(V & v, const T & t) {
 }
 
 // struct CExtItemInfo
+
+CExtItemInfo::CExtItemInfo(const CItemMetaData * meta) {
+	if (meta) {
+		dwGUID = g_rand.dwValue();
+		if (meta->HasMonsterID)
+			wMonsterID.ensure();
+		if (meta->IsCharm)
+			wCharm.ensure();
+		if (meta->SpellId > 0)
+			iSpellID.ensure(meta->SpellId - 1);
+	}
+}
 
 template<class T>
 CInBitsStream & operator >>(CInBitsStream & bs, pair<CExtItemInfo &, const T &> & p) {
@@ -206,12 +243,10 @@ CInBitsStream & operator >>(CInBitsStream & bs, pair<CExtItemInfo &, const T &> 
 			if (!bs.Good() || !c)
 				break;
 		}
-	if (get<3>(t))	//bIsTome
-		bs >> bits(v.iTome, 5);
-	else if (get<4>(t))	//bHasMonsterID
+	if (get<3>(t))	//bHasMonsterID
 		bs >> bits(v.wMonsterID, 10);
-	else if (get<5>(t))	//bHasSpellID
-		bs >> bits(v.bSpellID, 5);
+	else if (get<4>(t))	//SpellId
+		bs >> bits(v.iSpellID, 5);
 	return bs;
 }
 
@@ -266,16 +301,27 @@ COutBitsStream & operator <<(COutBitsStream & bs, pair<const CExtItemInfo &, con
 			if (!bs.Good() || !c)
 				break;
 		}
-	if (get<3>(t))	//bIsTome
-		bs << bits(v.iTome, 5);
-	else if (get<4>(t))	//bHasMonsterID
+	if (get<3>(t))	//bHasMonsterID
 		bs << bits(v.wMonsterID, 10);
-	else if (get<5>(t))	//bHasSpellID
-		bs << bits(v.bSpellID, 5);
+	else if (get<4>(t))	//SpellId
+		bs << bits(v.iSpellID, 5);
 	return bs;
 }
 
 //struct CTypeSpecificInfo
+
+CTypeSpecificInfo::CTypeSpecificInfo(const CItemMetaData * meta) {
+	if (meta) {
+		if (meta->HasDef)
+			iDefence.ensure();
+		if (meta->HasDur) {
+			iMaxDurability.ensure(1);
+			iCurDur.ensure(1);
+		}
+		if (meta->IsStacked)
+			iQuantity.ensure();
+	}
+}
 
 template<class T>
 CInBitsStream & operator >>(CInBitsStream & bs, pair<CTypeSpecificInfo &, const T &> & p) {
@@ -360,6 +406,18 @@ BOOL CTypeSpecificInfo::IsIndestructible() const {
 
 // struct CItemInfo
 
+CItemInfo::CItemInfo(const CItemMetaData * meta) {
+	if (meta) {
+		dwTypeID = meta->dwTypeID;
+		if (IsGold())
+			pGold.ensure();
+		if (!meta->Simple) {
+			pExtItemInfo.ensure(meta);
+			pTpSpInfo.ensure(meta);
+		}
+	}
+}
+
 const CItemMetaData *  CItemInfo::ReadData(CInBitsStream & bs, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed) {
 	for (auto & b : sTypeName)
 		bs >> bits(b, 8);
@@ -375,9 +433,8 @@ const CItemMetaData *  CItemInfo::ReadData(CInBitsStream & bs, BOOL bSimple, BOO
 			make_tuple(pItemData->IsCharm,
 			bRuneWord,
 			bPersonalized,
-			pItemData->IsTome,
 			pItemData->HasMonsterID,
-			pItemData->HasSpellID));
+			pItemData->SpellId));
 	//特殊物品类型的额外数据
 	if (IsGold())	//gld 的数量域
 		bs >> pGold;
@@ -405,9 +462,8 @@ void CItemInfo::WriteData(COutBitsStream & bs, const CItemMetaData & itemData, B
 			make_tuple(itemData.IsCharm,
 				bRuneWord,
 				bPersonalized,
-				itemData.IsTome,
 				itemData.HasMonsterID,
-				itemData.HasSpellID));
+				itemData.SpellId));
 	//特殊物品类型的额外数据
 	if (IsGold())	//gld 的数量域
 		bs << pGold;
@@ -450,13 +506,27 @@ static CString text(const __Tokens & tokens) {
 	return ret;
 }
 
+CD2Item::CD2Item(DWORD type) {
+	if (type > 0) {
+		pItemData = ::theApp.ItemMetaData(type);
+		ASSERT(pItemData);
+		bSimple = pItemData->Simple;
+		if (0x20726165 == type) {	//"ear "
+			bEar = TRUE;
+			pEar.ensure("unknown");
+		} else
+			pItemInfo.ensure(pItemData);
+	}
+}
+
 CString CD2Item::ItemName() const {
 	if (bEar)	//耳朵
 		return CSFormat(::theApp.ItemSuspendUI(10), CString(pEar->sEarName));
 	__Tokens name{ ::theApp.ItemName(MetaData().NameIndex) };
 	if (!bSimple) {
 		ASSERT(pItemInfo->pExtItemInfo.exist());
-		switch (pItemInfo->pExtItemInfo->iQuality) {
+		auto & extInfo = *pItemInfo->pExtItemInfo;
+		switch (extInfo.iQuality) {
 			case 1:		//low
 				name.push_front(::theApp.ItemSuspendUI(0));
 				break;
@@ -464,29 +534,31 @@ CString CD2Item::ItemName() const {
 				name.push_front(::theApp.ItemSuspendUI(1));
 				break;
 			case 4:		//magic
-				name.push_front(::theApp.MagicPrefix(pItemInfo->pExtItemInfo->wPrefix));
-				name.push_back(::theApp.MagicSuffix(pItemInfo->pExtItemInfo->wSuffix));
+				name.push_front(::theApp.MagicPrefix(extInfo.wPrefix));
+				name.push_back(::theApp.MagicSuffix(extInfo.wSuffix));
 				break;
 			case 5:		//set
-				name.push_front(::theApp.SetItemName(pItemInfo->pExtItemInfo->wSetID));
+				name.push_front(::theApp.SetItemName(extInfo.wSetID));
 				break;
 			case 6:
 			{	//rare
-				const auto & rare = *pItemInfo->pExtItemInfo->pRareName;
+				const auto & rare = *extInfo.pRareName;
 				name.insert(name.begin(), { ::theApp.RareCraftedName(rare.iName1), ::theApp.RareCraftedName(rare.iName2) });
 				break;
 			}
 			case 7:		//unique
-				name.push_front(::theApp.UniqueName(pItemInfo->pExtItemInfo->wUniID));
+				name.push_front(::theApp.UniqueName(extInfo.wUniID));
 				break;
 			case 8:
 			{	//crafted
-				const auto & craft = *pItemInfo->pExtItemInfo->pCraftName;
+				const auto & craft = *extInfo.pCraftName;
 				name.insert(name.begin(), { ::theApp.RareCraftedName(craft.iName1), ::theApp.RareCraftedName(craft.iName2) });
 				break;;
 			}
 			default:
-				if (IsRuneWord())
+				if (extInfo.wMonsterID.exist())
+					name.push_front(::theApp.MonsterName(extInfo.wMonsterID));
+				else if (IsRuneWord())
 					name.push_front(::theApp.RuneWordName(RuneWordId()));
 		}
 	}
@@ -533,10 +605,9 @@ void CD2Item::ReadData(CInBitsStream & bs) {
 	if(bEar){	//这是一个耳朵
 		bs >> pEar;
         pItemData = ::theApp.ItemMetaData(0x20726165);	//"ear "
-	} else {	//这是一个物品,但是也可能为"ear "
+	} else 		//这是一个物品,但是也可能为"ear "
 		pItemData = pItemInfo.ensure().ReadData(bs, bSimple, bRuneWord, bPersonalized, bSocketed);
-		ASSERT(pItemData);
-	}
+	ASSERT(pItemData && bSimple == pItemData->Simple);
 	bs.AlignByte();
 	aGemItems.resize(Gems());
 	for (auto & item : aGemItems)
