@@ -512,6 +512,7 @@ void CDlgCharItems::UpdateUI(const CD2S_Struct & character) {
 	//Golem
 	if (character.stGolem.pItem.exist())
 		AddItemInGrid(*character.stGolem.pItem, 3);
+	UpdateData(FALSE);
 	Invalidate();
 }
 

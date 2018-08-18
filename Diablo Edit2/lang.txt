@@ -1634,43 +1634,43 @@
 211	Unused		
 212	Unused		
 213	Unused		
-214	%+d Defence per Level		
-215	%+d Enhanced Defence per Level		
-216	%+d Life per Level		
-217	%+d Mana per Level		
-218	%+d Max Damage per Level		
-219	%+d Enhanced Max Damage per Level		
-220	%+d Strength per Level		
-221	%+d Dexterity per Level		
-222	%+d Energy per Level		
-223	%+d Vitality per Level		
-224	%+d Attack Rating per Level		
-225	%+d%% Bonus to Attack Rating per Level		
-226	%+d Max Cold Damage per Level		
-227	%+d Max Fire Damage per Level		
-228	%+d Max Lightning Damage per Level		
-229	%+d Max Poison Damage per Level		
-230	Cold Resist %+d%% per Level		
-231	Fire Resist %+d%% per Level		
-232	Lightning Resist %+d%% per Level		
-233	Poison Resist %+d%% per Level		
-234	%+d Cold Absorb per Level		
-235	%+d Fire Absorb per Level		
-236	%+d Lightning Absorb per Level		
-237	%+d Poison Absorb per Level		
-238	Attacker Takes Damage of %+d per Level		
-239	%+d%% Extra Gold from Monsters per Level		
-240	%+d%% Better Chance of Getting Magic Items per Level		
-241	Heal Stamina Plus %+d%% per Level		
-242	%+d Max Stamina per Level		
-243	%+d%% Damage to Demons per Level		
-244	%+d%% Damage to Undead per Level		
-245	%+d to Attack Rating vs Demons per Level		
-246	%+d to Attack Rating vs Undead per Level		
-247	%+d%% Chance of Crushing Blow per Level		
-248	%+d%% Chance of Open Wounds per Level		
-249	%+d Kick Damage per Level		
-250	%+d%% Chance of Deadly Strike per Level		
+214	%+g Defence per Level		
+215	%+g Enhanced Defence per Level		
+216	%+g Life per Level		
+217	%+g Mana per Level		
+218	%+g Max Damage per Level		
+219	%+g Enhanced Max Damage per Level		
+220	%+g Strength per Level		
+221	%+g Dexterity per Level		
+222	%+g Energy per Level		
+223	%+g Vitality per Level		
+224	%+g Attack Rating per Level		
+225	%+g%% Bonus to Attack Rating per Level		
+226	%+g Max Cold Damage per Level		
+227	%+g Max Fire Damage per Level		
+228	%+g Max Lightning Damage per Level		
+229	%+g Max Poison Damage per Level		
+230	Cold Resist %+g%% per Level		
+231	Fire Resist %+g%% per Level		
+232	Lightning Resist %+g%% per Level		
+233	Poison Resist %+g%% per Level		
+234	%+g Cold Absorb per Level		
+235	%+g Fire Absorb per Level		
+236	%+g Lightning Absorb per Level		
+237	%+g Poison Absorb per Level		
+238	Attacker Takes Damage of %+g per Level		
+239	%+g%% Extra Gold from Monsters per Level		
+240	%+g%% Better Chance of Getting Magic Items per Level		
+241	Heal Stamina Plus %+g%% per Level		
+242	%+g Max Stamina per Level		
+243	%+g%% Damage to Demons per Level		
+244	%+g%% Damage to Undead per Level		
+245	%+g to Attack Rating vs Demons per Level		
+246	%+g to Attack Rating vs Undead per Level		
+247	%+g%% Chance of Crushing Blow per Level		
+248	%+g%% Chance of Open Wounds per Level		
+249	%+g Kick Damage per Level		
+250	%+g%% Chance of Deadly Strike per Level		
 251	Find Gems per Level		
 252	Repairs 1 Durability in %d Seconds		
 253	Replenishes 1 Quantity in %d Seconds		

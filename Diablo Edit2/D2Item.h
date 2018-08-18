@@ -5,7 +5,6 @@
 #include "BinDataStream.h"
 
 #include <vector>
-#include <map>
 
 //检查并设置人物姓名
 BOOL SetCharName(BYTE (&dest)[16], const CString & src);
@@ -48,8 +47,8 @@ struct CGoldQuantity
 
 struct CPropertyList
 {
-	std::map<WORD, DWORD>	mProperty;		//属性列表，每项（9 bits ID + VALUE)
-	WORD					iEndFlag;		//9 bits, 0x1FF, 结束标志
+	std::vector<std::pair<WORD, DWORD>> mProperty;	//属性列表，每项（9 bits ID + VALUE)
+	WORD					iEndFlag;				//9 bits, 0x1FF, 结束标志
 	//Functons:
 	int ExtSockets() const;			//属性列表里的额外孔数
 	BOOL IsIndestructible() const;	//属性列表里的不可破坏属性

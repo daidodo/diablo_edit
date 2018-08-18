@@ -147,7 +147,7 @@ CInBitsStream & operator >>(CInBitsStream & bs, CPropertyList & v) {
 	for (bs >> bits(v.iEndFlag, 9); bs.Good() && v.iEndFlag < 0x1FF; bs >> bits(v.iEndFlag, 9)) {
 		const int b = ::theApp.PropertyMetaData(v.iEndFlag).Bits();
 		if (b > 0)
-			bs >> bits(v.mProperty[v.iEndFlag], b);
+			bs >> bits(v.mProperty.emplace_back(v.iEndFlag, 0).second, b);
 	}
 	return bs;
 }
@@ -162,13 +162,18 @@ COutBitsStream & operator <<(COutBitsStream & bs, const CPropertyList & v) {
 }
 
 int CPropertyList::ExtSockets() const {
-	auto wh = mProperty.find(194);	//194是额外孔属性ID
-	return (wh == mProperty.end() ? 0 : wh->second);
+	int r = 0;
+	for (auto & p : mProperty)
+		if (p.first == 194)	//194是额外孔属性ID
+			r += p.second;	//可能有多个194属性
+	return r;
 }
 
 BOOL CPropertyList::IsIndestructible() const {
-	auto wh = mProperty.find(152);	//152是不可破坏属性ID
-	return (wh == mProperty.end() ? FALSE : (wh->second != 0));
+	for (auto & p : mProperty)
+		if (p.first == 152 && p.second != 0)	//152是不可破坏属性ID
+			return TRUE;	//可能有多个152属性
+	return FALSE;
 }
 
 //pack
@@ -558,9 +563,9 @@ CString CD2Item::ItemName() const {
 			default:
 				if (extInfo.wMonsterID.exist())
 					name.push_front(::theApp.MonsterName(extInfo.wMonsterID));
-				else if (IsRuneWord())
-					name.push_front(::theApp.RuneWordName(RuneWordId()));
 		}
+		if (extInfo.iQuality <= 3 && IsRuneWord())
+			name.push_front(::theApp.RuneWordName(RuneWordId()));
 	}
 	return text(name);
 }
