@@ -43,14 +43,16 @@ public:
 	explicit GridView(EPosition pos);
 	BOOL IsGrid() const;			//是否分成单个网格
 	BOOL IsSockets() const;			//是否为镶嵌的孔
+	void Reset();					//清空网格
 	BOOL CanEquip(EEquip equip) const { return (equip & iEquip) != 0; }	//是否可穿戴
 	int ItemIndex(int x, int y) const;			//返回指定坐标的物品索引
 	void ItemIndex(int index, int x, int y);	//设置指定坐标的物品索引
 	void ItemIndex(int index, int x, int y, int width, int height);	//设置指定坐标和范围的物品索引
 	CPoint IndexToXY(int x, int y, int width, int height) const;	//指定坐标和大小，得到物品的像素位置
 	std::tuple<int, int, int> XYToPositionIndex(CPoint pos, BOOL II, BOOL corpseII, int col, int row) const;	//根据物品UI像素，得到位置索引和坐标
-	BOOL PutItem(int index, int x, int y, int width, int height, EEquip equip);	//将物品放到指定位置，考虑空闲、大小、穿戴类型；返回是否成功
-	void Reset();					//清空网格
+	//尝试将索引为index的物品放到指定位置，考虑空闲、大小、穿戴类型；
+	//返回：BOOL-是否成功，int-失败时已有物品的索引（-1表示其他原因，比如穿戴类型不合，多个物品占用等）
+	std::pair<BOOL, int> PutItem(int index, int x, int y, int width, int height, EEquip equip);
 };
 
 // CDlgCharItems 对话框
@@ -90,7 +92,9 @@ class CDlgCharItems : public CCharacterDialogBase
 	CItemView & PickedItemView();		//当前选中的物品视图
 	std::tuple<int, int, int> HitTestPosition(CPoint pos, int col = 1, int row = 1) const;	//由像素XY和物品大小得到网格位置
 	HCURSOR CreateAlphaCursor(const CItemView & itemView);	//把物品bmp转换成鼠标句柄
-	BOOL PutItemInGrid(EPosition pos, int x, int y);		//尝试将已拿起的物品放到指定位置（不包括鼠标）
+	//尝试将拿起的物品放到指定位置（不包括鼠标）；如果位置上已有一个物品，尝试同时将其拿起
+	//返回：BOOL-是否成功，int-成功时拿起物品的索引（-1表示没有）
+	std::pair<BOOL, int> PutItemInGrid(EPosition pos, int x, int y);
 
 	//界面文字
 	CString m_sText[11];
@@ -109,8 +113,6 @@ class CDlgCharItems : public CCharacterDialogBase
 
 	//Recycle
 	CListCtrl m_lstRecycle;
-	void RecycleItemFromGrid(UINT index, BOOL showOnList);	//将指定索引物品从网格移除并回收，recycle表示是否加入回收站列表
-	void RecycleItem(UINT index, BOOL showOnList);			//回收指定索引物品，recycle表示是否加入回收站列表
 
 public:
 	//对话框数据

@@ -383,26 +383,33 @@ tuple<int, int, int> GridView::XYToPositionIndex(CPoint pos, BOOL II, BOOL corps
 	return make_tuple(iPosition, 0, 0);
 }
 
-BOOL GridView::PutItem(int index, int x, int y, int width, int height, EEquip equip) {
+pair<BOOL, int> GridView::PutItem(int index, int x, int y, int width, int height, EEquip equip){
 	ASSERT(0 <= index);
 	ASSERT(0 <= x && 0 <= y);
 	ASSERT(0 < width && 0 < height);
 	if (!CanEquip(equip))
-		return FALSE;	//不能穿戴在此位置
+		return make_pair(FALSE, -1);	//不能穿戴在此位置
 	if (IsGrid()) {
 		if (x + width > iCol || y + height > iRow)
-			return FALSE;	//物品在网格外面
+			return make_pair(FALSE, -1);	//物品在网格外面
+		int exist = -1;
 		for (int i = 0; i < width; ++i)
-			for (int j = 0; j < height; ++j)
-				if (ItemIndex(x + i, y + j) >= 0)
-					return FALSE;	//网格里有物品
+			for (int j = 0; j < height; ++j) {
+				const int e = ItemIndex(x + i, y + j);
+				if (e >= 0 && exist >= 0 && e != exist)
+					return make_pair(FALSE, -1);	//网格里有不止一个物品
+				exist = max(exist, e);
+			}
+		if (exist >= 0)
+			return make_pair(FALSE, exist);	//被一个物品占用了
 		ItemIndex(index, x, y, width, height);
 	} else {
-		if (ItemIndex(x, y) >= 0)
-			return FALSE;	//网格里有物品
+		const int e = ItemIndex(x, y);
+		if (e >= 0)
+			return make_pair(FALSE, e);	//被一个物品占用了
 		ItemIndex(index, x, y);
 	}
-	return TRUE;
+	return make_pair(TRUE, -1);
 }
 
 void GridView::Reset() {
@@ -587,7 +594,7 @@ void CDlgCharItems::AddItemInGrid(const CD2Item & item, int body) {
 		ASSERT(m_iPickedItemIndex < 0);
 		m_iPickedItemIndex = index;
 		m_hCursor = CreateAlphaCursor(m_vItemViews[index]);
-	}else if (!m_vGridView[pos].PutItem(index, x, y, m_vItemViews[index].iGridWidth, m_vItemViews[index].iGridHeight, equip))
+	}else if (!m_vGridView[pos].PutItem(index, x, y, m_vItemViews[index].iGridWidth, m_vItemViews[index].iGridHeight, equip).first)
 		ASSERT(FALSE && _T("Cannot put item in grid"));
 	//Sockets & Gems
 	if (!item.aGemItems.empty()) {
@@ -842,20 +849,35 @@ void CDlgCharItems::OnMouseMove(UINT nFlags, CPoint point)
 	CCharacterDialogBase::OnMouseMove(nFlags, point);
 }
 
-BOOL CDlgCharItems::PutItemInGrid(EPosition pos, int x, int y) {
+pair<BOOL, int> CDlgCharItems::PutItemInGrid(EPosition pos, int x, int y) {
 	ASSERT(pos < POSITION_END);
 	auto & view = PickedItemView();
 	auto & grid = m_vGridView[pos];
-	if (!grid.PutItem(m_iPickedItemIndex, x, y, view.iGridWidth, view.iGridHeight, view.iEquip))
-		return FALSE;
-	//可以放入
-	view.iPosition = pos;
-	view.iGridX = x;
-	view.iGridY = y;
-	::DestroyIcon(m_hCursor);
-	m_hCursor = ::LoadCursor(0, IDC_ARROW);
-	//没有修改m_iPickedItemIndex
-	return TRUE;
+	const auto r = grid.PutItem(m_iPickedItemIndex, x, y, view.iGridWidth, view.iGridHeight, view.iEquip);
+	if (r.first) {	//放入成功
+		view.iPosition = pos;
+		view.iGridX = x;
+		view.iGridY = y;
+		::DestroyIcon(m_hCursor);
+		m_hCursor = ::LoadCursor(0, IDC_ARROW);
+		//没有修改m_iPickedItemIndex
+		return make_pair(TRUE, -1);
+	} else if (r.second >= 0) {	//有一个物品占用位置
+		ASSERT(r.second < int(m_vItemViews.size()));
+		auto & v = m_vItemViews[r.second];
+		grid.ItemIndex(-1, v.iGridX, v.iGridY, v.iGridWidth, v.iGridHeight);	//腾出位置
+		const auto r2 = grid.PutItem(m_iPickedItemIndex, x, y, view.iGridWidth, view.iGridHeight, view.iEquip);	//再放一次
+		ASSERT(r2.first);
+		view.iPosition = pos;
+		view.iGridX = x;
+		view.iGridY = y;
+		::DestroyIcon(m_hCursor);
+		v.iPosition = IN_MOUSE;	//拿起新物品
+		m_hCursor = CreateAlphaCursor(v);	//设置鼠标为新物品图片
+		//没有修改m_iPickedItemIndex
+		return make_pair(TRUE, r.second);
+	}
+	return make_pair(FALSE, -1);
 }
 
 void CDlgCharItems::OnLButtonDown(UINT nFlags, CPoint point)
@@ -893,18 +915,22 @@ void CDlgCharItems::OnLButtonDown(UINT nFlags, CPoint point)
 			if (grid.bEnabled) {
 				if (grid.IsSockets()) {	//给物品镶嵌宝石
 					if (0 <= m_iSelectedItemIndex	//有选中物品
-						&& x < int(SelectedParentItemView().vGemItems.size())	//有足够的孔数
-						&& PutItemInGrid(EPosition(pos), x, y)) {
-						//镶嵌成功
-						SelectedParentItemView().vGemItems[x] = m_iPickedItemIndex;
-						m_iPickedItemIndex = -1;
+						&& x < int(SelectedParentItemView().vGemItems.size())) {	//有足够的孔数
+						const auto r = PutItemInGrid(EPosition(pos), x, y);
+						if (r.first) {	//镶嵌成功
+							SelectedParentItemView().vGemItems[x] = m_iPickedItemIndex;
+							m_iPickedItemIndex = r.second;
+							Invalidate();
+						}
+					}
+				} else{
+					const auto r = PutItemInGrid(EPosition(pos), x, y);
+					if (r.first) {	//放下成功
+						if (m_iSelectedSocketIndex == m_iPickedItemIndex)	//将镶嵌的宝石抠出来了
+							m_iSelectedSocketIndex = -1;
+						m_iPickedItemIndex = r.second;
 						Invalidate();
 					}
-				} else if (PutItemInGrid(EPosition(pos), x, y)) {	//可以放入
-					if (m_iSelectedSocketIndex == m_iPickedItemIndex)	//将镶嵌的宝石抠出来了
-						m_iSelectedSocketIndex = -1;
-					m_iPickedItemIndex = -1;
-					Invalidate();
 				}
 			}
 		}
@@ -1016,16 +1042,27 @@ void CDlgCharItems::OnChangeHand()
 		UpdateData(FALSE);
 		return;
 	}
-    m_bSecondHand = !m_bSecondHand;
-    //更新UI
-	InvalidateRect(&m_vGridView[RIGHT_HAND].Rect);
-	InvalidateRect(&m_vGridView[LEFT_HAND].Rect);
+	//调整选中的物品
+	const int i1 = m_vGridView[RIGHT_HAND].ItemIndex((m_bSecondHand ? 1 : 0), 0);
+	const int i2 = m_vGridView[LEFT_HAND].ItemIndex((m_bSecondHand ? 1 : 0), 0);
+	if (i1 == m_iSelectedItemIndex || i2 == m_iSelectedItemIndex) {
+		m_vGridView[IN_SOCKET].Reset();
+		m_iSelectedItemIndex = m_iSelectedSocketIndex = -1;
+	}
+	m_bSecondHand = !m_bSecondHand;
+	Invalidate();
  }
 
 void CDlgCharItems::OnChangeCorpseHand() {
-	//更新UI
-	InvalidateRect(&m_vGridView[CORPSE_RIGHT_HAND].Rect);
-	InvalidateRect(&m_vGridView[CORPSE_LEFT_HAND].Rect);
+	const BOOL s = m_chCorpseSecondHand.GetCheck();	//改变后的值
+	//调整选中的物品
+	const int i1 = m_vGridView[CORPSE_RIGHT_HAND].ItemIndex((s ? 0 : 1), 0);
+	const int i2 = m_vGridView[CORPSE_LEFT_HAND].ItemIndex((s ? 0 : 1), 0);
+	if (i1 == m_iSelectedItemIndex || i2 == m_iSelectedItemIndex) {
+		m_vGridView[IN_SOCKET].Reset();
+		m_iSelectedItemIndex = m_iSelectedSocketIndex = -1;
+	}
+	Invalidate();
 }
 
 void CDlgCharItems::OnChangeCorpse() {
@@ -1139,26 +1176,6 @@ void CDlgCharItems::OnItemModify() {
 	dlg.DoModal();
 }
 
-void CDlgCharItems::RecycleItem(UINT index, BOOL showOnList) {
-	ASSERT(index < m_vItemViews.size());
-	auto & view = m_vItemViews[index];
-	ASSERT(view.iPosition != IN_RECYCLE);
-	view.iPosition = IN_RECYCLE;
-	if (showOnList) {
-		const int i = m_lstRecycle.InsertItem(m_lstRecycle.GetItemCount(), view.Item.ItemName());
-		m_lstRecycle.SetItemData(i, index);
-	}
-}
-
-void CDlgCharItems::RecycleItemFromGrid(UINT index, BOOL showOnList) {
-	ASSERT(index < m_vItemViews.size());
-	auto & view = m_vItemViews[index];
-	ASSERT(view.iPosition < POSITION_END);
-	auto & grid = m_vGridView[view.iPosition];
-	grid.ItemIndex(-1, view.iGridX, view.iGridY, view.iGridWidth, view.iGridHeight);
-	RecycleItem(index, showOnList);
-}
-
 void CDlgCharItems::OnItemNew() {
 	unique_ptr<CD2Item> item;
 	CDlgNewItem dlg(item, this);
@@ -1171,20 +1188,22 @@ void CDlgCharItems::OnItemNew() {
 
 void CDlgCharItems::OnItemRemove() {
 	auto & view = SelectedItemView();
-	int idx = m_iSelectedSocketIndex;
-	m_iSelectedSocketIndex = -1;
-	if (::IsInSocket(view.iPosition)) {	//删除镶嵌的宝石
+	ASSERT(view.iPosition < int(m_vGridView.size()));
+	auto & grid = m_vGridView[view.iPosition];
+	if (grid.IsSockets()) {	//如果删除镶嵌的宝石，先解除镶嵌关系
 		auto & gems = SelectedParentItemView().vGemItems;
 		ASSERT(0 <= view.iGridX && view.iGridX < int(gems.size()));
 		gems[view.iGridX] = -1;
-	} else {	//删除其他物品
-		for (int i : view.vGemItems)	//先删除镶嵌的宝石
-			if (0 <= i)
-				RecycleItemFromGrid(i, FALSE);	//镶嵌的物品不显示在回收站列表里
-		idx = m_iSelectedItemIndex;
-		m_iSelectedItemIndex = -1;
-	}
-	RecycleItemFromGrid(idx, TRUE);
+	} else
+		m_vGridView[IN_SOCKET].Reset();	//一般物品，重置镶孔
+	//移走物品
+	grid.ItemIndex(-1, view.iGridX, view.iGridY, view.iGridWidth, view.iGridHeight);
+	view.iPosition = IN_RECYCLE;
+	//放入回收站
+	const int i = m_lstRecycle.InsertItem(m_lstRecycle.GetItemCount(), view.Item.ItemName());
+	m_lstRecycle.SetItemData(i, m_iSelectedItemIndex);
+	//重置选中索引
+	m_iSelectedItemIndex = -1;
 	Invalidate();
 }
 
@@ -1215,18 +1234,20 @@ void CDlgCharItems::OnNMClickListRecycle(NMHDR *pNMHDR, LRESULT *pResult) {
 	//LPNMITEMACTIVATE pNMItemActivate = reinterpret_cast<LPNMITEMACTIVATE>(pNMHDR);
 	if (0 <= m_iPickedItemIndex) {	//拿起了物品，将物品放入回收站
 		auto & view = PickedItemView();
-		for (int i : view.vGemItems)
-			if(i >= 0)
-				RecycleItem(i, FALSE);
-		RecycleItem(m_iPickedItemIndex, TRUE);
-		//reset cursor
+		//放入回收站
+		view.iPosition = IN_RECYCLE;
+		const int i = m_lstRecycle.InsertItem(m_lstRecycle.GetItemCount(), view.Item.ItemName());
+		m_lstRecycle.SetItemData(i, m_iPickedItemIndex);
+		//重置鼠标
 		::DestroyIcon(m_hCursor);
 		m_hCursor = ::LoadCursor(0, IDC_ARROW);
 		//reset selected item
 		if (m_iPickedItemIndex == m_iSelectedSocketIndex)
 			m_iSelectedSocketIndex = -1;
-		else if(m_iPickedItemIndex == m_iSelectedItemIndex)
+		else if (m_iPickedItemIndex == m_iSelectedItemIndex) {
+			m_vGridView[IN_SOCKET].Reset();	//重置镶孔
 			m_iSelectedItemIndex = m_iSelectedSocketIndex = -1;
+		}
 		//reset picked item
 		m_iPickedItemIndex = -1;
 	}
