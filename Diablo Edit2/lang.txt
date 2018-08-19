@@ -44,7 +44,8 @@
 12	Paste the item copied	粘贴已复制的装备	粘貼已複製的裝備
 13	Modify the item	修改装备的属性	修改裝備的屬性
 14	Create a new item	创建新装备	創建新裝備
-15	Remove the item	删除装备	刪除裝備
+15	Create a new item from current one	创建新装备并复制当前装备的属性	創建新裝備并複製當前裝備的屬性
+16	Remove the item	删除装备	刪除裝備
 *=======================角色物品UI弹出菜单			
 0	&Import	导入(&I)	導入(&I)
 1	&Export	导出(&E)	導出(&E)
@@ -52,7 +53,8 @@
 3	&Paste	粘贴(&P)	粘貼(&P)
 4	&Modify	修改(&M)	修改(&M)
 5	&New	新建(&N)	新建(&N)
-6	&Remove	删除(&R)	刪除(&R)
+6	&New from	从当前新建(&N)	從當前新建(&N)
+7	&Remove	删除(&R)	刪除(&R)
 *=======================系统菜单			
 0	&File	文件(&F)	文件(&F)
 1	&View	视图(&V)	視圖(&V)

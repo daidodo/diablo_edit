@@ -320,8 +320,8 @@ CTypeSpecificInfo::CTypeSpecificInfo(const CItemMetaData * meta) {
 		if (meta->HasDef)
 			iDefence.ensure();
 		if (meta->HasDur) {
-			iMaxDurability.ensure(1);
-			iCurDur.ensure(1);
+			iMaxDurability.ensure(10);
+			iCurDur.ensure(10);
 		}
 		if (meta->IsStacked)
 			iQuantity.ensure();

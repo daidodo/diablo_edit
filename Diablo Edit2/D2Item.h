@@ -59,7 +59,7 @@ struct CExtItemInfo
 {
 	BYTE					nGems = 0;		//bit 108-110, 如果有孔，镶嵌的宝石数
 	DWORD					dwGUID;			//bit 111-142
-	BYTE					iDropLevel = 1;	//bit 143-149,drop level
+	BYTE					iDropLevel = 99;//bit 143-149,drop level
 	BYTE					iQuality = 2;	/*4 bits
 												1	low quality
 												2	normal
@@ -209,6 +209,7 @@ struct CD2Item
 	CString ItemName() const;
 	int GemIndexMax() const;	//镶嵌宝石位置索引最大值，没有返回-1
 	BOOL IsBox() const { return pItemInfo.exist() && pItemInfo->IsBox(); }	//是否赫拉迪卡方块
+	BOOL HasPropertyList() const { return pItemInfo.exist() && pItemInfo->pTpSpInfo.exist(); }
 	void ReadData(CInBitsStream & bs);
 	void WriteData(COutBitsStream & bs) const;
 	BOOL ReadFile(CFile & file);

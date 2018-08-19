@@ -19,7 +19,8 @@ using namespace std;
 #define ID_ITEM_PASTE                   103
 #define ID_ITEM_MODIFY                  104
 #define ID_ITEM_NEW						105
-#define ID_ITEM_REMOVE                  106
+#define ID_ITEM_NEW_FROM				106
+#define ID_ITEM_REMOVE                  107
 
 const int GRID_WIDTH = 30;	//每个网格的边长(像素)
 
@@ -481,6 +482,7 @@ BEGIN_MESSAGE_MAP(CDlgCharItems, CDialog)
 	ON_COMMAND(ID_ITEM_PASTE, &CDlgCharItems::OnItemPaste)
 	ON_COMMAND(ID_ITEM_MODIFY, &CDlgCharItems::OnItemModify)
 	ON_COMMAND(ID_ITEM_NEW, &CDlgCharItems::OnItemNew)
+	ON_COMMAND(ID_ITEM_NEW_FROM, &CDlgCharItems::OnItemNewFrom)
 	ON_COMMAND(ID_ITEM_REMOVE, &CDlgCharItems::OnItemRemove)
 	ON_WM_MENUSELECT()
 	ON_CBN_SELCHANGE(IDC_COMBO_MERC_TYPE, &CDlgCharItems::OnCbnSelchangeComboMercType)
@@ -813,7 +815,8 @@ void CDlgCharItems::OnMenuSelect(UINT nItemID, UINT nFlags, HMENU hSysMenu) {
 		case ID_ITEM_PASTE:		frame.SetMessageText(::theApp.MenuPrompt(12)); break;
 		case ID_ITEM_MODIFY:	frame.SetMessageText(::theApp.MenuPrompt(13)); break;
 		case ID_ITEM_NEW:		frame.SetMessageText(::theApp.MenuPrompt(14)); break;
-		case ID_ITEM_REMOVE:	frame.SetMessageText(::theApp.MenuPrompt(15)); break;
+		case ID_ITEM_NEW_FROM:	frame.SetMessageText(::theApp.MenuPrompt(15)); break;
+		case ID_ITEM_REMOVE:	frame.SetMessageText(::theApp.MenuPrompt(16)); break;
 	}
 }
 
@@ -1000,7 +1003,8 @@ void CDlgCharItems::OnContextMenu(CWnd* /*pWnd*/, CPoint point) {
 		menu.AppendMenu(MF_STRING, ID_ITEM_PASTE, ::theApp.CharItemPopupMenu(3));
 		menu.AppendMenu(MF_SEPARATOR);
 		menu.AppendMenu(MF_STRING, ID_ITEM_NEW, ::theApp.CharItemPopupMenu(5));
-		menu.AppendMenu(MF_STRING, ID_ITEM_REMOVE, ::theApp.CharItemPopupMenu(6));
+		menu.AppendMenu(MF_STRING, ID_ITEM_NEW_FROM, ::theApp.CharItemPopupMenu(6));
+		menu.AppendMenu(MF_STRING, ID_ITEM_REMOVE, ::theApp.CharItemPopupMenu(7));
 		//Appearance
 		menu.EnableMenuItem(ID_ITEM_IMPORT, (m_bClickOnItem ? MF_DISABLED : MF_ENABLED));
 		menu.EnableMenuItem(ID_ITEM_EXPORT, (m_bClickOnItem ? MF_ENABLED : MF_DISABLED));
@@ -1008,6 +1012,7 @@ void CDlgCharItems::OnContextMenu(CWnd* /*pWnd*/, CPoint point) {
 		menu.EnableMenuItem(ID_ITEM_PASTE, (0 <= m_iCopiedItemIndex ? MF_ENABLED : MF_DISABLED));
 		menu.EnableMenuItem(ID_ITEM_MODIFY, (m_bClickOnItem && SelectedItemView().Item.IsEditable() ? MF_ENABLED : MF_DISABLED));
 		menu.EnableMenuItem(ID_ITEM_NEW, (m_bClickOnItem ? MF_DISABLED : MF_ENABLED));
+		menu.EnableMenuItem(ID_ITEM_NEW_FROM, (m_bClickOnItem ? MF_ENABLED : MF_DISABLED));
 		menu.EnableMenuItem(ID_ITEM_REMOVE, (m_bClickOnItem ? MF_ENABLED : MF_DISABLED));
 		m_bClickOnItem = FALSE;
 
@@ -1182,6 +1187,20 @@ void CDlgCharItems::OnItemNew() {
 	dlg.DoModal();
 	if (!item)
 		return;
+	item->iLocation = 4;	//设置物品被鼠标拿起
+	AddItemInGrid(*item, 0);
+}
+
+void CDlgCharItems::OnItemNewFrom() {
+	const auto & view = SelectedItemView();
+	unique_ptr<CD2Item> item;
+	CDlgNewItem dlg(item, this);
+	dlg.DoModal();
+	if (!item)
+		return;
+	//copy property list
+	if (view.Item.HasPropertyList() && item->HasPropertyList())
+		item->pItemInfo->pTpSpInfo->stPropertyList = view.Item.pItemInfo->pTpSpInfo->stPropertyList;
 	item->iLocation = 4;	//设置物品被鼠标拿起
 	AddItemInGrid(*item, 0);
 }
