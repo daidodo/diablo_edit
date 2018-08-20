@@ -244,7 +244,7 @@ CInBitsStream & operator >>(CInBitsStream & bs, pair<CExtItemInfo &, const T &> 
 		bs >> bits(v.wRune, 16);
 	if (get<2>(t))	//bPersonalized
 		for (auto & c : v.sPersonName.ensure()) {
-			bs >> c;
+			bs >> bits(c, 7);
 			if (!bs.Good() || !c)
 				break;
 		}

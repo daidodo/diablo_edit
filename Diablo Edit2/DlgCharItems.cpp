@@ -1222,7 +1222,10 @@ void CDlgCharItems::OnItemRemove() {
 	const int i = m_lstRecycle.InsertItem(m_lstRecycle.GetItemCount(), view.Item.ItemName());
 	m_lstRecycle.SetItemData(i, m_iSelectedItemIndex);
 	//重置选中索引
-	m_iSelectedItemIndex = -1;
+	if (m_iSelectedSocketIndex >= 0)
+		m_iSelectedSocketIndex = -1;
+	else
+		m_iSelectedItemIndex = m_iSelectedSocketIndex = -1;
 	Invalidate();
 }
 
