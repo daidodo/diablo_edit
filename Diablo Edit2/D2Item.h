@@ -5,7 +5,6 @@
 #include "BinDataStream.h"
 
 #include <vector>
-#include <map>
 
 //检查并设置人物姓名
 BOOL SetCharName(BYTE (&dest)[16], const CString & src);
@@ -48,8 +47,8 @@ struct CGoldQuantity
 
 struct CPropertyList
 {
-	std::map<WORD, DWORD>	mProperty;		//属性列表，每项（9 bits ID + VALUE)
-	WORD					iEndFlag;		//9 bits, 0x1FF, 结束标志
+	std::vector<std::pair<WORD, DWORD>> mProperty;	//属性列表，每项（9 bits ID + VALUE)
+	WORD					iEndFlag;				//9 bits, 0x1FF, 结束标志
 	//Functons:
 	int ExtSockets() const;			//属性列表里的额外孔数
 	BOOL IsIndestructible() const;	//属性列表里的不可破坏属性
@@ -60,7 +59,7 @@ struct CExtItemInfo
 {
 	BYTE					nGems = 0;		//bit 108-110, 如果有孔，镶嵌的宝石数
 	DWORD					dwGUID;			//bit 111-142
-	BYTE					iDropLevel = 1;	//bit 143-149,drop level
+	BYTE					iDropLevel = 99;//bit 143-149,drop level
 	BYTE					iQuality = 2;	/*4 bits
 												1	low quality
 												2	normal
@@ -210,6 +209,7 @@ struct CD2Item
 	CString ItemName() const;
 	int GemIndexMax() const;	//镶嵌宝石位置索引最大值，没有返回-1
 	BOOL IsBox() const { return pItemInfo.exist() && pItemInfo->IsBox(); }	//是否赫拉迪卡方块
+	BOOL HasPropertyList() const { return pItemInfo.exist() && pItemInfo->pTpSpInfo.exist(); }
 	void ReadData(CInBitsStream & bs);
 	void WriteData(COutBitsStream & bs) const;
 	BOOL ReadFile(CFile & file);

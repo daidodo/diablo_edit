@@ -44,7 +44,8 @@
 12	Paste the item copied	粘贴已复制的装备	粘貼已複製的裝備
 13	Modify the item	修改装备的属性	修改裝備的屬性
 14	Create a new item	创建新装备	創建新裝備
-15	Remove the item	删除装备	刪除裝備
+15	Create a new item from current one	创建新装备并复制当前装备的属性	創建新裝備并複製當前裝備的屬性
+16	Remove the item	删除装备	刪除裝備
 *=======================角色物品UI弹出菜单			
 0	&Import	导入(&I)	導入(&I)
 1	&Export	导出(&E)	導出(&E)
@@ -52,7 +53,8 @@
 3	&Paste	粘贴(&P)	粘貼(&P)
 4	&Modify	修改(&M)	修改(&M)
 5	&New	新建(&N)	新建(&N)
-6	&Remove	删除(&R)	刪除(&R)
+6	&New from	从当前新建(&N)	從當前新建(&N)
+7	&Remove	删除(&R)	刪除(&R)
 *=======================系统菜单			
 0	&File	文件(&F)	文件(&F)
 1	&View	视图(&V)	視圖(&V)
@@ -181,7 +183,7 @@
 3	Too many golds in person or stash	身上或箱子的金钱数过多	身上或箱子的金錢數過多
 4	Please choose character class	请选择一种角色	請選擇一種角色
 5	Skill levels must be between 0-127	技能等级必须在0-127之间	技能等級必須在0-127之間
-6	"(%c%c%c%c)Unrecognised Item Code, continue?"	(%c%c%c%c)不能识别的物品代码，是否继续？	(%c%c%c%c)不可識別的物品代碼，是否繼續？
+6	(%c%c%c%c)Unrecognised Item Code	(%c%c%c%c)不能识别的物品代码	(%c%c%c%c)不可識別的物品代碼
 7	Unkown Item Quality: iQuality = %d	未知的物品等级：iQuality = %d	未知的物品等級：iQuality = %d
 8	Save the character %s ?	是否保存已打开的人物 %s ？	是否保存已打開的人物 %s  ？
 9	"Character name and file name are different, continue?"	人物名字与文件名不同，是否继续？	人物名字與文件名不同，是否繼續？
@@ -524,7 +526,8 @@
 7	Tome of Identify	辨识之书	辨識之書
 8	Scroll of Town Portal	回城卷轴	回城卷軸
 9	Tome of Town Portal	回城之书	回城之書
-10	An Evil Force	一股邪恶力量	一股邪惡力量
+10	Delirium	迪勒瑞姆	迪勒瑞姆
+11	An Evil Force	一股邪恶力量	一股邪惡力量
 *=======================角色技能名字			
 0	Magic Arrow	魔法箭	魔法箭
 1	Fire Arrow	火焰箭	火焰箭
@@ -1634,43 +1637,43 @@
 211	Unused		
 212	Unused		
 213	Unused		
-214	%+d Defence per Level		
-215	%+d Enhanced Defence per Level		
-216	%+d Life per Level		
-217	%+d Mana per Level		
-218	%+d Max Damage per Level		
-219	%+d Enhanced Max Damage per Level		
-220	%+d Strength per Level		
-221	%+d Dexterity per Level		
-222	%+d Energy per Level		
-223	%+d Vitality per Level		
-224	%+d Attack Rating per Level		
-225	%+d%% Bonus to Attack Rating per Level		
-226	%+d Max Cold Damage per Level		
-227	%+d Max Fire Damage per Level		
-228	%+d Max Lightning Damage per Level		
-229	%+d Max Poison Damage per Level		
-230	Cold Resist %+d%% per Level		
-231	Fire Resist %+d%% per Level		
-232	Lightning Resist %+d%% per Level		
-233	Poison Resist %+d%% per Level		
-234	%+d Cold Absorb per Level		
-235	%+d Fire Absorb per Level		
-236	%+d Lightning Absorb per Level		
-237	%+d Poison Absorb per Level		
-238	Attacker Takes Damage of %+d per Level		
-239	%+d%% Extra Gold from Monsters per Level		
-240	%+d%% Better Chance of Getting Magic Items per Level		
-241	Heal Stamina Plus %+d%% per Level		
-242	%+d Max Stamina per Level		
-243	%+d%% Damage to Demons per Level		
-244	%+d%% Damage to Undead per Level		
-245	%+d to Attack Rating vs Demons per Level		
-246	%+d to Attack Rating vs Undead per Level		
-247	%+d%% Chance of Crushing Blow per Level		
-248	%+d%% Chance of Open Wounds per Level		
-249	%+d Kick Damage per Level		
-250	%+d%% Chance of Deadly Strike per Level		
+214	%+g Defence per Level		
+215	%+g Enhanced Defence per Level		
+216	%+g Life per Level		
+217	%+g Mana per Level		
+218	%+g Max Damage per Level		
+219	%+g Enhanced Max Damage per Level		
+220	%+g Strength per Level		
+221	%+g Dexterity per Level		
+222	%+g Energy per Level		
+223	%+g Vitality per Level		
+224	%+g Attack Rating per Level		
+225	%+g%% Bonus to Attack Rating per Level		
+226	%+g Max Cold Damage per Level		
+227	%+g Max Fire Damage per Level		
+228	%+g Max Lightning Damage per Level		
+229	%+g Max Poison Damage per Level		
+230	Cold Resist %+g%% per Level		
+231	Fire Resist %+g%% per Level		
+232	Lightning Resist %+g%% per Level		
+233	Poison Resist %+g%% per Level		
+234	%+g Cold Absorb per Level		
+235	%+g Fire Absorb per Level		
+236	%+g Lightning Absorb per Level		
+237	%+g Poison Absorb per Level		
+238	Attacker Takes Damage of %+g per Level		
+239	%+g%% Extra Gold from Monsters per Level		
+240	%+g%% Better Chance of Getting Magic Items per Level		
+241	Heal Stamina Plus %+g%% per Level		
+242	%+g Max Stamina per Level		
+243	%+g%% Damage to Demons per Level		
+244	%+g%% Damage to Undead per Level		
+245	%+g to Attack Rating vs Demons per Level		
+246	%+g to Attack Rating vs Undead per Level		
+247	%+g%% Chance of Crushing Blow per Level		
+248	%+g%% Chance of Open Wounds per Level		
+249	%+g Kick Damage per Level		
+250	%+g%% Chance of Deadly Strike per Level		
 251	Find Gems per Level		
 252	Repairs 1 Durability in %d Seconds		
 253	Replenishes 1 Quantity in %d Seconds		
@@ -4418,7 +4421,7 @@
 307	Stone Crusher		
 308	Jadetalon		
 309	Shadowdancer		
-310	Cerebus		
+310	Cerebus' Bite		
 311	Tyrael's Might		
 312	Souldrain		
 313	Runemaster		

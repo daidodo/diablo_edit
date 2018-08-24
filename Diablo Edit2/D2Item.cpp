@@ -147,7 +147,7 @@ CInBitsStream & operator >>(CInBitsStream & bs, CPropertyList & v) {
 	for (bs >> bits(v.iEndFlag, 9); bs.Good() && v.iEndFlag < 0x1FF; bs >> bits(v.iEndFlag, 9)) {
 		const int b = ::theApp.PropertyMetaData(v.iEndFlag).Bits();
 		if (b > 0)
-			bs >> bits(v.mProperty[v.iEndFlag], b);
+			bs >> bits(v.mProperty.emplace_back(v.iEndFlag, 0).second, b);
 	}
 	return bs;
 }
@@ -162,13 +162,18 @@ COutBitsStream & operator <<(COutBitsStream & bs, const CPropertyList & v) {
 }
 
 int CPropertyList::ExtSockets() const {
-	auto wh = mProperty.find(194);	//194是额外孔属性ID
-	return (wh == mProperty.end() ? 0 : wh->second);
+	int r = 0;
+	for (auto & p : mProperty)
+		if (p.first == 194)	//194是额外孔属性ID
+			r += p.second;	//可能有多个194属性
+	return r;
 }
 
 BOOL CPropertyList::IsIndestructible() const {
-	auto wh = mProperty.find(152);	//152是不可破坏属性ID
-	return (wh == mProperty.end() ? FALSE : (wh->second != 0));
+	for (auto & p : mProperty)
+		if (p.first == 152 && p.second != 0)	//152是不可破坏属性ID
+			return TRUE;	//可能有多个152属性
+	return FALSE;
 }
 
 //pack
@@ -239,7 +244,7 @@ CInBitsStream & operator >>(CInBitsStream & bs, pair<CExtItemInfo &, const T &> 
 		bs >> bits(v.wRune, 16);
 	if (get<2>(t))	//bPersonalized
 		for (auto & c : v.sPersonName.ensure()) {
-			bs >> c;
+			bs >> bits(c, 7);
 			if (!bs.Good() || !c)
 				break;
 		}
@@ -315,8 +320,8 @@ CTypeSpecificInfo::CTypeSpecificInfo(const CItemMetaData * meta) {
 		if (meta->HasDef)
 			iDefence.ensure();
 		if (meta->HasDur) {
-			iMaxDurability.ensure(1);
-			iCurDur.ensure(1);
+			iMaxDurability.ensure(10);
+			iCurDur.ensure(10);
 		}
 		if (meta->IsStacked)
 			iQuantity.ensure();
@@ -439,11 +444,12 @@ const CItemMetaData *  CItemInfo::ReadData(CInBitsStream & bs, BOOL bSimple, BOO
 	if (IsGold())	//gld 的数量域
 		bs >> pGold;
 	bs >> bHasRand;
-	if (bHasRand)
-		for (auto & i : pTmStFlag.ensure())
-			if (bs.Good())
-				bs >> bits(i, 32);
-	if (!bSimple)	//Type Specific info
+	if (!bSimple) {
+		if (bHasRand)
+			for (auto & i : pTmStFlag.ensure())
+				if (bs.Good())
+					bs >> bits(i, 32);
+		//Type Specific info
 		bs >> pack(pTpSpInfo.ensure(),
 			make_tuple(pItemData->HasDef,
 				pItemData->HasDur,
@@ -451,6 +457,7 @@ const CItemMetaData *  CItemInfo::ReadData(CInBitsStream & bs, BOOL bSimple, BOO
 				pItemData->IsStacked,
 				pExtItemInfo->IsSet(),
 				bRuneWord));
+	}
 	return pItemData;
 }
 
@@ -558,9 +565,9 @@ CString CD2Item::ItemName() const {
 			default:
 				if (extInfo.wMonsterID.exist())
 					name.push_front(::theApp.MonsterName(extInfo.wMonsterID));
-				else if (IsRuneWord())
-					name.push_front(::theApp.RuneWordName(RuneWordId()));
 		}
+		if (extInfo.iQuality <= 3 && IsRuneWord())
+			name.push_front(::theApp.RuneWordName(RuneWordId()));
 	}
 	return text(name);
 }
