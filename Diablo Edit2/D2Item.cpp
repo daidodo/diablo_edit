@@ -444,11 +444,12 @@ const CItemMetaData *  CItemInfo::ReadData(CInBitsStream & bs, BOOL bSimple, BOO
 	if (IsGold())	//gld µÄÊýÁ¿Óò
 		bs >> pGold;
 	bs >> bHasRand;
-	if (bHasRand)
-		for (auto & i : pTmStFlag.ensure())
-			if (bs.Good())
-				bs >> bits(i, 32);
-	if (!bSimple)	//Type Specific info
+	if (!bSimple) {
+		if (bHasRand)
+			for (auto & i : pTmStFlag.ensure())
+				if (bs.Good())
+					bs >> bits(i, 32);
+		//Type Specific info
 		bs >> pack(pTpSpInfo.ensure(),
 			make_tuple(pItemData->HasDef,
 				pItemData->HasDur,
@@ -456,6 +457,7 @@ const CItemMetaData *  CItemInfo::ReadData(CInBitsStream & bs, BOOL bSimple, BOO
 				pItemData->IsStacked,
 				pExtItemInfo->IsSet(),
 				bRuneWord));
+	}
 	return pItemData;
 }
 

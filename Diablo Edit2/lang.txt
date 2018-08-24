@@ -183,7 +183,7 @@
 3	Too many golds in person or stash	身上或箱子的金钱数过多	身上或箱子的金錢數過多
 4	Please choose character class	请选择一种角色	請選擇一種角色
 5	Skill levels must be between 0-127	技能等级必须在0-127之间	技能等級必須在0-127之間
-6	"(%c%c%c%c)Unrecognised Item Code, continue?"	(%c%c%c%c)不能识别的物品代码，是否继续？	(%c%c%c%c)不可識別的物品代碼，是否繼續？
+6	(%c%c%c%c)Unrecognised Item Code	(%c%c%c%c)不能识别的物品代码	(%c%c%c%c)不可識別的物品代碼
 7	Unkown Item Quality: iQuality = %d	未知的物品等级：iQuality = %d	未知的物品等級：iQuality = %d
 8	Save the character %s ?	是否保存已打开的人物 %s ？	是否保存已打開的人物 %s  ？
 9	"Character name and file name are different, continue?"	人物名字与文件名不同，是否继续？	人物名字與文件名不同，是否繼續？
@@ -526,7 +526,8 @@
 7	Tome of Identify	辨识之书	辨識之書
 8	Scroll of Town Portal	回城卷轴	回城卷軸
 9	Tome of Town Portal	回城之书	回城之書
-10	An Evil Force	一股邪恶力量	一股邪惡力量
+10	Delirium	迪勒瑞姆	迪勒瑞姆
+11	An Evil Force	一股邪恶力量	一股邪惡力量
 *=======================角色技能名字			
 0	Magic Arrow	魔法箭	魔法箭
 1	Fire Arrow	火焰箭	火焰箭
@@ -4420,7 +4421,7 @@
 307	Stone Crusher		
 308	Jadetalon		
 309	Shadowdancer		
-310	Cerebus		
+310	Cerebus' Bite		
 311	Tyrael's Might		
 312	Souldrain		
 313	Runemaster		
