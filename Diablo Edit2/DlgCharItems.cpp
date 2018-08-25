@@ -755,20 +755,39 @@ void CDlgCharItems::ShowItemInfoDlg(const CD2Item * pItem, int x, int gems){
 
 void CDlgCharItems::ResetAll()
 {
-	m_vItemViews.clear();
 	for (auto & grid : m_vGridView)
 		grid.Reset();
+
+	m_vItemViews.clear();
+	m_bHasCorpse = FALSE;
 	m_bSecondHand = FALSE;
 	m_chCorpseSecondHand.SetCheck(FALSE);
-	m_iSelectedItemIndex = m_iSelectedSocketIndex = -1;
+	m_chCorpseSecondHand.EnableWindow(FALSE);
+
 	m_pDlgItemInfo.reset();
+
+	m_iSelectedItemIndex = m_iSelectedSocketIndex = -1;
 	if (m_iPickedItemIndex >= 0) {
 		::DestroyIcon(m_hCursor);
 		m_hCursor = ::LoadCursor(0, IDC_ARROW);
 		m_iPickedItemIndex = -1;
 	}
+
+	m_bClickOnItem = FALSE;
+	m_iCopiedItemIndex = -1;
+
+	m_bHasMercenary = FALSE;
+	m_cbMercType.SetCurSel(-1);
+	m_cbMercName.SetCurSel(-1);
+	m_edMercExp.SetWindowText(_T(""));
+	m_chMercDead.SetCheck(FALSE);
+	m_iMercNameGroup = -1;
+
 	m_lstRecycle.DeleteAllItems();
+
 	m_bHasCharacter = FALSE;
+
+	UpdateData(FALSE);
 	Invalidate();
 }
 
