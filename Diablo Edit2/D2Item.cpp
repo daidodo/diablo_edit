@@ -478,7 +478,7 @@ void CItemInfo::WriteData(COutBitsStream & bs, const CItemMetaData & itemData, B
 	if (bHasRand)
 		for (auto i : pTmStFlag)
 			if (bs.Good())
-				bs << i;
+				bs << bits(i, 32);
 	if (!bSimple)	//Type Specific info
 		bs << pack(*pTpSpInfo,
 			make_tuple(itemData.HasDef,
@@ -568,6 +568,8 @@ CString CD2Item::ItemName() const {
 		}
 		if (extInfo.iQuality <= 3 && IsRuneWord())
 			name.push_front(::theApp.RuneWordName(RuneWordId()));
+		if (bEthereal)
+			name.push_back(_T("(ETH)"));
 	}
 	return text(name);
 }
