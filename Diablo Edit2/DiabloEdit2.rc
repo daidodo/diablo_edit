@@ -1363,6 +1363,12 @@ END
 
 IDR_BINARY1             Binary                  "new.dat"
 
+IDR_BINARY2             Binary                  "property.dat"
+
+IDR_BINARY3             Binary                  "itemdata.dat"
+
+IDR_BINARY4             Binary                  "language.dat"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
