@@ -187,7 +187,7 @@
 7	Unkown Item Quality: iQuality = %d	未知的物品等级：iQuality = %d	未知的物品等級：iQuality = %d
 8	Save the character %s ?	是否保存已打开的人物 %s ？	是否保存已打開的人物 %s  ？
 9	"Character name and file name are different, continue?"	人物名字与文件名不同，是否继续？	人物名字與文件名不同，是否繼續？
-10	Cannot read file 'new.dat'. You can create it from a correct d2s file by changing the file name and copying it to the executive directory	不能读取文件“new.dat“，你可以用一个正确的d2s文件代替，只要改变文件名，并复制到程序目录下	不能讀取文件“new.dat“，你可以用一個正確的d2s文件代替，只要改變文件名，並複製到程序目錄下
+			
 11	The file isn't in d2s format	文件不是正确的d2s格式	文件不是正確的d2s格式
 12	File length is incorrect	文件长度错误	文件長度錯誤
 13	Quest info data format error	任务数据格式错误	任務數據格式錯誤

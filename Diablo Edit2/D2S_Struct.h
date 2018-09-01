@@ -128,13 +128,13 @@ struct CGolem
 struct CD2S_Struct
 {
 //members
+	void ReadData(CInBitsStream & bs);
 	void ReadFile(const CString & path);
 	void WriteFile(const CString & path) const;
 	BOOL HasCorpse() const { return stCorpse.HasCorpse(); }
 	BOOL HasMercenary() const { return wMercName > 0; }
 	void Reset();
 private:
-	void ReadData(CInBitsStream & bs);
 	BOOL WriteData(COutBitsStream & bs) const;
 public:
 	//人物信息

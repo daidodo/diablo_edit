@@ -52,6 +52,13 @@ public:
 		: bytes_(0)
 		, bits_(0)
 		, bad_(false){}
+	CInBitsStream(const BYTE * data, size_t sz)
+		: bytes_(0)
+		, bits_(0)
+		, bad_(false) {
+		assert(data);
+		data_.assign(data, data + sz);
+	}
 	DWORD DataSize() const { return data_.size(); }
 	DWORD BytePos() const{return bytes_;}
 	bool Good() const { return !bad_; }
