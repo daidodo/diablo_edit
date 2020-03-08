@@ -491,7 +491,7 @@ void CItemInfo::WriteData(COutBitsStream & bs, const CItemMetaData & itemData, B
 
 BOOL CItemInfo::IsNameValid() const {
 	for(char c : sTypeName)
-		if(c != ' ' && (c < 'a' || c > 'z'))
+		if(c != ' ' && !isalnum(c))
 			return FALSE;
 	return TRUE;
 }

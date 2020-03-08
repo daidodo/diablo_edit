@@ -28,8 +28,10 @@ brz						1					1
 jaw						1					1								
 eyz						1					1								
 hrn						1					1								
+dhn	-1													1					
 tal						1					1								
-flg			12			1					1								
+flg						1					1								
+std	-1													1					
 fng						1					1								
 qll						1					1								
 sol						1					1								
@@ -37,6 +39,9 @@ scz				4		1					1
 spe						1					1								
 key										1									
 luv			12											1					
+pk1	-1		12											1					
+pk2	-1		12											1					
+pk3	-1		12											1					
 xyz														1					
 j34			12		1									1					
 g34			12		1									1					
@@ -46,8 +51,10 @@ tr1			22		1									1
 mss					1									1					
 ass			22		1									1					
 qey					1						1								
+bey	-1													1					
 qhr					1						1								
 qbr					1						1								
+mbr	-1													1					
 ear					1														
 gcv					1										1				
 gfv					1										1				
