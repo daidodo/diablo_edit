@@ -103,12 +103,14 @@ void CDlgQuestInfo::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_RADIO1, m_sText[29]);
 	DDX_Text(pDX, IDC_RADIO2, m_sText[30]);
 	DDX_Text(pDX, IDC_RADIO3, m_sText[31]);
+	DDX_Control(pDX, IDC_CHECK29, m_cbResetStats);
 }
 
 BEGIN_MESSAGE_MAP(CDlgQuestInfo, CDialog)
 	ON_BN_CLICKED(IDC_RADIO1, &CDlgQuestInfo::OnBnClicked_Normal)
 	ON_BN_CLICKED(IDC_RADIO2, &CDlgQuestInfo::OnBnClicked_Nightmare)
 	ON_BN_CLICKED(IDC_RADIO3, &CDlgQuestInfo::OnBnClicked_Hell)
+	ON_BN_CLICKED(IDC_CHECK1, &CDlgQuestInfo::OnBnClickedCheck1)
 END_MESSAGE_MAP()
 
 void CDlgQuestInfo::UpdateUI(const CD2S_Struct & character)
@@ -126,12 +128,13 @@ void CDlgQuestInfo::UpdateUI(const CD2S_Struct & character)
 		m_bQuestInfo[i][28] = character.QuestInfo.QIData[i].bResetStats == 1;
 	}
 	::CopyMemory(m_bUIData,m_bQuestInfo[m_nLevel],sizeof(m_bUIData));
+	m_cbResetStats.EnableWindow(m_bUIData[0]);
 	UpdateData(FALSE);
 }
 
 BOOL CDlgQuestInfo::GatherData(CD2S_Struct & character)
 {
-	UpdateData(TRUE);
+	UpdateData();
 	::CopyMemory(m_bQuestInfo[m_nLevel],m_bUIData,sizeof(m_bUIData));
 	for(int i = 0;i < LEVEL_SIZE;++i){
 		for(int j = 0;j < 6;++j){
@@ -146,7 +149,7 @@ BOOL CDlgQuestInfo::GatherData(CD2S_Struct & character)
 			if(j < 3 && ((character.QuestInfo.QIData[i].wActIV)[j] & 1) != m_bQuestInfo[i][18 + j])
 				(character.QuestInfo.QIData[i].wActIV)[j] = (m_bQuestInfo[i][18 + j] ? QUEST_COMPLETE[18 + j] : 0);
 			m_bQuestInfo[i][27] ? (character.QuestInfo.QIData[i].wActI)[3] |= 0x400 : (character.QuestInfo.QIData[i].wActI)[3] &= ~0x400;
-			character.QuestInfo.QIData[i].bResetStats = m_bQuestInfo[i][28] ? 1 : 2;
+			character.QuestInfo.QIData[i].bResetStats = m_bQuestInfo[i][0] ? (m_bQuestInfo[i][28] ? 1 : 2) : 0;
 		}
 	}
 	return TRUE;
@@ -158,6 +161,7 @@ void CDlgQuestInfo::ResetAll()
 	for(int i = 0;i < LEVEL_SIZE;++i)
 		::ZeroMemory(m_bQuestInfo[i],sizeof(m_bQuestInfo[i]));
 	::ZeroMemory(m_bUIData,sizeof(m_bUIData));
+	m_cbResetStats.EnableWindow(m_bUIData[0]);
 	UpdateData(FALSE);
 }
 
@@ -167,6 +171,7 @@ void CDlgQuestInfo::LoadText(void)
 		m_sText[i] = ::theApp.QuestName(i);
 	for (UINT i = 0; i < LEVEL_SIZE; ++i)
 		m_sText[QUEST_NAME_SIZE + i] = ::theApp.DifficultyName(i);
+	m_cbResetStats.EnableWindow(m_bUIData[0]);
 	UpdateData(FALSE);
 }
 
@@ -180,6 +185,7 @@ void CDlgQuestInfo::OnBnClicked_Normal()
 		::CopyMemory(m_bQuestInfo[old],m_bUIData,sizeof(m_bUIData));
 		m_nLevel = 0;
 		::CopyMemory(m_bUIData,m_bQuestInfo[0],sizeof(m_bUIData));
+		m_cbResetStats.EnableWindow(m_bUIData[0]);
 		UpdateData(FALSE);
 	}
 }
@@ -192,6 +198,7 @@ void CDlgQuestInfo::OnBnClicked_Nightmare()
 		::CopyMemory(m_bQuestInfo[old],m_bUIData,sizeof(m_bUIData));
 		m_nLevel = 1;
 		::CopyMemory(m_bUIData,m_bQuestInfo[1],sizeof(m_bUIData));
+		m_cbResetStats.EnableWindow(m_bUIData[0]);
 		UpdateData(FALSE);
 	}
 }
@@ -204,6 +211,14 @@ void CDlgQuestInfo::OnBnClicked_Hell()
 		::CopyMemory(m_bQuestInfo[old],m_bUIData,sizeof(m_bUIData));
 		m_nLevel = 2;
 		::CopyMemory(m_bUIData,m_bQuestInfo[2],sizeof(m_bUIData));
+		m_cbResetStats.EnableWindow(m_bUIData[0]);
 		UpdateData(FALSE);
 	}
+}
+
+void CDlgQuestInfo::OnBnClickedCheck1()
+{
+	UpdateData();
+	m_cbResetStats.EnableWindow(m_bUIData[0]);
+	UpdateData(FALSE);
 }

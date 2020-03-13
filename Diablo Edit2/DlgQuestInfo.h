@@ -35,9 +35,11 @@ private:
 	INT m_nLevel;
 	BOOL m_bQuestInfo[LEVEL_SIZE][QUEST_NAME_SIZE];
 	BOOL m_bUIData[QUEST_NAME_SIZE];
+	CButton m_cbResetStats;
 public:
 	afx_msg void OnBnClicked_Normal();
 	afx_msg void OnBnClicked_Nightmare();
 	afx_msg void OnBnClicked_Hell();
+	afx_msg void OnBnClickedCheck1();
 };
 
