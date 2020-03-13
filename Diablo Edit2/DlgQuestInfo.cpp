@@ -22,7 +22,7 @@ CDlgQuestInfo::CDlgQuestInfo(CWnd* pParent /*=NULL*/)
 	, m_nLevel(0)
 {
 	::ZeroMemory(m_bUIData,sizeof(m_bUIData));
-	for(int i = 0;i < 3;++i)
+	for(int i = 0;i < LEVEL_SIZE;++i)
 		::ZeroMemory(m_bQuestInfo[i],sizeof(m_bQuestInfo[0]));
 }
 
@@ -42,6 +42,7 @@ void CDlgQuestInfo::DoDataExchange(CDataExchange* pDX)
 	DDX_Check(pDX, IDC_CHECK3, m_bUIData[3]);
 	DDX_Check(pDX, IDC_CHECK4, m_bUIData[4]);
 	DDX_Check(pDX, IDC_CHECK6, m_bUIData[5]);
+	DDX_Check(pDX, IDC_CHECK29, m_bUIData[28]);
 	//Act II
 	DDX_Check(pDX, IDC_CHECK7, m_bUIData[6]);
 	DDX_Check(pDX, IDC_CHECK8, m_bUIData[7]);
@@ -98,9 +99,10 @@ void CDlgQuestInfo::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_CHECK26, m_sText[25]);
 	DDX_Text(pDX, IDC_CHECK27, m_sText[26]);
 	DDX_Text(pDX, IDC_CHECK28, m_sText[27]);
-	DDX_Text(pDX, IDC_RADIO1, m_sText[28]);
-	DDX_Text(pDX, IDC_RADIO2, m_sText[29]);
-	DDX_Text(pDX, IDC_RADIO3, m_sText[30]);
+	DDX_Text(pDX, IDC_CHECK29, m_sText[28]);
+	DDX_Text(pDX, IDC_RADIO1, m_sText[29]);
+	DDX_Text(pDX, IDC_RADIO2, m_sText[30]);
+	DDX_Text(pDX, IDC_RADIO3, m_sText[31]);
 }
 
 BEGIN_MESSAGE_MAP(CDlgQuestInfo, CDialog)
@@ -111,7 +113,7 @@ END_MESSAGE_MAP()
 
 void CDlgQuestInfo::UpdateUI(const CD2S_Struct & character)
 {
-	for(int i = 0;i < 3;++i){
+	for(int i = 0;i < LEVEL_SIZE;++i){
 		for(int j = 0;j < 6;++j){
 			m_bQuestInfo[i][j] = (character.QuestInfo.QIData[i].wActI[j] & 1) != 0;
 			m_bQuestInfo[i][6 + j] = (character.QuestInfo.QIData[i].wActII[j] & 1) != 0;
@@ -121,6 +123,7 @@ void CDlgQuestInfo::UpdateUI(const CD2S_Struct & character)
 				m_bQuestInfo[i][18 + j] = (character.QuestInfo.QIData[i].wActIV[j] & 1) != 0;
 		}
 		m_bQuestInfo[i][27] = (character.QuestInfo.QIData[i].wActI[3] & 0x400) != 0;
+		m_bQuestInfo[i][28] = character.QuestInfo.QIData[i].bResetStats == 1;
 	}
 	::CopyMemory(m_bUIData,m_bQuestInfo[m_nLevel],sizeof(m_bUIData));
 	UpdateData(FALSE);
@@ -130,7 +133,7 @@ BOOL CDlgQuestInfo::GatherData(CD2S_Struct & character)
 {
 	UpdateData(TRUE);
 	::CopyMemory(m_bQuestInfo[m_nLevel],m_bUIData,sizeof(m_bUIData));
-	for(int i = 0;i < 3;++i){
+	for(int i = 0;i < LEVEL_SIZE;++i){
 		for(int j = 0;j < 6;++j){
 			if(((character.QuestInfo.QIData[i].wActI)[j] & 1) != m_bQuestInfo[i][j])
 				(character.QuestInfo.QIData[i].wActI)[j] = (m_bQuestInfo[i][j] ? QUEST_COMPLETE[j] : 0);
@@ -143,6 +146,7 @@ BOOL CDlgQuestInfo::GatherData(CD2S_Struct & character)
 			if(j < 3 && ((character.QuestInfo.QIData[i].wActIV)[j] & 1) != m_bQuestInfo[i][18 + j])
 				(character.QuestInfo.QIData[i].wActIV)[j] = (m_bQuestInfo[i][18 + j] ? QUEST_COMPLETE[18 + j] : 0);
 			m_bQuestInfo[i][27] ? (character.QuestInfo.QIData[i].wActI)[3] |= 0x400 : (character.QuestInfo.QIData[i].wActI)[3] &= ~0x400;
+			character.QuestInfo.QIData[i].bResetStats = m_bQuestInfo[i][28] ? 1 : 2;
 		}
 	}
 	return TRUE;
@@ -151,7 +155,7 @@ BOOL CDlgQuestInfo::GatherData(CD2S_Struct & character)
 void CDlgQuestInfo::ResetAll()
 {
 	m_nLevel = 0;
-	for(int i = 0;i < 3;++i)
+	for(int i = 0;i < LEVEL_SIZE;++i)
 		::ZeroMemory(m_bQuestInfo[i],sizeof(m_bQuestInfo[i]));
 	::ZeroMemory(m_bUIData,sizeof(m_bUIData));
 	UpdateData(FALSE);
@@ -159,10 +163,10 @@ void CDlgQuestInfo::ResetAll()
 
 void CDlgQuestInfo::LoadText(void)
 {
-	for(int i = 0;i < 28;++i)
+	for(int i = 0;i < QUEST_NAME_SIZE;++i)
 		m_sText[i] = ::theApp.QuestName(i);
-	for (UINT i = 0; i < ::theApp.DifficultyNameSize(); ++i)
-		m_sText[28 + i] = ::theApp.DifficultyName(i);
+	for (UINT i = 0; i < LEVEL_SIZE; ++i)
+		m_sText[QUEST_NAME_SIZE + i] = ::theApp.DifficultyName(i);
 	UpdateData(FALSE);
 }
 

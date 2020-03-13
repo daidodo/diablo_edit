@@ -515,6 +515,7 @@
 	Rite of Passage	通道的祭典	通道的祭典
 	Eve of Destruction	毁灭的前夕	毀滅的前夕
 	Moo Moo Farm	杀死母牛之王	殺死母牛之王
+	Reset Stats Points	重置技能和属性点	重置技能和屬性點
 *=======================通用技能名字			
 	Attack	一般攻击	一般攻擊
 	Kick	脚踢	腳踢

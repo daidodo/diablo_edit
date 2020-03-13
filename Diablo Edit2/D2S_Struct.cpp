@@ -25,19 +25,34 @@ static BOOL ValidateCrc(std::vector<BYTE> & data, DWORD dwCrc, DWORD dwOff) {
 //struct CQuestInfoData
 
 CInBitsStream & operator >>(CInBitsStream & bs, CQuestInfoData & v) {
-	return bs >> v.wIntroduced1 >> v.wActI >> v.wTraval1
-		>> v.wIntroduced2 >> v.wActII >> v.wTraval2
-		>> v.wIntroduced3 >> v.wActIII >> v.wTraval3
-		>> v.wIntroduced4 >> v.wActIV >> v.wTraval4 >> v.unkown1
-		>> v.wIntroduced5 >> v.unkown2 >> v.wActV >> v.unkown3;
+	return bs >> v.wIntroduced1
+		>> v.wActI
+		>> v.wTraval1
+		>> v.wIntroduced2
+		>> v.wActII
+		>> v.wTraval2
+		>> v.wIntroduced3
+		>> v.wActIII
+		>> v.wTraval3
+		>> v.wIntroduced4
+		>> v.wActIV
+		>> v.wTraval4
+		>> v.unknown1
+		>> v.wIntroduced5
+		>> v.unknown2
+		>> v.wActV
+		>> v.bResetStats
+		>> v.unknown3
+		>> v.unknown4;
 }
 
 COutBitsStream & operator <<(COutBitsStream & bs, const CQuestInfoData & v) {
 	return bs << v.wIntroduced1 << v.wActI << v.wTraval1
 		<< v.wIntroduced2 << v.wActII << v.wTraval2
 		<< v.wIntroduced3 << v.wActIII << v.wTraval3
-		<< v.wIntroduced4 << v.wActIV << v.wTraval4 << v.unkown1
-		<< v.wIntroduced5 << v.unkown2 << v.wActV << v.unkown3;
+		<< v.wIntroduced4 << v.wActIV << v.wTraval4 << v.unknown1
+		<< v.wIntroduced5 << v.unknown2 << v.wActV << v.bResetStats 
+		<< v.unknown3 << v.unknown4;
 }
 
 //struct CQuestInfo

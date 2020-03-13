@@ -958,11 +958,11 @@ BEGIN
     LTEXT           "ACT IV",IDC_STATIC,323,22,25,8
     LTEXT           "ACT V",IDC_STATIC,406,21,21,8
     CONTROL         "邪惡洞穴",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,3,34,100,10
-    CONTROL         "修女埋骨之地",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,3,46,103,10
-    CONTROL         "凱恩的搜索",IDC_CHECK3,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,3,59,100,10
-    CONTROL         "遺忘之塔",IDC_CHECK4,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,3,72,100,10
-    CONTROL         "交易的工具",IDC_CHECK5,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,3,85,100,10
-    CONTROL         "屠殺的修女",IDC_CHECK6,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,3,98,107,10
+    CONTROL         "修女埋骨之地",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,3,58,103,10
+    CONTROL         "凱恩的搜索",IDC_CHECK3,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,3,71,100,10
+    CONTROL         "遺忘之塔",IDC_CHECK4,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,3,84,100,10
+    CONTROL         "交易的工具",IDC_CHECK5,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,3,97,100,10
+    CONTROL         "屠殺的修女",IDC_CHECK6,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,3,110,107,10
     CONTROL         "羅達門特的巢穴",IDC_CHECK7,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,115,34,83,10
     CONTROL         "赫拉迪克之杖",IDC_CHECK8,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,115,47,84,10
     CONTROL         "墮落的太陽",IDC_CHECK9,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,115,60,83,10
@@ -985,6 +985,7 @@ BEGIN
     CONTROL         "通道的祭典",IDC_CHECK26,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,395,85,100,10
     CONTROL         "毀滅的前夕",IDC_CHECK27,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,395,97,100,10
     CONTROL         "殺死母牛之王",IDC_CHECK28,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,395,119,100,10
+    CONTROL         "重置技能和属性点",IDC_CHECK29,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,46,93,10
 END
 
 IDD_DIALOG_Skills DIALOGEX 0, 0, 351, 253
@@ -1355,19 +1356,24 @@ BEGIN
     0
 END
 
+IDD_DIALOG_QuestInfo AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
-// Binary
+// BINARY
 //
 
-IDR_BINARY1             Binary                  "new.dat"
+IDR_BINARY1             BINARY                  "new.dat"
 
-IDR_BINARY2             Binary                  "property.dat"
+IDR_BINARY2             BINARY                  "property.dat"
 
-IDR_BINARY3             Binary                  "itemdata.dat"
+IDR_BINARY3             BINARY                  "itemdata.dat"
 
-IDR_BINARY4             Binary                  "language.dat"
+IDR_BINARY4             BINARY                  "language.dat"
 
 
 /////////////////////////////////////////////////////////////////////////////

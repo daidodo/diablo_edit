@@ -1134,7 +1134,9 @@
     <None Include="res\binary2.bin">
       <Filter>资源文件</Filter>
     </None>
-    <None Include="language.dat" />
+    <None Include="language.dat">
+      <Filter>资源文件\Data</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DiabloEdit2.rc">

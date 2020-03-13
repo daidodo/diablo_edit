@@ -17,11 +17,13 @@ struct CQuestInfoData
 	WORD	wIntroduced4;		//have been introduced to Act IV
 	WORD	wActIV[3];			//Act IV
 	WORD	wTraval4;
-	WORD	unkown1[3];
+	WORD	unknown1[3];
 	WORD	wIntroduced5;		//this was set to 1 after completing Terror's End and talking to Cain in act IV
-	WORD	unkown2[2];
+	WORD	unknown2[2];
 	WORD	wActV[6];			//Act V
-	WORD	unkown3[7];
+	BYTE	bResetStats;		//版本1.13及以上，设置成 0x2 可以找阿卡拉重置技能和属性点
+	BYTE	unknown3;
+	WORD	unknown4[6];
 };
 
 struct CQuestInfo

@@ -27,12 +27,14 @@ public:
 	void LoadText(void);
 // 自定义成员
 private:
-	static const int TEXT_SIZE = 31;
+	static const int QUEST_NAME_SIZE = 29;
+	static const int LEVEL_SIZE = 3;
+	static const int TEXT_SIZE = QUEST_NAME_SIZE + LEVEL_SIZE;
 	static const WORD QUEST_COMPLETE[27];
 	CString m_sText[TEXT_SIZE];
 	INT m_nLevel;
-	BOOL m_bQuestInfo[3][28];
-	BOOL m_bUIData[28];
+	BOOL m_bQuestInfo[LEVEL_SIZE][QUEST_NAME_SIZE];
+	BOOL m_bUIData[QUEST_NAME_SIZE];
 public:
 	afx_msg void OnBnClicked_Normal();
 	afx_msg void OnBnClicked_Nightmare();
