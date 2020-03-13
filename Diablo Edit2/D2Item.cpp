@@ -33,7 +33,7 @@ static inline BOOL isDash(TCHAR ch) {
 
 BOOL checkCharName(const CString & name) {
 	int len = name.GetLength();
-	if (len >= 2 && len < 16 && isLetter(name[0]) && isLetter(name[1]) && isLetter(name[len - 1])) {
+	if (len >= 2 && len < 16 && isLetter(name[0]) && isLetter(name[len - 1])) {
 		for (int i = 2, j = 0; i < len; ++i)
 			if (isDash(name[i])) {
 				if (++j > 1)
