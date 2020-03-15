@@ -589,7 +589,7 @@ void CD2Item::ReadData(CInBitsStream & bs) {
 		>> bits(iUNKNOWN_01, 3)
 		>> bIdentified
 		>> bits(iUNKNOWN_02, 3)
-		>> bIllegalInventory
+		>> bDisabled
 		>> bits(iUNKNOWN_10, 2)
 		>> bSocketed
 		>> bits(iUNKNOWN_03, 2)
@@ -632,7 +632,7 @@ void CD2Item::WriteData(COutBitsStream & bs) const {
 			<< bits(iUNKNOWN_01, 3)
 			<< bIdentified
 			<< bits(iUNKNOWN_02, 3)
-			<< bIllegalInventory
+			<< BOOL(FALSE)		// Always reset bDisabled
 			<< bits(iUNKNOWN_10, 2)
 			<< bSocketed
 			<< bits(iUNKNOWN_03, 2)

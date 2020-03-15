@@ -159,7 +159,7 @@ struct CD2Item
 	BYTE	iUNKNOWN_01 = 0;		//bit 17-19
 	BOOL	bIdentified = TRUE;		//bit 20,是否已经辨识
 	BYTE	iUNKNOWN_02 = 0;		//bit 21-23
-	BOOL	bIllegalInventory = FALSE;//bit 24
+	BOOL	bDisabled = FALSE;		//bit 24，物品不可用。比如耐久度变成0了，仅仅增加耐久度不够，还要重置这个bit
 	BYTE	iUNKNOWN_10 = 0;		//bit 25,26
 	BOOL	bSocketed = FALSE;		//bit 27,是否有孔
 	BYTE	iUNKNOWN_03 = 0;		//bit 28,29
