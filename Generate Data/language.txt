@@ -1545,9 +1545,9 @@
 	Damage %+d		
 	Hit Causes Monster Flee %+d%%		
 	Hit Blinds Target %+d		
-	%+d%% Damage Mana		
+	-%d%% Damage Mana		
 	Ignore Target Defense		
-	-%+d%% Target Defense		
+	-%d%% Target Defense		
 	Prevent Monster Heal %+d		
 	Half Freeze Duration		
 	%+d%% Bonus Attack Rating		
