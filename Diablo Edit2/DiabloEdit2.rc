@@ -710,6 +710,14 @@ IDB_BITMAP317           BITMAP                  "Pictcures\\ÎäÆ÷\\Ama×¨ÓÃ\\5 Mai
 
 IDB_BITMAP318           BITMAP                  "Pictcures\\Misc\\Token of Absolution.bmp"
 
+IDB_BITMAP319           BITMAP                  "Pictcures\\Misc\\Twisted Essence of Destruction.bmp"
+
+IDB_BITMAP320           BITMAP                  "Pictcures\\Misc\\Twisted Essence of Terror.bmp"
+
+IDB_BITMAP321           BITMAP                  "Pictcures\\Misc\\Twisted Essence of Hatred.bmp"
+
+IDB_BITMAP322           BITMAP                  "Pictcures\\Misc\\Twisted Essence of Suffering.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

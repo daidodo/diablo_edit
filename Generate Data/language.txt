@@ -923,6 +923,10 @@
 	Scroll of Knowledge		知識卷軸
 	Scroll of Resistances		抵抗卷軸
 	Token of Absolution	赦免徽章	赦免徽章
+	Twisted Essence of Destruction	溃烂的毁灭精华	潰爛的毀滅精華
+	Twisted Essence of Terror	燃烧的恐惧精华	燃燒的恐懼精華
+	Twisted Essence of Hatred	充盈的憎恨精华	充盈的憎恨精華
+	Twisted Essence of Suffering	扭曲的苦痛精华	扭曲的苦痛精華
 	Cap		
 	Skull Cap		
 	Helm		
