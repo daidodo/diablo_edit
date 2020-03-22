@@ -87,7 +87,7 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem, int iGems)
     }else{              //item structure
 		auto & meta = pItem->MetaData();
 		BYTE quality = pItem->Quality();
-		BYTE color = (meta.IsUnique ? UNIQUE : (quality <= 3 ? (pItem->bEthereal ? GRAY : WHITE) : quality - 3));
+		BYTE color = (meta.IsUnique ? UNIQUE : (meta.IsCraft ? CRAFT : (quality <= 3 ? (pItem->bEthereal ? GRAY : WHITE) : quality - 3)));
 		__Tokens name{ ::theApp.ItemName(meta.NameIndex) };
 		if (!pItem->bSimple) {
 			ASSERT(1 <= quality && quality <= 8);

@@ -154,9 +154,6 @@
     <Image Include="res\Diablo Edit2Doc.ico">
       <Filter>资源文件</Filter>
     </Image>
-    <Image Include="res\Diablo Edit2.ico">
-      <Filter>资源文件</Filter>
-    </Image>
     <Image Include="res\1.ico">
       <Filter>资源文件</Filter>
     </Image>
@@ -1117,6 +1114,18 @@
     <Image Include="Pictcures\Misc\Zod Rune.bmp">
       <Filter>资源文件\Pictures</Filter>
     </Image>
+    <Image Include="Pictcures\Misc\Twisted Essence of Destruction.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Twisted Essence of Terror.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Twisted Essence of Hatred.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
+    <Image Include="Pictcures\Misc\Twisted Essence of Suffering.bmp">
+      <Filter>资源文件\Pictures</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\DiabloEdit2.rc2">
@@ -1130,9 +1139,6 @@
     </None>
     <None Include="property.dat">
       <Filter>资源文件\Data</Filter>
-    </None>
-    <None Include="res\binary2.bin">
-      <Filter>资源文件</Filter>
     </None>
     <None Include="language.dat">
       <Filter>资源文件\Data</Filter>

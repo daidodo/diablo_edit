@@ -242,7 +242,6 @@
     <None Include="language.dat" />
     <None Include="new.dat" />
     <None Include="property.dat" />
-    <None Include="res\binary2.bin" />
     <None Include="res\DiabloEdit2.rc2" />
   </ItemGroup>
   <ItemGroup>
@@ -382,6 +381,10 @@
     <Image Include="Pictcures\Misc\Top of the Horadric Staff.bmp" />
     <Image Include="Pictcures\Misc\Topaz.bmp" />
     <Image Include="Pictcures\Misc\Torch.bmp" />
+    <Image Include="Pictcures\Misc\Twisted Essence of Destruction.bmp" />
+    <Image Include="Pictcures\Misc\Twisted Essence of Hatred.bmp" />
+    <Image Include="Pictcures\Misc\Twisted Essence of Suffering.bmp" />
+    <Image Include="Pictcures\Misc\Twisted Essence of Terror.bmp" />
     <Image Include="Pictcures\Misc\Um Rune.bmp" />
     <Image Include="Pictcures\Misc\Vex Rune.bmp" />
     <Image Include="Pictcures\Misc\Zod Rune.bmp" />
@@ -565,7 +568,6 @@
     <Image Include="Pictcures\鞋子\04 Light Plated Boots.bmp" />
     <Image Include="Pictcures\鞋子\05 Greaves.bmp" />
     <Image Include="res\1.ico" />
-    <Image Include="res\Diablo Edit2.ico" />
     <Image Include="res\Diablo Edit2Doc.ico" />
     <Image Include="res\Toolbar.bmp" />
   </ItemGroup>

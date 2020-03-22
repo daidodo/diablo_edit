@@ -35,6 +35,7 @@ struct CItemMetaData
 	BOOL IsCharm = FALSE;	//是护身符(放在身上加属性的),有wCharm域
 	UINT SpellId = 0;		//0：没有SpellId域；其他：SpellId + 1
 	BOOL IsUnique = FALSE;	//是否是Unique物品(在没有iQuality域情况下)
+	BOOL IsCraft = FALSE;	//名字是否以橙色显示，对物品结构无影响
 	BOOL IsGem = FALSE;		//是否是宝石（可镶嵌）
 	UINT Damage1Min = 0;	//武器的单手最低伤害
 	UINT Damage1Max = 0;	//武器的单手最高伤害

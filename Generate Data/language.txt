@@ -922,6 +922,7 @@
 	Malah's Potion		ñRÀ­Ö®Ë
 	Scroll of Knowledge		Öª×R¾íİS
 	Scroll of Resistances		µÖ¿¹¾íİS
+	Token of Absolution	ÉâÃâ»ÕÕÂ	ÉâÃâ»ÕÕÂ
 	Cap		
 	Skull Cap		
 	Helm		
