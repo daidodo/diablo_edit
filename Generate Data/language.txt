@@ -807,7 +807,7 @@
 	Diablo's Horn	暗黑破坏神之角	暗黑破壞神之角
 	Tail		尾巴
 	Flag		旗幟
-31			
+	Standard of Heroes	英雄旗帜	英雄旗幟
 	Fang		尖牙
 	Quill		硬毛
 	Soul		靈魂
@@ -885,39 +885,39 @@
 	Large Red Potion		一股邪惡力量
 	Small Blue Potion		一股邪惡力量
 	Large Blue Potion		一股邪惡力量
-	El Rune		符文：El
-	Eld Rune		符文：Eld
-	Tir Rune		符文：Tir
-	Nef Rune		符文：Nef
-	Eth Rune		符文：Eth
-	Ith Rune		符文：Ith
-	Tal Rune		符文：Tal
-	Ral Rune		符文：Ral
-	Ort Rune		符文：Ort
-	Thul Rune		符文：Thul
-	Amn Rune		符文：Amn
-	Sol Rune		符文：Sol
-	Shael Rune		符文：Shael
-	Dol Rune		符文：Dol
-	Hel Rune		符文：Hel
-	Io Rune		符文：Io
-	Lum Rune		符文：Lum
-	Ko Rune		符文：Ko
-	Fal Rune		符文：Fal
-	Lem Rune		符文：Lem
-	Pul Rune		符文：Pul
-	Um Rune		符文：Um
-	Mal Rune		符文：Mal
-	Ist Rune		符文：Ist
-	Gul Rune		符文：Gul
-	Vex Rune		符文：Vex
-	Ohm Rune		符文：Ohm
-	Lo Rune		符文：Lo
-	Sur Rune		符文：Sur
-	Ber Rune		符文：Ber
-	Jah Rune		符文：Jah
-	Cham Rune		符文：Cham
-	Zod Rune		符文：Zod
+	El Rune (1)	符文：El (1)	符文：El (1)
+	Eld Rune (2)	符文：Eld (2)	符文：Eld (2)
+	Tir Rune (3)	符文：Tir (3)	符文：Tir (3)
+	Nef Rune (4)	符文：Nef (4)	符文：Nef (4)
+	Eth Rune (5)	符文：Eth (5)	符文：Eth (5)
+	Ith Rune (6)	符文：Ith (6)	符文：Ith (6)
+	Tal Rune (7)	符文：Tal (7)	符文：Tal (7)
+	Ral Rune (8)	符文：Ral (8)	符文：Ral (8)
+	Ort Rune (9)	符文：Ort (9)	符文：Ort (9)
+	Thul Rune (10)	符文：Thul (10)	符文：Thul (10)
+	Amn Rune (11)	符文：Amn (11)	符文：Amn (11)
+	Sol Rune (12)	符文：Sol (12)	符文：Sol (12)
+	Shael Rune (13)	符文：Shael (13)	符文：Shael (13)
+	Dol Rune (14)	符文：Dol (14)	符文：Dol (14)
+	Hel Rune (15)	符文：Hel (15)	符文：Hel (15)
+	Io Rune (16)	符文：Io (16)	符文：Io (16)
+	Lum Rune (17)	符文：Lum (17)	符文：Lum (17)
+	Ko Rune (18)	符文：Ko (18)	符文：Ko (18)
+	Fal Rune (19)	符文：Fal (19)	符文：Fal (19)
+	Lem Rune (20)	符文：Lem (20)	符文：Lem (20)
+	Pul Rune (21)	符文：Pul (21)	符文：Pul (21)
+	Um Rune (22)	符文：Um (22)	符文：Um (22)
+	Mal Rune (23)	符文：Mal (23)	符文：Mal (23)
+	Ist Rune (24)	符文：Ist (24)	符文：Ist (24)
+	Gul Rune (25)	符文：Gul (25)	符文：Gul (25)
+	Vex Rune (26)	符文：Vex (26)	符文：Vex (26)
+	Ohm Rune (27)	符文：Ohm (27)	符文：Ohm (27)
+	Lo Rune (28)	符文：Lo (28)	符文：Lo (28)
+	Sur Rune (29)	符文：Sur (29)	符文：Sur (29)
+	Ber Rune (30)	符文：Ber (30)	符文：Ber (30)
+	Jah Rune (31)	符文：Jah (31)	符文：Jah (31)
+	Cham Rune (32)	符文：Cham (32)	符文：Cham (32)
+	Zod Rune (33)	符文：Zod (33)	符文：Zod (33)
 	Jewel		寶石
 	Malah's Potion		馬拉之藥
 	Scroll of Knowledge		知識卷軸
@@ -4525,7 +4525,6 @@
 	Rainbow Facet		
 	Rainbow Facet		
 	Hellfire Torch	地狱火炬	地獄火炬
-4095	Standard of Heroes	英雄旗帜	英雄旗幟
 *=======================以下是套装名字(Set Name)			
 	Civerb's Ward		
 	Civerb's Icon		
