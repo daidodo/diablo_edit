@@ -234,10 +234,11 @@ BOOL CDlgCharBasicInfo::GatherData(CD2S_Struct & character)
 			MessageBox(::theApp.MsgBoxInfo(2), ::theApp.MsgError(), MB_ICONERROR);
 			return FALSE;
 	}
-	if(m_dwGoldInBody > m_dwMaxGoldInBody || m_dwGoldInStash > m_dwMaxGoldInStash){
-		MessageBox(::theApp.MsgBoxInfo(3),::theApp.MsgError(),MB_ICONERROR);
-		return FALSE;
-	}
+	// Do NOT check gold in body and stash as there are MODs to change them.
+	// if(m_dwGoldInBody > m_dwMaxGoldInBody || m_dwGoldInStash > m_dwMaxGoldInStash){
+	// 	MessageBox(::theApp.MsgBoxInfo(3),::theApp.MsgError(),MB_ICONERROR);
+	//	return FALSE;
+	//}
 	character.charClass = m_cbCharClass.GetCurSel();
 	m_bLadder ? character.charType |= 0x40 : character.charType &= ~0x40;
 	m_bExpansion ? character.charType |= 0x20 : character.charType &= ~0x20;
