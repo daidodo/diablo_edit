@@ -135,6 +135,10 @@ struct CD2S_Struct
 	void WriteFile(const CString & path) const;
 	BOOL HasCorpse() const { return stCorpse.HasCorpse(); }
 	BOOL HasMercenary() const { return wMercName > 0; }
+	BOOL isLadder() const { return (charType & 0x40) != 0; }
+	BOOL isExpansion() const { return (charType & 0x20) != 0; }
+	BOOL isDiedBefore() const { return (charType & 0x8) != 0; }
+	BOOL isHardcore() const { return (charType & 0x4) != 0; }
 	void Reset();
 private:
 	BOOL WriteData(COutBitsStream & bs) const;
@@ -148,7 +152,11 @@ public:
 	DWORD	dwCRC;				//数据校验
 	DWORD	dwWeaponSet;		//0是否换手?
 	BYTE	Name[16];			//人物名字,占用16字符
-	BYTE	charType;			//人物类型,Ladder ,Expansion ,Hardcore等
+	BYTE	charType;			//人物类型
+								// 0x40:	Ladder
+								// 0x20:	Expansion
+								// 0x8:		Died before
+								// 0x4:		Hardcore
 	BYTE	charTitle;			//人物称谓
 								//0:	无
 								//5:	Slayer

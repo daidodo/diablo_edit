@@ -276,8 +276,9 @@ void CD2S_Struct::ReadData(CInBitsStream & bs) {
 		>> Skills
 		>> ItemList
 		>> stCorpse;
-	bs >> pair<CMercenary &, bool>(stMercenary, HasMercenary())
-		>> stGolem;
+	if (isExpansion())
+		bs >> pair<CMercenary &, bool>(stMercenary, HasMercenary())
+			>> stGolem;
 	bs.AlignByte();
 	if (!bs.Good() || bs.DataSize() != bs.BytePos())
 		throw ::theApp.MsgBoxInfo(11);

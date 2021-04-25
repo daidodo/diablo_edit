@@ -157,10 +157,10 @@ void CDlgCharBasicInfo::UpdateUI(const CD2S_Struct & character)
 		default:m_sVersion = ::theApp.MsgUnknown();
 	}
 	m_cbCharClass.SetCurSel(character.charClass);
-	m_bLadder = (character.charType & 0x40) != 0;
-	m_bExpansion = (character.charType & 0x20) != 0;
-	m_bHardcore = (character.charType & 4) != 0;
-	m_bDiedBefore = (character.charType & 8) != 0;
+	m_bLadder = character.isLadder();
+	m_bExpansion = character.isExpansion();
+	m_bHardcore = character.isHardcore();
+	m_bDiedBefore = character.isDiedBefore();
 	m_sName = character.Name;
 	if(character.charTitle == 0xF)
 		m_sCharTitle = _T("Patriarch/Matriarch");
