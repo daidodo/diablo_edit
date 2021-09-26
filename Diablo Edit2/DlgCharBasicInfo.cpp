@@ -149,7 +149,8 @@ END_MESSAGE_MAP()
 void CDlgCharBasicInfo::UpdateUI(const CD2S_Struct & character)
 {
 	switch(character.dwVersion){
-		case 0x60:m_sVersion = _T("1.10");break;
+		case 0x61:m_sVersion = _T("Resurrected"); break;
+		case 0x60:m_sVersion = _T("1.1x"); break;
 		case 0x5C:m_sVersion = _T("1.09");break;
 		case 0x59:m_sVersion = _T("Standard 1.08");break;
 		case 0x57:m_sVersion = _T("1.07/Expansion 1.08");break;

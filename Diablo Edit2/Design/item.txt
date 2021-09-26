@@ -48,3 +48,49 @@ LongName:
 	Suffix2
 	Prefix3
 	Suffix3
+
+<javascript>
+const huffman = [[[[["w","u"],[["8",["y",["5",["j",[]]]]],"h"]],["s",[["2","n"],"x"]]],[[["c",["k","f"]],"b"],[["t","m"],["9","7"]]]],[" ",[[[["e","d"],"p"],["g",[[["z","q"],"3"],["v","6"]]]],[["r","l"],["a",[["1",["4","0"]],["i","o"]]]]]]];
+
+function construct(arr) {
+  if(arr === undefined || arr === null) return null;
+  const node = {left: null, right: null, data: null}
+  if(Array.isArray(arr)){
+    node.left = construct(arr[0]);
+    node.right = construct(arr[1]);
+  }else
+    node.data = arr;
+  return node;
+}
+
+let cnt = 0;
+let result = '';
+
+function out(c) {
+  const LINE = 10;
+  if(++cnt > LINE) {
+    result += '\n\t';
+    cnt = 1;
+  }
+  result += c;
+}
+
+function print(node) {
+  if(node === undefined || node === null)
+    out('0,\t');
+  else{
+    const {data, left, right} = node;
+    if(data === undefined || data === null)
+      out('1,\t');
+    else
+      out(`'${data}',`);
+    print(left);
+    print(right);
+  }
+}
+
+
+const root = construct(huffman);
+print(root);
+console.log(result);
+</javascript>

@@ -8,6 +8,7 @@
 #include <deque>
 #include <random>
 #include <ctime>
+#include <map>
 
 using namespace std;
 
@@ -54,6 +55,81 @@ BOOL SetCharName(BYTE (&dest)[16], const CString & src) {
 		dest[i] = char(src[i]);
 	return TRUE;
 }
+
+// Succinct encoding of a Huffman tree
+const BYTE HUFFMAN[] = {
+   1,	1,	1,	1,	1,	'w',0,	0,	'u',0,
+   0,	1,	1,	'8',0,	0,	1,	'y',0,	0,
+   1,	'5',0,	0,	1,	'j',0,	0,	1,	0,
+   0,	'h',0,	0,	1,	's',0,	0,	1,	1,
+   '2',0,	0,	'n',0,	0,	'x',0,	0,	1,
+   1,	1,	'c',0,	0,	1,	'k',0,	0,	'f',
+   0,	0,	'b',0,	0,	1,	1,	't',0,	0,
+   'm',0,	0,	1,	'9',0,	0,	'7',0,	0,
+   1,	' ',0,	0,	1,	1,	1,	1,	'e',0,
+   0,	'd',0,	0,	'p',0,	0,	1,	'g',0,
+   0,	1,	1,	1,	'z',0,	0,	'q',0,	0,
+   '3',0,	0,	1,	'v',0,	0,	'6',0,	0,
+   1,	1,	'r',0,	0,	'l',0,	0,	1,	'a',
+   0,	0,	1,	1,	'1',0,	0,	1,	'4',0,
+   0,	'0',0,	0,	1,	'i',0,	0,	'o',0,
+};
+
+class HuffmanTree {
+	struct HuffmanNode {
+		const HuffmanNode * left = NULL;
+		const HuffmanNode * right = NULL;
+		BYTE data = 0;
+		~HuffmanNode() {
+			delete left;
+			delete right;
+		}
+	};
+public:
+	HuffmanTree() {
+		int i = 0;
+		root_ = constructHuffmanTree(i);
+	}
+	~HuffmanTree() {
+		delete root_;
+	}
+	BYTE readData(CInBitsStream & bs) const {
+		auto node = root_;
+		for (BOOL b;bs.Good(); node = b ? node->right : node->left) {
+			ASSERT(node);
+			if (node->data)return node->data;
+			bs >> b;
+		}
+		ASSERT(false);
+		return 0;
+	}
+	void writeData(COutBitsStream & bs, BYTE ch) const {
+		auto wh = codes_.find(ch);
+		ASSERT(wh != codes_.end());
+		bs << bits(wh->second.first, wh->second.second);
+	}
+private:
+	HuffmanTree(const HuffmanTree &);
+	HuffmanTree & operator =(const HuffmanTree &);
+	const HuffmanNode * constructHuffmanTree(int & index, int bits = 0, DWORD code = 0) {
+		if (index >= sizeof HUFFMAN)return NULL;
+		const BYTE c = HUFFMAN[index++];
+		if (!c)
+			return NULL;
+		HuffmanNode * node = new HuffmanNode;
+		if (c > 1) {
+			node->data = c;
+			codes_[c] = make_pair(code, bits);
+		}
+		node->left = constructHuffmanTree(index, bits + 1, code);
+		node->right = constructHuffmanTree(index, bits + 1, code + (1 << bits));
+		return node;
+	}
+	const HuffmanNode * root_;
+	map<BYTE, pair<DWORD, int>> codes_;	//char => (code, bits)
+};
+
+static const HuffmanTree g_huffmanTree;
 
 // struct CEar
 
@@ -423,9 +499,12 @@ CItemInfo::CItemInfo(const CItemMetaData * meta) {
 	}
 }
 
-const CItemMetaData *  CItemInfo::ReadData(CInBitsStream & bs, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed) {
+const CItemMetaData *  CItemInfo::ReadData(CInBitsStream & bs, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed, BOOL isD2R) {
 	for (auto & b : sTypeName)
-		bs >> bits(b, 8);
+		if (isD2R)
+			b = g_huffmanTree.readData(bs);
+		else
+			bs >> bits(b, 8);
 	auto pItemData = ::theApp.ItemMetaData(dwTypeID);
 	if (!pItemData) {	//本程序不能识别此物品
 		if (IsNameValid()) {
@@ -461,9 +540,12 @@ const CItemMetaData *  CItemInfo::ReadData(CInBitsStream & bs, BOOL bSimple, BOO
 	return pItemData;
 }
 
-void CItemInfo::WriteData(COutBitsStream & bs, const CItemMetaData & itemData, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed) const {
+void CItemInfo::WriteData(COutBitsStream & bs, const CItemMetaData & itemData, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed, BOOL isD2R) const {
 	for (auto b : sTypeName)
-		bs << bits(b, 8);
+		if (isD2R)
+			g_huffmanTree.writeData(bs, b);
+		else
+			bs << bits(b, 8);
 	if (!bSimple)	//物品有额外属性
 		bs << pack(*pExtItemInfo,
 			make_tuple(itemData.IsCharm,
@@ -581,10 +663,12 @@ int CD2Item::GemIndexMax() const {
 	return r;
 }
 
-void CD2Item::ReadData(CInBitsStream & bs) {
-	bs >> wMajic;
-	if (wMajic != 0x4D4A)
-		throw ::theApp.MsgBoxInfo(18);
+void CD2Item::ReadData(CInBitsStream & bs, BOOL isD2R) {
+	if (!isD2R) {
+		bs >> wMajic;
+		if (wMajic != 0x4D4A && wMajic != 0x2010)
+			throw ::theApp.MsgBoxInfo(18);
+	}
 	bs >> bQuest
 		>> bits(iUNKNOWN_01, 3)
 		>> bIdentified
@@ -594,19 +678,21 @@ void CD2Item::ReadData(CInBitsStream & bs) {
 		>> bSocketed
 		>> bits(iUNKNOWN_03, 2)
 		>> bBadEquipped
-		>> iUNKNOWN_04
+		>> bUNKNOWN_04
 		>> bEar
 		>> bNewbie
 		>> bits(iUNKNOWN_05, 3)
 		>> bSimple
 		>> bEthereal
-		>> iUNKNOWN_06
+		>> bUNKNOWN_06
 		>> bPersonalized
-		>> iUNKNOWN_07
-		>> bRuneWord
-		>> bits(iUNKNOWN_08, 5)
-		>> bits(wVersion, 10)
-		>> bits(iLocation, 3)
+		>> bUNKNOWN_07
+		>> bRuneWord;
+	if (isD2R)
+		bs >> bits(iUNKNOWN_09, 8);
+	else
+		bs >> bits(iUNKNOWN_08, 5) >> bits(wVersion, 10);
+	bs >> bits(iLocation, 3)
 		>> bits(iPosition, 4)
 		>> bits(iColumn, 4)
 		>> bits(iRow, 4)
@@ -615,20 +701,21 @@ void CD2Item::ReadData(CInBitsStream & bs) {
 		bs >> pEar;
         pItemData = ::theApp.ItemMetaData(0x20726165);	//"ear "
 	} else 		//这是一个物品,但是也可能为"ear "
-		pItemData = pItemInfo.ensure().ReadData(bs, bSimple, bRuneWord, bPersonalized, bSocketed);
+		pItemData = pItemInfo.ensure().ReadData(bs, bSimple, bRuneWord, bPersonalized, bSocketed, isD2R);
 	ASSERT(pItemData && bSimple == pItemData->Simple);
 	bs.AlignByte();
 	aGemItems.resize(Gems());
 	for (auto & item : aGemItems)
-		item.ReadData(bs);
+		item.ReadData(bs, isD2R);
 }
 
-void CD2Item::WriteData(COutBitsStream & bs) const {
+void CD2Item::WriteData(COutBitsStream & bs, BOOL isD2R) const {
 	if (!vUnknownItem.empty()) {	//未识别物品数据
 		bs << vUnknownItem;
 	} else {
-		bs << WORD(0x4D4A)
-			<< bQuest
+		if (!isD2R)
+			bs << wMajic;
+		bs << bQuest
 			<< bits(iUNKNOWN_01, 3)
 			<< bIdentified
 			<< bits(iUNKNOWN_02, 3)
@@ -637,19 +724,21 @@ void CD2Item::WriteData(COutBitsStream & bs) const {
 			<< bSocketed
 			<< bits(iUNKNOWN_03, 2)
 			<< bBadEquipped
-			<< iUNKNOWN_04
+			<< bUNKNOWN_04
 			<< bEar
 			<< bNewbie
 			<< bits(iUNKNOWN_05, 3)
 			<< bSimple
 			<< bEthereal
-			<< iUNKNOWN_06
+			<< bUNKNOWN_06
 			<< bPersonalized
-			<< iUNKNOWN_07
-			<< bRuneWord
-			<< bits(iUNKNOWN_08, 5)
-			<< bits(wVersion, 10)
-			<< bits(iLocation, 3)
+			<< bUNKNOWN_07
+			<< bRuneWord;
+		if (isD2R)
+			bs << bits(iUNKNOWN_09, 8);
+		else
+			bs << bits(iUNKNOWN_08, 5) << bits(wVersion, 10);
+		bs << bits(iLocation, 3)
 			<< bits(iPosition, 4)
 			<< bits(iColumn, 4)
 			<< bits(iRow, 4)
@@ -657,19 +746,19 @@ void CD2Item::WriteData(COutBitsStream & bs) const {
 		if (bEar) {	//这是一个耳朵
 			bs << pEar;
 		} else		//这是一个物品
-			pItemInfo->WriteData(bs, *pItemData, bSimple, bRuneWord, bPersonalized, bSocketed);
+			pItemInfo->WriteData(bs, *pItemData, bSimple, bRuneWord, bPersonalized, bSocketed, isD2R);
 	}
 	bs.AlignByte();
 	for (auto item : aGemItems)
 		if(bs.Good())
-			item.WriteData(bs);
+			item.WriteData(bs, isD2R);
 }
 
 BOOL CD2Item::ReadFile(CFile & file) {
 	CInBitsStream bs;
 	bs.ReadFile(file);
 	try {
-		ReadData(bs);
+		ReadData(bs, FALSE);
 	} catch (...) {
 		return FALSE;
 	}
@@ -678,33 +767,33 @@ BOOL CD2Item::ReadFile(CFile & file) {
 
 void CD2Item::WriteFile(CFile & file) const {
 	COutBitsStream bs;
-	WriteData(bs);
+	WriteData(bs, FALSE);
 	bs.WriteFile(file);
 }
 
 // struct CItemList
 
-CInBitsStream & operator >>(CInBitsStream & bs, CItemList & v){
-	bs >> v.wMajic >> v.nItems;
-	if (v.wMajic != 0x4D4A)
+void CItemList::ReadData(CInBitsStream & bs, BOOL isD2R) {
+	WORD nItems;
+	bs >> wMajic >> nItems;
+	if (wMajic != 0x4D4A)
 		throw ::theApp.MsgBoxInfo(17);
-	v.vItems.resize(v.nItems);
-	for (auto & item : v.vItems) {
+	vItems.resize(nItems);
+	for (auto & item : vItems) {
 		if (!bs.Good())
 			break;
-		item.ReadData(bs);
+		item.ReadData(bs, isD2R);
 	}
-	return bs;
 }
 
-COutBitsStream & operator <<(COutBitsStream & bs, const CItemList & v){
-	bs << WORD(0x4D4A)<<WORD(v.vItems.size());
+void CItemList::WriteData(COutBitsStream & bs, BOOL isD2R) const {
+	bs << WORD(0x4D4A) << WORD(vItems.size());
 	const auto off = bs.BytePos();
-	for (auto & item : v.vItems) {
+	for (auto & item : vItems) {
 		if (!bs.Good())
 			break;
-		item.WriteData(bs);
+		item.WriteData(bs, isD2R);
 	}
-	return bs;
 }
+
 

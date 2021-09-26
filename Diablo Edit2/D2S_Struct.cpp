@@ -135,70 +135,65 @@ COutBitsStream & operator <<(COutBitsStream & bs, const CCharSkills & v) {
 
 //struct CCorpseData
 
-CInBitsStream & operator >>(CInBitsStream & bs, CCorpseData & v) {
-	return bs >> v.unknown >> v.stItems;
+void CCorpseData::ReadData(CInBitsStream & bs, BOOL isD2R) {
+	bs >> unknown; 
+	stItems.ReadData(bs, isD2R);
 }
 
-COutBitsStream & operator <<(COutBitsStream & bs, const CCorpseData & v) {
-	return bs << v.unknown << v.stItems;
+void CCorpseData::WriteData(COutBitsStream & bs, BOOL isD2R) const {
+	bs << unknown;
+	stItems.WriteData(bs, isD2R);
 }
 
 //struct CCorpse
 
-CInBitsStream & operator >>(CInBitsStream & bs, CCorpse & v) {
-	bs >> v.wMagic >> v.wCount;
-	if (v.wMagic != 0x4D4A || v.wCount > 1)
+void CCorpse::ReadData(CInBitsStream & bs, BOOL isD2R) {
+	bs >> wMagic >> wCount;
+	if (wMagic != 0x4D4A || wCount > 1)
 		throw ::theApp.MsgBoxInfo(19);
-	if (v.wCount)
-		bs >> v.pCorpseData;
-	return bs;
+	if (wCount)
+		pCorpseData.ensure().ReadData(bs, isD2R);
 }
 
-COutBitsStream & operator <<(COutBitsStream & bs, const CCorpse & v) {
+void CCorpse::WriteData(COutBitsStream & bs, BOOL isD2R) const {
 	bs << WORD(0x4D4A);
-	if (v.pCorpseData.exist())
-		bs << WORD(1) << v.pCorpseData;
-	else
+	if (pCorpseData.exist()) {
+		bs << WORD(1);
+		pCorpseData->WriteData(bs, isD2R);
+	} else
 		bs << WORD(0);
-	return bs;
 }
 
 //struct CMercenary
 
-CInBitsStream & operator >>(CInBitsStream & bs, pair<CMercenary &, bool> & p) {
-	auto & v = p.first;
-	bs >> v.wMagic;
-	if (v.wMagic != 0x666A)
+void CMercenary::ReadData(CInBitsStream & bs, BOOL hasMercenary, BOOL isD2R) {
+	bs >> wMagic;
+	if (wMagic != 0x666A)
 		throw ::theApp.MsgBoxInfo(20);
-	if(p.second)
-		bs >> v.stItems;
-	return bs;
+	if (hasMercenary)
+		stItems.ensure().ReadData(bs, isD2R);
 }
 
-COutBitsStream & operator <<(COutBitsStream & bs, const pair<const CMercenary &, bool> & p) {
-	auto & v = p.first;
+void CMercenary::WriteData(COutBitsStream & bs, BOOL hasMercenary, BOOL isD2R) const {
 	bs << WORD(0x666A);
-	if (p.second)
-		bs << v.stItems;
-	return bs;
+	if (hasMercenary)
+		stItems->WriteData(bs, isD2R);
 }
 
 //struct CGolem
 
-CInBitsStream & operator >>(CInBitsStream & bs, CGolem & v) {
-	bs >> v.wMagic >> v.bHasGolem;
-	if (v.wMagic != 0x666B)
+void CGolem::ReadData(CInBitsStream & bs, BOOL isD2R) {
+	bs >> wMagic >> bHasGolem;
+	if (wMagic != 0x666B)
 		throw ::theApp.MsgBoxInfo(21);
-	if (v.bHasGolem)
-		v.pItem.ensure().ReadData(bs);
-	return bs;
+	if (bHasGolem)
+		pItem.ensure().ReadData(bs, isD2R);
 }
 
-COutBitsStream & operator <<(COutBitsStream & bs, const CGolem & v) {
-	bs << WORD(0x666B) << v.bHasGolem;
-	if (v.bHasGolem)
-		v.pItem->WriteData(bs);
-	return bs;
+void CGolem::WriteData(COutBitsStream & bs, BOOL isD2R) const {
+	bs << WORD(0x666B) << bHasGolem;
+	if (bHasGolem)
+		pItem->WriteData(bs, isD2R);
 }
 
 //CD2S_Struct
@@ -273,12 +268,13 @@ void CD2S_Struct::ReadData(CInBitsStream & bs) {
 		>> Waypoints
 		>> NPC
 		>> PlayerStats
-		>> Skills
-		>> ItemList
-		>> stCorpse;
-	if (isExpansion())
-		bs >> pair<CMercenary &, bool>(stMercenary, HasMercenary())
-			>> stGolem;
+		>> Skills;
+	ItemList.ReadData(bs, isD2R());
+	stCorpse.ReadData(bs, isD2R());
+	if (isExpansion()) {
+		stMercenary.ReadData(bs, HasMercenary(), isD2R());
+		stGolem.ReadData(bs, isD2R());
+	}
 	bs.AlignByte();
 	if (!bs.Good() || bs.DataSize() != bs.BytePos())
 		throw ::theApp.MsgBoxInfo(11);
@@ -324,11 +320,13 @@ BOOL CD2S_Struct::WriteData(COutBitsStream & bs) const {
 		<< Waypoints
 		<< NPC
 		<< PlayerStats
-		<< Skills
-		<< ItemList
-		<< stCorpse;
-	bs << pair<const CMercenary &, bool>(stMercenary, HasMercenary())
-		<< stGolem;
+		<< Skills;
+	ItemList.WriteData(bs, isD2R());
+	stCorpse.WriteData(bs, isD2R());
+	if (isExpansion()) {
+		stMercenary.WriteData(bs, HasMercenary(), isD2R());
+		stGolem.WriteData(bs, isD2R());
+	}
 	bs.AlignByte();
 	//Data size
 	bs << offset_value(offSize, bs.BytePos());

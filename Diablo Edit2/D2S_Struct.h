@@ -95,6 +95,9 @@ struct CCorpseData
 {
 	BYTE		unknown[12];
 	CItemList	stItems;	//尸体身上的装备列表
+	//Functions:
+	void ReadData(CInBitsStream & bs, BOOL isD2R);
+	void WriteData(COutBitsStream & bs, BOOL isD2R) const;
 };
 
 //尸体
@@ -106,6 +109,8 @@ struct CCorpse
 	//Function:
 	BOOL HasCorpse() const { return wCount > 0 && pCorpseData.exist(); }
 	void Reset() { pCorpseData.reset(); }
+	void ReadData(CInBitsStream & bs, BOOL isD2R);
+	void WriteData(COutBitsStream & bs, BOOL isD2R) const;
 };
 
 //雇佣兵
@@ -115,6 +120,8 @@ struct CMercenary
 	MayExist<CItemList>	stItems;	//雇佣兵的装备列表, if wMercName != 0
 	//Function:
 	void Reset() { stItems.reset(); }
+	void ReadData(CInBitsStream & bs, BOOL hasMercenary, BOOL isD2R);
+	void WriteData(COutBitsStream & bs, BOOL hasMercenary, BOOL isD2R) const;
 };
 
 //钢铁石魔
@@ -125,6 +132,8 @@ struct CGolem
 	MayExist<CD2Item>	pItem;	//召唤钢铁石魔的物品, if bHasGolem != 0
 	//Function:
 	void Reset() { bHasGolem = FALSE; pItem.reset(); }
+	void ReadData(CInBitsStream & bs, BOOL isD2R);
+	void WriteData(COutBitsStream & bs, BOOL isD2R) const;
 };
 
 struct CD2S_Struct
@@ -133,6 +142,7 @@ struct CD2S_Struct
 	void ReadData(CInBitsStream & bs);
 	void ReadFile(const CString & path);
 	void WriteFile(const CString & path) const;
+	BOOL isD2R() const { return dwVersion == 0x61; }
 	BOOL HasCorpse() const { return stCorpse.HasCorpse(); }
 	BOOL HasMercenary() const { return wMercName > 0; }
 	BOOL isLadder() const { return (charType & 0x40) != 0; }
@@ -146,8 +156,9 @@ public:
 	//人物信息
 	DWORD	dwMajic;			//0xAA55AA55
 	DWORD	dwVersion;			//文件版本
-								//对于1.10是0x60
 								//对于1.09是0x5C
+								//对于1.10是0x60
+								//D2 Resurrected 0x61
 	DWORD	dwSize;				//文件大小bytes
 	DWORD	dwCRC;				//数据校验
 	DWORD	dwWeaponSet;		//0是否换手?

@@ -141,8 +141,8 @@ struct CItemInfo
 	MayExist<CTypeSpecificInfo>		pTpSpInfo;		//如果bSimple == FALSE，则此结构存在
 	//Functions:
 	explicit CItemInfo(const CItemMetaData * meta = 0);
-	const CItemMetaData * ReadData(CInBitsStream & bs, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed);
-	void WriteData(COutBitsStream & bs, const CItemMetaData & itemData, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed) const;
+	const CItemMetaData * ReadData(CInBitsStream & bs, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed, BOOL isD2R);
+	void WriteData(COutBitsStream & bs, const CItemMetaData & itemData, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed, BOOL isD2R) const;
 	BOOL IsNameValid() const;
 	BOOL IsSet() const { return pExtItemInfo.exist() && pExtItemInfo->IsSet(); }
 	BOOL IsGold() const { return ::memcmp(sTypeName, "gld ", sizeof sTypeName) == 0; }
@@ -164,18 +164,19 @@ struct CD2Item
 	BOOL	bSocketed = FALSE;		//bit 27,是否有孔
 	BYTE	iUNKNOWN_03 = 0;		//bit 28,29
 	BOOL	bBadEquipped = FALSE;	//bit 30
-	BOOL	iUNKNOWN_04 = FALSE;	//bit 31
+	BOOL	bUNKNOWN_04 = FALSE;	//bit 31
 	BOOL	bEar = FALSE;			//bit 32
 	BOOL	bNewbie = FALSE;		//bit 33
 	BYTE	iUNKNOWN_05 = 0;		//bit 34-36
 	BOOL	bSimple = TRUE;			//bit 37
 	BOOL	bEthereal = FALSE;		//bit 38
-	BOOL	iUNKNOWN_06 = TRUE;		//bit 39,总是1
+	BOOL	bUNKNOWN_06 = TRUE;		//bit 39,总是1
 	BOOL	bPersonalized = FALSE;	//bit 40
-	BOOL	iUNKNOWN_07 = FALSE;	//bit 41
+	BOOL	bUNKNOWN_07 = FALSE;	//bit 41
 	BOOL	bRuneWord = FALSE;		//bit 42
 	BYTE	iUNKNOWN_08 = 0;		//bit 43-47
 	WORD	wVersion = 101;			//bit 48-57
+	BYTE	iUNKNOWN_09 = 0xA0;		//bit 43-50 (D2R)
 	BYTE	iLocation = 0;			//bit 58-60,0 = grid, 1 = equipped, 2 = on belt, 3 = ?, 4 = in hand(has been picked up by the mouse), 5 = ?, 6 = socket(glued into a socket), 7 = ?
 	BYTE	iPosition = 0;			/*bit 61-64,Body position,
 										01 = head(帽子)
@@ -210,8 +211,8 @@ struct CD2Item
 	int GemIndexMax() const;	//镶嵌宝石位置索引最大值，没有返回-1
 	BOOL IsBox() const { return pItemInfo.exist() && pItemInfo->IsBox(); }	//是否赫拉迪卡方块
 	BOOL HasPropertyList() const { return pItemInfo.exist() && pItemInfo->pTpSpInfo.exist(); }
-	void ReadData(CInBitsStream & bs);
-	void WriteData(COutBitsStream & bs) const;
+	void ReadData(CInBitsStream & bs, BOOL isD2R);
+	void WriteData(COutBitsStream & bs, BOOL isD2R) const;
 	BOOL ReadFile(CFile & file);
 	void WriteFile(CFile & file) const;
 private:
@@ -223,14 +224,12 @@ struct CItemList
 {
 	//人物物品信息
 	WORD		wMajic;				//0x4D4A,"JM"
-	WORD		nItems;				//物品数目
+	//WORD		nItems;				//物品数目
 	std::vector<CD2Item> vItems;	//所有物品，不包括镶嵌在孔里的
 	WORD		wEndMajic;			//0x4D4A,"JM"
 	//Functions:
 	void SwapItems(CItemList & list) { vItems.swap(list.vItems); }
 	void Reset() { vItems.clear(); }
+	void ReadData(CInBitsStream & bs, BOOL isD2R);
+	void WriteData(COutBitsStream & bs, BOOL isD2R) const;
 };
-
-CInBitsStream & operator >>(CInBitsStream & bs, CItemList & v);
-COutBitsStream & operator <<(COutBitsStream & bs, const CItemList & v);
-
