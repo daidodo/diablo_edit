@@ -54,7 +54,8 @@ static EEquip ItemToEquip(const CD2Item & item) {
 
 //所有网格位置
 enum EPosition {
-	STASH,				//箱子
+	STASH,				//箱子(6*8)
+	STASH_D2R,			//D2 Resurrected大箱子(10*10)
 	INVENTORY,			//口袋
 	CUBE,				//方块
 	IN_BELT,			//腰带里
@@ -121,7 +122,8 @@ static BOOL IsGolem(EPosition pos) { return GOLEM == pos; }
 //每个位置(EPosition)在UI的起始坐标(像素),列数,行数
 //left,top,col,row,equip
 const int POSITION_INFO[POSITION_END][5] = {
-	{10,5,10,10,E_ANY},		//箱子
+	{10,5,6,8,E_ANY},		//箱子
+	{10,5,10,10,E_ANY},		//D2R大箱子
 	{10,315,10,4,E_ANY},	//口袋
 	{320,315,3,4,~E_A_BOX},	//方块
 	{420,315,4,4,E_IN_BELT},//腰带里
@@ -179,13 +181,13 @@ static EEquip PositionToEquip(EPosition pos) {
 }
 
 //body: 0-人物本身，1-尸体，2-雇佣兵，3-Golem
-static tuple<EPosition, int, int> ItemToPosition(int iLocation, int iPosition, int iColumn, int iRow, int iStoredIn, int body) {
+static tuple<EPosition, int, int> ItemToPosition(int iLocation, int iPosition, int iColumn, int iRow, int iStoredIn, int body, BOOL isD2R) {
 	if (3 == body)
 		return make_tuple(GOLEM, 0, 0);
 	int pos = -1, x = 0, y = 0;	//物品的位置(EPosition)和坐标
 	switch (iLocation) {
 		case 0:		//grid
-			pos = (iStoredIn == 1 ? INVENTORY : (iStoredIn == 4 ? CUBE : (iStoredIn == 5 ? STASH : -1)));
+			pos = (iStoredIn == 1 ? INVENTORY : (iStoredIn == 4 ? CUBE : (iStoredIn == 5 ? (isD2R ? STASH_D2R : STASH) : -1)));
 			x = iColumn;
 			y = iRow;
 			break;
@@ -226,7 +228,8 @@ static tuple<int, int, int, int, int> PositionToItem(EPosition pos, int x, int y
 	int loc = 0, body = 0, col = 0, row = 0, store = 0;
 	switch (pos) {
 		//grid
-		case STASH:		col = x, row = y, store = 5; break;
+		case STASH:
+		case STASH_D2R: col = x, row = y, store = 5; break;
 		case INVENTORY:	col = x, row = y, store = 1; break;
 		case CUBE:		col = x, row = y, store = 4; break;
 		case IN_BELT:	loc = 2, col = (3 - y) * 4 + x; break;
@@ -435,7 +438,9 @@ CDlgCharItems::CDlgCharItems(CWnd* pParent /*=NULL*/)
 	//屏蔽雇佣兵部位
 	for (int i = MERCENARY_HEAD; i < MERCENARY_END; ++i)
 		m_vGridView[i].Enable(m_bHasMercenary);
- }
+	//选择箱子大小
+	SetD2R(TRUE);
+}
 
 void CDlgCharItems::DoDataExchange(CDataExchange* pDX)
 {
@@ -496,6 +501,7 @@ END_MESSAGE_MAP()
 void CDlgCharItems::UpdateUI(const CD2S_Struct & character) {
 	ResetAll();
 	m_bHasCharacter = TRUE;
+	SetD2R(character.isD2R());
 	//Character items
 	for (auto & item : character.ItemList.vItems) 
 		AddItemInGrid(item, 0);
@@ -590,7 +596,7 @@ BOOL CDlgCharItems::GatherData(CD2S_Struct & character) {
 
 void CDlgCharItems::AddItemInGrid(const CD2Item & item, int body) {
 	EEquip equip = ItemToEquip(item);
-	auto t = ItemToPosition(item.iLocation, item.iPosition, item.iColumn, item.iRow, item.iStoredIn, body);
+	auto t = ItemToPosition(item.iLocation, item.iPosition, item.iColumn, item.iRow, item.iStoredIn, body, m_bIsD2R);
 	EPosition pos = get<0>(t);
 	const int x = get<1>(t), y = get<2>(t);
 	const int index = m_vItemViews.size();
@@ -656,11 +662,13 @@ void CDlgCharItems::DrawGrids(CPaintDC & dc)
 {
     CPen pen(PS_SOLID,1,RGB(0,200,100));
     CPen * pOld = dc.SelectObject(&pen);
-	for (const auto & g : m_vGridView)
-		if(g.IsGrid())
+	for (const auto & g : m_vGridView) {
+		if (!g.Visible())continue;
+		if (g.IsGrid())
 			::DrawGrid(dc, g.Rect, GRID_WIDTH, GRID_WIDTH);
 		else
 			::DrawGrid(dc, g.Rect);
+	}
 	dc.SelectObject(pOld);
 }
 
@@ -727,9 +735,19 @@ void CDlgCharItems::DrawAllItemsInGrid(CPaintDC & dc) const
 	}
 }
 
+void CDlgCharItems::SetD2R(BOOL v) {
+	m_bIsD2R = v;
+	//选择箱子大小
+	m_vGridView[STASH].Enable(!v);
+	m_vGridView[STASH].Visible(!v);
+	m_vGridView[STASH_D2R].Enable(v);
+	m_vGridView[STASH_D2R].Visible(v);
+}
+
+
 tuple<int, int, int> CDlgCharItems::HitTestPosition(CPoint pos, int col, int row) const {
 	for (auto & g : m_vGridView)
-		if (g.Rect.PtInRect(pos))
+		if (g.Enable() && g.Rect.PtInRect(pos))
 			return g.XYToPositionIndex(pos, m_bSecondHand, m_chCorpseSecondHand.GetCheck(), col, row);
 	return make_tuple(-1, -1, -1);
 }

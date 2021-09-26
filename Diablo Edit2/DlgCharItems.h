@@ -69,6 +69,7 @@ class CDlgCharItems : public CCharacterDialogBase
 	std::vector<GridView> m_vGridView;		//所有网格的信息
 	void DrawGrids(CPaintDC & dc);			//画所有网格
 	BOOL m_bHasCharacter = FALSE;			//是否加载了人物
+	BOOL m_bIsD2R = TRUE;					//是否D2 Resurrected
 	
 	//物品和位置
 	std::vector<CItemView> m_vItemViews;	//所有的物品,除了镶嵌在孔里的
@@ -118,7 +119,6 @@ class CDlgCharItems : public CCharacterDialogBase
 
 	//Recycle
 	CListCtrl m_lstRecycle;
-
 public:
 	//对话框数据
 	enum { IDD = IDD_DIALOG_CharItems };
@@ -134,6 +134,7 @@ private:
 	// UI
 	void DrawItemXY(CPaintDC & dc, CPoint pos, const CItemView & itemView) const;	//在绝对坐标点画物品
 	void DrawAllItemsInGrid(CPaintDC & dc) const;		//画网格内的所有物品，如果选中的物品镶嵌了物品，也要画出来
+	void SetD2R(BOOL v);
 
 	DECLARE_MESSAGE_MAP()
 public:
