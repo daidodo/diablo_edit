@@ -35,12 +35,17 @@ class GridView
 	std::vector<int> vItemIndex;	//网格内的物品在m_vItemViews里索引；-1表示没有
 	const EPosition iPosition;		//位置索引
 	const int iCol, iRow;			//行列数
+	BOOL bEnabled = TRUE;			//是否启用（可交互）
+	BOOL bVisible = TRUE;			//是否可见
 public:
 	const CRect Rect;				//大小与位置
 	const EEquip iEquip;			//可装备的物品类型
-	BOOL bEnabled = TRUE;			//是否启用（可交互）
 	//Functions:
 	explicit GridView(EPosition pos);
+	BOOL Visible() const { return bVisible; }
+	void Visible(BOOL v) { bVisible = v; }
+	BOOL Enable() const { return bEnabled && bEnabled; }
+	void Enable(BOOL v) { bEnabled = v; }
 	BOOL IsGrid() const;			//是否分成单个网格
 	BOOL IsSockets() const;			//是否为镶嵌的孔
 	void Reset();					//清空网格

@@ -431,7 +431,10 @@ CDlgCharItems::CDlgCharItems(CWnd* pParent /*=NULL*/)
 		m_vGridView.emplace_back(EPosition(i));
 	//屏蔽尸体部位
 	for (int i = CORPSE_HEAD; i < CORPSE_END; ++i)
-		m_vGridView[i].bEnabled = m_bHasCorpse;
+		m_vGridView[i].Enable(m_bHasCorpse);
+	//屏蔽雇佣兵部位
+	for (int i = MERCENARY_HEAD; i < MERCENARY_END; ++i)
+		m_vGridView[i].Enable(m_bHasMercenary);
  }
 
 void CDlgCharItems::DoDataExchange(CDataExchange* pDX)
@@ -909,7 +912,7 @@ void CDlgCharItems::OnLButtonDown(UINT nFlags, CPoint point)
 		const int pos = get<0>(t), x = get<1>(t), y = get<2>(t);
 		if (pos >= 0) {		//在网格范围内
 			auto & grid = m_vGridView[pos];
-			if (grid.bEnabled) {
+			if (grid.Enable()) {
 				int index = grid.ItemIndex(x, y);
 				if (index >= 0) {	//点中了物品
 					ASSERT(index < int(m_vItemViews.size()));
@@ -934,7 +937,7 @@ void CDlgCharItems::OnLButtonDown(UINT nFlags, CPoint point)
 		const int pos = get<0>(t), x = get<1>(t), y = get<2>(t);
 		if (pos >= 0) {		//在网格范围内
 			auto & grid = m_vGridView[pos];
-			if (grid.bEnabled) {
+			if (grid.Enable()) {
 				if (grid.IsSockets()) {	//给物品镶嵌宝石
 					if (0 <= m_iSelectedItemIndex	//有选中物品
 						&& x < int(SelectedParentItemView().vGemItems.size())) {	//有足够的孔数
@@ -968,7 +971,7 @@ void CDlgCharItems::OnRButtonUp(UINT nFlags, CPoint point)
 		const int pos = get<0>(t), x = get<1>(t), y = get<2>(t);
 		if (pos >= 0) {		//在网格范围内
 			auto & grid = m_vGridView[pos];
-			if (grid.bEnabled) {
+			if (grid.Enable()) {
 				int index = grid.ItemIndex(x, y);
 				if (index >= 0) {	//点中了物品
 					m_bClickOnItem = TRUE;
@@ -1096,7 +1099,7 @@ void CDlgCharItems::OnChangeCorpse() {
 	}
 	m_bHasCorpse = !m_bHasCorpse;
 	for (int i = CORPSE_HEAD; i < CORPSE_END; ++i)
-		m_vGridView[i].bEnabled = m_bHasCorpse;
+		m_vGridView[i].Enable(m_bHasCorpse);
 	m_chCorpseSecondHand.EnableWindow(m_bHasCorpse);
 	//de-select item on corpse
 	if (!m_bHasCorpse && 0 <= m_iSelectedItemIndex
@@ -1114,7 +1117,7 @@ void CDlgCharItems::OnChangeMercenary() {
 	}
 	m_bHasMercenary = !m_bHasMercenary;
 	for (int i = MERCENARY_HEAD; i < MERCENARY_END; ++i)
-		m_vGridView[i].bEnabled = m_bHasMercenary;
+		m_vGridView[i].Enable(m_bHasMercenary);
 	m_cbMercName.EnableWindow(m_bHasMercenary);
 	m_cbMercType.EnableWindow(m_bHasMercenary);
 	m_edMercExp.EnableWindow(m_bHasMercenary);
