@@ -227,7 +227,8 @@
 	Invalid mercenary name index	雇佣兵名字错误	僱傭兵名字錯誤
 	Sockets must be enough for gems	物品孔数必须能容纳所有镶嵌的宝石	物品孔數必須能容納所有鑲嵌的寶石
 *=======================Barbarian类型雇佣兵名字			
-1	Khan	可汗	
+	Varaya		
+	Khan	可汗	
 	Klisk		
 	Bors		
 	Brom		
@@ -294,7 +295,8 @@
 	Bill		
 	Theodoric		
 *=======================Eastern Sorceror类型雇佣兵名字			
-1	Barani		
+	Jenali		
+	Barani		
 	Jabari		
 	Devak		
 	Raldin		
@@ -314,7 +316,8 @@
 	Flux		
 	Scorch		
 *=======================Desert Mercenary类型雇佣兵名字			
-1	Alhizeer		
+	Hazade		
+	Alhizeer		
 	Azrael		
 	Ahsab		
 	Chalan		
@@ -335,7 +338,8 @@
 	Waheed		
 	Vikhyat		
 *=======================Rogue Scouts类型雇佣兵名字			
-1	Amplisa		
+	Aliza		
+	Amplisa		
 	Annor		
 	Abhaya		
 	Elly		

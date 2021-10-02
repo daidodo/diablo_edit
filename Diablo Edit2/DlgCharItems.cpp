@@ -542,7 +542,7 @@ BOOL CDlgCharItems::GatherData(CD2S_Struct & character) {
 			MessageBox(::theApp.MsgBoxInfo(46), ::theApp.MsgError(), MB_ICONERROR);
 			return FALSE;
 		}
-		if (m_cbMercName.GetCurSel() < 1) {
+		if (m_cbMercName.GetCurSel() < (m_bIsD2R ? 0 : 1)) {
 			MessageBox(::theApp.MsgBoxInfo(47), ::theApp.MsgError(), MB_ICONERROR);
 			return FALSE;
 		}
@@ -575,6 +575,8 @@ BOOL CDlgCharItems::GatherData(CD2S_Struct & character) {
 	}
 	//mercenary
 	if (m_bHasMercenary) {
+		if(!character.dwMercControl)
+			character.dwMercControl = rand() | 0x10;
 		character.wMercType = m_cbMercType.GetCurSel();
 		character.wMercName = m_cbMercName.GetCurSel();
 		character.dwMercExp = intOf(m_edMercExp);
@@ -1282,10 +1284,22 @@ void CDlgCharItems::OnCbnSelchangeComboMercType() {
 		return;
 	//change merc name list
 	switch (g) {
-		case 0:loadTextMercCB(m_cbMercName, ::theApp.MercenaryNameScoutSize(), [](int i) {return ::theApp.MercenaryScoutName(i); }); break;
-		case 1:loadTextMercCB(m_cbMercName, ::theApp.MercenaryNameMercSize(), [](int i) {return ::theApp.MercenaryMercName(i); }); break;
-		case 2:loadTextMercCB(m_cbMercName, ::theApp.MercenaryNameSorcerorSize(), [](int i) {return ::theApp.MercenarySorcerorName(i); }); break;
-		case 3:loadTextMercCB(m_cbMercName, ::theApp.MercenaryNameBarbarianSize(), [](int i) {return ::theApp.MercenaryBarbarianName(i); }); break;
+		case 0:
+			loadTextMercCB(m_cbMercName, ::theApp.MercenaryNameScoutSize(),
+				[=](int i) {return !m_bIsD2R && !i ? _T("") : ::theApp.MercenaryScoutName(i); });
+			break;
+		case 1:
+			loadTextMercCB(m_cbMercName, ::theApp.MercenaryNameMercSize(), 
+				[=](int i) {return !m_bIsD2R && !i ? _T("") : ::theApp.MercenaryMercName(i); });
+			break;
+		case 2:
+			loadTextMercCB(m_cbMercName, ::theApp.MercenaryNameSorcerorSize(),
+				[=](int i) {return !m_bIsD2R && !i ? _T("") : ::theApp.MercenarySorcerorName(i); });
+			break;
+		case 3:
+			loadTextMercCB(m_cbMercName, ::theApp.MercenaryNameBarbarianSize(), 
+				[=](int i) {return !m_bIsD2R && !i ? _T("") : ::theApp.MercenaryBarbarianName(i); });
+			break;
 		default:loadTextMercCB(m_cbMercName, 0, [](int i) {return _T(""); });
 	}
 	m_iMercNameGroup = g;

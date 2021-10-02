@@ -144,7 +144,7 @@ struct CD2S_Struct
 	void WriteFile(const CString & path) const;
 	BOOL isD2R() const { return dwVersion == 0x61; }
 	BOOL HasCorpse() const { return stCorpse.HasCorpse(); }
-	BOOL HasMercenary() const { return wMercName > 0; }
+	BOOL HasMercenary() const { return isD2R() ? (dwMercControl != 0) : (wMercName > 0); }
 	BOOL isLadder() const { return (charType & 0x40) != 0; }
 	BOOL isExpansion() const { return (charType & 0x20) != 0; }
 	BOOL isDiedBefore() const { return (charType & 0x8) != 0; }
