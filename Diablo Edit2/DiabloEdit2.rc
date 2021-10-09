@@ -13,7 +13,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// ÖÐÎÄ(¼òÌå£¬ÖÐ¹ú) resources
+// Êèòàéñêèé (óïðîùåííîå ïèñüìî, ÊÍÐ) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
 LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
@@ -46,8 +46,8 @@ BEGIN
     "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
     "LANGUAGE 4, 2\r\n"
     "#pragma code_page(936)\r\n"
-    "#include ""res\\DiabloEdit2.rc2""  // ·Ç Microsoft Visual C++ ±à¼­µÄ×ÊÔ´\r\n"
-    "#include ""afxres.rc""         // ±ê×¼×é¼þ\r\n"
+    "#include ""res\\DiabloEdit2.rc2""  // ¡¤§© Microsoft Visual C++ ¡À§Ñ?-¦Ì§¥§¹§¬§¶?\r\n"
+    "#include ""afxres.rc""         // ¡À§Ü§¹?§¹§Û?§ð\r\n"
     "#endif\r\n"
     "\0"
 END
@@ -1083,32 +1083,32 @@ BEGIN
     COMBOBOX        IDC_COMBO1,51,14,69,13,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
 END
 
-IDD_DIALOG_CharItems DIALOGEX 0, 0, 574, 261
+IDD_DIALOG_CharItems DIALOGEX 0, 0, 738, 319
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_CHILD
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    LTEXT           "¾²Ì¬",IDC_STATIC_x,190,249,45,10
-    LTEXT           "¾²Ì¬",IDC_STATIC_y,251,249,45,10
-    CONTROL         "Òþ²Ø",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,130,249,29,10
-    LTEXT           "Property Transparency",IDC_STATIC8,2,249,76,10
-    CONTROL         "",IDC_SLIDER1,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,78,251,51,8
-    CONTROL         "II",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,193,19,19,10
-    RTEXT           "Sockets",IDC_STATIC_Sockets,10,226,25,10
-    CTEXT           "Iron Golem",IDC_STATIC_Golem,337,3,44,10
-    CTEXT           "Cube",IDC_STATIC_Cube,194,143,25,10
-    CTEXT           "Belt",IDC_STATIC_Belt,259,143,25,10
-    CONTROL         "Corpse",IDC_CHECK_Corpse,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,446,2,39,10
-    CONTROL         "II",IDC_CHECK4,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,398,19,19,10
-    CONTROL         "Mercenary",IDC_CHECK_Mercenary,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,378,127,50,10
-    LTEXT           "Name",IDC_STATIC_MERC_NAME,309,242,21,8
-    COMBOBOX        IDC_COMBO_MERC_NAME,332,240,50,12,CBS_DROPDOWNLIST | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
-    LTEXT           "Type",IDC_STATIC_MERC_TYPE,309,226,18,8
-    COMBOBOX        IDC_COMBO_MERC_TYPE,332,225,146,12,CBS_DROPDOWNLIST | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
-    LTEXT           "Exp.",IDC_STATIC_MERC_EXP,389,242,18,8
-    EDITTEXT        IDC_EDIT_MERC_EXP,407,240,72,12,ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
-    CONTROL         "Dead",IDC_CHECK3,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,435,128,35,9
-    CONTROL         "",IDC_LIST_RECYCLE,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_TABSTOP,484,132,87,113
-    CTEXT           "Double click to resume",IDC_STATIC_TIP,483,248,88,11
+    LTEXT           "¾²Ì¬",IDC_STATIC_x,190,306,45,10
+    LTEXT           "¾²Ì¬",IDC_STATIC_y,251,306,45,10
+    CONTROL         "Òþ²Ø",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,130,306,29,10
+    LTEXT           "Property Transparency",IDC_STATIC8,2,306,76,10
+    CONTROL         "",IDC_SLIDER1,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,78,308,51,8
+    CONTROL         "II",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,256,21,19,10
+    RTEXT           "Sockets",IDC_STATIC_Sockets,9,278,25,10
+    CTEXT           "Iron Golem",IDC_STATIC_Golem,399,6,44,10
+    CTEXT           "Cube",IDC_STATIC_Cube,233,182,25,10
+    CTEXT           "Belt",IDC_STATIC_Belt,308,182,25,10
+    CONTROL         "Corpse",IDC_CHECK_Corpse,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,521,4,39,10
+    CONTROL         "II",IDC_CHECK4,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,493,25,19,10
+    CONTROL         "Mercenary",IDC_CHECK_Mercenary,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,441,159,50,10
+    LTEXT           "Name",IDC_STATIC_MERC_NAME,379,293,21,8
+    COMBOBOX        IDC_COMBO_MERC_NAME,402,291,50,12,CBS_DROPDOWNLIST | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Type",IDC_STATIC_MERC_TYPE,379,277,18,8
+    COMBOBOX        IDC_COMBO_MERC_TYPE,402,276,146,12,CBS_DROPDOWNLIST | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Exp.",IDC_STATIC_MERC_EXP,459,293,18,8
+    EDITTEXT        IDC_EDIT_MERC_EXP,477,291,72,12,ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    CONTROL         "Dead",IDC_CHECK3,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,499,160,35,9
+    CONTROL         "",IDC_LIST_RECYCLE,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_TABSTOP,648,0,87,283
+    CTEXT           "Double click to resume",IDC_STATIC_TIP,647,292,88,11
 END
 
 IDD_DIALOG_Suspend DIALOGEX 0, 0, 113, 53
@@ -1304,9 +1304,10 @@ BEGIN
 
     IDD_DIALOG_CharItems, DIALOG
     BEGIN
+        MOCKUP, 1, 53, 0, 0, "E:\@download\@screen\Screenshot at 12-17-27.png"
         LEFTMARGIN, 2
-        RIGHTMARGIN, 571
-        BOTTOMMARGIN, 259
+        RIGHTMARGIN, 735
+        BOTTOMMARGIN, 316
     END
 
     IDD_DIALOG_Suspend, DIALOG
@@ -1490,7 +1491,7 @@ BEGIN
     AFX_IDS_SCTASKLIST      "¼¤»îÈÎÎñÁÐ±í"
 END
 
-#endif    // ÖÐÎÄ(¼òÌå£¬ÖÐ¹ú) resources
+#endif    // Êèòàéñêèé (óïðîùåííîå ïèñüìî, ÊÍÐ) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
@@ -1508,8 +1509,8 @@ END
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
 LANGUAGE 4, 2
 #pragma code_page(936)
-#include "res\DiabloEdit2.rc2"  // ·Ç Microsoft Visual C++ ±à¼­µÄ×ÊÔ´
-#include "afxres.rc"         // ±ê×¼×é¼þ
+#include "res\DiabloEdit2.rc2"  // ? Microsoft Visual C++ ?????
+#include "afxres.rc"         // ????
 #endif
 
 /////////////////////////////////////////////////////////////////////////////

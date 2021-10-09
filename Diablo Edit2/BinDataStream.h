@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <cstring>
+#include <string>
 #include <cassert>
 
 // bits
