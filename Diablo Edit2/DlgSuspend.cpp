@@ -95,6 +95,9 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem, int iGems)
 			ASSERT(1 <= quality && quality <= 8);
 			ASSERT(pItem->pItemInfo->pExtItemInfo.exist());
 			auto & extInfo = *pItem->pItemInfo->pExtItemInfo;
+			//Personalization
+			if (extInfo.sPersonName.exist())
+				AddMsg(color, CString(extInfo.sPersonName) + _T("'s"));
 			//Prefix, Suffix, Name
 			switch (quality) {
 				case 1:		//low
