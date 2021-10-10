@@ -378,7 +378,7 @@ COutBitsStream & operator <<(COutBitsStream & bs, pair<const CExtItemInfo &, con
 		bs << bits(v.wRune, 16);
 	if (get<2>(t))	//bPersonalized
 		for (auto c : v.sPersonName) {
-			bs << c;
+			bs << bits(c, 7);
 			if (!bs.Good() || !c)
 				break;
 		}
