@@ -415,8 +415,10 @@ CInBitsStream & operator >>(CInBitsStream & bs, pair<CTypeSpecificInfo &, const 
 		if (v.iMaxDurability)
 			bs >> bits(v.iCurDur, 9);
 	}
-	if (get<2>(t))	//bSocketed
+	if (get<2>(t)) {	//bSocketed
 		bs >> bits(v.iSocket, 4);
+		if (v.iSocket < 1) v.iSocket = 1;
+	}
 	if (get<3>(t))	//bIsStacked
 		bs >> bits(v.iQuantity, 9);
 	if (get<4>(t)) 	//bIsSet, 这是一个套装
@@ -463,15 +465,15 @@ COutBitsStream & operator <<(COutBitsStream & bs, pair<const CTypeSpecificInfo &
 }
 
 pair<int, int> CTypeSpecificInfo::Sockets() const {
-	const int b = min(6, (iSocket.exist() ? iSocket : 0));
+	const int b = min(MAX_SOCKETS, (iSocket.exist() ? iSocket : 0));
 	int e = stPropertyList.ExtSockets();
 	for (auto & p : apSetProperty)
 		if (p.exist())
 			e += p->ExtSockets();
 	if (stRuneWordPropertyList.exist())
 		e += stRuneWordPropertyList->ExtSockets();
-	e = min(6 - b, e);
-	return make_pair(b, e);	//最多孔数不超过6
+	e = min(MAX_SOCKETS - b, e);
+	return make_pair(b, e);
 }
 
 BOOL CTypeSpecificInfo::IsIndestructible() const {

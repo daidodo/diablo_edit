@@ -208,7 +208,7 @@
 	Item defence must be between 10 and 2057	物品防御必须在10到2057之间	物品防禦必須在10到2057之間
 	Item max durability must be between 0 and 255	物品最大耐久度必须在0到255之间	物品最大耐久度必須在0到255之間
 	Item durability must be within max durability	物品耐久度必须在最大值范围内	物品耐久度必須在最大值範圍內
-	Item sockets count must be within 6	物品最多只能有6个孔	物品最多只能有6個孔
+	Item sockets count must be 7 or less	物品最多只能有7个孔	物品最多只能有7個孔
 	Quantity must be between 0 and 511	数量值必须在0到511之间	數量值必須在0到511之間
 	Invalid monster name index	怪物名字索引错误	怪物名字所以錯誤
 	Invalid first name index	物品名索引错误	物品名索引錯誤

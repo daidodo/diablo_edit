@@ -127,7 +127,7 @@ const int POSITION_INFO[POSITION_END][5] = {
 	{10,315,10,4,E_ANY},	//口袋
 	{320,315,3,4,~E_A_BOX},	//方块
 	{420,315,4,4,E_IN_BELT},//腰带里
-	{70,445,6,1,E_SOCKET},	//孔
+	{70,445,MAX_SOCKETS,1,E_SOCKET},	//孔
 
 	{420,30,2,2,E_HEAD},	//头
 	{485,65,1,1,E_NECK},	//项链

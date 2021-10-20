@@ -6,6 +6,8 @@
 
 #include <vector>
 
+const int MAX_SOCKETS = 7;	//物品最大孔数，多于6个可能会导致游戏崩溃
+
 //检查并设置人物姓名
 BOOL SetCharName(BYTE (&dest)[16], const CString & src);
 

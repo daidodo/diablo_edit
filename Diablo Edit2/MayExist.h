@@ -68,23 +68,23 @@ COutBitsStream & operator <<(COutBitsStream & bs, const MayExist<T, 1> & v) {
 	return bs << *v;
 }
 
-#define MAY_EXIST_POD(T)								\
-	template<>											\
-	class MayExist<T, 1> {								\
-		T v_ = 0;										\
-		bool e_ = false;								\
-	public:												\
-		T & ensure(T v = 0) {							\
-			v_ = v, e_ = true; return v_;				\
-		}												\
-		void reset() { e_ = false; v_ = 0; }			\
-		bool exist() const { return e_; }				\
-		T operator =(T v) { assert(e_); v_ = v; }		\
-		MayExist & operator =(const MayExist & a) {		\
-			v_ = a.v_; e_ = a.e_; return *this;			\
-		}												\
-		operator T() const { assert(e_); return v_; }	\
-	};													\
+#define MAY_EXIST_POD(T)									\
+	template<>												\
+	class MayExist<T, 1> {									\
+		T v_ = 0;											\
+		bool e_ = false;									\
+	public:													\
+		T & ensure(T v = 0) {								\
+			v_ = v, e_ = true; return v_;					\
+		}													\
+		void reset() { e_ = false; v_ = 0; }				\
+		bool exist() const { return e_; }					\
+		T operator =(T v) { assert(e_); return v_ = v; }	\
+		MayExist & operator =(const MayExist & a) {			\
+			v_ = a.v_; e_ = a.e_; return *this;				\
+		}													\
+		operator T() const { assert(e_); return v_; }		\
+	};														\
 inline CInBitsStream & operator >>(CInBitsStream & bs, const Bits<MayExist<T, 1>> & m) {			\
 	return bs >> bits(m.value().ensure(), m.bits());												\
 }																									\
