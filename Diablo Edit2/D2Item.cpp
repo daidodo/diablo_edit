@@ -538,6 +538,11 @@ const CItemMetaData *  CItemInfo::ReadData(CInBitsStream & bs, BOOL bSimple, BOO
 				pItemData->IsStacked,
 				pExtItemInfo->IsSet(),
 				bRuneWord));
+	} else  if (isD2R) {
+		// Simple items need an extra bit of padding. Tested in D2R only.
+		// https://github.com/daidodo/diablo_edit/issues/13
+		BYTE pad;
+		bs >> bits(pad, 1);
 	}
 	return pItemData;
 }
@@ -563,7 +568,7 @@ void CItemInfo::WriteData(COutBitsStream & bs, const CItemMetaData & itemData, B
 		for (auto i : pTmStFlag)
 			if (bs.Good())
 				bs << bits(i, 32);
-	if (!bSimple)	//Type Specific info
+	if (!bSimple) {	//Type Specific info
 		bs << pack(*pTpSpInfo,
 			make_tuple(itemData.HasDef,
 				itemData.HasDur,
@@ -571,6 +576,8 @@ void CItemInfo::WriteData(COutBitsStream & bs, const CItemMetaData & itemData, B
 				itemData.IsStacked,
 				pExtItemInfo->IsSet(),
 				bRuneWord));
+	} else if(isD2R)
+		bs << bits<BYTE>(0, 1);	// padding
 }
 
 BOOL CItemInfo::IsNameValid() const {
