@@ -41,6 +41,7 @@ struct CItemMetaData
 	UINT Damage1Max = 0;	//武器的单手最高伤害
 	UINT Damage2Min = 0;	//武器的双手最低伤害
 	UINT Damage2Max = 0;	//武器的双手最高伤害
+	UINT Pad = 0;			//D2R里Simple物品最后的补偿bits
 };
 
 //属性的参数
