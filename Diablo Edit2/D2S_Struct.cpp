@@ -264,6 +264,8 @@ void CD2S_Struct::ReadData(CInBitsStream & bs) {
 		>> wMercType
 		>> dwMercExp
 		>> unkown7
+		>> NamePTR
+		>> unkown8
 		>> QuestInfo
 		>> Waypoints
 		>> NPC
@@ -316,6 +318,8 @@ BOOL CD2S_Struct::WriteData(COutBitsStream & bs) const {
 		<< wMercType
 		<< dwMercExp
 		<< unkown7
+		<< NamePTR
+		<< unkown8
 		<< QuestInfo
 		<< Waypoints
 		<< NPC

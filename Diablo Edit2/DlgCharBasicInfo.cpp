@@ -149,6 +149,7 @@ END_MESSAGE_MAP()
 void CDlgCharBasicInfo::UpdateUI(const CD2S_Struct & character)
 {
 	switch(character.dwVersion){
+		case 0x62:m_sVersion = _T("PTR2.4"); break;
 		case 0x61:m_sVersion = _T("Resurrected"); break;
 		case 0x60:m_sVersion = _T("1.1x"); break;
 		case 0x5C:m_sVersion = _T("1.09");break;
@@ -162,7 +163,7 @@ void CDlgCharBasicInfo::UpdateUI(const CD2S_Struct & character)
 	m_bExpansion = character.isExpansion();
 	m_bHardcore = character.isHardcore();
 	m_bDiedBefore = character.isDiedBefore();
-	m_sName = character.Name;
+	m_sName = character.isPtr24() ? character.NamePTR : character.Name;
 	if(character.charTitle == 0xF)
 		m_sCharTitle = _T("Patriarch/Matriarch");
 	else if(character.charTitle >= 0xA)
@@ -212,10 +213,15 @@ void CDlgCharBasicInfo::UpdateUI(const CD2S_Struct & character)
 BOOL CDlgCharBasicInfo::GatherData(CD2S_Struct & character)
 {
 	UpdateData(TRUE);
-	if(!::SetCharName(character.Name, m_sName)){
+	BYTE name[16];
+	if(!::SetCharName(name, m_sName)){
 		MessageBox(::theApp.MsgBoxInfo(0), ::theApp.MsgError(), MB_ICONERROR);
 		return FALSE;
 	}
+	if (character.isPtr24())
+		::CopyMemory(character.NamePTR, name, sizeof name);
+	else
+		::CopyMemory( character.Name, name, sizeof name);
 	if(m_uCharLevel < 1 || m_uCharLevel > 127){
 		MessageBox(::theApp.MsgBoxInfo(1),::theApp.MsgError(),MB_ICONERROR);
 		return FALSE;

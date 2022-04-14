@@ -142,7 +142,8 @@ struct CD2S_Struct
 	void ReadData(CInBitsStream & bs);
 	void ReadFile(const CString & path);
 	void WriteFile(const CString & path) const;
-	BOOL isD2R() const { return dwVersion == 0x61; }
+	BOOL isD2R() const { return dwVersion >= 0x61; }
+	BOOL isPtr24() const { return dwVersion == 0x62; }
 	BOOL HasCorpse() const { return stCorpse.HasCorpse(); }
 	BOOL HasMercenary() const { return isD2R() ? (dwMercControl != 0) : (wMercName > 0); }
 	BOOL isLadder() const { return (charType & 0x40) != 0; }
@@ -159,6 +160,7 @@ public:
 								//对于1.09是0x5C
 								//对于1.10是0x60
 								//D2 Resurrected 0x61
+								//PTR2.4 0x62
 	DWORD	dwSize;				//文件大小bytes
 	DWORD	dwCRC;				//数据校验
 	DWORD	dwWeaponSet;		//0是否换手?
@@ -203,7 +205,9 @@ public:
 	WORD	wMercName;			//雇佣兵名字索引
 	WORD	wMercType;			//雇佣兵类型
 	DWORD	dwMercExp;			//雇佣兵经验
-	BYTE	unkown7[0x90];		//全0,长度0x90
+	BYTE	unkown7[0x4C];		//unknown
+	BYTE	NamePTR[16];		//PTR2.4人物名字,占用16字符
+	BYTE	unkown8[0x34];		//unknown
 
 	CQuestInfo		QuestInfo;		//任务完成信息,总长0x12A
 	CWaypoints		Waypoints;		//小站信息
