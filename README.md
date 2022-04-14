@@ -1,7 +1,7 @@
 # Diablo Edit2
 Diablo II Character editor.
 
-Tested for 1.09, 1.10, 1.13 and Diablo II: Resurrected.
+Tested for 1.09, 1.10, 1.13, Diablo II: Resurrected and PTR2.4.
 
 ### Screenshots
 
