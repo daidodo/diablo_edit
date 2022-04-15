@@ -138,24 +138,24 @@ CEar::CEar(const char * name) {
 		::memcpy(sEarName, name, min(size(sEarName), strlen(name) + 1));
 }
 
-CInBitsStream & operator >>(CInBitsStream & bs, CEar & v) {
-	bs >> bits(v.iEarClass, 3) >> bits(v.iEarLevel, 7);
-	for (auto & b : v.sEarName) {
-		bs >> bits(b, 7);
-		if (!bs.Good() || b == 0)
+void CEar::ReadData(CInBitsStream & bs, BOOL isPtr24) {
+	bs >> bits(iEarClass, 3) >> bits(iEarLevel, 7);
+	int b = isPtr24 ? 8 : 7;
+	for (auto & c : sEarName) {
+		bs >> bits(c, b);
+		if (!bs.Good() || c == 0)
 			break;
 	}
-	return bs;
 }
 
-COutBitsStream & operator <<(COutBitsStream & bs, const CEar & v) {
-	bs << bits(v.iEarClass, 3) << bits(v.iEarLevel, 7);
-	for (auto b : v.sEarName) {
-		bs << bits(b, 7);
-		if (!bs.Good() || b == 0)
+void CEar::WriteData(COutBitsStream & bs, BOOL isPtr24) const {
+	bs << bits(iEarClass, 3) << bits(iEarLevel, 7);
+	int b = isPtr24 ? 8 : 7;
+	for (auto c : sEarName) {
+		bs << bits(c, b);
+		if (!bs.Good() || c == 0)
 			break;
 	}
-	return bs;
 }
 
 // struct CLongName
@@ -715,7 +715,7 @@ void CD2Item::ReadData(CInBitsStream & bs, BOOL isD2R, BOOL isPtr24) {
 		>> bits(iRow, 4)
 		>> bits(iStoredIn, 3);
 	if(bEar){	//这是一个耳朵
-		bs >> pEar;
+		pEar.ensure().ReadData(bs, isPtr24);
         pItemData = ::theApp.ItemMetaData(0x20726165);	//"ear "
 	} else 		//这是一个物品,但是也可能为"ear "
 		pItemData = pItemInfo.ensure().ReadData(bs, bSimple, bRuneWord, bPersonalized, bSocketed, isD2R, isPtr24);
@@ -761,7 +761,7 @@ void CD2Item::WriteData(COutBitsStream & bs, BOOL isD2R, BOOL isPtr24) const {
 			<< bits(iRow, 4)
 			<< bits(iStoredIn, 3);
 		if (bEar) {	//这是一个耳朵
-			bs << pEar;
+			pEar->WriteData(bs, isPtr24);
 		} else		//这是一个物品
 			pItemInfo->WriteData(bs, *pItemData, bSimple, bRuneWord, bPersonalized, bSocketed, isD2R, isPtr24);
 	}

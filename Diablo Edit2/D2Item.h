@@ -19,6 +19,9 @@ struct CEar
 	BYTE	sEarName[16];	//7 bit * Count, “‘0x00Ω· ¯
 	//Functions:
 	explicit CEar(const char * name = 0);
+	void ReadData(CInBitsStream & bs, BOOL isPtr24);
+	void WriteData(COutBitsStream & bs, BOOL isPtr24) const;
+
 };
 
 //Item Long Name
