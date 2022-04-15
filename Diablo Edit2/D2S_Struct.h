@@ -96,8 +96,8 @@ struct CCorpseData
 	BYTE		unknown[12];
 	CItemList	stItems;	//尸体身上的装备列表
 	//Functions:
-	void ReadData(CInBitsStream & bs, BOOL isD2R);
-	void WriteData(COutBitsStream & bs, BOOL isD2R) const;
+	void ReadData(CInBitsStream & bs, BOOL isD2R, BOOL isPtr24);
+	void WriteData(COutBitsStream & bs, BOOL isD2R, BOOL isPtr24) const;
 };
 
 //尸体
@@ -109,8 +109,8 @@ struct CCorpse
 	//Function:
 	BOOL HasCorpse() const { return wCount > 0 && pCorpseData.exist(); }
 	void Reset() { pCorpseData.reset(); }
-	void ReadData(CInBitsStream & bs, BOOL isD2R);
-	void WriteData(COutBitsStream & bs, BOOL isD2R) const;
+	void ReadData(CInBitsStream & bs, BOOL isD2R, BOOL isPtr24);
+	void WriteData(COutBitsStream & bs, BOOL isD2R, BOOL isPtr24) const;
 };
 
 //雇佣兵
@@ -120,8 +120,8 @@ struct CMercenary
 	MayExist<CItemList>	stItems;	//雇佣兵的装备列表, if wMercName != 0
 	//Function:
 	void Reset() { stItems.reset(); }
-	void ReadData(CInBitsStream & bs, BOOL hasMercenary, BOOL isD2R);
-	void WriteData(COutBitsStream & bs, BOOL hasMercenary, BOOL isD2R) const;
+	void ReadData(CInBitsStream & bs, BOOL hasMercenary, BOOL isD2R, BOOL isPtr24);
+	void WriteData(COutBitsStream & bs, BOOL hasMercenary, BOOL isD2R, BOOL isPtr24) const;
 };
 
 //钢铁石魔
@@ -132,8 +132,8 @@ struct CGolem
 	MayExist<CD2Item>	pItem;	//召唤钢铁石魔的物品, if bHasGolem != 0
 	//Function:
 	void Reset() { bHasGolem = FALSE; pItem.reset(); }
-	void ReadData(CInBitsStream & bs, BOOL isD2R);
-	void WriteData(COutBitsStream & bs, BOOL isD2R) const;
+	void ReadData(CInBitsStream & bs, BOOL isD2R, BOOL isPtr24);
+	void WriteData(COutBitsStream & bs, BOOL isD2R, BOOL isPtr24) const;
 };
 
 struct CD2S_Struct

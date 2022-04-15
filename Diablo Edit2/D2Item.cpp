@@ -318,12 +318,15 @@ CInBitsStream & operator >>(CInBitsStream & bs, pair<CExtItemInfo &, const T &> 
 	}
 	if (get<1>(t))	//bRuneWord
 		bs >> bits(v.wRune, 16);
-	if (get<2>(t))	//bPersonalized
+	if (get<2>(t)) {	//bPersonalized
+		BOOL isPtr24 = get<5>(t);
+		int b = isPtr24 ? 8 : 7;
 		for (auto & c : v.sPersonName.ensure()) {
-			bs >> bits(c, 7);
+			bs >> bits(c, b);
 			if (!bs.Good() || !c)
 				break;
 		}
+	}
 	if (get<3>(t))	//bHasMonsterID
 		bs >> bits(v.wMonsterID, 10);
 	else if (get<4>(t))	//SpellId
@@ -376,12 +379,15 @@ COutBitsStream & operator <<(COutBitsStream & bs, pair<const CExtItemInfo &, con
 	}
 	if (get<1>(t))	//bRuneWord
 		bs << bits(v.wRune, 16);
-	if (get<2>(t))	//bPersonalized
+	if (get<2>(t)) {	//bPersonalized
+		BOOL isPtr24 = get<5>(t);
+		int b = isPtr24 ? 8 : 7;
 		for (auto c : v.sPersonName) {
-			bs << bits(c, 7);
+			bs << bits(c, b);
 			if (!bs.Good() || !c)
 				break;
 		}
+	}
 	if (get<3>(t))	//bHasMonsterID
 		bs << bits(v.wMonsterID, 10);
 	else if (get<4>(t))	//SpellId
@@ -501,7 +507,7 @@ CItemInfo::CItemInfo(const CItemMetaData * meta) {
 	}
 }
 
-const CItemMetaData *  CItemInfo::ReadData(CInBitsStream & bs, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed, BOOL isD2R) {
+const CItemMetaData *  CItemInfo::ReadData(CInBitsStream & bs, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed, BOOL isD2R, BOOL isPtr24) {
 	for (auto & b : sTypeName)
 		if (isD2R)
 			b = g_huffmanTree.readData(bs);
@@ -517,10 +523,11 @@ const CItemMetaData *  CItemInfo::ReadData(CInBitsStream & bs, BOOL bSimple, BOO
 	if (!bSimple)	//物品有额外属性
 		bs >> pack(pExtItemInfo.ensure(),
 			make_tuple(pItemData->IsCharm,
-			bRuneWord,
-			bPersonalized,
-			pItemData->HasMonsterID,
-			pItemData->SpellId));
+				bRuneWord,
+				bPersonalized,
+				pItemData->HasMonsterID,
+				pItemData->SpellId,
+				isPtr24));
 	//特殊物品类型的额外数据
 	if (IsGold())	//gld 的数量域
 		bs >> pGold;
@@ -547,7 +554,7 @@ const CItemMetaData *  CItemInfo::ReadData(CInBitsStream & bs, BOOL bSimple, BOO
 	return pItemData;
 }
 
-void CItemInfo::WriteData(COutBitsStream & bs, const CItemMetaData & itemData, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed, BOOL isD2R) const {
+void CItemInfo::WriteData(COutBitsStream & bs, const CItemMetaData & itemData, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed, BOOL isD2R, BOOL isPtr24) const {
 	for (auto b : sTypeName)
 		if (isD2R)
 			g_huffmanTree.writeData(bs, b);
@@ -559,7 +566,8 @@ void CItemInfo::WriteData(COutBitsStream & bs, const CItemMetaData & itemData, B
 				bRuneWord,
 				bPersonalized,
 				itemData.HasMonsterID,
-				itemData.SpellId));
+				itemData.SpellId,
+				isPtr24));
 	//特殊物品类型的额外数据
 	if (IsGold())	//gld 的数量域
 		bs << pGold;
@@ -672,7 +680,7 @@ int CD2Item::GemIndexMax() const {
 	return r;
 }
 
-void CD2Item::ReadData(CInBitsStream & bs, BOOL isD2R) {
+void CD2Item::ReadData(CInBitsStream & bs, BOOL isD2R, BOOL isPtr24) {
 	if (!isD2R) {
 		bs >> wMajic;
 		if (wMajic != 0x4D4A && wMajic != 0x2010)
@@ -710,15 +718,15 @@ void CD2Item::ReadData(CInBitsStream & bs, BOOL isD2R) {
 		bs >> pEar;
         pItemData = ::theApp.ItemMetaData(0x20726165);	//"ear "
 	} else 		//这是一个物品,但是也可能为"ear "
-		pItemData = pItemInfo.ensure().ReadData(bs, bSimple, bRuneWord, bPersonalized, bSocketed, isD2R);
+		pItemData = pItemInfo.ensure().ReadData(bs, bSimple, bRuneWord, bPersonalized, bSocketed, isD2R, isPtr24);
 	ASSERT(pItemData && bSimple == pItemData->Simple);
 	bs.AlignByte();
 	aGemItems.resize(Gems());
 	for (auto & item : aGemItems)
-		item.ReadData(bs, isD2R);
+		item.ReadData(bs, isD2R, isPtr24);
 }
 
-void CD2Item::WriteData(COutBitsStream & bs, BOOL isD2R) const {
+void CD2Item::WriteData(COutBitsStream & bs, BOOL isD2R, BOOL isPtr24) const {
 	if (!vUnknownItem.empty()) {	//未识别物品数据
 		bs << vUnknownItem;
 	} else {
@@ -755,19 +763,19 @@ void CD2Item::WriteData(COutBitsStream & bs, BOOL isD2R) const {
 		if (bEar) {	//这是一个耳朵
 			bs << pEar;
 		} else		//这是一个物品
-			pItemInfo->WriteData(bs, *pItemData, bSimple, bRuneWord, bPersonalized, bSocketed, isD2R);
+			pItemInfo->WriteData(bs, *pItemData, bSimple, bRuneWord, bPersonalized, bSocketed, isD2R, isPtr24);
 	}
 	bs.AlignByte();
 	for (auto item : aGemItems)
 		if(bs.Good())
-			item.WriteData(bs, isD2R);
+			item.WriteData(bs, isD2R, isPtr24);
 }
 
 BOOL CD2Item::ReadFile(CFile & file) {
 	CInBitsStream bs;
 	bs.ReadFile(file);
 	try {
-		ReadData(bs, FALSE);
+		ReadData(bs, FALSE, FALSE);
 	} catch (...) {
 		return FALSE;
 	}
@@ -776,13 +784,13 @@ BOOL CD2Item::ReadFile(CFile & file) {
 
 void CD2Item::WriteFile(CFile & file) const {
 	COutBitsStream bs;
-	WriteData(bs, FALSE);
+	WriteData(bs, FALSE, FALSE);
 	bs.WriteFile(file);
 }
 
 // struct CItemList
 
-void CItemList::ReadData(CInBitsStream & bs, BOOL isD2R) {
+void CItemList::ReadData(CInBitsStream & bs, BOOL isD2R, BOOL isPtr24) {
 	WORD nItems;
 	bs >> wMajic >> nItems;
 	if (wMajic != 0x4D4A)
@@ -791,17 +799,17 @@ void CItemList::ReadData(CInBitsStream & bs, BOOL isD2R) {
 	for (auto & item : vItems) {
 		if (!bs.Good())
 			break;
-		item.ReadData(bs, isD2R);
+		item.ReadData(bs, isD2R, isPtr24);
 	}
 }
 
-void CItemList::WriteData(COutBitsStream & bs, BOOL isD2R) const {
+void CItemList::WriteData(COutBitsStream & bs, BOOL isD2R, BOOL isPtr24) const {
 	bs << WORD(0x4D4A) << WORD(vItems.size());
 	const auto off = bs.BytePos();
 	for (auto & item : vItems) {
 		if (!bs.Good())
 			break;
-		item.WriteData(bs, isD2R);
+		item.WriteData(bs, isD2R, isPtr24);
 	}
 }
 

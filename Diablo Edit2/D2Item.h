@@ -143,8 +143,8 @@ struct CItemInfo
 	MayExist<CTypeSpecificInfo>		pTpSpInfo;		//如果bSimple == FALSE，则此结构存在
 	//Functions:
 	explicit CItemInfo(const CItemMetaData * meta = 0);
-	const CItemMetaData * ReadData(CInBitsStream & bs, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed, BOOL isD2R);
-	void WriteData(COutBitsStream & bs, const CItemMetaData & itemData, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed, BOOL isD2R) const;
+	const CItemMetaData * ReadData(CInBitsStream & bs, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed, BOOL isD2R, BOOL isPtr24);
+	void WriteData(COutBitsStream & bs, const CItemMetaData & itemData, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed, BOOL isD2R, BOOL isPtr24) const;
 	BOOL IsNameValid() const;
 	BOOL IsSet() const { return pExtItemInfo.exist() && pExtItemInfo->IsSet(); }
 	BOOL IsGold() const { return ::memcmp(sTypeName, "gld ", sizeof sTypeName) == 0; }
@@ -213,8 +213,8 @@ struct CD2Item
 	int GemIndexMax() const;	//镶嵌宝石位置索引最大值，没有返回-1
 	BOOL IsBox() const { return pItemInfo.exist() && pItemInfo->IsBox(); }	//是否赫拉迪卡方块
 	BOOL HasPropertyList() const { return pItemInfo.exist() && pItemInfo->pTpSpInfo.exist(); }
-	void ReadData(CInBitsStream & bs, BOOL isD2R);
-	void WriteData(COutBitsStream & bs, BOOL isD2R) const;
+	void ReadData(CInBitsStream & bs, BOOL isD2R, BOOL isPtr24);
+	void WriteData(COutBitsStream & bs, BOOL isD2R, BOOL isPtr24) const;
 	BOOL ReadFile(CFile & file);
 	void WriteFile(CFile & file) const;
 private:
@@ -232,6 +232,6 @@ struct CItemList
 	//Functions:
 	void SwapItems(CItemList & list) { vItems.swap(list.vItems); }
 	void Reset() { vItems.clear(); }
-	void ReadData(CInBitsStream & bs, BOOL isD2R);
-	void WriteData(COutBitsStream & bs, BOOL isD2R) const;
+	void ReadData(CInBitsStream & bs, BOOL isD2R, BOOL isPtr24);
+	void WriteData(COutBitsStream & bs, BOOL isD2R, BOOL isPtr24) const;
 };
