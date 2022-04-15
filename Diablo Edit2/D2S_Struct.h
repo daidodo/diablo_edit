@@ -144,6 +144,8 @@ struct CD2S_Struct
 	void WriteFile(const CString & path) const;
 	BOOL isD2R() const { return dwVersion >= 0x61; }
 	BOOL isPtr24() const { return dwVersion == 0x62; }
+	const BYTE * name() const { return isPtr24() ? NamePTR : Name; }
+	void name(const BYTE(&n)[16]) { ::CopyMemory((isPtr24() ? NamePTR : Name), n, sizeof n); }
 	BOOL HasCorpse() const { return stCorpse.HasCorpse(); }
 	BOOL HasMercenary() const { return isD2R() ? (dwMercControl != 0) : (wMercName > 0); }
 	BOOL isLadder() const { return (charType & 0x40) != 0; }

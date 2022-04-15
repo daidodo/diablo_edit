@@ -163,7 +163,7 @@ void CDlgCharBasicInfo::UpdateUI(const CD2S_Struct & character)
 	m_bExpansion = character.isExpansion();
 	m_bHardcore = character.isHardcore();
 	m_bDiedBefore = character.isDiedBefore();
-	m_sName = character.isPtr24() ? character.NamePTR : character.Name;
+	m_sName = character.name();
 	if(character.charTitle == 0xF)
 		m_sCharTitle = _T("Patriarch/Matriarch");
 	else if(character.charTitle >= 0xA)
@@ -218,10 +218,7 @@ BOOL CDlgCharBasicInfo::GatherData(CD2S_Struct & character)
 		MessageBox(::theApp.MsgBoxInfo(0), ::theApp.MsgError(), MB_ICONERROR);
 		return FALSE;
 	}
-	if (character.isPtr24())
-		::CopyMemory(character.NamePTR, name, sizeof name);
-	else
-		::CopyMemory( character.Name, name, sizeof name);
+	character.name(name);
 	if(m_uCharLevel < 1 || m_uCharLevel > 127){
 		MessageBox(::theApp.MsgBoxInfo(1),::theApp.MsgError(),MB_ICONERROR);
 		return FALSE;
