@@ -24,36 +24,50 @@ public:
 
 static CRandom g_rand;
 
-static inline BOOL isLetter(TCHAR ch) {
-	return (ch >= _T('a') && ch <= _T('z')) || (ch >= _T('A') && ch <= _T('Z'));
-}
+//static inline BOOL isLetter(TCHAR ch) {
+//	return (ch >= _T('a') && ch <= _T('z')) || (ch >= _T('A') && ch <= _T('Z'));
+//}
 
-static inline BOOL isDash(TCHAR ch) {
-	return ch == _T('-') || ch == _T('_');
-}
+//static inline BOOL isDash(TCHAR ch) {
+//	return ch == _T('-') || ch == _T('_');
+//}
 
-BOOL checkCharName(const CString & name) {
+BOOL CheckCharName(const CString & name) {
 	int len = name.GetLength();
-	if (len >= 2 && len < 16 && isLetter(name[0]) && isLetter(name[len - 1])) {
-		for (int i = 2, j = 0; i < len; ++i)
-			if (isDash(name[i])) {
-				if (++j > 1)
-					return FALSE;
-			} else if (!isLetter(name[i]))
-				return FALSE;
-			return TRUE;
-	}
-	return FALSE;
+	return len > 1 && len < 16;
+	// From D2R 2.4, character name can be UTF-8. So the old check no longer applies.
+	//
+	//if (len >= 2 && len < 16 && isLetter(name[0]) && isLetter(name[len - 1])) {
+	//	for (int i = 2, j = 0; i < len; ++i)
+	//		if (isDash(name[i])) {
+	//			if (++j > 1)
+	//				return FALSE;
+	//		} else if (!isLetter(name[i]))
+	//			return FALSE;
+	//		return TRUE;
+	//}
+	//return FALSE;
 }
 
-BOOL SetCharName(BYTE (&dest)[16], const CString & src) {
-	ASSERT(dest);
-	if (!checkCharName(src))
-		return FALSE;
-	::ZeroMemory(dest, sizeof(dest));
-	for (int i = 0; i < src.GetLength(); ++i)
-		dest[i] = char(src[i]);
-	return TRUE;
+CString DecodeCharName(const BYTE * name) {
+	ASSERT(name);
+	int len = MultiByteToWideChar(CP_UTF8, 0, (LPCCH)name, -1, NULL, 0);
+	if (len <= 0) return L"";
+	CString ret;
+	wchar_t * buf = ret.GetBuffer(len);
+	if (buf) MultiByteToWideChar(CP_UTF8, 0, (LPCCH)name, -1, buf, len);
+	ret.ReleaseBuffer();
+	return ret;
+}
+
+CStringA EncodeCharName(const CString & name) {
+	int len = WideCharToMultiByte(CP_UTF8, 0, name, -1, NULL, 0, 0, 0);
+	if (len <= 0) return "";
+	CStringA utf8;
+	char * buf = utf8.GetBuffer(len);
+	if (buf) WideCharToMultiByte(CP_UTF8, 0, name, -1, buf, len, 0, 0);
+	utf8.ReleaseBuffer();
+	return utf8;
 }
 
 // Succinct encoding of a Huffman tree
@@ -133,29 +147,30 @@ static const HuffmanTree g_huffmanTree;
 
 // struct CEar
 
-CEar::CEar(const char * name) {
-	if (name)
-		::memcpy(sEarName, name, min(size(sEarName), strlen(name) + 1));
-}
-
 void CEar::ReadData(CInBitsStream & bs, BOOL isPtr24) {
 	bs >> bits(iEarClass, 3) >> bits(iEarLevel, 7);
 	int b = isPtr24 ? 8 : 7;
-	for (auto & c : sEarName) {
+	BYTE buf[0x40] = { 0 };	//人物名字最多15个UTF8字符 + \0 (16 * 4)
+	for (auto & c : buf) {
 		bs >> bits(c, b);
 		if (!bs.Good() || c == 0)
 			break;
 	}
+	sEarName = DecodeCharName(buf);
 }
 
 void CEar::WriteData(COutBitsStream & bs, BOOL isPtr24) const {
 	bs << bits(iEarClass, 3) << bits(iEarLevel, 7);
+	const CStringA buf = EncodeCharName(sEarName);
 	int b = isPtr24 ? 8 : 7;
-	for (auto c : sEarName) {
+	int len = isPtr24 ? 60 : 15;	//60 = 15 * 4
+	for (int i = 0; i < buf.GetLength() && i < len; ++i) {
+		BYTE c = buf[i];
 		bs << bits(c, b);
 		if (!bs.Good() || c == 0)
 			break;
 	}
+	bs << bits(BYTE(0), b);
 }
 
 // struct CLongName
@@ -619,7 +634,7 @@ CD2Item::CD2Item(DWORD type) {
 		bSimple = pItemData->Simple;
 		if (0x20726165 == type) {	//"ear "
 			bEar = TRUE;
-			pEar.ensure("unknown");
+			pEar.ensure(L"unknown");
 		} else
 			pItemInfo.ensure(pItemData);
 	}

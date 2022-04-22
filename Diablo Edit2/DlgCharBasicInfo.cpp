@@ -213,12 +213,11 @@ void CDlgCharBasicInfo::UpdateUI(const CD2S_Struct & character)
 BOOL CDlgCharBasicInfo::GatherData(CD2S_Struct & character)
 {
 	UpdateData(TRUE);
-	BYTE name[16];
-	if(!::SetCharName(name, m_sName)){
+	if(!::CheckCharName(m_sName)){
 		MessageBox(::theApp.MsgBoxInfo(0), ::theApp.MsgError(), MB_ICONERROR);
 		return FALSE;
 	}
-	character.name(name);
+	character.name(m_sName);
 	if(m_uCharLevel < 1 || m_uCharLevel > 127){
 		MessageBox(::theApp.MsgBoxInfo(1),::theApp.MsgError(),MB_ICONERROR);
 		return FALSE;

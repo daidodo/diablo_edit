@@ -340,3 +340,12 @@ BOOL CD2S_Struct::WriteData(COutBitsStream & bs) const {
 	bs << offset_value(offCrc, dwCrc);
 	return bs.Good();
 }
+
+void CD2S_Struct::name(const CString & name) {
+	CStringA utf8 = EncodeCharName(name);
+	// Copy data
+	BYTE * dest = isPtr24() ? NamePTR : Name;
+	int destLen = isPtr24() ? sizeof NamePTR : sizeof Name;
+	::ZeroMemory(dest, destLen);
+	::CopyMemory(dest, utf8, min(utf8.GetLength(), destLen));
+}

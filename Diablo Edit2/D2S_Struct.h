@@ -144,8 +144,8 @@ struct CD2S_Struct
 	void WriteFile(const CString & path) const;
 	BOOL isD2R() const { return dwVersion >= 0x61; }
 	BOOL isPtr24() const { return dwVersion == 0x62; }
-	const BYTE * name() const { return isPtr24() ? NamePTR : Name; }
-	void name(const BYTE(&n)[16]) { ::CopyMemory((isPtr24() ? NamePTR : Name), n, sizeof n); }
+	CString name() const { return DecodeCharName(isPtr24() ? NamePTR : Name); }
+	void name(const CString & name);
 	BOOL HasCorpse() const { return stCorpse.HasCorpse(); }
 	BOOL HasMercenary() const { return isD2R() ? (dwMercControl != 0) : (wMercName > 0); }
 	BOOL isLadder() const { return (charType & 0x40) != 0; }
@@ -207,9 +207,9 @@ public:
 	WORD	wMercName;			//雇佣兵名字索引
 	WORD	wMercType;			//雇佣兵类型
 	DWORD	dwMercExp;			//雇佣兵经验
-	BYTE	unkown7[0x4C];		//unknown
-	BYTE	NamePTR[16];		//PTR2.4人物名字,占用16字符
-	BYTE	unkown8[0x34];		//unknown
+	BYTE	unkown7[0x4C];
+	BYTE	NamePTR[0x40];		//PTR2.4人物名字，UTF8编码，占用16个字符
+	DWORD	unkown8;
 
 	CQuestInfo		QuestInfo;		//任务完成信息,总长0x12A
 	CWaypoints		Waypoints;		//小站信息

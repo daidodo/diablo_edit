@@ -8,17 +8,23 @@
 
 const int MAX_SOCKETS = 7;	//物品最大孔数，多于6个可能会导致游戏崩溃
 
-//检查并设置人物姓名
-BOOL SetCharName(BYTE (&dest)[16], const CString & src);
+//检查人物姓名
+BOOL CheckCharName(const CString & name);
+
+//编解码人物姓名，CString <--> UTF8
+CString DecodeCharName(const BYTE * name);
+CStringA EncodeCharName(const CString & name);
 
 //Ear
 struct CEar
 {
 	BYTE	iEarClass = 0;	//3 bits
 	BYTE	iEarLevel = 1;	//7 bits
-	BYTE	sEarName[16];	//7 bit * Count, 以0x00结束
+	CString	sEarName;		//变长字符串
+							//PTR2.4以前：7 bit * Count, 以0x00结束
+							//PTR2.4：UTF8编码
 	//Functions:
-	explicit CEar(const char * name = 0);
+	explicit CEar(const CString & name = L"") :sEarName(name) {};
 	void ReadData(CInBitsStream & bs, BOOL isPtr24);
 	void WriteData(COutBitsStream & bs, BOOL isPtr24) const;
 

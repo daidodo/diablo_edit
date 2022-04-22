@@ -177,7 +177,7 @@
 	Gold in person	身上金钱	身上金錢
 	Gold in stash	箱子金钱	箱子金錢
 *=======================对话框消息			
-	"Character name format error\nLength:  2-15 chars\nContent: a-z,A-Z,-,_\nCaution: name string starts and ends with chars,\nonly one '-' or '_' is allowed"	"人物名字格式错误\n长度：2-15个字符\n包括：a-z,A-Z,-,_\n注意：名字必须以字母开头和结尾，\n中间只允许有一个'-'或'_'符号"	"人物名字格式錯誤\n長度：2-15個字符\n包括：a-z,A-Z,-,_\n注意：名字必須以字母開頭和結尾\n中間只允許有一個'-'或'_'符號"
+	"Character name format error\nLength:  2-15 chars\nContent: a-z,A-Z,-,_\nCaution: Invalid name may cause character fail to load"	人物名字格式错误\n长度：2-15个字符\n包括：字母，文字，-，_\n注意：无效名字可能导致角色无法加载	人物名字格式錯誤\n長度：2-15個字符\n包括：字母，數字，-，_\n注意：非法名字可能導致角色無法加載
 	Character level is between 1-127	人物等级必须在1-127之间	人物等級必須在1-127之間
 	"Strength, Energy, Dexterity, Vitality and Stat Points is between 0-1023\nLife, Mana and Stamina is between 0-8191\nSkill Points is between 0-255"	力量、敏捷、体力、精力和状态点数必须在0-1023之间\n耐力、生命和法力值必须在0-8191之间\n技能点数必须在0-255之间	力量、敏捷、體力、精力和狀態點數值必須在0-1023之間\n耐力、生命和法力值必須在0-8191之間\n技能點數值必須在0-255之間
 	Too many golds in person or stash	身上或箱子的金钱数过多	身上或箱子的金錢數過多
