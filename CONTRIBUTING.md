@@ -30,7 +30,7 @@ Currently, Traditional and Simplified Chinese translations are incomplete. If yo
 * Find the string(s) you want to translate, and add missing translations
   ![image](https://user-images.githubusercontent.com/8170176/166332112-dec1ade3-6bc2-426a-9514-051a2bc62e06.png)
 * Save the file and KEEP the original format.
-* Compile and run **Generate Data** project. It'll refresh all data files for the editor.
+* Compile and run **Generate Data** project. It'll refresh all data files for the editor, including *Diablo Edit2\language.dat*.
 * Compile and run **Diablo Edit2** project, and check your translations on UI.
   * Select language via menu: View => Language
   * Confirm your changes
