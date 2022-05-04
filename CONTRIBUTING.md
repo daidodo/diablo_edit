@@ -32,6 +32,10 @@ Currently, Traditional and Simplified Chinese translations are incomplete. If yo
 * Save the file and KEEP the original format.
 * Compile and run **Generate Data** project. It'll refresh all data files for the editor, including *Diablo Edit2\language.dat*.
 * Compile and run **Diablo Edit2** project, and check your translations on UI.
+  * Compile under `x86` arch
+  
+  ![image](https://user-images.githubusercontent.com/8170176/166815972-da6f0e86-28e5-49e5-94fc-35fae1a53183.png)
+  
   * Select language via menu: View => Language
   * Confirm your changes
   ![image](https://user-images.githubusercontent.com/8170176/166332972-f10ceafe-b2fb-43bd-8651-0fb4b784f8c2.png)
