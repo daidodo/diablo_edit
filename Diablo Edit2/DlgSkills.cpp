@@ -90,6 +90,9 @@ void CDlgSkills::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_EDIT29, m_pSkills[28]);
 	DDX_Text(pDX, IDC_EDIT30, m_pSkills[29]);
 	DDX_Text(pDX, IDC_EDIT31, m_bAll);
+	DDX_Text(pDX, IDC_BUTTON1, m_sUIText[0]);
+	DDX_Text(pDX, IDOK, m_sUIText[1]);
+	DDX_Text(pDX, IDCANCEL, m_sUIText[2]);
 }
 
 void CDlgSkills::LoadText()
@@ -99,6 +102,9 @@ void CDlgSkills::LoadText()
 		m_sText[i] = ::theApp.ClassSkillName(i, m_nCharClass);
 	for(int i = 0;i < TAB_SIZE;++i)
 		m_sText[30 + i] = ::theApp.ClassSkillTabName(i, m_nCharClass);
+	m_sUIText[0] = ::theApp.OtherUI(10);
+	m_sUIText[1] = ::theApp.OtherUI(11);
+	m_sUIText[2] = ::theApp.OtherUI(12);
 	UpdateData(FALSE);
 }
 

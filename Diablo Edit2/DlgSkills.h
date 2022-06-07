@@ -27,6 +27,7 @@ private:
 	static const int TAB_SIZE = CDiabloEdit2App::CLASS_SKILL_TAB_SIZE;
 	static const int TEXT_SIZE = SKILL_SIZE + TAB_SIZE;
 	CString m_sText[TEXT_SIZE];
+	CString m_sUIText[3];
 	int m_nCharClass;			//人物角色
 	BYTE m_pSkills[SKILL_SIZE];	//技能等级数组
 	BYTE * m_pData;

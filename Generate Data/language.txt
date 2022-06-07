@@ -80,6 +80,9 @@
 	Assassin Skills	刺客技能	刺客技能
 	All	全部	全部
 	Items	物品	物品
+	All	全	全
+	OK	确认	確認
+	Cancel	取消	取消
 *=======================新建物品窗口UI			
 	New Item	创建物品	創建物品
 	Create	创建	創建
