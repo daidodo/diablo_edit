@@ -3,6 +3,7 @@
 #include <vector>
 #include <cstring>
 #include <cassert>
+#include <string>
 
 // bits
 template<typename T>

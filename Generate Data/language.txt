@@ -1440,167 +1440,170 @@
 	Matriarchal Pike		
 	Matriarchal Javelin		
 *=======================以下是属性名称(Property Name)			
-	%+d Strength		
-	%+d Energy		
-	%+d Dexterity		
-	%+d Vitality		
-	Stat Point		
-	Skill Point		
-	Life		
-	%+d Max Life		
-	Mana		
-	%+d Max Mana		
-	Stamina		
-	%+d Max Stamina		
-	Level		
-	Experience		
-	Gold		
-	Goldbank		
-	%+d%% Enhanced Defense		
-	%+d%% - %d%% Enhanced Damage		
-	%+d%% Enhanced Min Damage		
-	%+d Attack Rating		
-	%+d%% Chance of Blocking		
-	%+d Min 1-Handed Damage		
-	%+d Max 1-Handed Damage		
-	%+d Min 2-Handed Damage		
-	%+d Max 2-Handed Damage		
-	Damage %+d%% NV		
-	Regenerate Mana %d%% NV		
-	Regenerate Mana %+d%%		
-	Heal Stemina %+d%%		
-	Lastexp		
-	Nextxp		
-	%+d Defense		
-	%+d Defense vs Missile		
-	%+d Defense vs Melee		
-	Damage Reduced By %+d		
-	Magic Damage Reduced By %+d		
-	Damage Reduced By %+d%%		
-	%+d%% Magic Resist		
-	%+d%% Max Magic Resist		
-	%+d%% Fire Resist		
-	%+d%% Max Fire Resist		
-	%+d%% Lightning Resist		
-	%+d%% Max Lightning Resist		
-	%+d%% Cold Resist		
-	%+d%% Max Cold Resist		
-	%+d%% Poison Resist		
-	%+d%% Max Poison Resist		
-	Damageaure		
-	%+d - %d Fire Damage		
-	%+d Max Fire Damage		
-	%+d - %d Lightning Damage		
-	%+d Max Lightning Damage		
-	%+d - %d Magic Damage		
-	%+d Max Magic Damage		
-	%+d - %d Cold Damage Freezing %d sec		
-	%+d Max Cold Damage		
-	%+d Cold Length		
-	%+d - %d Poison Damage Over %d sec		
-	%+d Max Poison Damage		
-	%+d Poison Length		
-	%+d%% Life Stolen per Hit Min		
-	%+d%% Life Stolen per Hit Max		
-	%+d%% Mana Stolen per Hit Min		
-	%+d%% Mana Stolen per Hit Max		
-	Stamina Drain Min		
-	Stamina Drain Max		
-	Stun Length		
-	Run/Walk Speed %+d%% NV		
-	Attack Speed %+d%% NV		
-	Other Animrate		
-	Quantity		
-	Value %+d		
-	%+d Durability		
-	%+d Max Durability		
-	%+d Replenish Life		
-	Increase Max Durability %+d%%		
-	Increase Max Life %+d%%		
-	Increase Max Mana %+d%%		
-	Attacker Takes Damage of %+d		
-	%+d%% Extra Gold From Monsters		
-	%+d%% Better Chance of Getting Magic Items		
-	Knock Back %+d		
-	Time Duration %+d		
-	%+d %s Skill		
-	Unsentparaml		
-	%+d%% Experience Gained		
-	%+d Life After Each Kill		
-	Reduced Prices %+d%%		
-	Double Herb Duration		
-	%+d Light Radius		
-	Light Color NV %d		
-	Requirements %+d%%		
-	%+d Item Level Require		
-	%+d%% Increase Attack Speed		
-	Item Level Require %+d%%		
-	Last Block Frame		
-	%+d%% Faster Run/Walk		
-	%+d to %s		
-	Change Character State to %s		
-	%+d%% Faster Hit Recovery Rate		
-	Monster Player Count		
-	Poison Override		
-	%+d%% Faster Block Rate		
-	Bypass Undead		
-	Bypass Demons		
-	%+d%% Faster Cast Rate		
-	Bypass Beast		
-	%+d to %s (%s only)		
-	Slain Monsters Rest In Peace %+d		
-	Curse Resist %+d		
-	Poison Length Reduced by %+d%%		
-	Damage %+d		
-	Hit Causes Monster Flee %+d%%		
-	Hit Blinds Target %+d		
-	-%d%% Damage Mana		
-	Ignore Target Defense		
-	-%d%% Target Defense		
-	Prevent Monster Heal %+d		
-	Half Freeze Duration		
-	%+d%% Bonus Attack Rating		
-	%+d Monster Defense Per Hit		
-	%+d%% Damage to Demons		
-	%+d%% Damage to Undead		
-	%+d Attack Rating vs Demons		
-	%+d Attack Rating vs Undead		
-	Throwable		
-	%+d Fire Skills %d		
-	%+d All Skills		
-	Attacker Takes Lightning Damage of %+d		
-	Iron Maiden Level		
-	Life Tap Level		
-	Thorns Percent		
-	Bone Armor		
-	Bone Armor Max		
-	Freezes Target %+d		
-	%+d%% Chance of Open Wounds		
-	%+d%% Chance of Crushing Blow		
-	%+d Kick Damage		
-	%+d Mana After Each Kill		
-	%+d Life After Each Demon Kill		
-	Extra Blood %d		
-	%+d%% Chance of Deadly Strike		
-	Fire Absorb %+d%%		
-	%+d File Absorb		
-	Lightning Absorb %+d%%		
-	%+d Lightning Absorb		
-	Magic Absorb %+d%%		
-	%+d Magic Absorb		
-	Cold Absorb %+d%%		
-	%+d Cold Absorb		
-	Slows Target by %+d%%		
-	Level %+d %s Aura When Equipped		
-	Indestructible		
-	Cannot Be Frozen		
-	%+d%% Slower Stamina Drain		
-	%+d%% Chance of Reanimate as %s		
-	%+d%% Chance of Piercing Attack		
-	Fires Magic Arrows or Bolts %+d		
-	Fires Explosive Arrows or Bolts %+d		
-	%+d to Min Throw Damage NV		
-	%+d to Max Throw Damage NV		
+	%+d Strength	%+d 力量	%+d 力量
+	%+d Energy	%+d 精力	%+d 精力
+	%+d Dexterity	%+d 敏捷	%+d 敏捷	
+	%+d Vitality	%+d 体力	%+d 體力
+	Stat Point	x状态点数	x狀態點數		
+	Skill Point	x技能点数	x技能點數
+	Life	x生命点数	x生命點數
+	%+d Max Life	%+d 最大生命	%+d 最大生命
+	Mana	x法力	x法力
+	%+d Max Mana	%+d 最大法力	%+d 最大法力
+	Stamina	x耐力	x耐力
+	%+d Max Stamina	%+d 最大耐力	%+d 最大耐力
+	Level x等级	x等級
+	Experience	x经验	x經驗
+	Gold	x金币	x金幣
+	Goldbank	x存储箱金币	x存儲箱金幣
+	%+d%% Enhanced Defense	%+d%%防御强化	%+d%%防禦强化
+	%+d%% - %d%% Enhanced Damage	%+d%% - %d%%增强伤害	%+d%% - %d%%增强傷害
+	%+d%% Enhanced Min Damage	%+d%%增加最小伤害	%+d%%增加最小傷害
+	%+d Attack Rating	%+d命中率	%+d準確率
+	%+d%% Chance of Blocking	%+d%% 格挡几率	%+d%% 格擋可能性		
+	%+d Min 1-Handed Damage	%+d 单手最小伤害	%+d 單手最小傷害	
+	%+d Max 1-Handed Damage	%+d 单手最大伤害	%+d 單手最大傷害	
+	%+d Min 2-Handed Damage	%+d 双手最小伤害	%+d 雙手最小傷害	
+	%+d Max 2-Handed Damage	%+d 双手最大伤害	%+d 雙手最大傷害
+	Damage %+d%% NV	伤害增加 %+d%%	傷害增加 %+d%%	
+	Regenerate Mana %d%% NV	法力重生 %d%%	法力重生 %d%%
+	Regenerate Mana Plus %+d%%	法力重生增强 %+d%%	法力重生增强 %+d%%		
+	Heal Stemina %+d%%	耐力恢复增强 %+d%%	耐力回復增强 %+d%%			
+	Lastexp	x上一等級经验	x上一等級經驗
+	Nextxp	x下一等级经验	x下一等級經驗	
+	%+d Defense	%d+防御	%+d防禦		
+	%+d Defense vs Missile	%+d 远程防御	%+d 遠程防禦		
+	%+d Defense vs Melee	%+d 近战防御	%+d 近戰防御		
+	Damage Reduced By %+d	伤害减少%+d	傷害減少%+d	
+	Magic Damage Reduced By %+d	法术伤害减少 %+d	法術傷害減少 %+d
+	Damage Reduced By %+d%%	伤害减少 %+d%%	傷害減少 %+d%%
+	%+d%% Magic Resist	%+d%% 魔法抵抗	%+d%% 魔法抵抗
+	%+d%% Max Magic Resist	%+d%% 最大魔法抵抗	%+d%% 最大魔法抵抗
+	%+d%% Fire Resist	%+d%% 火抗	%+d%% 火抗
+	%+d%% Max Fire Resist	%+d%% 最大火抗	%+d%% 最大火抗		
+	%+d%% Lightning Resist	%+d%% 闪电抵抗	%+d%% 閃電抵抗
+	%+d%% Max Lightning Resist	%+d%% 最大闪电抵抗	%+d%% 最大閃電抵抗	
+	%+d%% Cold Resist	%+d%% 寒抗	%+d%% 寒抗	
+	%+d%% Max Cold Resist	%+d%% 最大寒抗	%+d%% 最大寒抗
+	%+d%% Poison Resist	%+d%% 毒抗	%+d%% 毒抗
+	%+d%% Max Poison Resist	%+d%% 最大毒抗	%+d%% 最大毒抗
+	Damageaure	x伤害灵气	x傷害靈氣
+	%+d - %d Fire Damage	%+d - %d 火焰伤害	%+d - %d 火焰傷害
+	%+d Max Fire Damage	%+d 最大火焰伤害	%+d 最大火焰伤害
+	%+d - %d Lightning Damage	%+d - %d 闪电伤害	%+d - %d 閃電傷害
+	%+d Max Lightning Damage	%+d 最大闪电伤害	%+d 最大閃電傷害	
+	%+d - %d Magic Damage	%+d - %d 魔法伤害	%+d - %d 魔法傷害
+	%+d Max Magic Damage	%+d 最大魔法伤害	%+d 最大魔法伤害		
+	%+d - %d Cold Damage Freezing %d sec	%+d - %d 冰冷伤害 %d 每秒	%+d - %d 冰冷傷害 %d 每秒
+	%+d Max Cold Damage	%+d 最大寒冷伤害	%+d 最大寒冷伤害			
+	%+d * Cold Length	%+d *冻结持续时间	%+d *冻结持續时间
+	%+d - %d Poison Damage Over %d sec	%+d - %d 毒素伤害维持 %d 每秒	%+d - %d 毒素傷害維持 %d 每秒
+	%+d Max Poison Damage	%+d 最大毒伤害	%+d 最大毒傷害
+	%+d *Poison Length	%+d *中毒持续时间	%+d	*中毒持續時間
+	%+d%% Life Stolen per Hit Min	%+d%%击中时偷取生命	%+d%%擊中時偷取生命 
+	%+d%% Life Stolen per Hit Max	%+d%% x偷取生命伤害最大值	%+d%% x偷取生命伤害最大值
+	%+d%% Mana Stolen per Hit Min	%+d%%击中时偷取法力	%+d%%擊中時偷取法力
+	%+d%% Mana Stolen per Hit Max	%+d%% x击中时偷取法力伤害最大值	%+d%% x击中时偷取法力伤害最大值
+	Stamina Drain Min		%+d%% x偷取耐力伤害最小值	%+d%% x偷取耐力力伤害最小值
+	Stamina Drain Max	%+d%% x偷取耐力伤害最大值	%+d%% x偷取耐力伤害最大值
+	Stun Length	x使目标昏迷时间	x使目標昏迷時間	
+	Run/Walk Speed %+d%% NV	跑步/步行速度 %+d%%	跑步/步行速度 %+d%%
+	Attack Speed %+d%% NV	攻击速度 %+d%%	攻擊速度 %+d%%
+	Other Animrate	x减慢敌人	x減慢敵人
+	Quantity	x数量	x數量
+	Value %+d	*值 %+d	*值 %+d
+	%+d Durability	%+d 装备耐	%+d 裝備耐久
+	%+d Max Durability	%+d *最大装备耐久	%+d *最大裝備耐久
+	%+d Replenish Life	%+d 生命补满/吸取生命	%+d 生命補滿/吸取生命
+	Increase Max Durability %+d%%	增加耐久性上限 %+d%%	增加耐久性上限 %+d%%
+	Increase Max Life %+d%%	增加生命上限%+d%%	增加生命上限%+d%%
+	Increase Max Mana %+d%%	增加法力上限%+d%%	增加法力上限%+d%%
+	Attacker Takes Damage of %+d	攻击者受到伤害 %+d	攻擊者受到傷害 %+d
+	%+d%% Extra Gold From Monsters	%+d%% 额外金币从怪物身上取得	%+d%% 額外金幣從怪物身上取得
+	%+d%% Better Chance of Getting Magic Items	%+d%% 更佳的机会取得魔法装备	%+d%% 更加的機會取得魔法裝備
+	Knock Back %+d	击退 %+d	擊退 %+d
+	Time Duration %+d	持续时间 %+d	持續時間 %+d
+	%+d %s Skill	%+d增加%s 技能	%+d增加%s 技能
+	Unsentparaml	xUnsentparaml	xUnsentparaml
+	%+d%% Experience Gained	%+d%% 转为经验值获得	%+d%% 轉為經驗值獲得
+	%+d Life After Each Kill	%+d 生命在杀死后获得	%+d 生命在殺死后獲得
+	Reduced Prices %+d%%	降低价格 %+d%%	降低價格 %+d%%
+	Double Herb Duration	*双草药持续时间	*雙草藥持續時間
+	%+d Light Radius	%+d 照亮范围	%+d 照亮范围
+	Light Color NV %d	*照亮颜色 %d	*照亮顔色 %d
+	Requirements %+d%%	需求 %+d%%	需求 %+d%%
+	%+d Item Level Require	%+d 需要等级:	%+d 需要等級
+	%+d%% Increase Attack Speed	%+d%% 增加攻击速度	%+d%% 增加攻擊速度
+	Item Level Require %+d%%	需要等级 %+d%%	需要等级 %+d%%
+	Last Block Frame	xLast Block Frame	xLast Block Frame
+	%+d%% Faster Run/Walk	%+d%% 跑步/步行	%+d%% 跑動/行走
+	%+d to %s	%+d 致 %s	%+d 致 %s
+	Change Character State to %s	状态赋予 %s	狀態賦予 %s	
+	%+d%% Faster Hit Recovery Rate	%+d%% 快速再度攻击	%+d%% 快速再度攻擊
+	Monster Player Count	xMonster Player Count	xMonster Player Count
+	Poison Override	x毒牙	x毒牙
+	%+d%% Faster Block Rate	%+d%% 快速格挡	%+d%% 快速格擋
+	Bypass Undead	x击退不死生物	x擊退不死生物
+	Bypass Demons	x击退恶魔	x擊退惡魔
+	%+d%% Faster Cast Rate	%+d%% 高速施法速度	%+d%% 高速施法速度
+	Bypass Beast	x击退野兽	x擊退野獸
+	%+d to %s (%s only)	%+d 致 %s (限%s 使用)	%+d 致 %s (限%s 使用)
+	Slain Monsters Rest In Peace %+d	杀死怪物回复平静 %+d	殺死怪物回復平靜 %+d
+	Curse Resist %+d	抵抗诅咒的几率%+d	抵抗詛咒的幾率%+d
+	Poison Length Reduced by %+d%%	毒素的持续效果降低 %+d%%	毒素的持續效果降低 %+d%%
+	Damage %+d	伤害增加%+d	傷害增加%+d
+	Hit Causes Monster Flee %+d%%	击中时使怪物逃跑 %+d%%	擊中時使怪物逃跑 %+d%%
+	Hit Blinds Target %+d	击中时使目标致盲 %+d	擊中時使目標致盲 %+d
+	-%d%% Damage Mana	-%d%% 受损的生命转移至法力	-%d%% 受損的生命轉移至法力
+	Ignore Target Defense	无视目标防御	無視目標防禦		
+	-%d%% Target Defense	减少目标防御-%d%%	減少目標防禦-%d%% 	
+	Prevent Monster Heal %+d	防止怪物治疗	防止怪物治療		
+	Half Freeze Duration	冰冻时间减半	冰凍時間減半
+	%+d%% Bonus Attack Rating	%+d%% 额外的攻击命中率加成	%+d%% 額外的攻擊命中率加成
+	%+d Monster Defense Per Hit	%+d 每次击中降低怪物防御	%+d 每次擊中后降低怪物防禦
+	%+d%% Damage to Demons	对恶魔系怪物的伤害增加	%+d%%	對惡魔系怪物的傷害增加	%+d%%
+	%+d%% Damage to Undead	对不死系怪物的伤害增加	%+d%%	對不死系怪物的傷害增加	%+d%%
+	%+d Attack Rating vs Demons	%+d 对恶魔的命中率	%+d 對惡魔的命中率
+	%+d Attack Rating vs Undead	%+d 对不死生物命中率	%+d 對不死生物命中率
+	Throwable	可投掷	可投擲
+	%+d Fire Skills %d	%+d 火焰技能 %d	%+d 火焰技能 %d
+	%+d All Skills	全部技能 %+d	全部技能 %+d 	
+	Attacker Takes Lightning Damage of %+d	攻击者受到%+d电击伤害	攻擊者受到 %+d 電擊傷害
+	Iron Maiden Level	x攻击反噬	x攻擊反噬
+	Life Tap Level	x偷取生命	x偷取生命
+	Thorns Percent	x刺针	x刺針
+	Bone Armor	x白骨装甲	x白骨裝甲
+	Bone Armor Max	x白骨装甲	x白骨裝甲
+	Freezes Target %+d	冻结目标 %+d	凍結目標 %+d
+	%+d%% Chance of Open Wounds	%+d%% 撕开伤口机会	%+d%% 撕開傷口機會
+	%+d%% Chance of Crushing Blow	%+d%% 造成压碎性打击的几率	%+d%% 造成壓碎性打擊的幾率
+	%+d Kick Damage	%+d 脚踢伤害	%+d 脚踢傷害
+	%+d Mana After Each Kill	%+d 法力在杀死敌人后获得	%+d 法力在殺死敵人后獲得
+	%+d Life After Each Demon Kill	%+d 生命在杀死恶魔后获得	%+d 生命在殺死惡魔后獲得
+	Extra Blood %d	*额外生命值 %d	*額外生命值 %d
+	%+d%% Chance of Deadly Strike	%+d%% 致命攻击	%+d%% 致命攻擊
+	Fire Absorb %+d%%	火焰吸收 %+d%%	火焰吸收 %+d%%
+	%+d File Absorb	%+d 火焰吸收	%+d 火焰吸收
+	Lightning Absorb %+d%%	闪电吸收 %+d%%	閃電吸收 %+d%%			
+	%+d Lightning Absorb	%+d 闪电吸收	%+d 閃電吸收
+	Magic Absorb %+d%%	魔法吸收 %+d%%	魔法吸收 %+d%%
+	%+d Magic Absorb	魔法吸收 %+d%%	魔法吸收 %+d%%	
+	Cold Absorb %+d%%	寒冰吸收 %+d%%	寒冰吸收 %+d%%
+	%+d Cold Absorb	%+d 寒冰吸收	%+d 寒冰吸收
+	Slows Target by %+d%%	使目标速度降低 %+d%%	使目標速遞降低 %+d%%
+	Level %+d %s Aura When Equipped	装备 %+d 级的 %s 灵气	裝備 %+d 級的 %s 靈氣
+	Indestructible	装备无法破坏	裝備無法破壞
+	Cannot Be Frozen	无法冻结	無法凍結	
+	%+d%% Slower Stamina Drain	%+d%% 减缓精力消耗	%+d%% 減緩精力消耗
+	%+d%% Chance of Reanimate as %s	杀死怪物后有	%+d%% 几率复活为 %s	
+	%+d%% Chance of Piercing Attack	%+d%% 穿刺攻击	%+d%% 穿刺攻擊
+	Fires Magic Arrows or Bolts %+d	射出魔法箭矢 %+d	射出魔法箭矢 %+d
+	Fires Explosive Arrows or Bolts %+d	箭矢或十字弓弹火焰爆炸 %+d	箭矢或十字弓弹火焰爆炸 %+d
+	%+d to Min Throw Damage NV	%+d 投掷最小伤害	%+d 投擲最小傷害
+	%+d to Max Throw Damage NV	%+d 投掷最大伤害	%+d 投擲最大傷害
+	handofathena	x慢速箭	x慢速箭		
+	staminapercent	x精力	x精力		
+	passive_staminapercent x增加耐力	x增加耐力		
 	Uncoded		
 	Uncoded		
 	Uncoded		
@@ -1616,37 +1619,32 @@
 	Uncoded		
 	Uncoded		
 	Uncoded		
-	Uncoded		
-	Uncoded		
-	Uncoded		
-	%+d%% to Attack Rating vs %s		
-	%+d%% to Damage vs %s		
-	Fade %d		
-	Armor Override		
+	%+d%% to Attack Rating vs %s	%+d%% 转为命中率相对 %s	%+d%% 轉爲命中率相對 %s	
+	%+d%% to Damage vs %s	%+d%% 转为伤害相对 %s		%+d%% 轉爲傷害相對 %s
+	Fade %d	*隐身	*隱身
+	Armor Override	x防御百分比	x防禦百分比
 	Unused		
 	Unused		
 	Unused		
 	Unused		
 	Unused		
-	%+d %s (%s only)		
+	%+d %s (%s only)	%+d %s (只限%s)	%+d %s (只限%s)
 	Unused		
 	Unused		
 	Unused		
 	Unused		
 	Unused		
-	Add %+d Sockets		
-	%+d%% Chance to Cast Level %d %s When Attack		
-	%+d%% Chance to Cast Level %d %s When Kill		
-	%+d%% Chance to Cast Level %d %s When Death		
-	%+d%% Chance to Cast Level %d %s When Striking		
-	%+d%% Chance to Cast Level %d %s When Levelup		
+	Add %+d Sockets	增加 %+d 凹槽	增加 %+d 凹槽
+	%+d%% Chance to Cast Level %d %s When Attack	攻击时有%+d%%机会施展等级%d %s	攻擊時%+d%%機會施展等級%d %s
+	%+d%% Chance to Cast Level %d %s When Kill	当杀死敌人 %+d%% 机会施展等级%d %s	殺死敵人時%+d%%機會施展等級%d %s
+	%+d%% Chance to Cast Level %d %s When Death	当死亡时%+d%%机会施展等级%d %s	死亡時%+d%%機會施展等級%d %s
+	%+d%% Chance to Cast Level %d %s When Striking	当打击时有%+d%%机会施展等级%d %s 打擊時%+d%%機會施展等級%d %s
+	%+d%% Chance to Cast Level %d %s When Levelup	当升级时%+d%%机会施展等级%d %s	升級時%+d%%機會施展等級%d %s
 	Unused		
-	%+d%% Chance to Cast Level %+d %s When Struck		
-	Unused		
-	Unused		
-	Level %+d %s (%d/%d Charges)		
+	%+d%% Chance to Cast Level %+d %s When Struck	被击中时有 %+d%% 几率释放 %+d %s技能	被擊中時有 %+d%% 几率釋放 %+d %s 技能
 	Unused		
 	Unused		
+	Level %+d %s (%d/%d Charges)	等级 %+d %s (%d/%d 聚气)
 	Unused		
 	Unused		
 	Unused		
@@ -1654,47 +1652,49 @@
 	Unused		
 	Unused		
 	Unused		
-	%+g Defence per Level		
-	%+g Enhanced Defence per Level		
-	%+g Life per Level		
-	%+g Mana per Level		
-	%+g Max Damage per Level		
-	%+g Enhanced Max Damage per Level		
-	%+g Strength per Level		
-	%+g Dexterity per Level		
-	%+g Energy per Level		
-	%+g Vitality per Level		
-	%+g Attack Rating per Level		
-	%+g%% Bonus to Attack Rating per Level		
-	%+g Max Cold Damage per Level		
-	%+g Max Fire Damage per Level		
-	%+g Max Lightning Damage per Level		
-	%+g Max Poison Damage per Level		
-	Cold Resist %+g%% per Level		
-	Fire Resist %+g%% per Level		
-	Lightning Resist %+g%% per Level		
-	Poison Resist %+g%% per Level		
-	%+g Cold Absorb per Level		
-	%+g Fire Absorb per Level		
-	%+g Lightning Absorb per Level		
-	%+g Poison Absorb per Level		
-	Attacker Takes Damage of %+g per Level		
-	%+g%% Extra Gold from Monsters per Level		
-	%+g%% Better Chance of Getting Magic Items per Level		
-	Heal Stamina Plus %+g%% per Level		
-	%+g Max Stamina per Level		
-	%+g%% Damage to Demons per Level		
-	%+g%% Damage to Undead per Level		
-	%+g to Attack Rating vs Demons per Level		
-	%+g to Attack Rating vs Undead per Level		
-	%+g%% Chance of Crushing Blow per Level		
-	%+g%% Chance of Open Wounds per Level		
-	%+g Kick Damage per Level		
-	%+g%% Chance of Deadly Strike per Level		
-	Find Gems per Level		
-	Repairs 1 Durability in %d Seconds		
-	Replenishes 1 Quantity in %d Seconds		
-	Increased Stack Size %+d		
+	Unused		
+	Unused		
+	%+g Defence per Level	%+g 防御(以角色等级决定)	%+g 防禦(以角色等級決定)
+	%+g Enhanced Defence per Level	%+g 防御强化(以角色等级决定)	%+g 防禦强化(以角色等級決定)
+	%+g Life per Level	%+g 生命(以角色等级决定)	%+g 生命(以角色等級決定)
+	%+g Mana per Level	%+g 法力(以角色等级决定)	%+g 法力(以角色等級決定)
+	%+g Max Damage per Level	%+g 最大伤害值(以角色等级决定)	%+g 每級最大值(以角色等級決定)
+	%+g Enhanced Max Damage per Level	%+g 增加最大伤害上限(以角色等级决定)	%+g 增加最伤害上限(以角色等級決定)
+	%+g Strength per Level	%+g 力量(以角色等级决定)	%+g 每級力量(以角色等級決定)
+	%+g Dexterity per Level	%+g 敏捷(以角色等级决定)	%+g 敏捷(以角色等級決定)
+	%+g Energy per Level	%+g 精力(以角色等级决定)	%+g 精力(以角色等級決定)
+	%+g Vitality per Level	%+g 体力(以角色等级决定)	%+g 體力(以角色等級決定)
+	%+g Attack Rating per Level	%+g 命中率(以角色等级决定)	%+g 命中率(以角色等級決定)
+	%+g%% Bonus to Attack Rating per Level	%+g%% 额外的攻击命中率加成(以角色等级决定)	%+g%% 額外的攻擊命中率加成(以角色等級決定)
+	%+g Max Cold Damage per Level	%+g 寒冷伤害最大值(以角色等级决定)	%+g 寒冷傷害最大值(以角色等級決定)
+	%+g Max Fire Damage per Level	%+g 火焰伤害最大值(以角色等级决定)	%+g 火焰傷害最大值(以角色等級決定)
+	%+g Max Lightning Damage per Level	%+g 闪电伤害最大值(以角色等级决定)	%+g 閃電傷害最大值(以角色等級決定)
+	%+g Max Poison Damage per Level	%+g 毒素伤害最大值(以角色等级决定)	%+g 毒素傷害最大值(以角色等級決定)
+	Cold Resist %+g%% per Level	寒抗 %+g%% (以角色等级决定)	寒抗 %+g%% (以角色等級決定)
+	Fire Resist %+g%% per Level	火抗 %+g%% (以角色等级决定)	火抗 %+g%% (以角色等級決定)
+	Lightning Resist %+g%% per Level	抗闪电 %+g%% (以角色等级决定)	抗閃電 %+g%% (以角色等級決定)
+	Poison Resist %+g%% per Level	毒抗 %+g%% (以角色等级决定)	毒抗 %+g%% (以角色等級決定)
+	%+g Cold Absorb per Level	%+g 吸收冰冷伤害 (以角色等级决定)	%+g 吸收冰冷傷害 (以角色等級決定)
+	%+g Fire Absorb per Level	%+g 吸收火焰伤害 (以角色等级决定)	%+g 吸收火焰傷害 (以角色等級決定)
+	%+g Lightning Absorb per Level	%+g 吸收闪电伤害 (以角色等级决定)	%+g 吸收閃電傷害 (以角色等級決定)
+	%+g Poison Absorb per Level	%+g 吸收毒素伤害 (以角色等级决定)	%+g 吸收毒素傷害 (以角色等級決定)
+	Attacker Takes Damage of %+g per Level	攻击者受到伤害%+g(以角色等级决定)	攻擊者收到傷害%+g (以角色等級決定)
+	%+g%% Extra Gold from Monsters per Level	%+g%% 额外金币从怪物身上取得 (以角色等级决定)	%+g%% 額外金幣從怪物身上取得 (以角色等級決定)
+	%+g%% Better Chance of Getting Magic Items per Level	%+g%% 更加的机会取得魔法装备 (以角色等级决定)	%+g%% 更佳的機會取得魔法裝備  (以角色等級決定)
+	Heal Stamina Plus %+g%% per Level	回复体力加 %+g%% (以角色等级决定)	回復體力加 %+g%% (以角色等級決定)
+	%+g Max Stamina per Level	%+g 最大精力值 (以角色等级决定)	%+g 最大精力值 (以角色等級決定)
+	%+g%% Damage to Demons per Level	%+g%% 对恶魔的伤害 (以角色等级决定)	%+g%% 對惡魔的傷害 (以角色等級決定)
+	%+g%% Damage to Undead per Level	%+g%% 对不死生物的伤害 (以角色等级决定)	%+g%% 對不死生物的傷害 (以角色等級決定)
+	%+g to Attack Rating vs Demons per Level	%+g%% 对抗恶魔的命中率 (以角色等级决定)	%+g%% 對抗惡魔的準確率 (以角色等級決定)
+	%+g to Attack Rating vs Undead per Level	%+g%% 对抗不死生物的命中率 (以角色等级决定)	%+g%% 對抗不死生物的準確率 (以角色等級決定)
+	%+g%% Chance of Crushing Blow per Level	%+g%% 造成压碎性打击的几率 (以角色等级决定)	%+g%% 造成壓碎性打擊的幾率 (以角色等級決定)	
+	%+g%% Chance of Open Wounds per Level	%+g%% 撕开伤口的几率 (以角色等级决定)	%+g%% 撕開傷口的幾率 (以角色等級決定)
+	%+g Kick Damage per Leve	%+g 脚踢伤害 (以角色等级决定)	%+g 脚踢伤害脚踢傷害 (以角色等級決定)
+	%+g%% Chance of Deadly Strike per Level	%+g%% 致命攻击 (以角色等级决定)	%+g%% 致命攻擊 (以角色等級決定)
+	Find Gems per Level	x宝石掉落	x寶石掉落
+	Repairs 1 Durability in %d Seconds	回复装备耐久度1和 %d 秒内	回復裝備耐久度1於 %d 秒内
+	Replenishes 1 Quantity in %d Seconds	在 %d 秒内回復1	在 %d 秒内回復1
+	Increased Stack Size %+d	增加的空间 %+d	增加的空間 %+d
 	Uncoded		
 	Uncoded		
 	Uncoded		
@@ -1708,47 +1708,47 @@
 	Uncoded		
 	Uncoded		
 	Uncoded		
-	%+d - %d Defense (Increases %s)		
-	%+d - %d Enhanced Defense (Increases %s)		
-	%+d - %d Life (Increases %s)		
-	%+d - %d Mana (Increases %s)		
-	%+d - %d Max Damage (Increases %s)		
-	%+d - %d Enhanced Max Damage (Increases %s)		
-	%+d - %d Strength (Increases %s)		
-	%+d - %d Dexterity (Increases %s)		
-	%+d - %d Energy (Increases %s)		
-	%+d - %d Vitality (Increases %s)		
-	%+d - %d Attack Rating (Increases %s)		
-	%+d - %d Enhanced Attack Rating (Increases %s)		
-	%+d - %d Max Cold Damage (Increases %s)		
-	%+d - %d Max Fire Damage (Increases %s)		
-	%+d - %d Max Lightning Damage (Increases %s)		
-	%+d - %d Max Poison Damage (Increases %s)		
-	%+d%% - %d%% Cold Resist (Increases %s)		
-	%+d%% - %d%% Fire Resist (Increases %s)		
-	%+d%% - %d%% Lightning Resist (Increases %s)		
-	%+d%% - %d%% Poison Resist (Increases %s)		
-	%+d - %d Cold Absorb (Increases %s)		
-	%+d - %d Fire Absorb (Increases %s)		
-	%+d - %d Lightning Absorb (Increases %s)		
-	%+d - %d Poison Absorb (Increases %s)		
-	%+d%% - %d%% Extra Gold from Monsters (Increases %s)		
-	%+d%% - %d%% Better Chance of Getting Magic Items (Increases %s)		
-	Heal Stamina Plus %+d - %d%% (Increases %s)		
-	%+d - %d Stamina (Increases %s)		
-	%+d%% - %d%% Damage to Demons (Increases %s)		
-	%+d%% - %d%% Damage to Undead (Increases %s)		
-	%+d - %d Attack Rating vs Demons (Increases %s)		
-	%+d - %d Attack Rating vs Undead (Increases %s)		
-	%+d%% - %d%% Chance of Crushing Blow (Increases %s)		
-	%+d%% - %d%% Chance of Open Wounds (Increases %s)		
-	%+d - %d Kick Damage (Increases %s)		
-	%+d - %d Chance of  Deadly Strike (Increases %s)		
-	Item Find Gems (by time)		
-	%+d%% Enemy Cold Resist		
-	%+d%% Enemy Fire Resist		
-	%+d%% Enemy Lightning Resist		
-	%+d%% Enemy Poison Resist		
+	%+d - %d Defense (Increases %s)	 %+d - %d 防御 (%s 增加)	%+d - %d 防禦 (%s 增加)
+	%+d - %d Enhanced Defense (Increases %s)	%+d - %d 防御强化 (%s 增加)		%+d - %d 防禦强化 (%s 增加)		
+	%+d - %d Life (Increases %s)	%+d - %d 生命 (%s 增加)	%+d - %d 生命 (%s 增加)
+	%+d - %d Mana (Increases %s)	%+d - %d 法力 (%s 增加)	%+d - %d 法力 (%s 增加)
+	%+d - %d Max Damage (Increases %s)	%+d - %d 最大伤害值 (%s 增加)	%+d - %d 最大傷害值 (在 %s 增加)
+	%+d - %d Enhanced Max Damage (Increases %s)	%+d - %d 傷害上限 (在 %s 增加)	%+d - %d 傷害上限 (在 %s 增加)
+	%+d - %d Strength (Increases %s)	%+d - %d 力量 (%s 增加)	%+d - %d 力量 (在 %s 增加)
+	%+d - %d Dexterity (Increases %s)	%+d - %d 敏捷 (在 %s 增加)	%+d - %d 敏捷 (在 %s 增加)
+	%+d - %d Energy (Increases %s)	%+d - %d 精力 (在 %s 增加)	%+d - %d 精力 (在 %s 增加)
+	%+d - %d Vitality (Increases %s)	%+d - %d 体力 (在 %s 增加)	%+d - %d 體力 (在 %s 增加)
+	%+d - %d Attack Rating (Increases %s)	%+d - %d 命中率 (在 %s 增加)	%+d - %d 準確率 (在 %s 增加)
+	%+d - %d Enhanced Attack Rating (Increases %s)	%+d - %d 额外的攻击命中率 (在 %s 增加)	%+d - %d 額外的攻擊準確率 (在 %s 增加)
+	%+d - %d Max Cold Damage (Increases %s)	%+d - %d 寒冷伤害最大值 (在 %s 增加)	%+d - %d 寒冷傷害最大值 (在 %s 增加)			
+	%+d - %d Max Fire Damage (Increases %s)	%+d - %d 火焰伤害最大值 (在 %s 增加)	%+d - %d 火焰傷害最大值 (在 %s 增加)
+	%+d - %d Max Lightning Damage (Increases %s)	%+d - %d 雷电伤害最大值 (在 %s 增加)	%+d - %d 雷電傷害最大值 (在 %s 增加)
+	%+d - %d Max Poison Damage (Increases %s)	%+d - %d 毒素伤害最大值 (在 %s 增加)	%+d - %d 毒素傷害最大值 (在 %s 增加)
+	%+d%% - %d%% Cold Resist (Increases %s)	%+d%% - %d%% 寒冷抗性 (在 %s 增加)	%+d%% - %d%% 寒冷抗性 (在 %s 增加)
+	%+d%% - %d%% Fire Resist (Increases %s)	%+d%% - %d%% 火焰抗性 (在 %s 增加)	%+d%% - %d%% 火焰抗性 (在 %s 增加)
+	%+d%% - %d%% Lightning Resist (Increases %s)	%+d%% - %d%% 雷电抗性 (在 %s 增加)	%+d%% - %d%% 雷電抗性 (在 %s 增加)
+	%+d%% - %d%% Poison Resist (Increases %s)	%+d%% - %d%% 毒素抗性 (在 %s 增加)	%+d%% - %d%% 毒素抗性 (在 %s 增加)
+	%+d - %d Cold Absorb (Increases %s)	%+d - %d 吸收冰冷伤害 (在 %s 增加)	%+d - %d 吸收冰冷傷害 (在 %s 增加)
+	%+d - %d Fire Absorb (Increases %s)	%+d - %d 吸收火焰伤害 (在 %s 增加)	%+d - %d 吸收火焰傷害 (在 %s 增加)
+	%+d - %d Lightning Absorb (Increases %s)	%+d - %d 吸收雷电伤害 (在 %s 增加)	%+d - %d 吸收雷電傷害 (在 %s 增加)
+	%+d - %d Poison Absorb (Increases %s)	%+d - %d 吸收毒素伤害 (在 %s 增加)	%+d - %d 吸收毒素傷害 (在 %s 增加)
+	%+d%% - %d%% Extra Gold from Monsters (Increases %s)	%+d%% - %d%% 额外的金币从怪物身上取得 (%s 增加)	%+d%% - %d%% 額外的金幣從怪物身上取得 (%s 增加)
+	%+d%% - %d%% Better Chance of Getting Magic Items (Increases %s)	%+d%% - %d%% 更加的机会取得魔法装备 (%s 增加)	%+d%% - %d%% 更佳的機會取得魔法裝備 (%s 增加)
+	Heal Stamina Plus %+d - %d%% (Increases %s)	回复体力加 %+d - %d%% (%s 增加)	回復體力加%+d - %d%% (%s 增加)
+	%+d - %d Stamina (Increases %s)	%+d - %d  最大精力值 (%s 增加) %+d - %d 最大精力值 (%s 增加)
+	%+d%% - %d%% Damage to Demons (Increases %s)	%+d%% - %d%% 对恶魔的伤害 (%s 增加)	%+d%% - %d%% 對惡魔的傷害 (%s 增加)
+	%+d%% - %d%% Damage to Undead (Increases %s)	%+d%% - %d%% 对不死生物的伤害 (%s 增加)	%+d%% - %d%% 對不死生物的傷害 (%s 增加)
+	%+d - %d Attack Rating vs Demons (Increases %s)	%+d - %d 对抗恶魔的命中率 (%s 增加)	%+d - %d 對抗惡魔的準確率 (%s 增加)
+	%+d - %d Attack Rating vs Undead (Increases %s)	%+d - %d 对抗不死生物的命中率 (%s 增加)	%+d - %d 對抗不死生物的準確率 (%s 增加)
+	%+d%% - %d%% Chance of Crushing Blow (Increases %s)	%+d%% - %d%% 造成压碎性打击的几率 (%s 增加)	%+d%% - %d%% 造成壓碎性打擊的幾率 (%s 增加)	
+	%+d%% - %d%% Chance of Open Wounds (Increases %s)	%+d%% - %d%% 撕开伤口的几率 (%s 增加)	%+d%% - %d%% 撕開傷口的幾率 (%s 增加)
+	%+d - %d Kick Damage (Increases %s)	%+d - %d 脚踢伤害 (%s 增加)	%+d - %d 脚踢伤害脚踢傷害 (%s 增加)
+	%+d - %d Chance of  Deadly Strike (Increases %s)	%+d - %d 致命攻击 (%s 增加)	%+d - %d 致命攻擊 (%s 增加)
+	Item Find Gems (by time)	x宝石掉落	x寶石掉落
+	%+d%% Enemy Cold Resist	%+d%% 对敌人冰冻系抗性	%+d%% 對敵人冰凍係抗性
+	%+d%% Enemy Fire Resist	%+d%% 对敌人火焰系抗性	%+d%% 對敵人火焰係抗性
+	%+d%% Enemy Lightning Resist	%+d%% 对敌人雷电系抗性	%+d%% 對敵人雷電係抗性
+	%+d%% Enemy Poison Resist	%+d%% 对敌人毒素系抗性	%+d%% 對敵人毒素係抗性
 	Item Damage vs Monster		
 	Item Damage Percent vs Monster		
 	Item Tohit vs Monster		
@@ -1769,43 +1769,43 @@
 	Poison Count		
 	Damage Frame Rate		
 	Pierce IDX		
-	%+d%% Fire Skill Damage		
-	%+d%% Lightning Skill Damage		
-	%+d%% Cold Skill Damage		
-	%+d%% Poison Skill Damage		
-	%+d%% Enemy Fire Resist		
-	%+d%% Enemy Lightning Resist		
-	%+d%% Enemy Cold Resist		
-	%+d%% Enemy Poison Resist		
-	Passive Critical Strike %d		
-	Passive Dodge %d		
-	Passive Avoid %d		
-	Passive Evade %d		
-	Passive Warmth %d		
-	Passive Mastery Melee TH %d		
-	Passive Mastery Melee Damage %d		
-	Passive Mastery Melee Crit %d		
-	Passive Mastery Throw TH %d		
-	Passive Mastery Throw Damage %d		
-	Passive Mastery Throw Crit %d		
-	Passive Weapon Block %d		
-	Passive Summon Resist %d		
+	%+d%% Fire Skill Damage	%+d%% 对火焰技能伤害	%+d%% 對火焰技能傷害
+	%+d%% Lightning Skill Damage	%+d%% 对雷电系技能伤害	%+d%% 對雷電係技能傷害
+	%+d%% Cold Skill Damage	%+d%% 对冰冻技能伤害	%+d%% 對冰凍技能傷害
+	%+d%% Poison Skill Damage	%+d%% 对毒素技能伤害	%+d%% 對毒素技能傷害
+	%+d%% Enemy Fire Resist	%+d%% 对敌人火焰系抗性	%+d%% 對敵人火焰係抗性
+	%+d%% Enemy Lightning Resist	%+d%% 对敌人雷电系抗性	%+d%% 對敵人雷電係抗性
+	%+d%% Enemy Cold Resist	%+d%% 对敌人冰冻系抗性	%+d%% 對敵人冰凍係抗性
+	%+d%% Enemy Poison Resist	%+d%% 对敌人毒素系抗性	%+d%% 對敵人毒素係抗性
+	Passive Critical Strike %d	*致命一击 %d	*致命一擊
+	Passive Dodge %d	*闪避 %d	*閃避 %d
+	Passive Avoid %d	*躲避 %d	*躲避 %d
+	Passive Evade %d	*回避 %d	*回避 %d
+	Passive Warmth %d	*暖气 %d	*暖氣 %d
+	Passive Mastery Melee TH %d	*支配近战武器-攻击命中率 %d	支配近戰武器-攻擊命中率 %d
+	Passive Mastery Melee Damage %d	*支配近战武器-伤害 %d	*支配近戰武器-傷害 %d
+	Passive Mastery Melee Crit %d	*支配近战武器-致命一击 %d	*支配近戰武器-致命一擊 %d
+	Passive Mastery Throw TH %d	*支配飞掷-攻击命中率 %d	*支配飛擲-攻擊命中率 %d
+	Passive Mastery Throw Damage %d	*支配飞掷-伤害 %d	*支配飛擲-傷害 %d
+	Passive Mastery Throw Crit %d	*支配飞掷-致命一击 %d	*支配飛擲-致命一擊 %d
+	Passive Weapon Block %d	*武器格挡 %d	*武器格擋 %d
+	Passive Summon Resist %d *召唤反抗%d	召喚反抗%d
 	Modifier List Skill		
 	Modifier List Level		
 	Last Sent HP PCT		
 	Source Unit Type		
 	Source Unit ID		
 	Short Paraml		
-	Quest Item Difficulty %d		
-	Passive Magic Mastery %d		
-	Passive Magic Pierce %d		
+	Quest Item Difficulty %d	*任务物品难度 %d	*任務物品難度 %d
+	Passive Magic Mastery %d	*支配魔法 %d	*支配魔法 %d
+	Passive Magic Pierce %d	*魔法穿透 %d	*魔法穿透 %d
 *=======================以下是怪物名称(Monster Names)			
 	Skeleton		
 	Returned		
 	BoneWarrior		
 	BurningDead		
 	Horror		
-	Zombie		
+	Zombie	僵尸	僵尸
 	HungryDead		
 	Ghoul		
 	DrownedCarcass		
@@ -4735,4 +4735,4 @@
 188	Wind		
 193	Wrath		
 195	Zephyr		
-2718	Delirium		
+2718	Delirium
