@@ -1,4 +1,4 @@
-// DlgQuestInfo.cpp : ÊµÏÖÎÄ¼ş
+ï»¿// DlgQuestInfo.cpp : å®ç°æ–‡ä»¶
 //
 
 #include "stdafx.h"
@@ -13,7 +13,7 @@ const WORD CDlgQuestInfo::QUEST_COMPLETE[27] = {
 	0x9021,0x1001,0x178d,0x901d,0x132d,0x169d		//Act V
 };
 
-// CDlgQuestInfo ¶Ô»°¿ò
+// CDlgQuestInfo å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(CDlgQuestInfo, CCharacterDialogBase)
 
@@ -175,7 +175,7 @@ void CDlgQuestInfo::LoadText(void)
 	UpdateData(FALSE);
 }
 
-// CDlgQuestInfo ÏûÏ¢´¦Àí³ÌĞò
+// CDlgQuestInfo æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 void CDlgQuestInfo::OnBnClicked_Normal()
 {

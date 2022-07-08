@@ -1,4 +1,4 @@
-// Fast data compression library
+﻿// Fast data compression library
 // Copyright (C) 2006-2011 Lasse Mikkel Reinhold
 // lar@quicklz.com
 //

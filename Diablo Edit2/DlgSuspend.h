@@ -1,36 +1,36 @@
-#pragma once
+ï»¿#pragma once
 
 #include "D2Item.h"
 
-// CDlgSuspend ¶Ô»°¿ò
+// CDlgSuspend å¯¹è¯æ¡†
 
 class CDlgSuspend : public CDialog
 {
 	DECLARE_DYNAMIC(CDlgSuspend)
 public:
-	CDlgSuspend(CWnd* pParent,UINT transparency);   // ±ê×¼¹¹Ôìº¯Êı
+	CDlgSuspend(CWnd* pParent,UINT transparency);   // æ ‡å‡†æ„é€ å‡½æ•°
 	virtual ~CDlgSuspend();
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_DIALOG_Suspend };
-//×Ô¶¨ÒåÀàĞÍ
+//è‡ªå®šä¹‰ç±»å‹
 private:
-	typedef std::pair<BYTE,CString>	__MsgType;	//<×ÖÌåÑÕÉ«,ÄÚÈİ>
-//×Ô¶¨ÒåÊı¾İ
-	static const COLORREF FONT_COLOR[];			//×ÖÌåÑÕÉ«
-	static const LONG HEIGHT_PER_LINE = 20;		//Ã¿ĞĞ×ÖµÄ¸ß¶È
-	static const LONG WIDTH_PER_CHAR = 9;		//Ã¿¸ö×Ö·ûµÄ¿í¶È
-	static const LONG WINDOW_WIDTH_MIN = 273;	//´°¿Ú×îĞ¡¿í¶È
-	UINT m_nTransparency;       //´°ÌåÍ¸Ã÷¶È
+	typedef std::pair<BYTE,CString>	__MsgType;	//<å­—ä½“é¢œè‰²,å†…å®¹>
+//è‡ªå®šä¹‰æ•°æ®
+	static const COLORREF FONT_COLOR[];			//å­—ä½“é¢œè‰²
+	static const LONG HEIGHT_PER_LINE = 20;		//æ¯è¡Œå­—çš„é«˜åº¦
+	static const LONG WIDTH_PER_CHAR = 9;		//æ¯ä¸ªå­—ç¬¦çš„å®½åº¦
+	static const LONG WINDOW_WIDTH_MIN = 273;	//çª—å£æœ€å°å®½åº¦
+	UINT m_nTransparency;       //çª—ä½“é€æ˜åº¦
 	const CD2Item * m_pItem;
-	std::vector<__MsgType> m_sItemMsg;	//ÎïÆ·µÄĞÅÏ¢
-//×Ô¶¨Òåº¯Êı
+	std::vector<__MsgType> m_sItemMsg;	//ç‰©å“çš„ä¿¡æ¯
+//è‡ªå®šä¹‰å‡½æ•°
 	void AddMsg(BYTE color, const CString & msg);
 	void AddPropertyList(BYTE color, const CPropertyList & propList);
 public:
-	LONG GetItemInfo(const CD2Item * pItem, int iGems);		//¶ÁÈ¡ÎïÆ·ÊôĞÔ²¢ÏÔÊ¾£¬·µ»Ø´°ÌåµÄ¸ß¶È¡£iGemsÎªÏâÇ¶±¦Ê¯ÊıÁ¿
+	LONG GetItemInfo(const CD2Item * pItem, int iGems);		//è¯»å–ç‰©å“å±æ€§å¹¶æ˜¾ç¤ºï¼Œè¿”å›çª—ä½“çš„é«˜åº¦ã€‚iGemsä¸ºé•¶åµŒå®çŸ³æ•°é‡
 	const CD2Item * GetItemPtr() const{return m_pItem;}
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
 	DECLARE_MESSAGE_MAP()
 public:

@@ -1,4 +1,4 @@
-#include "StdAfx.h"
+ï»¿#include "StdAfx.h"
 #include "Diablo Edit2.h"
 #include "D2Item.h"
 
@@ -150,7 +150,7 @@ static const HuffmanTree g_huffmanTree;
 void CEar::ReadData(CInBitsStream & bs, BOOL isPtr24) {
 	bs >> bits(iEarClass, 3) >> bits(iEarLevel, 7);
 	int b = isPtr24 ? 8 : 7;
-	BYTE buf[0x40] = { 0 };	//ÈËÎïÃû×Ö×î¶à15¸öUTF8×Ö·û + \0 (16 * 4)
+	BYTE buf[0x40] = { 0 };	//äººç‰©åå­—æœ€å¤š15ä¸ªUTF8å­—ç¬¦ + \0 (16 * 4)
 	for (auto & c : buf) {
 		bs >> bits(c, b);
 		if (!bs.Good() || c == 0)
@@ -255,15 +255,15 @@ COutBitsStream & operator <<(COutBitsStream & bs, const CPropertyList & v) {
 int CPropertyList::ExtSockets() const {
 	int r = 0;
 	for (auto & p : mProperty)
-		if (p.first == 194)	//194ÊÇ¶îÍâ¿×ÊôĞÔID
-			r += p.second;	//¿ÉÄÜÓĞ¶à¸ö194ÊôĞÔ
+		if (p.first == 194)	//194æ˜¯é¢å¤–å­”å±æ€§ID
+			r += p.second;	//å¯èƒ½æœ‰å¤šä¸ª194å±æ€§
 	return r;
 }
 
 BOOL CPropertyList::IsIndestructible() const {
 	for (auto & p : mProperty)
-		if (p.first == 152 && p.second != 0)	//152ÊÇ²»¿ÉÆÆ»µÊôĞÔID
-			return TRUE;	//¿ÉÄÜÓĞ¶à¸ö152ÊôĞÔ
+		if (p.first == 152 && p.second != 0)	//152æ˜¯ä¸å¯ç ´åå±æ€§ID
+			return TRUE;	//å¯èƒ½æœ‰å¤šä¸ª152å±æ€§
 	return FALSE;
 }
 
@@ -442,16 +442,16 @@ CInBitsStream & operator >>(CInBitsStream & bs, pair<CTypeSpecificInfo &, const 
 	}
 	if (get<3>(t))	//bIsStacked
 		bs >> bits(v.iQuantity, 9);
-	if (get<4>(t)) 	//bIsSet, ÕâÊÇÒ»¸öÌ××°
+	if (get<4>(t)) 	//bIsSet, è¿™æ˜¯ä¸€ä¸ªå¥—è£…
 		for (auto & b : v.aHasSetPropList.ensure())
 			if(bs.Good())
 				bs >> b;
 	bs >> v.stPropertyList;
-	if (get<4>(t)) 	//bIsSet, ÕâÊÇÒ»¸öÌ××°
+	if (get<4>(t)) 	//bIsSet, è¿™æ˜¯ä¸€ä¸ªå¥—è£…
 		for (size_t i = 0; bs.Good() && i < v.aHasSetPropList.size(); ++i)
 			if (v.aHasSetPropList[i])
 				bs >> v.apSetProperty[i].ensure();
-	if (get<5>(t))	//bRuneWord, ÓĞ·ûÎÄÖ®ÓïÊôĞÔ
+	if (get<5>(t))	//bRuneWord, æœ‰ç¬¦æ–‡ä¹‹è¯­å±æ€§
 		bs >> v.stRuneWordPropertyList;
 	return bs;
 }
@@ -471,16 +471,16 @@ COutBitsStream & operator <<(COutBitsStream & bs, pair<const CTypeSpecificInfo &
 		bs << bits(v.iSocket, 4);
 	if (get<3>(t))	//bIsStacked
 		bs << bits(v.iQuantity, 9);
-	if (get<4>(t)) 	//bIsSet, ÕâÊÇÒ»¸öÌ××°
+	if (get<4>(t)) 	//bIsSet, è¿™æ˜¯ä¸€ä¸ªå¥—è£…
 		for (auto b : v.aHasSetPropList)
 			if(bs.Good())
 				bs << b;
 	bs << v.stPropertyList;
-	if (get<4>(t)) 	//bIsSet, ÕâÊÇÒ»¸öÌ××°
+	if (get<4>(t)) 	//bIsSet, è¿™æ˜¯ä¸€ä¸ªå¥—è£…
 		for (size_t i = 0; bs.Good() && i < v.aHasSetPropList.size(); ++i)
 			if (v.aHasSetPropList[i])
 				bs << v.apSetProperty[i];
-	if (get<5>(t))	//bRuneWord, ÓĞ·ûÎÄÖ®ÓïÊôĞÔ
+	if (get<5>(t))	//bRuneWord, æœ‰ç¬¦æ–‡ä¹‹è¯­å±æ€§
 		bs << v.stRuneWordPropertyList;
 	return bs;
 }
@@ -529,13 +529,13 @@ const CItemMetaData *  CItemInfo::ReadData(CInBitsStream & bs, BOOL bSimple, BOO
 		else
 			bs >> bits(b, 8);
 	auto pItemData = ::theApp.ItemMetaData(dwTypeID);
-	if (!pItemData) {	//±¾³ÌĞò²»ÄÜÊ¶±ğ´ËÎïÆ·
+	if (!pItemData) {	//æœ¬ç¨‹åºä¸èƒ½è¯†åˆ«æ­¤ç‰©å“
 		if (IsNameValid()) {
 			throw CSFormat(::theApp.MsgBoxInfo(6), sTypeName[0], sTypeName[1], sTypeName[2], sTypeName[3]);
 		} else
 			throw ::theApp.MsgBoxInfo(18);
 	}
-	if (!bSimple)	//ÎïÆ·ÓĞ¶îÍâÊôĞÔ
+	if (!bSimple)	//ç‰©å“æœ‰é¢å¤–å±æ€§
 		bs >> pack(pExtItemInfo.ensure(),
 			make_tuple(pItemData->IsCharm,
 				bRuneWord,
@@ -543,8 +543,8 @@ const CItemMetaData *  CItemInfo::ReadData(CInBitsStream & bs, BOOL bSimple, BOO
 				pItemData->HasMonsterID,
 				pItemData->SpellId,
 				isPtr24));
-	//ÌØÊâÎïÆ·ÀàĞÍµÄ¶îÍâÊı¾İ
-	if (IsGold())	//gld µÄÊıÁ¿Óò
+	//ç‰¹æ®Šç‰©å“ç±»å‹çš„é¢å¤–æ•°æ®
+	if (IsGold())	//gld çš„æ•°é‡åŸŸ
 		bs >> pGold;
 	bs >> bHasRand;
 	if (!bSimple) {
@@ -575,7 +575,7 @@ void CItemInfo::WriteData(COutBitsStream & bs, const CItemMetaData & itemData, B
 			g_huffmanTree.writeData(bs, b);
 		else
 			bs << bits(b, 8);
-	if (!bSimple)	//ÎïÆ·ÓĞ¶îÍâÊôĞÔ
+	if (!bSimple)	//ç‰©å“æœ‰é¢å¤–å±æ€§
 		bs << pack(*pExtItemInfo,
 			make_tuple(itemData.IsCharm,
 				bRuneWord,
@@ -583,8 +583,8 @@ void CItemInfo::WriteData(COutBitsStream & bs, const CItemMetaData & itemData, B
 				itemData.HasMonsterID,
 				itemData.SpellId,
 				isPtr24));
-	//ÌØÊâÎïÆ·ÀàĞÍµÄ¶îÍâÊı¾İ
-	if (IsGold())	//gld µÄÊıÁ¿Óò
+	//ç‰¹æ®Šç‰©å“ç±»å‹çš„é¢å¤–æ•°æ®
+	if (IsGold())	//gld çš„æ•°é‡åŸŸ
 		bs << pGold;
 	bs << bHasRand;
 	if (bHasRand)
@@ -641,7 +641,7 @@ CD2Item::CD2Item(DWORD type) {
 }
 
 CString CD2Item::ItemName() const {
-	if (bEar)	//¶ú¶ä
+	if (bEar)	//è€³æœµ
 		return CSFormat(::theApp.ItemSuspendUI(10), CString(pEar->sEarName));
 	__Tokens name{ ::theApp.ItemName(MetaData().NameIndex) };
 	if (!bSimple) {
@@ -729,10 +729,10 @@ void CD2Item::ReadData(CInBitsStream & bs, BOOL isD2R, BOOL isPtr24) {
 		>> bits(iColumn, 4)
 		>> bits(iRow, 4)
 		>> bits(iStoredIn, 3);
-	if(bEar){	//ÕâÊÇÒ»¸ö¶ú¶ä
+	if(bEar){	//è¿™æ˜¯ä¸€ä¸ªè€³æœµ
 		pEar.ensure().ReadData(bs, isPtr24);
         pItemData = ::theApp.ItemMetaData(0x20726165);	//"ear "
-	} else 		//ÕâÊÇÒ»¸öÎïÆ·,µ«ÊÇÒ²¿ÉÄÜÎª"ear "
+	} else 		//è¿™æ˜¯ä¸€ä¸ªç‰©å“,ä½†æ˜¯ä¹Ÿå¯èƒ½ä¸º"ear "
 		pItemData = pItemInfo.ensure().ReadData(bs, bSimple, bRuneWord, bPersonalized, bSocketed, isD2R, isPtr24);
 	ASSERT(pItemData && bSimple == pItemData->Simple);
 	bs.AlignByte();
@@ -742,7 +742,7 @@ void CD2Item::ReadData(CInBitsStream & bs, BOOL isD2R, BOOL isPtr24) {
 }
 
 void CD2Item::WriteData(COutBitsStream & bs, BOOL isD2R, BOOL isPtr24) const {
-	if (!vUnknownItem.empty()) {	//Î´Ê¶±ğÎïÆ·Êı¾İ
+	if (!vUnknownItem.empty()) {	//æœªè¯†åˆ«ç‰©å“æ•°æ®
 		bs << vUnknownItem;
 	} else {
 		if (!isD2R)
@@ -775,9 +775,9 @@ void CD2Item::WriteData(COutBitsStream & bs, BOOL isD2R, BOOL isPtr24) const {
 			<< bits(iColumn, 4)
 			<< bits(iRow, 4)
 			<< bits(iStoredIn, 3);
-		if (bEar) {	//ÕâÊÇÒ»¸ö¶ú¶ä
+		if (bEar) {	//è¿™æ˜¯ä¸€ä¸ªè€³æœµ
 			pEar->WriteData(bs, isPtr24);
-		} else		//ÕâÊÇÒ»¸öÎïÆ·
+		} else		//è¿™æ˜¯ä¸€ä¸ªç‰©å“
 			pItemInfo->WriteData(bs, *pItemData, bSimple, bRuneWord, bPersonalized, bSocketed, isD2R, isPtr24);
 	}
 	bs.AlignByte();

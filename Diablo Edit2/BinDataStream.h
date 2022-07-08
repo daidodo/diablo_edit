@@ -1,7 +1,7 @@
-#pragma once
+ï»¿#pragma once
 
 #include <vector>
-#include <cstring>
+#include <string>
 #include <cassert>
 #include <string>
 
@@ -40,7 +40,7 @@ OffsetValue<T> offset_value(DWORD offset, const T & value) {
 	return OffsetValue<T>(value, offset);
 }
 
-//´Ófrom¿½±´len±ÈÌØÊı¾İµ½to£¬·Ö±ğÌø¹ıfromµÄÇ°fromOff±ÈÌØ£¬ºÍtoµÄÇ°toOff±ÈÌØ¡£
+//ä»fromæ‹·è´lenæ¯”ç‰¹æ•°æ®åˆ°toï¼Œåˆ†åˆ«è·³è¿‡fromçš„å‰fromOffæ¯”ç‰¹ï¼Œå’Œtoçš„å‰toOffæ¯”ç‰¹ã€‚
 void CopyBits(const BYTE * from, BYTE * to, DWORD fromOff, DWORD toOff, DWORD len);
 
 class CInBitsStream
@@ -63,18 +63,18 @@ public:
 	DWORD DataSize() const { return data_.size(); }
 	DWORD BytePos() const{return bytes_;}
 	bool Good() const { return !bad_; }
-	std::vector<BYTE> & Data() { return data_; }	//·µ»Ø¿ÉĞŞ¸ÄµÄÊı¾İ£¬Ö÷ÒªÓÃÓÚCRCĞ£Ñé
+	std::vector<BYTE> & Data() { return data_; }	//è¿”å›å¯ä¿®æ”¹çš„æ•°æ®ï¼Œä¸»è¦ç”¨äºCRCæ ¡éªŒ
 	void ReadFile(CFile & cf) {
 		data_.resize(size_t(cf.GetLength()));
 		if (!data_.empty())
 			cf.Read(&data_[0], UINT(cf.GetLength()));
 	}
-	//Ëæ»ú¶¨Î»
+	//éšæœºå®šä½
 	void SeekBack(DWORD back) {
 		if (ensurePos(bytes_ - back))
 			bytes_ -= back;
 	}
-	//Ìø¹ıËùÓĞÊı¾İÖ±µ½ÕÒµ½pattern£¬¶¨Î»ÔÚpatternµÄÊ××Ö·ûÎ»ÖÃ
+	//è·³è¿‡æ‰€æœ‰æ•°æ®ç›´åˆ°æ‰¾åˆ°patternï¼Œå®šä½åœ¨patternçš„é¦–å­—ç¬¦ä½ç½®
 	void SkipUntil(const char * pattern) {
 		assert(pattern);
 		if (ensure(0)) {
@@ -83,7 +83,7 @@ public:
 			bytes_ = (wh ? bytes_ + (wh - src) : data_.size());
 		}
 	}
-	//×Ö½Ú¶ÁÈ¡
+	//å­—èŠ‚è¯»å–
 	CInBitsStream & operator >>(DWORD & value) {return readPod(value);}
 	CInBitsStream & operator >>(WORD & value){ return readPod(value); }
 	CInBitsStream & operator >>(BYTE & value){ return readPod(value); }
@@ -101,8 +101,8 @@ public:
 		}
 		return *this;
 	}
-	//Î»¶ÁÈ¡
-	void AlignByte(){	//°´ÕÕ8Î»½øĞĞ¶ÔÆë£¬ÉáÆú¶àÓàµÄÎ»
+	//ä½è¯»å–
+	void AlignByte(){	//æŒ‰ç…§8ä½è¿›è¡Œå¯¹é½ï¼Œèˆå¼ƒå¤šä½™çš„ä½
 		bytes_ += (bits_ + 7) / 8;
 		bits_ = 0;
 	}
@@ -118,13 +118,13 @@ public:
 		}
 		return *this;
 	}
-	//°Ñ²»ÄÜÊ¶±ğµÄÊı¾İ×ª´¢
+	//æŠŠä¸èƒ½è¯†åˆ«çš„æ•°æ®è½¬å‚¨
 	void Restore(std::vector<BYTE> & vec,DWORD from,DWORD to){
 		ASSERT(to >= from);
 		if(ensurePos(from) && ensurePos(to))
 			vec.assign(data_.begin() + from, data_.begin() + to);
 	}
-	//µ÷ÊÔÓÃ£¬µÃµ½ºóĞøµÄ2½øÖÆÎ»Á÷
+	//è°ƒè¯•ç”¨ï¼Œå¾—åˆ°åç»­çš„2è¿›åˆ¶ä½æµ
 	std::string ToString(DWORD len = 32) const;
 private:
 	template<typename T>
@@ -181,7 +181,7 @@ public:
 			cf.Flush();
 		}
 	}
-	//×Ö½ÚĞ´Èë
+	//å­—èŠ‚å†™å…¥
 	COutBitsStream & operator <<(DWORD value) { return writePod(value); }
 	COutBitsStream & operator <<(WORD value) { return writePod(value); }
 	COutBitsStream & operator <<(BYTE value) { return writePod(value); }
@@ -208,8 +208,8 @@ public:
 		}
 		return *this;
 	}
-	//Î»Ğ´Èë
-	void AlignByte() {	//°´ÕÕ8Î»½øĞĞ¶ÔÆë£¬ÉáÆú¶àÓàµÄÎ»
+	//ä½å†™å…¥
+	void AlignByte() {	//æŒ‰ç…§8ä½è¿›è¡Œå¯¹é½ï¼Œèˆå¼ƒå¤šä½™çš„ä½
 		if (Good()) {
 			bytes_ += (bits_ + 7) / 8;
 			bits_ = 0;

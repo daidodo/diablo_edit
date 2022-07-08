@@ -1,31 +1,31 @@
-#pragma once
+ï»¿#pragma once
 
 #include "CharacterDialogBase.h"
 
-// CDlgQuestInfo ¶Ô»°¿ò
+// CDlgQuestInfo å¯¹è¯æ¡†
 
 class CDlgQuestInfo : public CCharacterDialogBase
 {
 	DECLARE_DYNAMIC(CDlgQuestInfo)
 
 public:
-	CDlgQuestInfo(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+	CDlgQuestInfo(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
 	virtual ~CDlgQuestInfo();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_DIALOG_QuestInfo };
 
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
 	DECLARE_MESSAGE_MAP()
-// ×Ô¶¨Òåº¯Êı
+// è‡ªå®šä¹‰å‡½æ•°
 public:
 	void UpdateUI(const CD2S_Struct & character);
 	BOOL GatherData(CD2S_Struct & character);
 	void ResetAll();
 	void LoadText(void);
-// ×Ô¶¨Òå³ÉÔ±
+// è‡ªå®šä¹‰æˆå‘˜
 private:
 	static const int QUEST_NAME_SIZE = 29;
 	static const int LEVEL_SIZE = 3;

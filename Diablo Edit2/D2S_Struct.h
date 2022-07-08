@@ -1,12 +1,12 @@
-#pragma once
+ï»¿#pragma once
 
 #include "D2Item.h"
 
-//ÈÎÎñÍê³ÉĞÅÏ¢
+//ä»»åŠ¡å®Œæˆä¿¡æ¯
 struct CQuestInfoData
 {
 	WORD	wIntroduced1;		//have been introduced (by Warriv) to Act I
-	WORD	wActI[6];			//Act I, Bit 0 indicates the quest is complete,ÏÂÃæÒ²Ò»Ñù
+	WORD	wActI[6];			//Act I, Bit 0 indicates the quest is complete,ä¸‹é¢ä¹Ÿä¸€æ ·
 	WORD	wTraval1;			//this gets set to a non-zero value after you travel from Act I to Act II.
 	WORD	wIntroduced2;		//have been introduced (by Jerhyn) to Act II
 	WORD	wActII[6];			//Act II
@@ -21,7 +21,7 @@ struct CQuestInfoData
 	WORD	wIntroduced5;		//this was set to 1 after completing Terror's End and talking to Cain in act IV
 	WORD	unknown2[2];
 	WORD	wActV[6];			//Act V
-	BYTE	bResetStats;		//°æ±¾1.13¼°ÒÔÉÏ£¬ÉèÖÃ³É 0x2 ¿ÉÒÔÕÒ°¢¿¨À­ÖØÖÃ¼¼ÄÜºÍÊôĞÔµã
+	BYTE	bResetStats;		//ç‰ˆæœ¬1.13åŠä»¥ä¸Šï¼Œè®¾ç½®æˆ 0x2 å¯ä»¥æ‰¾é˜¿å¡æ‹‰é‡ç½®æŠ€èƒ½å’Œå±æ€§ç‚¹
 	BYTE	unknown3;
 	WORD	unknown4[6];
 };
@@ -29,19 +29,19 @@ struct CQuestInfoData
 struct CQuestInfo
 {
 	DWORD	dwMajic;			//0x216F6F57
-	DWORD	dwActs;				//ËÆºõ×ÜÊÇ6
-	WORD	wSize;				//Quest Info½á¹¹µÄ×Ü³¤¶È£¬0x12A(=298=4+4+2+288)
+	DWORD	dwActs;				//ä¼¼ä¹æ€»æ˜¯6
+	WORD	wSize;				//Quest Infoç»“æ„çš„æ€»é•¿åº¦ï¼Œ0x12A(=298=4+4+2+288)
 	CQuestInfoData	QIData[3];
 	//Functions:
 	void Reset() {}
 };
 
-// Ğ¡Õ¾ĞÅÏ¢
+// å°ç«™ä¿¡æ¯
 struct CWaypointData
 {
 	WORD	unkown;				//0x102;
 	BYTE	Waypoints[5];
-	BYTE	unkown2[17];		//È«0
+	BYTE	unkown2[17];		//å…¨0
 };
 
 struct CWaypoints
@@ -54,12 +54,12 @@ struct CWaypoints
 	void Reset() {}
 };
 
-//ÈËÎïÊôĞÔ
+//äººç‰©å±æ€§
 struct CPlayerStats
 {
 	static const int ARRAY_SIZE = 0x10;
 	WORD	wMajic;					//0x6667
-	DWORD	m_adwValue[ARRAY_SIZE];	/*ÒÔÏÂÎª¸÷¸öValueµÄº¬Òå£º
+	DWORD	m_adwValue[ARRAY_SIZE];	/*ä»¥ä¸‹ä¸ºå„ä¸ªValueçš„å«ä¹‰ï¼š
 										0: 9 bits, + 10 bits Strength
 										1: 9 bits, + 10 bits Energy
 										2: 9 bits, + 10 bits Dexterity
@@ -76,36 +76,36 @@ struct CPlayerStats
 										D: 9 bits, + 32 bits Experience
 										E: 9 bits, + 25 bits Gold on Person
 										F: 9 bits, + 25 bits Gold in Stash */
-	WORD iEnd;						//0x1FF: 9 bits, ½áÊø
+	WORD iEnd;						//0x1FF: 9 bits, ç»“æŸ
 	//Functions:
 	void Reset() {}
 };
 
-//ÈËÎï¼¼ÄÜ
+//äººç‰©æŠ€èƒ½
 struct CCharSkills
 {
 	WORD	wMagic;				//0x6669
-	BYTE	bSkillLevel[30];	//¼¼ÄÜµÈ¼¶
+	BYTE	bSkillLevel[30];	//æŠ€èƒ½ç­‰çº§
 	//Functions:
 	void Reset() {}
 };
 
-//Ê¬ÌåÊı¾İ
+//å°¸ä½“æ•°æ®
 struct CCorpseData
 {
 	BYTE		unknown[12];
-	CItemList	stItems;	//Ê¬ÌåÉíÉÏµÄ×°±¸ÁĞ±í
+	CItemList	stItems;	//å°¸ä½“èº«ä¸Šçš„è£…å¤‡åˆ—è¡¨
 	//Functions:
 	void ReadData(CInBitsStream & bs, BOOL isD2R, BOOL isPtr24);
 	void WriteData(COutBitsStream & bs, BOOL isD2R, BOOL isPtr24) const;
 };
 
-//Ê¬Ìå
+//å°¸ä½“
 struct CCorpse
 {
 	WORD		wMagic;					//0x4D4A
-	WORD		wCount;					//Ê¬Ìå¸öÊı, always 0 or 1
-	MayExist<CCorpseData> pCorpseData;	//Ê¬ÌåµÄÊı¾İ, if wCount == 1
+	WORD		wCount;					//å°¸ä½“ä¸ªæ•°, always 0 or 1
+	MayExist<CCorpseData> pCorpseData;	//å°¸ä½“çš„æ•°æ®, if wCount == 1
 	//Function:
 	BOOL HasCorpse() const { return wCount > 0 && pCorpseData.exist(); }
 	void Reset() { pCorpseData.reset(); }
@@ -113,23 +113,23 @@ struct CCorpse
 	void WriteData(COutBitsStream & bs, BOOL isD2R, BOOL isPtr24) const;
 };
 
-//¹ÍÓ¶±ø
+//é›‡ä½£å…µ
 struct CMercenary
 {
 	WORD				wMagic;		//0x666A, "jf"
-	MayExist<CItemList>	stItems;	//¹ÍÓ¶±øµÄ×°±¸ÁĞ±í, if wMercName != 0
+	MayExist<CItemList>	stItems;	//é›‡ä½£å…µçš„è£…å¤‡åˆ—è¡¨, if wMercName != 0
 	//Function:
 	void Reset() { stItems.reset(); }
 	void ReadData(CInBitsStream & bs, BOOL hasMercenary, BOOL isD2R, BOOL isPtr24);
 	void WriteData(COutBitsStream & bs, BOOL hasMercenary, BOOL isD2R, BOOL isPtr24) const;
 };
 
-//¸ÖÌúÊ¯Ä§
+//é’¢é“çŸ³é­”
 struct CGolem
 {
 	WORD	wMagic;				//0x666B, "kf"
 	BYTE	bHasGolem;
-	MayExist<CD2Item>	pItem;	//ÕÙ»½¸ÖÌúÊ¯Ä§µÄÎïÆ·, if bHasGolem != 0
+	MayExist<CD2Item>	pItem;	//å¬å”¤é’¢é“çŸ³é­”çš„ç‰©å“, if bHasGolem != 0
 	//Function:
 	void Reset() { bHasGolem = FALSE; pItem.reset(); }
 	void ReadData(CInBitsStream & bs, BOOL isD2R, BOOL isPtr24);
@@ -156,68 +156,68 @@ struct CD2S_Struct
 private:
 	BOOL WriteData(COutBitsStream & bs) const;
 public:
-	//ÈËÎïĞÅÏ¢
+	//äººç‰©ä¿¡æ¯
 	DWORD	dwMajic;			//0xAA55AA55
-	DWORD	dwVersion;			//ÎÄ¼ş°æ±¾
-								//¶ÔÓÚ1.09ÊÇ0x5C
-								//¶ÔÓÚ1.10ÊÇ0x60
+	DWORD	dwVersion;			//æ–‡ä»¶ç‰ˆæœ¬
+								//å¯¹äº1.09æ˜¯0x5C
+								//å¯¹äº1.10æ˜¯0x60
 								//D2 Resurrected 0x61
 								//PTR2.4 0x62
-	DWORD	dwSize;				//ÎÄ¼ş´óĞ¡bytes
-	DWORD	dwCRC;				//Êı¾İĞ£Ñé
-	DWORD	dwWeaponSet;		//0ÊÇ·ñ»»ÊÖ?
-	BYTE	Name[16];			//ÈËÎïÃû×Ö,Õ¼ÓÃ16×Ö·û
-	BYTE	charType;			//ÈËÎïÀàĞÍ
+	DWORD	dwSize;				//æ–‡ä»¶å¤§å°bytes
+	DWORD	dwCRC;				//æ•°æ®æ ¡éªŒ
+	DWORD	dwWeaponSet;		//0æ˜¯å¦æ¢æ‰‹?
+	BYTE	Name[16];			//äººç‰©åå­—,å ç”¨16å­—ç¬¦
+	BYTE	charType;			//äººç‰©ç±»å‹
 								// 0x40:	Ladder
 								// 0x20:	Expansion
 								// 0x8:		Died before
 								// 0x4:		Hardcore
-	BYTE	charTitle;			//ÈËÎï³ÆÎ½
-								//0:	ÎŞ
+	BYTE	charTitle;			//äººç‰©ç§°è°“
+								//0:	æ— 
 								//5:	Slayer
 								//0xA:	Champion
-								//0xF:	Matriarch»òPatriarch
+								//0xF:	Matriarchæˆ–Patriarch
 	WORD	unkown1;			//0
-	BYTE	charClass;			//ÈËÎï½ÇÉ«
-								//ÑÇÂíÑ·Ama:			0x00
-								//·¨Ê¦Sorceress:		0x01
-								//ËÀÁé·¨Ê¦Necromancer:	0x02
-								//Ê¥ÆïÊ¿Paladin:		0x03
-								//Ò°ÂùÈËBarbarian:		0x04
-								//µÂÅ¬ÒÁDruid:			0x05
-								//´Ì¿ÍAssassin:			0x06
+	BYTE	charClass;			//äººç‰©è§’è‰²
+								//äºšé©¬é€ŠAma:			0x00
+								//æ³•å¸ˆSorceress:		0x01
+								//æ­»çµæ³•å¸ˆNecromancer:	0x02
+								//åœ£éª‘å£«Paladin:		0x03
+								//é‡è›®äººBarbarian:		0x04
+								//å¾·åŠªä¼ŠDruid:			0x05
+								//åˆºå®¢Assassin:			0x06
 	WORD	unkown2;			//0x101E
-	BYTE	charLevel;			//ÈËÎïµÈ¼¶
+	BYTE	charLevel;			//äººç‰©ç­‰çº§
 	DWORD	unkown3;			//0
-	DWORD	dwTime;				//Ê±¼ä´Á
+	DWORD	dwTime;				//æ—¶é—´æˆ³
 	DWORD	unkown4;			//0xFFFFFFFF
-	DWORD	dwSkillKey[16];		//¼¼ÄÜ¿ì½İ¼ü,³¤¶È16
-	DWORD	dwLeftSkill1;		//»»ÊÖÇ°×ó±ß¼¼ÄÜ
-	DWORD	dwRightSkill1;		//»»ÊÖÇ°ÓÒ±ß¼¼ÄÜ
-	DWORD	dwLeftSkill2;		//»»ÊÖºó×ó±ß¼¼ÄÜ
-	DWORD	dwRightSkill2;		//»»ÊÖºóÓÒ±ß¼¼ÄÜ
-	BYTE	outfit[16];			//³¤¶È16
-	BYTE	colors[16];			//³¤¶È16
-	BYTE	Town[3];			//×îºóÍ£ÁôµÄ³ÇÕò
-	DWORD	dwMapSeed;			//µØÍ¼Ëæ»úÊıÖÖ×Ó
+	DWORD	dwSkillKey[16];		//æŠ€èƒ½å¿«æ·é”®,é•¿åº¦16
+	DWORD	dwLeftSkill1;		//æ¢æ‰‹å‰å·¦è¾¹æŠ€èƒ½
+	DWORD	dwRightSkill1;		//æ¢æ‰‹å‰å³è¾¹æŠ€èƒ½
+	DWORD	dwLeftSkill2;		//æ¢æ‰‹åå·¦è¾¹æŠ€èƒ½
+	DWORD	dwRightSkill2;		//æ¢æ‰‹åå³è¾¹æŠ€èƒ½
+	BYTE	outfit[16];			//é•¿åº¦16
+	BYTE	colors[16];			//é•¿åº¦16
+	BYTE	Town[3];			//æœ€ååœç•™çš„åŸé•‡
+	DWORD	dwMapSeed;			//åœ°å›¾éšæœºæ•°ç§å­
 	WORD	unkown5;			//0
-	BYTE	bMercDead;			//¹ÍÓ¶±øËÀÍö±êÖ¾
+	BYTE	bMercDead;			//é›‡ä½£å…µæ­»äº¡æ ‡å¿—
 	BYTE	unkown6;			//0
-	DWORD	dwMercControl;		//¹ÍÓ¶±øControl seed
-	WORD	wMercName;			//¹ÍÓ¶±øÃû×ÖË÷Òı
-	WORD	wMercType;			//¹ÍÓ¶±øÀàĞÍ
-	DWORD	dwMercExp;			//¹ÍÓ¶±ø¾­Ñé
+	DWORD	dwMercControl;		//é›‡ä½£å…µControl seed
+	WORD	wMercName;			//é›‡ä½£å…µåå­—ç´¢å¼•
+	WORD	wMercType;			//é›‡ä½£å…µç±»å‹
+	DWORD	dwMercExp;			//é›‡ä½£å…µç»éªŒ
 	BYTE	unkown7[0x4C];
-	BYTE	NamePTR[0x40];		//PTR2.4ÈËÎïÃû×Ö£¬UTF8±àÂë£¬Õ¼ÓÃ16¸ö×Ö·û
+	BYTE	NamePTR[0x40];		//PTR2.4äººç‰©åå­—ï¼ŒUTF8ç¼–ç ï¼Œå ç”¨16ä¸ªå­—ç¬¦
 	DWORD	unkown8;
 
-	CQuestInfo		QuestInfo;		//ÈÎÎñÍê³ÉĞÅÏ¢,×Ü³¤0x12A
-	CWaypoints		Waypoints;		//Ğ¡Õ¾ĞÅÏ¢
-	BYTE			NPC[0x34];;		//ÓëNPCµÄ½»Ì¸ĞÅÏ¢
-	CPlayerStats	PlayerStats;	//ÈËÎï×´Ì¬ĞÅÏ¢
-	CCharSkills		Skills;			//ÈËÎï¼¼ÄÜĞÅÏ¢
-	CItemList		ItemList;		//ÎïÆ·ÁĞ±í
-	CCorpse			stCorpse;		//Ê¬Ìå
-	CMercenary		stMercenary;	//¹ÍÓ¶±ø
+	CQuestInfo		QuestInfo;		//ä»»åŠ¡å®Œæˆä¿¡æ¯,æ€»é•¿0x12A
+	CWaypoints		Waypoints;		//å°ç«™ä¿¡æ¯
+	BYTE			NPC[0x34];;		//ä¸NPCçš„äº¤è°ˆä¿¡æ¯
+	CPlayerStats	PlayerStats;	//äººç‰©çŠ¶æ€ä¿¡æ¯
+	CCharSkills		Skills;			//äººç‰©æŠ€èƒ½ä¿¡æ¯
+	CItemList		ItemList;		//ç‰©å“åˆ—è¡¨
+	CCorpse			stCorpse;		//å°¸ä½“
+	CMercenary		stMercenary;	//é›‡ä½£å…µ
 	CGolem			stGolem;		//Golem
 };

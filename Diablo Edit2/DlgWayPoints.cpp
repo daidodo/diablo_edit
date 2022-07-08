@@ -1,4 +1,4 @@
-// DlgWayPoints.cpp : ÊµÏÖÎÄ¼ş
+ï»¿// DlgWayPoints.cpp : å®ç°æ–‡ä»¶
 //
 
 #include "stdafx.h"
@@ -6,7 +6,7 @@
 #include "DlgWayPoints.h"
 
 
-// CDlgWayPoints ¶Ô»°¿ò
+// CDlgWayPoints å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(CDlgWayPoints, CCharacterDialogBase)
 
@@ -147,7 +147,7 @@ BOOL CDlgWayPoints::GatherData(CD2S_Struct & character)
 			}else
 				mask <<= 1;
 		}
-		//´¦ÀíCQuestInfoData::wTraval#
+		//å¤„ç†CQuestInfoData::wTraval#
 		character.QuestInfo.QIData[i].wTraval1 = m_bWayData[i][10] ? 1 : 0;
 		character.QuestInfo.QIData[i].wTraval2 = m_bWayData[i][19] ? 1 : 0;
 		character.QuestInfo.QIData[i].wTraval3 = m_bWayData[i][28] ? 1 : 0;
@@ -190,7 +190,7 @@ void CDlgWayPoints::LoadText(void)
 	UpdateData(FALSE);
 }
 
-// CDlgWayPoints ÏûÏ¢´¦Àí³ÌĞò
+// CDlgWayPoints æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 void CDlgWayPoints::OnBnClickedNormal()
 {

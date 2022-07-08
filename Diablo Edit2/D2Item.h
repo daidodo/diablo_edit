@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include "MetaData.h"
 #include "MayExist.h"
@@ -6,12 +6,12 @@
 
 #include <vector>
 
-const int MAX_SOCKETS = 7;	//ÎïÆ·×î´ó¿×Êı£¬¶àÓÚ6¸ö¿ÉÄÜ»áµ¼ÖÂÓÎÏ·±ÀÀ£
+const int MAX_SOCKETS = 7;	//ç‰©å“æœ€å¤§å­”æ•°ï¼Œå¤šäº6ä¸ªå¯èƒ½ä¼šå¯¼è‡´æ¸¸æˆå´©æºƒ
 
-//¼ì²éÈËÎïĞÕÃû
+//æ£€æŸ¥äººç‰©å§“å
 BOOL CheckCharName(const CString & name);
 
-//±à½âÂëÈËÎïĞÕÃû£¬CString <--> UTF8
+//ç¼–è§£ç äººç‰©å§“åï¼ŒCString <--> UTF8
 CString DecodeCharName(const BYTE * name);
 CStringA EncodeCharName(const CString & name);
 
@@ -20,9 +20,9 @@ struct CEar
 {
 	BYTE	iEarClass = 0;	//3 bits
 	BYTE	iEarLevel = 1;	//7 bits
-	CString	sEarName;		//±ä³¤×Ö·û´®
-							//PTR2.4ÒÔÇ°£º7 bit * Count, ÒÔ0x00½áÊø
-							//PTR2.4£ºUTF8±àÂë
+	CString	sEarName;		//å˜é•¿å­—ç¬¦ä¸²
+							//PTR2.4ä»¥å‰ï¼š7 bit * Count, ä»¥0x00ç»“æŸ
+							//PTR2.4ï¼šUTF8ç¼–ç 
 	//Functions:
 	explicit CEar(const CString & name = L"") :sEarName(name) {};
 	void ReadData(CInBitsStream & bs, BOOL isPtr24);
@@ -53,41 +53,41 @@ struct CLongName
 struct CGoldQuantity
 {
 	BOOL	bNotGold = FALSE;	//1 bit
-	WORD	wQuantity = 0;		//12 bits,»Æ½ğÊıÁ¿
+	WORD	wQuantity = 0;		//12 bits,é»„é‡‘æ•°é‡
 };
 
 struct CPropertyList
 {
-	std::vector<std::pair<WORD, DWORD>> mProperty;	//ÊôĞÔÁĞ±í£¬Ã¿Ïî£¨9 bits ID + VALUE)
-	WORD					iEndFlag;				//9 bits, 0x1FF, ½áÊø±êÖ¾
+	std::vector<std::pair<WORD, DWORD>> mProperty;	//å±æ€§åˆ—è¡¨ï¼Œæ¯é¡¹ï¼ˆ9 bits ID + VALUE)
+	WORD					iEndFlag;				//9 bits, 0x1FF, ç»“æŸæ ‡å¿—
 	//Functons:
-	int ExtSockets() const;			//ÊôĞÔÁĞ±íÀïµÄ¶îÍâ¿×Êı
-	BOOL IsIndestructible() const;	//ÊôĞÔÁĞ±íÀïµÄ²»¿ÉÆÆ»µÊôĞÔ
+	int ExtSockets() const;			//å±æ€§åˆ—è¡¨é‡Œçš„é¢å¤–å­”æ•°
+	BOOL IsIndestructible() const;	//å±æ€§åˆ—è¡¨é‡Œçš„ä¸å¯ç ´åå±æ€§
 };
 
 //Extended Item Info
 struct CExtItemInfo
 {
-	BYTE					nGems = 0;		//bit 108-110, Èç¹ûÓĞ¿×£¬ÏâÇ¶µÄ±¦Ê¯Êı
+	BYTE					nGems = 0;		//bit 108-110, å¦‚æœæœ‰å­”ï¼Œé•¶åµŒçš„å®çŸ³æ•°
 	DWORD					dwGUID;			//bit 111-142
 	BYTE					iDropLevel = 99;//bit 143-149,drop level
 	BYTE					iQuality = 2;	/*4 bits
 												1	low quality
 												2	normal
-												3	high quality(°×É«)
-												4	magically enhanced(Ä§·¨,À¶É«)
-												5	part of a set(Ì××°,ÂÌÉ«)
-												6	rare(»Æ½ğ)
-												7	unique(°µ½ğ)
-												8	crafted(ºÏ³É£¬³ÈÉ«) */
+												3	high quality(ç™½è‰²)
+												4	magically enhanced(é­”æ³•,è“è‰²)
+												5	part of a set(å¥—è£…,ç»¿è‰²)
+												6	rare(é»„é‡‘)
+												7	unique(æš—é‡‘)
+												8	crafted(åˆæˆï¼Œæ©™è‰²) */
 	BOOL					bVarGfx = FALSE;//1 bit
-	MayExist<BYTE>			iVarGfx;		//3 bits,Èç¹ûbVarGfx == TRUE,´Ë½á¹¹´æÔÚ,ËÆºõ±íÊ¾ÎïÆ·µÄÍ¼Æ¬Ë÷Òı
+	MayExist<BYTE>			iVarGfx;		//3 bits,å¦‚æœbVarGfx == TRUE,æ­¤ç»“æ„å­˜åœ¨,ä¼¼ä¹è¡¨ç¤ºç‰©å“çš„å›¾ç‰‡ç´¢å¼•
 	BOOL					bClass = FALSE;	//1 bit,Class Info Flag
-	MayExist<WORD>			wClass;			//11 bits,Class Info,Èç¹ûbClass == TRUE,´Ë½á¹¹´æÔÚ
+	MayExist<WORD>			wClass;			//11 bits,Class Info,å¦‚æœbClass == TRUE,æ­¤ç»“æ„å­˜åœ¨
 	//Low Quality
-	MayExist<BYTE>			loQual;			//3 bits,Low Quality sub-type,Èç¹ûiQuality == 1,´Ë½á¹¹´æÔÚ
+	MayExist<BYTE>			loQual;			//3 bits,Low Quality sub-type,å¦‚æœiQuality == 1,æ­¤ç»“æ„å­˜åœ¨
 	//Hi Quality
-	MayExist<BYTE>			hiQual;			//3 bits,Hi Quality sub-type,Èç¹ûiQuality == 3,´Ë½á¹¹´æÔÚ
+	MayExist<BYTE>			hiQual;			//3 bits,Hi Quality sub-type,å¦‚æœiQuality == 3,æ­¤ç»“æ„å­˜åœ¨
 	//Magic
 	MayExist<WORD>			wPrefix;		//11 bits,Magic Prefix,if iQuality == 4
 	MayExist<WORD>			wSuffix;		//11 bits,Magic Suffix,if iQuality == 4
@@ -102,9 +102,9 @@ struct CExtItemInfo
 	//Rune Word
 	MayExist<WORD>			wRune;			//16 bits,Rune word,if bRuneWord == TRUE;
 	//Personalized
-	MayExist<BYTE, 16>		sPersonName;	//ºÍsEarNameÏàÍ¬£¬Ã¿×Ö·ûÕ¼7bits£¬ÒÔ0x00½áÊø,if bPersonalized == TRUE
+	MayExist<BYTE, 16>		sPersonName;	//å’ŒsEarNameç›¸åŒï¼Œæ¯å­—ç¬¦å 7bitsï¼Œä»¥0x00ç»“æŸ,if bPersonalized == TRUE
 	//Monster ID
-	MayExist<WORD>			wMonsterID;		//10 bits,if sTypeNameÊÇÉíÌåÆ÷¹Ù
+	MayExist<WORD>			wMonsterID;		//10 bits,if sTypeNameæ˜¯èº«ä½“å™¨å®˜
 	//Charm
 	MayExist<WORD>			wCharm;			//12 bits,if iQuality == 2 && IsCharm == TRUE
 	//Spell ID
@@ -119,16 +119,16 @@ struct CExtItemInfo
 //Type Specific info
 struct CTypeSpecificInfo
 {
-	MayExist<WORD>			iDefence;		//11 bits,Êµ¼Ê·ÀÓùÖµ+10,if bHasDef = TRUE
+	MayExist<WORD>			iDefence;		//11 bits,å®é™…é˜²å¾¡å€¼+10,if bHasDef = TRUE
 	MayExist<WORD>			iMaxDurability;	//8 bits,if bNoDurability == FALSE
 	MayExist<WORD>			iCurDur;		//9 bits,if iMaxDur > 0
-	MayExist<BYTE>			iSocket;		//4 bits,»ù´¡¿×Êı(0-6),ÊôĞÔÁĞ±íÀï¿ÉÒÔÓĞ¸½¼Ó¿×Êı(×ÜÊı²»³¬¹ı6),if bSocketed = TRUE
+	MayExist<BYTE>			iSocket;		//4 bits,åŸºç¡€å­”æ•°(0-6),å±æ€§åˆ—è¡¨é‡Œå¯ä»¥æœ‰é™„åŠ å­”æ•°(æ€»æ•°ä¸è¶…è¿‡6),if bSocketed = TRUE
 	MayExist<WORD>			iQuantity;		//9 bits,if bStacked == TRUE
 	MayExist<BOOL, 5>		aHasSetPropList;//5 bits,if iQuality == 5 
 	//Rune Word Property
-	CPropertyList			stPropertyList;			//ÊôĞÔÁĞ±í
-	MayExist<CPropertyList> apSetProperty[5];		//Ì××°ÊôĞÔÁĞ±í£¬Ã¿¸öÁĞ±íÊÇ·ñ´æÔÚÓÉ(aHasSetPropList[i] == TRUE)¾ö¶¨
-	MayExist<CPropertyList>	stRuneWordPropertyList;	//·ûÎÄÖ®ÓïÊôĞÔÁĞ±í£¬if bRuneWord == TRUE
+	CPropertyList			stPropertyList;			//å±æ€§åˆ—è¡¨
+	MayExist<CPropertyList> apSetProperty[5];		//å¥—è£…å±æ€§åˆ—è¡¨ï¼Œæ¯ä¸ªåˆ—è¡¨æ˜¯å¦å­˜åœ¨ç”±(aHasSetPropList[i] == TRUE)å†³å®š
+	MayExist<CPropertyList>	stRuneWordPropertyList;	//ç¬¦æ–‡ä¹‹è¯­å±æ€§åˆ—è¡¨ï¼Œif bRuneWord == TRUE
 	//Functions:
 	explicit CTypeSpecificInfo(const CItemMetaData * meta = 0);
 	std::pair<int, int> Sockets() const;	//return: {base sockets, ext sockets}
@@ -145,11 +145,11 @@ struct CItemInfo
 		BYTE						sTypeName[4];	//bit 76-83,84-91,92-99,100-107
 		DWORD						dwTypeID;
 	};
-	MayExist<CExtItemInfo>			pExtItemInfo;	//Èç¹ûbSimple == FALSE£¬Ôò´Ë½á¹¹´æÔÚ
-	MayExist<CGoldQuantity>			pGold;			//Èç¹ûsTypeName == "gld "£¬Ôò´Ë½á¹¹´æÔÚ
+	MayExist<CExtItemInfo>			pExtItemInfo;	//å¦‚æœbSimple == FALSEï¼Œåˆ™æ­¤ç»“æ„å­˜åœ¨
+	MayExist<CGoldQuantity>			pGold;			//å¦‚æœsTypeName == "gld "ï¼Œåˆ™æ­¤ç»“æ„å­˜åœ¨
 	BOOL							bHasRand = FALSE;//1 bit
-	MayExist<DWORD, 3>				pTmStFlag;		//Èç¹ûbHasRand == TRUE£¬Ôò´Ë½á¹¹´æÔÚ
-	MayExist<CTypeSpecificInfo>		pTpSpInfo;		//Èç¹ûbSimple == FALSE£¬Ôò´Ë½á¹¹´æÔÚ
+	MayExist<DWORD, 3>				pTmStFlag;		//å¦‚æœbHasRand == TRUEï¼Œåˆ™æ­¤ç»“æ„å­˜åœ¨
+	MayExist<CTypeSpecificInfo>		pTpSpInfo;		//å¦‚æœbSimple == FALSEï¼Œåˆ™æ­¤ç»“æ„å­˜åœ¨
 	//Functions:
 	explicit CItemInfo(const CItemMetaData * meta = 0);
 	const CItemMetaData * ReadData(CInBitsStream & bs, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed, BOOL isD2R, BOOL isPtr24);
@@ -157,7 +157,7 @@ struct CItemInfo
 	BOOL IsNameValid() const;
 	BOOL IsSet() const { return pExtItemInfo.exist() && pExtItemInfo->IsSet(); }
 	BOOL IsGold() const { return ::memcmp(sTypeName, "gld ", sizeof sTypeName) == 0; }
-	BOOL IsBox() const { return ::memcmp(sTypeName, "box ", sizeof sTypeName) == 0; }			//ÊÇ·ñºÕÀ­µÏ¿¨·½¿é
+	BOOL IsBox() const { return ::memcmp(sTypeName, "box ", sizeof sTypeName) == 0; }			//æ˜¯å¦èµ«æ‹‰è¿ªå¡æ–¹å—
 	int RuneWordId() const { ASSERT(pExtItemInfo.exist()); return pExtItemInfo->RuneWordId(); }
 	int Gems() const { return (pExtItemInfo.exist() ? pExtItemInfo->Gems() : 0); }
 	int Sockets() const { return (pTpSpInfo.exist() ? pTpSpInfo->TotalSockets() : 0); }
@@ -166,13 +166,13 @@ struct CItemInfo
 struct CD2Item
 {
 	WORD	wMajic = 0x4D4A;		//0x4D4A,"JM"
-	BOOL	bQuest = FALSE;			//bit 16,ÊÇ·ñÎªÏµÍ³×°±¸(´ÓÉÌµêÂòµÄ£¿)
+	BOOL	bQuest = FALSE;			//bit 16,æ˜¯å¦ä¸ºç³»ç»Ÿè£…å¤‡(ä»å•†åº—ä¹°çš„ï¼Ÿ)
 	BYTE	iUNKNOWN_01 = 0;		//bit 17-19
-	BOOL	bIdentified = TRUE;		//bit 20,ÊÇ·ñÒÑ¾­±æÊ¶
+	BOOL	bIdentified = TRUE;		//bit 20,æ˜¯å¦å·²ç»è¾¨è¯†
 	BYTE	iUNKNOWN_02 = 0;		//bit 21-23
-	BOOL	bDisabled = FALSE;		//bit 24£¬ÎïÆ·²»¿ÉÓÃ¡£±ÈÈçÄÍ¾Ã¶È±ä³É0ÁË£¬½ö½öÔö¼ÓÄÍ¾Ã¶È²»¹»£¬»¹ÒªÖØÖÃÕâ¸öbit
+	BOOL	bDisabled = FALSE;		//bit 24ï¼Œç‰©å“ä¸å¯ç”¨ã€‚æ¯”å¦‚è€ä¹…åº¦å˜æˆ0äº†ï¼Œä»…ä»…å¢åŠ è€ä¹…åº¦ä¸å¤Ÿï¼Œè¿˜è¦é‡ç½®è¿™ä¸ªbit
 	BYTE	iUNKNOWN_10 = 0;		//bit 25,26
-	BOOL	bSocketed = FALSE;		//bit 27,ÊÇ·ñÓĞ¿×
+	BOOL	bSocketed = FALSE;		//bit 27,æ˜¯å¦æœ‰å­”
 	BYTE	iUNKNOWN_03 = 0;		//bit 28,29
 	BOOL	bBadEquipped = FALSE;	//bit 30
 	BOOL	bUNKNOWN_04 = FALSE;	//bit 31
@@ -181,7 +181,7 @@ struct CD2Item
 	BYTE	iUNKNOWN_05 = 0;		//bit 34-36
 	BOOL	bSimple = TRUE;			//bit 37
 	BOOL	bEthereal = FALSE;		//bit 38
-	BOOL	bUNKNOWN_06 = TRUE;		//bit 39,×ÜÊÇ1
+	BOOL	bUNKNOWN_06 = TRUE;		//bit 39,æ€»æ˜¯1
 	BOOL	bPersonalized = FALSE;	//bit 40
 	BOOL	bUNKNOWN_07 = FALSE;	//bit 41
 	BOOL	bRuneWord = FALSE;		//bit 42
@@ -190,24 +190,24 @@ struct CD2Item
 	BYTE	iUNKNOWN_09 = 0xA0;		//bit 43-50 (D2R)
 	BYTE	iLocation = 0;			//bit 58-60,0 = grid, 1 = equipped, 2 = on belt, 3 = ?, 4 = in hand(has been picked up by the mouse), 5 = ?, 6 = socket(glued into a socket), 7 = ?
 	BYTE	iPosition = 0;			/*bit 61-64,Body position,
-										01 = head(Ã±×Ó)
-										02 = neck£¨ÏîÁ´£©
-										03 = tors£¨ÒÂ·ş£©
-										04 = rarm£¨ÓÒÊÖ£¬ÎäÆ÷£¬¶Ü£©
-										05 = larm£¨×óÊÖ£¬ÎäÆ÷£¬¶Ü£©
-										06 = lrin£¨×óÊÖÖ¸£¬½äÖ¸£©
-										07 = rrin£¨ÓÒÊÖÖ¸£¬½äÖ¸£©
-										08 = belt£¨Ñü´ø£©
-										09 = feet£¨Ğ¬×Ó£©
-										0a = glov£¨ÊÖÌ×£©
-										0b = ralt£¨ÓÒIIÊÖ£¬Expansion Set only£©
-										0c = lalt£¨×óIIÊÖ£¬Expansion Set only£©*/
+										01 = head(å¸½å­)
+										02 = neckï¼ˆé¡¹é“¾ï¼‰
+										03 = torsï¼ˆè¡£æœï¼‰
+										04 = rarmï¼ˆå³æ‰‹ï¼Œæ­¦å™¨ï¼Œç›¾ï¼‰
+										05 = larmï¼ˆå·¦æ‰‹ï¼Œæ­¦å™¨ï¼Œç›¾ï¼‰
+										06 = lrinï¼ˆå·¦æ‰‹æŒ‡ï¼Œæˆ’æŒ‡ï¼‰
+										07 = rrinï¼ˆå³æ‰‹æŒ‡ï¼Œæˆ’æŒ‡ï¼‰
+										08 = beltï¼ˆè…°å¸¦ï¼‰
+										09 = feetï¼ˆé‹å­ï¼‰
+										0a = glovï¼ˆæ‰‹å¥—ï¼‰
+										0b = raltï¼ˆå³IIæ‰‹ï¼ŒExpansion Set onlyï¼‰
+										0c = laltï¼ˆå·¦IIæ‰‹ï¼ŒExpansion Set onlyï¼‰*/
 	BYTE	iColumn = 0;			//bit 65-68
 	BYTE	iRow = 0;				//bit 69-72
 	BYTE	iStoredIn = 1;			//bit 73-75,0 = equip/belt, 1 = inventory, 2 = ?, 3 = ?, 4 = cube, 5 = stash
-	MayExist<CEar>			pEar;		//Èç¹ûbEar == TRUE£¬Ôò´Ë½á¹¹´æÔÚ
-	MayExist<CItemInfo>		pItemInfo;	//Èç¹ûbEar == FALSE£¬Ôò´Ë½á¹¹´æÔÚ
-	std::vector<CD2Item>	aGemItems;	//Èç¹ûÓĞ¿×£¬ÏâÇ¶ÔÚ¿×ÀïµÄ×°±¸
+	MayExist<CEar>			pEar;		//å¦‚æœbEar == TRUEï¼Œåˆ™æ­¤ç»“æ„å­˜åœ¨
+	MayExist<CItemInfo>		pItemInfo;	//å¦‚æœbEar == FALSEï¼Œåˆ™æ­¤ç»“æ„å­˜åœ¨
+	std::vector<CD2Item>	aGemItems;	//å¦‚æœæœ‰å­”ï¼Œé•¶åµŒåœ¨å­”é‡Œçš„è£…å¤‡
 	//Functions
 	explicit CD2Item(DWORD type = 0);
 	const CItemMetaData & MetaData() const { return *pItemData; }
@@ -217,26 +217,26 @@ struct CD2Item
 	BOOL IsEditable() const { return TRUE; }
 	int RuneWordId() const { ASSERT(IsRuneWord() && pItemInfo.exist()); return pItemInfo->RuneWordId(); }
 	int Gems() const { return (pItemInfo.exist() ? pItemInfo->Gems() : 0); }
-	int Sockets() const { return (bSocketed && pItemInfo.exist() ? pItemInfo->Sockets() : 0); }	//ÎïÆ·µÄ¿×Êı×ÜºÍ£¨°üÀ¨ÊôĞÔÔö¼ÓµÄ¿×£©
+	int Sockets() const { return (bSocketed && pItemInfo.exist() ? pItemInfo->Sockets() : 0); }	//ç‰©å“çš„å­”æ•°æ€»å’Œï¼ˆåŒ…æ‹¬å±æ€§å¢åŠ çš„å­”ï¼‰
 	CString ItemName() const;
-	int GemIndexMax() const;	//ÏâÇ¶±¦Ê¯Î»ÖÃË÷Òı×î´óÖµ£¬Ã»ÓĞ·µ»Ø-1
-	BOOL IsBox() const { return pItemInfo.exist() && pItemInfo->IsBox(); }	//ÊÇ·ñºÕÀ­µÏ¿¨·½¿é
+	int GemIndexMax() const;	//é•¶åµŒå®çŸ³ä½ç½®ç´¢å¼•æœ€å¤§å€¼ï¼Œæ²¡æœ‰è¿”å›-1
+	BOOL IsBox() const { return pItemInfo.exist() && pItemInfo->IsBox(); }	//æ˜¯å¦èµ«æ‹‰è¿ªå¡æ–¹å—
 	BOOL HasPropertyList() const { return pItemInfo.exist() && pItemInfo->pTpSpInfo.exist(); }
 	void ReadData(CInBitsStream & bs, BOOL isD2R, BOOL isPtr24);
 	void WriteData(COutBitsStream & bs, BOOL isD2R, BOOL isPtr24) const;
 	BOOL ReadFile(CFile & file);
 	void WriteFile(CFile & file) const;
 private:
-	std::vector<BYTE>		vUnknownItem;	//Èç¹û²»ÄÜÊ¶±ğÎïÆ·,ÄÇÃ´ÎïÆ·µÄÊı¾İ½«´æÔÚÕâÀï
-	const CItemMetaData *	pItemData;		//ÎïÆ·µÄ¶îÍâÊôĞÔ,´óĞ¡,bHasDef,bNoDurability,bStacked,µÈ.Èç¹û²»ÄÜÊ¶±ğÎïÆ·,pItemData = 0;
+	std::vector<BYTE>		vUnknownItem;	//å¦‚æœä¸èƒ½è¯†åˆ«ç‰©å“,é‚£ä¹ˆç‰©å“çš„æ•°æ®å°†å­˜åœ¨è¿™é‡Œ
+	const CItemMetaData *	pItemData;		//ç‰©å“çš„é¢å¤–å±æ€§,å¤§å°,bHasDef,bNoDurability,bStacked,ç­‰.å¦‚æœä¸èƒ½è¯†åˆ«ç‰©å“,pItemData = 0;
 };
 
 struct CItemList
 {
-	//ÈËÎïÎïÆ·ĞÅÏ¢
+	//äººç‰©ç‰©å“ä¿¡æ¯
 	WORD		wMajic;				//0x4D4A,"JM"
-	//WORD		nItems;				//ÎïÆ·ÊıÄ¿
-	std::vector<CD2Item> vItems;	//ËùÓĞÎïÆ·£¬²»°üÀ¨ÏâÇ¶ÔÚ¿×ÀïµÄ
+	//WORD		nItems;				//ç‰©å“æ•°ç›®
+	std::vector<CD2Item> vItems;	//æ‰€æœ‰ç‰©å“ï¼Œä¸åŒ…æ‹¬é•¶åµŒåœ¨å­”é‡Œçš„
 	WORD		wEndMajic;			//0x4D4A,"JM"
 	//Functions:
 	void SwapItems(CItemList & list) { vItems.swap(list.vItems); }
