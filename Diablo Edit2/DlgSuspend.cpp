@@ -187,11 +187,12 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem, int iGems)
 	if(!pItem->bIdentified)
 		AddMsg(RED, ::theApp.ItemSuspendUI(12));
 	//根据信息条数和长度决定窗体长度和宽度
-	LONG maxLen = accumulate(m_sItemMsg.begin(), m_sItemMsg.end(), 0, [](LONG m, auto & a) {return max(m, a.second.GetLength()); });
+	auto pDC = GetDC();
+	LONG maxWidth = accumulate(m_sItemMsg.begin(), m_sItemMsg.end(), 0, [&pDC](LONG m, auto& a) {auto textSize = pDC->GetTextExtent(a.second); return max(m, textSize.cx); });
 	CRect rect;
 	GetWindowRect(&rect);
 	SetWindowPos(0, rect.left, rect.top,
-		max(WINDOW_WIDTH_MIN, WIDTH_PER_CHAR * maxLen),
+		max(WINDOW_WIDTH_MIN, maxWidth + WIDTH_PER_CHAR),
 		HEIGHT_PER_LINE * int(m_sItemMsg.size() + 1),
 		SWP_NOACTIVATE);
 	return 0;
