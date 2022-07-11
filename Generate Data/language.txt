@@ -1,237 +1,237 @@
 *LANG			
-	&English	¼òÌåÖĞÎÄ(&Simplified Chinese)	·±ówÖĞÎÄ(&Traditional Chinese)
-	Warning	¾¯¸æ	¾¯¸æ
-	Error	´íÎó	åeÕ`
-	no title	ÎŞ±êÌâ	Ÿo˜Ëî}
-	Unknown	Î´Öª	Î´Öª
-	Freezing	±ù¶³	±ùƒö
-	Poisoned	ÖĞ¶¾	ÖĞ¶¾
-	Fire Resist	»ğÑæµÖ¿¹	»ğÑæµÖ¿¹
-	Cold Resist	±ùÀäµÖ¿¹	±ùÀäµÖ¿¹
-	Lightning Resist	ÉÁµçµÖ¿¹	éWëŠµÖ¿¹
-	Normal	ÆÕÍ¨	ÆÕÍ¨
+	&English	ç®€ä½“ä¸­æ–‡(&Simplified Chinese)	ç¹é«”ä¸­æ–‡(&Traditional Chinese)
+	Warning	è­¦å‘Š	è­¦å‘Š
+	Error	é”™è¯¯	éŒ¯èª¤
+	no title	æ— æ ‡é¢˜	ç„¡æ¨™é¡Œ
+	Unknown	æœªçŸ¥	æœªçŸ¥
+	Freezing	å†°å†»	å†°å‡
+	Poisoned	ä¸­æ¯’	ä¸­æ¯’
+	Fire Resist	ç«ç„°æŠµæŠ—	ç«ç„°æŠµæŠ—
+	Cold Resist	å†°å†·æŠµæŠ—	å†°å†·æŠµæŠ—
+	Lightning Resist	é—ªç”µæŠµæŠ—	é–ƒé›»æŠµæŠ—
+	Normal	æ™®é€š	æ™®é€š
 			
-100	Foundry	ÖıÔìÌ¨	èTÔìÅ_
-	Level	µÈ¼¶	µÈ¼‰
-	Owner	ÓµÓĞÕß	“íÓĞÕß
-	Quality	ÖÊÁ¿	Ù|Á¿
-	Defence	·ÀÓù	·ÀÓù
-	Quantity	ÊıÁ¿	”µÁ¿
-	Durability	ÄÍ¾Ã¶È	ÄÍ¾Ã¶È
-	Property Transparency	ÊôĞÔĞü¸¡´°Í¸Ã÷¶È	ŒÙĞÔ‘Ò¸¡´°Í¸Ã÷¶È
-	Hide	Òş²Ø	ë[²Ø
-	Socket	ÓĞ¿×	ÓĞ¿×
-	Indestructible	²»¿ÉĞŞ¸´	²»¿ÉĞŞÍ
-	Ethereal	²»¿ÉÆÆ»µ	²»¿ÉÆÆ‰Ä
-	Found	¶ÍÔì	èTÔì
-	Prefix Suffix	Ç°ºó×º	Ç°ºó¾Y
-	Add	Ìí¼Ó	Ìí¼Ó
-	Edit	±à¼­	¾İ‹
-	Delete	É¾³ı	„h³ı
-*=======================²Ëµ¥ÏîµÄÌáÊ¾ĞÅÏ¢			
-	Create a new character	´´½¨ĞÂ½ÇÉ«	„“½¨ĞÂ½ÇÉ«
-	Open an existing character	´ò¿ªÏÖÓĞ½ÇÉ«	´òé_¬FÓĞ½ÇÉ«
-	Save current character	±£´æµ±Ç°½ÇÉ«	±£´æ®”Ç°½ÇÉ«
-	Save current character to another file	ÓÃĞÂÎÄ¼ş±£´æµ±Ç°½ÇÉ«	ÓÃĞÂÎÄ¼ş±£´æ®”Ç°½ÇÉ«
-	Close current character	¹Ø±Õµ±Ç°½ÇÉ«£»ÌáÊ¾±£´æ	êPé]®”Ç°½ÇÉ«£»ÌáÊ¾±£´æ
-	Exit the application	ÍË³öÓ¦ÓÃ³ÌĞò£»ÌáÊ¾±£´æ	ÍË³ö‘ªÓÃ³ÌĞò£»ÌáÊ¾±£´æ
-	Show/Hide toolbar	ÏÔÊ¾»òÒş²Ø¹¤¾ßÀ¸	ï@Ê¾»òë[²Ø¹¤¾ß™Ú
-	Show/Hide status bar	ÏÔÊ¾»òÒş²Ø×´Ì¬À¸	ï@Ê¾»òë[²Ø î‘B™Ú
-	"Show application info, version and license"	ÏÔÊ¾³ÌĞòĞÅÏ¢¡¢°æ±¾ºÅºÍ°æÈ¨	ï@Ê¾³ÌĞòĞÅÏ¢¡¢°æ±¾Ì–ºÍ°æ™à
-	Import an item from file	´ÓÎÄ¼şµ¼ÈëÒ»¼ş×°±¸	ÄÎÄ¼şŒ§ÈëÒ»¼şÑb‚ä
-	Save the item to a file	½«×°±¸µ¼³öµ½ÎÄ¼ş	Œ¢Ñb‚äŒ§³öµ½ÎÄ¼ş
-	Copy the item	¸´ÖÆ×°±¸	Ñ}ÑuÑb‚ä
-	Paste the item copied	Õ³ÌùÒÑ¸´ÖÆµÄ×°±¸	Õ³ÙNÒÑÑ}ÑuµÄÑb‚ä
-	Modify the item	ĞŞ¸Ä×°±¸µÄÊôĞÔ	ĞŞ¸ÄÑb‚äµÄŒÙĞÔ
-	Create a new item	´´½¨ĞÂ×°±¸	„“½¨ĞÂÑb‚ä
-	Create a new item from current one	´´½¨ĞÂ×°±¸²¢¸´ÖÆµ±Ç°×°±¸µÄÊôĞÔ	„“½¨ĞÂÑb‚ä²¢Ñ}Ñu®”Ç°Ñb‚äµÄŒÙĞÔ
-	Remove the item	É¾³ı×°±¸	„h³ıÑb‚ä
-*=======================½ÇÉ«ÎïÆ·UIµ¯³ö²Ëµ¥			
-	&Import	µ¼Èë(&I)	Œ§Èë(&I)
-	&Export	µ¼³ö(&E)	Œ§³ö(&E)
-	&Copy	¸´ÖÆ(&C)	Ñ}Ñu(&C)
-	&Paste	Õ³Ìù(&P)	Õ³ÙN(&P)
-	&Modify	ĞŞ¸Ä(&M)	ĞŞ¸Ä(&M)
-	&New	ĞÂ½¨(&N)	ĞÂ½¨(&N)
-	&New from	´Óµ±Ç°ĞÂ½¨(&N)	Ä®”Ç°ĞÂ½¨(&N)
-	&Remove	É¾³ı(&R)	„h³ı(&R)
-*=======================ÏµÍ³²Ëµ¥			
-	&File	ÎÄ¼ş(&F)	ÎÄ¼ş(&F)
-	&View	ÊÓÍ¼(&V)	Ò•ˆD(&V)
-	&Help	°ïÖú(&H)	ÍÖú(&H)
-	&New	ĞÂ½¨(&N)	ĞÂ½¨(&N)
-	&Open	´ò¿ª(&O)	´òé_(&O)
-	&Save	±£´æ(&S)	±£´æ(&S)
-	Save &As ¡­	Áí´æÎª(&A)¡­	Áí´æé(&A)¡­
-	&Close	¹Ø±Õ(&C)	êPé](&C)
-	E&xit	ÍË³ö(&X)	ÍË³ö(&X)
-	Tool &Bar	¹¤¾ßÀ¸(&B)	¹¤¾ß™Ú(&B)
-	S&tatus Bar	×´Ì¬À¸(&T)	 î‘B™Ú(&T)
-	&Language	ÓïÑÔ(&L)	ÕZÑÔ(&L)
-	&About Diablo Edit ¡­	¹ØÓÚDiablo Edit(&A) ¡­	êPì¶Diablo Edit(&A) ¡­
-*=======================ÆäËû´°¿ÚUI			
-	Please Choose a character class	ÇëÑ¡Ôñ½ÇÉ«	Õˆßx“ñ½ÇÉ«
-	Amazon Skills	ÑÇÂíÑ·¼¼ÄÜ	†ñRßd¼¼ÄÜ
-	Sorceress Skills	·¨Ê¦¼¼ÄÜ	·¨Ÿ¼¼ÄÜ
-	Necromancer Skills	ËÀÁé·¨Ê¦¼¼ÄÜ	ËÀì`·¨Ÿ¼¼ÄÜ
-	Paladin Skills	Ê¥ÆïÊ¿¼¼ÄÜ	Â}òTÊ¿¼¼ÄÜ
-	Barbarian Skills	Ò°ÂùÈË¼¼ÄÜ	Ò°ĞUÈË¼¼ÄÜ
-	Druid Skills	µÂÂ³ÒÀ¼¼ÄÜ	µÂô”ÒÀ¼¼ÄÜ
-	Assassin Skills	´Ì¿Í¼¼ÄÜ	´Ì¿Í¼¼ÄÜ
-	All	È«²¿	È«²¿
-	Items	ÎïÆ·	ÎïÆ·
-	All	È«	È«
-	OK	È·ÈÏ	´_ÕJ
-	Cancel	È¡Ïû	È¡Ïû
-*=======================ĞÂ½¨ÎïÆ·´°¿ÚUI			
-	New Item	´´½¨ÎïÆ·	„“½¨ÎïÆ·
-	Create	´´½¨	„“½¨
-	Cancel	È¡Ïû	È¡Ïû
-*=======================ÖıÔìÌ¨´°¿ÚUI			
-	Level	µÈ¼¶	µÈ¼‰
-	Owner	ÓµÓĞÕß	“íÓĞÕß
-	Class	½ÇÉ«	½ÇÉ«
-	Unidentified	Î´±æÊ¶	Î´±æ×R
-	Ethereal	ÎŞĞÎ	ŸoĞÎ
-	Durability	ÄÍ¾Ã¶È	ÄÍ¾Ã¶È
-	Indestructible	ÎŞ·¨ÆÆ»µ	Ÿo·¨ÆÆ‰Ä
-	Quantity	ÊıÁ¿	”µÁ¿
-	Quality	ÖÊÁ¿	Ù|Á¿
-	Sockets	Ïâ¿×	è‚¿×
-	Defence	·ÀÓù	·À¶R
-	Monster	¹ÖÎï	¹ÖÎï
-	First Name	Ãû×ÖÒ»	Ãû×Ö1
-	Second Name	Ãû×Ö¶ş	Ãû×Ö2
-	Sub Type	×ÓÀà	×Óî
-	Prefix 1	Ç°×º1	Ç°¾Y1
-	Suffix 1	ºó×º1	áá¾Y1
-	Set Name	Ì××°Ãû³Æ	Ì×ÑbÃû×Ö
-	Unique Name	°µ½ğ×°±¸	°µ½ğÑb‚ä
-	Rune Word	·ûÎÄÖ®Óï	·ûÎÄÖ®ÕZ
-	Save	±£´æ	±£´æ
-	Cancel	È¡Ïû	È¡Ïû
-	Properties	ÊôĞÔ	ŒÙĞÔ
-	Set 1	Ì××°1	Ì×Ñb1
-	Set 2	Ì××°2	Ì×Ñb2
-	Set 3	Ì××°3	Ì×Ñb3
-	Set 4	Ì××°4	Ì×Ñb4
-	Set 5	Ì××°5	Ì×Ñb5
-	Rune Word	·ûÎÄÖ®Óï	·ûÎÄÖ®ÕZ
-	Code	´úÂë	´ú´a
-	Description	ËµÃ÷	ÕhÃ÷
-*=======================ÎïÆ·ÊôĞÔĞü¸¡´°¿ÚUI			
-	Crude	´Ö²ÚµÄ	´Ö²ÚµÄ
-	Superior	³¬Ç¿µÄ	³¬ŠµÄ
-	Defence: %d	·ÀÓù: %d	·À¶R: %d
-	One Hand Damage: %d to %d	µ¥ÊÖÉËº¦: %d µ½ %d	†ÎÊÖ‚ûº¦: %d µ½ %d
-	Two Hands Damage: %d to %d	Ë«ÊÖÉËº¦: %d µ½ %d	ëpÊÖ‚ûº¦: %d µ½ %d
-	Quantity: %d	ÊıÁ¿£º%d	”µÁ¿£º%d
-	Durability: %d / %d	ÄÍ¾Ã¶È: %d Ö® %d	ÄÍ¾Ã¶È: %d Ö® %d
-	Indestructible	ÎŞ·¨ÆÆ»µ	Ÿo·¨ÆÆ‰Ä
-	Ethereal(cannot be repaired)	ÎŞĞÎµÄ(ÎŞ·¨ĞŞ¸´)	ŸoĞÎµÄ(Ÿo·¨ĞŞÍ)
-	Sockets(%d/%d)	ÓĞ°¼²Û(%d/%d)	ÓĞ°¼²Û(%d/%d)
-	%s's Ear	(%s)µÄ¶ú¶ä	(%s)µÄ¶ú¶ä
-	Level %d	%d¼¶	%d¼‰
-	Unidentified	Î´±æÊ¶	Î´±æ×R
-*=======================½ÇÉ«×°±¸ĞÅÏ¢UI			
-	Sockets	¿×	¿×
-	Iron Golem	½ğÊôÊ¯Ä§	½ğŒÙÊ¯Ä§
-	Cube	·½¿é	·½‰K
-	Belt	Ñü´ø	Ñü§
-	Corpse	Ê¬Ìå	Ê¬ów
-	Mercenary	¹ÍÓ¶±ø	ƒl‚ò±ø
-	Name	ĞÕÃû	ĞÕÃû
-	Type	ÀàĞÍ	îĞÍ
-	Exp.	¾­Ñé	½›ò
-	Dead	ËÀÍö	ËÀÍö
-	Double click to resume	Ë«»÷»¹Ô­ÎïÆ·	ëp“ôß€Ô­ÎïÆ·
-	Recycle	»ØÊÕÕ¾	»ØÊÕÕ¾
-*=======================½ÇÉ«»ù±¾ĞÅÏ¢UI			
-	Basic Info	»ù±¾ĞÅÏ¢	»ù±¾ĞÅÏ¢
-	Waypoints	Ğ¡Õ¾	Ğ¡Õ¾
-	Missions	ÈÎÎñ	ÈÎ„Õ
-	Skills	¼¼ÄÜ	¼¼ÄÜ
-	Mana	·¨Á¦	·¨Á¦
-	Version	°æ±¾	°æ±¾
-	Character	½ÇÉ«	½ÇÉ«
-	Name	Ãû×Ö	Ãû×Ö
-	Title	³ÆÎ½	·QÖ^
-	Weapon	ÎäÆ÷	ÎäÆ÷
-	Last game time	×î½üÓÎÏ·Ê±¼ä	×î½üß[‘ò•rég
-	Last position	×îºóÎ»ÖÃ	×îááÎ»ÖÃ
-	Level	µÈ¼¶	µÈ¼‰
-	Experience	¾­Ñé	½›ò
-	Level And Experience	µÈ¼¶Óë¾­Ñé¶ÔÕÕ±í	µÈ¼‰Åc½›òŒ¦ÕÕ±í
-	Character Stats	ÈËÎï»ù±¾ÊôĞÔ	ÈËÎï»ù±¾ŒÙĞÔ
-	Strength	Á¦Á¿	Á¦Á¿
-	Dexterity	Ãô½İ	Ãô½İ
-	Vitality	ÌåÁ¦	ówÁ¦
-	Energy	¾«Á¦	¾«Á¦
-	Stat Points	×´Ì¬µãÊ£Óà	 î‘BücÊ£ğN
-	Basic Value	»ù´¡Öµ	»ùµAÖµ
-	Current	µ±Ç°Öµ	®”Ç°Öµ
-	Stamina	ÄÍÁ¦	ÄÍÁ¦
-	Life	ÉúÃü	ÉúÃü
-	Ladder	ÌìÌİ	ÌìÌİ
-	Expansion	×ÊÁÏÆ¬	ÙYÁÏÆ¬
-	Hardcore	×¨¼Ò¼¶	Œ£¼Ò¼‰
-	Died berfore	ÒÔÇ°ËÀ¹ı	ÒÔÇ°ËÀß^
-	Skill Points	¼¼ÄÜµãÊ£Óà	¼¼ÄÜücÊ£ğN
-	Gold in person	ÉíÉÏ½ğÇ®	ÉíÉÏ½ğåX
-	Gold in stash	Ïä×Ó½ğÇ®	Ïä×Ó½ğåX
-*=======================¶Ô»°¿òÏûÏ¢			
-	"Character name format error\nLength:  2-15 chars\nContent: a-z,A-Z,-,_\nCaution: Invalid name may cause character fail to load"	ÈËÎïÃû×Ö¸ñÊ½´íÎó\n³¤¶È£º2-15¸ö×Ö·û\n°üÀ¨£º×ÖÄ¸£¬ÎÄ×Ö£¬-£¬_\n×¢Òâ£ºÎŞĞ§Ãû×Ö¿ÉÄÜµ¼ÖÂ½ÇÉ«ÎŞ·¨¼ÓÔØ	ÈËÎïÃû×Ö¸ñÊ½åeÕ`\néL¶È£º2-15‚€×Ö·û\n°üÀ¨£º×ÖÄ¸£¬”µ×Ö£¬-£¬_\n×¢Òâ£º·Ç·¨Ãû×Ö¿ÉÄÜŒ§ÖÂ½ÇÉ«Ÿo·¨¼Óİd
-	Character level is between 1-127	ÈËÎïµÈ¼¶±ØĞëÔÚ1-127Ö®¼ä	ÈËÎïµÈ¼‰±ØíšÔÚ1-127Ö®ég
-	"Strength, Energy, Dexterity, Vitality and Stat Points is between 0-1023\nLife, Mana and Stamina is between 0-8191\nSkill Points is between 0-255"	Á¦Á¿¡¢Ãô½İ¡¢ÌåÁ¦¡¢¾«Á¦ºÍ×´Ì¬µãÊı±ØĞëÔÚ0-1023Ö®¼ä\nÄÍÁ¦¡¢ÉúÃüºÍ·¨Á¦Öµ±ØĞëÔÚ0-8191Ö®¼ä\n¼¼ÄÜµãÊı±ØĞëÔÚ0-255Ö®¼ä	Á¦Á¿¡¢Ãô½İ¡¢ówÁ¦¡¢¾«Á¦ºÍ î‘Büc”µÖµ±ØíšÔÚ0-1023Ö®ég\nÄÍÁ¦¡¢ÉúÃüºÍ·¨Á¦Öµ±ØíšÔÚ0-8191Ö®ég\n¼¼ÄÜüc”µÖµ±ØíšÔÚ0-255Ö®ég
-	Too many golds in person or stash	ÉíÉÏ»òÏä×ÓµÄ½ğÇ®Êı¹ı¶à	ÉíÉÏ»òÏä×ÓµÄ½ğåX”µß^¶à
-	Please choose character class	ÇëÑ¡ÔñÒ»ÖÖ½ÇÉ«	Õˆßx“ñÒ»·N½ÇÉ«
-	Skill levels must be between 0-127	¼¼ÄÜµÈ¼¶±ØĞëÔÚ0-127Ö®¼ä	¼¼ÄÜµÈ¼‰±ØíšÔÚ0-127Ö®ég
-	(%c%c%c%c)Unrecognised Item Code	(%c%c%c%c)²»ÄÜÊ¶±ğµÄÎïÆ·´úÂë	(%c%c%c%c)²»¿É×R„eµÄÎïÆ·´ú´a
-	Unkown Item Quality: iQuality = %d	Î´ÖªµÄÎïÆ·µÈ¼¶£ºiQuality = %d	Î´ÖªµÄÎïÆ·µÈ¼‰£ºiQuality = %d
-	Save the character %s ?	ÊÇ·ñ±£´æÒÑ´ò¿ªµÄÈËÎï %s £¿	ÊÇ·ñ±£´æÒÑ´òé_µÄÈËÎï %s  £¿
-	"Character name and file name are different, continue?"	ÈËÎïÃû×ÖÓëÎÄ¼şÃû²»Í¬£¬ÊÇ·ñ¼ÌĞø£¿	ÈËÎïÃû×ÖÅcÎÄ¼şÃû²»Í¬£¬ÊÇ·ñÀ^Àm£¿
+100	Foundry	é“¸é€ å°	é‘„é€ è‡º
+	Level	ç­‰çº§	ç­‰ç´š
+	Owner	æ‹¥æœ‰è€…	æ“æœ‰è€…
+	Quality	è´¨é‡	è³ªé‡
+	Defence	é˜²å¾¡	é˜²å¾¡
+	Quantity	æ•°é‡	æ•¸é‡
+	Durability	è€ä¹…åº¦	è€ä¹…åº¦
+	Property Transparency	å±æ€§æ‚¬æµ®çª—é€æ˜åº¦	å±¬æ€§æ‡¸æµ®çª—é€æ˜åº¦
+	Hide	éšè—	éš±è—
+	Socket	æœ‰å­”	æœ‰å­”
+	Indestructible	ä¸å¯ä¿®å¤	ä¸å¯ä¿®å¾©
+	Ethereal	ä¸å¯ç ´å	ä¸å¯ç ´å£
+	Found	é”»é€ 	é‘„é€ 
+	Prefix Suffix	å‰åç¼€	å‰åç¶´
+	Add	æ·»åŠ 	æ·»åŠ 
+	Edit	ç¼–è¾‘	ç·¨è¼¯
+	Delete	åˆ é™¤	åˆªé™¤
+*=======================èœå•é¡¹çš„æç¤ºä¿¡æ¯			
+	Create a new character	åˆ›å»ºæ–°è§’è‰²	å‰µå»ºæ–°è§’è‰²
+	Open an existing character	æ‰“å¼€ç°æœ‰è§’è‰²	æ‰“é–‹ç¾æœ‰è§’è‰²
+	Save current character	ä¿å­˜å½“å‰è§’è‰²	ä¿å­˜ç•¶å‰è§’è‰²
+	Save current character to another file	ç”¨æ–°æ–‡ä»¶ä¿å­˜å½“å‰è§’è‰²	ç”¨æ–°æ–‡ä»¶ä¿å­˜ç•¶å‰è§’è‰²
+	Close current character	å…³é—­å½“å‰è§’è‰²ï¼›æç¤ºä¿å­˜	é—œé–‰ç•¶å‰è§’è‰²ï¼›æç¤ºä¿å­˜
+	Exit the application	é€€å‡ºåº”ç”¨ç¨‹åºï¼›æç¤ºä¿å­˜	é€€å‡ºæ‡‰ç”¨ç¨‹åºï¼›æç¤ºä¿å­˜
+	Show/Hide toolbar	æ˜¾ç¤ºæˆ–éšè—å·¥å…·æ 	é¡¯ç¤ºæˆ–éš±è—å·¥å…·æ¬„
+	Show/Hide status bar	æ˜¾ç¤ºæˆ–éšè—çŠ¶æ€æ 	é¡¯ç¤ºæˆ–éš±è—ç‹€æ…‹æ¬„
+	"Show application info, version and license"	æ˜¾ç¤ºç¨‹åºä¿¡æ¯ã€ç‰ˆæœ¬å·å’Œç‰ˆæƒ	é¡¯ç¤ºç¨‹åºä¿¡æ¯ã€ç‰ˆæœ¬è™Ÿå’Œç‰ˆæ¬Š
+	Import an item from file	ä»æ–‡ä»¶å¯¼å…¥ä¸€ä»¶è£…å¤‡	å¾æ–‡ä»¶å°å…¥ä¸€ä»¶è£å‚™
+	Save the item to a file	å°†è£…å¤‡å¯¼å‡ºåˆ°æ–‡ä»¶	å°‡è£å‚™å°å‡ºåˆ°æ–‡ä»¶
+	Copy the item	å¤åˆ¶è£…å¤‡	è¤‡è£½è£å‚™
+	Paste the item copied	ç²˜è´´å·²å¤åˆ¶çš„è£…å¤‡	ç²˜è²¼å·²è¤‡è£½çš„è£å‚™
+	Modify the item	ä¿®æ”¹è£…å¤‡çš„å±æ€§	ä¿®æ”¹è£å‚™çš„å±¬æ€§
+	Create a new item	åˆ›å»ºæ–°è£…å¤‡	å‰µå»ºæ–°è£å‚™
+	Create a new item from current one	åˆ›å»ºæ–°è£…å¤‡å¹¶å¤åˆ¶å½“å‰è£…å¤‡çš„å±æ€§	å‰µå»ºæ–°è£å‚™å¹¶è¤‡è£½ç•¶å‰è£å‚™çš„å±¬æ€§
+	Remove the item	åˆ é™¤è£…å¤‡	åˆªé™¤è£å‚™
+*=======================è§’è‰²ç‰©å“UIå¼¹å‡ºèœå•			
+	&Import	å¯¼å…¥(&I)	å°å…¥(&I)
+	&Export	å¯¼å‡º(&E)	å°å‡º(&E)
+	&Copy	å¤åˆ¶(&C)	è¤‡è£½(&C)
+	&Paste	ç²˜è´´(&P)	ç²˜è²¼(&P)
+	&Modify	ä¿®æ”¹(&M)	ä¿®æ”¹(&M)
+	&New	æ–°å»º(&N)	æ–°å»º(&N)
+	&New from	ä»å½“å‰æ–°å»º(&N)	å¾ç•¶å‰æ–°å»º(&N)
+	&Remove	åˆ é™¤(&R)	åˆªé™¤(&R)
+*=======================ç³»ç»Ÿèœå•			
+	&File	æ–‡ä»¶(&F)	æ–‡ä»¶(&F)
+	&View	è§†å›¾(&V)	è¦–åœ–(&V)
+	&Help	å¸®åŠ©(&H)	å¹«åŠ©(&H)
+	&New	æ–°å»º(&N)	æ–°å»º(&N)
+	&Open	æ‰“å¼€(&O)	æ‰“é–‹(&O)
+	&Save	ä¿å­˜(&S)	ä¿å­˜(&S)
+	Save &As â€¦	å¦å­˜ä¸º(&A)â€¦	å¦å­˜ç‚º(&A)â€¦
+	&Close	å…³é—­(&C)	é—œé–‰(&C)
+	E&xit	é€€å‡º(&X)	é€€å‡º(&X)
+	Tool &Bar	å·¥å…·æ (&B)	å·¥å…·æ¬„(&B)
+	S&tatus Bar	çŠ¶æ€æ (&T)	ç‹€æ…‹æ¬„(&T)
+	&Language	è¯­è¨€(&L)	èªè¨€(&L)
+	&About Diablo Edit â€¦	å…³äºDiablo Edit(&A) â€¦	é—œæ–¼Diablo Edit(&A) â€¦
+*=======================å…¶ä»–çª—å£UI			
+	Please Choose a character class	è¯·é€‰æ‹©è§’è‰²	è«‹é¸æ“‡è§’è‰²
+	Amazon Skills	äºšé©¬é€ŠæŠ€èƒ½	äºé¦¬éœæŠ€èƒ½
+	Sorceress Skills	æ³•å¸ˆæŠ€èƒ½	æ³•å¸«æŠ€èƒ½
+	Necromancer Skills	æ­»çµæ³•å¸ˆæŠ€èƒ½	æ­»éˆæ³•å¸«æŠ€èƒ½
+	Paladin Skills	åœ£éª‘å£«æŠ€èƒ½	è–é¨å£«æŠ€èƒ½
+	Barbarian Skills	é‡è›®äººæŠ€èƒ½	é‡è »äººæŠ€èƒ½
+	Druid Skills	å¾·é²ä¾æŠ€èƒ½	å¾·é­¯ä¾æŠ€èƒ½
+	Assassin Skills	åˆºå®¢æŠ€èƒ½	åˆºå®¢æŠ€èƒ½
+	All	å…¨éƒ¨	å…¨éƒ¨
+	Items	ç‰©å“	ç‰©å“
+	All	å…¨	å…¨
+	OK	ç¡®è®¤	ç¢ºèª
+	Cancel	å–æ¶ˆ	å–æ¶ˆ
+*=======================æ–°å»ºç‰©å“çª—å£UI			
+	New Item	åˆ›å»ºç‰©å“	å‰µå»ºç‰©å“
+	Create	åˆ›å»º	å‰µå»º
+	Cancel	å–æ¶ˆ	å–æ¶ˆ
+*=======================é“¸é€ å°çª—å£UI			
+	Level	ç­‰çº§	ç­‰ç´š
+	Owner	æ‹¥æœ‰è€…	æ“æœ‰è€…
+	Class	è§’è‰²	è§’è‰²
+	Unidentified	æœªè¾¨è¯†	æœªè¾¨è­˜
+	Ethereal	æ— å½¢	ç„¡å½¢
+	Durability	è€ä¹…åº¦	è€ä¹…åº¦
+	Indestructible	æ— æ³•ç ´å	ç„¡æ³•ç ´å£
+	Quantity	æ•°é‡	æ•¸é‡
+	Quality	è´¨é‡	è³ªé‡
+	Sockets	é•¶å­”	é‘²å­”
+	Defence	é˜²å¾¡	é˜²ç¦¦
+	Monster	æ€ªç‰©	æ€ªç‰©
+	First Name	åå­—ä¸€	åå­—1
+	Second Name	åå­—äºŒ	åå­—2
+	Sub Type	å­ç±»	å­é¡
+	Prefix 1	å‰ç¼€1	å‰ç¶´1
+	Suffix 1	åç¼€1	å¾Œç¶´1
+	Set Name	å¥—è£…åç§°	å¥—è£åå­—
+	Unique Name	æš—é‡‘è£…å¤‡	æš—é‡‘è£å‚™
+	Rune Word	ç¬¦æ–‡ä¹‹è¯­	ç¬¦æ–‡ä¹‹èª
+	Save	ä¿å­˜	ä¿å­˜
+	Cancel	å–æ¶ˆ	å–æ¶ˆ
+	Properties	å±æ€§	å±¬æ€§
+	Set 1	å¥—è£…1	å¥—è£1
+	Set 2	å¥—è£…2	å¥—è£2
+	Set 3	å¥—è£…3	å¥—è£3
+	Set 4	å¥—è£…4	å¥—è£4
+	Set 5	å¥—è£…5	å¥—è£5
+	Rune Word	ç¬¦æ–‡ä¹‹è¯­	ç¬¦æ–‡ä¹‹èª
+	Code	ä»£ç 	ä»£ç¢¼
+	Description	è¯´æ˜	èª¬æ˜
+*=======================ç‰©å“å±æ€§æ‚¬æµ®çª—å£UI			
+	Crude	ç²—ç³™çš„	ç²—ç³™çš„
+	Superior	è¶…å¼ºçš„	è¶…å¼·çš„
+	Defence: %d	é˜²å¾¡: %d	é˜²ç¦¦: %d
+	One Hand Damage: %d to %d	å•æ‰‹ä¼¤å®³: %d åˆ° %d	å–®æ‰‹å‚·å®³: %d åˆ° %d
+	Two Hands Damage: %d to %d	åŒæ‰‹ä¼¤å®³: %d åˆ° %d	é›™æ‰‹å‚·å®³: %d åˆ° %d
+	Quantity: %d	æ•°é‡ï¼š%d	æ•¸é‡ï¼š%d
+	Durability: %d / %d	è€ä¹…åº¦: %d ä¹‹ %d	è€ä¹…åº¦: %d ä¹‹ %d
+	Indestructible	æ— æ³•ç ´å	ç„¡æ³•ç ´å£
+	Ethereal(cannot be repaired)	æ— å½¢çš„(æ— æ³•ä¿®å¤)	ç„¡å½¢çš„(ç„¡æ³•ä¿®å¾©)
+	Sockets(%d/%d)	æœ‰å‡¹æ§½(%d/%d)	æœ‰å‡¹æ§½(%d/%d)
+	%s's Ear	(%s)çš„è€³æœµ	(%s)çš„è€³æœµ
+	Level %d	%dçº§	%dç´š
+	Unidentified	æœªè¾¨è¯†	æœªè¾¨è­˜
+*=======================è§’è‰²è£…å¤‡ä¿¡æ¯UI			
+	Sockets	å­”	å­”
+	Iron Golem	é‡‘å±çŸ³é­”	é‡‘å±¬çŸ³é­”
+	Cube	æ–¹å—	æ–¹å¡Š
+	Belt	è…°å¸¦	è…°å¸¶
+	Corpse	å°¸ä½“	å°¸é«”
+	Mercenary	é›‡ä½£å…µ	åƒ±å‚­å…µ
+	Name	å§“å	å§“å
+	Type	ç±»å‹	é¡å‹
+	Exp.	ç»éªŒ	ç¶“é©—
+	Dead	æ­»äº¡	æ­»äº¡
+	Double click to resume	åŒå‡»è¿˜åŸç‰©å“	é›™æ“Šé‚„åŸç‰©å“
+	Recycle	å›æ”¶ç«™	å›æ”¶ç«™
+*=======================è§’è‰²åŸºæœ¬ä¿¡æ¯UI			
+	Basic Info	åŸºæœ¬ä¿¡æ¯	åŸºæœ¬ä¿¡æ¯
+	Waypoints	å°ç«™	å°ç«™
+	Missions	ä»»åŠ¡	ä»»å‹™
+	Skills	æŠ€èƒ½	æŠ€èƒ½
+	Mana	æ³•åŠ›	æ³•åŠ›
+	Version	ç‰ˆæœ¬	ç‰ˆæœ¬
+	Character	è§’è‰²	è§’è‰²
+	Name	åå­—	åå­—
+	Title	ç§°è°“	ç¨±è¬‚
+	Weapon	æ­¦å™¨	æ­¦å™¨
+	Last game time	æœ€è¿‘æ¸¸æˆæ—¶é—´	æœ€è¿‘éŠæˆ²æ™‚é–“
+	Last position	æœ€åä½ç½®	æœ€å¾Œä½ç½®
+	Level	ç­‰çº§	ç­‰ç´š
+	Experience	ç»éªŒ	ç¶“é©—
+	Level And Experience	ç­‰çº§ä¸ç»éªŒå¯¹ç…§è¡¨	ç­‰ç´šèˆ‡ç¶“é©—å°ç…§è¡¨
+	Character Stats	äººç‰©åŸºæœ¬å±æ€§	äººç‰©åŸºæœ¬å±¬æ€§
+	Strength	åŠ›é‡	åŠ›é‡
+	Dexterity	æ•æ·	æ•æ·
+	Vitality	ä½“åŠ›	é«”åŠ›
+	Energy	ç²¾åŠ›	ç²¾åŠ›
+	Stat Points	çŠ¶æ€ç‚¹å‰©ä½™	ç‹€æ…‹é»å‰©é¤˜
+	Basic Value	åŸºç¡€å€¼	åŸºç¤å€¼
+	Current	å½“å‰å€¼	ç•¶å‰å€¼
+	Stamina	è€åŠ›	è€åŠ›
+	Life	ç”Ÿå‘½	ç”Ÿå‘½
+	Ladder	å¤©æ¢¯	å¤©æ¢¯
+	Expansion	èµ„æ–™ç‰‡	è³‡æ–™ç‰‡
+	Hardcore	ä¸“å®¶çº§	å°ˆå®¶ç´š
+	Died berfore	ä»¥å‰æ­»è¿‡	ä»¥å‰æ­»é
+	Skill Points	æŠ€èƒ½ç‚¹å‰©ä½™	æŠ€èƒ½é»å‰©é¤˜
+	Gold in person	èº«ä¸Šé‡‘é’±	èº«ä¸Šé‡‘éŒ¢
+	Gold in stash	ç®±å­é‡‘é’±	ç®±å­é‡‘éŒ¢
+*=======================å¯¹è¯æ¡†æ¶ˆæ¯			
+	"Character name format error\nLength:  2-15 chars\nContent: a-z,A-Z,-,_\nCaution: Invalid name may cause character fail to load"	äººç‰©åå­—æ ¼å¼é”™è¯¯\né•¿åº¦ï¼š2-15ä¸ªå­—ç¬¦\nåŒ…æ‹¬ï¼šå­—æ¯ï¼Œæ–‡å­—ï¼Œ-ï¼Œ_\næ³¨æ„ï¼šæ— æ•ˆåå­—å¯èƒ½å¯¼è‡´è§’è‰²æ— æ³•åŠ è½½	äººç‰©åå­—æ ¼å¼éŒ¯èª¤\né•·åº¦ï¼š2-15å€‹å­—ç¬¦\nåŒ…æ‹¬ï¼šå­—æ¯ï¼Œæ•¸å­—ï¼Œ-ï¼Œ_\næ³¨æ„ï¼šéæ³•åå­—å¯èƒ½å°è‡´è§’è‰²ç„¡æ³•åŠ è¼‰
+	Character level is between 1-127	äººç‰©ç­‰çº§å¿…é¡»åœ¨1-127ä¹‹é—´	äººç‰©ç­‰ç´šå¿…é ˆåœ¨1-127ä¹‹é–“
+	"Strength, Energy, Dexterity, Vitality and Stat Points is between 0-1023\nLife, Mana and Stamina is between 0-8191\nSkill Points is between 0-255"	åŠ›é‡ã€æ•æ·ã€ä½“åŠ›ã€ç²¾åŠ›å’ŒçŠ¶æ€ç‚¹æ•°å¿…é¡»åœ¨0-1023ä¹‹é—´\nè€åŠ›ã€ç”Ÿå‘½å’Œæ³•åŠ›å€¼å¿…é¡»åœ¨0-8191ä¹‹é—´\næŠ€èƒ½ç‚¹æ•°å¿…é¡»åœ¨0-255ä¹‹é—´	åŠ›é‡ã€æ•æ·ã€é«”åŠ›ã€ç²¾åŠ›å’Œç‹€æ…‹é»æ•¸å€¼å¿…é ˆåœ¨0-1023ä¹‹é–“\nè€åŠ›ã€ç”Ÿå‘½å’Œæ³•åŠ›å€¼å¿…é ˆåœ¨0-8191ä¹‹é–“\næŠ€èƒ½é»æ•¸å€¼å¿…é ˆåœ¨0-255ä¹‹é–“
+	Too many golds in person or stash	èº«ä¸Šæˆ–ç®±å­çš„é‡‘é’±æ•°è¿‡å¤š	èº«ä¸Šæˆ–ç®±å­çš„é‡‘éŒ¢æ•¸éå¤š
+	Please choose character class	è¯·é€‰æ‹©ä¸€ç§è§’è‰²	è«‹é¸æ“‡ä¸€ç¨®è§’è‰²
+	Skill levels must be between 0-127	æŠ€èƒ½ç­‰çº§å¿…é¡»åœ¨0-127ä¹‹é—´	æŠ€èƒ½ç­‰ç´šå¿…é ˆåœ¨0-127ä¹‹é–“
+	(%c%c%c%c)Unrecognised Item Code	(%c%c%c%c)ä¸èƒ½è¯†åˆ«çš„ç‰©å“ä»£ç 	(%c%c%c%c)ä¸å¯è­˜åˆ¥çš„ç‰©å“ä»£ç¢¼
+	Unkown Item Quality: iQuality = %d	æœªçŸ¥çš„ç‰©å“ç­‰çº§ï¼šiQuality = %d	æœªçŸ¥çš„ç‰©å“ç­‰ç´šï¼šiQuality = %d
+	Save the character %s ?	æ˜¯å¦ä¿å­˜å·²æ‰“å¼€çš„äººç‰© %s ï¼Ÿ	æ˜¯å¦ä¿å­˜å·²æ‰“é–‹çš„äººç‰© %s  ï¼Ÿ
+	"Character name and file name are different, continue?"	äººç‰©åå­—ä¸æ–‡ä»¶åä¸åŒï¼Œæ˜¯å¦ç»§ç»­ï¼Ÿ	äººç‰©åå­—èˆ‡æ–‡ä»¶åä¸åŒï¼Œæ˜¯å¦ç¹¼çºŒï¼Ÿ
 			
-11	The file isn't in d2s format	ÎÄ¼ş²»ÊÇÕıÈ·µÄd2s¸ñÊ½	ÎÄ¼ş²»ÊÇÕı´_µÄd2s¸ñÊ½
-	File length is incorrect	ÎÄ¼ş³¤¶È´íÎó	ÎÄ¼şéL¶ÈåeÕ`
-	Quest info data format error	ÈÎÎñÊı¾İ¸ñÊ½´íÎó	ÈÎ„Õ”µ“ş¸ñÊ½åeÕ`
-	Waypoint info data format error	Ğ¡Õ¾Êı¾İ¸ñÊ½´íÎó	Ğ¡Õ¾”µ“ş¸ñÊ½åeÕ`
-	Player Stats data format error	ÈËÎïÊôĞÔ¸ñÊ½´íÎó	ÈËÎïŒÙĞÔ¸ñÊ½åeÕ`
-	Player Skills data format error	ÈËÎï¼¼ÄÜ¸ñÊ½´íÎó	ÈËÎï¼¼ÄÜ¸ñÊ½åeÕ`
-	Item List data format error	ÎïÆ·ÁĞ±í¸ñÊ½´íÎó	ÎïÆ·ÁĞ±í¸ñÊ½åeÕ`
-	Item data format error	ÎïÆ·¸ñÊ½´íÎó	ÎïÆ·¸ñÊ½åeÕ`
-	Corpse data format error	Ê¬ÌåÊı¾İ¸ñÊ½´íÎó	Ê¬ów”µ“ş¸ñÊ½åeÕ`
-	Mercenary data format error	¹ÍÓ¶±øÊı¾İ¸ñÊ½´íÎó	ƒl‚ò±ø”µ“ş¸ñÊ½åeÕ`
-	Golem data format error	GolemÊı¾İ¸ñÊ½´íÎó	Golem”µ“ş¸ñÊ½åeÕ`
-	Ear level must be between 1 and 99	¶ú¶äµÈ¼¶±ØĞëÔÚ1ºÍ99Ö®¼ä	¶ú¶äµÈ¼‰±ØíšÔÚ1ºÍ99Ö®ég
-	Invalid character class	ÈËÎï½ÇÉ«´íÎó	ÈËÎï½ÇÉ«åeÕ`
-	Item drop level must be between 1 and 99	ÎïÆ·µôÂäµÈ¼¶±ØĞëÔÚ1ºÍ99Ö®¼ä	ÎïÆ·µôÂäµÈ¼‰±ØíšÔÚ1ºÍ99Ö®ég
-	Invalid item quality	ÎïÆ·ÖÊÁ¿´íÎó	ÎïÆ·Ù|Á¿åeÕ`
-	Invalid item subtype	ÎïÆ·×ÓÀà´íÎó	ÎïÆ·×ÓîåeÕ`
-	Personalized name format error\nRequirement: 1-15 regular characters	¸öĞÔ»¯Ãû×Ö¸ñÊ½´íÎó\nÒªÇó£º1-15¸öÓ¢ÎÄ×Ö·û	‚€ĞÔ»¯Ãû×Ö¸ñÊ½åeÕ`\nÒªÇó£º1-15‚€Ó¢ÎÄ×Ö·û
-	Item defence must be between 10 and 2057	ÎïÆ··ÀÓù±ØĞëÔÚ10µ½2057Ö®¼ä	ÎïÆ··À¶R±ØíšÔÚ10µ½2057Ö®ég
-	Item max durability must be between 0 and 255	ÎïÆ·×î´óÄÍ¾Ã¶È±ØĞëÔÚ0µ½255Ö®¼ä	ÎïÆ·×î´óÄÍ¾Ã¶È±ØíšÔÚ0µ½255Ö®ég
-	Item durability must be within max durability	ÎïÆ·ÄÍ¾Ã¶È±ØĞëÔÚ×î´óÖµ·¶Î§ÄÚ	ÎïÆ·ÄÍ¾Ã¶È±ØíšÔÚ×î´óÖµ¹ ‡úƒÈ
-	Item sockets count must be 7 or less	ÎïÆ·×î¶àÖ»ÄÜÓĞ7¸ö¿×	ÎïÆ·×î¶àÖ»ÄÜÓĞ7‚€¿×
-	Quantity must be between 0 and 511	ÊıÁ¿Öµ±ØĞëÔÚ0µ½511Ö®¼ä	”µÁ¿Öµ±ØíšÔÚ0µ½511Ö®ég
-	Invalid monster name index	¹ÖÎïÃû×ÖË÷Òı´íÎó	¹ÖÎïÃû×ÖËùÒÔåeÕ`
-	Invalid first name index	ÎïÆ·ÃûË÷Òı´íÎó	ÎïÆ·ÃûË÷ÒıåeÕ`
-	Invalid last name index	ÎïÆ·ĞÕË÷Òı´íÎó	ÎïÆ·ĞÕË÷ÒıåeÕ`
-	Invalid prefix 1 index	ÎïÆ·Ç°×º1Ë÷Òı´íÎó	ÎïÆ·Ç°¾Y1Ë÷ÒıåeÕ`
-	Invalid prefix 2 index	ÎïÆ·Ç°×º2Ë÷Òı´íÎó	ÎïÆ·Ç°¾Y2Ë÷ÒıåeÕ`
-	Invalid prefix 3 index	ÎïÆ·Ç°×º3Ë÷Òı´íÎó	ÎïÆ·Ç°¾Y3Ë÷ÒıåeÕ`
-	Invalid suffix 1 index	ÎïÆ·ºó×º1Ë÷Òı´íÎó	ÎïÆ·áá¾Y1Ë÷ÒıåeÕ`
-	Invalid suffix 2 index	ÎïÆ·ºó×º2Ë÷Òı´íÎó	ÎïÆ·áá¾Y2Ë÷ÒıåeÕ`
-	Invalid suffix 3 index	ÎïÆ·ºó×º3Ë÷Òı´íÎó	ÎïÆ·áá¾Y3Ë÷ÒıåeÕ`
-	Invalid set item name index	Ì××°ÎïÆ·Ë÷Òı´íÎó	Ì×ÑbÎïÆ·Ë÷ÒıåeÕ`
-	Invalid unique item name index	°µ½ğÎïÆ·Ë÷Òı´íÎó	°µ½ğÎïÆ·Ë÷ÒıåeÕ`
-	Invalid magic prefix index	ÎïÆ·Ä§·¨Ç°×ºË÷Òı´íÎó	ÎïÆ·Ä§·¨Ç°¾YË÷ÒıåeÕ`
-	Invalid magic suffix index	ÎïÆ·Ä§·¨ºó×ºË÷Òı´íÎó	ÎïÆ·Ä§·¨áá¾YË÷ÒıåeÕ`
-	Invalid mercenary type index	¹ÍÓ¶±øÀàĞÍ´íÎó	ƒl‚ò±øîĞÍåeÕ`
-	Invalid mercenary name index	¹ÍÓ¶±øÃû×Ö´íÎó	ƒl‚ò±øÃû×ÖåeÕ`
-	Sockets must be enough for gems	ÎïÆ·¿×Êı±ØĞëÄÜÈİÄÉËùÓĞÏâÇ¶µÄ±¦Ê¯	ÎïÆ·¿×”µ±ØíšÄÜÈİ¼{ËùÓĞè‚Ç¶µÄŒšÊ¯
-*=======================BarbarianÀàĞÍ¹ÍÓ¶±øÃû×Ö			
+11	The file isn't in d2s format	æ–‡ä»¶ä¸æ˜¯æ­£ç¡®çš„d2sæ ¼å¼	æ–‡ä»¶ä¸æ˜¯æ­£ç¢ºçš„d2sæ ¼å¼
+	File length is incorrect	æ–‡ä»¶é•¿åº¦é”™è¯¯	æ–‡ä»¶é•·åº¦éŒ¯èª¤
+	Quest info data format error	ä»»åŠ¡æ•°æ®æ ¼å¼é”™è¯¯	ä»»å‹™æ•¸æ“šæ ¼å¼éŒ¯èª¤
+	Waypoint info data format error	å°ç«™æ•°æ®æ ¼å¼é”™è¯¯	å°ç«™æ•¸æ“šæ ¼å¼éŒ¯èª¤
+	Player Stats data format error	äººç‰©å±æ€§æ ¼å¼é”™è¯¯	äººç‰©å±¬æ€§æ ¼å¼éŒ¯èª¤
+	Player Skills data format error	äººç‰©æŠ€èƒ½æ ¼å¼é”™è¯¯	äººç‰©æŠ€èƒ½æ ¼å¼éŒ¯èª¤
+	Item List data format error	ç‰©å“åˆ—è¡¨æ ¼å¼é”™è¯¯	ç‰©å“åˆ—è¡¨æ ¼å¼éŒ¯èª¤
+	Item data format error	ç‰©å“æ ¼å¼é”™è¯¯	ç‰©å“æ ¼å¼éŒ¯èª¤
+	Corpse data format error	å°¸ä½“æ•°æ®æ ¼å¼é”™è¯¯	å°¸é«”æ•¸æ“šæ ¼å¼éŒ¯èª¤
+	Mercenary data format error	é›‡ä½£å…µæ•°æ®æ ¼å¼é”™è¯¯	åƒ±å‚­å…µæ•¸æ“šæ ¼å¼éŒ¯èª¤
+	Golem data format error	Golemæ•°æ®æ ¼å¼é”™è¯¯	Golemæ•¸æ“šæ ¼å¼éŒ¯èª¤
+	Ear level must be between 1 and 99	è€³æœµç­‰çº§å¿…é¡»åœ¨1å’Œ99ä¹‹é—´	è€³æœµç­‰ç´šå¿…é ˆåœ¨1å’Œ99ä¹‹é–“
+	Invalid character class	äººç‰©è§’è‰²é”™è¯¯	äººç‰©è§’è‰²éŒ¯èª¤
+	Item drop level must be between 1 and 99	ç‰©å“æ‰è½ç­‰çº§å¿…é¡»åœ¨1å’Œ99ä¹‹é—´	ç‰©å“æ‰è½ç­‰ç´šå¿…é ˆåœ¨1å’Œ99ä¹‹é–“
+	Invalid item quality	ç‰©å“è´¨é‡é”™è¯¯	ç‰©å“è³ªé‡éŒ¯èª¤
+	Invalid item subtype	ç‰©å“å­ç±»é”™è¯¯	ç‰©å“å­é¡éŒ¯èª¤
+	Personalized name format error\nRequirement: 1-15 regular characters	ä¸ªæ€§åŒ–åå­—æ ¼å¼é”™è¯¯\nè¦æ±‚ï¼š1-15ä¸ªè‹±æ–‡å­—ç¬¦	å€‹æ€§åŒ–åå­—æ ¼å¼éŒ¯èª¤\nè¦æ±‚ï¼š1-15å€‹è‹±æ–‡å­—ç¬¦
+	Item defence must be between 10 and 2057	ç‰©å“é˜²å¾¡å¿…é¡»åœ¨10åˆ°2057ä¹‹é—´	ç‰©å“é˜²ç¦¦å¿…é ˆåœ¨10åˆ°2057ä¹‹é–“
+	Item max durability must be between 0 and 255	ç‰©å“æœ€å¤§è€ä¹…åº¦å¿…é¡»åœ¨0åˆ°255ä¹‹é—´	ç‰©å“æœ€å¤§è€ä¹…åº¦å¿…é ˆåœ¨0åˆ°255ä¹‹é–“
+	Item durability must be within max durability	ç‰©å“è€ä¹…åº¦å¿…é¡»åœ¨æœ€å¤§å€¼èŒƒå›´å†…	ç‰©å“è€ä¹…åº¦å¿…é ˆåœ¨æœ€å¤§å€¼ç¯„åœå…§
+	Item sockets count must be 7 or less	ç‰©å“æœ€å¤šåªèƒ½æœ‰7ä¸ªå­”	ç‰©å“æœ€å¤šåªèƒ½æœ‰7å€‹å­”
+	Quantity must be between 0 and 511	æ•°é‡å€¼å¿…é¡»åœ¨0åˆ°511ä¹‹é—´	æ•¸é‡å€¼å¿…é ˆåœ¨0åˆ°511ä¹‹é–“
+	Invalid monster name index	æ€ªç‰©åå­—ç´¢å¼•é”™è¯¯	æ€ªç‰©åå­—æ‰€ä»¥éŒ¯èª¤
+	Invalid first name index	ç‰©å“åç´¢å¼•é”™è¯¯	ç‰©å“åç´¢å¼•éŒ¯èª¤
+	Invalid last name index	ç‰©å“å§“ç´¢å¼•é”™è¯¯	ç‰©å“å§“ç´¢å¼•éŒ¯èª¤
+	Invalid prefix 1 index	ç‰©å“å‰ç¼€1ç´¢å¼•é”™è¯¯	ç‰©å“å‰ç¶´1ç´¢å¼•éŒ¯èª¤
+	Invalid prefix 2 index	ç‰©å“å‰ç¼€2ç´¢å¼•é”™è¯¯	ç‰©å“å‰ç¶´2ç´¢å¼•éŒ¯èª¤
+	Invalid prefix 3 index	ç‰©å“å‰ç¼€3ç´¢å¼•é”™è¯¯	ç‰©å“å‰ç¶´3ç´¢å¼•éŒ¯èª¤
+	Invalid suffix 1 index	ç‰©å“åç¼€1ç´¢å¼•é”™è¯¯	ç‰©å“å¾Œç¶´1ç´¢å¼•éŒ¯èª¤
+	Invalid suffix 2 index	ç‰©å“åç¼€2ç´¢å¼•é”™è¯¯	ç‰©å“å¾Œç¶´2ç´¢å¼•éŒ¯èª¤
+	Invalid suffix 3 index	ç‰©å“åç¼€3ç´¢å¼•é”™è¯¯	ç‰©å“å¾Œç¶´3ç´¢å¼•éŒ¯èª¤
+	Invalid set item name index	å¥—è£…ç‰©å“ç´¢å¼•é”™è¯¯	å¥—è£ç‰©å“ç´¢å¼•éŒ¯èª¤
+	Invalid unique item name index	æš—é‡‘ç‰©å“ç´¢å¼•é”™è¯¯	æš—é‡‘ç‰©å“ç´¢å¼•éŒ¯èª¤
+	Invalid magic prefix index	ç‰©å“é­”æ³•å‰ç¼€ç´¢å¼•é”™è¯¯	ç‰©å“é­”æ³•å‰ç¶´ç´¢å¼•éŒ¯èª¤
+	Invalid magic suffix index	ç‰©å“é­”æ³•åç¼€ç´¢å¼•é”™è¯¯	ç‰©å“é­”æ³•å¾Œç¶´ç´¢å¼•éŒ¯èª¤
+	Invalid mercenary type index	é›‡ä½£å…µç±»å‹é”™è¯¯	åƒ±å‚­å…µé¡å‹éŒ¯èª¤
+	Invalid mercenary name index	é›‡ä½£å…µåå­—é”™è¯¯	åƒ±å‚­å…µåå­—éŒ¯èª¤
+	Sockets must be enough for gems	ç‰©å“å­”æ•°å¿…é¡»èƒ½å®¹çº³æ‰€æœ‰é•¶åµŒçš„å®çŸ³	ç‰©å“å­”æ•¸å¿…é ˆèƒ½å®¹ç´æ‰€æœ‰é‘²åµŒçš„å¯¶çŸ³
+*=======================Barbarianç±»å‹é›‡ä½£å…µåå­—			
 	Varaya		
-	Khan	¿Éº¹	
+	Khan	å¯æ±—	
 	Klisk		
 	Bors		
 	Brom		
@@ -297,7 +297,7 @@
 	Barloc		
 	Bill		
 	Theodoric		
-*=======================Eastern SorcerorÀàĞÍ¹ÍÓ¶±øÃû×Ö			
+*=======================Eastern Sorcerorç±»å‹é›‡ä½£å…µåå­—			
 	Jenali		
 	Barani		
 	Jabari		
@@ -318,7 +318,7 @@
 	Jarulf		
 	Flux		
 	Scorch		
-*=======================Desert MercenaryÀàĞÍ¹ÍÓ¶±øÃû×Ö			
+*=======================Desert Mercenaryç±»å‹é›‡ä½£å…µåå­—			
 	Hazade		
 	Alhizeer		
 	Azrael		
@@ -340,7 +340,7 @@
 	Zanarhi		
 	Waheed		
 	Vikhyat		
-*=======================Rogue ScoutsÀàĞÍ¹ÍÓ¶±øÃû×Ö			
+*=======================Rogue Scoutsç±»å‹é›‡ä½£å…µåå­—			
 	Aliza		
 	Amplisa		
 	Annor		
@@ -382,7 +382,7 @@
 	Debi		
 	Tylena		
 	Wendy		
-*=======================¹ÍÓ¶±øÀàĞÍÃû×Ö			
+*=======================é›‡ä½£å…µç±»å‹åå­—			
 	Scout - Normal - Fire Arrow		
 	Scout - Normal - Cold Arrow		
 	Scout - Nightmare - Fire Arrow		
@@ -396,7 +396,7 @@
 	Mercenary - Nightmare - Defensive		
 	Mercenary - Nightmare - Offensive		
 	Mercenary - Hell - Combat		
-	Mercenary - Hell - Defensive	É³Ä®¹ÍÓ¶±ø - µØÓü - ·ÀÓùĞÍ	
+	Mercenary - Hell - Defensive	æ²™æ¼ é›‡ä½£å…µ - åœ°ç‹± - é˜²å¾¡å‹	
 	Mercenary - Hell - Offensive		
 	Sorceror - Normal - Fire Spells		
 	Sorceror - Normal - Cold Spells		
@@ -413,527 +413,527 @@
 	Barbarian - Nightmare		
 	Barbarian - Hell		
 	Barbarian - Hell		
-*=======================ÎïÆ·ÖÖÀàÃû×Ö			
-	General items	Ò»°ãÎïÆ·	Ò»°ãÎïÆ·
-	Helmets	Í·¿ø	î^¿ø
-	Helmets (Barbarian only)	Ò°ÂùÈË×¨ÓÃÍ·¿ø	Ò°ĞUÈËŒ£ÓÃî^¿ø
-	Helmets (Druid only)	µÂÂ³ÒÁ×¨ÓÃÍ·¿ø	µÂô”ÒÁŒ£ÓÃî^¿ø
-	Gloves	ÊÖÌ×	ÊÖÌ×
-	Boots	Ğ¬×Ó	Ğ¬×Ó
-	Belts	Ñü´ø	Ñü§
-	Armors	»¤¼×	×o¼×
-	Shields	¶ÜÅÆ	¶ÜÅÆ
-	Shields (Paladin only)	Ê¥ÆïÊ¿×¨ÓÃ¶ÜÅÆ	Â}òTÊ¿Œ£ÓÃ¶ÜÅÆ
-	Shields (Necromancer only)	ËÀÁé·¨Ê¦×¨ÓÃ¶ÜÅÆ	ËÀì`·¨ŸŒ£ÓÃ¶ÜÅÆ
-	Axes	¸«Í·	¸«î^
-	Wands (Necromancer only)	ËÀÁé·¨Ê¦×¨ÓÃ·¨ÕÈ	ËÀì`·¨ŸŒ£ÓÃ·¨ÕÈ
-	Clubs	¹÷°ô	¹÷°ô
-	Scepters (Paladin only)	Ê¥ÆïÊ¿×¨ÓÃÕÈ	Â}òTÊ¿Œ£ÓÃÕÈ
-	Swords	µ¶½£	µ¶„¦
-	Knifes	·Éµ¶	ïwµ¶
-	Javelins	±êÇ¹	˜Ë˜Œ
-	Spears	³¤Ã¬	éLÃ¬
-	Staffs (Sorceress only)	·¨Ê¦×¨ÓÃ·¨ÕÈ	·¨ŸŒ£ÓÃ·¨ÕÈ
-	Bows	¹­åó	¹­åó
-	Poisons	¶¾Ò©	¶¾Ë
-	Quest Items	ÈÎÎñÎïÆ·	ÈÎ„ÕÎïÆ·
-	Claws (Assasin only)	´Ì¿Í×¨ÓÃµ¶×¦	´Ì¿ÍŒ£ÓÃµ¶×¦
-	Orbs (Sorceress only)	·¨Ê¦×¨ÓÃÇò	·¨ŸŒ£ÓÃÇò
-	Bow and spears (Amazon only)	ÑÇÂíÑ·×¨ÓÃ¹­ºÍÃ¬	†ñRßdŒ£ÓÃ¹­ºÍÃ¬
-*=======================ÎïÆ·ÖÊÁ¿Ãû×Ö			
-	Low	°×É«µÍ¼¶	°×É«µÍ¼‰
-	Normal	°×É«ÆÕÍ¨	°×É«ÆÕÍ¨
-	High	°×É«¸ß¼¶	°×É«¸ß¼‰
-	Magical	À¶É«Ä§·¨	Ë{É«Ä§·¨
-	Set	ÂÌÉ«Ì××°	¾GÉ«Ì×Ñb
-	Rare	»Æ½ğ×°±¸	üS½ğÑb‚ä
-	Unique	°µ½ğ×°±¸	°µ½ğÑb‚ä
-	Crafted	³ÈÉ«ºÏ³É	³ÈÉ«ºÏ³É
-*=======================ÓÎÏ·ÄÑ¶È			
-	Normal	ÆÕÍ¨	ÆÕÍ¨
-	Nightmare	¶ñÃÎ	Ø¬‰ô
-	Hell	µØÓü	µØªz
-*=======================Ğ¡Õ¾Ãû×Ö			
-	Rogue Encampment	ÂÜ¸ñÓªµØ	Ì}¸ñ IµØ
-	Cold Plains	±ùÀäÖ®Ô­	±ùÀäÖ®Ô­
-	Stony Field	Ê¯¿é¿õÒ°	Ê¯‰K•çÒ°
-	Dark Wood	ºÚ°µÉ­ÁÖ	ºÚ°µÉ­ÁÖ
-	Black Marsh	ºÚÉ«»ÄµØ	ºÚÉ«»ÄµØ
-	Outer Cloister	Íâ²à»ØÀÈ	Íâ‚ÈŞ’ÀÈ
-	Jail Level 1	¼àÀÎµÚÒ»²ã	±OÀÎµÚÒ»ŒÓ
-	Inner Cloister	ÄÚ²à»ØÀÈ	ÄÚ‚ÈŞ’ÀÈ
-	Catacombs Level 2	µØÏÂÄ¹Ñ¨µÚ¶ş²ã	µØÏÂÄ¹Ñ¨µÚ¶şŒÓ
-	Lut Gholein	Â³.¸ßÒò	ô”.¸ßÒò
-	Sewers Level 2	ÏÂË®µÀµÚ¶ş²ã	ÏÂË®µÀµÚ¶şŒÓ
-	Dry Hills	¸ÉÔïµÄ¸ßµØ	Ç¬ÔïµÄ¸ßµØ
-	Halls of the Dead Level 2	ËÀÍöÖ®µîµÚ¶ş²ã	ËÀÍöÖ®µîµÚ¶şŒÓ
-	Far Oasis	Ò£Ô¶µÄÂÌÖŞ	ßbßhµÄ¾GÖŞ
-	Lost City	ÒÅÊ§µÄ³ÇÊĞ	ßzÊ§µÄ³ÇÊĞ
-	Palace Cellar Level 1 	»Ê¹¬¼àÀÎµÚÒ»²ã	»ÊŒm±OÀÎµÚÒ»ŒÓ
-	Arcane Sanctuary	ÉñÃØ±ÜÄÑËù	ÉñÃØ±ÜëyËù
-	Canyon of the Magi	ÎÀÊ¿µÄÏ¿¹È	ĞlÊ¿µÄ{¹È
-	Kurast Docktown	¿âÀ­Ë¹ÌØº£¸Û	ìÀ­Ë¹ÌØº£¸Û
-	Spider Forest	Ö©ÖëÉ­ÁÖ	Ö©ÖëÉ­ÁÖ
-	Great Marsh	ÅÓ´óÊªµØ	ı‹´óñµØ
-	Flayer Jungle	°şÆ¤É­ÁÖ	„ƒÆ¤É­ÁÖ
-	Lower Kurast	¿âÀ­Ë¹ÌØÏÂ²ã	ìÀ­Ë¹ÌØÏÂŒÓ
-	Kurast Bazaar	¿âÀ­Ë¹ÌØÉÌ³¡	ìÀ­Ë¹ÌØÉÌˆö
-	Upper Kurast	¿âÀ­Ë¹ÌØÉÏ²ã	ìÀ­Ë¹ÌØÉÏŒÓ
-	Travincal	´Ş·²¿Ë	´Ş·²¿Ë
-	Durance of Hate Level 2	Ô÷ºŞµÄÇôÀÎµÚ¶ş²ã	Ô÷ºŞµÄÇôÀÎµÚ¶şŒÓ
-	The Pandemonium Fortress	ÈºÄ§±¤Àİ	ÈºÄ§±¤‰¾
-	City of the Damned	Éñ·£Ö®³Ç	ÉñÁPÖ®³Ç
-	River of Flame	»ğÑæÖ®ºÓ	»ğÑæÖ®ºÓ
-	Harrogath	¹şÂå¼ÓË¹	¹şÂå¼ÓË¹
-	Rigid Highlands	±ù¶³¸ßµØ	±ùƒö¸ßµØ
-	Arreat Plateau	ÑÇÈğÌØ¸ßÔ­	†ÈğÌØ¸ßÔ­
-	Crystalline Passage	Ë®¾§Í¨µÀ	Ë®¾§Í¨µÀ
-	Glacial Trail	±ùºÓÂ·¾¶	±ùºÓÂ·½
-	Halls of Anguish	Í´¿àÖ®Ìü	Í´¿àÖ®a
-	Tundra Wastelands	±ù¶³Ì¦Ô­	±ùƒöÌ¦Ô­
-	The Ancients' way	Ô¶¹ÅÖ®Â·	ßh¹ÅÖ®Â·
-	The Worldstone Keep Level 2	ÊÀ½çÖ®Ê¯ÒªÈûµÚ¶ş²ã	ÊÀ½çÖ®Ê¯ÒªÈûµÚ¶şŒÓ
-*=======================ÈÎÎñÃû×Ö			
-	Den of Evil	Ğ°¶ñ¶´Ñ¨	Ğ°º¶´Ñ¨
-	Sisters' Burial Grounds	ĞŞÅ®Âñ¹ÇÖ®µØ	ĞŞÅ®Âñ¹ÇÖ®µØ
-	The Search for Cain	¿­¶÷µÄËÑË÷	„P¶÷µÄËÑË÷
-	The Forgotten Tower	ÒÅÍüÖ®Ëş	ßzÍüÖ®Ëş
-	Tools of the Trade	½»Ò×µÄ¹¤¾ß	½»Ò×µÄ¹¤¾ß
-	Sisters to the Slaughter	ÍÀÉ±µÄĞŞÅ®	ÍÀš¢µÄĞŞÅ®
-	Radament's Lair	ÂŞ´ïÃÅÌØµÄ³²Ñ¨	Á_ß_éTÌØµÄ³²Ñ¨
-	The Horadric Staff	ºÕÀ­µÏ¿ËÖ®ÕÈ	ºÕÀ­µÏ¿ËÖ®ÕÈ
-	Tainted Sun	¶éÂäµÄÌ«Ñô	‰™ÂäµÄÌ«ê–
-	Arcane Sanctuary	ÉñÃØ±ÜÄÑËù	ÉñÃØ±ÜëyËù
-	The Summoner	ÕÙ»½Õß	ÕÙ†¾Õß
-	The Seven Tombs	Æß¸ö¹ÅÄ¹	Æß‚€¹ÅÄ¹
-	The Golden Bird	»Æ½ğÄñ	üS½ğøB
-	Blade of the Old Religion	¹Å´ú×Ú½ÌÖ®ÈĞ	¹Å´ú×Ú½ÌÖ®ÈĞ
-	Khalim's Will	¿ËÁÖÄ·µÄÒâÖ¾	¿ËÁÖÄ·µÄÒâÖ¾
-	Lam Esen's Tome	À¶.ÒÀÉ­µÄ¹ÅÊé	Ë{.ÒÀÉ­µÄ¹Å•ø
-	The Blackened Temple	×ªÎªºÚ°µµÄÉñµî	ŞD ‘ºÚ°µµÄÉñµî
-	The Guardian	ÊØ»¤Õß	ÊØ×oÕß
-	The Fallen Angel	¶éÂäµÄÌìÊ¹	‰™ÂäµÄÌìÊ¹
-	Hell's Forge	µØÓüÈÛÂ¯	µØªzÈÛ t
-	Terror's End	¿Ö²ÀµÄ½á¾Ö	¿Ö²ÀµÄ½Y¾Ö
-	Siege on Harrogath	¹şÂå¼ÓË¹Î§³ÇÕ½	¹şÂå¼ÓË¹‡ú³Ç‘ğ
-	Rescue on Mount Arreat	ÑÇÈğÌØÉ½µÄ¾ÈÔ®ĞĞ¶¯	†ÈğÌØÉ½µÄ¾ÈÔ®ĞĞ„Ó
-	Prison of Ice	±ùÖ®Çô	±ùÖ®Çô
-	Betrayal of Harrogath	¹şÂå¼ÓË¹µÄ·´ÅÑĞĞ¶¯	¹şÂå¼ÓË¹µÄ·´ÅÑĞĞ„Ó
-	Rite of Passage	Í¨µÀµÄ¼Àµä	Í¨µÀµÄ¼Àµä
-	Eve of Destruction	»ÙÃğµÄÇ°Ï¦	š§œçµÄÇ°Ï¦
-	Moo Moo Farm	É±ËÀÄ¸Å£Ö®Íõ	š¢ËÀÄ¸Å£Ö®Íõ
-	Reset Stats Points	ÖØÖÃ¼¼ÄÜºÍÊôĞÔµã	ÖØÖÃ¼¼ÄÜºÍŒÙĞÔüc
-*=======================Í¨ÓÃ¼¼ÄÜÃû×Ö			
-	Attack	Ò»°ã¹¥»÷	Ò»°ã¹¥“ô
-	Kick	½ÅÌß	Ä_Ìß
-	Throw	Í¶ÖÀ	Í¶”S
-	Unsummon	È¡ÏûÕÙ»½	È¡ÏûÕÙ†¾
-	Left Hand Throw	×óÊÖÍ¶ÖÀ	×óÊÖÍ¶”S
-	Left Hand Swing	×óÊÖ»Ó¶¯	×óÊÖ“]„Ó
-	Scroll of Identify	±æÊ¶¾íÖá	±æ×R¾íİS
-	Tome of Identify	±æÊ¶Ö®Êé	±æ×RÖ®•ø
-	Scroll of Town Portal	»Ø³Ç¾íÖá	»Ø³Ç¾íİS
-	Tome of Town Portal	»Ø³ÇÖ®Êé	»Ø³ÇÖ®•ø
-	Delirium	µÏÀÕÈğÄ·	µÏÀÕÈğÄ·
-	An Evil Force	Ò»¹ÉĞ°¶ñÁ¦Á¿	Ò»¹ÉĞ°ºÁ¦Á¿
-*=======================½ÇÉ«¼¼ÄÜÃû×Ö			
-	Magic Arrow	Ä§·¨¼ı	Ä§·¨¼ı
-	Fire Arrow	»ğÑæ¼ı	»ğÑæ¼ı
-	Cold Arrow	±ù¼ı	±ù¼ı
-	Multiple Shot	¶àÖØ¼ı	¶àÖØ¼ı
-	Exploding Arrow	±¬ÁÑ¼ı	±¬ÁÑ¼ı
-	Ice Arrow	¼±¶³¼ı	¼±ƒö¼ı
-	Guided Arrow	µ¼Òı¼ı	Œ§Òı¼ı
-	Strafe	ÅÚºä	³hŞZ
-	Immolation Arrow	ÎşÉüÖ®¼ı	 ŞÉüÖ®¼ı
-	Freezing Arrow	¶³½áÖ®¼ı	ƒö½YÖ®¼ı
-	Inner Sight	ÄÚÊÓ	ÄÚÒ•
-	Critical Strike	ÖÂÃü¹¥»÷	ÖÂÃü¹¥“ô
-	Dodge	ÉÁ±Ü	éW±Ü
-	Slow Missiles	ÂıËÙ¼ı	ÂıËÙ¼ı
-	Avoid	¶ã±Ü	¶ã±Ü
-	Penetrate	´ÌÈë	´ÌÈë
-	Dopplezon	ÓÕ¶ü	ÕTğD
-	Evade	»Ø±Ü	Ş’±Ü
-	Valkyrie	Å®ÎäÉñ	Å®ÎäÉñ
-	Pierce	´©´Ì	´©´Ì
-	Jab	´Á´Ì	´Á´Ì
-	Power Strike	ÍşÁ¦Ò»»÷	ÍşÁ¦Ò»“ô
-	Poison Javelin	¶¾Ç¹	¶¾˜Œ
-	Impale	´Ì±¬	´Ì±¬
-	Lightning Bolt	ÉÁµçÇò	éWëŠÇò
-	Charged Strike	³äÄÜÒ»»÷	³äÄÜÒ»“ô
-	Plague Javelin	ÎÁÒß±êÇ¹	ÎÁÒß˜Ë˜Œ
-	Fend	»÷ÍË	“ôÍË
-	Lightning Strike	ÉÁµç¹¥»÷	éWëŠ¹¥“ô
-	Lightning Fury	ÉÁµçÖ®Å­	éWëŠÖ®Å­
-	Fire Bolt	»ğµ¯	»ğ—
-	Warmth	Å¯Æø	Å¯šâ
-	Inferno	µØÓüÖ®»ğ	µØªzÖ®»ğ
-	Blaze	³ãÁÒÖ®¾¶	ŸëÁÒÖ®½
-	Fire Ball	»ğÇò	»ğÇò
-	Fire Wall	»ğÇ½	»ğ‰¦
-	Enchant	Ç¿»¯	Š»¯
-	Meteor	ÔÉÊ¯	ëEÊ¯
-	Fire Mastery	Ö§ÅäÖ®Ñæ	Ö§ÅäÖ®Ñæ
-	Hydra	¾ÅÍ·º£Éß	¾Åî^º£Éß
-	Charged Bolt	³äÄÜµ¯	³äÄÜ—
-	Static Field	¾²Ì¬Á¦³¡	ìo‘BÁ¦ˆö
-	Telekinesis	ĞÄÁé´«¶¯	ĞÄì`‚÷„Ó
-	Nova	ĞÂĞÇ	ĞÂĞÇ
-	Lightning	ÉÁµç	éWëŠ
-	Chain Lightning	Á¬ËøÉÁµç	ßBæiéWëŠ
-	Teleport	´«ËÍ	‚÷ËÍ
-	Thunder Storm	À×ÔÆ·ç±©	À×ÔÆïL±©
-	Energy Shield	ÄÜÁ¿»¤¶Ü	ÄÜÁ¿×o¶Ü
-	Lightning Mastery	Ö§ÅäÉÁµç	Ö§ÅäéWëŠ
-	Ice Bolt	±ùµ¯	±ù—
-	Frozen Armor	±ù·â×°¼×	±ù·âÑb¼×
-	Frost Nova	ËªÖ®ĞÂĞÇ	ËªÖ®ĞÂĞÇ
-	Ice Blast	±ù·ç±©	±ùïL±©
-	Shiver Armor	Ëé±ù¼×	Ëé±ù¼×
-	Glacial Spike	±ù¼âÖù	±ù¼âÖù
-	Blizzard	±©·çÑ©	±©ïLÑ©
-	Chilling Armor	º®±ù×°¼×	º®±ùÑb¼×
-	Frozen Orb	±ù·âÇò	±ù·âÇò
-	Cold Mastery	Ö§Åä±ùÀä	Ö§Åä±ùÀä
-	Amplify Damage	ÉËº¦¼ÓÉî	‚ûº¦¼ÓÉî
-	Dim Vision	Î¢°µÁéÊÓ	Î¢°µì`Ò•
-	Weaken	Ï÷Èõ	Ï÷Èõ
-	Iron Maiden	¹¥»÷·´ÊÉ	¹¥“ô·´ÊÉ
-	Terror	¿Ö¾å	¿Ö‘Ö
-	Confuse	ÃÔÂÒ	ÃÔy
-	Life Tap	ÍµÈ¡ÉúÃü	ÍµÈ¡ÉúÃü
-	Attract	ÎüÒı	ÎüÒı
-	Decrepify	Ë¥ÀÏ	Ë¥ÀÏ
-	Lower Resist	½µµÍµÖ¿¹	½µµÍµÖ¿¹
-	Teeth	ÑÀ	ÑÀ
-	Bone Armor	°×¹Ç×°¼×	°×¹ÇÑb¼×
-	Poison Dagger	´ã¶¾Ø°Ê×	´ã¶¾Ø°Ê×
-	Corpse Explosion	Ê¬Ìå±¬Õ¨	ŒÆów±¬Õ¨
-	Bone Wall	¹ÇÇ½	¹Ç‰¦
-	Poison Explosion	¶¾±¬	¶¾±¬
-	Bone Spear	¹ÇÃ¬	¹ÇÃ¬
-	Bone Prison	¹ÇÀÎ	¹ÇÀÎ
-	Poison Nova	¾ç¶¾ĞÂĞÇ	„¡¶¾ĞÂĞÇ
-	Bone Spirit	°×¹ÇÖ®»ê	°×¹ÇÖ®»ê
-	Skeleton Mastery	Ö§Åä÷¼÷Ã	Ö§Åä÷¼ót
-	Raise Skeleton	÷¼÷Ã¸´ËÕ	÷¼ótÍ®d
-	Clay Golem	ğ¤ÍÁÊ¯Ä§	ğ¤ÍÁÊ¯Ä§
-	Golem Mastery	Ö§ÅäÊ¯Ä§	Ö§ÅäÊ¯Ä§
-	Raise Skeletal Mage	¸´ËÕ÷¼÷Ã·¨Ê¦	Í®d÷¼ót·¨Ÿ
-	Blood Golem	ÏÊÑªÊ¯Ä§	õrÑªÊ¯Ä§
-	Summon Resist	ÕÙ»½·´¿¹	ÕÙ†¾·´¿¹
-	Iron Golem	¸ÖÌúÊ¯Ä§	ä“èFÊ¯Ä§
-	Fire Golem	»ğÑæÊ¯Ä§	»ğÑæÊ¯Ä§
-	Revive	ÖØÉú	ÖØÉú
-	Sacrifice	ÎşÉü	 ŞÉü
-	Smite	ÖØ»÷	ÖØ“ô
-	Holy Bolt	Ê¥¹âµ¯	Â}¹â—
-	Zeal	°×ÈÈ	°×Ÿá
-	Charge	Í»»÷	Í»“ô
-	Vengeance	¸´³ğ	Í³ğ
-	Blessed Hammer	×£¸£Ö®´¸	×£¸£Ö®æm
-	Conversion	×ª»»	ŞD“Q
-	Holy Shield	ÉñÊ¥Ö®¶Ü	ÉñÂ}Ö®¶Ü
-	Fist of the Heavens	ÌìÌÃÖ®È­	ÌìÌÃÖ®È­
-	Might	Á¦Á¿	Á¦Á¿
-	Holy Fire	Ê¥»ğ	Â}»ğ
-	Thorns	´ÌÕë	´Ìá˜
-	Blessed Aim	×£¸£Ãé×¼	×£¸£ÃéœÊ
-	Concentration	×¨×¢	Œ£×¢
-	Holy Freeze	ÉñÊ¥±ù¶³	ÉñÂ}±ùƒö
-	Holy Shock	ÉñÊ¥³å»÷	ÉñÂ}Ğn“ô
-	Sanctuary	±Ó»¤Ëù	±Ó×oËù
-	Fanaticism	¿ñÈÈ	¿ñŸá
-	Conviction	ĞÅÄî	ĞÅÄî
-	Prayer	Æíµ»	Æí¶\
-	Resist Fire	¿¹»ğ	¿¹»ğ
-	Defiance	·´¿¹	·´¿¹
-	Resist Cold	¿¹±ùÀä	¿¹±ùÀä
-	Cleansing	¾»»¯	œQ»¯
-	Resist Lightning	µÖ¿¹ÉÁµç	µÖ¿¹éWëŠ
-	Vigor	¾«Á¦	¾«Á¦
-	Meditation	Ú¤Ë¼	Ú¤Ë¼
-	Redemption	¾ÈÊê	¾ÈÚH
-	Salvation	¾ÈÖú	¾ÈÖú
-	Bash	ÖØ»÷	ÖØ“ô
-	Leap	ÌøÔ¾	ÌøÜS
-	Double Swing	Ë«ÊÖ»Ó»÷	ëpÊÖ“]“ô
-	Stun	»÷»è	“ô»è
-	Double Throw	Ë«ÊÖÍ¶ÖÀ	ëpÊÖÍ¶”S
-	Leap Attack	ÌøÔ¾¹¥»÷	ÌøÜS¹¥“ô
-	Concentrate	×¨ĞÄ	Œ£ĞÄ
-	Frenzy	¿ñÂÒ	¿ñy
-	Whirlwind	Ğı·ç	ĞıïL
-	Berserk	¿ñÕ½Ê¿	¿ñ‘ğÊ¿
-	Sword Mastery	Ö§Åä³¤½£	Ö§ÅäéL„¦
-	Axe Mastery	Ö§Åä¸«Í·	Ö§Åä¸«î^
-	Mace Mastery	Ö§Åä¶¤Í·´¸	Ö§Åäá”î^æm
-	Pole Arm Mastery	Ö§Åä³¤¹÷	Ö§ÅäéL¹÷
-	Throwing Mastery	Ö§Åä·ÉÖÀ	Ö§Åäïw”S
-	Spear Mastery	Ö§Åä³¤Ã¬	Ö§ÅäéLÃ¬
-	Increased Stamina	Ôö¼ÓÄÍÁ¦	Ôö¼ÓÄÍÁ¦
-	Iron Skin	Ìú²¼ÉÀ	âŸ²¼ÉÀ
-	Increased Speed	¼ÓËÙ	¼ÓËÙ
-	Natural Resistance	×ÔÈ»µÖ¿¹	×ÔÈ»µÖ¿¹
-	Howl	¿ñàÆ	¿ñàÆ
-	Find Potion	ÕÒÑ°Ò©¼Á	ÕÒŒ¤Ë„©
-	Taunt	³°Åª	³°Åª
-	Shout	´ó½Ğ	´ó½Ğ
-	Find Item	ÕÒÑ°ÎïÆ·	ÕÒŒ¤ÎïÆ·
-	Battle Cry	Õ½àÆ	‘ğàÆ
-	Battle Orders	Õ½¶·ÌåÖÆ	‘ğôYówÖÆ
-	Grim Ward	²Ğ¿áºÈ×è	šˆ¿á‡˜×è
-	War Cry	Õ½¶·¿ñàÆ	‘ğôY¿ñàÆ
-	Battle Command	Õ½¶·Ö¸»Ó	‘ğôYÖ¸“]
-	Raven	ÎÚÑ»	õøf
-	Plague Poppy	ÃÍ¶¾»ªÌÙ	ÃÍ¶¾»¨ÌÙ
-	Oak Sage	ÏğÄ¾ÖÇÕß	ÏğÄ¾ÖÇÕß
-	Summon Spirit Wolf	ÕÙ»½¹íÀÇ	ÕÙ†¾¹íÀÇ
-	Cycle of Life	Ê³Ê¬ÌÙ	Ê³ŒÆÌÙ
-	Heart of Wolverine	ÀÇâµÖ®ĞÄ	ÀÇâµÖ®ĞÄ
-	Summon Fenris	ÕÙ»½¿ñÀÇ	ÕÙ†¾¿ñÀÇ
-	Vines	Ì«ÑôÌÙ	Ì«ê–ÌÙ
-	Spirit of Barbs	¼¬Áé	¼¬ì`
-	Summon Grizzly	ÕÙ»½»ÒĞÜ	ÕÙ†¾»ÒĞÜ
-	Wearwolf	ÀÇÈË±ä»¯	ÀÇÈË×ƒ»¯
-	Shape Shifting	±äĞÎÊõ	×ƒĞÎ–X
-	Wearbear	ĞÜÈË±ä»¯	ĞÜÈË×ƒ»¯
-	Feral Rage	Ò°ĞÔ¿ñ±©	Ò°ĞÔ¿ñ±©
-	Maul	×²é³	×²æm
-	Rabies	¿ñÈ®²¡	¿ñÈ®²¡
-	Fire Claws	Ñæ×¦	Ñæ×¦
-	Hunger	¼¢¶ö	ï|ğI
-	Shock Wave	Õğ²¨	Õğ²¨
-	Fury	¿ñÅ­	¿ñÅ­
-	Firestorm	»ğ·ç±©	»ğïL±©
-	Molten Boulder	ÈÛ½¬¾ŞÑÒ	ÈÛ{¾ŞÑÒ
-	Arctic Blast	¼«µØ·ç±©	˜OµØïL±©
-	Eruption	»ğÉ½±¬	»ğÉ½±¬
-	Cyclone Armor	ì«·ç×°¼×	ïZïLÑb¼×
-	Twister	Á­÷ø·ç	æ`÷øïL
-	Volcano	»ğÉ½	»ğÉ½
-	Tornado	Áú¾í·ç	ıˆ’ÔïL
-	Armageddon	»ÙÌìÃğµØ	š§ÌìœçµØ
-	Hurricane	±©·ç	±©ïL
-	Fire Trauma	»ğÑæ±¬Õğ	»ğÑæ±¬Õğ
-	Shock Field	À×µçÍø	À×ëŠ¾W
-	Blade Sentinel	ÈĞÖ®ÊØÎÀ	ÈĞÖ®ÊØĞl
-	Charged Bolt Sentry	µçÄÜÊØÎÀ	ëŠÄÜÊØĞl
-	Wake of Fire Sentry	»ğÑæ¸´ËÕ	»ğÑæÍ®d
-	Blade Fury	ÈĞÖ®Å­	ÈĞÖ®Å­
-	Lightning Sentry	À×¹âÊØÎÀ	À×¹âÊØĞl
-	Inferno Sentry	¸´ËÕÓü»ğ	Í®dªz»ğ
-	Death Sentry	ÍöÕßÊØÎÀ	ÍöÕßÊØĞl
-	Blade Shield	µ¶ÈĞÖ®¶Ü	µ¶ÈĞÖ®¶Ü
-	Claw Mastery	Ö§ÅäÀû×¦	Ö§ÅäÀû×¦
-	Psychic Hammer	ĞÄÁéÕ½´¸	ĞÄì`‘ğæm
-	Quickness	¼ÓËÙ	¼ÓËÙ
-	Weapon Block	ÎäÆ÷¸ñµ²	ÎäÆ÷¸ñ“õ
-	Cloak of Shadows	Ä§Ó°¶·Åñ	Ä§Ó°¶·Åñ
-	Fade	ÄÜÁ¿Ïû½â	ÄÜÁ¿Ïû½â
-	Shadow Warrior	Ó°×ÓÕ½Ê¿	Ó°×Ó‘ğÊ¿
-	Mind Blast	ĞÄÁé±¬Õğ	ĞÄì`±¬Õğ
-	Venom	¶¾ÑÀ	¶¾ÑÀ
-	Shadow Master	Ó°×Ó´óÊ¦	Ó°×Ó´óŸ
-	Tiger Strike	»¢»÷	»¢“ô
-	Dragon Talon	Áú×¦	ıˆ×¦
-	Fists of Fire	ÑæÈ­	ÑæÈ­
-	Dragon Claw	Ë«Áú×¦	ëpıˆ×¦
-	Cobra Strike	ÑÛ¾µÉß¹¥»÷	ÑÛçRÉß¹¥“ô
-	Claws of Thunder	À×µç×¦	À×ëŠ×¦
-	Dragon Tail	ÉñÁú°ÚÎ²	Éñıˆ”[Î²
-	Blades of Ice	º®±ùÈĞ	º®±ùÈĞ
-	Dragon Flight	·ÉÁúÔÚÌì	ïwıˆÔÚÌì
-	Royal Strike	·ï»Ë¹¥»÷	øP»Ë¹¥“ô
-*=======================½ÇÉ«¼¼ÄÜÊ÷Ãû×Ö£¨²»ÊÇ¼¼ÄÜÃû£©			
-	Bow and Crossbow Skills	¹­ºÍÊ®×Ö¹­¼¼ÄÜ	¹­ºÍÊ®×Ö¹­¼¼ÄÜ
-	Passive and Magic Skills	±»¶¯ºÍÄ§·¨¼¼ÄÜ	±»„ÓºÍÄ§·¨¼¼ÄÜ
-	Javelin and Spear Skills	±êÇ¹ºÍ³¤Ã¬¼¼ÄÜ	˜Ë˜ŒºÍéLÃ¬¼¼ÄÜ
-	Fire Spells	»ğÑæ·¨Êõ	»ğÑæ·¨Ğg
-	Lightning Spells	ÉÁµç·¨Êõ	éWëŠ·¨Ğg
-	Cold Spells	±ù¶³·¨Êõ	±ùƒö·¨Ğg
-	Curses	×çÖä	Ô{Öä
-	Poison and Bone Spells	¶¾ËØºÍ°×¹Ç·¨Êõ	¶¾ËØºÍ°×¹Ç·¨Ğg
-	Summoning Spells	ÕÙ»½·¨Êõ	ÕÙ†¾·¨Ğg
-	Combat Skills	×÷Õ½¼¼ÄÜ	×÷‘ğ¼¼ÄÜ
-	Offensive Auras	¹¥»÷ÁéÆø	¹¥“ôì`šâ
-	Defensive Auras	·ÀÓùĞÔÁéÆø	·À¶RĞÔì`šâ
-	Combat Skills	Õ½¶·¼¼ÄÜ	‘ğôY¼¼ÄÜ
-	Combat Masteries	Õ½¶·×¨¼Ò	‘ğôYŒ£¼Ò
-	Warcries	ÄÅº°	ÄÅº°
-	Summoning	ÕÙ»½	ÕÙ†¾
-	Lycanthropy	ÍâĞÍ±äĞÎ	ÍâĞÍ×ƒĞÎ
-	Elemental	ÔªËØ	ÔªËØ
-	Traps	ÏİÚå	ÏİÚå
-	Shadow Disciplines	Ó°×ÓÑµÁ·	Ó°×ÓÓ–¾š
-	Martial Arts	ÎäÑ§ÒÕÊõ	ÎäŒWË‡Ğg
-*=======================Ê±¿ÌÃû×Ö			
-	During Daytime	ÔÚ°×Ìì	ÔÚ°×Ìì
-	Near Dusk	ÔÚ»Æ»è	ÔÚüS»è
-	During Nighttime	ÔÚÒ¹¼ä	ÔÚÒ¹ég
-	Near Dawn	ÔÚÀèÃ÷	ÔÚÀèÃ÷
-*=======================½ÇÉ«Ãû×Ö			
-	Amazon	ÑÇÂíÑ·	†ñRßd
-	Sorceress	·¨Ê¦	·¨Ÿ
-	Necromancer	ËÀÁé·¨Ê¦	ËÀì`·¨Ÿ
-	Paladin	Ê¥ÆïÊ¿	Â}òTÊ¿
-	Barbarian	Ò°ÂùÈË	Ò°ĞUÈË
-	Druid	µÂÂ³ÒÀ	µÂô”ÒÀ
-	Assassin	´Ì¿Í	´Ì¿Í
-*=======================ÒÔÏÂÊÇÎïÆ·Ãû³Æ			
-	Elixir		ì`Ë
-	Healing Potion		Ò»¹ÉĞ°ºÁ¦Á¿
-	Mana Potion		Ò»¹ÉĞ°ºÁ¦Á¿
-	Full Healing Potion		Ò»¹ÉĞ°ºÁ¦Á¿
-	Full Mana Potion		Ò»¹ÉĞ°ºÁ¦Á¿
-	Stamina Potion		ówÁ¦Ë„©
-	Antidote Potion		½â¶¾Ë„©
-	Rejuvenation Potion		»ØÍ»îÁ¦Ë„©
-	Full Rejuvenation Potion		È«Ãæ»ØÍ»îÁ¦Ë„©
-	Thawing Potion		ÈÜ½âË„©
-	Town Portal Book		³Çæ‚‚÷ËÍÖ®•ø
-	Identify Book		±æ×RÖ®•ø
-	Amulet		×oÉí·û
-	Top of The Horadric Staff		ºÕÀ­µÏ¿ËÖ®ÕÈí”¶Ë
-	Ring		½äÖ¸
-	Gold		üS½ğ
-	Scroll of Jnifuss		°¬Äá¸¥Ë¹¾íİS
-	Key To The Cairn Stones		Ê¯‰VÖ®è€
-	Arrows		¼ıÊ¸
-	Torch		»ğÑæ
-	Bolts		Ê®×Ö¹­—
-	Town Portal Scroll		³Çæ‚‚÷ËÍ¾íİS
-	Identify Scroll		±æ×R¾íİS
-	Heart		ĞÄÅK
-	Brain		ÄX
-	Jawbone		î€¹Ç
-	Eye		ÑÛÇò
-	Horn		½Ç
-	Diablo's Horn	°µºÚÆÆ»µÉñÖ®½Ç	°µºÚÆÆ‰ÄÉñÖ®½Ç
-	Tail		Î²°Í
-	Flag		ÆìÃ
-	Standard of Heroes	Ó¢ĞÛÆìÖÄ	Ó¢ĞÛÆìÃ
-	Fang		¼âÑÀ
-	Quill		Ó²Ã«
-	Soul		ì`»ê
-	Scalp		î^Æ¤
-	Spleen		Æ¢ÅK
-	Key		è€³×
-	The Black Tower Key		ºÚËşÖ®è€
-	Key of Terror	¿Ö¾åÖ®Ô¿	¿Ö‘ÖÖ®è€
-	Key of Hate	Ô÷ºŞÖ®Ô¿	Ô÷ºŞÖ®è€
-	Key of Destruction	»ÙÃğÖ®Ô¿	š§œçÖ®è€
-	Potion of Life		ÉúÃüË„©
-	Jade Figurine		ÓñÑuĞ¡ÈË
-	Gold Bird		üS½ğøB
-	Lam esen's tome		Ë{.ÒÁÉ­Ö®•ø
-	Horadric Cube		ºÕÀ­µÏ¿Ë·½‰K
-	Horadric Scroll		ºÕÀ­µÏ¿Ë¾íİS
-	Mephisto SoulStone		Ä«·ÆË¹ÍĞµÄì`»êÖ®Ê¯
-	Book of Skill		¼¼ÄÜÖ®•ø
-	Khalim Eye		¿ËÁÖÄ·µÄÑÛÇò
-	Baal's Eye	°Í¶ûÖ®ÑÛ	°Í –Ö®ÑÛ
-	Khalim Heart		¿ËÁÖÄ·µÄĞÄÅK
-	Khalim Brain		¿ËÁÖÄ·µÄ´óÄX
-	Mephisto's Brain	Ä«·ÆË¹ÍĞÖ®ÄÔ	Ä«·ÆË¹ÍĞÖ®ÄX
-	Ear		¶ú¶ä
-	Chipped Amethyst		ËéÁÑµÄ×ÏŒšÊ¯
-	Flawed Amethyst		ÁÑé_µÄ×ÏŒšÊ¯
-	Amethyst		×ÏŒšÊ¯
-	Flawless Amethyst		Ÿoè¦´ÃµÄ×ÏŒšÊ¯
-	Perfect Amethyst		ÍêÃÀµÄ×ÏŒšÊ¯
-	Chipped Topaz		ËéÁÑµÄ»ÆŒšÊ¯
-	Flawed Topaz		ÁÑé_µÄ»ÆŒšÊ¯
-	Topaz		»ÆŒšÊ¯
-	Flawless Topaz		Ÿoè¦´ÃµÄ»ÆŒšÊ¯
-	Perfect Topaz		ÍêÃÀµÄ»ÆŒšÊ¯
-	Chipped Saphire		ËéÁÑµÄË{ŒšÊ¯
-	Flawed Saphire		ÁÑé_µÄË{ŒšÊ¯
-	Saphire		Ë{ŒšÊ¯
-	Flawless Saphire		Ÿoè¦´ÃµÄË{ŒšÊ¯
-	Perfect Saphire		ÍêÃÀµÄË{ŒšÊ¯
-	Chipped Emerald		ËéÁÑµÄ¾GŒšÊ¯
-	Flawed Emerald		ÁÑé_µÄ¾GŒšÊ¯
-	Emerald		¾GŒšÊ¯
-	Flawless Emerald		Ÿoè¦´ÃµÄ¾GŒšÊ¯
-	Perfect Emerald		ÍêÃÀµÄ¾GŒšÊ¯
-	Chipped Ruby		ËéÁÑµÄ¼tŒšÊ¯
-	Flawed Ruby		ÁÑé_µÄ¼tŒšÊ¯
-	Ruby		¼tŒšÊ¯
-	Flawless Ruby		Ÿoè¦´ÃµÄ¼tŒšÊ¯
-	Perfect Ruby		ÍêÃÀµÄ¼tŒšÊ¯
-	Chipped Diamond		ËéÁÑµÄèÊ¯
-	Flawed Diamond		ÁÑé_µÄèÊ¯
-	Diamond		èÊ¯
-	Flawless Diamond		Ÿoè¦´ÃµÄèÊ¯
-	Perfect Diamond		ÍêÃÀµÄèÊ¯
-	Minor Healing Potion		İpÎ¢ÖÎ¯ŸË„©
-	Light Healing Potion		İpĞÍÖÎ¯ŸË„©
-	Healing Potion		ÖÎ¯ŸË„©
-	Greater Healing Potion		ŠÁ¦Ë„©
-	Super Healing Potion		³¬¼‰ÖÎ¯ŸË„©
-	Minor Mana Potion		İpÎ¢·¨Á¦Ë„©
-	Light Mana Potion		İpĞÍ·¨Á¦Ë„©
-	Mana Potion		·¨Á¦Ë„©
-	Greater Mana Potion		ŠÁ¦·¨Á¦Ë„©
-	Super Mana Potion		³¬¼‰·¨Á¦Ë„©
-	Chipped Skull		ËéÁÑµÄ÷¼ót
-	Flawed Skull		ÁÑé_µÄ÷¼ót
-	Skull		÷¼ót
-	Flawless Skull		Ÿoè¦´ÃµÄ÷¼ót
-	Perfect Skull		ÍêÃÀµÄ÷¼ót
-	Herb		Ë²İ
-	Small Charm		Ğ¡×oÉí·û
-	Large Charm		´óĞÍ×oÉí·û
-	Grand Charm		³¬´óĞÍ×oÉí·û
-	Small Red Potion		Ò»¹ÉĞ°ºÁ¦Á¿
-	Large Red Potion		Ò»¹ÉĞ°ºÁ¦Á¿
-	Small Blue Potion		Ò»¹ÉĞ°ºÁ¦Á¿
-	Large Blue Potion		Ò»¹ÉĞ°ºÁ¦Á¿
-	El Rune (1)	·ûÎÄ£ºEl (1)	·ûÎÄ£ºEl (1)
-	Eld Rune (2)	·ûÎÄ£ºEld (2)	·ûÎÄ£ºEld (2)
-	Tir Rune (3)	·ûÎÄ£ºTir (3)	·ûÎÄ£ºTir (3)
-	Nef Rune (4)	·ûÎÄ£ºNef (4)	·ûÎÄ£ºNef (4)
-	Eth Rune (5)	·ûÎÄ£ºEth (5)	·ûÎÄ£ºEth (5)
-	Ith Rune (6)	·ûÎÄ£ºIth (6)	·ûÎÄ£ºIth (6)
-	Tal Rune (7)	·ûÎÄ£ºTal (7)	·ûÎÄ£ºTal (7)
-	Ral Rune (8)	·ûÎÄ£ºRal (8)	·ûÎÄ£ºRal (8)
-	Ort Rune (9)	·ûÎÄ£ºOrt (9)	·ûÎÄ£ºOrt (9)
-	Thul Rune (10)	·ûÎÄ£ºThul (10)	·ûÎÄ£ºThul (10)
-	Amn Rune (11)	·ûÎÄ£ºAmn (11)	·ûÎÄ£ºAmn (11)
-	Sol Rune (12)	·ûÎÄ£ºSol (12)	·ûÎÄ£ºSol (12)
-	Shael Rune (13)	·ûÎÄ£ºShael (13)	·ûÎÄ£ºShael (13)
-	Dol Rune (14)	·ûÎÄ£ºDol (14)	·ûÎÄ£ºDol (14)
-	Hel Rune (15)	·ûÎÄ£ºHel (15)	·ûÎÄ£ºHel (15)
-	Io Rune (16)	·ûÎÄ£ºIo (16)	·ûÎÄ£ºIo (16)
-	Lum Rune (17)	·ûÎÄ£ºLum (17)	·ûÎÄ£ºLum (17)
-	Ko Rune (18)	·ûÎÄ£ºKo (18)	·ûÎÄ£ºKo (18)
-	Fal Rune (19)	·ûÎÄ£ºFal (19)	·ûÎÄ£ºFal (19)
-	Lem Rune (20)	·ûÎÄ£ºLem (20)	·ûÎÄ£ºLem (20)
-	Pul Rune (21)	·ûÎÄ£ºPul (21)	·ûÎÄ£ºPul (21)
-	Um Rune (22)	·ûÎÄ£ºUm (22)	·ûÎÄ£ºUm (22)
-	Mal Rune (23)	·ûÎÄ£ºMal (23)	·ûÎÄ£ºMal (23)
-	Ist Rune (24)	·ûÎÄ£ºIst (24)	·ûÎÄ£ºIst (24)
-	Gul Rune (25)	·ûÎÄ£ºGul (25)	·ûÎÄ£ºGul (25)
-	Vex Rune (26)	·ûÎÄ£ºVex (26)	·ûÎÄ£ºVex (26)
-	Ohm Rune (27)	·ûÎÄ£ºOhm (27)	·ûÎÄ£ºOhm (27)
-	Lo Rune (28)	·ûÎÄ£ºLo (28)	·ûÎÄ£ºLo (28)
-	Sur Rune (29)	·ûÎÄ£ºSur (29)	·ûÎÄ£ºSur (29)
-	Ber Rune (30)	·ûÎÄ£ºBer (30)	·ûÎÄ£ºBer (30)
-	Jah Rune (31)	·ûÎÄ£ºJah (31)	·ûÎÄ£ºJah (31)
-	Cham Rune (32)	·ûÎÄ£ºCham (32)	·ûÎÄ£ºCham (32)
-	Zod Rune (33)	·ûÎÄ£ºZod (33)	·ûÎÄ£ºZod (33)
-	Jewel		ŒšÊ¯
-	Malah's Potion		ñRÀ­Ö®Ë
-	Scroll of Knowledge		Öª×R¾íİS
-	Scroll of Resistances		µÖ¿¹¾íİS
-	Token of Absolution	ÉâÃâ»ÕÕÂ	ÉâÃâ»ÕÕÂ
-	Twisted Essence of Destruction	À£ÀÃµÄ»ÙÃğ¾«»ª	¢ €µÄš§œç¾«ÈA
-	Twisted Essence of Terror	È¼ÉÕµÄ¿Ö¾å¾«»ª	È¼ŸıµÄ¿Ö‘Ö¾«ÈA
-	Twisted Essence of Hatred	³äÓ¯µÄÔ÷ºŞ¾«»ª	³äÓ¯µÄÔ÷ºŞ¾«ÈA
-	Twisted Essence of Suffering	Å¤ÇúµÄ¿àÍ´¾«»ª	Å¤ÇúµÄ¿àÍ´¾«ÈA
+*=======================ç‰©å“ç§ç±»åå­—			
+	General items	ä¸€èˆ¬ç‰©å“	ä¸€èˆ¬ç‰©å“
+	Helmets	å¤´ç›”	é ­ç›”
+	Helmets (Barbarian only)	é‡è›®äººä¸“ç”¨å¤´ç›”	é‡è »äººå°ˆç”¨é ­ç›”
+	Helmets (Druid only)	å¾·é²ä¼Šä¸“ç”¨å¤´ç›”	å¾·é­¯ä¼Šå°ˆç”¨é ­ç›”
+	Gloves	æ‰‹å¥—	æ‰‹å¥—
+	Boots	é‹å­	é‹å­
+	Belts	è…°å¸¦	è…°å¸¶
+	Armors	æŠ¤ç”²	è­·ç”²
+	Shields	ç›¾ç‰Œ	ç›¾ç‰Œ
+	Shields (Paladin only)	åœ£éª‘å£«ä¸“ç”¨ç›¾ç‰Œ	è–é¨å£«å°ˆç”¨ç›¾ç‰Œ
+	Shields (Necromancer only)	æ­»çµæ³•å¸ˆä¸“ç”¨ç›¾ç‰Œ	æ­»éˆæ³•å¸«å°ˆç”¨ç›¾ç‰Œ
+	Axes	æ–§å¤´	æ–§é ­
+	Wands (Necromancer only)	æ­»çµæ³•å¸ˆä¸“ç”¨æ³•æ–	æ­»éˆæ³•å¸«å°ˆç”¨æ³•æ–
+	Clubs	æ£æ£’	æ£æ£’
+	Scepters (Paladin only)	åœ£éª‘å£«ä¸“ç”¨æ–	è–é¨å£«å°ˆç”¨æ–
+	Swords	åˆ€å‰‘	åˆ€åŠ
+	Knifes	é£åˆ€	é£›åˆ€
+	Javelins	æ ‡æª	æ¨™æ§
+	Spears	é•¿çŸ›	é•·çŸ›
+	Staffs (Sorceress only)	æ³•å¸ˆä¸“ç”¨æ³•æ–	æ³•å¸«å°ˆç”¨æ³•æ–
+	Bows	å¼“å¼©	å¼“å¼©
+	Poisons	æ¯’è¯	æ¯’è—¥
+	Quest Items	ä»»åŠ¡ç‰©å“	ä»»å‹™ç‰©å“
+	Claws (Assasin only)	åˆºå®¢ä¸“ç”¨åˆ€çˆª	åˆºå®¢å°ˆç”¨åˆ€çˆª
+	Orbs (Sorceress only)	æ³•å¸ˆä¸“ç”¨çƒ	æ³•å¸«å°ˆç”¨çƒ
+	Bow and spears (Amazon only)	äºšé©¬é€Šä¸“ç”¨å¼“å’ŒçŸ›	äºé¦¬éœå°ˆç”¨å¼“å’ŒçŸ›
+*=======================ç‰©å“è´¨é‡åå­—			
+	Low	ç™½è‰²ä½çº§	ç™½è‰²ä½ç´š
+	Normal	ç™½è‰²æ™®é€š	ç™½è‰²æ™®é€š
+	High	ç™½è‰²é«˜çº§	ç™½è‰²é«˜ç´š
+	Magical	è“è‰²é­”æ³•	è—è‰²é­”æ³•
+	Set	ç»¿è‰²å¥—è£…	ç¶ è‰²å¥—è£
+	Rare	é»„é‡‘è£…å¤‡	é»ƒé‡‘è£å‚™
+	Unique	æš—é‡‘è£…å¤‡	æš—é‡‘è£å‚™
+	Crafted	æ©™è‰²åˆæˆ	æ©™è‰²åˆæˆ
+*=======================æ¸¸æˆéš¾åº¦			
+	Normal	æ™®é€š	æ™®é€š
+	Nightmare	æ¶æ¢¦	å™©å¤¢
+	Hell	åœ°ç‹±	åœ°ç„
+*=======================å°ç«™åå­—			
+	Rogue Encampment	èæ ¼è¥åœ°	è˜¿æ ¼ç‡Ÿåœ°
+	Cold Plains	å†°å†·ä¹‹åŸ	å†°å†·ä¹‹åŸ
+	Stony Field	çŸ³å—æ—·é‡	çŸ³å¡Šæ› é‡
+	Dark Wood	é»‘æš—æ£®æ—	é»‘æš—æ£®æ—
+	Black Marsh	é»‘è‰²è’åœ°	é»‘è‰²è’åœ°
+	Outer Cloister	å¤–ä¾§å›å»Š	å¤–å´è¿´å»Š
+	Jail Level 1	ç›‘ç‰¢ç¬¬ä¸€å±‚	ç›£ç‰¢ç¬¬ä¸€å±¤
+	Inner Cloister	å†…ä¾§å›å»Š	å†…å´è¿´å»Š
+	Catacombs Level 2	åœ°ä¸‹å¢“ç©´ç¬¬äºŒå±‚	åœ°ä¸‹å¢“ç©´ç¬¬äºŒå±¤
+	Lut Gholein	é².é«˜å› 	é­¯.é«˜å› 
+	Sewers Level 2	ä¸‹æ°´é“ç¬¬äºŒå±‚	ä¸‹æ°´é“ç¬¬äºŒå±¤
+	Dry Hills	å¹²ç‡¥çš„é«˜åœ°	ä¹¾ç‡¥çš„é«˜åœ°
+	Halls of the Dead Level 2	æ­»äº¡ä¹‹æ®¿ç¬¬äºŒå±‚	æ­»äº¡ä¹‹æ®¿ç¬¬äºŒå±¤
+	Far Oasis	é¥è¿œçš„ç»¿æ´²	é™é çš„ç¶ æ´²
+	Lost City	é—å¤±çš„åŸå¸‚	éºå¤±çš„åŸå¸‚
+	Palace Cellar Level 1 	çš‡å®«ç›‘ç‰¢ç¬¬ä¸€å±‚	çš‡å®®ç›£ç‰¢ç¬¬ä¸€å±¤
+	Arcane Sanctuary	ç¥ç§˜é¿éš¾æ‰€	ç¥ç§˜é¿é›£æ‰€
+	Canyon of the Magi	å«å£«çš„å³¡è°·	è¡›å£«çš„å³½è°·
+	Kurast Docktown	åº“æ‹‰æ–¯ç‰¹æµ·æ¸¯	åº«æ‹‰æ–¯ç‰¹æµ·æ¸¯
+	Spider Forest	èœ˜è››æ£®æ—	èœ˜è››æ£®æ—
+	Great Marsh	åºå¤§æ¹¿åœ°	é¾å¤§æ¿•åœ°
+	Flayer Jungle	å‰¥çš®æ£®æ—	å‰çš®æ£®æ—
+	Lower Kurast	åº“æ‹‰æ–¯ç‰¹ä¸‹å±‚	åº«æ‹‰æ–¯ç‰¹ä¸‹å±¤
+	Kurast Bazaar	åº“æ‹‰æ–¯ç‰¹å•†åœº	åº«æ‹‰æ–¯ç‰¹å•†å ´
+	Upper Kurast	åº“æ‹‰æ–¯ç‰¹ä¸Šå±‚	åº«æ‹‰æ–¯ç‰¹ä¸Šå±¤
+	Travincal	å´”å‡¡å…‹	å´”å‡¡å…‹
+	Durance of Hate Level 2	æ†æ¨çš„å›šç‰¢ç¬¬äºŒå±‚	æ†æ¨çš„å›šç‰¢ç¬¬äºŒå±¤
+	The Pandemonium Fortress	ç¾¤é­”å ¡å’	ç¾¤é­”å ¡å£˜
+	City of the Damned	ç¥ç½šä¹‹åŸ	ç¥ç½°ä¹‹åŸ
+	River of Flame	ç«ç„°ä¹‹æ²³	ç«ç„°ä¹‹æ²³
+	Harrogath	å“ˆæ´›åŠ æ–¯	å“ˆæ´›åŠ æ–¯
+	Rigid Highlands	å†°å†»é«˜åœ°	å†°å‡é«˜åœ°
+	Arreat Plateau	äºšç‘ç‰¹é«˜åŸ	äºç‘ç‰¹é«˜åŸ
+	Crystalline Passage	æ°´æ™¶é€šé“	æ°´æ™¶é€šé“
+	Glacial Trail	å†°æ²³è·¯å¾„	å†°æ²³è·¯å¾‘
+	Halls of Anguish	ç—›è‹¦ä¹‹å…	ç—›è‹¦ä¹‹å»°
+	Tundra Wastelands	å†°å†»è‹”åŸ	å†°å‡è‹”åŸ
+	The Ancients' way	è¿œå¤ä¹‹è·¯	é å¤ä¹‹è·¯
+	The Worldstone Keep Level 2	ä¸–ç•Œä¹‹çŸ³è¦å¡ç¬¬äºŒå±‚	ä¸–ç•Œä¹‹çŸ³è¦å¡ç¬¬äºŒå±¤
+*=======================ä»»åŠ¡åå­—			
+	Den of Evil	é‚ªæ¶æ´ç©´	é‚ªæƒ¡æ´ç©´
+	Sisters' Burial Grounds	ä¿®å¥³åŸ‹éª¨ä¹‹åœ°	ä¿®å¥³åŸ‹éª¨ä¹‹åœ°
+	The Search for Cain	å‡¯æ©çš„æœç´¢	å‡±æ©çš„æœç´¢
+	The Forgotten Tower	é—å¿˜ä¹‹å¡”	éºå¿˜ä¹‹å¡”
+	Tools of the Trade	äº¤æ˜“çš„å·¥å…·	äº¤æ˜“çš„å·¥å…·
+	Sisters to the Slaughter	å± æ€çš„ä¿®å¥³	å± æ®ºçš„ä¿®å¥³
+	Radament's Lair	ç½—è¾¾é—¨ç‰¹çš„å·¢ç©´	ç¾…é”é–€ç‰¹çš„å·¢ç©´
+	The Horadric Staff	èµ«æ‹‰è¿ªå…‹ä¹‹æ–	èµ«æ‹‰è¿ªå…‹ä¹‹æ–
+	Tainted Sun	å •è½çš„å¤ªé˜³	å¢®è½çš„å¤ªé™½
+	Arcane Sanctuary	ç¥ç§˜é¿éš¾æ‰€	ç¥ç§˜é¿é›£æ‰€
+	The Summoner	å¬å”¤è€…	å¬å–šè€…
+	The Seven Tombs	ä¸ƒä¸ªå¤å¢“	ä¸ƒå€‹å¤å¢“
+	The Golden Bird	é»„é‡‘é¸Ÿ	é»ƒé‡‘é³¥
+	Blade of the Old Religion	å¤ä»£å®—æ•™ä¹‹åˆƒ	å¤ä»£å®—æ•™ä¹‹åˆƒ
+	Khalim's Will	å…‹æ—å§†çš„æ„å¿—	å…‹æ—å§†çš„æ„å¿—
+	Lam Esen's Tome	è“.ä¾æ£®çš„å¤ä¹¦	è—.ä¾æ£®çš„å¤æ›¸
+	The Blackened Temple	è½¬ä¸ºé»‘æš—çš„ç¥æ®¿	è½‰çˆ²é»‘æš—çš„ç¥æ®¿
+	The Guardian	å®ˆæŠ¤è€…	å®ˆè­·è€…
+	The Fallen Angel	å •è½çš„å¤©ä½¿	å¢®è½çš„å¤©ä½¿
+	Hell's Forge	åœ°ç‹±ç†”ç‚‰	åœ°ç„ç†”çˆ
+	Terror's End	ææ€–çš„ç»“å±€	ææ€–çš„çµå±€
+	Siege on Harrogath	å“ˆæ´›åŠ æ–¯å›´åŸæˆ˜	å“ˆæ´›åŠ æ–¯åœåŸæˆ°
+	Rescue on Mount Arreat	äºšç‘ç‰¹å±±çš„æ•‘æ´è¡ŒåŠ¨	äºç‘ç‰¹å±±çš„æ•‘æ´è¡Œå‹•
+	Prison of Ice	å†°ä¹‹å›š	å†°ä¹‹å›š
+	Betrayal of Harrogath	å“ˆæ´›åŠ æ–¯çš„åå›è¡ŒåŠ¨	å“ˆæ´›åŠ æ–¯çš„åå›è¡Œå‹•
+	Rite of Passage	é€šé“çš„ç¥­å…¸	é€šé“çš„ç¥­å…¸
+	Eve of Destruction	æ¯ç­çš„å‰å¤•	æ¯€æ»…çš„å‰å¤•
+	Moo Moo Farm	æ€æ­»æ¯ç‰›ä¹‹ç‹	æ®ºæ­»æ¯ç‰›ä¹‹ç‹
+	Reset Stats Points	é‡ç½®æŠ€èƒ½å’Œå±æ€§ç‚¹	é‡ç½®æŠ€èƒ½å’Œå±¬æ€§é»
+*=======================é€šç”¨æŠ€èƒ½åå­—			
+	Attack	ä¸€èˆ¬æ”»å‡»	ä¸€èˆ¬æ”»æ“Š
+	Kick	è„šè¸¢	è…³è¸¢
+	Throw	æŠ•æ·	æŠ•æ“²
+	Unsummon	å–æ¶ˆå¬å”¤	å–æ¶ˆå¬å–š
+	Left Hand Throw	å·¦æ‰‹æŠ•æ·	å·¦æ‰‹æŠ•æ“²
+	Left Hand Swing	å·¦æ‰‹æŒ¥åŠ¨	å·¦æ‰‹æ®å‹•
+	Scroll of Identify	è¾¨è¯†å·è½´	è¾¨è­˜å·è»¸
+	Tome of Identify	è¾¨è¯†ä¹‹ä¹¦	è¾¨è­˜ä¹‹æ›¸
+	Scroll of Town Portal	å›åŸå·è½´	å›åŸå·è»¸
+	Tome of Town Portal	å›åŸä¹‹ä¹¦	å›åŸä¹‹æ›¸
+	Delirium	è¿ªå‹’ç‘å§†	è¿ªå‹’ç‘å§†
+	An Evil Force	ä¸€è‚¡é‚ªæ¶åŠ›é‡	ä¸€è‚¡é‚ªæƒ¡åŠ›é‡
+*=======================è§’è‰²æŠ€èƒ½åå­—			
+	Magic Arrow	é­”æ³•ç®­	é­”æ³•ç®­
+	Fire Arrow	ç«ç„°ç®­	ç«ç„°ç®­
+	Cold Arrow	å†°ç®­	å†°ç®­
+	Multiple Shot	å¤šé‡ç®­	å¤šé‡ç®­
+	Exploding Arrow	çˆ†è£‚ç®­	çˆ†è£‚ç®­
+	Ice Arrow	æ€¥å†»ç®­	æ€¥å‡ç®­
+	Guided Arrow	å¯¼å¼•ç®­	å°å¼•ç®­
+	Strafe	ç‚®è½°	ç ²è½Ÿ
+	Immolation Arrow	ç‰ºç‰²ä¹‹ç®­	çŠ§ç‰²ä¹‹ç®­
+	Freezing Arrow	å†»ç»“ä¹‹ç®­	å‡çµä¹‹ç®­
+	Inner Sight	å†…è§†	å†…è¦–
+	Critical Strike	è‡´å‘½æ”»å‡»	è‡´å‘½æ”»æ“Š
+	Dodge	é—ªé¿	é–ƒé¿
+	Slow Missiles	æ…¢é€Ÿç®­	æ…¢é€Ÿç®­
+	Avoid	èº²é¿	èº²é¿
+	Penetrate	åˆºå…¥	åˆºå…¥
+	Dopplezon	è¯±é¥µ	èª˜é¤Œ
+	Evade	å›é¿	è¿´é¿
+	Valkyrie	å¥³æ­¦ç¥	å¥³æ­¦ç¥
+	Pierce	ç©¿åˆº	ç©¿åˆº
+	Jab	æˆ³åˆº	æˆ³åˆº
+	Power Strike	å¨åŠ›ä¸€å‡»	å¨åŠ›ä¸€æ“Š
+	Poison Javelin	æ¯’æª	æ¯’æ§
+	Impale	åˆºçˆ†	åˆºçˆ†
+	Lightning Bolt	é—ªç”µçƒ	é–ƒé›»çƒ
+	Charged Strike	å……èƒ½ä¸€å‡»	å……èƒ½ä¸€æ“Š
+	Plague Javelin	ç˜Ÿç–«æ ‡æª	ç˜Ÿç–«æ¨™æ§
+	Fend	å‡»é€€	æ“Šé€€
+	Lightning Strike	é—ªç”µæ”»å‡»	é–ƒé›»æ”»æ“Š
+	Lightning Fury	é—ªç”µä¹‹æ€’	é–ƒé›»ä¹‹æ€’
+	Fire Bolt	ç«å¼¹	ç«å½ˆ
+	Warmth	æš–æ°”	æš–æ°£
+	Inferno	åœ°ç‹±ä¹‹ç«	åœ°ç„ä¹‹ç«
+	Blaze	ç‚½çƒˆä¹‹å¾„	ç†¾çƒˆä¹‹å¾‘
+	Fire Ball	ç«çƒ	ç«çƒ
+	Fire Wall	ç«å¢™	ç«å¢»
+	Enchant	å¼ºåŒ–	å¼·åŒ–
+	Meteor	é™¨çŸ³	éš•çŸ³
+	Fire Mastery	æ”¯é…ä¹‹ç„°	æ”¯é…ä¹‹ç„°
+	Hydra	ä¹å¤´æµ·è›‡	ä¹é ­æµ·è›‡
+	Charged Bolt	å……èƒ½å¼¹	å……èƒ½å½ˆ
+	Static Field	é™æ€åŠ›åœº	éœæ…‹åŠ›å ´
+	Telekinesis	å¿ƒçµä¼ åŠ¨	å¿ƒéˆå‚³å‹•
+	Nova	æ–°æ˜Ÿ	æ–°æ˜Ÿ
+	Lightning	é—ªç”µ	é–ƒé›»
+	Chain Lightning	è¿é”é—ªç”µ	é€£é–é–ƒé›»
+	Teleport	ä¼ é€	å‚³é€
+	Thunder Storm	é›·äº‘é£æš´	é›·äº‘é¢¨æš´
+	Energy Shield	èƒ½é‡æŠ¤ç›¾	èƒ½é‡è­·ç›¾
+	Lightning Mastery	æ”¯é…é—ªç”µ	æ”¯é…é–ƒé›»
+	Ice Bolt	å†°å¼¹	å†°å½ˆ
+	Frozen Armor	å†°å°è£…ç”²	å†°å°è£ç”²
+	Frost Nova	éœœä¹‹æ–°æ˜Ÿ	éœœä¹‹æ–°æ˜Ÿ
+	Ice Blast	å†°é£æš´	å†°é¢¨æš´
+	Shiver Armor	ç¢å†°ç”²	ç¢å†°ç”²
+	Glacial Spike	å†°å°–æŸ±	å†°å°–æŸ±
+	Blizzard	æš´é£é›ª	æš´é¢¨é›ª
+	Chilling Armor	å¯’å†°è£…ç”²	å¯’å†°è£ç”²
+	Frozen Orb	å†°å°çƒ	å†°å°çƒ
+	Cold Mastery	æ”¯é…å†°å†·	æ”¯é…å†°å†·
+	Amplify Damage	ä¼¤å®³åŠ æ·±	å‚·å®³åŠ æ·±
+	Dim Vision	å¾®æš—çµè§†	å¾®æš—éˆè¦–
+	Weaken	å‰Šå¼±	å‰Šå¼±
+	Iron Maiden	æ”»å‡»åå™¬	æ”»æ“Šåå™¬
+	Terror	ææƒ§	ææ‡¼
+	Confuse	è¿·ä¹±	è¿·äº‚
+	Life Tap	å·å–ç”Ÿå‘½	å·å–ç”Ÿå‘½
+	Attract	å¸å¼•	å¸å¼•
+	Decrepify	è¡°è€	è¡°è€
+	Lower Resist	é™ä½æŠµæŠ—	é™ä½æŠµæŠ—
+	Teeth	ç‰™	ç‰™
+	Bone Armor	ç™½éª¨è£…ç”²	ç™½éª¨è£ç”²
+	Poison Dagger	æ·¬æ¯’åŒ•é¦–	æ·¬æ¯’åŒ•é¦–
+	Corpse Explosion	å°¸ä½“çˆ†ç‚¸	å±é«”çˆ†ç‚¸
+	Bone Wall	éª¨å¢™	éª¨å¢»
+	Poison Explosion	æ¯’çˆ†	æ¯’çˆ†
+	Bone Spear	éª¨çŸ›	éª¨çŸ›
+	Bone Prison	éª¨ç‰¢	éª¨ç‰¢
+	Poison Nova	å‰§æ¯’æ–°æ˜Ÿ	åŠ‡æ¯’æ–°æ˜Ÿ
+	Bone Spirit	ç™½éª¨ä¹‹é­‚	ç™½éª¨ä¹‹é­‚
+	Skeleton Mastery	æ”¯é…éª·é«…	æ”¯é…éª·é«
+	Raise Skeleton	éª·é«…å¤è‹	éª·é«å¾©ç”¦
+	Clay Golem	é»åœŸçŸ³é­”	é»åœŸçŸ³é­”
+	Golem Mastery	æ”¯é…çŸ³é­”	æ”¯é…çŸ³é­”
+	Raise Skeletal Mage	å¤è‹éª·é«…æ³•å¸ˆ	å¾©ç”¦éª·é«æ³•å¸«
+	Blood Golem	é²œè¡€çŸ³é­”	é®®è¡€çŸ³é­”
+	Summon Resist	å¬å”¤åæŠ—	å¬å–šåæŠ—
+	Iron Golem	é’¢é“çŸ³é­”	é‹¼éµçŸ³é­”
+	Fire Golem	ç«ç„°çŸ³é­”	ç«ç„°çŸ³é­”
+	Revive	é‡ç”Ÿ	é‡ç”Ÿ
+	Sacrifice	ç‰ºç‰²	çŠ§ç‰²
+	Smite	é‡å‡»	é‡æ“Š
+	Holy Bolt	åœ£å…‰å¼¹	è–å…‰å½ˆ
+	Zeal	ç™½çƒ­	ç™½ç†±
+	Charge	çªå‡»	çªæ“Š
+	Vengeance	å¤ä»‡	å¾©ä»‡
+	Blessed Hammer	ç¥ç¦ä¹‹é”¤	ç¥ç¦ä¹‹éš
+	Conversion	è½¬æ¢	è½‰æ›
+	Holy Shield	ç¥åœ£ä¹‹ç›¾	ç¥è–ä¹‹ç›¾
+	Fist of the Heavens	å¤©å ‚ä¹‹æ‹³	å¤©å ‚ä¹‹æ‹³
+	Might	åŠ›é‡	åŠ›é‡
+	Holy Fire	åœ£ç«	è–ç«
+	Thorns	åˆºé’ˆ	åˆºé‡
+	Blessed Aim	ç¥ç¦ç„å‡†	ç¥ç¦ç„æº–
+	Concentration	ä¸“æ³¨	å°ˆæ³¨
+	Holy Freeze	ç¥åœ£å†°å†»	ç¥è–å†°å‡
+	Holy Shock	ç¥åœ£å†²å‡»	ç¥è–è¡æ“Š
+	Sanctuary	åº‡æŠ¤æ‰€	åº‡è­·æ‰€
+	Fanaticism	ç‹‚çƒ­	ç‹‚ç†±
+	Conviction	ä¿¡å¿µ	ä¿¡å¿µ
+	Prayer	ç¥ˆç¥·	ç¥ˆç¦±
+	Resist Fire	æŠ—ç«	æŠ—ç«
+	Defiance	åæŠ—	åæŠ—
+	Resist Cold	æŠ—å†°å†·	æŠ—å†°å†·
+	Cleansing	å‡€åŒ–	æ·¨åŒ–
+	Resist Lightning	æŠµæŠ—é—ªç”µ	æŠµæŠ—é–ƒé›»
+	Vigor	ç²¾åŠ›	ç²¾åŠ›
+	Meditation	å†¥æ€	å†¥æ€
+	Redemption	æ•‘èµ	æ•‘è´–
+	Salvation	æ•‘åŠ©	æ•‘åŠ©
+	Bash	é‡å‡»	é‡æ“Š
+	Leap	è·³è·ƒ	è·³èº
+	Double Swing	åŒæ‰‹æŒ¥å‡»	é›™æ‰‹æ®æ“Š
+	Stun	å‡»æ˜	æ“Šæ˜
+	Double Throw	åŒæ‰‹æŠ•æ·	é›™æ‰‹æŠ•æ“²
+	Leap Attack	è·³è·ƒæ”»å‡»	è·³èºæ”»æ“Š
+	Concentrate	ä¸“å¿ƒ	å°ˆå¿ƒ
+	Frenzy	ç‹‚ä¹±	ç‹‚äº‚
+	Whirlwind	æ—‹é£	æ—‹é¢¨
+	Berserk	ç‹‚æˆ˜å£«	ç‹‚æˆ°å£«
+	Sword Mastery	æ”¯é…é•¿å‰‘	æ”¯é…é•·åŠ
+	Axe Mastery	æ”¯é…æ–§å¤´	æ”¯é…æ–§é ­
+	Mace Mastery	æ”¯é…é’‰å¤´é”¤	æ”¯é…é‡˜é ­éš
+	Pole Arm Mastery	æ”¯é…é•¿æ£	æ”¯é…é•·æ£
+	Throwing Mastery	æ”¯é…é£æ·	æ”¯é…é£›æ“²
+	Spear Mastery	æ”¯é…é•¿çŸ›	æ”¯é…é•·çŸ›
+	Increased Stamina	å¢åŠ è€åŠ›	å¢åŠ è€åŠ›
+	Iron Skin	é“å¸ƒè¡«	é‰„å¸ƒè¡«
+	Increased Speed	åŠ é€Ÿ	åŠ é€Ÿ
+	Natural Resistance	è‡ªç„¶æŠµæŠ—	è‡ªç„¶æŠµæŠ—
+	Howl	ç‹‚å—¥	ç‹‚å—¥
+	Find Potion	æ‰¾å¯»è¯å‰‚	æ‰¾å°‹è—¥åŠ‘
+	Taunt	å˜²å¼„	å˜²å¼„
+	Shout	å¤§å«	å¤§å«
+	Find Item	æ‰¾å¯»ç‰©å“	æ‰¾å°‹ç‰©å“
+	Battle Cry	æˆ˜å—¥	æˆ°å—¥
+	Battle Orders	æˆ˜æ–—ä½“åˆ¶	æˆ°é¬¥é«”åˆ¶
+	Grim Ward	æ®‹é…·å–é˜»	æ®˜é…·åš‡é˜»
+	War Cry	æˆ˜æ–—ç‹‚å—¥	æˆ°é¬¥ç‹‚å—¥
+	Battle Command	æˆ˜æ–—æŒ‡æŒ¥	æˆ°é¬¥æŒ‡æ®
+	Raven	ä¹Œé¸¦	çƒé´‰
+	Plague Poppy	çŒ›æ¯’åè—¤	çŒ›æ¯’èŠ±è—¤
+	Oak Sage	æ©¡æœ¨æ™ºè€…	æ©¡æœ¨æ™ºè€…
+	Summon Spirit Wolf	å¬å”¤é¬¼ç‹¼	å¬å–šé¬¼ç‹¼
+	Cycle of Life	é£Ÿå°¸è—¤	é£Ÿå±è—¤
+	Heart of Wolverine	ç‹¼ç¾ä¹‹å¿ƒ	ç‹¼ç¾ä¹‹å¿ƒ
+	Summon Fenris	å¬å”¤ç‹‚ç‹¼	å¬å–šç‹‚ç‹¼
+	Vines	å¤ªé˜³è—¤	å¤ªé™½è—¤
+	Spirit of Barbs	æ£˜çµ	æ£˜éˆ
+	Summon Grizzly	å¬å”¤ç°ç†Š	å¬å–šç°ç†Š
+	Wearwolf	ç‹¼äººå˜åŒ–	ç‹¼äººè®ŠåŒ–
+	Shape Shifting	å˜å½¢æœ¯	è®Šå½¢æœ®
+	Wearbear	ç†Šäººå˜åŒ–	ç†Šäººè®ŠåŒ–
+	Feral Rage	é‡æ€§ç‹‚æš´	é‡æ€§ç‹‚æš´
+	Maul	æ’æ§Œ	æ’éš
+	Rabies	ç‹‚çŠ¬ç—…	ç‹‚çŠ¬ç—…
+	Fire Claws	ç„°çˆª	ç„°çˆª
+	Hunger	é¥¥é¥¿	é£¢é¤“
+	Shock Wave	éœ‡æ³¢	éœ‡æ³¢
+	Fury	ç‹‚æ€’	ç‹‚æ€’
+	Firestorm	ç«é£æš´	ç«é¢¨æš´
+	Molten Boulder	ç†”æµ†å·¨å²©	ç†”æ¼¿å·¨å²©
+	Arctic Blast	æåœ°é£æš´	æ¥µåœ°é¢¨æš´
+	Eruption	ç«å±±çˆ†	ç«å±±çˆ†
+	Cyclone Armor	é£“é£è£…ç”²	é¢¶é¢¨è£ç”²
+	Twister	é•°é¼¬é£	éŒé¼¬é¢¨
+	Volcano	ç«å±±	ç«å±±
+	Tornado	é¾™å·é£	é¾æ²é¢¨
+	Armageddon	æ¯å¤©ç­åœ°	æ¯€å¤©æ»…åœ°
+	Hurricane	æš´é£	æš´é¢¨
+	Fire Trauma	ç«ç„°çˆ†éœ‡	ç«ç„°çˆ†éœ‡
+	Shock Field	é›·ç”µç½‘	é›·é›»ç¶²
+	Blade Sentinel	åˆƒä¹‹å®ˆå«	åˆƒä¹‹å®ˆè¡›
+	Charged Bolt Sentry	ç”µèƒ½å®ˆå«	é›»èƒ½å®ˆè¡›
+	Wake of Fire Sentry	ç«ç„°å¤è‹	ç«ç„°å¾©ç”¦
+	Blade Fury	åˆƒä¹‹æ€’	åˆƒä¹‹æ€’
+	Lightning Sentry	é›·å…‰å®ˆå«	é›·å…‰å®ˆè¡›
+	Inferno Sentry	å¤è‹ç‹±ç«	å¾©ç”¦ç„ç«
+	Death Sentry	äº¡è€…å®ˆå«	äº¡è€…å®ˆè¡›
+	Blade Shield	åˆ€åˆƒä¹‹ç›¾	åˆ€åˆƒä¹‹ç›¾
+	Claw Mastery	æ”¯é…åˆ©çˆª	æ”¯é…åˆ©çˆª
+	Psychic Hammer	å¿ƒçµæˆ˜é”¤	å¿ƒéˆæˆ°éš
+	Quickness	åŠ é€Ÿ	åŠ é€Ÿ
+	Weapon Block	æ­¦å™¨æ ¼æŒ¡	æ­¦å™¨æ ¼æ“‹
+	Cloak of Shadows	é­”å½±æ–—ç¯·	é­”å½±æ–—ç¯·
+	Fade	èƒ½é‡æ¶ˆè§£	èƒ½é‡æ¶ˆè§£
+	Shadow Warrior	å½±å­æˆ˜å£«	å½±å­æˆ°å£«
+	Mind Blast	å¿ƒçµçˆ†éœ‡	å¿ƒéˆçˆ†éœ‡
+	Venom	æ¯’ç‰™	æ¯’ç‰™
+	Shadow Master	å½±å­å¤§å¸ˆ	å½±å­å¤§å¸«
+	Tiger Strike	è™å‡»	è™æ“Š
+	Dragon Talon	é¾™çˆª	é¾çˆª
+	Fists of Fire	ç„°æ‹³	ç„°æ‹³
+	Dragon Claw	åŒé¾™çˆª	é›™é¾çˆª
+	Cobra Strike	çœ¼é•œè›‡æ”»å‡»	çœ¼é¡è›‡æ”»æ“Š
+	Claws of Thunder	é›·ç”µçˆª	é›·é›»çˆª
+	Dragon Tail	ç¥é¾™æ‘†å°¾	ç¥é¾æ“ºå°¾
+	Blades of Ice	å¯’å†°åˆƒ	å¯’å†°åˆƒ
+	Dragon Flight	é£é¾™åœ¨å¤©	é£›é¾åœ¨å¤©
+	Royal Strike	å‡¤å‡°æ”»å‡»	é³³å‡°æ”»æ“Š
+*=======================è§’è‰²æŠ€èƒ½æ ‘åå­—ï¼ˆä¸æ˜¯æŠ€èƒ½åï¼‰			
+	Bow and Crossbow Skills	å¼“å’Œåå­—å¼“æŠ€èƒ½	å¼“å’Œåå­—å¼“æŠ€èƒ½
+	Passive and Magic Skills	è¢«åŠ¨å’Œé­”æ³•æŠ€èƒ½	è¢«å‹•å’Œé­”æ³•æŠ€èƒ½
+	Javelin and Spear Skills	æ ‡æªå’Œé•¿çŸ›æŠ€èƒ½	æ¨™æ§å’Œé•·çŸ›æŠ€èƒ½
+	Fire Spells	ç«ç„°æ³•æœ¯	ç«ç„°æ³•è¡“
+	Lightning Spells	é—ªç”µæ³•æœ¯	é–ƒé›»æ³•è¡“
+	Cold Spells	å†°å†»æ³•æœ¯	å†°å‡æ³•è¡“
+	Curses	è¯…å’’	è©›å’’
+	Poison and Bone Spells	æ¯’ç´ å’Œç™½éª¨æ³•æœ¯	æ¯’ç´ å’Œç™½éª¨æ³•è¡“
+	Summoning Spells	å¬å”¤æ³•æœ¯	å¬å–šæ³•è¡“
+	Combat Skills	ä½œæˆ˜æŠ€èƒ½	ä½œæˆ°æŠ€èƒ½
+	Offensive Auras	æ”»å‡»çµæ°”	æ”»æ“Šéˆæ°£
+	Defensive Auras	é˜²å¾¡æ€§çµæ°”	é˜²ç¦¦æ€§éˆæ°£
+	Combat Skills	æˆ˜æ–—æŠ€èƒ½	æˆ°é¬¥æŠ€èƒ½
+	Combat Masteries	æˆ˜æ–—ä¸“å®¶	æˆ°é¬¥å°ˆå®¶
+	Warcries	å‘å–Š	å‘å–Š
+	Summoning	å¬å”¤	å¬å–š
+	Lycanthropy	å¤–å‹å˜å½¢	å¤–å‹è®Šå½¢
+	Elemental	å…ƒç´ 	å…ƒç´ 
+	Traps	é™·é˜±	é™·é˜±
+	Shadow Disciplines	å½±å­è®­ç»ƒ	å½±å­è¨“ç·´
+	Martial Arts	æ­¦å­¦è‰ºæœ¯	æ­¦å­¸è—è¡“
+*=======================æ—¶åˆ»åå­—			
+	During Daytime	åœ¨ç™½å¤©	åœ¨ç™½å¤©
+	Near Dusk	åœ¨é»„æ˜	åœ¨é»ƒæ˜
+	During Nighttime	åœ¨å¤œé—´	åœ¨å¤œé–“
+	Near Dawn	åœ¨é»æ˜	åœ¨é»æ˜
+*=======================è§’è‰²åå­—			
+	Amazon	äºšé©¬é€Š	äºé¦¬éœ
+	Sorceress	æ³•å¸ˆ	æ³•å¸«
+	Necromancer	æ­»çµæ³•å¸ˆ	æ­»éˆæ³•å¸«
+	Paladin	åœ£éª‘å£«	è–é¨å£«
+	Barbarian	é‡è›®äºº	é‡è »äºº
+	Druid	å¾·é²ä¾	å¾·é­¯ä¾
+	Assassin	åˆºå®¢	åˆºå®¢
+*=======================ä»¥ä¸‹æ˜¯ç‰©å“åç§°			
+	Elixir		éˆè—¥
+	Healing Potion		ä¸€è‚¡é‚ªæƒ¡åŠ›é‡
+	Mana Potion		ä¸€è‚¡é‚ªæƒ¡åŠ›é‡
+	Full Healing Potion		ä¸€è‚¡é‚ªæƒ¡åŠ›é‡
+	Full Mana Potion		ä¸€è‚¡é‚ªæƒ¡åŠ›é‡
+	Stamina Potion		é«”åŠ›è—¥åŠ‘
+	Antidote Potion		è§£æ¯’è—¥åŠ‘
+	Rejuvenation Potion		å›å¾©æ´»åŠ›è—¥åŠ‘
+	Full Rejuvenation Potion		å…¨é¢å›å¾©æ´»åŠ›è—¥åŠ‘
+	Thawing Potion		æº¶è§£è—¥åŠ‘
+	Town Portal Book		åŸé®å‚³é€ä¹‹æ›¸
+	Identify Book		è¾¨è­˜ä¹‹æ›¸
+	Amulet		è­·èº«ç¬¦
+	Top of The Horadric Staff		èµ«æ‹‰è¿ªå…‹ä¹‹æ–é ‚ç«¯
+	Ring		æˆ’æŒ‡
+	Gold		é»ƒé‡‘
+	Scroll of Jnifuss		è‰¾å°¼å¼—æ–¯å·è»¸
+	Key To The Cairn Stones		çŸ³å¡šä¹‹é‘°
+	Arrows		ç®­çŸ¢
+	Torch		ç«ç„°
+	Bolts		åå­—å¼“å½ˆ
+	Town Portal Scroll		åŸé®å‚³é€å·è»¸
+	Identify Scroll		è¾¨è­˜å·è»¸
+	Heart		å¿ƒè‡Ÿ
+	Brain		è…¦
+	Jawbone		é¡éª¨
+	Eye		çœ¼çƒ
+	Horn		è§’
+	Diablo's Horn	æš—é»‘ç ´åç¥ä¹‹è§’	æš—é»‘ç ´å£ç¥ä¹‹è§’
+	Tail		å°¾å·´
+	Flag		æ——å¹Ÿ
+	Standard of Heroes	è‹±é›„æ——å¸œ	è‹±é›„æ——å¹Ÿ
+	Fang		å°–ç‰™
+	Quill		ç¡¬æ¯›
+	Soul		éˆé­‚
+	Scalp		é ­çš®
+	Spleen		è„¾è‡Ÿ
+	Key		é‘°åŒ™
+	The Black Tower Key		é»‘å¡”ä¹‹é‘°
+	Key of Terror	ææƒ§ä¹‹é’¥	ææ‡¼ä¹‹é‘°
+	Key of Hate	æ†æ¨ä¹‹é’¥	æ†æ¨ä¹‹é‘°
+	Key of Destruction	æ¯ç­ä¹‹é’¥	æ¯€æ»…ä¹‹é‘°
+	Potion of Life		ç”Ÿå‘½è—¥åŠ‘
+	Jade Figurine		ç‰è£½å°äºº
+	Gold Bird		é»ƒé‡‘é³¥
+	Lam esen's tome		è—.ä¼Šæ£®ä¹‹æ›¸
+	Horadric Cube		èµ«æ‹‰è¿ªå…‹æ–¹å¡Š
+	Horadric Scroll		èµ«æ‹‰è¿ªå…‹å·è»¸
+	Mephisto SoulStone		å¢¨è²æ–¯æ‰˜çš„éˆé­‚ä¹‹çŸ³
+	Book of Skill		æŠ€èƒ½ä¹‹æ›¸
+	Khalim Eye		å…‹æ—å§†çš„çœ¼çƒ
+	Baal's Eye	å·´å°”ä¹‹çœ¼	å·´çˆ¾ä¹‹çœ¼
+	Khalim Heart		å…‹æ—å§†çš„å¿ƒè‡Ÿ
+	Khalim Brain		å…‹æ—å§†çš„å¤§è…¦
+	Mephisto's Brain	å¢¨è²æ–¯æ‰˜ä¹‹è„‘	å¢¨è²æ–¯æ‰˜ä¹‹è…¦
+	Ear		è€³æœµ
+	Chipped Amethyst		ç¢è£‚çš„ç´«å¯¶çŸ³
+	Flawed Amethyst		è£‚é–‹çš„ç´«å¯¶çŸ³
+	Amethyst		ç´«å¯¶çŸ³
+	Flawless Amethyst		ç„¡ç‘•ç–µçš„ç´«å¯¶çŸ³
+	Perfect Amethyst		å®Œç¾çš„ç´«å¯¶çŸ³
+	Chipped Topaz		ç¢è£‚çš„é»„å¯¶çŸ³
+	Flawed Topaz		è£‚é–‹çš„é»„å¯¶çŸ³
+	Topaz		é»„å¯¶çŸ³
+	Flawless Topaz		ç„¡ç‘•ç–µçš„é»„å¯¶çŸ³
+	Perfect Topaz		å®Œç¾çš„é»„å¯¶çŸ³
+	Chipped Saphire		ç¢è£‚çš„è—å¯¶çŸ³
+	Flawed Saphire		è£‚é–‹çš„è—å¯¶çŸ³
+	Saphire		è—å¯¶çŸ³
+	Flawless Saphire		ç„¡ç‘•ç–µçš„è—å¯¶çŸ³
+	Perfect Saphire		å®Œç¾çš„è—å¯¶çŸ³
+	Chipped Emerald		ç¢è£‚çš„ç¶ å¯¶çŸ³
+	Flawed Emerald		è£‚é–‹çš„ç¶ å¯¶çŸ³
+	Emerald		ç¶ å¯¶çŸ³
+	Flawless Emerald		ç„¡ç‘•ç–µçš„ç¶ å¯¶çŸ³
+	Perfect Emerald		å®Œç¾çš„ç¶ å¯¶çŸ³
+	Chipped Ruby		ç¢è£‚çš„ç´…å¯¶çŸ³
+	Flawed Ruby		è£‚é–‹çš„ç´…å¯¶çŸ³
+	Ruby		ç´…å¯¶çŸ³
+	Flawless Ruby		ç„¡ç‘•ç–µçš„ç´…å¯¶çŸ³
+	Perfect Ruby		å®Œç¾çš„ç´…å¯¶çŸ³
+	Chipped Diamond		ç¢è£‚çš„é‘½çŸ³
+	Flawed Diamond		è£‚é–‹çš„é‘½çŸ³
+	Diamond		é‘½çŸ³
+	Flawless Diamond		ç„¡ç‘•ç–µçš„é‘½çŸ³
+	Perfect Diamond		å®Œç¾çš„é‘½çŸ³
+	Minor Healing Potion		è¼•å¾®æ²»ç™‚è—¥åŠ‘
+	Light Healing Potion		è¼•å‹æ²»ç™‚è—¥åŠ‘
+	Healing Potion		æ²»ç™‚è—¥åŠ‘
+	Greater Healing Potion		å¼·åŠ›è—¥åŠ‘
+	Super Healing Potion		è¶…ç´šæ²»ç™‚è—¥åŠ‘
+	Minor Mana Potion		è¼•å¾®æ³•åŠ›è—¥åŠ‘
+	Light Mana Potion		è¼•å‹æ³•åŠ›è—¥åŠ‘
+	Mana Potion		æ³•åŠ›è—¥åŠ‘
+	Greater Mana Potion		å¼·åŠ›æ³•åŠ›è—¥åŠ‘
+	Super Mana Potion		è¶…ç´šæ³•åŠ›è—¥åŠ‘
+	Chipped Skull		ç¢è£‚çš„éª·é«
+	Flawed Skull		è£‚é–‹çš„éª·é«
+	Skull		éª·é«
+	Flawless Skull		ç„¡ç‘•ç–µçš„éª·é«
+	Perfect Skull		å®Œç¾çš„éª·é«
+	Herb		è—¥è‰
+	Small Charm		å°è­·èº«ç¬¦
+	Large Charm		å¤§å‹è­·èº«ç¬¦
+	Grand Charm		è¶…å¤§å‹è­·èº«ç¬¦
+	Small Red Potion		ä¸€è‚¡é‚ªæƒ¡åŠ›é‡
+	Large Red Potion		ä¸€è‚¡é‚ªæƒ¡åŠ›é‡
+	Small Blue Potion		ä¸€è‚¡é‚ªæƒ¡åŠ›é‡
+	Large Blue Potion		ä¸€è‚¡é‚ªæƒ¡åŠ›é‡
+	El Rune (1)	ç¬¦æ–‡ï¼šEl (1)	ç¬¦æ–‡ï¼šEl (1)
+	Eld Rune (2)	ç¬¦æ–‡ï¼šEld (2)	ç¬¦æ–‡ï¼šEld (2)
+	Tir Rune (3)	ç¬¦æ–‡ï¼šTir (3)	ç¬¦æ–‡ï¼šTir (3)
+	Nef Rune (4)	ç¬¦æ–‡ï¼šNef (4)	ç¬¦æ–‡ï¼šNef (4)
+	Eth Rune (5)	ç¬¦æ–‡ï¼šEth (5)	ç¬¦æ–‡ï¼šEth (5)
+	Ith Rune (6)	ç¬¦æ–‡ï¼šIth (6)	ç¬¦æ–‡ï¼šIth (6)
+	Tal Rune (7)	ç¬¦æ–‡ï¼šTal (7)	ç¬¦æ–‡ï¼šTal (7)
+	Ral Rune (8)	ç¬¦æ–‡ï¼šRal (8)	ç¬¦æ–‡ï¼šRal (8)
+	Ort Rune (9)	ç¬¦æ–‡ï¼šOrt (9)	ç¬¦æ–‡ï¼šOrt (9)
+	Thul Rune (10)	ç¬¦æ–‡ï¼šThul (10)	ç¬¦æ–‡ï¼šThul (10)
+	Amn Rune (11)	ç¬¦æ–‡ï¼šAmn (11)	ç¬¦æ–‡ï¼šAmn (11)
+	Sol Rune (12)	ç¬¦æ–‡ï¼šSol (12)	ç¬¦æ–‡ï¼šSol (12)
+	Shael Rune (13)	ç¬¦æ–‡ï¼šShael (13)	ç¬¦æ–‡ï¼šShael (13)
+	Dol Rune (14)	ç¬¦æ–‡ï¼šDol (14)	ç¬¦æ–‡ï¼šDol (14)
+	Hel Rune (15)	ç¬¦æ–‡ï¼šHel (15)	ç¬¦æ–‡ï¼šHel (15)
+	Io Rune (16)	ç¬¦æ–‡ï¼šIo (16)	ç¬¦æ–‡ï¼šIo (16)
+	Lum Rune (17)	ç¬¦æ–‡ï¼šLum (17)	ç¬¦æ–‡ï¼šLum (17)
+	Ko Rune (18)	ç¬¦æ–‡ï¼šKo (18)	ç¬¦æ–‡ï¼šKo (18)
+	Fal Rune (19)	ç¬¦æ–‡ï¼šFal (19)	ç¬¦æ–‡ï¼šFal (19)
+	Lem Rune (20)	ç¬¦æ–‡ï¼šLem (20)	ç¬¦æ–‡ï¼šLem (20)
+	Pul Rune (21)	ç¬¦æ–‡ï¼šPul (21)	ç¬¦æ–‡ï¼šPul (21)
+	Um Rune (22)	ç¬¦æ–‡ï¼šUm (22)	ç¬¦æ–‡ï¼šUm (22)
+	Mal Rune (23)	ç¬¦æ–‡ï¼šMal (23)	ç¬¦æ–‡ï¼šMal (23)
+	Ist Rune (24)	ç¬¦æ–‡ï¼šIst (24)	ç¬¦æ–‡ï¼šIst (24)
+	Gul Rune (25)	ç¬¦æ–‡ï¼šGul (25)	ç¬¦æ–‡ï¼šGul (25)
+	Vex Rune (26)	ç¬¦æ–‡ï¼šVex (26)	ç¬¦æ–‡ï¼šVex (26)
+	Ohm Rune (27)	ç¬¦æ–‡ï¼šOhm (27)	ç¬¦æ–‡ï¼šOhm (27)
+	Lo Rune (28)	ç¬¦æ–‡ï¼šLo (28)	ç¬¦æ–‡ï¼šLo (28)
+	Sur Rune (29)	ç¬¦æ–‡ï¼šSur (29)	ç¬¦æ–‡ï¼šSur (29)
+	Ber Rune (30)	ç¬¦æ–‡ï¼šBer (30)	ç¬¦æ–‡ï¼šBer (30)
+	Jah Rune (31)	ç¬¦æ–‡ï¼šJah (31)	ç¬¦æ–‡ï¼šJah (31)
+	Cham Rune (32)	ç¬¦æ–‡ï¼šCham (32)	ç¬¦æ–‡ï¼šCham (32)
+	Zod Rune (33)	ç¬¦æ–‡ï¼šZod (33)	ç¬¦æ–‡ï¼šZod (33)
+	Jewel		å¯¶çŸ³
+	Malah's Potion		é¦¬æ‹‰ä¹‹è—¥
+	Scroll of Knowledge		çŸ¥è­˜å·è»¸
+	Scroll of Resistances		æŠµæŠ—å·è»¸
+	Token of Absolution	èµ¦å…å¾½ç« 	èµ¦å…å¾½ç« 
+	Twisted Essence of Destruction	æºƒçƒ‚çš„æ¯ç­ç²¾å	æ½°çˆ›çš„æ¯€æ»…ç²¾è¯
+	Twisted Essence of Terror	ç‡ƒçƒ§çš„ææƒ§ç²¾å	ç‡ƒç‡’çš„ææ‡¼ç²¾è¯
+	Twisted Essence of Hatred	å……ç›ˆçš„æ†æ¨ç²¾å	å……ç›ˆçš„æ†æ¨ç²¾è¯
+	Twisted Essence of Suffering	æ‰­æ›²çš„è‹¦ç—›ç²¾å	æ‰­æ›²çš„è‹¦ç—›ç²¾è¯
 	Cap		
 	Skull Cap		
 	Helm		
@@ -1442,171 +1442,171 @@
 	Matriarchal Spear		
 	Matriarchal Pike		
 	Matriarchal Javelin		
-*=======================ÒÔÏÂÊÇÊôĞÔÃû³Æ(Property Name)			
-	%+d Strength	%+d Á¦Á¿	%+d Á¦Á¿
-	%+d Energy	%+d ¾«Á¦	%+d ¾«Á¦
-	%+d Dexterity	%+d Ãô½İ	%+d Ãô½İ
-	%+d Vitality	%+d ÌåÁ¦	%+d ówÁ¦
-	Stat Point	×´Ì¬µãÊı	 î‘Büc”µ
-	Skill Point	¼¼ÄÜµãÊı	¼¼ÄÜüc”µ
-	Life	ÉúÃü	ÉúÃü
-	%+d Max Life	%+d ×î´óÉúÃü	%+d ×î´óÉúÃü
-	Mana	·¨Á¦	·¨Á¦
-	%+d Max Mana	%+d ×î´ó·¨Á¦	%+d ×î´ó·¨Á¦
-	Stamina	ÄÍÁ¦	ÄÍÁ¦
-	%+d Max Stamina	%+d ×î´óÄÍÁ¦	%+d ×î´óÄÍÁ¦
-	Level	µÈ¼¶	µÈ¼‰
-	Experience	¾­Ñé	½›ò
-	Gold	½ğ±Ò	½ğÅ
-	Goldbank	´æ´¢Ïä½ğ±Ò	´æƒ¦Ïä½ğÅ
-	%+d%% Enhanced Defense	%+d%%·ÀÓùÇ¿»¯	%+d%%·À¶RÇ¿»¯
-	%+d%% - %d%% Enhanced Damage	%+d%% - %d%%ÔöÇ¿ÉËº¦	%+d%% - %d%%ÔöÇ¿‚ûº¦
-	%+d%% Enhanced Min Damage	%+d%%Ôö¼Ó×îĞ¡ÉËº¦	%+d%%Ôö¼Ó×îĞ¡‚ûº¦
-	%+d Attack Rating	%+dÃüÖĞÂÊ	%+dœÊ´_ÂÊ
-	%+d%% Chance of Blocking	%+d%% ¸ñµ²¼¸ÂÊ	%+d%% ¸ñ“õ¿ÉÄÜĞÔ
-	%+d Min 1-Handed Damage	%+d µ¥ÊÖ×îĞ¡ÉËº¦	%+d †ÎÊÖ×îĞ¡‚ûº¦
-	%+d Max 1-Handed Damage	%+d µ¥ÊÖ×î´óÉËº¦	%+d †ÎÊÖ×î´ó‚ûº¦
-	%+d Min 2-Handed Damage	%+d Ë«ÊÖ×îĞ¡ÉËº¦	%+d ëpÊÖ×îĞ¡‚ûº¦
-	%+d Max 2-Handed Damage	%+d Ë«ÊÖ×î´óÉËº¦	%+d ëpÊÖ×î´ó‚ûº¦
-	Damage %+d%% NV	ÉËº¦Ôö¼Ó %+d%%	‚ûº¦Ôö¼Ó %+d%%
-	Regenerate Mana %d%% NV	·¨Á¦ÖØÉú %d%%	·¨Á¦ÖØÉú %d%%
-	Regenerate Mana Plus %+d%%	·¨Á¦ÖØÉúÔöÇ¿ %+d%%	·¨Á¦ÖØÉúÔöÇ¿ %+d%%
-	Heal Stemina %+d%%	ÄÍÁ¦»Ö¸´ÔöÇ¿ %+d%%	ÄÍÁ¦»ØÍÔöÇ¿ %+d%%
-	Lastexp	ÉÏÒ»µÈ¼‰¾­Ñé	ÉÏÒ»µÈ¼‰½›ò
-	Nextxp	ÏÂÒ»µÈ¼¶¾­Ñé	ÏÂÒ»µÈ¼‰½›ò
-	%+d Defense	%+d ·ÀÓù	%+d·À¶R
-	%+d Defense vs Missile	%+d Ô¶³Ì·ÀÓù	%+d ßh³Ì·À¶R
-	%+d Defense vs Melee	%+d ½üÕ½·ÀÓù	%+d ½ü‘ğ·ÀÓù
-	Damage Reduced By %+d	ÉËº¦¼õÉÙ%+d	‚ûº¦œpÉÙ%+d
-	Magic Damage Reduced By %+d	·¨ÊõÉËº¦¼õÉÙ %+d	·¨Ğg‚ûº¦œpÉÙ %+d
-	Damage Reduced By %+d%%	ÉËº¦¼õÉÙ %+d%%	‚ûº¦œpÉÙ %+d%%
-	%+d%% Magic Resist	%+d%% Ä§·¨µÖ¿¹	%+d%% Ä§·¨µÖ¿¹
-	%+d%% Max Magic Resist	%+d%% ×î´óÄ§·¨µÖ¿¹	%+d%% ×î´óÄ§·¨µÖ¿¹
-	%+d%% Fire Resist	%+d%% »ğ¿¹	%+d%% »ğ¿¹
-	%+d%% Max Fire Resist	%+d%% ×î´ó»ğ¿¹	%+d%% ×î´ó»ğ¿¹
-	%+d%% Lightning Resist	%+d%% ÉÁµçµÖ¿¹	%+d%% éWëŠµÖ¿¹
-	%+d%% Max Lightning Resist	%+d%% ×î´óÉÁµçµÖ¿¹	%+d%% ×î´óéWëŠµÖ¿¹
-	%+d%% Cold Resist	%+d%% º®¿¹	%+d%% º®¿¹
-	%+d%% Max Cold Resist	%+d%% ×î´óº®¿¹	%+d%% ×î´óº®¿¹
-	%+d%% Poison Resist	%+d%% ¶¾¿¹	%+d%% ¶¾¿¹
-	%+d%% Max Poison Resist	%+d%% ×î´ó¶¾¿¹	%+d%% ×î´ó¶¾¿¹
-	Damageaure	ÉËº¦ÁéÆø	‚ûº¦ì`šâ
-	%+d - %d Fire Damage	%+d - %d »ğÑæÉËº¦	%+d - %d »ğÑæ‚ûº¦
-	%+d Max Fire Damage	%+d ×î´ó»ğÑæÉËº¦	%+d ×î´ó»ğÑæÉËº¦
-	%+d - %d Lightning Damage	%+d - %d ÉÁµçÉËº¦	%+d - %d éWëŠ‚ûº¦
-	%+d Max Lightning Damage	%+d ×î´óÉÁµçÉËº¦	%+d ×î´óéWëŠ‚ûº¦
-	%+d - %d Magic Damage	%+d - %d Ä§·¨ÉËº¦	%+d - %d Ä§·¨‚ûº¦
-	%+d Max Magic Damage	%+d ×î´óÄ§·¨ÉËº¦	%+d ×î´óÄ§·¨ÉËº¦
-	%+d - %d Cold Damage Freezing %d sec	%+d - %d ±ùÀäÉËº¦ %d Ã¿Ãë	%+d - %d ±ùÀä‚ûº¦ %d Ã¿Ãë
-	%+d Max Cold Damage	%+d ×î´óº®ÀäÉËº¦	%+d ×î´óº®ÀäÉËº¦
-	%+d * Cold Length	%+d ¶³½á³ÖĞøÊ±¼ä	%+d ¶³½á³ÖÀmÊ±¼ä
-	%+d - %d Poison Damage Over %d sec	%+d - %d ¶¾ËØÉËº¦Î¬³Ö %d Ã¿Ãë	%+d - %d ¶¾ËØ‚ûº¦¾S³Ö %d Ã¿Ãë
-	%+d Max Poison Damage	%+d ×î´ó¶¾ÉËº¦	%+d ×î´ó¶¾‚ûº¦
-	%+d *Poison Length	%+d ÖĞ¶¾³ÖĞøÊ±¼ä	%+d ÖĞ¶¾³ÖÀm•rég
-	%+d%% Life Stolen per Hit Min	%+d%%»÷ÖĞÊ±ÍµÈ¡ÉúÃü	%+d%%“ôÖĞ•rÍµÈ¡ÉúÃü 
-	%+d%% Life Stolen per Hit Max	%+d%% ÍµÈ¡ÉúÃüÉËº¦×î´óÖµ	%+d%% ÍµÈ¡ÉúÃüÉËº¦×î´óÖµ
-	%+d%% Mana Stolen per Hit Min	%+d%%»÷ÖĞÊ±ÍµÈ¡·¨Á¦	%+d%%“ôÖĞ•rÍµÈ¡·¨Á¦
-	%+d%% Mana Stolen per Hit Max	%+d%% »÷ÖĞÊ±ÍµÈ¡·¨Á¦ÉËº¦×î´óÖµ	%+d%% »÷ÖĞÊ±ÍµÈ¡·¨Á¦ÉËº¦×î´óÖµ
-	Stamina Drain Min	%+d%% ÍµÈ¡ÄÍÁ¦ÉËº¦×îĞ¡Öµ	%+d%% ÍµÈ¡ÄÍÁ¦Á¦ÉËº¦×îĞ¡Öµ
-	Stamina Drain Max	%+d%% ÍµÈ¡ÄÍÁ¦ÉËº¦×î´óÖµ	%+d%% ÍµÈ¡ÄÍÁ¦ÉËº¦×î´óÖµ
-	Stun Length	Ê¹Ä¿±ê»èÃÔÊ±¼ä	Ê¹Ä¿˜Ë»èÃÔ•rég
-	Run/Walk Speed %+d%% NV	ÅÜ²½/²½ĞĞËÙ¶È %+d%%	ÅÜ²½/²½ĞĞËÙ¶È %+d%%
-	Attack Speed %+d%% NV	¹¥»÷ËÙ¶È %+d%%	¹¥“ôËÙ¶È %+d%%
-	Other Animrate	¼õÂıµĞÈË	œpÂı”³ÈË
-	Quantity	ÊıÁ¿	”µÁ¿
-	Value %+d	ÊıÖµ %+d	”µÖµ %+d
-	%+d Durability	%+d ×°±¸ÄÍ¾Ã	%+d Ñb‚äÄÍ¾Ã
-	%+d Max Durability	%+d ×î´ó×°±¸ÄÍ¾Ã	%+d ×î´óÑb‚äÄÍ¾Ã
-	%+d Replenish Life	%+d ÉúÃü²¹Âú/ÎüÈ¡ÉúÃü	%+d ÉúÃüÑaM/ÎüÈ¡ÉúÃü
-	Increase Max Durability %+d%%	Ôö¼ÓÄÍ¾ÃĞÔÉÏÏŞ %+d%%	Ôö¼ÓÄÍ¾ÃĞÔÉÏÏŞ %+d%%
-	Increase Max Life %+d%%	Ôö¼ÓÉúÃüÉÏÏŞ%+d%%	Ôö¼ÓÉúÃüÉÏÏŞ%+d%%
-	Increase Max Mana %+d%%	Ôö¼Ó·¨Á¦ÉÏÏŞ%+d%%	Ôö¼Ó·¨Á¦ÉÏÏŞ%+d%%
-	Attacker Takes Damage of %+d	¹¥»÷ÕßÊÜµ½ÉËº¦ %+d	¹¥“ôÕßÊÜµ½‚ûº¦ %+d
-	%+d%% Extra Gold From Monsters	%+d%% ¶îÍâ½ğ±Ò´Ó¹ÖÎïÉíÉÏÈ¡µÃ	%+d%% î~Íâ½ğÅÄ¹ÖÎïÉíÉÏÈ¡µÃ
-	%+d%% Better Chance of Getting Magic Items	%+d%% ¸ü¼ÑµÄ»ú»áÈ¡µÃÄ§·¨×°±¸	%+d%% ¸ü¼ÓµÄ™C•şÈ¡µÃÄ§·¨Ñb‚ä
-	Knock Back %+d	»÷ÍË %+d	“ôÍË %+d
-	Time Duration %+d	³ÖĞøÊ±¼ä %+d	³ÖÀm•rég %+d
-	%+d %s Skill	%+dÔö¼Ó%s ¼¼ÄÜ	%+dÔö¼Ó%s ¼¼ÄÜ
+*=======================ä»¥ä¸‹æ˜¯å±æ€§åç§°(Property Name)			
+	%+d Strength	%+d åŠ›é‡	%+d åŠ›é‡
+	%+d Energy	%+d ç²¾åŠ›	%+d ç²¾åŠ›
+	%+d Dexterity	%+d æ•æ·	%+d æ•æ·
+	%+d Vitality	%+d ä½“åŠ›	%+d é«”åŠ›
+	Stat Point	çŠ¶æ€ç‚¹æ•°	ç‹€æ…‹é»æ•¸
+	Skill Point	æŠ€èƒ½ç‚¹æ•°	æŠ€èƒ½é»æ•¸
+	Life	ç”Ÿå‘½	ç”Ÿå‘½
+	%+d Max Life	%+d æœ€å¤§ç”Ÿå‘½	%+d æœ€å¤§ç”Ÿå‘½
+	Mana	æ³•åŠ›	æ³•åŠ›
+	%+d Max Mana	%+d æœ€å¤§æ³•åŠ›	%+d æœ€å¤§æ³•åŠ›
+	Stamina	è€åŠ›	è€åŠ›
+	%+d Max Stamina	%+d æœ€å¤§è€åŠ›	%+d æœ€å¤§è€åŠ›
+	Level	ç­‰çº§	ç­‰ç´š
+	Experience	ç»éªŒ	ç¶“é©—
+	Gold	é‡‘å¸	é‡‘å¹£
+	Goldbank	å­˜å‚¨ç®±é‡‘å¸	å­˜å„²ç®±é‡‘å¹£
+	%+d%% Enhanced Defense	%+d%%é˜²å¾¡å¼ºåŒ–	%+d%%é˜²ç¦¦å¼ºåŒ–
+	%+d%% - %d%% Enhanced Damage	%+d%% - %d%%å¢å¼ºä¼¤å®³	%+d%% - %d%%å¢å¼ºå‚·å®³
+	%+d%% Enhanced Min Damage	%+d%%å¢åŠ æœ€å°ä¼¤å®³	%+d%%å¢åŠ æœ€å°å‚·å®³
+	%+d Attack Rating	%+då‘½ä¸­ç‡	%+dæº–ç¢ºç‡
+	%+d%% Chance of Blocking	%+d%% æ ¼æŒ¡å‡ ç‡	%+d%% æ ¼æ“‹å¯èƒ½æ€§
+	%+d Min 1-Handed Damage	%+d å•æ‰‹æœ€å°ä¼¤å®³	%+d å–®æ‰‹æœ€å°å‚·å®³
+	%+d Max 1-Handed Damage	%+d å•æ‰‹æœ€å¤§ä¼¤å®³	%+d å–®æ‰‹æœ€å¤§å‚·å®³
+	%+d Min 2-Handed Damage	%+d åŒæ‰‹æœ€å°ä¼¤å®³	%+d é›™æ‰‹æœ€å°å‚·å®³
+	%+d Max 2-Handed Damage	%+d åŒæ‰‹æœ€å¤§ä¼¤å®³	%+d é›™æ‰‹æœ€å¤§å‚·å®³
+	Damage %+d%% NV	ä¼¤å®³å¢åŠ  %+d%%	å‚·å®³å¢åŠ  %+d%%
+	Regenerate Mana %d%% NV	æ³•åŠ›é‡ç”Ÿ %d%%	æ³•åŠ›é‡ç”Ÿ %d%%
+	Regenerate Mana Plus %+d%%	æ³•åŠ›é‡ç”Ÿå¢å¼º %+d%%	æ³•åŠ›é‡ç”Ÿå¢å¼º %+d%%
+	Heal Stemina %+d%%	è€åŠ›æ¢å¤å¢å¼º %+d%%	è€åŠ›å›å¾©å¢å¼º %+d%%
+	Lastexp	ä¸Šä¸€ç­‰ç´šç»éªŒ	ä¸Šä¸€ç­‰ç´šç¶“é©—
+	Nextxp	ä¸‹ä¸€ç­‰çº§ç»éªŒ	ä¸‹ä¸€ç­‰ç´šç¶“é©—
+	%+d Defense	%+d é˜²å¾¡	%+dé˜²ç¦¦
+	%+d Defense vs Missile	%+d è¿œç¨‹é˜²å¾¡	%+d é ç¨‹é˜²ç¦¦
+	%+d Defense vs Melee	%+d è¿‘æˆ˜é˜²å¾¡	%+d è¿‘æˆ°é˜²å¾¡
+	Damage Reduced By %+d	ä¼¤å®³å‡å°‘%+d	å‚·å®³æ¸›å°‘%+d
+	Magic Damage Reduced By %+d	æ³•æœ¯ä¼¤å®³å‡å°‘ %+d	æ³•è¡“å‚·å®³æ¸›å°‘ %+d
+	Damage Reduced By %+d%%	ä¼¤å®³å‡å°‘ %+d%%	å‚·å®³æ¸›å°‘ %+d%%
+	%+d%% Magic Resist	%+d%% é­”æ³•æŠµæŠ—	%+d%% é­”æ³•æŠµæŠ—
+	%+d%% Max Magic Resist	%+d%% æœ€å¤§é­”æ³•æŠµæŠ—	%+d%% æœ€å¤§é­”æ³•æŠµæŠ—
+	%+d%% Fire Resist	%+d%% ç«æŠ—	%+d%% ç«æŠ—
+	%+d%% Max Fire Resist	%+d%% æœ€å¤§ç«æŠ—	%+d%% æœ€å¤§ç«æŠ—
+	%+d%% Lightning Resist	%+d%% é—ªç”µæŠµæŠ—	%+d%% é–ƒé›»æŠµæŠ—
+	%+d%% Max Lightning Resist	%+d%% æœ€å¤§é—ªç”µæŠµæŠ—	%+d%% æœ€å¤§é–ƒé›»æŠµæŠ—
+	%+d%% Cold Resist	%+d%% å¯’æŠ—	%+d%% å¯’æŠ—
+	%+d%% Max Cold Resist	%+d%% æœ€å¤§å¯’æŠ—	%+d%% æœ€å¤§å¯’æŠ—
+	%+d%% Poison Resist	%+d%% æ¯’æŠ—	%+d%% æ¯’æŠ—
+	%+d%% Max Poison Resist	%+d%% æœ€å¤§æ¯’æŠ—	%+d%% æœ€å¤§æ¯’æŠ—
+	Damageaure	ä¼¤å®³çµæ°”	å‚·å®³éˆæ°£
+	%+d - %d Fire Damage	%+d - %d ç«ç„°ä¼¤å®³	%+d - %d ç«ç„°å‚·å®³
+	%+d Max Fire Damage	%+d æœ€å¤§ç«ç„°ä¼¤å®³	%+d æœ€å¤§ç«ç„°ä¼¤å®³
+	%+d - %d Lightning Damage	%+d - %d é—ªç”µä¼¤å®³	%+d - %d é–ƒé›»å‚·å®³
+	%+d Max Lightning Damage	%+d æœ€å¤§é—ªç”µä¼¤å®³	%+d æœ€å¤§é–ƒé›»å‚·å®³
+	%+d - %d Magic Damage	%+d - %d é­”æ³•ä¼¤å®³	%+d - %d é­”æ³•å‚·å®³
+	%+d Max Magic Damage	%+d æœ€å¤§é­”æ³•ä¼¤å®³	%+d æœ€å¤§é­”æ³•ä¼¤å®³
+	%+d - %d Cold Damage Freezing %d sec	%+d - %d å†°å†·ä¼¤å®³ %d æ¯ç§’	%+d - %d å†°å†·å‚·å®³ %d æ¯ç§’
+	%+d Max Cold Damage	%+d æœ€å¤§å¯’å†·ä¼¤å®³	%+d æœ€å¤§å¯’å†·ä¼¤å®³
+	%+d * Cold Length	%+d å†»ç»“æŒç»­æ—¶é—´	%+d å†»ç»“æŒçºŒæ—¶é—´
+	%+d - %d Poison Damage Over %d sec	%+d - %d æ¯’ç´ ä¼¤å®³ç»´æŒ %d æ¯ç§’	%+d - %d æ¯’ç´ å‚·å®³ç¶­æŒ %d æ¯ç§’
+	%+d Max Poison Damage	%+d æœ€å¤§æ¯’ä¼¤å®³	%+d æœ€å¤§æ¯’å‚·å®³
+	%+d *Poison Length	%+d ä¸­æ¯’æŒç»­æ—¶é—´	%+d ä¸­æ¯’æŒçºŒæ™‚é–“
+	%+d%% Life Stolen per Hit Min	%+d%%å‡»ä¸­æ—¶å·å–ç”Ÿå‘½	%+d%%æ“Šä¸­æ™‚å·å–ç”Ÿå‘½ 
+	%+d%% Life Stolen per Hit Max	%+d%% å·å–ç”Ÿå‘½ä¼¤å®³æœ€å¤§å€¼	%+d%% å·å–ç”Ÿå‘½ä¼¤å®³æœ€å¤§å€¼
+	%+d%% Mana Stolen per Hit Min	%+d%%å‡»ä¸­æ—¶å·å–æ³•åŠ›	%+d%%æ“Šä¸­æ™‚å·å–æ³•åŠ›
+	%+d%% Mana Stolen per Hit Max	%+d%% å‡»ä¸­æ—¶å·å–æ³•åŠ›ä¼¤å®³æœ€å¤§å€¼	%+d%% å‡»ä¸­æ—¶å·å–æ³•åŠ›ä¼¤å®³æœ€å¤§å€¼
+	Stamina Drain Min	%+d%% å·å–è€åŠ›ä¼¤å®³æœ€å°å€¼	%+d%% å·å–è€åŠ›åŠ›ä¼¤å®³æœ€å°å€¼
+	Stamina Drain Max	%+d%% å·å–è€åŠ›ä¼¤å®³æœ€å¤§å€¼	%+d%% å·å–è€åŠ›ä¼¤å®³æœ€å¤§å€¼
+	Stun Length	ä½¿ç›®æ ‡æ˜è¿·æ—¶é—´	ä½¿ç›®æ¨™æ˜è¿·æ™‚é–“
+	Run/Walk Speed %+d%% NV	è·‘æ­¥/æ­¥è¡Œé€Ÿåº¦ %+d%%	è·‘æ­¥/æ­¥è¡Œé€Ÿåº¦ %+d%%
+	Attack Speed %+d%% NV	æ”»å‡»é€Ÿåº¦ %+d%%	æ”»æ“Šé€Ÿåº¦ %+d%%
+	Other Animrate	å‡æ…¢æ•Œäºº	æ¸›æ…¢æ•µäºº
+	Quantity	æ•°é‡	æ•¸é‡
+	Value %+d	æ•°å€¼ %+d	æ•¸å€¼ %+d
+	%+d Durability	%+d è£…å¤‡è€ä¹…	%+d è£å‚™è€ä¹…
+	%+d Max Durability	%+d æœ€å¤§è£…å¤‡è€ä¹…	%+d æœ€å¤§è£å‚™è€ä¹…
+	%+d Replenish Life	%+d ç”Ÿå‘½è¡¥æ»¡/å¸å–ç”Ÿå‘½	%+d ç”Ÿå‘½è£œæ»¿/å¸å–ç”Ÿå‘½
+	Increase Max Durability %+d%%	å¢åŠ è€ä¹…æ€§ä¸Šé™ %+d%%	å¢åŠ è€ä¹…æ€§ä¸Šé™ %+d%%
+	Increase Max Life %+d%%	å¢åŠ ç”Ÿå‘½ä¸Šé™%+d%%	å¢åŠ ç”Ÿå‘½ä¸Šé™%+d%%
+	Increase Max Mana %+d%%	å¢åŠ æ³•åŠ›ä¸Šé™%+d%%	å¢åŠ æ³•åŠ›ä¸Šé™%+d%%
+	Attacker Takes Damage of %+d	æ”»å‡»è€…å—åˆ°ä¼¤å®³ %+d	æ”»æ“Šè€…å—åˆ°å‚·å®³ %+d
+	%+d%% Extra Gold From Monsters	%+d%% é¢å¤–é‡‘å¸ä»æ€ªç‰©èº«ä¸Šå–å¾—	%+d%% é¡å¤–é‡‘å¹£å¾æ€ªç‰©èº«ä¸Šå–å¾—
+	%+d%% Better Chance of Getting Magic Items	%+d%% æ›´ä½³çš„æœºä¼šå–å¾—é­”æ³•è£…å¤‡	%+d%% æ›´åŠ çš„æ©Ÿæœƒå–å¾—é­”æ³•è£å‚™
+	Knock Back %+d	å‡»é€€ %+d	æ“Šé€€ %+d
+	Time Duration %+d	æŒç»­æ—¶é—´ %+d	æŒçºŒæ™‚é–“ %+d
+	%+d %s Skill	%+då¢åŠ %s æŠ€èƒ½	%+då¢åŠ %s æŠ€èƒ½
 	Unsentparaml		
-	%+d%% Experience Gained	%+d%% ×ªÎª¾­ÑéÖµ»ñµÃ	%+d%% ŞDé½›òÖµ«@µÃ
-	%+d Life After Each Kill	%+d ÉúÃüÔÚÉ±ËÀºó»ñµÃ	%+d ÉúÃüÔÚš¢ËÀºó«@µÃ
-	Reduced Prices %+d%%	½µµÍ¼Û¸ñ %+d%%	½µµÍƒr¸ñ %+d%%
-	Double Herb Duration	¼Ó±¶²İÒ©³ÖĞøÊ±¼ä	¼Ó±¶²İË³ÖÀm•rég
-	%+d Light Radius	%+d ÕÕÁÁ·¶Î§	%+d ÕÕÁÁ·¶Î§
-	Light Color NV %d	ÕÕÁÁÑÕÉ« %d	ÕÕÁÁî†É« %d
-	Requirements %+d%%	ĞèÇó %+d%%	ĞèÇó %+d%%
-	%+d Item Level Require	%+d ĞèÒªµÈ¼¶	%+d ĞèÒªµÈ¼‰
-	%+d%% Increase Attack Speed	%+d%% Ôö¼Ó¹¥»÷ËÙ¶È	%+d%% Ôö¼Ó¹¥“ôËÙ¶È
-	Item Level Require %+d%%	ĞèÒªµÈ¼¶ %+d%%	ĞèÒªµÈ¼¶ %+d%%
+	%+d%% Experience Gained	%+d%% è½¬ä¸ºç»éªŒå€¼è·å¾—	%+d%% è½‰ç‚ºç¶“é©—å€¼ç²å¾—
+	%+d Life After Each Kill	%+d ç”Ÿå‘½åœ¨æ€æ­»åè·å¾—	%+d ç”Ÿå‘½åœ¨æ®ºæ­»åç²å¾—
+	Reduced Prices %+d%%	é™ä½ä»·æ ¼ %+d%%	é™ä½åƒ¹æ ¼ %+d%%
+	Double Herb Duration	åŠ å€è‰è¯æŒç»­æ—¶é—´	åŠ å€è‰è—¥æŒçºŒæ™‚é–“
+	%+d Light Radius	%+d ç…§äº®èŒƒå›´	%+d ç…§äº®èŒƒå›´
+	Light Color NV %d	ç…§äº®é¢œè‰² %d	ç…§äº®é¡”è‰² %d
+	Requirements %+d%%	éœ€æ±‚ %+d%%	éœ€æ±‚ %+d%%
+	%+d Item Level Require	%+d éœ€è¦ç­‰çº§	%+d éœ€è¦ç­‰ç´š
+	%+d%% Increase Attack Speed	%+d%% å¢åŠ æ”»å‡»é€Ÿåº¦	%+d%% å¢åŠ æ”»æ“Šé€Ÿåº¦
+	Item Level Require %+d%%	éœ€è¦ç­‰çº§ %+d%%	éœ€è¦ç­‰çº§ %+d%%
 	Last Block Frame		
-	%+d%% Faster Run/Walk	%+d%% ÅÜ²½/²½ĞĞ	%+d%% ÅÜ„Ó/ĞĞ×ß
-	%+d to %s	%+d ÖÂ %s	%+d ÖÂ %s
-	Change Character State to %s	×´Ì¬¸³Óè %s	 î‘BÙxÓè %s
-	%+d%% Faster Hit Recovery Rate	%+d%% ¿ìËÙÔÙ¶È¹¥»÷	%+d%% ¿ìËÙÔÙ¶È¹¥“ô
+	%+d%% Faster Run/Walk	%+d%% è·‘æ­¥/æ­¥è¡Œ	%+d%% è·‘å‹•/è¡Œèµ°
+	%+d to %s	%+d è‡´ %s	%+d è‡´ %s
+	Change Character State to %s	çŠ¶æ€èµ‹äºˆ %s	ç‹€æ…‹è³¦äºˆ %s
+	%+d%% Faster Hit Recovery Rate	%+d%% å¿«é€Ÿå†åº¦æ”»å‡»	%+d%% å¿«é€Ÿå†åº¦æ”»æ“Š
 	Monster Player Count		
-	Poison Override	¶¾ÑÀ	¶¾ÑÀ
-	%+d%% Faster Block Rate	%+d%% ¿ìËÙ¸ñµ²	%+d%% ¿ìËÙ¸ñ“õ
-	Bypass Undead	»÷ÍË²»ËÀÉúÎï	“ôÍË²»ËÀÉúÎï
-	Bypass Demons	»÷ÍË¶ñÄ§	“ôÍËºÄ§
-	%+d%% Faster Cast Rate	%+d%% ¸ßËÙÊ©·¨ËÙ¶È	%+d%% ¸ßËÙÊ©·¨ËÙ¶È
-	Bypass Beast	»÷ÍËÒ°ÊŞ	“ôÍËÒ°«F
-	%+d to %s (%s only)	%+d ÖÂ %s (ÏŞ%s Ê¹ÓÃ)	%+d ÖÂ %s (ÏŞ%s Ê¹ÓÃ)
-	Slain Monsters Rest In Peace %+d	É±ËÀ¹ÖÎï»Ø¸´Æ½¾² %+d	š¢ËÀ¹ÖÎï»ØÍÆ½ìo %+d
-	Curse Resist %+d	µÖ¿¹×çÖäµÄ¼¸ÂÊ%+d	µÖ¿¹Ô{ÖäµÄ×ÂÊ%+d
-	Poison Length Reduced by %+d%%	¶¾ËØµÄ³ÖĞøĞ§¹û½µµÍ %+d%%	¶¾ËØµÄ³ÖÀmĞ§¹û½µµÍ %+d%%
-	Damage %+d	ÉËº¦Ôö¼Ó%+d	‚ûº¦Ôö¼Ó%+d
-	Hit Causes Monster Flee %+d%%	»÷ÖĞÊ±Ê¹¹ÖÎïÌÓÅÜ %+d%%	“ôÖĞ•rÊ¹¹ÖÎïÌÓÅÜ %+d%%
-	Hit Blinds Target %+d	»÷ÖĞÊ±Ê¹Ä¿±êÖÂÃ¤ %+d	“ôÖĞ•rÊ¹Ä¿˜ËÖÂÃ¤ %+d
-	-%d%% Damage Mana	-%d%% ÊÜËğµÄÉúÃü×ªÒÆÖÁ·¨Á¦	-%d%% ÊÜ“pµÄÉúÃüŞDÒÆÖÁ·¨Á¦
-	Ignore Target Defense	ÎŞÊÓÄ¿±ê·ÀÓù	ŸoÒ•Ä¿˜Ë·À¶R
-	-%d%% Target Defense	¼õÉÙÄ¿±ê·ÀÓù -%d%%	œpÉÙÄ¿˜Ë·À¶R -%d%% 
-	Prevent Monster Heal %+d	·ÀÖ¹¹ÖÎïÖÎÁÆ	·ÀÖ¹¹ÖÎïÖÎ¯Ÿ
-	Half Freeze Duration	±ù¶³Ê±¼ä¼õ°ë	±ùƒö•régœp°ë
-	%+d%% Bonus Attack Rating	%+d%% ¶îÍâµÄ¹¥»÷ÃüÖĞÂÊ¼Ó³É	%+d%% î~ÍâµÄ¹¥“ôÃüÖĞÂÊ¼Ó³É
-	%+d Monster Defense Per Hit	%+d Ã¿´Î»÷ÖĞ½µµÍ¹ÖÎï·ÀÓù	%+d Ã¿´Î“ôÖĞºó½µµÍ¹ÖÎï·À¶R
-	%+d%% Damage to Demons	¶Ô¶ñÄ§Ïµ¹ÖÎïµÄÉËº¦Ôö¼Ó %+d%%	Œ¦ºÄ§Ïµ¹ÖÎïµÄ‚ûº¦Ôö¼Ó %+d%%
-	%+d%% Damage to Undead	¶Ô²»ËÀÏµ¹ÖÎïµÄÉËº¦Ôö¼Ó %+d%%	Œ¦²»ËÀÏµ¹ÖÎïµÄ‚ûº¦Ôö¼Ó %+d%%
-	%+d Attack Rating vs Demons	%+d ¶Ô¶ñÄ§µÄÃüÖĞÂÊ	%+d Œ¦ºÄ§µÄÃüÖĞÂÊ
-	%+d Attack Rating vs Undead	%+d ¶Ô²»ËÀÉúÎïÃüÖĞÂÊ	%+d Œ¦²»ËÀÉúÎïÃüÖĞÂÊ
-	Throwable	¿ÉÍ¶ÖÀ	¿ÉÍ¶”S
-	%+d Fire Skills %d	%+d »ğÑæ¼¼ÄÜ %d	%+d »ğÑæ¼¼ÄÜ %d
-	%+d All Skills	È«²¿¼¼ÄÜ %+d	È«²¿¼¼ÄÜ %+d 
-	Attacker Takes Lightning Damage of %+d	¹¥»÷ÕßÊÜµ½ %+d µç»÷ÉËº¦	¹¥“ôÕßÊÜµ½ %+d ëŠ“ô‚ûº¦
-	Iron Maiden Level	¹¥»÷·´ÊÉ	¹¥“ô·´ÊÉ
-	Life Tap Level	ÍµÈ¡ÉúÃü	ÍµÈ¡ÉúÃü
-	Thorns Percent	´ÌÕë	´Ìá˜
-	Bone Armor	°×¹Ç×°¼×	°×¹ÇÑb¼×
-	Bone Armor Max	×î´ó°×¹Ç×°¼×	×î´ó°×¹ÇÑb¼×
-	Freezes Target %+d	¶³½áÄ¿±ê %+d	ƒö½YÄ¿˜Ë %+d
-	%+d%% Chance of Open Wounds	%+d%% Ëº¿ªÉË¿Ú»ú»á	%+d%% Ëºé_‚û¿Ú™C•ş
-	%+d%% Chance of Crushing Blow	%+d%% Ôì³ÉÑ¹ËéĞÔ´ò»÷µÄ¼¸ÂÊ	%+d%% Ôì³É‰ºËéĞÔ´ò“ôµÄ×ÂÊ
-	%+d Kick Damage	%+d ½ÅÌßÉËº¦	%+d ½ÅÌß‚ûº¦
-	%+d Mana After Each Kill	%+d ·¨Á¦ÔÚÉ±ËÀµĞÈËºó»ñµÃ	%+d ·¨Á¦ÔÚš¢ËÀ”³ÈËºó«@µÃ
-	%+d Life After Each Demon Kill	%+d ÉúÃüÔÚÉ±ËÀ¶ñÄ§ºó»ñµÃ	%+d ÉúÃüÔÚš¢ËÀºÄ§ºó«@µÃ
-	Extra Blood %d	¶îÍâÉúÃüÖµ %d	î~ÍâÉúÃüÖµ %d
-	%+d%% Chance of Deadly Strike	%+d%% ÖÂÃü¹¥»÷	%+d%% ÖÂÃü¹¥“ô
-	Fire Absorb %+d%%	»ğÑæÎüÊÕ %+d%%	»ğÑæÎüÊÕ %+d%%
-	%+d File Absorb	%+d »ğÑæÎüÊÕ	%+d »ğÑæÎüÊÕ
-	Lightning Absorb %+d%%	ÉÁµçÎüÊÕ %+d%%	éWëŠÎüÊÕ %+d%%
-	%+d Lightning Absorb	%+d ÉÁµçÎüÊÕ	%+d éWëŠÎüÊÕ
-	Magic Absorb %+d%%	Ä§·¨ÎüÊÕ %+d%%	Ä§·¨ÎüÊÕ %+d%%
-	%+d Magic Absorb	Ä§·¨ÎüÊÕ %+d%%	Ä§·¨ÎüÊÕ %+d%%
-	Cold Absorb %+d%%	º®±ùÎüÊÕ %+d%%	º®±ùÎüÊÕ %+d%%
-	%+d Cold Absorb	%+d º®±ùÎüÊÕ	%+d º®±ùÎüÊÕ
-	Slows Target by %+d%%	Ê¹Ä¿±êËÙ¶È½µµÍ %+d%%	Ê¹Ä¿˜ËËÙßf½µµÍ %+d%%
-	Level %+d %s Aura When Equipped	×°±¸ %+d ¼¶µÄ %s ÁéÆø	Ñb‚ä %+d ¼‰µÄ %s ì`šâ
-	Indestructible	×°±¸ÎŞ·¨ÆÆ»µ	Ñb‚äŸo·¨ÆÆ‰Ä
-	Cannot Be Frozen	ÎŞ·¨¶³½á	Ÿo·¨ƒö½Y
-	%+d%% Slower Stamina Drain	%+d%% ¼õ»º¾«Á¦ÏûºÄ	%+d%% œp¾¾«Á¦ÏûºÄ
-	%+d%% Chance of Reanimate as %s	É±ËÀ¹ÖÎïºóÓĞ	%+d%% ¼¸ÂÊ¸´»îÎª %s
-	%+d%% Chance of Piercing Attack	%+d%% ´©´Ì¹¥»÷	%+d%% ´©´Ì¹¥“ô
-	Fires Magic Arrows or Bolts %+d	Éä³öÄ§·¨¼ıÊ¸ %+d	Éä³öÄ§·¨¼ıÊ¸ %+d
-	Fires Explosive Arrows or Bolts %+d	¼ıÊ¸»òÊ®×Ö¹­µ¯»ğÑæ±¬Õ¨ %+d	¼ıÊ¸»òÊ®×Ö¹­µ¯»ğÑæ±¬Õ¨ %+d
-	%+d to Min Throw Damage NV	%+d Í¶ÖÀ×îĞ¡ÉËº¦	%+d Í¶”S×îĞ¡‚ûº¦
-	%+d to Max Throw Damage NV	%+d Í¶ÖÀ×î´óÉËº¦	%+d Í¶”S×î´ó‚ûº¦
-	handofathena	ÂıËÙ¼ı	ÂıËÙ¼ı
-	staminapercent	¾«Á¦	¾«Á¦
-	passive_staminapercent	Ôö¼ÓÄÍÁ¦	Ôö¼ÓÄÍÁ¦
+	Poison Override	æ¯’ç‰™	æ¯’ç‰™
+	%+d%% Faster Block Rate	%+d%% å¿«é€Ÿæ ¼æŒ¡	%+d%% å¿«é€Ÿæ ¼æ“‹
+	Bypass Undead	å‡»é€€ä¸æ­»ç”Ÿç‰©	æ“Šé€€ä¸æ­»ç”Ÿç‰©
+	Bypass Demons	å‡»é€€æ¶é­”	æ“Šé€€æƒ¡é­”
+	%+d%% Faster Cast Rate	%+d%% é«˜é€Ÿæ–½æ³•é€Ÿåº¦	%+d%% é«˜é€Ÿæ–½æ³•é€Ÿåº¦
+	Bypass Beast	å‡»é€€é‡å…½	æ“Šé€€é‡ç¸
+	%+d to %s (%s only)	%+d è‡´ %s (é™%s ä½¿ç”¨)	%+d è‡´ %s (é™%s ä½¿ç”¨)
+	Slain Monsters Rest In Peace %+d	æ€æ­»æ€ªç‰©å›å¤å¹³é™ %+d	æ®ºæ­»æ€ªç‰©å›å¾©å¹³éœ %+d
+	Curse Resist %+d	æŠµæŠ—è¯…å’’çš„å‡ ç‡%+d	æŠµæŠ—è©›å’’çš„å¹¾ç‡%+d
+	Poison Length Reduced by %+d%%	æ¯’ç´ çš„æŒç»­æ•ˆæœé™ä½ %+d%%	æ¯’ç´ çš„æŒçºŒæ•ˆæœé™ä½ %+d%%
+	Damage %+d	ä¼¤å®³å¢åŠ %+d	å‚·å®³å¢åŠ %+d
+	Hit Causes Monster Flee %+d%%	å‡»ä¸­æ—¶ä½¿æ€ªç‰©é€ƒè·‘ %+d%%	æ“Šä¸­æ™‚ä½¿æ€ªç‰©é€ƒè·‘ %+d%%
+	Hit Blinds Target %+d	å‡»ä¸­æ—¶ä½¿ç›®æ ‡è‡´ç›² %+d	æ“Šä¸­æ™‚ä½¿ç›®æ¨™è‡´ç›² %+d
+	-%d%% Damage Mana	-%d%% å—æŸçš„ç”Ÿå‘½è½¬ç§»è‡³æ³•åŠ›	-%d%% å—æçš„ç”Ÿå‘½è½‰ç§»è‡³æ³•åŠ›
+	Ignore Target Defense	æ— è§†ç›®æ ‡é˜²å¾¡	ç„¡è¦–ç›®æ¨™é˜²ç¦¦
+	-%d%% Target Defense	å‡å°‘ç›®æ ‡é˜²å¾¡ -%d%%	æ¸›å°‘ç›®æ¨™é˜²ç¦¦ -%d%% 
+	Prevent Monster Heal %+d	é˜²æ­¢æ€ªç‰©æ²»ç–—	é˜²æ­¢æ€ªç‰©æ²»ç™‚
+	Half Freeze Duration	å†°å†»æ—¶é—´å‡åŠ	å†°å‡æ™‚é–“æ¸›åŠ
+	%+d%% Bonus Attack Rating	%+d%% é¢å¤–çš„æ”»å‡»å‘½ä¸­ç‡åŠ æˆ	%+d%% é¡å¤–çš„æ”»æ“Šå‘½ä¸­ç‡åŠ æˆ
+	%+d Monster Defense Per Hit	%+d æ¯æ¬¡å‡»ä¸­é™ä½æ€ªç‰©é˜²å¾¡	%+d æ¯æ¬¡æ“Šä¸­åé™ä½æ€ªç‰©é˜²ç¦¦
+	%+d%% Damage to Demons	å¯¹æ¶é­”ç³»æ€ªç‰©çš„ä¼¤å®³å¢åŠ  %+d%%	å°æƒ¡é­”ç³»æ€ªç‰©çš„å‚·å®³å¢åŠ  %+d%%
+	%+d%% Damage to Undead	å¯¹ä¸æ­»ç³»æ€ªç‰©çš„ä¼¤å®³å¢åŠ  %+d%%	å°ä¸æ­»ç³»æ€ªç‰©çš„å‚·å®³å¢åŠ  %+d%%
+	%+d Attack Rating vs Demons	%+d å¯¹æ¶é­”çš„å‘½ä¸­ç‡	%+d å°æƒ¡é­”çš„å‘½ä¸­ç‡
+	%+d Attack Rating vs Undead	%+d å¯¹ä¸æ­»ç”Ÿç‰©å‘½ä¸­ç‡	%+d å°ä¸æ­»ç”Ÿç‰©å‘½ä¸­ç‡
+	Throwable	å¯æŠ•æ·	å¯æŠ•æ“²
+	%+d Fire Skills %d	%+d ç«ç„°æŠ€èƒ½ %d	%+d ç«ç„°æŠ€èƒ½ %d
+	%+d All Skills	å…¨éƒ¨æŠ€èƒ½ %+d	å…¨éƒ¨æŠ€èƒ½ %+d 
+	Attacker Takes Lightning Damage of %+d	æ”»å‡»è€…å—åˆ° %+d ç”µå‡»ä¼¤å®³	æ”»æ“Šè€…å—åˆ° %+d é›»æ“Šå‚·å®³
+	Iron Maiden Level	æ”»å‡»åå™¬	æ”»æ“Šåå™¬
+	Life Tap Level	å·å–ç”Ÿå‘½	å·å–ç”Ÿå‘½
+	Thorns Percent	åˆºé’ˆ	åˆºé‡
+	Bone Armor	ç™½éª¨è£…ç”²	ç™½éª¨è£ç”²
+	Bone Armor Max	æœ€å¤§ç™½éª¨è£…ç”²	æœ€å¤§ç™½éª¨è£ç”²
+	Freezes Target %+d	å†»ç»“ç›®æ ‡ %+d	å‡çµç›®æ¨™ %+d
+	%+d%% Chance of Open Wounds	%+d%% æ’•å¼€ä¼¤å£æœºä¼š	%+d%% æ’•é–‹å‚·å£æ©Ÿæœƒ
+	%+d%% Chance of Crushing Blow	%+d%% é€ æˆå‹ç¢æ€§æ‰“å‡»çš„å‡ ç‡	%+d%% é€ æˆå£“ç¢æ€§æ‰“æ“Šçš„å¹¾ç‡
+	%+d Kick Damage	%+d è„šè¸¢ä¼¤å®³	%+d è„šè¸¢å‚·å®³
+	%+d Mana After Each Kill	%+d æ³•åŠ›åœ¨æ€æ­»æ•Œäººåè·å¾—	%+d æ³•åŠ›åœ¨æ®ºæ­»æ•µäººåç²å¾—
+	%+d Life After Each Demon Kill	%+d ç”Ÿå‘½åœ¨æ€æ­»æ¶é­”åè·å¾—	%+d ç”Ÿå‘½åœ¨æ®ºæ­»æƒ¡é­”åç²å¾—
+	Extra Blood %d	é¢å¤–ç”Ÿå‘½å€¼ %d	é¡å¤–ç”Ÿå‘½å€¼ %d
+	%+d%% Chance of Deadly Strike	%+d%% è‡´å‘½æ”»å‡»	%+d%% è‡´å‘½æ”»æ“Š
+	Fire Absorb %+d%%	ç«ç„°å¸æ”¶ %+d%%	ç«ç„°å¸æ”¶ %+d%%
+	%+d File Absorb	%+d ç«ç„°å¸æ”¶	%+d ç«ç„°å¸æ”¶
+	Lightning Absorb %+d%%	é—ªç”µå¸æ”¶ %+d%%	é–ƒé›»å¸æ”¶ %+d%%
+	%+d Lightning Absorb	%+d é—ªç”µå¸æ”¶	%+d é–ƒé›»å¸æ”¶
+	Magic Absorb %+d%%	é­”æ³•å¸æ”¶ %+d%%	é­”æ³•å¸æ”¶ %+d%%
+	%+d Magic Absorb	é­”æ³•å¸æ”¶ %+d%%	é­”æ³•å¸æ”¶ %+d%%
+	Cold Absorb %+d%%	å¯’å†°å¸æ”¶ %+d%%	å¯’å†°å¸æ”¶ %+d%%
+	%+d Cold Absorb	%+d å¯’å†°å¸æ”¶	%+d å¯’å†°å¸æ”¶
+	Slows Target by %+d%%	ä½¿ç›®æ ‡é€Ÿåº¦é™ä½ %+d%%	ä½¿ç›®æ¨™é€Ÿéé™ä½ %+d%%
+	Level %+d %s Aura When Equipped	è£…å¤‡ %+d çº§çš„ %s çµæ°”	è£å‚™ %+d ç´šçš„ %s éˆæ°£
+	Indestructible	è£…å¤‡æ— æ³•ç ´å	è£å‚™ç„¡æ³•ç ´å£
+	Cannot Be Frozen	æ— æ³•å†»ç»“	ç„¡æ³•å‡çµ
+	%+d%% Slower Stamina Drain	%+d%% å‡ç¼“ç²¾åŠ›æ¶ˆè€—	%+d%% æ¸›ç·©ç²¾åŠ›æ¶ˆè€—
+	%+d%% Chance of Reanimate as %s	æ€æ­»æ€ªç‰©åæœ‰	%+d%% å‡ ç‡å¤æ´»ä¸º %s
+	%+d%% Chance of Piercing Attack	%+d%% ç©¿åˆºæ”»å‡»	%+d%% ç©¿åˆºæ”»æ“Š
+	Fires Magic Arrows or Bolts %+d	å°„å‡ºé­”æ³•ç®­çŸ¢ %+d	å°„å‡ºé­”æ³•ç®­çŸ¢ %+d
+	Fires Explosive Arrows or Bolts %+d	ç®­çŸ¢æˆ–åå­—å¼“å¼¹ç«ç„°çˆ†ç‚¸ %+d	ç®­çŸ¢æˆ–åå­—å¼“å¼¹ç«ç„°çˆ†ç‚¸ %+d
+	%+d to Min Throw Damage NV	%+d æŠ•æ·æœ€å°ä¼¤å®³	%+d æŠ•æ“²æœ€å°å‚·å®³
+	%+d to Max Throw Damage NV	%+d æŠ•æ·æœ€å¤§ä¼¤å®³	%+d æŠ•æ“²æœ€å¤§å‚·å®³
+	handofathena	æ…¢é€Ÿç®­	æ…¢é€Ÿç®­
+	staminapercent	ç²¾åŠ›	ç²¾åŠ›
+	passive_staminapercent	å¢åŠ è€åŠ›	å¢åŠ è€åŠ›
 	Uncoded		
 	Uncoded		
 	Uncoded		
@@ -1622,34 +1622,32 @@
 	Uncoded		
 	Uncoded		
 	Uncoded		
-	%+d%% to Attack Rating vs %s	%+d%% ×ªÎªÃüÖĞÂÊÏà¶Ô %s	%+d%% ŞD ‘ÃüÖĞÂÊÏàŒ¦ %s
-	%+d%% to Damage vs %s	%+d%% ×ªÎªÉËº¦Ïà¶Ô %s	%+d%% ŞD ‘‚ûº¦ÏàŒ¦ %s
-	Fade %d	ÒşÉí	ë[Éí
-	Armor Override	·ÀÓù°Ù·Ö±È	·À¶R°Ù·Ö±È
+	%+d%% to Attack Rating vs %s	%+d%% è½¬ä¸ºå‘½ä¸­ç‡ç›¸å¯¹ %s	%+d%% è½‰çˆ²å‘½ä¸­ç‡ç›¸å° %s
+	%+d%% to Damage vs %s	%+d%% è½¬ä¸ºä¼¤å®³ç›¸å¯¹ %s	%+d%% è½‰çˆ²å‚·å®³ç›¸å° %s
+	Fade %d	éšèº«	éš±èº«
+	Armor Override	é˜²å¾¡ç™¾åˆ†æ¯”	é˜²ç¦¦ç™¾åˆ†æ¯”
 	Unused		
 	Unused		
 	Unused		
 	Unused		
 	Unused		
-	%+d %s (%s only)	%+d %s (Ö»ÏŞ%s)	%+d %s (Ö»ÏŞ%s)
+	%+d %s (%s only)	%+d %s (åªé™%s)	%+d %s (åªé™%s)
 	Unused		
 	Unused		
 	Unused		
 	Unused		
 	Unused		
-	Add %+d Sockets	Ôö¼Ó %+d °¼²Û	Ôö¼Ó %+d °¼²Û
-	%+d%% Chance to Cast Level %d %s When Attack	¹¥»÷Ê±ÓĞ%+d%%»ú»áÊ©Õ¹µÈ¼¶%d %s	¹¥“ô•r%+d%%™C•şÊ©Õ¹µÈ¼‰%d %s
-	%+d%% Chance to Cast Level %d %s When Kill	µ±É±ËÀµĞÈË %+d%% »ú»áÊ©Õ¹µÈ¼¶%d %s	š¢ËÀ”³ÈË•r%+d%%™C•şÊ©Õ¹µÈ¼‰%d %s
-	%+d%% Chance to Cast Level %d %s When Death	µ±ËÀÍöÊ±%+d%%»ú»áÊ©Õ¹µÈ¼¶%d %s	ËÀÍö•r%+d%%™C•şÊ©Õ¹µÈ¼‰%d %s
-	%+d%% Chance to Cast Level %d %s When Striking	µ±´ò»÷Ê±ÓĞ%+d%%»ú»áÊ©Õ¹µÈ¼¶%d %s	´ò“ô•r%+d%%™C•şÊ©Õ¹µÈ¼‰%d %s
-	%+d%% Chance to Cast Level %d %s When Levelup	µ±Éı¼¶Ê±%+d%%»ú»áÊ©Õ¹µÈ¼¶%d %s	Éı¼‰•r%+d%%™C•şÊ©Õ¹µÈ¼‰%d %s
+	Add %+d Sockets	å¢åŠ  %+d å‡¹æ§½	å¢åŠ  %+d å‡¹æ§½
+	%+d%% Chance to Cast Level %d %s When Attack	æ”»å‡»æ—¶æœ‰%+d%%æœºä¼šæ–½å±•ç­‰çº§%d %s	æ”»æ“Šæ™‚%+d%%æ©Ÿæœƒæ–½å±•ç­‰ç´š%d %s
+	%+d%% Chance to Cast Level %d %s When Kill	å½“æ€æ­»æ•Œäºº %+d%% æœºä¼šæ–½å±•ç­‰çº§%d %s	æ®ºæ­»æ•µäººæ™‚%+d%%æ©Ÿæœƒæ–½å±•ç­‰ç´š%d %s
+	%+d%% Chance to Cast Level %d %s When Death	å½“æ­»äº¡æ—¶%+d%%æœºä¼šæ–½å±•ç­‰çº§%d %s	æ­»äº¡æ™‚%+d%%æ©Ÿæœƒæ–½å±•ç­‰ç´š%d %s
+	%+d%% Chance to Cast Level %d %s When Striking	å½“æ‰“å‡»æ—¶æœ‰%+d%%æœºä¼šæ–½å±•ç­‰çº§%d %s	æ‰“æ“Šæ™‚%+d%%æ©Ÿæœƒæ–½å±•ç­‰ç´š%d %s
+	%+d%% Chance to Cast Level %d %s When Levelup	å½“å‡çº§æ—¶%+d%%æœºä¼šæ–½å±•ç­‰çº§%d %s	å‡ç´šæ™‚%+d%%æ©Ÿæœƒæ–½å±•ç­‰ç´š%d %s
 	Unused		
-	%+d%% Chance to Cast Level %+d %s When Struck	±»»÷ÖĞÊ±ÓĞ %+d%% ¼¸ÂÊÊÍ·Å %+d %s¼¼ÄÜ	±»“ôÖĞ•rÓĞ %+d%% ¼¸ÂÊáŒ·Å %+d %s ¼¼ÄÜ
-	Unused		
-	Unused		
-	Level %+d %s (%d/%d Charges)	µÈ¼¶ %+d %s (%d/%d ¾ÛÆø)	
+	%+d%% Chance to Cast Level %+d %s When Struck	è¢«å‡»ä¸­æ—¶æœ‰ %+d%% å‡ ç‡é‡Šæ”¾ %+d %sæŠ€èƒ½	è¢«æ“Šä¸­æ™‚æœ‰ %+d%% å‡ ç‡é‡‹æ”¾ %+d %s æŠ€èƒ½
 	Unused		
 	Unused		
+	Level %+d %s (%d/%d Charges)	ç­‰çº§ %+d %s (%d/%d èšæ°”)	
 	Unused		
 	Unused		
 	Unused		
@@ -1657,47 +1655,49 @@
 	Unused		
 	Unused		
 	Unused		
-	%+g Defence per Level	%+g ·ÀÓù(ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	%+g ·À¶R(ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	%+g Enhanced Defence per Level	%+g ·ÀÓùÇ¿»¯(ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	%+g ·À¶RÇ¿»¯(ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	%+g Life per Level	%+g ÉúÃü(ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	%+g ÉúÃü(ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	%+g Mana per Level	%+g ·¨Á¦(ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	%+g ·¨Á¦(ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	%+g Max Damage per Level	%+g ×î´óÉËº¦Öµ(ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	%+g Ã¿¼‰×î´óÖµ(ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	%+g Enhanced Max Damage per Level	%+g Ôö¼Ó×î´óÉËº¦ÉÏÏŞ(ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	%+g Ôö¼Ó×îÉËº¦ÉÏÏŞ(ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	%+g Strength per Level	%+g Á¦Á¿(ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	%+g Ã¿¼‰Á¦Á¿(ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	%+g Dexterity per Level	%+g Ãô½İ(ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	%+g Ãô½İ(ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	%+g Energy per Level	%+g ¾«Á¦(ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	%+g ¾«Á¦(ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	%+g Vitality per Level	%+g ÌåÁ¦(ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	%+g ówÁ¦(ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	%+g Attack Rating per Level	%+g ÃüÖĞÂÊ(ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	%+g ÃüÖĞÂÊ(ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	%+g%% Bonus to Attack Rating per Level	%+g%% ¶îÍâµÄ¹¥»÷ÃüÖĞÂÊ¼Ó³É(ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	%+g%% î~ÍâµÄ¹¥“ôÃüÖĞÂÊ¼Ó³É(ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	%+g Max Cold Damage per Level	%+g º®ÀäÉËº¦×î´óÖµ(ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	%+g º®Àä‚ûº¦×î´óÖµ(ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	%+g Max Fire Damage per Level	%+g »ğÑæÉËº¦×î´óÖµ(ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	%+g »ğÑæ‚ûº¦×î´óÖµ(ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	%+g Max Lightning Damage per Level	%+g ÉÁµçÉËº¦×î´óÖµ(ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	%+g éWëŠ‚ûº¦×î´óÖµ(ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	%+g Max Poison Damage per Level	%+g ¶¾ËØÉËº¦×î´óÖµ(ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	%+g ¶¾ËØ‚ûº¦×î´óÖµ(ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	Cold Resist %+g%% per Level	º®¿¹ %+g%% (ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	º®¿¹ %+g%% (ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	Fire Resist %+g%% per Level	»ğ¿¹ %+g%% (ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	»ğ¿¹ %+g%% (ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	Lightning Resist %+g%% per Level	¿¹ÉÁµç %+g%% (ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	¿¹éWëŠ %+g%% (ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	Poison Resist %+g%% per Level	¶¾¿¹ %+g%% (ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	¶¾¿¹ %+g%% (ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	%+g Cold Absorb per Level	%+g ÎüÊÕ±ùÀäÉËº¦ (ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	%+g ÎüÊÕ±ùÀä‚ûº¦ (ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	%+g Fire Absorb per Level	%+g ÎüÊÕ»ğÑæÉËº¦ (ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	%+g ÎüÊÕ»ğÑæ‚ûº¦ (ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	%+g Lightning Absorb per Level	%+g ÎüÊÕÉÁµçÉËº¦ (ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	%+g ÎüÊÕéWëŠ‚ûº¦ (ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	%+g Poison Absorb per Level	%+g ÎüÊÕ¶¾ËØÉËº¦ (ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	%+g ÎüÊÕ¶¾ËØ‚ûº¦ (ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	Attacker Takes Damage of %+g per Level	¹¥»÷ÕßÊÜµ½ÉËº¦%+g(ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	¹¥“ôÕßÊÕµ½‚ûº¦%+g (ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	%+g%% Extra Gold from Monsters per Level	%+g%% ¶îÍâ½ğ±Ò´Ó¹ÖÎïÉíÉÏÈ¡µÃ (ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	%+g%% î~Íâ½ğÅÄ¹ÖÎïÉíÉÏÈ¡µÃ (ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	%+g%% Better Chance of Getting Magic Items per Level	%+g%% ¸ü¼ÓµÄ»ú»áÈ¡µÃÄ§·¨×°±¸ (ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	%+g%% ¸ü¼ÑµÄ™C•şÈ¡µÃÄ§·¨Ñb‚ä  (ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	Heal Stamina Plus %+g%% per Level	»Ø¸´ÌåÁ¦¼Ó %+g%% (ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	»ØÍówÁ¦¼Ó %+g%% (ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	%+g Max Stamina per Level	%+g ×î´ó¾«Á¦Öµ (ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	%+g ×î´ó¾«Á¦Öµ (ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	%+g%% Damage to Demons per Level	%+g%% ¶Ô¶ñÄ§µÄÉËº¦ (ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	%+g%% Œ¦ºÄ§µÄ‚ûº¦ (ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	%+g%% Damage to Undead per Level	%+g%% ¶Ô²»ËÀÉúÎïµÄÉËº¦ (ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	%+g%% Œ¦²»ËÀÉúÎïµÄ‚ûº¦ (ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	%+g to Attack Rating vs Demons per Level	%+g%% ¶Ô¿¹¶ñÄ§µÄÃüÖĞÂÊ (ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	%+g%% Œ¦¿¹ºÄ§µÄœÊ´_ÂÊ (ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	%+g to Attack Rating vs Undead per Level	%+g%% ¶Ô¿¹²»ËÀÉúÎïµÄÃüÖĞÂÊ (ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	%+g%% Œ¦¿¹²»ËÀÉúÎïµÄœÊ´_ÂÊ (ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	%+g%% Chance of Crushing Blow per Level	%+g%% Ôì³ÉÑ¹ËéĞÔ´ò»÷µÄ¼¸ÂÊ (ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	%+g%% Ôì³É‰ºËéĞÔ´ò“ôµÄ×ÂÊ (ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	%+g%% Chance of Open Wounds per Level	%+g%% Ëº¿ªÉË¿ÚµÄ¼¸ÂÊ (ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	%+g%% Ëºé_‚û¿ÚµÄ×ÂÊ (ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	%+g Kick Damage per Leve	%+g ½ÅÌßÉËº¦ (ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	%+g ½ÅÌßÉËº¦½ÅÌß‚ûº¦ (ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	%+g%% Chance of Deadly Strike per Level	%+g%% ÖÂÃü¹¥»÷ (ÒÔ½ÇÉ«µÈ¼¶¾ö¶¨)	%+g%% ÖÂÃü¹¥“ô (ÒÔ½ÇÉ«µÈ¼‰›Q¶¨)
-	Find Gems per Level	±¦Ê¯µôÂä	ŒšÊ¯µôÂä
-	Repairs 1 Durability in %d Seconds	»Ø¸´×°±¸ÄÍ¾Ã¶È1ºÍ %d ÃëÄÚ	»ØÍÑb‚äÄÍ¾Ã¶È1ì¶ %d ÃëÄÚ
-	Replenishes 1 Quantity in %d Seconds	ÔÚ %d ÃëÄÚ»Ø¸´ÊıÁ¿1	ÔÚ %d ÃëÄÚ»ØÍ”µÁ¿1
-	Increased Stack Size %+d	Ôö¼ÓµÄ¿Õ¼ä %+d	Ôö¼ÓµÄ¿Õég %+d
+	Unused		
+	Unused		
+	%+g Defence per Level	%+g é˜²å¾¡(ä»¥è§’è‰²ç­‰çº§å†³å®š)	%+g é˜²ç¦¦(ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	%+g Enhanced Defence per Level	%+g é˜²å¾¡å¼ºåŒ–(ä»¥è§’è‰²ç­‰çº§å†³å®š)	%+g é˜²ç¦¦å¼ºåŒ–(ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	%+g Life per Level	%+g ç”Ÿå‘½(ä»¥è§’è‰²ç­‰çº§å†³å®š)	%+g ç”Ÿå‘½(ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	%+g Mana per Level	%+g æ³•åŠ›(ä»¥è§’è‰²ç­‰çº§å†³å®š)	%+g æ³•åŠ›(ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	%+g Max Damage per Level	%+g æœ€å¤§ä¼¤å®³å€¼(ä»¥è§’è‰²ç­‰çº§å†³å®š)	%+g æ¯ç´šæœ€å¤§å€¼(ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	%+g Enhanced Max Damage per Level	%+g å¢åŠ æœ€å¤§ä¼¤å®³ä¸Šé™(ä»¥è§’è‰²ç­‰çº§å†³å®š)	%+g å¢åŠ æœ€ä¼¤å®³ä¸Šé™(ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	%+g Strength per Level	%+g åŠ›é‡(ä»¥è§’è‰²ç­‰çº§å†³å®š)	%+g æ¯ç´šåŠ›é‡(ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	%+g Dexterity per Level	%+g æ•æ·(ä»¥è§’è‰²ç­‰çº§å†³å®š)	%+g æ•æ·(ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	%+g Energy per Level	%+g ç²¾åŠ›(ä»¥è§’è‰²ç­‰çº§å†³å®š)	%+g ç²¾åŠ›(ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	%+g Vitality per Level	%+g ä½“åŠ›(ä»¥è§’è‰²ç­‰çº§å†³å®š)	%+g é«”åŠ›(ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	%+g Attack Rating per Level	%+g å‘½ä¸­ç‡(ä»¥è§’è‰²ç­‰çº§å†³å®š)	%+g å‘½ä¸­ç‡(ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	%+g%% Bonus to Attack Rating per Level	%+g%% é¢å¤–çš„æ”»å‡»å‘½ä¸­ç‡åŠ æˆ(ä»¥è§’è‰²ç­‰çº§å†³å®š)	%+g%% é¡å¤–çš„æ”»æ“Šå‘½ä¸­ç‡åŠ æˆ(ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	%+g Max Cold Damage per Level	%+g å¯’å†·ä¼¤å®³æœ€å¤§å€¼(ä»¥è§’è‰²ç­‰çº§å†³å®š)	%+g å¯’å†·å‚·å®³æœ€å¤§å€¼(ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	%+g Max Fire Damage per Level	%+g ç«ç„°ä¼¤å®³æœ€å¤§å€¼(ä»¥è§’è‰²ç­‰çº§å†³å®š)	%+g ç«ç„°å‚·å®³æœ€å¤§å€¼(ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	%+g Max Lightning Damage per Level	%+g é—ªç”µä¼¤å®³æœ€å¤§å€¼(ä»¥è§’è‰²ç­‰çº§å†³å®š)	%+g é–ƒé›»å‚·å®³æœ€å¤§å€¼(ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	%+g Max Poison Damage per Level	%+g æ¯’ç´ ä¼¤å®³æœ€å¤§å€¼(ä»¥è§’è‰²ç­‰çº§å†³å®š)	%+g æ¯’ç´ å‚·å®³æœ€å¤§å€¼(ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	Cold Resist %+g%% per Level	å¯’æŠ— %+g%% (ä»¥è§’è‰²ç­‰çº§å†³å®š)	å¯’æŠ— %+g%% (ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	Fire Resist %+g%% per Level	ç«æŠ— %+g%% (ä»¥è§’è‰²ç­‰çº§å†³å®š)	ç«æŠ— %+g%% (ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	Lightning Resist %+g%% per Level	æŠ—é—ªç”µ %+g%% (ä»¥è§’è‰²ç­‰çº§å†³å®š)	æŠ—é–ƒé›» %+g%% (ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	Poison Resist %+g%% per Level	æ¯’æŠ— %+g%% (ä»¥è§’è‰²ç­‰çº§å†³å®š)	æ¯’æŠ— %+g%% (ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	%+g Cold Absorb per Level	%+g å¸æ”¶å†°å†·ä¼¤å®³ (ä»¥è§’è‰²ç­‰çº§å†³å®š)	%+g å¸æ”¶å†°å†·å‚·å®³ (ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	%+g Fire Absorb per Level	%+g å¸æ”¶ç«ç„°ä¼¤å®³ (ä»¥è§’è‰²ç­‰çº§å†³å®š)	%+g å¸æ”¶ç«ç„°å‚·å®³ (ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	%+g Lightning Absorb per Level	%+g å¸æ”¶é—ªç”µä¼¤å®³ (ä»¥è§’è‰²ç­‰çº§å†³å®š)	%+g å¸æ”¶é–ƒé›»å‚·å®³ (ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	%+g Poison Absorb per Level	%+g å¸æ”¶æ¯’ç´ ä¼¤å®³ (ä»¥è§’è‰²ç­‰çº§å†³å®š)	%+g å¸æ”¶æ¯’ç´ å‚·å®³ (ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	Attacker Takes Damage of %+g per Level	æ”»å‡»è€…å—åˆ°ä¼¤å®³%+g(ä»¥è§’è‰²ç­‰çº§å†³å®š)	æ”»æ“Šè€…æ”¶åˆ°å‚·å®³%+g (ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	%+g%% Extra Gold from Monsters per Level	%+g%% é¢å¤–é‡‘å¸ä»æ€ªç‰©èº«ä¸Šå–å¾— (ä»¥è§’è‰²ç­‰çº§å†³å®š)	%+g%% é¡å¤–é‡‘å¹£å¾æ€ªç‰©èº«ä¸Šå–å¾— (ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	%+g%% Better Chance of Getting Magic Items per Level	%+g%% æ›´åŠ çš„æœºä¼šå–å¾—é­”æ³•è£…å¤‡ (ä»¥è§’è‰²ç­‰çº§å†³å®š)	%+g%% æ›´ä½³çš„æ©Ÿæœƒå–å¾—é­”æ³•è£å‚™  (ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	Heal Stamina Plus %+g%% per Level	å›å¤ä½“åŠ›åŠ  %+g%% (ä»¥è§’è‰²ç­‰çº§å†³å®š)	å›å¾©é«”åŠ›åŠ  %+g%% (ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	%+g Max Stamina per Level	%+g æœ€å¤§ç²¾åŠ›å€¼ (ä»¥è§’è‰²ç­‰çº§å†³å®š)	%+g æœ€å¤§ç²¾åŠ›å€¼ (ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	%+g%% Damage to Demons per Level	%+g%% å¯¹æ¶é­”çš„ä¼¤å®³ (ä»¥è§’è‰²ç­‰çº§å†³å®š)	%+g%% å°æƒ¡é­”çš„å‚·å®³ (ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	%+g%% Damage to Undead per Level	%+g%% å¯¹ä¸æ­»ç”Ÿç‰©çš„ä¼¤å®³ (ä»¥è§’è‰²ç­‰çº§å†³å®š)	%+g%% å°ä¸æ­»ç”Ÿç‰©çš„å‚·å®³ (ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	%+g to Attack Rating vs Demons per Level	%+g%% å¯¹æŠ—æ¶é­”çš„å‘½ä¸­ç‡ (ä»¥è§’è‰²ç­‰çº§å†³å®š)	%+g%% å°æŠ—æƒ¡é­”çš„æº–ç¢ºç‡ (ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	%+g to Attack Rating vs Undead per Level	%+g%% å¯¹æŠ—ä¸æ­»ç”Ÿç‰©çš„å‘½ä¸­ç‡ (ä»¥è§’è‰²ç­‰çº§å†³å®š)	%+g%% å°æŠ—ä¸æ­»ç”Ÿç‰©çš„æº–ç¢ºç‡ (ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	%+g%% Chance of Crushing Blow per Level	%+g%% é€ æˆå‹ç¢æ€§æ‰“å‡»çš„å‡ ç‡ (ä»¥è§’è‰²ç­‰çº§å†³å®š)	%+g%% é€ æˆå£“ç¢æ€§æ‰“æ“Šçš„å¹¾ç‡ (ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	%+g%% Chance of Open Wounds per Level	%+g%% æ’•å¼€ä¼¤å£çš„å‡ ç‡ (ä»¥è§’è‰²ç­‰çº§å†³å®š)	%+g%% æ’•é–‹å‚·å£çš„å¹¾ç‡ (ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	%+g Kick Damage per Leve	%+g è„šè¸¢ä¼¤å®³ (ä»¥è§’è‰²ç­‰çº§å†³å®š)	%+g è„šè¸¢ä¼¤å®³è„šè¸¢å‚·å®³ (ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	%+g%% Chance of Deadly Strike per Level	%+g%% è‡´å‘½æ”»å‡» (ä»¥è§’è‰²ç­‰çº§å†³å®š)	%+g%% è‡´å‘½æ”»æ“Š (ä»¥è§’è‰²ç­‰ç´šæ±ºå®š)
+	Find Gems per Level	å®çŸ³æ‰è½	å¯¶çŸ³æ‰è½
+	Repairs 1 Durability in %d Seconds	å›å¤è£…å¤‡è€ä¹…åº¦1å’Œ %d ç§’å†…	å›å¾©è£å‚™è€ä¹…åº¦1æ–¼ %d ç§’å†…
+	Replenishes 1 Quantity in %d Seconds	åœ¨ %d ç§’å†…å›å¤æ•°é‡1	åœ¨ %d ç§’å†…å›å¾©æ•¸é‡1
+	Increased Stack Size %+d	å¢åŠ çš„ç©ºé—´ %+d	å¢åŠ çš„ç©ºé–“ %+d
 	Uncoded		
 	Uncoded		
 	Uncoded		
@@ -1711,47 +1711,47 @@
 	Uncoded		
 	Uncoded		
 	Uncoded		
-	%+d - %d Defense (Increases %s)	%+d - %d ·ÀÓù (%s Ôö¼Ó)	%+d - %d ·À¶R (%s Ôö¼Ó)
-	%+d - %d Enhanced Defense (Increases %s)	%+d - %d ·ÀÓùÇ¿»¯ (%s Ôö¼Ó)	%+d - %d ·À¶RÇ¿»¯ (%s Ôö¼Ó)
-	%+d - %d Life (Increases %s)	%+d - %d ÉúÃü (%s Ôö¼Ó)	%+d - %d ÉúÃü (%s Ôö¼Ó)
-	%+d - %d Mana (Increases %s)	%+d - %d ·¨Á¦ (%s Ôö¼Ó)	%+d - %d ·¨Á¦ (%s Ôö¼Ó)
-	%+d - %d Max Damage (Increases %s)	%+d - %d ×î´óÉËº¦Öµ (%s Ôö¼Ó)	%+d - %d ×î´ó‚ûº¦Öµ (%s Ôö¼Ó)
-	%+d - %d Enhanced Max Damage (Increases %s)	%+d - %d ‚ûº¦ÉÏÏŞ (ÔÚ %s Ôö¼Ó)	%+d - %d ‚ûº¦ÉÏÏŞ (%s Ôö¼Ó)
-	%+d - %d Strength (Increases %s)	%+d - %d Á¦Á¿ (%s Ôö¼Ó)	%+d - %d Á¦Á¿ (%s Ôö¼Ó)
-	%+d - %d Dexterity (Increases %s)	%+d - %d Ãô½İ (%s Ôö¼Ó)	%+d - %d Ãô½İ (%s Ôö¼Ó)
-	%+d - %d Energy (Increases %s)	%+d - %d ¾«Á¦ (%s Ôö¼Ó)	%+d - %d ¾«Á¦ (%s Ôö¼Ó)
-	%+d - %d Vitality (Increases %s)	%+d - %d ÌåÁ¦ (%s Ôö¼Ó)	%+d - %d ówÁ¦ (%s Ôö¼Ó)
-	%+d - %d Attack Rating (Increases %s)	%+d - %d ÃüÖĞÂÊ (%s Ôö¼Ó)	%+d - %d œÊ´_ÂÊ (%s Ôö¼Ó)
-	%+d - %d Enhanced Attack Rating (Increases %s)	%+d - %d ¶îÍâµÄ¹¥»÷ÃüÖĞÂÊ (%s Ôö¼Ó)	%+d - %d î~ÍâµÄ¹¥“ôœÊ´_ÂÊ (%s Ôö¼Ó)
-	%+d - %d Max Cold Damage (Increases %s)	%+d - %d º®ÀäÉËº¦×î´óÖµ (%s Ôö¼Ó)	%+d - %d º®Àä‚ûº¦×î´óÖµ (%s Ôö¼Ó)
-	%+d - %d Max Fire Damage (Increases %s)	%+d - %d »ğÑæÉËº¦×î´óÖµ (%s Ôö¼Ó)	%+d - %d »ğÑæ‚ûº¦×î´óÖµ (%s Ôö¼Ó)
-	%+d - %d Max Lightning Damage (Increases %s)	%+d - %d À×µçÉËº¦×î´óÖµ (%s Ôö¼Ó)	%+d - %d À×ëŠ‚ûº¦×î´óÖµ (%s Ôö¼Ó)
-	%+d - %d Max Poison Damage (Increases %s)	%+d - %d ¶¾ËØÉËº¦×î´óÖµ (%s Ôö¼Ó)	%+d - %d ¶¾ËØ‚ûº¦×î´óÖµ (%s Ôö¼Ó)
-	%+d%% - %d%% Cold Resist (Increases %s)	%+d%% - %d%% º®Àä¿¹ĞÔ (%s Ôö¼Ó)	%+d%% - %d%% º®Àä¿¹ĞÔ (%s Ôö¼Ó)
-	%+d%% - %d%% Fire Resist (Increases %s)	%+d%% - %d%% »ğÑæ¿¹ĞÔ (%s Ôö¼Ó)	%+d%% - %d%% »ğÑæ¿¹ĞÔ (%s Ôö¼Ó)
-	%+d%% - %d%% Lightning Resist (Increases %s)	%+d%% - %d%% À×µç¿¹ĞÔ (%s Ôö¼Ó)	%+d%% - %d%% À×ëŠ¿¹ĞÔ (%s Ôö¼Ó)
-	%+d%% - %d%% Poison Resist (Increases %s)	%+d%% - %d%% ¶¾ËØ¿¹ĞÔ (%s Ôö¼Ó)	%+d%% - %d%% ¶¾ËØ¿¹ĞÔ (%s Ôö¼Ó)
-	%+d - %d Cold Absorb (Increases %s)	%+d - %d ÎüÊÕ±ùÀäÉËº¦ (%s Ôö¼Ó)	%+d - %d ÎüÊÕ±ùÀä‚ûº¦ (%s Ôö¼Ó)
-	%+d - %d Fire Absorb (Increases %s)	%+d - %d ÎüÊÕ»ğÑæÉËº¦ (%s Ôö¼Ó)	%+d - %d ÎüÊÕ»ğÑæ‚ûº¦ (%s Ôö¼Ó)
-	%+d - %d Lightning Absorb (Increases %s)	%+d - %d ÎüÊÕÀ×µçÉËº¦ (%s Ôö¼Ó)	%+d - %d ÎüÊÕÀ×ëŠ‚ûº¦ (%s Ôö¼Ó)
-	%+d - %d Poison Absorb (Increases %s)	%+d - %d ÎüÊÕ¶¾ËØÉËº¦ (%s Ôö¼Ó)	%+d - %d ÎüÊÕ¶¾ËØ‚ûº¦ (%s Ôö¼Ó)
-	%+d%% - %d%% Extra Gold from Monsters (Increases %s)	%+d%% - %d%% ¶îÍâµÄ½ğ±Ò´Ó¹ÖÎïÉíÉÏÈ¡µÃ (%s Ôö¼Ó)	%+d%% - %d%% î~ÍâµÄ½ğÅÄ¹ÖÎïÉíÉÏÈ¡µÃ (%s Ôö¼Ó)
-	%+d%% - %d%% Better Chance of Getting Magic Items (Increases %s)	%+d%% - %d%% ¸ü¼ÓµÄ»ú»áÈ¡µÃÄ§·¨×°±¸ (%s Ôö¼Ó)	%+d%% - %d%% ¸ü¼ÑµÄ™C•şÈ¡µÃÄ§·¨Ñb‚ä (%s Ôö¼Ó)
-	Heal Stamina Plus %+d - %d%% (Increases %s)	»Ø¸´ÌåÁ¦¼Ó %+d - %d%% (%s Ôö¼Ó)	»ØÍówÁ¦¼Ó%+d - %d%% (%s Ôö¼Ó)
-	%+d - %d Stamina (Increases %s)	%+d - %d  ×î´ó¾«Á¦Öµ (%s Ôö¼Ó)	%+d - %d ×î´ó¾«Á¦Öµ (%s Ôö¼Ó)
-	%+d%% - %d%% Damage to Demons (Increases %s)	%+d%% - %d%% ¶Ô¶ñÄ§µÄÉËº¦ (%s Ôö¼Ó)	%+d%% - %d%% Œ¦ºÄ§µÄ‚ûº¦ (%s Ôö¼Ó)
-	%+d%% - %d%% Damage to Undead (Increases %s)	%+d%% - %d%% ¶Ô²»ËÀÉúÎïµÄÉËº¦ (%s Ôö¼Ó)	%+d%% - %d%% Œ¦²»ËÀÉúÎïµÄ‚ûº¦ (%s Ôö¼Ó)
-	%+d - %d Attack Rating vs Demons (Increases %s)	%+d - %d ¶Ô¿¹¶ñÄ§µÄÃüÖĞÂÊ (%s Ôö¼Ó)	%+d - %d Œ¦¿¹ºÄ§µÄœÊ´_ÂÊ (%s Ôö¼Ó)
-	%+d - %d Attack Rating vs Undead (Increases %s)	%+d - %d ¶Ô¿¹²»ËÀÉúÎïµÄÃüÖĞÂÊ (%s Ôö¼Ó)	%+d - %d Œ¦¿¹²»ËÀÉúÎïµÄœÊ´_ÂÊ (%s Ôö¼Ó)
-	%+d%% - %d%% Chance of Crushing Blow (Increases %s)	%+d%% - %d%% Ôì³ÉÑ¹ËéĞÔ´ò»÷µÄ¼¸ÂÊ (%s Ôö¼Ó)	%+d%% - %d%% Ôì³É‰ºËéĞÔ´ò“ôµÄ×ÂÊ (%s Ôö¼Ó)
-	%+d%% - %d%% Chance of Open Wounds (Increases %s)	%+d%% - %d%% Ëº¿ªÉË¿ÚµÄ¼¸ÂÊ (%s Ôö¼Ó)	%+d%% - %d%% Ëºé_‚û¿ÚµÄ×ÂÊ (%s Ôö¼Ó)
-	%+d - %d Kick Damage (Increases %s)	%+d - %d ½ÅÌßÉËº¦ (%s Ôö¼Ó)	%+d - %d ½ÅÌßÉËº¦½ÅÌß‚ûº¦ (%s Ôö¼Ó)
-	%+d - %d Chance of  Deadly Strike (Increases %s)	%+d - %d ÖÂÃü¹¥»÷ (%s Ôö¼Ó)	%+d - %d ÖÂÃü¹¥“ô (%s Ôö¼Ó)
-	Item Find Gems (by time)	±¦Ê¯µôÂä	ŒšÊ¯µôÂä
-	%+d%% Enemy Cold Resist	%+d%% ¶ÔµĞÈË±ù¶³Ïµ¿¹ĞÔ	%+d%% Œ¦”³ÈË±ùƒö‚S¿¹ĞÔ
-	%+d%% Enemy Fire Resist	%+d%% ¶ÔµĞÈË»ğÑæÏµ¿¹ĞÔ	%+d%% Œ¦”³ÈË»ğÑæ‚S¿¹ĞÔ
-	%+d%% Enemy Lightning Resist	%+d%% ¶ÔµĞÈËÀ×µçÏµ¿¹ĞÔ	%+d%% Œ¦”³ÈËÀ×ëŠ‚S¿¹ĞÔ
-	%+d%% Enemy Poison Resist	%+d%% ¶ÔµĞÈË¶¾ËØÏµ¿¹ĞÔ	%+d%% Œ¦”³ÈË¶¾ËØ‚S¿¹ĞÔ
+	%+d - %d Defense (Increases %s)	%+d - %d é˜²å¾¡ (%s å¢åŠ )	%+d - %d é˜²ç¦¦ (%s å¢åŠ )
+	%+d - %d Enhanced Defense (Increases %s)	%+d - %d é˜²å¾¡å¼ºåŒ– (%s å¢åŠ )	%+d - %d é˜²ç¦¦å¼ºåŒ– (%s å¢åŠ )
+	%+d - %d Life (Increases %s)	%+d - %d ç”Ÿå‘½ (%s å¢åŠ )	%+d - %d ç”Ÿå‘½ (%s å¢åŠ )
+	%+d - %d Mana (Increases %s)	%+d - %d æ³•åŠ› (%s å¢åŠ )	%+d - %d æ³•åŠ› (%s å¢åŠ )
+	%+d - %d Max Damage (Increases %s)	%+d - %d æœ€å¤§ä¼¤å®³å€¼ (%s å¢åŠ )	%+d - %d æœ€å¤§å‚·å®³å€¼ (%s å¢åŠ )
+	%+d - %d Enhanced Max Damage (Increases %s)	%+d - %d å‚·å®³ä¸Šé™ (åœ¨ %s å¢åŠ )	%+d - %d å‚·å®³ä¸Šé™ (%s å¢åŠ )
+	%+d - %d Strength (Increases %s)	%+d - %d åŠ›é‡ (%s å¢åŠ )	%+d - %d åŠ›é‡ (%s å¢åŠ )
+	%+d - %d Dexterity (Increases %s)	%+d - %d æ•æ· (%s å¢åŠ )	%+d - %d æ•æ· (%s å¢åŠ )
+	%+d - %d Energy (Increases %s)	%+d - %d ç²¾åŠ› (%s å¢åŠ )	%+d - %d ç²¾åŠ› (%s å¢åŠ )
+	%+d - %d Vitality (Increases %s)	%+d - %d ä½“åŠ› (%s å¢åŠ )	%+d - %d é«”åŠ› (%s å¢åŠ )
+	%+d - %d Attack Rating (Increases %s)	%+d - %d å‘½ä¸­ç‡ (%s å¢åŠ )	%+d - %d æº–ç¢ºç‡ (%s å¢åŠ )
+	%+d - %d Enhanced Attack Rating (Increases %s)	%+d - %d é¢å¤–çš„æ”»å‡»å‘½ä¸­ç‡ (%s å¢åŠ )	%+d - %d é¡å¤–çš„æ”»æ“Šæº–ç¢ºç‡ (%s å¢åŠ )
+	%+d - %d Max Cold Damage (Increases %s)	%+d - %d å¯’å†·ä¼¤å®³æœ€å¤§å€¼ (%s å¢åŠ )	%+d - %d å¯’å†·å‚·å®³æœ€å¤§å€¼ (%s å¢åŠ )
+	%+d - %d Max Fire Damage (Increases %s)	%+d - %d ç«ç„°ä¼¤å®³æœ€å¤§å€¼ (%s å¢åŠ )	%+d - %d ç«ç„°å‚·å®³æœ€å¤§å€¼ (%s å¢åŠ )
+	%+d - %d Max Lightning Damage (Increases %s)	%+d - %d é›·ç”µä¼¤å®³æœ€å¤§å€¼ (%s å¢åŠ )	%+d - %d é›·é›»å‚·å®³æœ€å¤§å€¼ (%s å¢åŠ )
+	%+d - %d Max Poison Damage (Increases %s)	%+d - %d æ¯’ç´ ä¼¤å®³æœ€å¤§å€¼ (%s å¢åŠ )	%+d - %d æ¯’ç´ å‚·å®³æœ€å¤§å€¼ (%s å¢åŠ )
+	%+d%% - %d%% Cold Resist (Increases %s)	%+d%% - %d%% å¯’å†·æŠ—æ€§ (%s å¢åŠ )	%+d%% - %d%% å¯’å†·æŠ—æ€§ (%s å¢åŠ )
+	%+d%% - %d%% Fire Resist (Increases %s)	%+d%% - %d%% ç«ç„°æŠ—æ€§ (%s å¢åŠ )	%+d%% - %d%% ç«ç„°æŠ—æ€§ (%s å¢åŠ )
+	%+d%% - %d%% Lightning Resist (Increases %s)	%+d%% - %d%% é›·ç”µæŠ—æ€§ (%s å¢åŠ )	%+d%% - %d%% é›·é›»æŠ—æ€§ (%s å¢åŠ )
+	%+d%% - %d%% Poison Resist (Increases %s)	%+d%% - %d%% æ¯’ç´ æŠ—æ€§ (%s å¢åŠ )	%+d%% - %d%% æ¯’ç´ æŠ—æ€§ (%s å¢åŠ )
+	%+d - %d Cold Absorb (Increases %s)	%+d - %d å¸æ”¶å†°å†·ä¼¤å®³ (%s å¢åŠ )	%+d - %d å¸æ”¶å†°å†·å‚·å®³ (%s å¢åŠ )
+	%+d - %d Fire Absorb (Increases %s)	%+d - %d å¸æ”¶ç«ç„°ä¼¤å®³ (%s å¢åŠ )	%+d - %d å¸æ”¶ç«ç„°å‚·å®³ (%s å¢åŠ )
+	%+d - %d Lightning Absorb (Increases %s)	%+d - %d å¸æ”¶é›·ç”µä¼¤å®³ (%s å¢åŠ )	%+d - %d å¸æ”¶é›·é›»å‚·å®³ (%s å¢åŠ )
+	%+d - %d Poison Absorb (Increases %s)	%+d - %d å¸æ”¶æ¯’ç´ ä¼¤å®³ (%s å¢åŠ )	%+d - %d å¸æ”¶æ¯’ç´ å‚·å®³ (%s å¢åŠ )
+	%+d%% - %d%% Extra Gold from Monsters (Increases %s)	%+d%% - %d%% é¢å¤–çš„é‡‘å¸ä»æ€ªç‰©èº«ä¸Šå–å¾— (%s å¢åŠ )	%+d%% - %d%% é¡å¤–çš„é‡‘å¹£å¾æ€ªç‰©èº«ä¸Šå–å¾— (%s å¢åŠ )
+	%+d%% - %d%% Better Chance of Getting Magic Items (Increases %s)	%+d%% - %d%% æ›´åŠ çš„æœºä¼šå–å¾—é­”æ³•è£…å¤‡ (%s å¢åŠ )	%+d%% - %d%% æ›´ä½³çš„æ©Ÿæœƒå–å¾—é­”æ³•è£å‚™ (%s å¢åŠ )
+	Heal Stamina Plus %+d - %d%% (Increases %s)	å›å¤ä½“åŠ›åŠ  %+d - %d%% (%s å¢åŠ )	å›å¾©é«”åŠ›åŠ %+d - %d%% (%s å¢åŠ )
+	%+d - %d Stamina (Increases %s)	%+d - %d  æœ€å¤§ç²¾åŠ›å€¼ (%s å¢åŠ )	%+d - %d æœ€å¤§ç²¾åŠ›å€¼ (%s å¢åŠ )
+	%+d%% - %d%% Damage to Demons (Increases %s)	%+d%% - %d%% å¯¹æ¶é­”çš„ä¼¤å®³ (%s å¢åŠ )	%+d%% - %d%% å°æƒ¡é­”çš„å‚·å®³ (%s å¢åŠ )
+	%+d%% - %d%% Damage to Undead (Increases %s)	%+d%% - %d%% å¯¹ä¸æ­»ç”Ÿç‰©çš„ä¼¤å®³ (%s å¢åŠ )	%+d%% - %d%% å°ä¸æ­»ç”Ÿç‰©çš„å‚·å®³ (%s å¢åŠ )
+	%+d - %d Attack Rating vs Demons (Increases %s)	%+d - %d å¯¹æŠ—æ¶é­”çš„å‘½ä¸­ç‡ (%s å¢åŠ )	%+d - %d å°æŠ—æƒ¡é­”çš„æº–ç¢ºç‡ (%s å¢åŠ )
+	%+d - %d Attack Rating vs Undead (Increases %s)	%+d - %d å¯¹æŠ—ä¸æ­»ç”Ÿç‰©çš„å‘½ä¸­ç‡ (%s å¢åŠ )	%+d - %d å°æŠ—ä¸æ­»ç”Ÿç‰©çš„æº–ç¢ºç‡ (%s å¢åŠ )
+	%+d%% - %d%% Chance of Crushing Blow (Increases %s)	%+d%% - %d%% é€ æˆå‹ç¢æ€§æ‰“å‡»çš„å‡ ç‡ (%s å¢åŠ )	%+d%% - %d%% é€ æˆå£“ç¢æ€§æ‰“æ“Šçš„å¹¾ç‡ (%s å¢åŠ )
+	%+d%% - %d%% Chance of Open Wounds (Increases %s)	%+d%% - %d%% æ’•å¼€ä¼¤å£çš„å‡ ç‡ (%s å¢åŠ )	%+d%% - %d%% æ’•é–‹å‚·å£çš„å¹¾ç‡ (%s å¢åŠ )
+	%+d - %d Kick Damage (Increases %s)	%+d - %d è„šè¸¢ä¼¤å®³ (%s å¢åŠ )	%+d - %d è„šè¸¢ä¼¤å®³è„šè¸¢å‚·å®³ (%s å¢åŠ )
+	%+d - %d Chance of  Deadly Strike (Increases %s)	%+d - %d è‡´å‘½æ”»å‡» (%s å¢åŠ )	%+d - %d è‡´å‘½æ”»æ“Š (%s å¢åŠ )
+	Item Find Gems (by time)	å®çŸ³æ‰è½	å¯¶çŸ³æ‰è½
+	%+d%% Enemy Cold Resist	%+d%% å¯¹æ•Œäººå†°å†»ç³»æŠ—æ€§	%+d%% å°æ•µäººå†°å‡ä¿‚æŠ—æ€§
+	%+d%% Enemy Fire Resist	%+d%% å¯¹æ•Œäººç«ç„°ç³»æŠ—æ€§	%+d%% å°æ•µäººç«ç„°ä¿‚æŠ—æ€§
+	%+d%% Enemy Lightning Resist	%+d%% å¯¹æ•Œäººé›·ç”µç³»æŠ—æ€§	%+d%% å°æ•µäººé›·é›»ä¿‚æŠ—æ€§
+	%+d%% Enemy Poison Resist	%+d%% å¯¹æ•Œäººæ¯’ç´ ç³»æŠ—æ€§	%+d%% å°æ•µäººæ¯’ç´ ä¿‚æŠ—æ€§
 	Item Damage vs Monster		
 	Item Damage Percent vs Monster		
 	Item Tohit vs Monster		
@@ -1772,43 +1772,43 @@
 	Poison Count		
 	Damage Frame Rate		
 	Pierce IDX		
-	%+d%% Fire Skill Damage	%+d%% ¶Ô»ğÑæ¼¼ÄÜÉËº¦	%+d%% Œ¦»ğÑæ¼¼ÄÜ‚ûº¦
-	%+d%% Lightning Skill Damage	%+d%% ¶ÔÀ×µçÏµ¼¼ÄÜÉËº¦	%+d%% Œ¦À×ëŠ‚S¼¼ÄÜ‚ûº¦
-	%+d%% Cold Skill Damage	%+d%% ¶Ô±ù¶³¼¼ÄÜÉËº¦	%+d%% Œ¦±ùƒö¼¼ÄÜ‚ûº¦
-	%+d%% Poison Skill Damage	%+d%% ¶Ô¶¾ËØ¼¼ÄÜÉËº¦	%+d%% Œ¦¶¾ËØ¼¼ÄÜ‚ûº¦
-	%+d%% Enemy Fire Resist	%+d%% ¶ÔµĞÈË»ğÑæÏµ¿¹ĞÔ	%+d%% Œ¦”³ÈË»ğÑæ‚S¿¹ĞÔ
-	%+d%% Enemy Lightning Resist	%+d%% ¶ÔµĞÈËÀ×µçÏµ¿¹ĞÔ	%+d%% Œ¦”³ÈËÀ×ëŠ‚S¿¹ĞÔ
-	%+d%% Enemy Cold Resist	%+d%% ¶ÔµĞÈË±ù¶³Ïµ¿¹ĞÔ	%+d%% Œ¦”³ÈË±ùƒö‚S¿¹ĞÔ
-	%+d%% Enemy Poison Resist	%+d%% ¶ÔµĞÈË¶¾ËØÏµ¿¹ĞÔ	%+d%% Œ¦”³ÈË¶¾ËØ‚S¿¹ĞÔ
-	Passive Critical Strike %d	ÖÂÃüÒ»»÷ %d	ÖÂÃüÒ»“ô %d
-	Passive Dodge %d	ÉÁ±Ü %d	éW±Ü %d
-	Passive Avoid %d	¶ã±Ü %d	¶ã±Ü %d
-	Passive Evade %d	»Ø±Ü %d	»Ø±Ü %d
-	Passive Warmth %d	Å¯Æø %d	Å¯šâ %d
-	Passive Mastery Melee TH %d	Ö§Åä½üÕ½ÎäÆ÷-¹¥»÷ÃüÖĞÂÊ %d	Ö§Åä½ü‘ğÎäÆ÷-¹¥“ôÃüÖĞÂÊ %d
-	Passive Mastery Melee Damage %d	Ö§Åä½üÕ½ÎäÆ÷-ÉËº¦ %d	Ö§Åä½ü‘ğÎäÆ÷-‚ûº¦ %d
-	Passive Mastery Melee Crit %d	Ö§Åä½üÕ½ÎäÆ÷-ÖÂÃüÒ»»÷ %d	Ö§Åä½ü‘ğÎäÆ÷-ÖÂÃüÒ»“ô %d
-	Passive Mastery Throw TH %d	Ö§Åä·ÉÖÀ-¹¥»÷ÃüÖĞÂÊ %d	Ö§Åäïw”S-¹¥“ôÃüÖĞÂÊ %d
-	Passive Mastery Throw Damage %d	Ö§Åä·ÉÖÀ-ÉËº¦ %d	Ö§Åäïw”S-‚ûº¦ %d
-	Passive Mastery Throw Crit %d	Ö§Åä·ÉÖÀ-ÖÂÃüÒ»»÷ %d	Ö§Åäïw”S-ÖÂÃüÒ»“ô %d
-	Passive Weapon Block %d	ÎäÆ÷¸ñµ² %d	ÎäÆ÷¸ñ“õ %d
-	Passive Summon Resist %d	ÕÙ»½·´¿¹ %d	ÕÙ†¾·´¿¹ %d
+	%+d%% Fire Skill Damage	%+d%% å¯¹ç«ç„°æŠ€èƒ½ä¼¤å®³	%+d%% å°ç«ç„°æŠ€èƒ½å‚·å®³
+	%+d%% Lightning Skill Damage	%+d%% å¯¹é›·ç”µç³»æŠ€èƒ½ä¼¤å®³	%+d%% å°é›·é›»ä¿‚æŠ€èƒ½å‚·å®³
+	%+d%% Cold Skill Damage	%+d%% å¯¹å†°å†»æŠ€èƒ½ä¼¤å®³	%+d%% å°å†°å‡æŠ€èƒ½å‚·å®³
+	%+d%% Poison Skill Damage	%+d%% å¯¹æ¯’ç´ æŠ€èƒ½ä¼¤å®³	%+d%% å°æ¯’ç´ æŠ€èƒ½å‚·å®³
+	%+d%% Enemy Fire Resist	%+d%% å¯¹æ•Œäººç«ç„°ç³»æŠ—æ€§	%+d%% å°æ•µäººç«ç„°ä¿‚æŠ—æ€§
+	%+d%% Enemy Lightning Resist	%+d%% å¯¹æ•Œäººé›·ç”µç³»æŠ—æ€§	%+d%% å°æ•µäººé›·é›»ä¿‚æŠ—æ€§
+	%+d%% Enemy Cold Resist	%+d%% å¯¹æ•Œäººå†°å†»ç³»æŠ—æ€§	%+d%% å°æ•µäººå†°å‡ä¿‚æŠ—æ€§
+	%+d%% Enemy Poison Resist	%+d%% å¯¹æ•Œäººæ¯’ç´ ç³»æŠ—æ€§	%+d%% å°æ•µäººæ¯’ç´ ä¿‚æŠ—æ€§
+	Passive Critical Strike %d	è‡´å‘½ä¸€å‡» %d	è‡´å‘½ä¸€æ“Š %d
+	Passive Dodge %d	é—ªé¿ %d	é–ƒé¿ %d
+	Passive Avoid %d	èº²é¿ %d	èº²é¿ %d
+	Passive Evade %d	å›é¿ %d	å›é¿ %d
+	Passive Warmth %d	æš–æ°” %d	æš–æ°£ %d
+	Passive Mastery Melee TH %d	æ”¯é…è¿‘æˆ˜æ­¦å™¨-æ”»å‡»å‘½ä¸­ç‡ %d	æ”¯é…è¿‘æˆ°æ­¦å™¨-æ”»æ“Šå‘½ä¸­ç‡ %d
+	Passive Mastery Melee Damage %d	æ”¯é…è¿‘æˆ˜æ­¦å™¨-ä¼¤å®³ %d	æ”¯é…è¿‘æˆ°æ­¦å™¨-å‚·å®³ %d
+	Passive Mastery Melee Crit %d	æ”¯é…è¿‘æˆ˜æ­¦å™¨-è‡´å‘½ä¸€å‡» %d	æ”¯é…è¿‘æˆ°æ­¦å™¨-è‡´å‘½ä¸€æ“Š %d
+	Passive Mastery Throw TH %d	æ”¯é…é£æ·-æ”»å‡»å‘½ä¸­ç‡ %d	æ”¯é…é£›æ“²-æ”»æ“Šå‘½ä¸­ç‡ %d
+	Passive Mastery Throw Damage %d	æ”¯é…é£æ·-ä¼¤å®³ %d	æ”¯é…é£›æ“²-å‚·å®³ %d
+	Passive Mastery Throw Crit %d	æ”¯é…é£æ·-è‡´å‘½ä¸€å‡» %d	æ”¯é…é£›æ“²-è‡´å‘½ä¸€æ“Š %d
+	Passive Weapon Block %d	æ­¦å™¨æ ¼æŒ¡ %d	æ­¦å™¨æ ¼æ“‹ %d
+	Passive Summon Resist %d	å¬å”¤åæŠ— %d	å¬å–šåæŠ— %d
 	Modifier List Skill		
 	Modifier List Level		
 	Last Sent HP PCT		
 	Source Unit Type		
 	Source Unit ID		
 	Short Paraml		
-	Quest Item Difficulty %d	ÈÎÎñÎïÆ·ÄÑ¶È %d	ÈÎ„ÕÎïÆ·ëy¶È %d
-	Passive Magic Mastery %d	Ö§ÅäÄ§·¨ %d	Ö§ÅäÄ§·¨ %d
-	Passive Magic Pierce %d	Ä§·¨´©Í¸ %d	Ä§·¨´©Í¸ %d
-*=======================ÒÔÏÂÊÇ¹ÖÎïÃû³Æ(Monster Names)			
+	Quest Item Difficulty %d	ä»»åŠ¡ç‰©å“éš¾åº¦ %d	ä»»å‹™ç‰©å“é›£åº¦ %d
+	Passive Magic Mastery %d	æ”¯é…é­”æ³• %d	æ”¯é…é­”æ³• %d
+	Passive Magic Pierce %d	é­”æ³•ç©¿é€ %d	é­”æ³•ç©¿é€ %d
+*=======================ä»¥ä¸‹æ˜¯æ€ªç‰©åç§°(Monster Names)			
 	Skeleton		
 	Returned		
 	BoneWarrior		
 	BurningDead		
 	Horror		
-	Zombie	½©Ê¬	½©Ê¬
+	Zombie	åƒµå°¸	åƒµå°¸
 	HungryDead		
 	Ghoul		
 	DrownedCarcass		
@@ -2507,7 +2507,7 @@
 	OblivionKnight		
 	OblivionKnight		
 	Cadaver		
-*=======================ÒÔÏÂÊÇÄ§·¨Ç°×º(Magic Prefix)			
+*=======================ä»¥ä¸‹æ˜¯é­”æ³•å‰ç¼€(Magic Prefix)			
 0			
 1			
 2	Sturdy		
@@ -3178,7 +3178,7 @@
 	Beryl		
 	Godly		
 	Cruel		
-*=======================ÒÔÏÂÊÇÄ§·¨ºó×º(Magic Suffix)			
+*=======================ä»¥ä¸‹æ˜¯é­”æ³•åç¼€(Magic Suffix)			
 0			
 	of Health		
 	of Protection		
@@ -3927,7 +3927,7 @@
 	of the Bat		
 	of the Wraith		
 	of the Vampire		
-*=======================ÒÔÏÂÊÇRareºÍCraftedÃû×Ö			
+*=======================ä»¥ä¸‹æ˜¯Rareå’ŒCraftedåå­—			
 0			
 	Bite		
 	Scratch		
@@ -4130,7 +4130,7 @@
 	Warp		
 	Rift		
 	Corruption		
-*=======================ÒÔÏÂÊÇ°µ½ğÃû×Ö(Unique Name)			
+*=======================ä»¥ä¸‹æ˜¯æš—é‡‘åå­—(Unique Name)			
 	The Gnasher		
 	Deathspade		
 	Bladebone		
@@ -4531,8 +4531,8 @@
 	Rainbow Facet		
 	Rainbow Facet		
 	Rainbow Facet		
-	Hellfire Torch	µØÓü»ğ¾æ	µØªz»ğ¾æ
-*=======================ÒÔÏÂÊÇÌ××°Ãû×Ö(Set Name)			
+	Hellfire Torch	åœ°ç‹±ç«ç‚¬	åœ°ç„ç«ç‚¬
+*=======================ä»¥ä¸‹æ˜¯å¥—è£…åå­—(Set Name)			
 	Civerb's Ward		
 	Civerb's Icon		
 	Civerb's Cudgel		
@@ -4660,7 +4660,7 @@
 	McAuley's Riprap		
 	McAuley's Taboo		
 	McAuley's Superstition		
-*=======================ÒÔÏÂÊÇ·ûÎÄÖ®ÓïÃû×Ö(Rune Name)			
+*=======================ä»¥ä¸‹æ˜¯ç¬¦æ–‡ä¹‹è¯­åå­—(Rune Name)			
 27	Ancient's Pledge		
 30	Beast		
 32	Black		

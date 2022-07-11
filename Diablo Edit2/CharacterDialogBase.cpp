@@ -1,4 +1,4 @@
-// PropertyDialog.cpp : ÊµÏÖÎÄ¼ş
+ï»¿// PropertyDialog.cpp : å®ç°æ–‡ä»¶
 //
 
 #include "stdafx.h"
@@ -6,7 +6,7 @@
 #include "CharacterDialogBase.h"
 
 
-// CCharacterDialogBase ¶Ô»°¿ò
+// CCharacterDialogBase å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(CCharacterDialogBase, CDialog)
 
@@ -23,4 +23,4 @@ BEGIN_MESSAGE_MAP(CCharacterDialogBase, CDialog)
 END_MESSAGE_MAP()
 
 
-// CCharacterDialogBase ÏûÏ¢´¦Àí³ÌĞò
+// CCharacterDialogBase æ¶ˆæ¯å¤„ç†ç¨‹åº

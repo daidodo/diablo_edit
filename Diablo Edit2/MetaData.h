@@ -1,50 +1,50 @@
-#pragma once
+ï»¿#pragma once
 
 #include "stdafx.h"
 #include <string>
 #include <vector>
 
-//ÎïÆ·ÔªÊý¾Ý
+//ç‰©å“å…ƒæ•°æ®
 struct CItemMetaData
 {
 	union {
-		BYTE sTypeName[4];	//ÎïÆ·Ãû×Ö£¨Î¨Ò»ID£©, Èç"elx "
+		BYTE sTypeName[4];	//ç‰©å“åå­—ï¼ˆå”¯ä¸€IDï¼‰, å¦‚"elx "
 		DWORD dwTypeID;
 	};
-	WORD PicIndex = 0;		//ÎïÆ·ÔÚBitmap×ÊÔ´ÖÐÏà¶ÔµÚÒ»¸öÍ¼Æ¬µÄË÷ÒýÆ«ÒÆ
-	WORD NameIndex = 0;		//ÎïÆ·ÔÚItemNameÁÐ±íÖÐµÄÃû×ÖË÷Òý
-	BYTE Equip = 0;			//4 bits,ÎïÆ·¿É´©´÷µÄÎ»ÖÃ,
-							//	0	²»¿É´©´÷
-							//	1	Í·
-							//	2	ÏîÁ´
-							//	3	ÉíÌå
-							//	4	ÎäÆ÷
-							//	5	½äÖ¸
-							//	6	Ñü
-							//	7	Ð¬×Ó
-							//	8	ÊÖÌ×
-							//	9	·ÅÔÚÑü´øÀï
-	BYTE Range = 0;			//4 bitsÎïÆ·±¾ÉíÕ¼ÓÃÍø¸ñ´óÐ¡
-	BOOL Simple = FALSE;	//ÎïÆ·ÊÇ·ñÓÐSmiple±êÖ¾
-	BOOL Normal = FALSE;	//ÖÊÁ¿Ö»ÄÜÊÇnormal£¬³ýÈ¥SimpleÎïÆ·
-	BOOL White = FALSE;		//ÖÊÁ¿Ö»ÄÜÊÇlow, normal, high£¨°×É«£©£¬³ýÈ¥SimpleºÍNormalÎïÆ·
-	BOOL HasDef = FALSE;	//ÓÐ·ÀÓùÖµ
-	BOOL HasDur = FALSE;	//ÓÐÄÍ¾Ã¶È
-	BOOL IsStacked = FALSE;	//ÓÐÊýÁ¿
-	BOOL HasMonsterID = FALSE;//ÓÐwMonsterID(10 bits)Óò
-	BOOL IsCharm = FALSE;	//ÊÇ»¤Éí·û(·ÅÔÚÉíÉÏ¼ÓÊôÐÔµÄ),ÓÐwCharmÓò
-	UINT SpellId = 0;		//0£ºÃ»ÓÐSpellIdÓò£»ÆäËû£ºSpellId + 1
-	BOOL IsUnique = FALSE;	//ÊÇ·ñÊÇUniqueÎïÆ·(ÔÚÃ»ÓÐiQualityÓòÇé¿öÏÂ)
-	BOOL IsCraft = FALSE;	//Ãû×ÖÊÇ·ñÒÔ³ÈÉ«ÏÔÊ¾£¬¶ÔÎïÆ·½á¹¹ÎÞÓ°Ïì
-	BOOL IsGem = FALSE;		//ÊÇ·ñÊÇ±¦Ê¯£¨¿ÉÏâÇ¶£©
-	UINT Damage1Min = 0;	//ÎäÆ÷µÄµ¥ÊÖ×îµÍÉËº¦
-	UINT Damage1Max = 0;	//ÎäÆ÷µÄµ¥ÊÖ×î¸ßÉËº¦
-	UINT Damage2Min = 0;	//ÎäÆ÷µÄË«ÊÖ×îµÍÉËº¦
-	UINT Damage2Max = 0;	//ÎäÆ÷µÄË«ÊÖ×î¸ßÉËº¦
-	UINT Pad = 0;			//D2RÀïSimpleÎïÆ·×îºóµÄ²¹³¥bits
+	WORD PicIndex = 0;		//ç‰©å“åœ¨Bitmapèµ„æºä¸­ç›¸å¯¹ç¬¬ä¸€ä¸ªå›¾ç‰‡çš„ç´¢å¼•åç§»
+	WORD NameIndex = 0;		//ç‰©å“åœ¨ItemNameåˆ—è¡¨ä¸­çš„åå­—ç´¢å¼•
+	BYTE Equip = 0;			//4 bits,ç‰©å“å¯ç©¿æˆ´çš„ä½ç½®,
+							//	0	ä¸å¯ç©¿æˆ´
+							//	1	å¤´
+							//	2	é¡¹é“¾
+							//	3	èº«ä½“
+							//	4	æ­¦å™¨
+							//	5	æˆ’æŒ‡
+							//	6	è…°
+							//	7	éž‹å­
+							//	8	æ‰‹å¥—
+							//	9	æ”¾åœ¨è…°å¸¦é‡Œ
+	BYTE Range = 0;			//4 bitsç‰©å“æœ¬èº«å ç”¨ç½‘æ ¼å¤§å°
+	BOOL Simple = FALSE;	//ç‰©å“æ˜¯å¦æœ‰Smipleæ ‡å¿—
+	BOOL Normal = FALSE;	//è´¨é‡åªèƒ½æ˜¯normalï¼Œé™¤åŽ»Simpleç‰©å“
+	BOOL White = FALSE;		//è´¨é‡åªèƒ½æ˜¯low, normal, highï¼ˆç™½è‰²ï¼‰ï¼Œé™¤åŽ»Simpleå’ŒNormalç‰©å“
+	BOOL HasDef = FALSE;	//æœ‰é˜²å¾¡å€¼
+	BOOL HasDur = FALSE;	//æœ‰è€ä¹…åº¦
+	BOOL IsStacked = FALSE;	//æœ‰æ•°é‡
+	BOOL HasMonsterID = FALSE;//æœ‰wMonsterID(10 bits)åŸŸ
+	BOOL IsCharm = FALSE;	//æ˜¯æŠ¤èº«ç¬¦(æ”¾åœ¨èº«ä¸ŠåŠ å±žæ€§çš„),æœ‰wCharmåŸŸ
+	UINT SpellId = 0;		//0ï¼šæ²¡æœ‰SpellIdåŸŸï¼›å…¶ä»–ï¼šSpellId + 1
+	BOOL IsUnique = FALSE;	//æ˜¯å¦æ˜¯Uniqueç‰©å“(åœ¨æ²¡æœ‰iQualityåŸŸæƒ…å†µä¸‹)
+	BOOL IsCraft = FALSE;	//åå­—æ˜¯å¦ä»¥æ©™è‰²æ˜¾ç¤ºï¼Œå¯¹ç‰©å“ç»“æž„æ— å½±å“
+	BOOL IsGem = FALSE;		//æ˜¯å¦æ˜¯å®çŸ³ï¼ˆå¯é•¶åµŒï¼‰
+	UINT Damage1Min = 0;	//æ­¦å™¨çš„å•æ‰‹æœ€ä½Žä¼¤å®³
+	UINT Damage1Max = 0;	//æ­¦å™¨çš„å•æ‰‹æœ€é«˜ä¼¤å®³
+	UINT Damage2Min = 0;	//æ­¦å™¨çš„åŒæ‰‹æœ€ä½Žä¼¤å®³
+	UINT Damage2Max = 0;	//æ­¦å™¨çš„åŒæ‰‹æœ€é«˜ä¼¤å®³
+	UINT Pad = 0;			//D2Ré‡ŒSimpleç‰©å“æœ€åŽçš„è¡¥å¿bits
 };
 
-//ÊôÐÔµÄ²ÎÊý
+//å±žæ€§çš„å‚æ•°
 struct CPropertyField
 {
 	int bits, base, min, max;
@@ -52,7 +52,7 @@ struct CPropertyField
 	const CPropertyField & Normalze();
 };
 
-//ÊôÐÔÔªÊý¾Ý
+//å±žæ€§å…ƒæ•°æ®
 class CPropertyMetaData
 {
 	std::vector<CPropertyField> fields_;

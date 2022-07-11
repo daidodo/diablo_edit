@@ -1,30 +1,30 @@
-#pragma once
+ï»¿#pragma once
 
 #include "CharacterDialogBase.h"
 #include "afxwin.h"
 #include "afxcmn.h"
 
-// CDlgCharBasicInfo ¶Ô»°¿ò
+// CDlgCharBasicInfo å¯¹è¯æ¡†
 
 class CDlgCharBasicInfo : public CCharacterDialogBase
 {
 	DECLARE_DYNAMIC(CDlgCharBasicInfo)
 
 public:
-	CDlgCharBasicInfo(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+	CDlgCharBasicInfo(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
 	virtual ~CDlgCharBasicInfo();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_DIALOG_BasicCharInfo };
 
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 	DECLARE_MESSAGE_MAP()
-// ×Ô¶¨Òå³ÉÔ±
+// è‡ªå®šä¹‰æˆå‘˜
 private:
 	static const DWORD	LEVEL_AND_EXPERIENCE[100];
-	static const INT	SKILL_SIZE = 30;	//Ã¿ÖÖÈËÎïµÄ¼¼ÄÜÊıÄ¿
-	static const INT	TEXT_COUNT = 28;	//ËùÓĞÎÄ±¾¿Ø¼şµÄÄÚÈİ
+	static const INT	SKILL_SIZE = 30;	//æ¯ç§äººç‰©çš„æŠ€èƒ½æ•°ç›®
+	static const INT	TEXT_COUNT = 28;	//æ‰€æœ‰æ–‡æœ¬æ§ä»¶çš„å†…å®¹
 	CString m_sText[TEXT_COUNT];
 	CButton m_btnSkills;
 	CString m_sGoldinPer;
@@ -32,7 +32,7 @@ private:
 	CCharacterDialogBase	** m_dlgTabPage;
 	CTabCtrl m_tcBasicInfo;
 	int	m_nTabCurSel,m_nTabPageCount;
-	//ÈËÎïĞÅÏ¢
+	//äººç‰©ä¿¡æ¯
 	CString m_sVersion;
 	CString m_sName;
 	CComboBox m_cbCharClass;
@@ -65,12 +65,12 @@ private:
 	BYTE m_bSkills[SKILL_SIZE];
 	DWORD m_dwMaxGoldInBody;
 	DWORD m_dwMaxGoldInStash;
-// ×Ô¶¨Òåº¯Êı
+// è‡ªå®šä¹‰å‡½æ•°
 public:
 	void UpdateUI(const CD2S_Struct & character);
 	BOOL GatherData(CD2S_Struct & character);
 	void ResetAll();
-	void LoadText(void);	//¼ÓÔØ¿Ø¼şµÄ×Ö·û´®ÄÚÈİ
+	void LoadText(void);	//åŠ è½½æ§ä»¶çš„å­—ç¬¦ä¸²å†…å®¹
 private:
 	void InitUI(void);
 public:

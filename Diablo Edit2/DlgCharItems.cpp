@@ -1,4 +1,4 @@
-// DlgCharItems.cpp : ÊµÏÖÎÄ¼ş
+ï»¿// DlgCharItems.cpp : å®ç°æ–‡ä»¶
 //
 
 #include "stdafx.h"
@@ -22,24 +22,24 @@ using namespace std;
 #define ID_ITEM_NEW_FROM				106
 #define ID_ITEM_REMOVE                  107
 
-const int GRID_WIDTH = 30;	//Ã¿¸öÍø¸ñµÄ±ß³¤(ÏñËØ)
+const int GRID_WIDTH = 30;	//æ¯ä¸ªç½‘æ ¼çš„è¾¹é•¿(åƒç´ )
 
-//ÎïÆ·ÀàĞÍºÍÄÜ×°±¸µÄÎ»ÖÃ
+//ç‰©å“ç±»å‹å’Œèƒ½è£…å¤‡çš„ä½ç½®
 enum EEquip {
-	E_ANY = -1,				//¿É½ÓÊÜÈÎÒâÎïÆ·
+	E_ANY = -1,				//å¯æ¥å—ä»»æ„ç‰©å“
 
-	E_STORAGE = 1,			//²»¿É´©´÷£¬Ö»ÄÜ·ÅÔÚ´æ´¢ÏäÀï
-	E_HEAD = 1 << 1,		//Í·¿ø
-	E_NECK = 1 << 2,		//ÏîÁ´
-	E_BODY = 1 << 3,		//ÒÂ·ş
-	E_HAND = 1 << 4,		//ÎäÆ÷ºÍ¶ÜÅÆ
-	E_RING = 1 << 5,		//½äÖ¸
-	E_BELT = 1 << 6,		//Ñü´ø
-	E_FOOT = 1 << 7,		//Ğ¬×Ó
-	E_GLOVE = 1 << 8,		//ÊÖÌ×
-	E_IN_BELT = 1 << 9,		//·ÅÔÚÑü´øÀï£¨Ò©Æ·µÈ£©
-	E_SOCKET = 1 << 10,		//¿ÉÏâÇ¶£¨Öé±¦£¬·ûÎÄµÈ£©
-	E_A_BOX = 1 << 11,		//¸ÃÎïÆ·ÊÇºÕÀ­µÏ¿¨·½¿é
+	E_STORAGE = 1,			//ä¸å¯ç©¿æˆ´ï¼Œåªèƒ½æ”¾åœ¨å­˜å‚¨ç®±é‡Œ
+	E_HEAD = 1 << 1,		//å¤´ç›”
+	E_NECK = 1 << 2,		//é¡¹é“¾
+	E_BODY = 1 << 3,		//è¡£æœ
+	E_HAND = 1 << 4,		//æ­¦å™¨å’Œç›¾ç‰Œ
+	E_RING = 1 << 5,		//æˆ’æŒ‡
+	E_BELT = 1 << 6,		//è…°å¸¦
+	E_FOOT = 1 << 7,		//é‹å­
+	E_GLOVE = 1 << 8,		//æ‰‹å¥—
+	E_IN_BELT = 1 << 9,		//æ”¾åœ¨è…°å¸¦é‡Œï¼ˆè¯å“ç­‰ï¼‰
+	E_SOCKET = 1 << 10,		//å¯é•¶åµŒï¼ˆç å®ï¼Œç¬¦æ–‡ç­‰ï¼‰
+	E_A_BOX = 1 << 11,		//è¯¥ç‰©å“æ˜¯èµ«æ‹‰è¿ªå¡æ–¹å—
 };
 
 static EEquip ItemToEquip(const CD2Item & item) {
@@ -52,51 +52,51 @@ static EEquip ItemToEquip(const CD2Item & item) {
 	return EEquip(1 << meta.Equip);
 }
 
-//ËùÓĞÍø¸ñÎ»ÖÃ
+//æ‰€æœ‰ç½‘æ ¼ä½ç½®
 enum EPosition {
-	STASH,				//Ïä×Ó(6*8)
-	STASH_D2R,			//D2 Resurrected´óÏä×Ó(10*10)
-	INVENTORY,			//¿Ú´ü
-	CUBE,				//·½¿é
-	IN_BELT,			//Ñü´øÀï
-	IN_SOCKET,			//ÏâÇ¶ÔÚ¿×Àï
+	STASH,				//ç®±å­(6*8)
+	STASH_D2R,			//D2 Resurrectedå¤§ç®±å­(10*10)
+	INVENTORY,			//å£è¢‹
+	CUBE,				//æ–¹å—
+	IN_BELT,			//è…°å¸¦é‡Œ
+	IN_SOCKET,			//é•¶åµŒåœ¨å­”é‡Œ
 	GRID_COUNT,
 
-	HEAD = GRID_COUNT,	//Í·
-	NECK,				//ÏîÁ´
-	BODY,				//ÉíÌå
-	RIGHT_HAND,			//ÎäÆ÷ÓÒ(I & II)
-	LEFT_HAND,			//ÎäÆ÷×ó(I & II)
-	RIGHT_RING,			//½äÖ¸ÓÒ
-	LEFT_RING,			//½äÖ¸×ó
-	BELT,				//Ñü´ø
-	FOOT,				//Ğ¬×Ó
-	GLOVE,				//ÊÖÌ×
+	HEAD = GRID_COUNT,	//å¤´
+	NECK,				//é¡¹é“¾
+	BODY,				//èº«ä½“
+	RIGHT_HAND,			//æ­¦å™¨å³(I & II)
+	LEFT_HAND,			//æ­¦å™¨å·¦(I & II)
+	RIGHT_RING,			//æˆ’æŒ‡å³
+	LEFT_RING,			//æˆ’æŒ‡å·¦
+	BELT,				//è…°å¸¦
+	FOOT,				//é‹å­
+	GLOVE,				//æ‰‹å¥—
 
-	CORPSE_HEAD,		//Ê¬ÌåµÄÍ·
-	CORPSE_NECK,		//Ê¬ÌåµÄÏîÁ´
-	CORPSE_BODY,		//Ê¬ÌåµÄÉíÌå
-	CORPSE_RIGHT_HAND,	//Ê¬ÌåµÄÎäÆ÷ÓÒ(I & II)
-	CORPSE_LEFT_HAND,	//Ê¬ÌåµÄÎäÆ÷×ó(I & II)
-	CORPSE_RIGHT_RING,	//Ê¬ÌåµÄ½äÖ¸ÓÒ
-	CORPSE_LEFT_RING,	//Ê¬ÌåµÄ½äÖ¸×ó
-	CORPSE_BELT,		//Ê¬ÌåµÄÑü´ø
-	CORPSE_FOOT,		//Ê¬ÌåµÄĞ¬×Ó
-	CORPSE_GLOVE,		//Ê¬ÌåµÄÊÖÌ×
+	CORPSE_HEAD,		//å°¸ä½“çš„å¤´
+	CORPSE_NECK,		//å°¸ä½“çš„é¡¹é“¾
+	CORPSE_BODY,		//å°¸ä½“çš„èº«ä½“
+	CORPSE_RIGHT_HAND,	//å°¸ä½“çš„æ­¦å™¨å³(I & II)
+	CORPSE_LEFT_HAND,	//å°¸ä½“çš„æ­¦å™¨å·¦(I & II)
+	CORPSE_RIGHT_RING,	//å°¸ä½“çš„æˆ’æŒ‡å³
+	CORPSE_LEFT_RING,	//å°¸ä½“çš„æˆ’æŒ‡å·¦
+	CORPSE_BELT,		//å°¸ä½“çš„è…°å¸¦
+	CORPSE_FOOT,		//å°¸ä½“çš„é‹å­
+	CORPSE_GLOVE,		//å°¸ä½“çš„æ‰‹å¥—
 	CORPSE_END,
 
-	MERCENARY_HEAD = CORPSE_END,//¹ÍÓ¶±øµÄÍ·
-	MERCENARY_BODY,				//¹ÍÓ¶±øµÄÉíÌå
-	MERCENARY_RIGHT_HAND,		//¹ÍÓ¶±øµÄÎäÆ÷ÓÒ
-	MERCENARY_LEFT_HAND,		//¹ÍÓ¶±øµÄÎäÆ÷×ó
+	MERCENARY_HEAD = CORPSE_END,//é›‡ä½£å…µçš„å¤´
+	MERCENARY_BODY,				//é›‡ä½£å…µçš„èº«ä½“
+	MERCENARY_RIGHT_HAND,		//é›‡ä½£å…µçš„æ­¦å™¨å³
+	MERCENARY_LEFT_HAND,		//é›‡ä½£å…µçš„æ­¦å™¨å·¦
 	MERCENARY_END,
 
-	GOLEM = MERCENARY_END,		//Éú³É½ğÊôÊ¯Ä§µÄÎïÆ·
+	GOLEM = MERCENARY_END,		//ç”Ÿæˆé‡‘å±çŸ³é­”çš„ç‰©å“
 
-	POSITION_END,				//ËùÓĞÍø¸ñÎ»ÖÃ×ÜÊı
+	POSITION_END,				//æ‰€æœ‰ç½‘æ ¼ä½ç½®æ€»æ•°
 
-	IN_MOUSE = POSITION_END,	//±»Êó±êÄÃÆğ
-	IN_RECYCLE,					//±»É¾³ı
+	IN_MOUSE = POSITION_END,	//è¢«é¼ æ ‡æ‹¿èµ·
+	IN_RECYCLE,					//è¢«åˆ é™¤
 };
 
 static BOOL IsCorpse(EPosition pos) { return CORPSE_HEAD <= pos && pos < CORPSE_END; }
@@ -119,44 +119,44 @@ static BOOL IsGrid(EPosition pos) { return pos < GRID_COUNT; }
 
 static BOOL IsGolem(EPosition pos) { return GOLEM == pos; }
 
-//Ã¿¸öÎ»ÖÃ(EPosition)ÔÚUIµÄÆğÊ¼×ø±ê(ÏñËØ),ÁĞÊı,ĞĞÊı
+//æ¯ä¸ªä½ç½®(EPosition)åœ¨UIçš„èµ·å§‹åæ ‡(åƒç´ ),åˆ—æ•°,è¡Œæ•°
 //left,top,col,row,equip
 const int POSITION_INFO[POSITION_END][5] = {
-	{10,5,6,8,E_ANY},		//Ïä×Ó
-	{10,5,10,10,E_ANY},		//D2R´óÏä×Ó
-	{10,315,10,4,E_ANY},	//¿Ú´ü
-	{320,315,3,4,~E_A_BOX},	//·½¿é
-	{420,315,4,4,E_IN_BELT},//Ñü´øÀï
-	{70,445,MAX_SOCKETS,1,E_SOCKET},	//¿×
+	{10,5,6,8,E_ANY},		//ç®±å­
+	{10,5,10,10,E_ANY},		//D2Rå¤§ç®±å­
+	{10,315,10,4,E_ANY},	//å£è¢‹
+	{320,315,3,4,~E_A_BOX},	//æ–¹å—
+	{420,315,4,4,E_IN_BELT},//è…°å¸¦é‡Œ
+	{70,445,MAX_SOCKETS,1,E_SOCKET},	//å­”
 
-	{420,30,2,2,E_HEAD},	//Í·
-	{485,65,1,1,E_NECK},	//ÏîÁ´
-	{420,95,2,3,E_BODY},	//ÉíÌå
-	{320,65,2,4,E_HAND},	//ÎäÆ÷ÓÒ
-	{520,65,2,4,E_HAND},	//ÎäÆ÷×ó
-	{385,190,1,1,E_RING},	//½äÖ¸ÓÒ
-	{485,190,1,1,E_RING},	//½äÖ¸×ó
-	{420,190,2,1,E_BELT},	//Ñü´ø		
-	{520,190,2,2,E_FOOT},	//Ğ¬×Ó
-	{320,190,2,2,E_GLOVE},	//ÊÖÌ×
+	{420,30,2,2,E_HEAD},	//å¤´
+	{485,65,1,1,E_NECK},	//é¡¹é“¾
+	{420,95,2,3,E_BODY},	//èº«ä½“
+	{320,65,2,4,E_HAND},	//æ­¦å™¨å³
+	{520,65,2,4,E_HAND},	//æ­¦å™¨å·¦
+	{385,190,1,1,E_RING},	//æˆ’æŒ‡å³
+	{485,190,1,1,E_RING},	//æˆ’æŒ‡å·¦
+	{420,190,2,1,E_BELT},	//è…°å¸¦		
+	{520,190,2,2,E_FOOT},	//é‹å­
+	{320,190,2,2,E_GLOVE},	//æ‰‹å¥—
 
-	{780,30,2,2,E_HEAD},	//Ê¬ÌåµÄÍ·
-	{845,65,1,1,E_NECK},	//Ê¬ÌåµÄÏîÁ´
-	{780,95,2,3,E_BODY},	//Ê¬ÌåµÄÉíÌå
-	{680,65,2,4,E_HAND},	//Ê¬ÌåµÄÎäÆ÷ÓÒ
-	{880,65,2,4,E_HAND},	//Ê¬ÌåµÄÎäÆ÷×ó
-	{745,190,1,1,E_RING},	//Ê¬ÌåµÄ½äÖ¸ÓÒ
-	{845,190,1,1,E_RING},	//Ê¬ÌåµÄ½äÖ¸×ó
-	{780,190,2,1,E_BELT},	//Ê¬ÌåµÄÑü´ø		
-	{880,190,2,2,E_FOOT},	//Ê¬ÌåµÄĞ¬×Ó
-	{680,190,2,2,E_GLOVE},	//Ê¬ÌåµÄÊÖÌ×
+	{780,30,2,2,E_HEAD},	//å°¸ä½“çš„å¤´
+	{845,65,1,1,E_NECK},	//å°¸ä½“çš„é¡¹é“¾
+	{780,95,2,3,E_BODY},	//å°¸ä½“çš„èº«ä½“
+	{680,65,2,4,E_HAND},	//å°¸ä½“çš„æ­¦å™¨å³
+	{880,65,2,4,E_HAND},	//å°¸ä½“çš„æ­¦å™¨å·¦
+	{745,190,1,1,E_RING},	//å°¸ä½“çš„æˆ’æŒ‡å³
+	{845,190,1,1,E_RING},	//å°¸ä½“çš„æˆ’æŒ‡å·¦
+	{780,190,2,1,E_BELT},	//å°¸ä½“çš„è…°å¸¦		
+	{880,190,2,2,E_FOOT},	//å°¸ä½“çš„é‹å­
+	{680,190,2,2,E_GLOVE},	//å°¸ä½“çš„æ‰‹å¥—
 
-	{660,280,2,2,E_HEAD},	//¹ÍÓ¶±øµÄÍ·
-	{660,345,2,3,E_BODY},	//¹ÍÓ¶±øµÄÉíÌå
-	{560,315,2,4,E_HAND},	//¹ÍÓ¶±øµÄÎäÆ÷ÓÒ
-	{760,315,2,4,E_HAND},	//¹ÍÓ¶±øµÄÎäÆ÷×ó
+	{660,280,2,2,E_HEAD},	//é›‡ä½£å…µçš„å¤´
+	{660,345,2,3,E_BODY},	//é›‡ä½£å…µçš„èº«ä½“
+	{560,315,2,4,E_HAND},	//é›‡ä½£å…µçš„æ­¦å™¨å³
+	{760,315,2,4,E_HAND},	//é›‡ä½£å…µçš„æ­¦å™¨å·¦
 
-	{600,30,2,4,E_ANY},		//Éú³É½ğÊôÊ¯Ä§µÄÎïÆ·
+	{600,30,2,4,E_ANY},		//ç”Ÿæˆé‡‘å±çŸ³é­”çš„ç‰©å“
 };
 
 static CRect PositionToRect(EPosition pos) {
@@ -180,11 +180,11 @@ static EEquip PositionToEquip(EPosition pos) {
 	return EEquip(POSITION_INFO[pos][4]);
 }
 
-//body: 0-ÈËÎï±¾Éí£¬1-Ê¬Ìå£¬2-¹ÍÓ¶±ø£¬3-Golem
+//body: 0-äººç‰©æœ¬èº«ï¼Œ1-å°¸ä½“ï¼Œ2-é›‡ä½£å…µï¼Œ3-Golem
 static tuple<EPosition, int, int> ItemToPosition(int iLocation, int iPosition, int iColumn, int iRow, int iStoredIn, int body, BOOL isD2R) {
 	if (3 == body)
 		return make_tuple(GOLEM, 0, 0);
-	int pos = -1, x = 0, y = 0;	//ÎïÆ·µÄÎ»ÖÃ(EPosition)ºÍ×ø±ê
+	int pos = -1, x = 0, y = 0;	//ç‰©å“çš„ä½ç½®(EPosition)å’Œåæ ‡
 	switch (iLocation) {
 		case 0:		//grid
 			pos = (iStoredIn == 1 ? INVENTORY : (iStoredIn == 4 ? CUBE : (iStoredIn == 5 ? (isD2R ? STASH_D2R : STASH) : -1)));
@@ -208,12 +208,12 @@ static tuple<EPosition, int, int> ItemToPosition(int iLocation, int iPosition, i
 				}
 			}
 			break;
-		case 2:		//in belt(ÎïÆ·ÅÅÁĞ·½Ê½ÓëÆäËûÍø¸ñ²»Í¬)
+		case 2:		//in belt(ç‰©å“æ’åˆ—æ–¹å¼ä¸å…¶ä»–ç½‘æ ¼ä¸åŒ)
 			pos = IN_BELT;
 			x = iColumn % 4;
 			y = 3 - iColumn / 4;
 			break;
-		case 4:		//in hand(Êó±ê)
+		case 4:		//in hand(é¼ æ ‡)
 			pos = IN_MOUSE;
 			break;
 		default:;
@@ -392,25 +392,25 @@ pair<BOOL, int> GridView::PutItem(int index, int x, int y, int width, int height
 	ASSERT(0 <= x && 0 <= y);
 	ASSERT(0 < width && 0 < height);
 	if (!CanEquip(equip))
-		return make_pair(FALSE, -1);	//²»ÄÜ´©´÷ÔÚ´ËÎ»ÖÃ
+		return make_pair(FALSE, -1);	//ä¸èƒ½ç©¿æˆ´åœ¨æ­¤ä½ç½®
 	if (IsGrid()) {
 		if (x + width > iCol || y + height > iRow)
-			return make_pair(FALSE, -1);	//ÎïÆ·ÔÚÍø¸ñÍâÃæ
+			return make_pair(FALSE, -1);	//ç‰©å“åœ¨ç½‘æ ¼å¤–é¢
 		int exist = -1;
 		for (int i = 0; i < width; ++i)
 			for (int j = 0; j < height; ++j) {
 				const int e = ItemIndex(x + i, y + j);
 				if (e >= 0 && exist >= 0 && e != exist)
-					return make_pair(FALSE, -1);	//Íø¸ñÀïÓĞ²»Ö¹Ò»¸öÎïÆ·
+					return make_pair(FALSE, -1);	//ç½‘æ ¼é‡Œæœ‰ä¸æ­¢ä¸€ä¸ªç‰©å“
 				exist = max(exist, e);
 			}
 		if (exist >= 0)
-			return make_pair(FALSE, exist);	//±»Ò»¸öÎïÆ·Õ¼ÓÃÁË
+			return make_pair(FALSE, exist);	//è¢«ä¸€ä¸ªç‰©å“å ç”¨äº†
 		ItemIndex(index, x, y, width, height);
 	} else {
 		const int e = ItemIndex(x, y);
 		if (e >= 0)
-			return make_pair(FALSE, e);	//±»Ò»¸öÎïÆ·Õ¼ÓÃÁË
+			return make_pair(FALSE, e);	//è¢«ä¸€ä¸ªç‰©å“å ç”¨äº†
 		ItemIndex(index, x, y);
 	}
 	return make_pair(TRUE, -1);
@@ -420,25 +420,25 @@ void GridView::Reset() {
 	fill(vItemIndex.begin(), vItemIndex.end(), -1);
 }
 
-// CDlgCharItems ¶Ô»°¿ò
+// CDlgCharItems å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(CDlgCharItems, CCharacterDialogBase)
 
 CDlgCharItems::CDlgCharItems(CWnd* pParent /*=NULL*/)
     : CCharacterDialogBase(CDlgCharItems::IDD, pParent)
 {
-	//Êó±ê
+	//é¼ æ ‡
 	m_hCursor = ::LoadCursor(0, IDC_ARROW);
-	//³õÊ¼»¯ËùÓĞÍø¸ñ
+	//åˆå§‹åŒ–æ‰€æœ‰ç½‘æ ¼
 	for(int i = STASH;i < POSITION_END;++i)
 		m_vGridView.emplace_back(EPosition(i));
-	//ÆÁ±ÎÊ¬Ìå²¿Î»
+	//å±è”½å°¸ä½“éƒ¨ä½
 	for (int i = CORPSE_HEAD; i < CORPSE_END; ++i)
 		m_vGridView[i].Enable(m_bHasCorpse);
-	//ÆÁ±Î¹ÍÓ¶±ø²¿Î»
+	//å±è”½é›‡ä½£å…µéƒ¨ä½
 	for (int i = MERCENARY_HEAD; i < MERCENARY_END; ++i)
 		m_vGridView[i].Enable(m_bHasMercenary);
-	//Ñ¡ÔñÏä×Ó´óĞ¡
+	//é€‰æ‹©ç®±å­å¤§å°
 	SetD2R(TRUE);
 }
 
@@ -643,7 +643,7 @@ CItemView & CDlgCharItems::PickedItemView() {
 	return m_vItemViews[m_iPickedItemIndex];
 }
 
-//»­Ò»¸öÍø¸ñ»ò¾ØĞÎ
+//ç”»ä¸€ä¸ªç½‘æ ¼æˆ–çŸ©å½¢
 static void DrawGrid(CPaintDC & dc, const CRect & rect, int intervalX = 0, int intervalY = 0)
 {
 	if (intervalX == 0)
@@ -692,12 +692,12 @@ void CDlgCharItems::DrawAllItemsInGrid(CPaintDC & dc) const
 	for (size_t i = 0; i < m_vItemViews.size(); ++i) {
 		auto & view = m_vItemViews[i];
 		if (::IsInRecycle(view.iPosition))
-			continue;	//±»É¾³ı
+			continue;	//è¢«åˆ é™¤
 		if (::IsInMouse(view.iPosition))
-			continue;	//±»Êó±êÄÃÆğ
+			continue;	//è¢«é¼ æ ‡æ‹¿èµ·
 		if (::IsInSocket(view.iPosition))
-			continue;	//ÏâÇ¶ÔÚ¿×Àï
-		//ÔÚ×óÓÒÊÖÉÏ£¬·ÖI, IIÏÔÊ¾²»Í¬ÎïÆ·£¬°üÀ¨Ê¬Ìå
+			continue;	//é•¶åµŒåœ¨å­”é‡Œ
+		//åœ¨å·¦å³æ‰‹ä¸Šï¼Œåˆ†I, IIæ˜¾ç¤ºä¸åŒç‰©å“ï¼ŒåŒ…æ‹¬å°¸ä½“
 		if ((RIGHT_HAND == view.iPosition || LEFT_HAND == view.iPosition)
 			&& view.iGridX != (m_bSecondHand ? 1 : 0))
 			continue;
@@ -706,7 +706,7 @@ void CDlgCharItems::DrawAllItemsInGrid(CPaintDC & dc) const
 			continue;
 		auto pos = GetItemPositionXY(view);
 		DrawItemXY(dc, pos, view);
-		if (i == m_iSelectedItemIndex) {	//Ñ¡ÖĞµÄÎïÆ·
+		if (i == m_iSelectedItemIndex) {	//é€‰ä¸­çš„ç‰©å“
 			selectedGrid = CRect(pos, view.ViewSize());
 			//Draw gems in sockets
 			for (int g : view.vGemItems) {
@@ -715,12 +715,12 @@ void CDlgCharItems::DrawAllItemsInGrid(CPaintDC & dc) const
 				auto & gemView = m_vItemViews[g];
 				pos = GetItemPositionXY(gemView);
 				DrawItemXY(dc, pos, gemView);
-				if (g == m_iSelectedSocketIndex)	//Ñ¡ÖĞµÄ±¦Ê¯
+				if (g == m_iSelectedSocketIndex)	//é€‰ä¸­çš„å®çŸ³
 					selectedSocket = CRect(pos, gemView.ViewSize());
 			}
 		}
 	}
-	// ¸ßÁÁÑ¡ÖĞµÄ±¦Ê¯
+	// é«˜äº®é€‰ä¸­çš„å®çŸ³
 	const int PEN_WIDTH = 2;
 	if (selectedSocket.top) {
 		CPen pen(PS_SOLID, PEN_WIDTH, RGB(255, 0, 0));
@@ -728,7 +728,7 @@ void CDlgCharItems::DrawAllItemsInGrid(CPaintDC & dc) const
 		DrawGrid(dc, selectedSocket);
 		dc.SelectObject(pOld);
 	}
-	// ¸ßÁÁÑ¡ÖĞµÄÎïÆ·
+	// é«˜äº®é€‰ä¸­çš„ç‰©å“
 	if (selectedGrid.top) {
 		CPen pen(PS_SOLID, PEN_WIDTH, selectedSocket.top ? RGB(220, 50, 100) : RGB(255, 0, 0));
 		CPen * pOld = dc.SelectObject(&pen);
@@ -739,7 +739,7 @@ void CDlgCharItems::DrawAllItemsInGrid(CPaintDC & dc) const
 
 void CDlgCharItems::SetD2R(BOOL v) {
 	m_bIsD2R = v;
-	//Ñ¡ÔñÏä×Ó´óĞ¡
+	//é€‰æ‹©ç®±å­å¤§å°
 	m_vGridView[STASH].Enable(!v);
 	m_vGridView[STASH].Visible(!v);
 	m_vGridView[STASH_D2R].Enable(v);
@@ -770,7 +770,7 @@ void CDlgCharItems::ShowItemInfoDlg(const CD2Item * pItem, int x, int gems){
 		else
 			rect1.left += INFO_WINDOW_LEFT;
 		m_pDlgItemInfo->MoveWindow(rect1.left, rect1.top, rect.Width(), rect.Height(), TRUE);
-        m_pDlgItemInfo->ShowWindow(SW_SHOWNOACTIVATE); //ÏÔÊ¾¶Ô»°¿ò
+        m_pDlgItemInfo->ShowWindow(SW_SHOWNOACTIVATE); //æ˜¾ç¤ºå¯¹è¯æ¡†
         m_pDlgItemInfo->Invalidate();
     }else if(!pItem && m_pDlgItemInfo)
         m_pDlgItemInfo.reset();
@@ -815,11 +815,11 @@ void CDlgCharItems::ResetAll()
 }
 
 static void loadTextMercCB(CComboBox & cb, int sz, function<CString (int i)> name) {
-	int sel = cb.GetCurSel();			//±£´æµ±Ç°Ñ¡ÖĞÏî
-	cb.ResetContent();					//É¾³ı¾ÉÏî
-	for (int i = 0; i < sz; ++i)		//¸üĞÂÎÄ×Ö
+	int sel = cb.GetCurSel();			//ä¿å­˜å½“å‰é€‰ä¸­é¡¹
+	cb.ResetContent();					//åˆ é™¤æ—§é¡¹
+	for (int i = 0; i < sz; ++i)		//æ›´æ–°æ–‡å­—
 		cb.InsertString(i, name(i));
-	if (sz > 0)							//ÖØĞÂÉèÖÃÑ¡ÔñÏî
+	if (sz > 0)							//é‡æ–°è®¾ç½®é€‰æ‹©é¡¹
 		cb.SetCurSel(min(sel, sz - 1));
 }
 
@@ -862,26 +862,26 @@ void CDlgCharItems::OnMenuSelect(UINT nItemID, UINT nFlags, HMENU hSysMenu) {
 	}
 }
 
-// CDlgCharItems ÏûÏ¢´¦Àí³ÌĞò
+// CDlgCharItems æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 void CDlgCharItems::OnPaint()
 {
     CPaintDC dc(this);
     DrawGrids(dc);
-    DrawAllItemsInGrid(dc);	//»­Íø¸ñÀïµÄÎïÆ·
+    DrawAllItemsInGrid(dc);	//ç”»ç½‘æ ¼é‡Œçš„ç‰©å“
 }
 
 void CDlgCharItems::OnMouseMove(UINT nFlags, CPoint point)
 {
-	if (m_iPickedItemIndex < 0) {	//Î´ÄÃÆğÎïÆ·
+	if (m_iPickedItemIndex < 0) {	//æœªæ‹¿èµ·ç‰©å“
 		const CD2Item * item = 0;
 		int gems = 0;
 		auto t = HitTestPosition(point);
 		const int pos = get<0>(t), x = get<1>(t), y = get<2>(t);
-		if (0 <= pos) {		//ÔÚÓĞĞ§Íø¸ñÀï
+		if (0 <= pos) {		//åœ¨æœ‰æ•ˆç½‘æ ¼é‡Œ
 			auto & grid = m_vGridView[pos];
 			int index = grid.ItemIndex(x, y);
-			if (0 <= index) {	//ÓĞÎïÆ·
+			if (0 <= index) {	//æœ‰ç‰©å“
 				ASSERT(index < int(m_vItemViews.size()));
 				item = &m_vItemViews[index].Item;
 				gems = m_vItemViews[index].GemCount();
@@ -899,27 +899,27 @@ pair<BOOL, int> CDlgCharItems::PutItemInGrid(EPosition pos, int x, int y) {
 	auto & view = PickedItemView();
 	auto & grid = m_vGridView[pos];
 	const auto r = grid.PutItem(m_iPickedItemIndex, x, y, view.iGridWidth, view.iGridHeight, view.iEquip);
-	if (r.first) {	//·ÅÈë³É¹¦
+	if (r.first) {	//æ”¾å…¥æˆåŠŸ
 		view.iPosition = pos;
 		view.iGridX = x;
 		view.iGridY = y;
 		::DestroyIcon(m_hCursor);
 		m_hCursor = ::LoadCursor(0, IDC_ARROW);
-		//Ã»ÓĞĞŞ¸Äm_iPickedItemIndex
+		//æ²¡æœ‰ä¿®æ”¹m_iPickedItemIndex
 		return make_pair(TRUE, -1);
-	} else if (r.second >= 0) {	//ÓĞÒ»¸öÎïÆ·Õ¼ÓÃÎ»ÖÃ
+	} else if (r.second >= 0) {	//æœ‰ä¸€ä¸ªç‰©å“å ç”¨ä½ç½®
 		ASSERT(r.second < int(m_vItemViews.size()));
 		auto & v = m_vItemViews[r.second];
-		grid.ItemIndex(-1, v.iGridX, v.iGridY, v.iGridWidth, v.iGridHeight);	//ÌÚ³öÎ»ÖÃ
-		const auto r2 = grid.PutItem(m_iPickedItemIndex, x, y, view.iGridWidth, view.iGridHeight, view.iEquip);	//ÔÙ·ÅÒ»´Î
+		grid.ItemIndex(-1, v.iGridX, v.iGridY, v.iGridWidth, v.iGridHeight);	//è…¾å‡ºä½ç½®
+		const auto r2 = grid.PutItem(m_iPickedItemIndex, x, y, view.iGridWidth, view.iGridHeight, view.iEquip);	//å†æ”¾ä¸€æ¬¡
 		ASSERT(r2.first);
 		view.iPosition = pos;
 		view.iGridX = x;
 		view.iGridY = y;
 		::DestroyIcon(m_hCursor);
-		v.iPosition = IN_MOUSE;	//ÄÃÆğĞÂÎïÆ·
-		m_hCursor = CreateAlphaCursor(v);	//ÉèÖÃÊó±êÎªĞÂÎïÆ·Í¼Æ¬
-		//Ã»ÓĞĞŞ¸Äm_iPickedItemIndex
+		v.iPosition = IN_MOUSE;	//æ‹¿èµ·æ–°ç‰©å“
+		m_hCursor = CreateAlphaCursor(v);	//è®¾ç½®é¼ æ ‡ä¸ºæ–°ç‰©å“å›¾ç‰‡
+		//æ²¡æœ‰ä¿®æ”¹m_iPickedItemIndex
 		return make_pair(TRUE, r.second);
 	}
 	return make_pair(FALSE, -1);
@@ -927,23 +927,23 @@ pair<BOOL, int> CDlgCharItems::PutItemInGrid(EPosition pos, int x, int y) {
 
 void CDlgCharItems::OnLButtonDown(UINT nFlags, CPoint point)
 {
-	if (m_iPickedItemIndex < 0) {	//ÄÃÆğÎïÆ·
+	if (m_iPickedItemIndex < 0) {	//æ‹¿èµ·ç‰©å“
 		auto t = HitTestPosition(point);
 		const int pos = get<0>(t), x = get<1>(t), y = get<2>(t);
-		if (pos >= 0) {		//ÔÚÍø¸ñ·¶Î§ÄÚ
+		if (pos >= 0) {		//åœ¨ç½‘æ ¼èŒƒå›´å†…
 			auto & grid = m_vGridView[pos];
 			if (grid.Enable()) {
 				int index = grid.ItemIndex(x, y);
-				if (index >= 0) {	//µãÖĞÁËÎïÆ·
+				if (index >= 0) {	//ç‚¹ä¸­äº†ç‰©å“
 					ASSERT(index < int(m_vItemViews.size()));
-					if (grid.IsSockets()) {	//ÄÃÆğÏâÇ¶µÄ±¦Ê¯
+					if (grid.IsSockets()) {	//æ‹¿èµ·é•¶åµŒçš„å®çŸ³
 						auto & gems = SelectedParentItemView().vGemItems;
 						ASSERT(x < int(gems.size()));
 						gems[x] = -1;
 					}
 					auto & view = m_vItemViews[index];
 					m_iPickedItemIndex = index;
-					m_hCursor = CreateAlphaCursor(view);  //ÉèÖÃÊó±êÎªÎïÆ·Í¼Æ¬
+					m_hCursor = CreateAlphaCursor(view);  //è®¾ç½®é¼ æ ‡ä¸ºç‰©å“å›¾ç‰‡
 					grid.ItemIndex(-1, view.iGridX, view.iGridY, view.iGridWidth, view.iGridHeight);
 					view.iPosition = IN_MOUSE;
 					ShowItemInfoDlg(0, 0, 0);
@@ -951,18 +951,18 @@ void CDlgCharItems::OnLButtonDown(UINT nFlags, CPoint point)
 				}
 			}
 		}
-	} else {	//·ÅÏÂÎïÆ·
+	} else {	//æ”¾ä¸‹ç‰©å“
 		auto & view = PickedItemView();
 		auto t = HitTestPosition(point, view.iGridWidth, view.iGridHeight);
 		const int pos = get<0>(t), x = get<1>(t), y = get<2>(t);
-		if (pos >= 0) {		//ÔÚÍø¸ñ·¶Î§ÄÚ
+		if (pos >= 0) {		//åœ¨ç½‘æ ¼èŒƒå›´å†…
 			auto & grid = m_vGridView[pos];
 			if (grid.Enable()) {
-				if (grid.IsSockets()) {	//¸øÎïÆ·ÏâÇ¶±¦Ê¯
-					if (0 <= m_iSelectedItemIndex	//ÓĞÑ¡ÖĞÎïÆ·
-						&& x < int(SelectedParentItemView().vGemItems.size())) {	//ÓĞ×ã¹»µÄ¿×Êı
+				if (grid.IsSockets()) {	//ç»™ç‰©å“é•¶åµŒå®çŸ³
+					if (0 <= m_iSelectedItemIndex	//æœ‰é€‰ä¸­ç‰©å“
+						&& x < int(SelectedParentItemView().vGemItems.size())) {	//æœ‰è¶³å¤Ÿçš„å­”æ•°
 						const auto r = PutItemInGrid(EPosition(pos), x, y);
-						if (r.first) {	//ÏâÇ¶³É¹¦
+						if (r.first) {	//é•¶åµŒæˆåŠŸ
 							SelectedParentItemView().vGemItems[x] = m_iPickedItemIndex;
 							m_iPickedItemIndex = r.second;
 							Invalidate();
@@ -970,8 +970,8 @@ void CDlgCharItems::OnLButtonDown(UINT nFlags, CPoint point)
 					}
 				} else{
 					const auto r = PutItemInGrid(EPosition(pos), x, y);
-					if (r.first) {	//·ÅÏÂ³É¹¦
-						if (m_iSelectedSocketIndex == m_iPickedItemIndex)	//½«ÏâÇ¶µÄ±¦Ê¯¿Ù³öÀ´ÁË
+					if (r.first) {	//æ”¾ä¸‹æˆåŠŸ
+						if (m_iSelectedSocketIndex == m_iPickedItemIndex)	//å°†é•¶åµŒçš„å®çŸ³æŠ å‡ºæ¥äº†
 							m_iSelectedSocketIndex = -1;
 						m_iPickedItemIndex = r.second;
 						Invalidate();
@@ -986,21 +986,21 @@ void CDlgCharItems::OnLButtonDown(UINT nFlags, CPoint point)
 void CDlgCharItems::OnRButtonUp(UINT nFlags, CPoint point)
 {
 	m_bClickOnItem = FALSE;
-	if (m_iPickedItemIndex < 0) {	//Î´ÄÃÆğÎïÆ·
+	if (m_iPickedItemIndex < 0) {	//æœªæ‹¿èµ·ç‰©å“
 		auto t = HitTestPosition(point);
 		const int pos = get<0>(t), x = get<1>(t), y = get<2>(t);
-		if (pos >= 0) {		//ÔÚÍø¸ñ·¶Î§ÄÚ
+		if (pos >= 0) {		//åœ¨ç½‘æ ¼èŒƒå›´å†…
 			auto & grid = m_vGridView[pos];
 			if (grid.Enable()) {
 				int index = grid.ItemIndex(x, y);
-				if (index >= 0) {	//µãÖĞÁËÎïÆ·
+				if (index >= 0) {	//ç‚¹ä¸­äº†ç‰©å“
 					m_bClickOnItem = TRUE;
-					if (grid.IsSockets()) {	//ÊÇÏâÇ¶µÄ±¦Ê¯
+					if (grid.IsSockets()) {	//æ˜¯é•¶åµŒçš„å®çŸ³
 						if (index != m_iSelectedSocketIndex) {
 							m_iSelectedSocketIndex = index;
 							Invalidate();
 						}
-					} else if (index != m_iSelectedItemIndex || 0 <= m_iSelectedSocketIndex) {	//ÆäËûÎïÆ·
+					} else if (index != m_iSelectedItemIndex || 0 <= m_iSelectedSocketIndex) {	//å…¶ä»–ç‰©å“
 						if (index != m_iSelectedItemIndex) {
 							const auto & view = m_vItemViews[index];
 							for (int i = 0; i < PositionToCol(IN_SOCKET); ++i)
@@ -1018,12 +1018,12 @@ void CDlgCharItems::OnRButtonUp(UINT nFlags, CPoint point)
 }
 
 void CDlgCharItems::OnContextMenu(CWnd* /*pWnd*/, CPoint point) {
-	if (m_bHasCharacter && m_iPickedItemIndex < 0) {	//Î´ÄÃÆğÎïÆ·
+	if (m_bHasCharacter && m_iPickedItemIndex < 0) {	//æœªæ‹¿èµ·ç‰©å“
 		CRect rect;
 		m_lstRecycle.GetWindowRect(&rect);
 		if (rect.PtInRect(point))
 			return;	//Inside of Recycle list
-		/*	´´½¨µ¯³ö²Ëµ¥£º
+		/*	åˆ›å»ºå¼¹å‡ºèœå•ï¼š
 				Import
 				Export
 				---
@@ -1074,7 +1074,7 @@ BOOL CDlgCharItems::OnInitDialog()
 void CDlgCharItems::OnShowWindow(BOOL bShow, UINT nStatus)
 {
     CCharacterDialogBase::OnShowWindow(bShow, nStatus);
-    //if(!bShow)			//ÔÚÉÙÊıÇé¿öÏÂ£¬»á³öÏÖÒş²ØÎïÆ·ÊôĞÔ´°¿ÚÊ±Ğü¸¡´°»¹ÔÚµÄÇé¿ö
+    //if(!bShow)			//åœ¨å°‘æ•°æƒ…å†µä¸‹ï¼Œä¼šå‡ºç°éšè—ç‰©å“å±æ€§çª—å£æ—¶æ‚¬æµ®çª—è¿˜åœ¨çš„æƒ…å†µ
     //    ShowItemInfoDlg(0);
 }
 
@@ -1089,7 +1089,7 @@ void CDlgCharItems::OnChangeHand()
 		UpdateData(FALSE);
 		return;
 	}
-	//µ÷ÕûÑ¡ÖĞµÄÎïÆ·
+	//è°ƒæ•´é€‰ä¸­çš„ç‰©å“
 	const int i1 = m_vGridView[RIGHT_HAND].ItemIndex((m_bSecondHand ? 1 : 0), 0);
 	const int i2 = m_vGridView[LEFT_HAND].ItemIndex((m_bSecondHand ? 1 : 0), 0);
 	if (i1 == m_iSelectedItemIndex || i2 == m_iSelectedItemIndex) {
@@ -1101,8 +1101,8 @@ void CDlgCharItems::OnChangeHand()
  }
 
 void CDlgCharItems::OnChangeCorpseHand() {
-	const BOOL s = m_chCorpseSecondHand.GetCheck();	//¸Ä±äºóµÄÖµ
-	//µ÷ÕûÑ¡ÖĞµÄÎïÆ·
+	const BOOL s = m_chCorpseSecondHand.GetCheck();	//æ”¹å˜åçš„å€¼
+	//è°ƒæ•´é€‰ä¸­çš„ç‰©å“
 	const int i1 = m_vGridView[CORPSE_RIGHT_HAND].ItemIndex((s ? 0 : 1), 0);
 	const int i2 = m_vGridView[CORPSE_LEFT_HAND].ItemIndex((s ? 0 : 1), 0);
 	if (i1 == m_iSelectedItemIndex || i2 == m_iSelectedItemIndex) {
@@ -1187,7 +1187,7 @@ void CDlgCharItems::OnItemImport() {
 	if (open.DoModal() == IDOK) {
 		CD2Item item;
 		if (item.ReadFile(CFile(open.GetPathName(), CFile::modeRead))) {
-			item.iLocation = 4;	//ÉèÖÃÎïÆ·±»Êó±êÄÃÆğ
+			item.iLocation = 4;	//è®¾ç½®ç‰©å“è¢«é¼ æ ‡æ‹¿èµ·
 			AddItemInGrid(item, 0);
 		}
 	}
@@ -1211,7 +1211,7 @@ void CDlgCharItems::OnItemCopy() {
 void CDlgCharItems::OnItemPaste() {
 	ASSERT(0 <= m_iCopiedItemIndex && m_iCopiedItemIndex < int(m_vItemViews.size()));
 	CD2Item item(m_vItemViews[m_iCopiedItemIndex].Item);
-	item.iLocation = 4;	//ÉèÖÃÎïÆ·±»Êó±êÄÃÆğ
+	item.iLocation = 4;	//è®¾ç½®ç‰©å“è¢«é¼ æ ‡æ‹¿èµ·
 	AddItemInGrid(item, 0);
 }
 
@@ -1229,7 +1229,7 @@ void CDlgCharItems::OnItemNew() {
 	dlg.DoModal();
 	if (!item)
 		return;
-	item->iLocation = 4;	//ÉèÖÃÎïÆ·±»Êó±êÄÃÆğ
+	item->iLocation = 4;	//è®¾ç½®ç‰©å“è¢«é¼ æ ‡æ‹¿èµ·
 	AddItemInGrid(*item, 0);
 }
 
@@ -1243,7 +1243,7 @@ void CDlgCharItems::OnItemNewFrom() {
 	//copy property list
 	if (view.Item.HasPropertyList() && item->HasPropertyList())
 		item->pItemInfo->pTpSpInfo->stPropertyList = view.Item.pItemInfo->pTpSpInfo->stPropertyList;
-	item->iLocation = 4;	//ÉèÖÃÎïÆ·±»Êó±êÄÃÆğ
+	item->iLocation = 4;	//è®¾ç½®ç‰©å“è¢«é¼ æ ‡æ‹¿èµ·
 	AddItemInGrid(*item, 0);
 }
 
@@ -1251,19 +1251,19 @@ void CDlgCharItems::OnItemRemove() {
 	auto & view = SelectedItemView();
 	ASSERT(view.iPosition < int(m_vGridView.size()));
 	auto & grid = m_vGridView[view.iPosition];
-	if (grid.IsSockets()) {	//Èç¹ûÉ¾³ıÏâÇ¶µÄ±¦Ê¯£¬ÏÈ½â³ıÏâÇ¶¹ØÏµ
+	if (grid.IsSockets()) {	//å¦‚æœåˆ é™¤é•¶åµŒçš„å®çŸ³ï¼Œå…ˆè§£é™¤é•¶åµŒå…³ç³»
 		auto & gems = SelectedParentItemView().vGemItems;
 		ASSERT(0 <= view.iGridX && view.iGridX < int(gems.size()));
 		gems[view.iGridX] = -1;
 	} else
-		m_vGridView[IN_SOCKET].Reset();	//Ò»°ãÎïÆ·£¬ÖØÖÃÏâ¿×
-	//ÒÆ×ßÎïÆ·
+		m_vGridView[IN_SOCKET].Reset();	//ä¸€èˆ¬ç‰©å“ï¼Œé‡ç½®é•¶å­”
+	//ç§»èµ°ç‰©å“
 	grid.ItemIndex(-1, view.iGridX, view.iGridY, view.iGridWidth, view.iGridHeight);
 	view.iPosition = IN_RECYCLE;
-	//·ÅÈë»ØÊÕÕ¾
+	//æ”¾å…¥å›æ”¶ç«™
 	const int i = m_lstRecycle.InsertItem(m_lstRecycle.GetItemCount(), view.Item.ItemName());
 	m_lstRecycle.SetItemData(i, m_iSelectedItemIndex);
-	//ÖØÖÃÑ¡ÖĞË÷Òı
+	//é‡ç½®é€‰ä¸­ç´¢å¼•
 	if (m_iSelectedSocketIndex >= 0)
 		m_iSelectedSocketIndex = -1;
 	else
@@ -1308,20 +1308,20 @@ void CDlgCharItems::OnCbnSelchangeComboMercType() {
 
 void CDlgCharItems::OnNMClickListRecycle(NMHDR *pNMHDR, LRESULT *pResult) {
 	//LPNMITEMACTIVATE pNMItemActivate = reinterpret_cast<LPNMITEMACTIVATE>(pNMHDR);
-	if (0 <= m_iPickedItemIndex) {	//ÄÃÆğÁËÎïÆ·£¬½«ÎïÆ··ÅÈë»ØÊÕÕ¾
+	if (0 <= m_iPickedItemIndex) {	//æ‹¿èµ·äº†ç‰©å“ï¼Œå°†ç‰©å“æ”¾å…¥å›æ”¶ç«™
 		auto & view = PickedItemView();
-		//·ÅÈë»ØÊÕÕ¾
+		//æ”¾å…¥å›æ”¶ç«™
 		view.iPosition = IN_RECYCLE;
 		const int i = m_lstRecycle.InsertItem(m_lstRecycle.GetItemCount(), view.Item.ItemName());
 		m_lstRecycle.SetItemData(i, m_iPickedItemIndex);
-		//ÖØÖÃÊó±ê
+		//é‡ç½®é¼ æ ‡
 		::DestroyIcon(m_hCursor);
 		m_hCursor = ::LoadCursor(0, IDC_ARROW);
 		//reset selected item
 		if (m_iPickedItemIndex == m_iSelectedSocketIndex)
 			m_iSelectedSocketIndex = -1;
 		else if (m_iPickedItemIndex == m_iSelectedItemIndex) {
-			m_vGridView[IN_SOCKET].Reset();	//ÖØÖÃÏâ¿×
+			m_vGridView[IN_SOCKET].Reset();	//é‡ç½®é•¶å­”
 			m_iSelectedItemIndex = m_iSelectedSocketIndex = -1;
 		}
 		//reset picked item
@@ -1333,7 +1333,7 @@ void CDlgCharItems::OnNMClickListRecycle(NMHDR *pNMHDR, LRESULT *pResult) {
 void CDlgCharItems::OnNMDblclkListRecycle(NMHDR *pNMHDR, LRESULT *pResult) {
 	LPNMITEMACTIVATE pNMItemActivate = reinterpret_cast<LPNMITEMACTIVATE>(pNMHDR);
 	const int item = pNMItemActivate->iItem;
-	if (item >= 0 && m_iPickedItemIndex < 0) {	//Ë«»÷ÓĞĞ§Ïî²¢ÇÒÎ´ÄÃÆğÎïÆ·
+	if (item >= 0 && m_iPickedItemIndex < 0) {	//åŒå‡»æœ‰æ•ˆé¡¹å¹¶ä¸”æœªæ‹¿èµ·ç‰©å“
 		const UINT idx = m_lstRecycle.GetItemData(item);
 		ASSERT(idx < m_vItemViews.size());
 		auto & view = m_vItemViews[idx];
@@ -1346,7 +1346,7 @@ void CDlgCharItems::OnNMDblclkListRecycle(NMHDR *pNMHDR, LRESULT *pResult) {
 		}
 		//resume item to mouse
 		view.iPosition = IN_MOUSE;
-		m_hCursor = CreateAlphaCursor(view);  //ÉèÖÃÊó±êÎªÎïÆ·Í¼Æ¬
+		m_hCursor = CreateAlphaCursor(view);  //è®¾ç½®é¼ æ ‡ä¸ºç‰©å“å›¾ç‰‡
 		m_iPickedItemIndex = idx;
 		//delelte item in recycle list
 		m_lstRecycle.DeleteItem(item);

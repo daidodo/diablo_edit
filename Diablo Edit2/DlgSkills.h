@@ -1,35 +1,35 @@
-#pragma once
+ï»¿#pragma once
 
 #include "afxcmn.h"
 
-// CDlgSkills ¶Ô»°¿ò
+// CDlgSkills å¯¹è¯æ¡†
 
 class CDlgSkills : public CDialog
 {
 	DECLARE_DYNAMIC(CDlgSkills)
 public:
-	CDlgSkills(int charClass,BYTE * skills,CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+	CDlgSkills(int charClass,BYTE * skills,CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
 	virtual ~CDlgSkills();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_DIALOG_Skills };
 
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
 	DECLARE_MESSAGE_MAP()
-// ×Ô¶¨Òåº¯Êı
+// è‡ªå®šä¹‰å‡½æ•°
 public:
 	void LoadText();
-// ×Ô¶¨Òå³ÉÔ±
+// è‡ªå®šä¹‰æˆå‘˜
 private:
 	static const int SKILL_SIZE = CDiabloEdit2App::CLASS_SKILL_NAME_SIZE;
 	static const int TAB_SIZE = CDiabloEdit2App::CLASS_SKILL_TAB_SIZE;
 	static const int TEXT_SIZE = SKILL_SIZE + TAB_SIZE;
 	CString m_sText[TEXT_SIZE];
 	CString m_sUIText[3];
-	int m_nCharClass;			//ÈËÎï½ÇÉ«
-	BYTE m_pSkills[SKILL_SIZE];	//¼¼ÄÜµÈ¼¶Êı×é
+	int m_nCharClass;			//äººç‰©è§’è‰²
+	BYTE m_pSkills[SKILL_SIZE];	//æŠ€èƒ½ç­‰çº§æ•°ç»„
 	BYTE * m_pData;
 	BYTE m_bAll;
 public:

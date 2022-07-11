@@ -1,4 +1,4 @@
-// DlgCharBasicInfo.cpp : ÊµÏÖÎÄ¼ş
+ï»¿// DlgCharBasicInfo.cpp : å®ç°æ–‡ä»¶
 //
 
 #include "stdafx.h"
@@ -21,7 +21,7 @@ const DWORD	CDlgCharBasicInfo::LEVEL_AND_EXPERIENCE[100] = {
 	1764543065,1923762030,2097310703,2286478756,2492671933,2717422497,2962400612,3229426756,3520485254,3837739017
 };
 
-// CDlgCharBasicInfo ¶Ô»°¿ò
+// CDlgCharBasicInfo å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(CDlgCharBasicInfo, CCharacterDialogBase)
 
@@ -145,7 +145,7 @@ BEGIN_MESSAGE_MAP(CDlgCharBasicInfo, CDialog)
 	ON_NOTIFY(TCN_SELCHANGE, IDC_TAB1, &CDlgCharBasicInfo::OnTcnSelchangeTab1)
 END_MESSAGE_MAP()
 
-// ¸üĞÂÏÔÊ¾µÄÈËÎïĞÅÏ¢
+// æ›´æ–°æ˜¾ç¤ºçš„äººç‰©ä¿¡æ¯
 void CDlgCharBasicInfo::UpdateUI(const CD2S_Struct & character)
 {
 	switch(character.dwVersion){
@@ -198,7 +198,7 @@ void CDlgCharBasicInfo::UpdateUI(const CD2S_Struct & character)
 	m_cbLevelAndExp.SetCurSel(m_uCharLevel);
 
 	::CopyMemory(m_bSkills,character.Skills.bSkillLevel,sizeof(m_bSkills));
-	//¸üĞÂ×î´óGoldÊıÁ¿
+	//æ›´æ–°æœ€å¤§Goldæ•°é‡
 	m_dwMaxGoldInBody = m_uCharLevel * 10000;
 	m_sGoldinPer.Format(_T("0-%u"),m_dwMaxGoldInBody);
 	m_dwMaxGoldInStash = (m_uCharLevel < 31 ? (m_uCharLevel / 10 + 1) * 50000 : (m_uCharLevel / 2 + 1) * 50000);
@@ -269,7 +269,7 @@ BOOL CDlgCharBasicInfo::GatherData(CD2S_Struct & character)
 	character.PlayerStats.m_adwValue[0xE] = m_dwGoldInBody;
 	character.PlayerStats.m_adwValue[0xF] = m_dwGoldInStash;
 	::CopyMemory(character.Skills.bSkillLevel,m_bSkills,sizeof(m_bSkills));
-    //ÆäËû´°ÌåµÄÊı¾İ
+    //å…¶ä»–çª—ä½“çš„æ•°æ®
 	for(int i = 0;i < m_nTabPageCount;++i)
 		if(!m_dlgTabPage[i]->GatherData(character))
 			return FALSE;
@@ -295,7 +295,7 @@ void CDlgCharBasicInfo::ResetAll()
 	m_tTime = CTime::GetCurrentTime();
 	//Array
 	::ZeroMemory(m_bSkills,sizeof(m_bSkills));
-	//×Ó´°Ìå
+	//å­çª—ä½“
 	for(int i = 0;i < m_nTabPageCount;++i)
 		m_dlgTabPage[i]->ResetAll();
 
@@ -324,7 +324,7 @@ void CDlgCharBasicInfo::InitUI(void)
 	if(!m_dlgTabPage){
 		m_tcBasicInfo.InsertItem(0, _T(""));
 		m_tcBasicInfo.InsertItem(1, _T(""));
-		//ÔÚ´Ë´¦Ìí¼ÓĞÂµÄÊôĞÔÒ³,²¢ÔÚLoadTextÀï¸ü¸Ä½çÃæÎÄ×ÖµÄÖØÔØÈë
+		//åœ¨æ­¤å¤„æ·»åŠ æ–°çš„å±æ€§é¡µ,å¹¶åœ¨LoadTexté‡Œæ›´æ”¹ç•Œé¢æ–‡å­—çš„é‡è½½å…¥
 		m_nTabPageCount = m_tcBasicInfo.GetItemCount();
 
 		m_dlgTabPage = new CCharacterDialogBase*[m_nTabPageCount];
@@ -334,7 +334,7 @@ void CDlgCharBasicInfo::InitUI(void)
 		m_dlgTabPage[1] = new CDlgQuestInfo;
 		m_dlgTabPage[1]->Create(CDlgQuestInfo::IDD, &m_tcBasicInfo);
 		m_dlgTabPage[1]->ShowWindow(SW_HIDE);
-		//ÔÚ´Ë´¦Ìí¼ÓĞÂµÄÊôĞÔ´°Ìå
+		//åœ¨æ­¤å¤„æ·»åŠ æ–°çš„å±æ€§çª—ä½“
 
 		m_nTabCurSel = 0;
 		m_tcBasicInfo.SetCurSel(m_nTabCurSel);
@@ -346,7 +346,7 @@ void CDlgCharBasicInfo::LoadText(void)
 {
     TCITEM tci;
     tci.mask = TCIF_TEXT;
-    //Ğ¡Õ¾,ÈÎÎñ
+    //å°ç«™,ä»»åŠ¡
     tci.pszText = (LPWSTR)::theApp.CharBasicInfoUI(1).GetString();
     m_tcBasicInfo.SetItem(0,&tci);
     tci.pszText = (LPWSTR)::theApp.CharBasicInfoUI(2).GetString();
@@ -374,7 +374,7 @@ void CDlgCharBasicInfo::LoadText(void)
 	UpdateData(FALSE);
 }
 
-// CDlgCharBasicInfo ÏûÏ¢´¦Àí³ÌĞò
+// CDlgCharBasicInfo æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 BOOL CDlgCharBasicInfo::OnInitDialog()
 {

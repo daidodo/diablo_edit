@@ -1,38 +1,38 @@
-#pragma once
+ï»¿#pragma once
 
 #include "CharacterDialogBase.h"
 #include "afxwin.h"
 
-// CDlgWayPoints ¶Ô»°¿ò
+// CDlgWayPoints å¯¹è¯æ¡†
 
 class CDlgWayPoints : public CCharacterDialogBase
 {
 	DECLARE_DYNAMIC(CDlgWayPoints)
 
 public:
-	CDlgWayPoints(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+	CDlgWayPoints(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
 	virtual ~CDlgWayPoints();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_DIALOG_WayPoints };
 
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
 	DECLARE_MESSAGE_MAP()
-// ×Ô¶¨Òåº¯Êı
+// è‡ªå®šä¹‰å‡½æ•°
 public:
 	void UpdateUI(const CD2S_Struct & character);
 	BOOL GatherData(CD2S_Struct & character);
 	void ResetAll();
-	void LoadText(void);	//¼ÓÔØ¿Ø¼şµÄ×Ö·û´®ÄÚÈİ
+	void LoadText(void);	//åŠ è½½æ§ä»¶çš„å­—ç¬¦ä¸²å†…å®¹
 private:
 	void GetOriginData(int level,BOOL * way);
-// ×Ô¶¨Òå³ÉÔ±
+// è‡ªå®šä¹‰æˆå‘˜
 private:
 	static const int TEXT_SIZE = 43;
 	CString m_sText[TEXT_SIZE];
-	INT m_nLevel;	//µ±Ç°Ñ¡ÔñµÄÄÑ¶È¼¶±ğ,0,1,2
+	INT m_nLevel;	//å½“å‰é€‰æ‹©çš„éš¾åº¦çº§åˆ«,0,1,2
 	BYTE m_byteOriginData[3][5];
 	BOOL m_bWayData[3][40];
 	BOOL m_bUIData[40];

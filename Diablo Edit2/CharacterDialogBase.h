@@ -1,27 +1,27 @@
-#pragma once
+ï»¿#pragma once
 
 #include "D2S_Struct.h"
 
-// CCharacterDialogBase ¶Ô»°¿ò
+// CCharacterDialogBase å¯¹è¯æ¡†
 
 class CCharacterDialogBase : public CDialog
 {
 	DECLARE_DYNAMIC(CCharacterDialogBase)
 
 public:
-	CCharacterDialogBase(UINT nIDTemplate,CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+	CCharacterDialogBase(UINT nIDTemplate,CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
 	virtual ~CCharacterDialogBase();
-// ×Ô¶¨Òåº¯Êı
+// è‡ªå®šä¹‰å‡½æ•°
 	virtual void UpdateUI(const CD2S_Struct & character) = 0;
 	virtual BOOL GatherData(CD2S_Struct & character) = 0;
 	virtual void ResetAll() = 0;
-	virtual void LoadText() = 0;	//¼ÓÔØ¿Ø¼şµÄ×Ö·û´®ÄÚÈİ
+	virtual void LoadText() = 0;	//åŠ è½½æ§ä»¶çš„å­—ç¬¦ä¸²å†…å®¹
 	void OnOK(){}
 	void OnCancel(){}
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 
 protected:
-//	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+//	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 	
 	DECLARE_MESSAGE_MAP()
 };

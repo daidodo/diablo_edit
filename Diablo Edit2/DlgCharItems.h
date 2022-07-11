@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include "afxcmn.h"
 #include "afxwin.h"
@@ -11,129 +11,129 @@
 enum EEquip;
 enum EPosition;
 
-//ÎïÆ·µÄÊÓÍ¼
+//ç‰©å“çš„è§†å›¾
 struct CItemView
 {
-	CD2Item Item;						//¶ÔÓ¦µÄÎïÆ·
-	const UINT nPicRes;					//bmpÍ¼Æ¬×ÊÔ´Ë÷Òı
-	const EEquip iEquip;				//ÎïÆ·¿É×°±¸µÄÎ»ÖÃ
-	EPosition iPosition;				//ÎïÆ·Î»ÖÃ
-	int iGridX, iGridY;					//Íø¸ñ×ø±ê
-	const int iGridWidth, iGridHeight;	//×ÔÉíÕ¼ÓÃÍø¸ñ´óĞ¡
-	std::vector<int> vGemItems;			//ÏâÇ¶µÄÎïÆ·ÔÚm_vItemViewsµÄË÷Òı£¬-1±íÊ¾Ã»ÓĞ
+	CD2Item Item;						//å¯¹åº”çš„ç‰©å“
+	const UINT nPicRes;					//bmpå›¾ç‰‡èµ„æºç´¢å¼•
+	const EEquip iEquip;				//ç‰©å“å¯è£…å¤‡çš„ä½ç½®
+	EPosition iPosition;				//ç‰©å“ä½ç½®
+	int iGridX, iGridY;					//ç½‘æ ¼åæ ‡
+	const int iGridWidth, iGridHeight;	//è‡ªèº«å ç”¨ç½‘æ ¼å¤§å°
+	std::vector<int> vGemItems;			//é•¶åµŒçš„ç‰©å“åœ¨m_vItemViewsçš„ç´¢å¼•ï¼Œ-1è¡¨ç¤ºæ²¡æœ‰
 	//Functions:
 	CItemView(const CD2Item & item, EEquip equip, EPosition pos, int x, int y);
 	CSize ViewSize() const;
 	CString ItemName() const { return Item.ItemName(); }
-	int GemCount() const;				//ÏâÇ¶µÄ±¦Ê¯ÊıÁ¿
-	const CD2Item & UpdateItem(std::vector<CItemView> & vItemViews);	//¸ù¾İUI¸üĞÂÎïÆ·Êı¾İ£¨Î»ÖÃ£¬ÏâÇ¶±¦Ê¯µÈ£©
+	int GemCount() const;				//é•¶åµŒçš„å®çŸ³æ•°é‡
+	const CD2Item & UpdateItem(std::vector<CItemView> & vItemViews);	//æ ¹æ®UIæ›´æ–°ç‰©å“æ•°æ®ï¼ˆä½ç½®ï¼Œé•¶åµŒå®çŸ³ç­‰ï¼‰
 };
 
-//Íø¸ñÎ»ÖÃµÄÊÓÍ¼
+//ç½‘æ ¼ä½ç½®çš„è§†å›¾
 class GridView
 {
-	std::vector<int> vItemIndex;	//Íø¸ñÄÚµÄÎïÆ·ÔÚm_vItemViewsÀïË÷Òı£»-1±íÊ¾Ã»ÓĞ
-	const EPosition iPosition;		//Î»ÖÃË÷Òı
-	const int iCol, iRow;			//ĞĞÁĞÊı
-	BOOL bEnabled = TRUE;			//ÊÇ·ñÆôÓÃ£¨¿É½»»¥£©
-	BOOL bVisible = TRUE;			//ÊÇ·ñ¿É¼û
+	std::vector<int> vItemIndex;	//ç½‘æ ¼å†…çš„ç‰©å“åœ¨m_vItemViewsé‡Œç´¢å¼•ï¼›-1è¡¨ç¤ºæ²¡æœ‰
+	const EPosition iPosition;		//ä½ç½®ç´¢å¼•
+	const int iCol, iRow;			//è¡Œåˆ—æ•°
+	BOOL bEnabled = TRUE;			//æ˜¯å¦å¯ç”¨ï¼ˆå¯äº¤äº’ï¼‰
+	BOOL bVisible = TRUE;			//æ˜¯å¦å¯è§
 public:
-	const CRect Rect;				//´óĞ¡ÓëÎ»ÖÃ
-	const EEquip iEquip;			//¿É×°±¸µÄÎïÆ·ÀàĞÍ
+	const CRect Rect;				//å¤§å°ä¸ä½ç½®
+	const EEquip iEquip;			//å¯è£…å¤‡çš„ç‰©å“ç±»å‹
 	//Functions:
 	explicit GridView(EPosition pos);
 	BOOL Visible() const { return bVisible; }
 	void Visible(BOOL v) { bVisible = v; }
 	BOOL Enable() const { return bEnabled && bEnabled; }
 	void Enable(BOOL v) { bEnabled = v; }
-	BOOL IsGrid() const;			//ÊÇ·ñ·Ö³Éµ¥¸öÍø¸ñ
-	BOOL IsSockets() const;			//ÊÇ·ñÎªÏâÇ¶µÄ¿×
-	void Reset();					//Çå¿ÕÍø¸ñ
-	BOOL CanEquip(EEquip equip) const { return (equip & iEquip) != 0; }	//ÊÇ·ñ¿É´©´÷
-	int ItemIndex(int x, int y) const;			//·µ»ØÖ¸¶¨×ø±êµÄÎïÆ·Ë÷Òı
-	void ItemIndex(int index, int x, int y);	//ÉèÖÃÖ¸¶¨×ø±êµÄÎïÆ·Ë÷Òı
-	void ItemIndex(int index, int x, int y, int width, int height);	//ÉèÖÃÖ¸¶¨×ø±êºÍ·¶Î§µÄÎïÆ·Ë÷Òı
-	CPoint IndexToXY(int x, int y, int width, int height) const;	//Ö¸¶¨×ø±êºÍ´óĞ¡£¬µÃµ½ÎïÆ·µÄÏñËØÎ»ÖÃ
-	std::tuple<int, int, int> XYToPositionIndex(CPoint pos, BOOL II, BOOL corpseII, int col, int row) const;	//¸ù¾İÎïÆ·UIÏñËØ£¬µÃµ½Î»ÖÃË÷ÒıºÍ×ø±ê
-	//³¢ÊÔ½«Ë÷ÒıÎªindexµÄÎïÆ··Åµ½Ö¸¶¨Î»ÖÃ£¬¿¼ÂÇ¿ÕÏĞ¡¢´óĞ¡¡¢´©´÷ÀàĞÍ£»
-	//·µ»Ø£ºBOOL-ÊÇ·ñ³É¹¦£¬int-Ê§°ÜÊ±ÒÑÓĞÎïÆ·µÄË÷Òı£¨-1±íÊ¾ÆäËûÔ­Òò£¬±ÈÈç´©´÷ÀàĞÍ²»ºÏ£¬¶à¸öÎïÆ·Õ¼ÓÃµÈ£©
+	BOOL IsGrid() const;			//æ˜¯å¦åˆ†æˆå•ä¸ªç½‘æ ¼
+	BOOL IsSockets() const;			//æ˜¯å¦ä¸ºé•¶åµŒçš„å­”
+	void Reset();					//æ¸…ç©ºç½‘æ ¼
+	BOOL CanEquip(EEquip equip) const { return (equip & iEquip) != 0; }	//æ˜¯å¦å¯ç©¿æˆ´
+	int ItemIndex(int x, int y) const;			//è¿”å›æŒ‡å®šåæ ‡çš„ç‰©å“ç´¢å¼•
+	void ItemIndex(int index, int x, int y);	//è®¾ç½®æŒ‡å®šåæ ‡çš„ç‰©å“ç´¢å¼•
+	void ItemIndex(int index, int x, int y, int width, int height);	//è®¾ç½®æŒ‡å®šåæ ‡å’ŒèŒƒå›´çš„ç‰©å“ç´¢å¼•
+	CPoint IndexToXY(int x, int y, int width, int height) const;	//æŒ‡å®šåæ ‡å’Œå¤§å°ï¼Œå¾—åˆ°ç‰©å“çš„åƒç´ ä½ç½®
+	std::tuple<int, int, int> XYToPositionIndex(CPoint pos, BOOL II, BOOL corpseII, int col, int row) const;	//æ ¹æ®ç‰©å“UIåƒç´ ï¼Œå¾—åˆ°ä½ç½®ç´¢å¼•å’Œåæ ‡
+	//å°è¯•å°†ç´¢å¼•ä¸ºindexçš„ç‰©å“æ”¾åˆ°æŒ‡å®šä½ç½®ï¼Œè€ƒè™‘ç©ºé—²ã€å¤§å°ã€ç©¿æˆ´ç±»å‹ï¼›
+	//è¿”å›ï¼šBOOL-æ˜¯å¦æˆåŠŸï¼Œint-å¤±è´¥æ—¶å·²æœ‰ç‰©å“çš„ç´¢å¼•ï¼ˆ-1è¡¨ç¤ºå…¶ä»–åŸå› ï¼Œæ¯”å¦‚ç©¿æˆ´ç±»å‹ä¸åˆï¼Œå¤šä¸ªç‰©å“å ç”¨ç­‰ï¼‰
 	std::pair<BOOL, int> PutItem(int index, int x, int y, int width, int height, EEquip equip);
 };
 
-// CDlgCharItems ¶Ô»°¿ò
+// CDlgCharItems å¯¹è¯æ¡†
 
 class CDlgCharItems : public CCharacterDialogBase
 {
 	DECLARE_DYNAMIC(CDlgCharItems)
 
-	std::vector<GridView> m_vGridView;		//ËùÓĞÍø¸ñµÄĞÅÏ¢
-	void DrawGrids(CPaintDC & dc);			//»­ËùÓĞÍø¸ñ
-	BOOL m_bHasCharacter = FALSE;			//ÊÇ·ñ¼ÓÔØÁËÈËÎï
-	BOOL m_bIsD2R = TRUE;					//ÊÇ·ñD2 Resurrected
+	std::vector<GridView> m_vGridView;		//æ‰€æœ‰ç½‘æ ¼çš„ä¿¡æ¯
+	void DrawGrids(CPaintDC & dc);			//ç”»æ‰€æœ‰ç½‘æ ¼
+	BOOL m_bHasCharacter = FALSE;			//æ˜¯å¦åŠ è½½äº†äººç‰©
+	BOOL m_bIsD2R = TRUE;					//æ˜¯å¦D2 Resurrected
 	
-	//ÎïÆ·ºÍÎ»ÖÃ
-	std::vector<CItemView> m_vItemViews;	//ËùÓĞµÄÎïÆ·,³ıÁËÏâÇ¶ÔÚ¿×ÀïµÄ
-	BOOL m_bHasCorpse = FALSE;				//ÊÇ·ñÓĞÊ¬Ìå
-	BOOL m_bSecondHand = FALSE;				//ÊÇ·ñÏÔÊ¾IIÊÖÎäÆ÷
-	CButton m_chCorpseSecondHand;			//ÊÇ·ñÏÔÊ¾Ê¬ÌåµÄIIÊÖÎäÆ÷
-	void AddItemInGrid(const CD2Item & item, int body);		//½«ÎïÆ·Ìí¼Óµ½Íø¸ñÖĞ, body: 0-ÈËÎï±¾Éí£¬1-Ê¬Ìå£¬2-¹ÍÓ¶±ø£¬3-Golem
-	CPoint GetItemPositionXY(const CItemView & view) const;	//µÃµ½ÎïÆ·µÄÊµ¼ÊÏñËØ×ø±ê
+	//ç‰©å“å’Œä½ç½®
+	std::vector<CItemView> m_vItemViews;	//æ‰€æœ‰çš„ç‰©å“,é™¤äº†é•¶åµŒåœ¨å­”é‡Œçš„
+	BOOL m_bHasCorpse = FALSE;				//æ˜¯å¦æœ‰å°¸ä½“
+	BOOL m_bSecondHand = FALSE;				//æ˜¯å¦æ˜¾ç¤ºIIæ‰‹æ­¦å™¨
+	CButton m_chCorpseSecondHand;			//æ˜¯å¦æ˜¾ç¤ºå°¸ä½“çš„IIæ‰‹æ­¦å™¨
+	void AddItemInGrid(const CD2Item & item, int body);		//å°†ç‰©å“æ·»åŠ åˆ°ç½‘æ ¼ä¸­, body: 0-äººç‰©æœ¬èº«ï¼Œ1-å°¸ä½“ï¼Œ2-é›‡ä½£å…µï¼Œ3-Golem
+	CPoint GetItemPositionXY(const CItemView & view) const;	//å¾—åˆ°ç‰©å“çš„å®é™…åƒç´ åæ ‡
 
-	//Ğü¸¡´°
-	static const int INFO_WINDOW_LEFT = 50;		//×ó±ßĞü¸¡´°µÄÎ»ÖÃX
-	static const int INFO_WINDOW_RIGHT = 550;	//ÓÒ±ßĞü¸¡´°µÄÎ»ÖÃX
-	std::unique_ptr<CDlgSuspend> m_pDlgItemInfo;//ÏÔÊ¾ÎïÆ·ĞÅÏ¢µÄĞü¸¡´°¿Ú
-	BOOL m_bNotShowItemInfoDlg;					//ÊÇ·ñÒş²ØÎïÆ·ĞÅÏ¢Ğü¸¡´°
-	CSliderCtrl m_scTrasparent;					//ÊôĞÔĞü¸¡´°µÄÍ¸Ã÷¶È
-	void ShowItemInfoDlg(const CD2Item * pItem, int x, int gems);	//ÏÔÊ¾/Òş²Ø(pItem = 0)ÎïÆ·ĞÅÏ¢Ğü¸¡´°¿Ú¡£xÓÃÀ´Ñ¡Ôñ´°¿ÚÎ»ÖÃ£¬gemsÎªÏâÇ¶±¦Ê¯ÊıÁ¿
+	//æ‚¬æµ®çª—
+	static const int INFO_WINDOW_LEFT = 50;		//å·¦è¾¹æ‚¬æµ®çª—çš„ä½ç½®X
+	static const int INFO_WINDOW_RIGHT = 550;	//å³è¾¹æ‚¬æµ®çª—çš„ä½ç½®X
+	std::unique_ptr<CDlgSuspend> m_pDlgItemInfo;//æ˜¾ç¤ºç‰©å“ä¿¡æ¯çš„æ‚¬æµ®çª—å£
+	BOOL m_bNotShowItemInfoDlg;					//æ˜¯å¦éšè—ç‰©å“ä¿¡æ¯æ‚¬æµ®çª—
+	CSliderCtrl m_scTrasparent;					//å±æ€§æ‚¬æµ®çª—çš„é€æ˜åº¦
+	void ShowItemInfoDlg(const CD2Item * pItem, int x, int gems);	//æ˜¾ç¤º/éšè—(pItem = 0)ç‰©å“ä¿¡æ¯æ‚¬æµ®çª—å£ã€‚xç”¨æ¥é€‰æ‹©çª—å£ä½ç½®ï¼Œgemsä¸ºé•¶åµŒå®çŸ³æ•°é‡
 
-	//Êó±ê
-	int m_iSelectedItemIndex = -1;		//Ñ¡ÖĞµÄÎïÆ·ÔÚm_vItemViewsÖĞµÄË÷Òı
-	int m_iSelectedSocketIndex = -1;	//Ñ¡ÖĞµÄÎïÆ·ÏâÇ¶ÔÚ¿×ÀïÊ±£¬¶ÔÓ¦ÔÚm_vItemViewsÖĞµÄË÷Òı
-	int m_iPickedItemIndex = -1;		//µ±Ç°Êó±êÄÃÆğµÄÎïÆ·ÔÚm_vItemViewsÖĞµÄË÷Òı
-	HCURSOR m_hCursor;					//Êó±ê
-	CPoint m_pMouse;					//Êó±êÎ»ÖÃ
-	CItemView & SelectedParentItemView();//µ±Ç°Ñ¡ÖĞµÄ¸¸ÎïÆ·ÊÓÍ¼
-	CItemView & SelectedItemView();		//µ±Ç°Ñ¡ÖĞµÄÎïÆ·ÊÓÍ¼
-	CItemView & PickedItemView();		//µ±Ç°Ñ¡ÖĞµÄÎïÆ·ÊÓÍ¼
-	std::tuple<int, int, int> HitTestPosition(CPoint pos, int col = 1, int row = 1) const;	//ÓÉÏñËØXYºÍÎïÆ·´óĞ¡µÃµ½Íø¸ñÎ»ÖÃ
-	HCURSOR CreateAlphaCursor(const CItemView & itemView);	//°ÑÎïÆ·bmp×ª»»³ÉÊó±ê¾ä±ú
-	//³¢ÊÔ½«ÄÃÆğµÄÎïÆ··Åµ½Ö¸¶¨Î»ÖÃ£¨²»°üÀ¨Êó±ê£©£»Èç¹ûÎ»ÖÃÉÏÒÑÓĞÒ»¸öÎïÆ·£¬³¢ÊÔÍ¬Ê±½«ÆäÄÃÆğ
-	//·µ»Ø£ºBOOL-ÊÇ·ñ³É¹¦£¬int-³É¹¦Ê±ÄÃÆğÎïÆ·µÄË÷Òı£¨-1±íÊ¾Ã»ÓĞ£©
+	//é¼ æ ‡
+	int m_iSelectedItemIndex = -1;		//é€‰ä¸­çš„ç‰©å“åœ¨m_vItemViewsä¸­çš„ç´¢å¼•
+	int m_iSelectedSocketIndex = -1;	//é€‰ä¸­çš„ç‰©å“é•¶åµŒåœ¨å­”é‡Œæ—¶ï¼Œå¯¹åº”åœ¨m_vItemViewsä¸­çš„ç´¢å¼•
+	int m_iPickedItemIndex = -1;		//å½“å‰é¼ æ ‡æ‹¿èµ·çš„ç‰©å“åœ¨m_vItemViewsä¸­çš„ç´¢å¼•
+	HCURSOR m_hCursor;					//é¼ æ ‡
+	CPoint m_pMouse;					//é¼ æ ‡ä½ç½®
+	CItemView & SelectedParentItemView();//å½“å‰é€‰ä¸­çš„çˆ¶ç‰©å“è§†å›¾
+	CItemView & SelectedItemView();		//å½“å‰é€‰ä¸­çš„ç‰©å“è§†å›¾
+	CItemView & PickedItemView();		//å½“å‰é€‰ä¸­çš„ç‰©å“è§†å›¾
+	std::tuple<int, int, int> HitTestPosition(CPoint pos, int col = 1, int row = 1) const;	//ç”±åƒç´ XYå’Œç‰©å“å¤§å°å¾—åˆ°ç½‘æ ¼ä½ç½®
+	HCURSOR CreateAlphaCursor(const CItemView & itemView);	//æŠŠç‰©å“bmpè½¬æ¢æˆé¼ æ ‡å¥æŸ„
+	//å°è¯•å°†æ‹¿èµ·çš„ç‰©å“æ”¾åˆ°æŒ‡å®šä½ç½®ï¼ˆä¸åŒ…æ‹¬é¼ æ ‡ï¼‰ï¼›å¦‚æœä½ç½®ä¸Šå·²æœ‰ä¸€ä¸ªç‰©å“ï¼Œå°è¯•åŒæ—¶å°†å…¶æ‹¿èµ·
+	//è¿”å›ï¼šBOOL-æ˜¯å¦æˆåŠŸï¼Œint-æˆåŠŸæ—¶æ‹¿èµ·ç‰©å“çš„ç´¢å¼•ï¼ˆ-1è¡¨ç¤ºæ²¡æœ‰ï¼‰
 	std::pair<BOOL, int> PutItemInGrid(EPosition pos, int x, int y);
 
-	//½çÃæÎÄ×Ö
+	//ç•Œé¢æ–‡å­—
 	CString m_sText[11];
 
-	//µ¯³ö²Ëµ¥
-	BOOL m_bClickOnItem = FALSE;		//µ±Ç°Êó±êÊÇ·ñµãÖĞÁËÎïÆ·
-	int m_iCopiedItemIndex = -1;		//¸´ÖÆµÄÎïÆ·ÔÚm_vItemViewsÖĞµÄË÷Òı£¬-1ÎªÃ»ÓĞ
+	//å¼¹å‡ºèœå•
+	BOOL m_bClickOnItem = FALSE;		//å½“å‰é¼ æ ‡æ˜¯å¦ç‚¹ä¸­äº†ç‰©å“
+	int m_iCopiedItemIndex = -1;		//å¤åˆ¶çš„ç‰©å“åœ¨m_vItemViewsä¸­çš„ç´¢å¼•ï¼Œ-1ä¸ºæ²¡æœ‰
 
-	//¹ÍÓ¶±ø
-	BOOL m_bHasMercenary = FALSE;		//ÊÇ·ñÓĞ¹ÍÓ¶±ø
-	CComboBox m_cbMercType;				//ÀàĞÍË÷Òı
-	CComboBox m_cbMercName;				//Ãû×ÖË÷Òı£¬¸ù¾İÀàĞÍË÷Òı±ä»¯
-	CEdit m_edMercExp;					//¾­Ñé
-	CButton m_chMercDead;				//ÊÇ·ñËÀÍö
-	int m_iMercNameGroup = -1;			//¹ÍÓ¶±øµÄÃû×ÖËùÔÚµÄ×é
+	//é›‡ä½£å…µ
+	BOOL m_bHasMercenary = FALSE;		//æ˜¯å¦æœ‰é›‡ä½£å…µ
+	CComboBox m_cbMercType;				//ç±»å‹ç´¢å¼•
+	CComboBox m_cbMercName;				//åå­—ç´¢å¼•ï¼Œæ ¹æ®ç±»å‹ç´¢å¼•å˜åŒ–
+	CEdit m_edMercExp;					//ç»éªŒ
+	CButton m_chMercDead;				//æ˜¯å¦æ­»äº¡
+	int m_iMercNameGroup = -1;			//é›‡ä½£å…µçš„åå­—æ‰€åœ¨çš„ç»„
 
 	//Recycle
 	CListCtrl m_lstRecycle;
 public:
-	//¶Ô»°¿òÊı¾İ
+	//å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_DIALOG_CharItems };
 	CDlgCharItems(CWnd* pParent = NULL);
-	//Ğéº¯Êı
+	//è™šå‡½æ•°
 	void UpdateUI(const CD2S_Struct & character);
 	BOOL GatherData(CD2S_Struct & character);
 	void ResetAll();
-	void LoadText(void);	//¼ÓÔØ¿Ø¼şµÄ×Ö·û´®ÄÚÈİ
+	void LoadText(void);	//åŠ è½½æ§ä»¶çš„å­—ç¬¦ä¸²å†…å®¹
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 private:
 	// UI
-	void DrawItemXY(CPaintDC & dc, CPoint pos, const CItemView & itemView) const;	//ÔÚ¾ø¶Ô×ø±êµã»­ÎïÆ·
-	void DrawAllItemsInGrid(CPaintDC & dc) const;		//»­Íø¸ñÄÚµÄËùÓĞÎïÆ·£¬Èç¹ûÑ¡ÖĞµÄÎïÆ·ÏâÇ¶ÁËÎïÆ·£¬Ò²Òª»­³öÀ´
+	void DrawItemXY(CPaintDC & dc, CPoint pos, const CItemView & itemView) const;	//åœ¨ç»å¯¹åæ ‡ç‚¹ç”»ç‰©å“
+	void DrawAllItemsInGrid(CPaintDC & dc) const;		//ç”»ç½‘æ ¼å†…çš„æ‰€æœ‰ç‰©å“ï¼Œå¦‚æœé€‰ä¸­çš„ç‰©å“é•¶åµŒäº†ç‰©å“ï¼Œä¹Ÿè¦ç”»å‡ºæ¥
 	void SetD2R(BOOL v);
 
 	DECLARE_MESSAGE_MAP()

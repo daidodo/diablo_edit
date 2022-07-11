@@ -1,27 +1,27 @@
-#pragma once
+ï»¿#pragma once
 #include "afxwin.h"
 
 
-// CDlgSelectChar ¶Ô»°¿ò
+// CDlgSelectChar å¯¹è¯æ¡†
 
 class CDlgSelectChar : public CDialog
 {
 	DECLARE_DYNAMIC(CDlgSelectChar)
 
 public:
-	explicit CDlgSelectChar(int & sel,CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+	explicit CDlgSelectChar(int & sel,CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
 	virtual ~CDlgSelectChar();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_DIALOG_SelectChar };
 
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
-//×Ô¶¨Òå³ÉÔ±
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
+//è‡ªå®šä¹‰æˆå‘˜
 private:
 	int & m_nSel;
 	CComboBox m_cbSelectChar;
-//×Ô¶¨Òåº¯Êı
+//è‡ªå®šä¹‰å‡½æ•°
 public:
 	void OnOK(){
 		m_nSel = m_cbSelectChar.GetCurSel();

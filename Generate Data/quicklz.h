@@ -1,4 +1,4 @@
-#ifndef QLZ_HEADER
+﻿#ifndef QLZ_HEADER
 #define QLZ_HEADER
 
 // Fast data compression library

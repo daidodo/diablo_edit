@@ -1,4 +1,4 @@
-// DlgSuspend.cpp : ÊµÏÖÎÄ¼ş
+ï»¿// DlgSuspend.cpp : å®ç°æ–‡ä»¶
 //
 
 #include "stdafx.h"
@@ -12,19 +12,19 @@
 using namespace std;
 
 typedef deque<CString> __Tokens;
-// CDlgSuspend ¶Ô»°¿ò
+// CDlgSuspend å¯¹è¯æ¡†
 
-enum { WHITE, BLUE, GREEN, RARE, UNIQUE, CRAFT, RED, GRAY };	//ÑÕÉ«Ë÷Òı
+enum { WHITE, BLUE, GREEN, RARE, UNIQUE, CRAFT, RED, GRAY };	//é¢œè‰²ç´¢å¼•
 
 const COLORREF	CDlgSuspend::FONT_COLOR[] = {
-	RGB(255,255,255),		//°×É«
-	RGB(0,0,255),			//À¶É«
-	RGB(0,255,0),			//ÂÌÉ«
-	RGB(255,255,0),			//»Æ½ğÉ«
-	RGB(0x94,0x80,0x64),	//°µ½ğÉ«
-	RGB(255,128,0),			//³ÈÉ«
-	RGB(255, 0, 0),			//ºìÉ«
-	RGB(100, 100, 100),		//»ÒÉ«
+	RGB(255,255,255),		//ç™½è‰²
+	RGB(0,0,255),			//è“è‰²
+	RGB(0,255,0),			//ç»¿è‰²
+	RGB(255,255,0),			//é»„é‡‘è‰²
+	RGB(0x94,0x80,0x64),	//æš—é‡‘è‰²
+	RGB(255,128,0),			//æ©™è‰²
+	RGB(255, 0, 0),			//çº¢è‰²
+	RGB(100, 100, 100),		//ç°è‰²
 };
 
 IMPLEMENT_DYNAMIC(CDlgSuspend, CDialog)
@@ -143,11 +143,11 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem, int iGems)
 		}
 		AddMsg(color, text(name));
 		//Defence or Attack
-		if (meta.HasDef) {				//ÓĞ·ÀÓùÖµ
+		if (meta.HasDef) {				//æœ‰é˜²å¾¡å€¼
 			AddMsg(WHITE, CSFormat(::theApp.ItemSuspendUI(2), UINT(pItem->pItemInfo->pTpSpInfo->GetDefence())));
-		} else if (meta.Damage1Min) {	//µ¥ÊÖÉËº¦
+		} else if (meta.Damage1Min) {	//å•æ‰‹ä¼¤å®³
 			AddMsg(WHITE, CSFormat(::theApp.ItemSuspendUI(3), meta.Damage1Min, meta.Damage1Max));
-		} else if (meta.Damage2Min)		//Ë«ÊÖÉËº¦
+		} else if (meta.Damage2Min)		//åŒæ‰‹ä¼¤å®³
 			AddMsg(WHITE, CSFormat(::theApp.ItemSuspendUI(4), meta.Damage2Min, meta.Damage2Max));
         //Quantity
 		if (meta.IsStacked) {
@@ -156,11 +156,11 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem, int iGems)
 			AddMsg(WHITE, CSFormat(::theApp.ItemSuspendUI(5), UINT(pItem->pItemInfo->pGold->wQuantity)));
 		//Durability or Indestructible
 		if (meta.HasDur) {
-			if (!pItem->pItemInfo->pTpSpInfo->IsIndestructible()) {   //ÓĞÄÍ¾Ã¶È
+			if (!pItem->pItemInfo->pTpSpInfo->IsIndestructible()) {   //æœ‰è€ä¹…åº¦
 				AddMsg(WHITE, CSFormat(::theApp.ItemSuspendUI(6),
 					UINT(pItem->pItemInfo->pTpSpInfo->iCurDur),
 					UINT(pItem->pItemInfo->pTpSpInfo->iMaxDurability)));
-			} else       //²»¿ÉÆÆ»µ
+			} else       //ä¸å¯ç ´å
 				AddMsg(BLUE, ::theApp.ItemSuspendUI(7));
 		}
         //Property
@@ -186,7 +186,7 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem, int iGems)
     }
 	if(!pItem->bIdentified)
 		AddMsg(RED, ::theApp.ItemSuspendUI(12));
-	//¸ù¾İĞÅÏ¢ÌõÊıºÍ³¤¶È¾ö¶¨´°Ìå³¤¶ÈºÍ¿í¶È
+	//æ ¹æ®ä¿¡æ¯æ¡æ•°å’Œé•¿åº¦å†³å®šçª—ä½“é•¿åº¦å’Œå®½åº¦
 	LONG maxLen = accumulate(m_sItemMsg.begin(), m_sItemMsg.end(), 0, [](LONG m, auto & a) {return max(m, a.second.GetLength()); });
 	CRect rect;
 	GetWindowRect(&rect);
@@ -196,7 +196,7 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem, int iGems)
 		SWP_NOACTIVATE);
 	return 0;
 }
-// CDlgSuspend ÏûÏ¢´¦Àí³ÌĞò
+// CDlgSuspend æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 
 void CDlgSuspend::OnPaint()
@@ -220,13 +220,13 @@ void CDlgSuspend::OnPaint()
 BOOL CDlgSuspend::OnInitDialog()
 {
 	CDialog::OnInitDialog();
-	//ÉèÖÃ´°Ìå°ëÍ¸Ã÷
+	//è®¾ç½®çª—ä½“åŠé€æ˜
 	SetWindowLong(GetSafeHwnd(),GWL_EXSTYLE,GetWindowLong(GetSafeHwnd(),GWL_EXSTYLE) ^ 0x80000);
 	HINSTANCE hInst = LoadLibrary(_T("User32.DLL")); 
 	if(hInst){ 
 		typedef BOOL (WINAPI *MYFUNC)(HWND,COLORREF,BYTE,DWORD); 
 		MYFUNC fun = NULL;
-		//È¡µÃSetLayeredWindowAttributesº¯ÊıÖ¸Õë 
+		//å–å¾—SetLayeredWindowAttributeså‡½æ•°æŒ‡é’ˆ 
 		fun = (MYFUNC)GetProcAddress(hInst, "SetLayeredWindowAttributes");
 		if(fun)
 			fun(GetSafeHwnd(),0,m_nTransparency,2); 
@@ -245,6 +245,6 @@ void CDlgSuspend::OnMouseMove(UINT nFlags, CPoint point)
 
 void CDlgSuspend::OnLButtonDown(UINT nFlags, CPoint point)
 {
-    // TODO: ÔÚ´ËÌí¼ÓÏûÏ¢´¦Àí³ÌĞò´úÂëºÍ/»òµ÷ÓÃÄ¬ÈÏÖµ
+    // TODO: åœ¨æ­¤æ·»åŠ æ¶ˆæ¯å¤„ç†ç¨‹åºä»£ç å’Œ/æˆ–è°ƒç”¨é»˜è®¤å€¼
     ShowWindow(SW_HIDE);
 }

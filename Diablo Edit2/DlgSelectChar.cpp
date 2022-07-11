@@ -1,4 +1,4 @@
-// DlgSelectChar.cpp : ÊµÏÖÎÄ¼ş
+ï»¿// DlgSelectChar.cpp : å®ç°æ–‡ä»¶
 //
 
 #include "stdafx.h"
@@ -6,7 +6,7 @@
 #include "DlgSelectChar.h"
 
 
-// CDlgSelectChar ¶Ô»°¿ò
+// CDlgSelectChar å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(CDlgSelectChar, CDialog)
 
@@ -28,7 +28,7 @@ BEGIN_MESSAGE_MAP(CDlgSelectChar, CDialog)
 END_MESSAGE_MAP()
 
 
-// CDlgSelectChar ÏûÏ¢´¦Àí³ÌĞò
+// CDlgSelectChar æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 BOOL CDlgSelectChar::OnInitDialog()
 {

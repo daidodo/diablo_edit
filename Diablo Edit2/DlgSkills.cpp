@@ -1,11 +1,11 @@
-// DlgSkills.cpp : ÊµÏÖÎÄ¼ş
+ï»¿// DlgSkills.cpp : å®ç°æ–‡ä»¶
 //
 
 #include "stdafx.h"
 #include "Diablo Edit2.h"
 #include "DlgSkills.h"
 
-// CDlgSkills ¶Ô»°¿ò
+// CDlgSkills å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(CDlgSkills, CDialog)
 
@@ -123,9 +123,9 @@ BOOL CDlgSkills::OnInitDialog()
 #include <fstream>
 void CDlgSkills::OnBnClickedOk()
 {
-	//±£´æÈËÎï¼¼ÄÜµÈ¼¶
+	//ä¿å­˜äººç‰©æŠ€èƒ½ç­‰çº§
 	UpdateData(TRUE);
-	//Êı¾İÓĞĞ§ĞÔ¼ìÑé
+	//æ•°æ®æœ‰æ•ˆæ€§æ£€éªŒ
 	for(int i = 0;i < SKILL_SIZE;++i)
 		if(m_pSkills[i] > 127){
 			MessageBox(::theApp.MsgBoxInfo(5),::theApp.MsgWarning(),MB_ICONWARNING);

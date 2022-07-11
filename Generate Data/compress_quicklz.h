@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (c) 2016 Zhao DAI <daidodo@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify

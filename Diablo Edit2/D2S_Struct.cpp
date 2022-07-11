@@ -1,4 +1,4 @@
-#include "StdAfx.h"
+ï»¿#include "StdAfx.h"
 
 #include <iterator>
 
@@ -7,7 +7,7 @@
 
 using namespace std;
 
-//d2sÎÄ¼þµÄCRCËã·¨
+//d2sæ–‡ä»¶çš„CRCç®—æ³•
 static DWORD ComputCRC(const BYTE * source, DWORD len, DWORD init) {
 	ASSERT(source && len);
 	for (UINT i = 0, add; i < len; ++i, init = (init << 1) + add)
@@ -15,7 +15,7 @@ static DWORD ComputCRC(const BYTE * source, DWORD len, DWORD init) {
 	return init;
 }
 
-//¼ìÑéÊý¾ÝµÄCRC£¬»áÐÞ¸ÄÊý¾ÝÄÚÈÝ
+//æ£€éªŒæ•°æ®çš„CRCï¼Œä¼šä¿®æ”¹æ•°æ®å†…å®¹
 static BOOL ValidateCrc(std::vector<BYTE> & data, DWORD dwCrc, DWORD dwOff) {
 	ASSERT(dwOff + 4 <= data.size());
 	*reinterpret_cast<DWORD *>(&data[dwOff]) = 0;
@@ -225,7 +225,7 @@ void CD2S_Struct::Reset() {
 
 void CD2S_Struct::ReadData(CInBitsStream & bs) {
 	Reset();
-	//µÃµ½ÈËÎïÐÅÏ¢
+	//å¾—åˆ°äººç‰©ä¿¡æ¯
 	bs >> dwMajic;
 	if (dwMajic != 0xAA55AA55)
 		throw ::theApp.MsgBoxInfo(11);
@@ -234,7 +234,7 @@ void CD2S_Struct::ReadData(CInBitsStream & bs) {
 		throw ::theApp.MsgBoxInfo(12);
 	const DWORD offCrc = bs.BytePos();
 	bs >> dwCRC;
-	if (!::ValidateCrc(bs.Data(), dwCRC, offCrc))	//Ð£ÑéCRC£¬»áÐÞ¸ÄbsÊý¾ÝÄÚÈÝ
+	if (!::ValidateCrc(bs.Data(), dwCRC, offCrc))	//æ ¡éªŒCRCï¼Œä¼šä¿®æ”¹bsæ•°æ®å†…å®¹
 		throw ::theApp.MsgBoxInfo(11);
 	bs >> dwWeaponSet
 		>> Name
