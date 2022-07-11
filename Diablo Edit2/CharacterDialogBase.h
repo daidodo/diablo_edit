@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "D2S_Struct.h"
 
