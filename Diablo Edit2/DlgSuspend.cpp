@@ -138,7 +138,9 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem, int iGems)
 			}
 		}
 		if (quality <= 3 && pItem->IsRuneWord()) {
-			AddMsg(UNIQUE, ::theApp.RuneWordName(pItem->RuneWordId()));
+			int id = pItem->RuneWordId();
+			CString name = ::theApp.RuneWordName(pItem->RuneWordId());
+			AddMsg(UNIQUE, CSFormat(_T("%s (%d)"), name, id));
 			color = GRAY;
 		}
 		AddMsg(color, text(name));

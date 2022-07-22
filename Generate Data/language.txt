@@ -4685,6 +4685,7 @@
 63	Exile		
 64	Faith		
 65	Famine		
+66	Flickering Flame		
 67	Fortitude		
 70	Fury		
 71	Gloom		
@@ -4707,14 +4708,18 @@
 106	Malice		
 107	Melody		
 108	Memory		
+109	Mist		
 112	Myth		
 113	Nadir		
 116	Oath		
 117	Obedience		
+119	Obsession		
 120	Passion		
+122	Pattern		
 123	Peace		
 124	Winter		
 128	Phoenix		
+131	Plague		
 134	Pride		
 135	Principle		
 137	Prudence		
@@ -4732,10 +4737,12 @@
 162	Stone		
 164	Strength		
 173	Treachery		
+176	Unbending Will		
 179	Venom		
 185	Wealth		
 187	White		
 188	Wind		
+190	Wisdom		
 193	Wrath		
 195	Zephyr		
 2718	Delirium		
