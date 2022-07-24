@@ -165,7 +165,7 @@ public:
 								//PTR2.4 0x62
 	DWORD	dwSize;				//文件大小bytes
 	DWORD	dwCRC;				//数据校验
-	DWORD	dwWeaponSet;		//0是否换手?
+	DWORD	dwWeaponSet;		//使用I或II的武器：0-I，1-II
 	BYTE	Name[16];			//人物名字,占用16字符
 	BYTE	charType;			//人物类型
 								// 0x40:	Ladder

@@ -42,7 +42,6 @@ private:
 	BOOL m_bDiedBefore;
 	CString m_sCharTitle;
 	UINT m_uCharLevel;
-	CComboBox m_cbWeaponSet;
 	CComboBox m_cbLastDifficult;
 	CComboBox m_cbLastACT;
 	CTime m_tTime;

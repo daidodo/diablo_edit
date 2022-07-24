@@ -74,10 +74,12 @@ class CDlgCharItems : public CCharacterDialogBase
 	//物品和位置
 	std::vector<CItemView> m_vItemViews;	//所有的物品,除了镶嵌在孔里的
 	BOOL m_bHasCorpse = FALSE;				//是否有尸体
-	BOOL m_bSecondHand = FALSE;				//是否显示II手武器
+	DWORD m_dwWeaponSet = 0;				//人物的m_dwWeaponSet
+	BOOL m_bSecondHand = FALSE;				//UI是否显示II手武器
 	CButton m_chCorpseSecondHand;			//是否显示尸体的II手武器
 	void AddItemInGrid(const CD2Item & item, int body);		//将物品添加到网格中, body: 0-人物本身，1-尸体，2-雇佣兵，3-Golem
 	CPoint GetItemPositionXY(const CItemView & view) const;	//得到物品的实际像素坐标
+	BOOL IsAlternativeWeapon() const { return m_bSecondHand != (m_dwWeaponSet != 0); }	//显示正手武器（false：iPosition=0x4）还是副手武器（true：iPosition=0xb）
 
 	//悬浮窗
 	static const int INFO_WINDOW_LEFT = 50;		//左边悬浮窗的位置X

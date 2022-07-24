@@ -156,8 +156,8 @@
 	Character	角色	角色
 	Name	名字	名字
 	Title	称谓	稱謂
-	Weapon	武器	武器
-	Last game time	最近游戏时间	最近遊戲時間
+			
+10	Last game time	最近游戏时间	最近遊戲時間
 	Last position	最后位置	最後位置
 	Level	等级	等級
 	Experience	经验	經驗

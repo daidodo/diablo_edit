@@ -371,7 +371,7 @@ CPoint GridView::IndexToXY(int x, int y, int width, int height) const {
 	return CPoint(x, y);
 }
 
-tuple<int, int, int> GridView::XYToPositionIndex(CPoint pos, BOOL II, BOOL corpseII, int col, int row) const {
+tuple<int, int, int> GridView::XYToPositionIndex(CPoint pos, BOOL alternativeWeapon, BOOL corpseII, int col, int row) const {
 	ASSERT(0 <= pos.x && 0 <= pos.y);
 	ASSERT(0 < col && 0 < row);
 	if (IsGrid()) {
@@ -381,7 +381,7 @@ tuple<int, int, int> GridView::XYToPositionIndex(CPoint pos, BOOL II, BOOL corps
 		ASSERT(0 <= y && y < iRow);
 		return make_tuple(iPosition, x, y);
 	} else if(HasNormalII(iPosition)){
-		return make_tuple(iPosition, (II ? 1 : 0), 0);
+		return make_tuple(iPosition, (alternativeWeapon ? 1 : 0), 0);
 	} else if (HasCorpseII(iPosition))
 		return make_tuple(iPosition, (corpseII ? 1 : 0), 0);
 	return make_tuple(iPosition, 0, 0);
@@ -502,6 +502,8 @@ void CDlgCharItems::UpdateUI(const CD2S_Struct & character) {
 	ResetAll();
 	m_bHasCharacter = TRUE;
 	SetD2R(character.isD2R());
+	m_dwWeaponSet = character.dwWeaponSet;
+	m_bSecondHand = m_dwWeaponSet != 0;
 	//Character items
 	for (auto & item : character.ItemList.vItems) 
 		AddItemInGrid(item, 0);
@@ -699,7 +701,7 @@ void CDlgCharItems::DrawAllItemsInGrid(CPaintDC & dc) const
 			continue;	//镶嵌在孔里
 		//在左右手上，分I, II显示不同物品，包括尸体
 		if ((RIGHT_HAND == view.iPosition || LEFT_HAND == view.iPosition)
-			&& view.iGridX != (m_bSecondHand ? 1 : 0))
+			&& view.iGridX != (IsAlternativeWeapon() ? 1 : 0))
 			continue;
 		if ((CORPSE_RIGHT_HAND == view.iPosition || CORPSE_LEFT_HAND == view.iPosition)
 			&& view.iGridX != (m_chCorpseSecondHand.GetCheck() ? 1 : 0))
@@ -750,7 +752,7 @@ void CDlgCharItems::SetD2R(BOOL v) {
 tuple<int, int, int> CDlgCharItems::HitTestPosition(CPoint pos, int col, int row) const {
 	for (auto & g : m_vGridView)
 		if (g.Enable() && g.Rect.PtInRect(pos))
-			return g.XYToPositionIndex(pos, m_bSecondHand, m_chCorpseSecondHand.GetCheck(), col, row);
+			return g.XYToPositionIndex(pos, IsAlternativeWeapon(), m_chCorpseSecondHand.GetCheck(), col, row);
 	return make_tuple(-1, -1, -1);
 }
 
@@ -783,6 +785,7 @@ void CDlgCharItems::ResetAll()
 
 	m_vItemViews.clear();
 	m_bHasCorpse = FALSE;
+	m_dwWeaponSet = 0;
 	m_bSecondHand = FALSE;
 	m_chCorpseSecondHand.SetCheck(FALSE);
 	m_chCorpseSecondHand.EnableWindow(FALSE);
@@ -1090,8 +1093,8 @@ void CDlgCharItems::OnChangeHand()
 		return;
 	}
 	//调整选中的物品
-	const int i1 = m_vGridView[RIGHT_HAND].ItemIndex((m_bSecondHand ? 1 : 0), 0);
-	const int i2 = m_vGridView[LEFT_HAND].ItemIndex((m_bSecondHand ? 1 : 0), 0);
+	const int i1 = m_vGridView[RIGHT_HAND].ItemIndex((IsAlternativeWeapon() ? 1 : 0), 0);
+	const int i2 = m_vGridView[LEFT_HAND].ItemIndex((IsAlternativeWeapon() ? 1 : 0), 0);
 	if (i1 == m_iSelectedItemIndex || i2 == m_iSelectedItemIndex) {
 		m_vGridView[IN_SOCKET].Reset();
 		m_iSelectedItemIndex = m_iSelectedSocketIndex = -1;

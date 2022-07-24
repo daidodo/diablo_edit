@@ -83,7 +83,6 @@ void CDlgCharBasicInfo::DoDataExchange(CDataExchange* pDX)
 	DDX_Check(pDX, IDC_CHECK4, m_bDiedBefore);
 	DDX_Text(pDX, IDC_EDIT3, m_sCharTitle);
 	DDX_Text(pDX, IDC_EDIT4, m_uCharLevel);
-	DDX_Control(pDX, IDC_COMBO2, m_cbWeaponSet);
 	DDX_Control(pDX, IDC_COMBO3, m_cbLastDifficult);
 	DDX_Control(pDX, IDC_COMBO4, m_cbLastACT);
 	DDX_DateTimeCtrl(pDX, IDC_DATETIMEPICKER1, m_tTime);
@@ -105,7 +104,7 @@ void CDlgCharBasicInfo::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_STATIC2, m_sText[2]);
 	DDX_Text(pDX, IDC_STATIC3, m_sText[3]);
 	DDX_Text(pDX, IDC_STATIC4, m_sText[4]);
-	DDX_Text(pDX, IDC_STATIC5, m_sText[5]);
+	//DDX_Text(pDX, IDC_STATIC5, m_sText[5]);
 	DDX_Text(pDX, IDC_STATIC6, m_sText[6]);
 	DDX_Text(pDX, IDC_STATIC7, m_sText[7]);
 	DDX_Text(pDX, IDC_STATIC8, m_sText[8]);
@@ -173,7 +172,6 @@ void CDlgCharBasicInfo::UpdateUI(const CD2S_Struct & character)
 	else
 		m_sCharTitle.Empty();
 	m_tTime = character.dwTime;
-	m_cbWeaponSet.SetCurSel(character.dwWeaponSet);
 	for(int i = 0;i < 3;++i)
 		if((character.Town)[i]){
 			m_cbLastDifficult.SetCurSel(i);
@@ -249,7 +247,6 @@ BOOL CDlgCharBasicInfo::GatherData(CD2S_Struct & character)
 	m_bDiedBefore ? character.charType |= 8 : character.charType &= ~8;
 	//character.charTitle
 	character.dwTime = DWORD(m_tTime.GetTime());
-	character.dwWeaponSet = m_cbWeaponSet.GetCurSel();
 	::ZeroMemory(character.Town,sizeof(character.Town));
 	(character.Town)[m_cbLastDifficult.GetCurSel()] = 0x80 + m_cbLastACT.GetCurSel();
 	character.PlayerStats.m_adwValue[0] = m_dwStrength;
@@ -282,7 +279,6 @@ void CDlgCharBasicInfo::ResetAll()
 	m_sVersion = m_sName = m_sCharTitle = _T("");
 	//CComboBox
 	m_cbCharClass.SetCurSel(0);
-	m_cbWeaponSet.SetCurSel(0);
 	m_cbLastDifficult.SetCurSel(0);
 	m_cbLastACT.SetCurSel(0);
 	m_cbLevelAndExp.SetCurSel(0);
@@ -304,9 +300,6 @@ void CDlgCharBasicInfo::ResetAll()
 
 void CDlgCharBasicInfo::InitUI(void)
 {
-	m_cbWeaponSet.AddString(_T("I"));
-	m_cbWeaponSet.AddString(_T("II"));
-
 	m_cbLastACT.AddString(_T("I"));
 	m_cbLastACT.AddString(_T("II"));
 	m_cbLastACT.AddString(_T("III"));
@@ -365,7 +358,7 @@ void CDlgCharBasicInfo::LoadText(void)
 		m_cbLastDifficult.AddString(::theApp.DifficultyName(i));
     m_cbLastDifficult.SetCurSel(sel);
 
-	for(int i = 0;i < 28;++i)
+	for(int i = 0;i < TEXT_COUNT;++i)
 		m_sText[i] = ::theApp.CharBasicInfoUI(4 + i);
 
 	for(int i = 0;i < m_nTabPageCount;++i)

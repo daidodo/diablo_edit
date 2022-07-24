@@ -193,15 +193,15 @@ struct CD2Item
 										01 = head(帽子)
 										02 = neck（项链）
 										03 = tors（衣服）
-										04 = rarm（右手，武器，盾）
-										05 = larm（左手，武器，盾）
+										04 = rarm（右手，武器，盾），角色当前使用的武器，可能是I或II
+										05 = larm（左手，武器，盾），角色当前使用的武器
 										06 = lrin（左手指，戒指）
 										07 = rrin（右手指，戒指）
 										08 = belt（腰带）
 										09 = feet（鞋子）
 										0a = glov（手套）
-										0b = ralt（右II手，Expansion Set only）
-										0c = lalt（左II手，Expansion Set only）*/
+										0b = ralt（右手Alternative，Expansion Set only），角色当前没有使用的武器，可能是I或II
+										0c = lalt（左手Alternative，Expansion Set only），角色当前没有使用的武器*/
 	BYTE	iColumn = 0;			//bit 65-68
 	BYTE	iRow = 0;				//bit 69-72
 	BYTE	iStoredIn = 1;			//bit 73-75,0 = equip/belt, 1 = inventory, 2 = ?, 3 = ?, 4 = cube, 5 = stash
