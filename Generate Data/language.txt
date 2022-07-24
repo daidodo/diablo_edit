@@ -1569,7 +1569,7 @@
 	%+d Attack Rating vs Demons	%+d 对恶魔的命中率	%+d 對惡魔的命中率
 	%+d Attack Rating vs Undead	%+d 对不死生物命中率	%+d 對不死生物命中率
 	Throwable	可投掷	可投擲
-	%+d Fire Skills %d	%+d 火焰技能 %d	%+d 火焰技能 %d
+	%+d Fire Skills	%+d 火焰技能	%+d 火焰技能
 	%+d All Skills	全部技能 %+d	全部技能 %+d 
 	Attacker Takes Lightning Damage of %+d	攻击者受到 %+d 电击伤害	攻擊者受到 %+d 電擊傷害
 	Iron Maiden Level	攻击反噬	攻擊反噬
@@ -1695,7 +1695,7 @@
 	%+g Kick Damage per Leve	%+g 脚踢伤害 (以角色等级决定)	%+g 脚踢伤害脚踢傷害 (以角色等級決定)
 	%+g%% Chance of Deadly Strike per Level	%+g%% 致命攻击 (以角色等级决定)	%+g%% 致命攻擊 (以角色等級決定)
 	Find Gems per Level	宝石掉落	寶石掉落
-	Repairs 1 Durability in %d Seconds	回复装备耐久度1和 %d 秒内	回復裝備耐久度1於 %d 秒内
+	Repairs 1 Durability in %d Seconds	回复装备耐久度1于 %d 秒内	回復裝備耐久度1於 %d 秒内
 	Replenishes 1 Quantity in %d Seconds	在 %d 秒内回复数量1	在 %d 秒内回復數量1
 	Increased Stack Size %+d	增加的空间 %+d	增加的空間 %+d
 	Uncoded		
@@ -1748,10 +1748,10 @@
 	%+d - %d Kick Damage (Increases %s)	%+d - %d 脚踢伤害 (%s 增加)	%+d - %d 脚踢伤害脚踢傷害 (%s 增加)
 	%+d - %d Chance of  Deadly Strike (Increases %s)	%+d - %d 致命攻击 (%s 增加)	%+d - %d 致命攻擊 (%s 增加)
 	Item Find Gems (by time)	宝石掉落	寶石掉落
-	%+d%% Enemy Cold Resist	%+d%% 对敌人冰冻系抗性	%+d%% 對敵人冰凍係抗性
-	%+d%% Enemy Fire Resist	%+d%% 对敌人火焰系抗性	%+d%% 對敵人火焰係抗性
-	%+d%% Enemy Lightning Resist	%+d%% 对敌人雷电系抗性	%+d%% 對敵人雷電係抗性
-	%+d%% Enemy Poison Resist	%+d%% 对敌人毒素系抗性	%+d%% 對敵人毒素係抗性
+	%+d%% Enemy Cold Resist	%+d%% 敌人冰冻系抗性	%+d%% 敵人冰凍係抗性
+	%+d%% Enemy Fire Resist	%+d%% 敌人火焰系抗性	%+d%% 敵人火焰係抗性
+	%+d%% Enemy Lightning Resist	%+d%% 敌人雷电系抗性	%+d%% 敵人雷電係抗性
+	%+d%% Enemy Poison Resist	%+d%% 敌人毒素系抗性	%+d%% 敵人毒素係抗性
 	Item Damage vs Monster		
 	Item Damage Percent vs Monster		
 	Item Tohit vs Monster		
@@ -1772,14 +1772,14 @@
 	Poison Count		
 	Damage Frame Rate		
 	Pierce IDX		
-	%+d%% Fire Skill Damage	%+d%% 对火焰技能伤害	%+d%% 對火焰技能傷害
-	%+d%% Lightning Skill Damage	%+d%% 对雷电系技能伤害	%+d%% 對雷電係技能傷害
-	%+d%% Cold Skill Damage	%+d%% 对冰冻技能伤害	%+d%% 對冰凍技能傷害
-	%+d%% Poison Skill Damage	%+d%% 对毒素技能伤害	%+d%% 對毒素技能傷害
-	%+d%% Enemy Fire Resist	%+d%% 对敌人火焰系抗性	%+d%% 對敵人火焰係抗性
-	%+d%% Enemy Lightning Resist	%+d%% 对敌人雷电系抗性	%+d%% 對敵人雷電係抗性
-	%+d%% Enemy Cold Resist	%+d%% 对敌人冰冻系抗性	%+d%% 對敵人冰凍係抗性
-	%+d%% Enemy Poison Resist	%+d%% 对敌人毒素系抗性	%+d%% 對敵人毒素係抗性
+	%+d%% Fire Skill Damage	%+d%% 火焰技能伤害	%+d%% 火焰技能傷害
+	%+d%% Lightning Skill Damage	%+d%% 雷电系技能伤害	%+d%% 雷電係技能傷害
+	%+d%% Cold Skill Damage	%+d%% 冰冻技能伤害	%+d%% 冰凍技能傷害
+	%+d%% Poison Skill Damage	%+d%% 毒素技能伤害	%+d%% 毒素技能傷害
+	%+d%% Enemy Fire Resist	%+d%% 敌人火焰系抗性	%+d%% 敵人火焰係抗性
+	%+d%% Enemy Lightning Resist	%+d%% 敌人雷电系抗性	%+d%% 敵人雷電係抗性
+	%+d%% Enemy Cold Resist	%+d%% 敌人冰冻系抗性	%+d%% 敵人冰凍係抗性
+	%+d%% Enemy Poison Resist	%+d%% 敌人毒素系抗性	%+d%% 敵人毒素係抗性
 	Passive Critical Strike %d	致命一击 %d	致命一擊 %d
 	Passive Dodge %d	闪避 %d	閃避 %d
 	Passive Avoid %d	躲避 %d	躲避 %d
