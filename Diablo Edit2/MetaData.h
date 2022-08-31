@@ -56,16 +56,16 @@ struct CPropertyField
 class CPropertyMetaData
 {
 	std::vector<CPropertyField> fields_;
-	int def_ = 0;
+	DWORD def_ = 0;
 	int bitsSum_ = 0;
 public:
 	CPropertyMetaData() {}
-	CPropertyMetaData(const std::vector<CPropertyField> & fields, int def);
+	CPropertyMetaData(const std::vector<CPropertyField> & fields, DWORD def);
 	int Bits() const { return bitsSum_; }
 	std::vector<int> Parse(DWORD value) const;
 	std::vector<std::tuple<int, int, int>> GetParams(DWORD value) const;
-	int GetValue(const std::vector<int> & params) const;
-	int DefaultValue() const { return def_; }
+	std::pair<BOOL, DWORD> GetValue(const std::vector<int> & params) const;
+	DWORD DefaultValue() const { return def_; }
 };
 
 CString CSFormat(LPCTSTR lpszFormat, ...);

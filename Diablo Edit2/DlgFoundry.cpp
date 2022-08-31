@@ -906,7 +906,7 @@ void CDlgFoundry::OnLvnItemchangedList1(NMHDR *pNMHDR, LRESULT *pResult) {
 	*pResult = 0;
 }
 
-int CDlgFoundry::GatherParamaters(const CPropertyMetaData & meta) const {
+pair<BOOL, DWORD> CDlgFoundry::GatherParamaters(const CPropertyMetaData & meta) const {
 	vector<int> ret;
 	for (UINT i = 0; i < size(m_edParam); ++i) {
 		auto & ed = m_edParam[i];
@@ -917,7 +917,7 @@ int CDlgFoundry::GatherParamaters(const CPropertyMetaData & meta) const {
 			auto & cb = m_cbParam[i];
 			const int sel = cb.GetCurSel();
 			if (sel < 0 || cb.GetCount() <= sel)
-				return -1;
+				return make_pair(FALSE, 0);
 			ret.push_back(cb.GetItemData(sel));	//用Item Data作为值
 		}
 	}
@@ -948,12 +948,12 @@ void CDlgFoundry::OnEnChangeParam() {
 	const auto code = pp[idx].first;
 	auto & meta = ::theApp.PropertyMetaData(code);
 	//update value
-	const int v = GatherParamaters(meta);
-	if (v < 0)
+	const auto v = GatherParamaters(meta);
+	if (!v.first)
 		return;
-	pp[idx].second = v;
+	pp[idx].second = v.second;
 	//update desc
-	m_lstProperty.SetItemText(it, 1, ::theApp.PropertyDescription(code, v));
+	m_lstProperty.SetItemText(it, 1, ::theApp.PropertyDescription(code, v.second));
 	//extend sockets
 	if (194 == code) {
 		m_sExtSockets = CSFormat(_T("%d"), ExtendSockets());

@@ -61,7 +61,7 @@ private:
 	void SetupParamTime(UINT idx, BOOL enabled, int value);						//设置时间选择控件
 	void SetupParamListGeneric(UINT idx, BOOL enabled, int value, std::function<int(CComboBox &)> setup);	//设置下拉框参数控件，通用版本
 	void SetupParamValueFrom(UINT idx, BOOL enabled, const std::vector<CPropParam> & param);	//设置后续数值控件
-	int GatherParamaters(const CPropertyMetaData & meta) const;		//收集参数控件的值，得到属性的参数
+	std::pair<BOOL, DWORD> GatherParamaters(const CPropertyMetaData & meta) const;		//收集参数控件的值，得到属性的参数
 	int ExtendSockets() const;		//所有属性列表里扩展孔的总数
 
 // 对话框数据

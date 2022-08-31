@@ -17,7 +17,7 @@ const CPropertyField & CPropertyField::Normalze() {
 
 //class CPropertyMetaData
 
-CPropertyMetaData::CPropertyMetaData(const vector<CPropertyField> & fields, int def)
+CPropertyMetaData::CPropertyMetaData(const vector<CPropertyField> & fields, DWORD def)
 	: fields_(fields)
 	, def_(def)
 {
@@ -27,10 +27,10 @@ CPropertyMetaData::CPropertyMetaData(const vector<CPropertyField> & fields, int 
 vector<int> CPropertyMetaData::Parse(DWORD value) const {
 	vector<int> ret;
 	for (auto & f : fields_) {
-		ret.push_back((value & ((DWORD(1) << f.bits) - 1)) + f.base);
+		ret.push_back((value & f.max) + f.base);
 		value >>= f.bits;
 	}
-	return move(ret);
+	return ret;
 }
 
 vector<tuple<int, int, int>> CPropertyMetaData::GetParams(DWORD value) const {
@@ -41,22 +41,21 @@ vector<tuple<int, int, int>> CPropertyMetaData::GetParams(DWORD value) const {
 		ret.emplace_back(value & ((DWORD(1) << f.bits) - 1), f.min, f.max);
 		value >>= f.bits;
 	}
-	return move(ret);
+	return ret;
 }
 
-int CPropertyMetaData::GetValue(const std::vector<int> & params) const {
-	int r = 0, i = -1, s = 0;
+pair<BOOL, DWORD> CPropertyMetaData::GetValue(const std::vector<int> & params) const {
+	int i = 0, s = 0;
+	DWORD r = 0;
 	for (auto & f : fields_) {
-		if (f.bits < 1)
-			break;
-		if(++i >= int(params.size()))
-			return -1;
-		if (params[i] < f.min || f.max < params[i])
-			return -1;
-		r += params[i] << s;
+		DWORD v = i < int(params.size()) ? params[i] : 0;
+		if (int(v) < f.min || f.max < int(v))
+			return make_pair(FALSE, 0);
+		r += v << s;
 		s += f.bits;
+		++i;
 	}
-	return r;
+	return make_pair(TRUE, r);
 }
 
 //CSFormat
