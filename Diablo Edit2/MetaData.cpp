@@ -7,7 +7,7 @@ using namespace std;
 
 //struct CPropertyField
 
-const CPropertyField & CPropertyField::Normalze() {
+const CPropertyField & CPropertyField::Normalize() {
 	ASSERT(0 <= bits && 0 <= min);
 	if (0 == max)
 		max = (1 << bits) - 1;

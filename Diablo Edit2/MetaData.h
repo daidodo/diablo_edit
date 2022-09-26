@@ -49,7 +49,7 @@ struct CPropertyField
 {
 	int bits, base, min, max;
 	//Functions:
-	const CPropertyField & Normalze();
+	const CPropertyField & Normalize();
 };
 
 //属性元数据

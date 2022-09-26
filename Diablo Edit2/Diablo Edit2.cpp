@@ -496,7 +496,7 @@ BOOL CDiabloEdit2App::ReadPropRes() {
 		parse(ls, id) && parse(ls, def);
 		if (id < 0)
 			return FALSE;
-		for (CPropertyField f;; fields.push_back(f.Normalze())) {
+		for (CPropertyField f;; fields.push_back(f.Normalize())) {
 			f.bits = f.base = f.min = f.max = 0;
 			if (!(parse(ls, f.bits) && parse(ls, f.base) && parse(ls, f.min) && parse(ls, f.max)))
 				break;
