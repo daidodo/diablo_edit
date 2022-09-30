@@ -493,7 +493,7 @@ BOOL CDiabloEdit2App::ReadPropRes() {
 		istringstream ls(line);
 		int verMin = 0, id = -1, def = 0;
 		vector<CPropertyField> fields;
-		parse(ls, verMin) && parse(ls, id) && parse(ls, def);
+		parse(ls, id) && parse(ls, verMin) && parse(ls, def);
 		if (id < 0)
 			return FALSE;
 		for (CPropertyField f;; fields.push_back(f.Normalize())) {
@@ -552,7 +552,7 @@ CString CDiabloEdit2App::PropertyDescription(DWORD version, WORD id, DWORD value
 }
 
 CString CDiabloEdit2App::PropertyDescription(DWORD version, WORD id) const {
-	return PropertyDescription(id, PropertyMetaData(version, id).DefaultValue());
+	return PropertyDescription(version, id, PropertyMetaData(version, id).DefaultValue());
 }
 
 vector<CPropParam> CDiabloEdit2App::PropertyParameters(DWORD version, WORD id, DWORD value) const {

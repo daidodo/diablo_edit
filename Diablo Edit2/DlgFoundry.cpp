@@ -173,7 +173,7 @@ void CDlgFoundry::InitUI() {
 	m_lstProperty.InsertColumn(1, ::theApp.FoundryUI(idx++), LVCFMT_LEFT, 300);
 	for (UINT i = 0; i < ::theApp.PropertyNameSize(); ++i) {
 		m_lstProperty.InsertItem(i, CSFormat(_T("%3d"), i));				//属性ID
-		m_lstProperty.SetItemText(i, 1, ::theApp.PropertyDescription(i));	//属性描述
+		m_lstProperty.SetItemText(i, 1, ::theApp.PropertyDescription(m_stItem.dwVersion, i));	//属性描述
 	}
 }
 
@@ -627,7 +627,7 @@ void CDlgFoundry::UpdatePropList() {
 				continue;
 			const auto value = p.first.mProperty[idx].second;
 			const int i = m_lstProperty.InsertItem(m_lstProperty.GetItemCount(), CSFormat(_T("%3d"), code));	//属性ID
-			m_lstProperty.SetItemText(i, 1, ::theApp.PropertyDescription(code, value));	//属性描述
+			m_lstProperty.SetItemText(i, 1, ::theApp.PropertyDescription(m_stItem.dwVersion, code, value));	//属性描述
 			m_lstProperty.SetItemData(i, idx + 1);	//设置为索引+1，非0
 			m_lstProperty.SetCheck(i, TRUE);
 		}
@@ -635,7 +635,7 @@ void CDlgFoundry::UpdatePropList() {
 	//add unchecked items and sort
 	for (UINT c = 0; c < ::theApp.PropertyNameSize(); ++c) {
 		const int i = m_lstProperty.InsertItem(m_lstProperty.GetItemCount(), CSFormat(_T("%3d"), c));	//属性ID
-		m_lstProperty.SetItemText(i, 1, ::theApp.PropertyDescription(c));	//属性描述
+		m_lstProperty.SetItemText(i, 1, ::theApp.PropertyDescription(m_stItem.dwVersion, c));	//属性描述
 	}
 	m_lstProperty.SortItemsEx(PropItemCompare, reinterpret_cast<LPARAM>(&m_lstProperty));
 }
@@ -775,7 +775,7 @@ void CDlgFoundry::SetupParamTime(UINT idx, BOOL enabled, int value) {
 
 void CDlgFoundry::SetupPropParameters(int id, int value, BOOL checked) {
 	ASSERT(0 <= id);
-	const auto p = ::theApp.PropertyParameters(id, value);
+	const auto p = ::theApp.PropertyParameters(m_stItem.dwVersion, id, value);
 	switch (id) {
 		case 83:
 			ASSERT(p.size() == 2);
@@ -873,9 +873,9 @@ BOOL CDlgFoundry::ChangePropItemChecked(LPNMLISTVIEW pNMLV) {
 	int code = 0, value = 0;
 	if (bChecked) {	//check a new item
 		code = intOf(m_lstProperty.GetItemText(idx, 0));
-		value = ::theApp.PropertyMetaData(code).DefaultValue();
+		value = ::theApp.PropertyMetaData(m_stItem.dwVersion, code).DefaultValue();
 		const int i = m_lstProperty.InsertItem(idx + 1, CSFormat(_T("%3d"), code));	//insert new item with same code
-		m_lstProperty.SetItemText(i, 1, ::theApp.PropertyDescription(code, value));
+		m_lstProperty.SetItemText(i, 1, ::theApp.PropertyDescription(m_stItem.dwVersion, code, value));
 		p.emplace_back(code, value);	//add property to list
 		m_lstProperty.SetItemData(idx, p.size());
 	} else {		//uncheck an item
@@ -906,7 +906,7 @@ void CDlgFoundry::OnLvnItemchangedList1(NMHDR *pNMHDR, LRESULT *pResult) {
 	*pResult = 0;
 }
 
-pair<BOOL, DWORD> CDlgFoundry::GatherParamaters(const CPropertyMetaData & meta) const {
+pair<BOOL, DWORD> CDlgFoundry::GatherParamaters(const CPropertyMetaDataItem & meta) const {
 	vector<int> ret;
 	for (UINT i = 0; i < size(m_edParam); ++i) {
 		auto & ed = m_edParam[i];
@@ -946,14 +946,14 @@ void CDlgFoundry::OnEnChangeParam() {
 	const UINT idx = m_lstProperty.GetItemData(it) - 1;
 	ASSERT(idx < pp.size());
 	const auto code = pp[idx].first;
-	auto & meta = ::theApp.PropertyMetaData(code);
+	auto & meta = ::theApp.PropertyMetaData(m_stItem.dwVersion, code);
 	//update value
 	const auto v = GatherParamaters(meta);
 	if (!v.first)
 		return;
 	pp[idx].second = v.second;
 	//update desc
-	m_lstProperty.SetItemText(it, 1, ::theApp.PropertyDescription(code, v.second));
+	m_lstProperty.SetItemText(it, 1, ::theApp.PropertyDescription(m_stItem.dwVersion, code, v.second));
 	//extend sockets
 	if (194 == code) {
 		m_sExtSockets = CSFormat(_T("%d"), ExtendSockets());

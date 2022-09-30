@@ -52,7 +52,7 @@ private:
 	void UpdatePropList();	//根据属性TAB的选择，更新属性列表
 	BOOL ChangePropItemSelection(LPNMLISTVIEW pNMLV);	//检查属性列表选中项的变化，更新参数控件
 	BOOL ChangePropItemChecked(LPNMLISTVIEW pNMLV);		//检查属性列表check项的变化，增加/删除属性，更新参数控件
-	void SetupPropParameters(int id, int value, BOOL checked);					//根据属性id和值，设置参数控件
+	void SetupPropParameters(int id, int value, BOOL checked);	//根据属性id和值，设置参数控件
 	void SetupParamValue(UINT idx, BOOL enabled, const CPropParam & param);		//设置数值控件
 	void SetupParamClass(UINT idx, BOOL enabled, int value);					//设置角色选择控件
 	void SetupParamSkill(UINT idx, BOOL enabled, int value, BOOL classOnly);	//设置技能选择控件，classOnly表示是否只包括角色技能
@@ -61,7 +61,7 @@ private:
 	void SetupParamTime(UINT idx, BOOL enabled, int value);						//设置时间选择控件
 	void SetupParamListGeneric(UINT idx, BOOL enabled, int value, std::function<int(CComboBox &)> setup);	//设置下拉框参数控件，通用版本
 	void SetupParamValueFrom(UINT idx, BOOL enabled, const std::vector<CPropParam> & param);	//设置后续数值控件
-	std::pair<BOOL, DWORD> GatherParamaters(const CPropertyMetaData & meta) const;		//收集参数控件的值，得到属性的参数
+	std::pair<BOOL, DWORD> GatherParamaters(const CPropertyMetaDataItem & meta) const;		//收集参数控件的值，得到属性的参数
 	int ExtendSockets() const;		//所有属性列表里扩展孔的总数
 
 // 对话框数据
