@@ -114,6 +114,8 @@ struct CExtItemInfo
 	BOOL IsSet() const { return iQuality == 5; }
 	int RuneWordId() const { ASSERT(wRune.exist()); return (wRune & 0xFFF); }
 	int Gems() const { return nGems; }
+	void ReadData(CInBitsStream& bs, BOOL bIsCharm,  BOOL bRuneWord, BOOL bPersonalized, BOOL bHasMonsterID, BOOL bHasSpellId, BOOL isPtr24);
+	void WriteData(COutBitsStream& bs, BOOL bIsCharm, BOOL bRuneWord, BOOL bPersonalized, BOOL bHasMonsterID, BOOL bHasSpellId, BOOL isPtr24) const;
 };
 
 //Type Specific info
@@ -136,6 +138,8 @@ struct CTypeSpecificInfo
 	int GetDefence() const { ASSERT(iDefence.exist()); return iDefence - 10; }
 	void SetDefence(int def) { iDefence.ensure() = def + 10; }
 	BOOL IsIndestructible() const;
+	void ReadData(CInBitsStream& bs, BOOL bHasDef, BOOL bHasDur, BOOL bSocketed, BOOL bIsStacked, BOOL bIsSet, BOOL bRuneWord);
+	void WriteData(COutBitsStream& bs, BOOL bHasDef, BOOL bHasDur, BOOL bSocketed, BOOL bIsStacked, BOOL bIsSet, BOOL bRuneWord) const;
 };
 
 //ItemInfo
