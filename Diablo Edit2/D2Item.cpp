@@ -9,6 +9,7 @@
 #include <random>
 #include <ctime>
 #include <map>
+#include "D2Version.h"
 
 using namespace std;
 
@@ -147,9 +148,9 @@ static const HuffmanTree g_huffmanTree;
 
 // struct CEar
 
-void CEar::ReadData(CInBitsStream& bs, BOOL isPtr24) {
+void CEar::ReadData(CInBitsStream& bs, DWORD version) {
 	bs >> bits(iEarClass, 3) >> bits(iEarLevel, 7);
-	int b = isPtr24 ? 8 : 7;
+	int b = IsPtr24AndAbove(version) ? 8 : 7;
 	BYTE buf[0x40] = { 0 };	//人物名字最多15个UTF8字符 + \0 (16 * 4)
 	for (auto& c : buf) {
 		bs >> bits(c, b);
@@ -159,9 +160,10 @@ void CEar::ReadData(CInBitsStream& bs, BOOL isPtr24) {
 	sEarName = DecodeCharName(buf);
 }
 
-void CEar::WriteData(COutBitsStream& bs, BOOL isPtr24) const {
+void CEar::WriteData(COutBitsStream& bs, DWORD version) const {
 	bs << bits(iEarClass, 3) << bits(iEarLevel, 7);
 	const CStringA buf = EncodeCharName(sEarName);
+	const BOOL isPtr24 = IsPtr24AndAbove(version);
 	int b = isPtr24 ? 8 : 7;
 	int len = isPtr24 ? 60 : 15;	//60 = 15 * 4
 	for (int i = 0; i < buf.GetLength() && i < len; ++i) {
@@ -233,16 +235,16 @@ void CGoldQuantity::WriteData(COutBitsStream& bs) const {
 
 //struct CPropertyList
 
-void CPropertyList::ReadData(CInBitsStream& bs) {
+void CPropertyList::ReadData(CInBitsStream& bs, DWORD version) {
 	for (bs >> bits(iEndFlag, 9); bs.Good() && iEndFlag < 0x1FF; bs >> bits(iEndFlag, 9)) {
-		const int b = ::theApp.PropertyMetaData(iEndFlag).Bits();
+		const int b = ::theApp.PropertyMetaData(version, iEndFlag).Bits();
 		if (b > 0)
 			bs >> bits(mProperty.emplace_back(iEndFlag, 0).second, b);
 	}
 }
-void CPropertyList::WriteData(COutBitsStream& bs) const {
+void CPropertyList::WriteData(COutBitsStream& bs, DWORD version) const {
 	for (auto& p : mProperty) {
-		const int b = ::theApp.PropertyMetaData(p.first).Bits();
+		const int b = ::theApp.PropertyMetaData(version, p.first).Bits();
 		if (b > 0)
 			bs << bits(p.first, 9) << bits(p.second, b);
 	}
@@ -285,7 +287,7 @@ CExtItemInfo::CExtItemInfo(const CItemMetaData* meta) {
 	}
 }
 
-void CExtItemInfo::ReadData(CInBitsStream& bs, BOOL bIsCharm, BOOL bRuneWord, BOOL bPersonalized, BOOL bHasMonsterID, BOOL bHasSpellId, BOOL isPtr24) {
+void CExtItemInfo::ReadData(CInBitsStream& bs, DWORD version, BOOL bIsCharm, BOOL bRuneWord, BOOL bPersonalized, BOOL bHasMonsterID, BOOL bHasSpellId) {
 	bs >> bits(nGems, 3)
 		>> bits(dwGUID, 32)
 		>> bits(iDropLevel, 7)
@@ -328,7 +330,7 @@ void CExtItemInfo::ReadData(CInBitsStream& bs, BOOL bIsCharm, BOOL bRuneWord, BO
 	if (bRuneWord)
 		bs >> bits(wRune, 16);
 	if (bPersonalized) {
-		int b = isPtr24 ? 8 : 7;
+		int b = IsPtr24AndAbove(version) ? 8 : 7;
 		for (auto& c : sPersonName.ensure()) {
 			bs >> bits(c, b);
 			if (!bs.Good() || !c)
@@ -341,7 +343,7 @@ void CExtItemInfo::ReadData(CInBitsStream& bs, BOOL bIsCharm, BOOL bRuneWord, BO
 		bs >> bits(iSpellID, 5);
 }
 
-void CExtItemInfo::WriteData(COutBitsStream& bs, BOOL bIsCharm, BOOL bRuneWord, BOOL bPersonalized, BOOL bHasMonsterID, BOOL bHasSpellId, BOOL isPtr24) const {
+void CExtItemInfo::WriteData(COutBitsStream& bs, DWORD version, BOOL bIsCharm, BOOL bRuneWord, BOOL bPersonalized, BOOL bHasMonsterID, BOOL bHasSpellId) const {
 	bs << bits(nGems, 3)
 		<< bits(dwGUID, 32)
 		<< bits(iDropLevel, 7)
@@ -384,7 +386,7 @@ void CExtItemInfo::WriteData(COutBitsStream& bs, BOOL bIsCharm, BOOL bRuneWord, 
 	if (bRuneWord)	//
 		bs << bits(wRune, 16);
 	if (bPersonalized) {
-		int b = isPtr24 ? 8 : 7;
+		int b = IsPtr24AndAbove(version) ? 8 : 7;
 		for (auto c : sPersonName) {
 			bs << bits(c, b);
 			if (!bs.Good() || !c)
@@ -412,7 +414,7 @@ CTypeSpecificInfo::CTypeSpecificInfo(const CItemMetaData* meta) {
 	}
 }
 
-void CTypeSpecificInfo::ReadData(CInBitsStream& bs, BOOL bHasDef, BOOL bHasDur, BOOL bSocketed, BOOL bIsStacked, BOOL bIsSet, BOOL bRuneWord) {
+void CTypeSpecificInfo::ReadData(CInBitsStream& bs, DWORD version, BOOL bHasDef, BOOL bHasDur, BOOL bSocketed, BOOL bIsStacked, BOOL bIsSet, BOOL bRuneWord) {
 	if (bHasDef)
 		bs >> bits(iDefence, 11);
 	if (bHasDur) {
@@ -430,16 +432,16 @@ void CTypeSpecificInfo::ReadData(CInBitsStream& bs, BOOL bHasDef, BOOL bHasDur, 
 		for (auto& b : aHasSetPropList.ensure())
 			if (bs.Good())
 				bs >> b;
-	stPropertyList.ReadData(bs);
+	stPropertyList.ReadData(bs, version);
 	if (bIsSet) 	//这是一个套装
 		for (size_t i = 0; bs.Good() && i < aHasSetPropList.size(); ++i)
 			if (aHasSetPropList[i])
-				apSetProperty[i].ensure().ReadData(bs);
+				apSetProperty[i].ensure().ReadData(bs, version);
 	if (bRuneWord)	//有符文之语属性
-		stRuneWordPropertyList.ensure().ReadData(bs);
+		stRuneWordPropertyList.ensure().ReadData(bs, version);
 }
 
-void CTypeSpecificInfo::WriteData(COutBitsStream& bs, BOOL bHasDef, BOOL bHasDur, BOOL bSocketed, BOOL bIsStacked, BOOL bIsSet, BOOL bRuneWord) const {
+void CTypeSpecificInfo::WriteData(COutBitsStream& bs, DWORD version, BOOL bHasDef, BOOL bHasDur, BOOL bSocketed, BOOL bIsStacked, BOOL bIsSet, BOOL bRuneWord) const {
 	if (bHasDef)
 		bs << bits(iDefence, 11);
 	if (bHasDur) {
@@ -455,13 +457,13 @@ void CTypeSpecificInfo::WriteData(COutBitsStream& bs, BOOL bHasDef, BOOL bHasDur
 		for (auto b : aHasSetPropList)
 			if (bs.Good())
 				bs << b;
-	stPropertyList.WriteData(bs);
+	stPropertyList.WriteData(bs, version);
 	if (bIsSet) 	//这是一个套装
 		for (size_t i = 0; bs.Good() && i < aHasSetPropList.size(); ++i)
 			if (aHasSetPropList[i])
-				apSetProperty[i]->WriteData(bs);
+				apSetProperty[i]->WriteData(bs,version);
 	if (bRuneWord)	//有符文之语属性
-		stRuneWordPropertyList->WriteData(bs);
+		stRuneWordPropertyList->WriteData(bs, version);
 }
 
 pair<int, int> CTypeSpecificInfo::Sockets() const {
@@ -501,7 +503,8 @@ CItemInfo::CItemInfo(const CItemMetaData* meta) {
 	}
 }
 
-const CItemMetaData* CItemInfo::ReadData(CInBitsStream& bs, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed, BOOL isD2R, BOOL isPtr24) {
+const CItemMetaData* CItemInfo::ReadData(CInBitsStream& bs, DWORD version, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed) {
+	const BOOL isD2R = IsD2R(version);
 	for (auto& b : sTypeName)
 		if (isD2R)
 			b = g_huffmanTree.readData(bs);
@@ -517,12 +520,12 @@ const CItemMetaData* CItemInfo::ReadData(CInBitsStream& bs, BOOL bSimple, BOOL b
 	}
 	if (!bSimple)	//物品有额外属性
 		pExtItemInfo.ensure().ReadData(bs,
+			version,
 			pItemData->IsCharm,
 			bRuneWord,
 			bPersonalized,
 			pItemData->HasMonsterID,
-			pItemData->SpellId,
-			isPtr24);
+			pItemData->SpellId);
 	//特殊物品类型的额外数据
 	if (IsGold())	//gld 的数量域
 		pGold.ensure().ReadData(bs);
@@ -534,6 +537,7 @@ const CItemMetaData* CItemInfo::ReadData(CInBitsStream& bs, BOOL bSimple, BOOL b
 					bs >> bits(i, 32);
 		//Type Specific info
 		pTpSpInfo.ensure().ReadData(bs,
+			version,
 			pItemData->HasDef,
 			pItemData->HasDur,
 			bSocketed,
@@ -550,7 +554,8 @@ const CItemMetaData* CItemInfo::ReadData(CInBitsStream& bs, BOOL bSimple, BOOL b
 	return pItemData;
 }
 
-void CItemInfo::WriteData(COutBitsStream& bs, const CItemMetaData& itemData, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed, BOOL isD2R, BOOL isPtr24) const {
+void CItemInfo::WriteData(COutBitsStream& bs, const CItemMetaData& itemData, DWORD version, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed) const {
+	const BOOL isD2R = IsD2R(version);
 	for (auto b : sTypeName)
 		if (isD2R)
 			g_huffmanTree.writeData(bs, b);
@@ -558,12 +563,12 @@ void CItemInfo::WriteData(COutBitsStream& bs, const CItemMetaData& itemData, BOO
 			bs << bits(b, 8);
 	if (!bSimple)	//物品有额外属性
 		pExtItemInfo->WriteData(bs,
+			version,
 			itemData.IsCharm,
 			bRuneWord,
 			bPersonalized,
 			itemData.HasMonsterID,
-			itemData.SpellId,
-			isPtr24);
+			itemData.SpellId);
 	//特殊物品类型的额外数据
 	if (IsGold())	//gld 的数量域
 		pGold->WriteData(bs);
@@ -574,6 +579,7 @@ void CItemInfo::WriteData(COutBitsStream& bs, const CItemMetaData& itemData, BOO
 				bs << bits(i, 32);
 	if (!bSimple) {	//Type Specific info
 		pTpSpInfo->WriteData(bs,
+			version,
 			itemData.HasDef,
 			itemData.HasDur,
 			bSocketed,
@@ -678,7 +684,8 @@ int CD2Item::GemIndexMax() const {
 	return r;
 }
 
-void CD2Item::ReadData(CInBitsStream& bs, BOOL isD2R, BOOL isPtr24) {
+void CD2Item::ReadData(CInBitsStream& bs, DWORD version) {
+	const BOOL isD2R = IsD2R(version);
 	if (!isD2R) {
 		bs >> wMajic;
 		if (wMajic != 0x4D4A && wMajic != 0x2010)
@@ -713,23 +720,24 @@ void CD2Item::ReadData(CInBitsStream& bs, BOOL isD2R, BOOL isPtr24) {
 		>> bits(iRow, 4)
 		>> bits(iStoredIn, 3);
 	if (bEar) {	//这是一个耳朵
-		pEar.ensure().ReadData(bs, isPtr24);
+		pEar.ensure().ReadData(bs, version);
 		pItemData = ::theApp.ItemMetaData(0x20726165);	//"ear "
 	}
 	else 		//这是一个物品,但是也可能为"ear "
-		pItemData = pItemInfo.ensure().ReadData(bs, bSimple, bRuneWord, bPersonalized, bSocketed, isD2R, isPtr24);
+		pItemData = pItemInfo.ensure().ReadData(bs, version, bSimple, bRuneWord, bPersonalized, bSocketed);
 	ASSERT(pItemData && bSimple == pItemData->Simple);
 	bs.AlignByte();
 	aGemItems.resize(Gems());
 	for (auto& item : aGemItems)
-		item.ReadData(bs, isD2R, isPtr24);
+		item.ReadData(bs, version);
 }
 
-void CD2Item::WriteData(COutBitsStream& bs, BOOL isD2R, BOOL isPtr24) const {
+void CD2Item::WriteData(COutBitsStream& bs, DWORD version) const {
 	if (!vUnknownItem.empty()) {	//未识别物品数据
 		bs << vUnknownItem;
 	}
 	else {
+		const BOOL isD2R = IsD2R(version);
 		if (!isD2R)
 			bs << wMajic;
 		bs << bQuest
@@ -761,22 +769,23 @@ void CD2Item::WriteData(COutBitsStream& bs, BOOL isD2R, BOOL isPtr24) const {
 			<< bits(iRow, 4)
 			<< bits(iStoredIn, 3);
 		if (bEar) {	//这是一个耳朵
-			pEar->WriteData(bs, isPtr24);
+			pEar->WriteData(bs, version);
 		}
 		else		//这是一个物品
-			pItemInfo->WriteData(bs, *pItemData, bSimple, bRuneWord, bPersonalized, bSocketed, isD2R, isPtr24);
+			pItemInfo->WriteData(bs, *pItemData, version, bSimple, bRuneWord, bPersonalized, bSocketed);
 	}
 	bs.AlignByte();
 	for (auto item : aGemItems)
 		if (bs.Good())
-			item.WriteData(bs, isD2R, isPtr24);
+			item.WriteData(bs, version);
 }
 
 BOOL CD2Item::ReadFile(CFile& file) {
 	CInBitsStream bs;
 	bs.ReadFile(file);
 	try {
-		ReadData(bs, FALSE, FALSE);
+		//TODO: Consider version when writing.
+		ReadData(bs, 0);
 	}
 	catch (...) {
 		return FALSE;
@@ -786,13 +795,14 @@ BOOL CD2Item::ReadFile(CFile& file) {
 
 void CD2Item::WriteFile(CFile& file) const {
 	COutBitsStream bs;
-	WriteData(bs, FALSE, FALSE);
+	//TODO: Consider version when writing.
+	WriteData(bs, 0);
 	bs.WriteFile(file);
 }
 
 // struct CItemList
 
-void CItemList::ReadData(CInBitsStream& bs, BOOL isD2R, BOOL isPtr24) {
+void CItemList::ReadData(CInBitsStream& bs, DWORD version) {
 	WORD nItems;
 	bs >> wMajic >> nItems;
 	if (wMajic != 0x4D4A)
@@ -801,16 +811,16 @@ void CItemList::ReadData(CInBitsStream& bs, BOOL isD2R, BOOL isPtr24) {
 	for (auto& item : vItems) {
 		if (!bs.Good())
 			break;
-		item.ReadData(bs, isD2R, isPtr24);
+		item.ReadData(bs, version);
 	}
 }
 
-void CItemList::WriteData(COutBitsStream& bs, BOOL isD2R, BOOL isPtr24) const {
+void CItemList::WriteData(COutBitsStream& bs, DWORD version) const {
 	bs << WORD(0x4D4A) << WORD(vItems.size());
 	const auto off = bs.BytePos();
 	for (auto& item : vItems) {
 		if (!bs.Good())
 			break;
-		item.WriteData(bs, isD2R, isPtr24);
+		item.WriteData(bs, version);
 	}
 }
