@@ -57,15 +57,15 @@ CDlgCharBasicInfo::CDlgCharBasicInfo(CWnd* pParent /*=NULL*/)
 	, m_dwMaxGoldInStash(0)
 	, m_sGoldinStash(_T("0-50000"))
 {
-	::ZeroMemory(m_bSkills,sizeof(m_bSkills));
+	::ZeroMemory(m_bSkills, sizeof(m_bSkills));
 }
 
 CDlgCharBasicInfo::~CDlgCharBasicInfo()
 {
-	if(m_dlgTabPage){
-		for(int i = 0;i < m_nTabPageCount;++i)
+	if (m_dlgTabPage) {
+		for (int i = 0; i < m_nTabPageCount; ++i)
 			delete m_dlgTabPage[i];
-		delete [] m_dlgTabPage;
+		delete[] m_dlgTabPage;
 		m_dlgTabPage = 0;
 	}
 }
@@ -145,16 +145,17 @@ BEGIN_MESSAGE_MAP(CDlgCharBasicInfo, CDialog)
 END_MESSAGE_MAP()
 
 // 更新显示的人物信息
-void CDlgCharBasicInfo::UpdateUI(const CD2S_Struct & character)
+void CDlgCharBasicInfo::UpdateUI(const CD2S_Struct& character)
 {
-	switch(character.dwVersion){
+	switch (character.dwVersion) {
+		case 0x63:m_sVersion = _T("PTR2.5"); break;
 		case 0x62:m_sVersion = _T("PTR2.4"); break;
 		case 0x61:m_sVersion = _T("Resurrected"); break;
 		case 0x60:m_sVersion = _T("1.1x"); break;
-		case 0x5C:m_sVersion = _T("1.09");break;
-		case 0x59:m_sVersion = _T("Standard 1.08");break;
-		case 0x57:m_sVersion = _T("1.07/Expansion 1.08");break;
-		case 0x47:m_sVersion = _T("1.00-1.06");break;
+		case 0x5C:m_sVersion = _T("1.09"); break;
+		case 0x59:m_sVersion = _T("Standard 1.08"); break;
+		case 0x57:m_sVersion = _T("1.07/Expansion 1.08"); break;
+		case 0x47:m_sVersion = _T("1.00-1.06"); break;
 		default:m_sVersion = ::theApp.MsgUnknown();
 	}
 	m_cbCharClass.SetCurSel(character.charClass);
@@ -163,17 +164,17 @@ void CDlgCharBasicInfo::UpdateUI(const CD2S_Struct & character)
 	m_bHardcore = character.isHardcore();
 	m_bDiedBefore = character.isDiedBefore();
 	m_sName = character.name();
-	if(character.charTitle == 0xF)
+	if (character.charTitle == 0xF)
 		m_sCharTitle = _T("Patriarch/Matriarch");
-	else if(character.charTitle >= 0xA)
+	else if (character.charTitle >= 0xA)
 		m_sCharTitle = _T("Champion");
-	else if(character.charTitle >= 5)
+	else if (character.charTitle >= 5)
 		m_sCharTitle = _T("Slayer");
 	else
 		m_sCharTitle.Empty();
 	m_tTime = character.dwTime;
-	for(int i = 0;i < 3;++i)
-		if((character.Town)[i]){
+	for (int i = 0; i < 3; ++i)
+		if ((character.Town)[i]) {
 			m_cbLastDifficult.SetCurSel(i);
 			m_cbLastACT.SetCurSel((character.Town)[i] & 7);
 		}
@@ -195,32 +196,32 @@ void CDlgCharBasicInfo::UpdateUI(const CD2S_Struct & character)
 	m_dwGoldInStash = character.PlayerStats.m_adwValue[0xF];
 	m_cbLevelAndExp.SetCurSel(m_uCharLevel);
 
-	::CopyMemory(m_bSkills,character.Skills.bSkillLevel,sizeof(m_bSkills));
+	::CopyMemory(m_bSkills, character.Skills.bSkillLevel, sizeof(m_bSkills));
 	//更新最大Gold数量
 	m_dwMaxGoldInBody = m_uCharLevel * 10000;
-	m_sGoldinPer.Format(_T("0-%u"),m_dwMaxGoldInBody);
+	m_sGoldinPer.Format(_T("0-%u"), m_dwMaxGoldInBody);
 	m_dwMaxGoldInStash = (m_uCharLevel < 31 ? (m_uCharLevel / 10 + 1) * 50000 : (m_uCharLevel / 2 + 1) * 50000);
-	m_sGoldinStash.Format(_T("0-%u"),m_dwMaxGoldInStash);
-	
-	for(int i = 0;i < m_nTabPageCount;++i)
+	m_sGoldinStash.Format(_T("0-%u"), m_dwMaxGoldInStash);
+
+	for (int i = 0; i < m_nTabPageCount; ++i)
 		m_dlgTabPage[i]->UpdateUI(character);
 
 	UpdateData(FALSE);
 }
 
-BOOL CDlgCharBasicInfo::GatherData(CD2S_Struct & character)
+BOOL CDlgCharBasicInfo::GatherData(CD2S_Struct& character)
 {
 	UpdateData(TRUE);
-	if(!::CheckCharName(m_sName)){
+	if (!::CheckCharName(m_sName)) {
 		MessageBox(::theApp.MsgBoxInfo(0), ::theApp.MsgError(), MB_ICONERROR);
 		return FALSE;
 	}
 	character.name(m_sName);
-	if(m_uCharLevel < 1 || m_uCharLevel > 127){
-		MessageBox(::theApp.MsgBoxInfo(1),::theApp.MsgError(),MB_ICONERROR);
+	if (m_uCharLevel < 1 || m_uCharLevel > 127) {
+		MessageBox(::theApp.MsgBoxInfo(1), ::theApp.MsgError(), MB_ICONERROR);
 		return FALSE;
 	}
-	if(m_dwStrength > 1023 ||
+	if (m_dwStrength > 1023 ||
 		m_dwEnergy > 1023 ||
 		m_dwDexterity > 1023 ||
 		m_dwVitality > 1023 ||
@@ -231,9 +232,9 @@ BOOL CDlgCharBasicInfo::GatherData(CD2S_Struct & character)
 		m_dwCurrentMana > 8191 ||
 		m_dwMaximumMana > 8191 ||
 		m_dwCurrentStamina > 8191 ||
-		m_dwMaximumStamina > 8191){
-			MessageBox(::theApp.MsgBoxInfo(2), ::theApp.MsgError(), MB_ICONERROR);
-			return FALSE;
+		m_dwMaximumStamina > 8191) {
+		MessageBox(::theApp.MsgBoxInfo(2), ::theApp.MsgError(), MB_ICONERROR);
+		return FALSE;
 	}
 	// Do NOT check gold in body and stash as there are MODs to change them.
 	// if(m_dwGoldInBody > m_dwMaxGoldInBody || m_dwGoldInStash > m_dwMaxGoldInStash){
@@ -247,7 +248,7 @@ BOOL CDlgCharBasicInfo::GatherData(CD2S_Struct & character)
 	m_bDiedBefore ? character.charType |= 8 : character.charType &= ~8;
 	//character.charTitle
 	character.dwTime = DWORD(m_tTime.GetTime());
-	::ZeroMemory(character.Town,sizeof(character.Town));
+	::ZeroMemory(character.Town, sizeof(character.Town));
 	(character.Town)[m_cbLastDifficult.GetCurSel()] = 0x80 + m_cbLastACT.GetCurSel();
 	character.PlayerStats.m_adwValue[0] = m_dwStrength;
 	character.PlayerStats.m_adwValue[1] = m_dwEnergy;
@@ -265,10 +266,10 @@ BOOL CDlgCharBasicInfo::GatherData(CD2S_Struct & character)
 	character.PlayerStats.m_adwValue[0xD] = m_dwExperience;
 	character.PlayerStats.m_adwValue[0xE] = m_dwGoldInBody;
 	character.PlayerStats.m_adwValue[0xF] = m_dwGoldInStash;
-	::CopyMemory(character.Skills.bSkillLevel,m_bSkills,sizeof(m_bSkills));
-    //其他窗体的数据
-	for(int i = 0;i < m_nTabPageCount;++i)
-		if(!m_dlgTabPage[i]->GatherData(character))
+	::CopyMemory(character.Skills.bSkillLevel, m_bSkills, sizeof(m_bSkills));
+	//其他窗体的数据
+	for (int i = 0; i < m_nTabPageCount; ++i)
+		if (!m_dlgTabPage[i]->GatherData(character))
 			return FALSE;
 	return TRUE;
 }
@@ -285,14 +286,14 @@ void CDlgCharBasicInfo::ResetAll()
 	//BOOL
 	m_bLadder = m_bExpansion = m_bHardcore = m_bDiedBefore = FALSE;
 	//UINT & DWORD
-	m_uCharLevel = m_dwExperience = m_dwStrength = m_dwDexterity = m_dwEnergy = m_dwVitality = m_dwStatPointsRemaining = 
+	m_uCharLevel = m_dwExperience = m_dwStrength = m_dwDexterity = m_dwEnergy = m_dwVitality = m_dwStatPointsRemaining =
 		m_dwMaximumStamina = m_dwCurrentStamina = m_dwMaximumLife = m_dwCurrentLife = m_dwMaximumMana = m_dwCurrentMana = 0;
 	//CTime
 	m_tTime = CTime::GetCurrentTime();
 	//Array
-	::ZeroMemory(m_bSkills,sizeof(m_bSkills));
+	::ZeroMemory(m_bSkills, sizeof(m_bSkills));
 	//子窗体
-	for(int i = 0;i < m_nTabPageCount;++i)
+	for (int i = 0; i < m_nTabPageCount; ++i)
 		m_dlgTabPage[i]->ResetAll();
 
 	UpdateData(FALSE);
@@ -306,21 +307,21 @@ void CDlgCharBasicInfo::InitUI(void)
 	m_cbLastACT.AddString(_T("IV"));
 	m_cbLastACT.AddString(_T("V"));
 	{
-		CString lev,exp;
-		for(int i = 0;i < 99;++i){
-			lev.Format(_T("%d"),i + 1);
-			exp.Format(_T("%u"),LEVEL_AND_EXPERIENCE[i]);
-			CString spa(_T(' '),14 - lev.GetLength() - exp.GetLength());
+		CString lev, exp;
+		for (int i = 0; i < 99; ++i) {
+			lev.Format(_T("%d"), i + 1);
+			exp.Format(_T("%u"), LEVEL_AND_EXPERIENCE[i]);
+			CString spa(_T(' '), 14 - lev.GetLength() - exp.GetLength());
 			m_cbLevelAndExp.AddString(lev + spa + exp);
 		}
 	}
-	if(!m_dlgTabPage){
+	if (!m_dlgTabPage) {
 		m_tcBasicInfo.InsertItem(0, _T(""));
 		m_tcBasicInfo.InsertItem(1, _T(""));
 		//在此处添加新的属性页,并在LoadText里更改界面文字的重载入
 		m_nTabPageCount = m_tcBasicInfo.GetItemCount();
 
-		m_dlgTabPage = new CCharacterDialogBase*[m_nTabPageCount];
+		m_dlgTabPage = new CCharacterDialogBase * [m_nTabPageCount];
 		m_dlgTabPage[0] = new CDlgWayPoints;
 		m_dlgTabPage[0]->Create(CDlgWayPoints::IDD, &m_tcBasicInfo);
 		m_dlgTabPage[0]->ShowWindow(SW_HIDE);
@@ -337,31 +338,31 @@ void CDlgCharBasicInfo::InitUI(void)
 
 void CDlgCharBasicInfo::LoadText(void)
 {
-    TCITEM tci;
-    tci.mask = TCIF_TEXT;
-    //小站,任务
-    tci.pszText = (LPWSTR)::theApp.CharBasicInfoUI(1).GetString();
-    m_tcBasicInfo.SetItem(0,&tci);
-    tci.pszText = (LPWSTR)::theApp.CharBasicInfoUI(2).GetString();
-    m_tcBasicInfo.SetItem(1,&tci);
+	TCITEM tci;
+	tci.mask = TCIF_TEXT;
+	//小站,任务
+	tci.pszText = (LPWSTR)::theApp.CharBasicInfoUI(1).GetString();
+	m_tcBasicInfo.SetItem(0, &tci);
+	tci.pszText = (LPWSTR)::theApp.CharBasicInfoUI(2).GetString();
+	m_tcBasicInfo.SetItem(1, &tci);
 	m_btnSkills.SetWindowText(::theApp.CharBasicInfoUI(3));
 
-    int sel = m_cbCharClass.GetCurSel();
-    m_cbCharClass.ResetContent();
-    for(UINT i = 0;i < ::theApp.CLASS_NAME_SIZE;++i)
-        m_cbCharClass.AddString(::theApp.ClassName(i));
-    m_cbCharClass.SetCurSel(sel);
+	int sel = m_cbCharClass.GetCurSel();
+	m_cbCharClass.ResetContent();
+	for (UINT i = 0; i < ::theApp.CLASS_NAME_SIZE; ++i)
+		m_cbCharClass.AddString(::theApp.ClassName(i));
+	m_cbCharClass.SetCurSel(sel);
 
-    sel = m_cbLastDifficult.GetCurSel();
-    m_cbLastDifficult.ResetContent();
-	for(UINT i = 0;i < ::theApp.DifficultyNameSize();++i)
+	sel = m_cbLastDifficult.GetCurSel();
+	m_cbLastDifficult.ResetContent();
+	for (UINT i = 0; i < ::theApp.DifficultyNameSize(); ++i)
 		m_cbLastDifficult.AddString(::theApp.DifficultyName(i));
-    m_cbLastDifficult.SetCurSel(sel);
+	m_cbLastDifficult.SetCurSel(sel);
 
-	for(int i = 0;i < TEXT_COUNT;++i)
+	for (int i = 0; i < TEXT_COUNT; ++i)
 		m_sText[i] = ::theApp.CharBasicInfoUI(4 + i);
 
-	for(int i = 0;i < m_nTabPageCount;++i)
+	for (int i = 0; i < m_nTabPageCount; ++i)
 		m_dlgTabPage[i]->LoadText();
 
 	UpdateData(FALSE);
@@ -379,21 +380,22 @@ BOOL CDlgCharBasicInfo::OnInitDialog()
 void CDlgCharBasicInfo::OnBnClicked_Skills()
 {
 	int charClass = m_cbCharClass.GetCurSel();
-	if(charClass >= 0 && charClass < 7){
-		CDlgSkills dlgSkill(charClass,m_bSkills);
+	if (charClass >= 0 && charClass < 7) {
+		CDlgSkills dlgSkill(charClass, m_bSkills);
 		dlgSkill.DoModal();
-	}else
-		MessageBox(::theApp.MsgBoxInfo(4),::theApp.MsgError(),MB_ICONERROR);
+	}
+	else
+		MessageBox(::theApp.MsgBoxInfo(4), ::theApp.MsgError(), MB_ICONERROR);
 }
 
 void CDlgCharBasicInfo::OnEnChangeLevel()
 {
 	UpdateData(TRUE);
-	if(m_uCharLevel && m_uCharLevel < 128){
+	if (m_uCharLevel && m_uCharLevel < 128) {
 		m_dwMaxGoldInBody = m_uCharLevel * 10000;
-		m_sGoldinPer.Format(_T("0-%u"),m_dwMaxGoldInBody);
+		m_sGoldinPer.Format(_T("0-%u"), m_dwMaxGoldInBody);
 		m_dwMaxGoldInStash = (m_uCharLevel < 31 ? (m_uCharLevel / 10 + 1) * 50000 : (m_uCharLevel / 2 + 1) * 50000);
-		m_sGoldinStash.Format(_T("0-%u"),m_dwMaxGoldInStash);
+		m_sGoldinStash.Format(_T("0-%u"), m_dwMaxGoldInStash);
 		UpdateData(FALSE);
 	}
 }
@@ -407,12 +409,12 @@ void CDlgCharBasicInfo::OnPaint()
 	m_tcBasicInfo.MoveWindow(rect);
 	m_tcBasicInfo.GetClientRect(&rect);
 	rect.top += 20;
-	if(m_dlgTabPage)
-		for(int i = 0;i < m_nTabPageCount;++i)
+	if (m_dlgTabPage)
+		for (int i = 0; i < m_nTabPageCount; ++i)
 			m_dlgTabPage[i]->MoveWindow(rect);
 }
 
-void CDlgCharBasicInfo::OnTcnSelchangeTab1(NMHDR *pNMHDR, LRESULT *pResult)
+void CDlgCharBasicInfo::OnTcnSelchangeTab1(NMHDR* pNMHDR, LRESULT* pResult)
 {
 	m_dlgTabPage[m_nTabCurSel]->ShowWindow(SW_HIDE);
 	m_nTabCurSel = m_tcBasicInfo.GetCurSel();
