@@ -76,7 +76,7 @@ void CWaypoints::ReadData(CInBitsStream& bs) {
 	bs >> wMajic >> unkown >> wSize;
 	if (wMajic != 0x5357 || wSize != 0x50)
 		throw ::theApp.MsgBoxInfo(14);
-	for(auto & p: wp) 
+	for (auto& p : wp)
 		p.ReadData(bs);
 }
 
@@ -128,31 +128,31 @@ void CCharSkills::WriteData(COutBitsStream& bs) const {
 
 //struct CCorpseData
 
-void CCorpseData::ReadData(CInBitsStream& bs, BOOL isD2R, BOOL isPtr24) {
+void CCorpseData::ReadData(CInBitsStream& bs, DWORD version) {
 	bs >> unknown;
-	stItems.ReadData(bs, isD2R, isPtr24);
+	stItems.ReadData(bs, version);
 }
 
-void CCorpseData::WriteData(COutBitsStream& bs, BOOL isD2R, BOOL isPtr24) const {
+void CCorpseData::WriteData(COutBitsStream& bs, DWORD version) const {
 	bs << unknown;
-	stItems.WriteData(bs, isD2R, isPtr24);
+	stItems.WriteData(bs, version);
 }
 
 //struct CCorpse
 
-void CCorpse::ReadData(CInBitsStream& bs, BOOL isD2R, BOOL isPtr24) {
+void CCorpse::ReadData(CInBitsStream& bs, DWORD version) {
 	bs >> wMagic >> wCount;
 	if (wMagic != 0x4D4A || wCount > 1)
 		throw ::theApp.MsgBoxInfo(19);
 	if (wCount)
-		pCorpseData.ensure().ReadData(bs, isD2R, isPtr24);
+		pCorpseData.ensure().ReadData(bs, version);
 }
 
-void CCorpse::WriteData(COutBitsStream& bs, BOOL isD2R, BOOL isPtr24) const {
+void CCorpse::WriteData(COutBitsStream& bs, DWORD version) const {
 	bs << WORD(0x4D4A);
 	if (pCorpseData.exist()) {
 		bs << WORD(1);
-		pCorpseData->WriteData(bs, isD2R, isPtr24);
+		pCorpseData->WriteData(bs, version);
 	}
 	else
 		bs << WORD(0);
@@ -160,34 +160,34 @@ void CCorpse::WriteData(COutBitsStream& bs, BOOL isD2R, BOOL isPtr24) const {
 
 //struct CMercenary
 
-void CMercenary::ReadData(CInBitsStream& bs, BOOL hasMercenary, BOOL isD2R, BOOL isPtr24) {
+void CMercenary::ReadData(CInBitsStream& bs, BOOL hasMercenary, DWORD version) {
 	bs >> wMagic;
 	if (wMagic != 0x666A)
 		throw ::theApp.MsgBoxInfo(20);
 	if (hasMercenary)
-		stItems.ensure().ReadData(bs, isD2R, isPtr24);
+		stItems.ensure().ReadData(bs, version);
 }
 
-void CMercenary::WriteData(COutBitsStream& bs, BOOL hasMercenary, BOOL isD2R, BOOL isPtr24) const {
+void CMercenary::WriteData(COutBitsStream& bs, BOOL hasMercenary, DWORD version) const {
 	bs << WORD(0x666A);
 	if (hasMercenary)
-		stItems->WriteData(bs, isD2R, isPtr24);
+		stItems->WriteData(bs, version);
 }
 
 //struct CGolem
 
-void CGolem::ReadData(CInBitsStream& bs, BOOL isD2R, BOOL isPtr24) {
+void CGolem::ReadData(CInBitsStream& bs, DWORD version) {
 	bs >> wMagic >> bHasGolem;
 	if (wMagic != 0x666B)
 		throw ::theApp.MsgBoxInfo(21);
 	if (bHasGolem)
-		pItem.ensure().ReadData(bs, isD2R, isPtr24);
+		pItem.ensure().ReadData(bs, version);
 }
 
-void CGolem::WriteData(COutBitsStream& bs, BOOL isD2R, BOOL isPtr24) const {
+void CGolem::WriteData(COutBitsStream& bs, DWORD version) const {
 	bs << WORD(0x666B) << bHasGolem;
 	if (bHasGolem)
-		pItem->WriteData(bs, isD2R, isPtr24);
+		pItem->WriteData(bs, version);
 }
 
 //CD2S_Struct
@@ -265,11 +265,11 @@ void CD2S_Struct::ReadData(CInBitsStream& bs) {
 	bs >> NPC;
 	PlayerStats.ReadData(bs);
 	Skills.ReadData(bs);
-	ItemList.ReadData(bs, isD2R(), isPtr24());
-	stCorpse.ReadData(bs, isD2R(), isPtr24());
+	ItemList.ReadData(bs, dwVersion);
+	stCorpse.ReadData(bs, dwVersion);
 	if (isExpansion()) {
-		stMercenary.ReadData(bs, HasMercenary(), isD2R(), isPtr24());
-		stGolem.ReadData(bs, isD2R(), isPtr24());
+		stMercenary.ReadData(bs, HasMercenary(), dwVersion);
+		stGolem.ReadData(bs, dwVersion);
 	}
 	bs.AlignByte();
 	if (!bs.Good() || bs.DataSize() != bs.BytePos())
@@ -319,11 +319,11 @@ BOOL CD2S_Struct::WriteData(COutBitsStream& bs) const {
 	bs << NPC;
 	PlayerStats.WriteData(bs);
 	Skills.WriteData(bs);
-	ItemList.WriteData(bs, isD2R(), isPtr24());
-	stCorpse.WriteData(bs, isD2R(), isPtr24());
+	ItemList.WriteData(bs, dwVersion);
+	stCorpse.WriteData(bs, dwVersion);
 	if (isExpansion()) {
-		stMercenary.WriteData(bs, HasMercenary(), isD2R(), isPtr24());
-		stGolem.WriteData(bs, isD2R(), isPtr24());
+		stMercenary.WriteData(bs, HasMercenary(), dwVersion);
+		stGolem.WriteData(bs, dwVersion);
 	}
 	bs.AlignByte();
 	//Data size
@@ -337,9 +337,10 @@ BOOL CD2S_Struct::WriteData(COutBitsStream& bs) const {
 
 void CD2S_Struct::name(const CString& name) {
 	CStringA utf8 = EncodeCharName(name);
+	const BOOL isPtr24 = IsPtr24AndAbove(dwVersion);
 	// Copy data
-	BYTE* dest = isPtr24() ? NamePTR : Name;
-	int destLen = isPtr24() ? sizeof NamePTR : sizeof Name;
+	BYTE* dest = isPtr24 ? NamePTR : Name;
+	int destLen = isPtr24 ? sizeof NamePTR : sizeof Name;
 	::ZeroMemory(dest, destLen);
 	::CopyMemory(dest, utf8, min(utf8.GetLength(), destLen));
 }

@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "D2Item.h"
+#include "D2Version.h"
 
 //任务完成信息
 struct CQuestInfoData
@@ -110,8 +111,8 @@ struct CCorpseData
 	BYTE		unknown[12];
 	CItemList	stItems;	//尸体身上的装备列表
 	//Functions:
-	void ReadData(CInBitsStream& bs, BOOL isD2R, BOOL isPtr24);
-	void WriteData(COutBitsStream& bs, BOOL isD2R, BOOL isPtr24) const;
+	void ReadData(CInBitsStream& bs, DWORD version);
+	void WriteData(COutBitsStream& bs, DWORD version) const;
 };
 
 //尸体
@@ -123,8 +124,8 @@ struct CCorpse
 	//Function:
 	BOOL HasCorpse() const { return wCount > 0 && pCorpseData.exist(); }
 	void Reset() { pCorpseData.reset(); }
-	void ReadData(CInBitsStream& bs, BOOL isD2R, BOOL isPtr24);
-	void WriteData(COutBitsStream& bs, BOOL isD2R, BOOL isPtr24) const;
+	void ReadData(CInBitsStream& bs, DWORD version);
+	void WriteData(COutBitsStream& bs, DWORD version) const;
 };
 
 //雇佣兵
@@ -134,8 +135,8 @@ struct CMercenary
 	MayExist<CItemList>	stItems;	//雇佣兵的装备列表, if wMercName != 0
 	//Function:
 	void Reset() { stItems.reset(); }
-	void ReadData(CInBitsStream& bs, BOOL hasMercenary, BOOL isD2R, BOOL isPtr24);
-	void WriteData(COutBitsStream& bs, BOOL hasMercenary, BOOL isD2R, BOOL isPtr24) const;
+	void ReadData(CInBitsStream& bs, BOOL hasMercenary, DWORD version);
+	void WriteData(COutBitsStream& bs, BOOL hasMercenary, DWORD version) const;
 };
 
 //钢铁石魔
@@ -146,8 +147,8 @@ struct CGolem
 	MayExist<CD2Item>	pItem;	//召唤钢铁石魔的物品, if bHasGolem != 0
 	//Function:
 	void Reset() { bHasGolem = FALSE; pItem.reset(); }
-	void ReadData(CInBitsStream& bs, BOOL isD2R, BOOL isPtr24);
-	void WriteData(COutBitsStream& bs, BOOL isD2R, BOOL isPtr24) const;
+	void ReadData(CInBitsStream& bs, DWORD version);
+	void WriteData(COutBitsStream& bs, DWORD version) const;
 };
 
 struct CD2S_Struct
@@ -156,10 +157,10 @@ struct CD2S_Struct
 	void ReadData(CInBitsStream& bs);
 	void ReadFile(const CString& path);
 	void WriteFile(const CString& path) const;
-	CString name() const { return DecodeCharName(isPtr24() ? NamePTR : Name); }
+	CString name() const { return DecodeCharName(IsPtr24AndAbove(dwVersion) ? NamePTR : Name); }
 	void name(const CString& name);
 	BOOL HasCorpse() const { return stCorpse.HasCorpse(); }
-	BOOL HasMercenary() const { return isD2R() ? (dwMercControl != 0) : (wMercName > 0); }
+	BOOL HasMercenary() const { return IsD2R(dwVersion) ? (dwMercControl != 0) : (wMercName > 0); }
 	BOOL isLadder() const { return (charType & 0x40) != 0; }
 	BOOL isExpansion() const { return (charType & 0x20) != 0; }
 	BOOL isDiedBefore() const { return (charType & 0x8) != 0; }
@@ -175,6 +176,7 @@ public:
 								//对于1.10是0x60
 								//D2 Resurrected 0x61
 								//PTR2.4 0x62
+								//PTR2.5 0x63
 	DWORD	dwSize;				//文件大小bytes
 	DWORD	dwCRC;				//数据校验
 	DWORD	dwWeaponSet;		//使用I或II的武器：0-I，1-II
