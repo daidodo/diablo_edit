@@ -242,6 +242,7 @@ void CPropertyList::ReadData(CInBitsStream& bs, DWORD version) {
 			bs >> bits(mProperty.emplace_back(iEndFlag, 0).second, b);
 	}
 }
+
 void CPropertyList::WriteData(COutBitsStream& bs, DWORD version) const {
 	for (auto& p : mProperty) {
 		const int b = ::theApp.PropertyMetaData(version, p.first).Bits();
@@ -685,12 +686,15 @@ int CD2Item::GemIndexMax() const {
 }
 
 void CD2Item::ReadData(CInBitsStream& bs, DWORD version) {
-	dwVersion = version;
-	const BOOL isD2R = IsD2R(version);
-	if (!isD2R) {
-		bs >> wMajic;
-		if (wMajic != 0x4D4A && wMajic != 0x2010)
-			throw ::theApp.MsgBoxInfo(18);
+	bs >> wMajic;
+	if (wMajic != 0x4D4A && wMajic != 0x2010) {
+		bs.SeekBack(sizeof wMajic);
+		wMajic = 0x4D4A;
+	}
+	bs >> dwVersion;
+	if (!IsValidVersion(dwVersion)) {
+		bs.SeekBack(sizeof dwVersion);
+		dwVersion = version;
 	}
 	bs >> bQuest
 		>> bits(iUNKNOWN_01, 3)
@@ -711,7 +715,7 @@ void CD2Item::ReadData(CInBitsStream& bs, DWORD version) {
 		>> bPersonalized
 		>> bUNKNOWN_07
 		>> bRuneWord;
-	if (isD2R)
+	if (IsD2R(dwVersion))
 		bs >> bits(iUNKNOWN_09, 8);
 	else
 		bs >> bits(iUNKNOWN_08, 5) >> bits(wVersion, 10);
@@ -721,26 +725,28 @@ void CD2Item::ReadData(CInBitsStream& bs, DWORD version) {
 		>> bits(iRow, 4)
 		>> bits(iStoredIn, 3);
 	if (bEar) {	//这是一个耳朵
-		pEar.ensure().ReadData(bs, version);
+		pEar.ensure().ReadData(bs, dwVersion);
 		pItemData = ::theApp.ItemMetaData(0x20726165);	//"ear "
 	}
 	else 		//这是一个物品,但是也可能为"ear "
-		pItemData = pItemInfo.ensure().ReadData(bs, version, bSimple, bRuneWord, bPersonalized, bSocketed);
+		pItemData = pItemInfo.ensure().ReadData(bs, dwVersion, bSimple, bRuneWord, bPersonalized, bSocketed);
 	ASSERT(pItemData && bSimple == pItemData->Simple);
 	bs.AlignByte();
 	aGemItems.resize(Gems());
 	for (auto& item : aGemItems)
-		item.ReadData(bs, version);
+		item.ReadData(bs, dwVersion);
 }
 
-void CD2Item::WriteData(COutBitsStream& bs, DWORD version) const {
+void CD2Item::WriteData(COutBitsStream& bs, BOOL bExport) const {
 	if (!vUnknownItem.empty()) {	//未识别物品数据
 		bs << vUnknownItem;
 	}
 	else {
-		const BOOL isD2R = IsD2R(version);
-		if (!isD2R)
-			bs << wMajic;
+		const BOOL isD2R = IsD2R(dwVersion);
+		if (!isD2R || bExport)
+			bs << WORD(0x4D4A);
+		if (bExport && IsPtr25AndAbove(dwVersion))
+			bs << dwVersion;
 		bs << bQuest
 			<< bits(iUNKNOWN_01, 3)
 			<< bIdentified
@@ -770,22 +776,21 @@ void CD2Item::WriteData(COutBitsStream& bs, DWORD version) const {
 			<< bits(iRow, 4)
 			<< bits(iStoredIn, 3);
 		if (bEar) {	//这是一个耳朵
-			pEar->WriteData(bs, version);
+			pEar->WriteData(bs, dwVersion);
 		}
 		else		//这是一个物品
-			pItemInfo->WriteData(bs, *pItemData, version, bSimple, bRuneWord, bPersonalized, bSocketed);
+			pItemInfo->WriteData(bs, *pItemData, dwVersion, bSimple, bRuneWord, bPersonalized, bSocketed);
 	}
 	bs.AlignByte();
 	for (auto item : aGemItems)
 		if (bs.Good())
-			item.WriteData(bs, version);
+			item.WriteData(bs, dwVersion);
 }
 
 BOOL CD2Item::ReadFile(CFile& file) {
 	CInBitsStream bs;
 	bs.ReadFile(file);
 	try {
-		//TODO: Consider version when writing.
 		ReadData(bs, 0);
 	}
 	catch (...) {
@@ -796,8 +801,7 @@ BOOL CD2Item::ReadFile(CFile& file) {
 
 void CD2Item::WriteFile(CFile& file) const {
 	COutBitsStream bs;
-	//TODO: Consider version when writing.
-	WriteData(bs, 0);
+	WriteData(bs, TRUE);
 	bs.WriteFile(file);
 }
 

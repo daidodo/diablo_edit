@@ -237,7 +237,7 @@ struct CD2Item
 	BOOL IsBox() const { return pItemInfo.exist() && pItemInfo->IsBox(); }	//是否赫拉迪卡方块
 	BOOL HasPropertyList() const { return pItemInfo.exist() && pItemInfo->pTpSpInfo.exist(); }
 	void ReadData(CInBitsStream& bs, DWORD version);
-	void WriteData(COutBitsStream & bs, DWORD version) const;
+	void WriteData(COutBitsStream & bs, BOOL bExport) const;
 	BOOL ReadFile(CFile & file);
 	void WriteFile(CFile & file) const;
 private:

@@ -1630,13 +1630,13 @@
 	Unused		
 	Unused		
 	Unused		
-	Unused		
+	Monster Cold Immunity is Sundered		
 	%+d %s (%s only)	%+d %s (只限%s)	%+d %s (只限%s)
-	Unused		
-	Unused		
-	Unused		
-	Unused		
-	Unused		
+	Monster Fire Immunity is Sundered		
+	Monster Lightning Immunity is Sundered		
+	Monster Poison Immunity is Sundered		
+	Monster Physical Immunity is Sundered		
+	Monster Magic Immunity is Sundered		
 	Add %+d Sockets	增加 %+d 凹槽	增加 %+d 凹槽
 	%+d%% Chance to Cast Level %d %s When Attack	攻击时有%+d%%机会施展等级%d %s	攻擊時%+d%%機會施展等級%d %s
 	%+d%% Chance to Cast Level %d %s When Kill	当杀死敌人 %+d%% 机会施展等级%d %s	殺死敵人時%+d%%機會施展等級%d %s
