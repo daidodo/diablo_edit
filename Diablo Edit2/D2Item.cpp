@@ -685,6 +685,7 @@ int CD2Item::GemIndexMax() const {
 }
 
 void CD2Item::ReadData(CInBitsStream& bs, DWORD version) {
+	dwVersion = version;
 	const BOOL isD2R = IsD2R(version);
 	if (!isD2R) {
 		bs >> wMajic;

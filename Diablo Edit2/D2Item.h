@@ -177,6 +177,8 @@ struct CItemInfo
 
 struct CD2Item
 {
+	DWORD	dwVersion = 0;
+
 	WORD	wMajic = 0x4D4A;		//0x4D4A,"JM"
 	BOOL	bQuest = FALSE;			//bit 16,是否为系统装备(从商店买的？)
 	BYTE	iUNKNOWN_01 = 0;		//bit 17-19
