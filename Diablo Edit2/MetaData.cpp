@@ -17,14 +17,15 @@ const CPropertyField & CPropertyField::Normalize() {
 
 //class CPropertyMetaData
 
-CPropertyMetaData::CPropertyMetaData(const vector<CPropertyField> & fields, DWORD def)
+CPropertyMetaDataItem::CPropertyMetaDataItem(DWORD verMin, const vector<CPropertyField> & fields, DWORD def)
 	: fields_(fields)
 	, def_(def)
+	, verMin_(verMin)
 {
 	bitsSum_ = accumulate(fields_.begin(), fields_.end(), 0, [](auto s, auto f) { return s + f.bits; });
 }
 
-vector<int> CPropertyMetaData::Parse(DWORD value) const {
+vector<int> CPropertyMetaDataItem::Parse(DWORD value) const {
 	vector<int> ret;
 	for (auto & f : fields_) {
 		ret.push_back((value & f.max) + f.base);
@@ -33,7 +34,7 @@ vector<int> CPropertyMetaData::Parse(DWORD value) const {
 	return ret;
 }
 
-vector<tuple<int, int, int>> CPropertyMetaData::GetParams(DWORD value) const {
+vector<tuple<int, int, int>> CPropertyMetaDataItem::GetParams(DWORD value) const {
 	vector<tuple<int, int, int>> ret;
 	for (auto & f : fields_) {
 		if (f.bits < 1)
@@ -44,7 +45,7 @@ vector<tuple<int, int, int>> CPropertyMetaData::GetParams(DWORD value) const {
 	return ret;
 }
 
-pair<BOOL, DWORD> CPropertyMetaData::GetValue(const std::vector<int> & params) const {
+pair<BOOL, DWORD> CPropertyMetaDataItem::GetValue(const std::vector<int> & params) const {
 	int i = 0, s = 0;
 	DWORD r = 0;
 	for (auto & f : fields_) {
@@ -56,6 +57,23 @@ pair<BOOL, DWORD> CPropertyMetaData::GetValue(const std::vector<int> & params) c
 		++i;
 	}
 	return make_pair(TRUE, r);
+}
+
+// class CPropertyMetaData
+
+void CPropertyMetaData::addData(const CPropertyMetaDataItem& item) {
+	//保证元素按照verMin_递减排列
+	auto wh = data_.begin();
+	for (; wh != data_.end() && item.verMin_ < wh->verMin_; ++wh);
+	data_.insert(wh, item);
+}
+
+const CPropertyMetaDataItem& CPropertyMetaData::findData(DWORD version) const {
+	for (auto& item : data_)
+		if (item.matchVersion(version))
+			return item;
+	ASSERT(!data_.empty());
+	return data_.front();
 }
 
 //CSFormat

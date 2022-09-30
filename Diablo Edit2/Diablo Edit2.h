@@ -48,9 +48,9 @@ public:
 	// Functions
 	const CString & AppPath() const { return m_sAppPath; }
 	INT LangCount() const { return m_saLanguage.size(); }
-	CString PropertyDescription(WORD id, DWORD value) const;	//根据属性id和参数value,得到属性的描述字符串
-	CString PropertyDescription(WORD id) const;					//根据属性id和参数value的默认值,得到属性的描述字符串
-	std::vector<CPropParam> PropertyParameters(WORD id, DWORD value) const;
+	CString PropertyDescription(DWORD version, WORD id, DWORD value) const;	//根据属性id和参数value,得到属性的描述字符串
+	CString PropertyDescription(DWORD version, WORD id) const;				//根据属性id和参数value的默认值,得到属性的描述字符串
+	std::vector<CPropParam> PropertyParameters(DWORD version, WORD id, DWORD value) const;
 	const CString & LangTitle(UINT index) const {
 		ASSERT(index < m_saLanguage.size());
 		return m_saLanguage[index][0];
@@ -120,9 +120,9 @@ public:
 
 	const std::vector<std::vector<CItemMetaData>> ItemCatagories() const { return m_vItemMetaData; }
 	const CItemMetaData * ItemMetaData(DWORD typeID) const;	//如果没有,返回0
-	const CPropertyMetaData & PropertyMetaData(UINT index) const {
+	const CPropertyMetaDataItem& PropertyMetaData(DWORD version, UINT index) const {
 		ASSERT(index < m_vPropertyMetaData.size());
-		return m_vPropertyMetaData[index];
+		return m_vPropertyMetaData[index].findData(version);
 	}
 	const CD2S_Struct & NewCharacter() const { return m_stNewCharacter; }	//返回新建人物模板
 private:

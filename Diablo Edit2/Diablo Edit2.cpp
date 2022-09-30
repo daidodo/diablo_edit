@@ -491,9 +491,9 @@ BOOL CDiabloEdit2App::ReadPropRes() {
 		if (line.empty() || line[0] == '*')	//空行或注释
 			continue;
 		istringstream ls(line);
-		int id = -1, def = 0;
+		int verMin = 0, id = -1, def = 0;
 		vector<CPropertyField> fields;
-		parse(ls, id) && parse(ls, def);
+		parse(ls, verMin) && parse(ls, id) && parse(ls, def);
 		if (id < 0)
 			return FALSE;
 		for (CPropertyField f;; fields.push_back(f.Normalize())) {
@@ -503,14 +503,14 @@ BOOL CDiabloEdit2App::ReadPropRes() {
 		}
 		if (id >= int(props.size()))
 			props.resize(id + 1);
-		props[id] = CPropertyMetaData(fields, def);
+		props[id].addData(CPropertyMetaDataItem(verMin, fields, def));
 	}
 	props.swap(m_vPropertyMetaData);
 	return TRUE;
 }
 
-CString CDiabloEdit2App::PropertyDescription(WORD id, DWORD value) const {
-	const auto & meta = PropertyMetaData(id);
+CString CDiabloEdit2App::PropertyDescription(DWORD version, WORD id, DWORD value) const {
+	const auto & meta = PropertyMetaData(version, id);
 	const auto desc = PropertyName(id);
 	auto a = meta.Parse(value);
 	ASSERT(3 < a.size());
@@ -551,16 +551,16 @@ CString CDiabloEdit2App::PropertyDescription(WORD id, DWORD value) const {
 	return CSFormat(desc, a[0], a[1], a[2], a[3]);
 }
 
-CString CDiabloEdit2App::PropertyDescription(WORD id) const {
-	return PropertyDescription(id, PropertyMetaData(id).DefaultValue());
+CString CDiabloEdit2App::PropertyDescription(DWORD version, WORD id) const {
+	return PropertyDescription(id, PropertyMetaData(version, id).DefaultValue());
 }
 
-vector<CPropParam> CDiabloEdit2App::PropertyParameters(WORD id, DWORD value) const {
-	const auto & meta = PropertyMetaData(id);
+vector<CPropParam> CDiabloEdit2App::PropertyParameters(DWORD version, WORD id, DWORD value) const {
+	const auto & meta = PropertyMetaData(version, id);
 	vector<CPropParam> ret;
 	for (auto & t : meta.GetParams(value))
 		ret.push_back({ get<0>(t), get<1>(t), get<2>(t) });
-	return move(ret);
+	return ret;
 }
 
 //角色技能id范围：[6, 156)为亚马逊，法师，死灵，圣骑士，野蛮人技能，[221, 281)为德鲁伊，刺客技能。

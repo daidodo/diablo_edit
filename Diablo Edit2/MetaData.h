@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include <string>
 #include <vector>
+#include <list>
 
 //物品元数据
 struct CItemMetaData
@@ -52,20 +53,33 @@ struct CPropertyField
 	const CPropertyField & Normalize();
 };
 
-//属性元数据
-class CPropertyMetaData
+//指定版本的属性元数据
+class CPropertyMetaDataItem
 {
 	std::vector<CPropertyField> fields_;
 	DWORD def_ = 0;
+	DWORD verMin_ = 0;
 	int bitsSum_ = 0;
+	friend class CPropertyMetaData;
 public:
-	CPropertyMetaData() {}
-	CPropertyMetaData(const std::vector<CPropertyField> & fields, DWORD def);
+	CPropertyMetaDataItem() {}
+	CPropertyMetaDataItem(DWORD verMin, const std::vector<CPropertyField> & fields, DWORD def);
 	int Bits() const { return bitsSum_; }
 	std::vector<int> Parse(DWORD value) const;
 	std::vector<std::tuple<int, int, int>> GetParams(DWORD value) const;
 	std::pair<BOOL, DWORD> GetValue(const std::vector<int> & params) const;
 	DWORD DefaultValue() const { return def_; }
+	bool matchVersion(DWORD version) const { return verMin_ <= version; }
+};
+
+//属性元数据
+class CPropertyMetaData
+{
+	std::list<CPropertyMetaDataItem> data_;
+public:
+	CPropertyMetaData() {}
+	void addData(const CPropertyMetaDataItem& item);
+	const CPropertyMetaDataItem & findData(DWORD version) const;
 };
 
 CString CSFormat(LPCTSTR lpszFormat, ...);
