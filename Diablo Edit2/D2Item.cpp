@@ -784,7 +784,7 @@ void CD2Item::WriteData(COutBitsStream& bs, BOOL bExport) const {
 	bs.AlignByte();
 	for (auto item : aGemItems)
 		if (bs.Good())
-			item.WriteData(bs, dwVersion);
+			item.WriteData(bs, FALSE);
 }
 
 BOOL CD2Item::ReadFile(CFile& file) {
@@ -826,6 +826,6 @@ void CItemList::WriteData(COutBitsStream& bs, DWORD version) const {
 	for (auto& item : vItems) {
 		if (!bs.Good())
 			break;
-		item.WriteData(bs, version);
+		item.WriteData(bs, FALSE);
 	}
 }

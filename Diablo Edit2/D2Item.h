@@ -77,7 +77,7 @@ struct CPropertyList
 struct CExtItemInfo
 {
 	BYTE					nGems = 0;		//bit 108-110, 如果有孔，镶嵌的宝石数
-	DWORD					dwGUID;			//bit 111-142
+	DWORD					dwGUID = 0;		//bit 111-142
 	BYTE					iDropLevel = 99;//bit 143-149,drop level
 	BYTE					iQuality = 2;	/*4 bits
 												1	low quality
