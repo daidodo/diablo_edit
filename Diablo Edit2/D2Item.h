@@ -47,6 +47,9 @@ struct CLongName
 	MayExist<WORD>		wPref3;		//11 bits,Prefix 3,if bPref3 == TRUE
 	BOOL				bSuff3;		//1 bit,Suffix 3 flag
 	MayExist<WORD>		wSuff3;		//11 bits,Suffix 3,if bSuff3 == TRUE
+	//Functions:
+	void ReadData(CInBitsStream& bs);
+	void WriteData(COutBitsStream& bs) const;
 };
 
 //Gold Quantity
@@ -54,6 +57,9 @@ struct CGoldQuantity
 {
 	BOOL	bNotGold = FALSE;	//1 bit
 	WORD	wQuantity = 0;		//12 bits,黄金数量
+	//Functions:
+	void ReadData(CInBitsStream& bs);
+	void WriteData(COutBitsStream& bs) const;
 };
 
 struct CPropertyList
@@ -63,6 +69,8 @@ struct CPropertyList
 	//Functons:
 	int ExtSockets() const;			//属性列表里的额外孔数
 	BOOL IsIndestructible() const;	//属性列表里的不可破坏属性
+	void ReadData(CInBitsStream& bs);
+	void WriteData(COutBitsStream& bs) const;
 };
 
 //Extended Item Info

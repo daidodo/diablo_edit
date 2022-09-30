@@ -175,81 +175,78 @@ void CEar::WriteData(COutBitsStream& bs, BOOL isPtr24) const {
 
 // struct CLongName
 
-CInBitsStream& operator >>(CInBitsStream& bs, CLongName& v) {
-	bs >> bits(v.iName1, 8)
-		>> bits(v.iName2, 8)
-		>> v.bPref1;
-	if (v.bPref1)
-		bs >> bits(v.wPref1, 11);
-	bs >> v.bSuff1;
-	if (v.bSuff1)
-		bs >> bits(v.wSuff1, 11);
-	bs >> v.bPref2;
-	if (v.bPref2)
-		bs >> bits(v.wPref2, 11);
-	bs >> v.bSuff2;
-	if (v.bSuff2)
-		bs >> bits(v.wSuff2, 11);
-	bs >> v.bPref3;
-	if (v.bPref3)
-		bs >> bits(v.wPref3, 11);
-	bs >> v.bSuff3;
-	if (v.bSuff3)
-		bs >> bits(v.wSuff3, 11);
-	return bs;
+void CLongName::ReadData(CInBitsStream& bs) {
+	bs >> bits(iName1, 8)
+		>> bits(iName2, 8)
+		>> bPref1;
+	if (bPref1)
+		bs >> bits(wPref1, 11);
+	bs >> bSuff1;
+	if (bSuff1)
+		bs >> bits(wSuff1, 11);
+	bs >> bPref2;
+	if (bPref2)
+		bs >> bits(wPref2, 11);
+	bs >> bSuff2;
+	if (bSuff2)
+		bs >> bits(wSuff2, 11);
+	bs >> bPref3;
+	if (bPref3)
+		bs >> bits(wPref3, 11);
+	bs >> bSuff3;
+	if (bSuff3)
+		bs >> bits(wSuff3, 11);
 }
 
-COutBitsStream& operator <<(COutBitsStream& bs, const CLongName& v) {
-	bs << bits(v.iName1, 8)
-		<< bits(v.iName2, 8)
-		<< v.bPref1;
-	if (v.bPref1)
-		bs << bits(v.wPref1, 11);
-	bs << v.bSuff1;
-	if (v.bSuff1)
-		bs << bits(v.wSuff1, 11);
-	bs << v.bPref2;
-	if (v.bPref2)
-		bs << bits(v.wPref2, 11);
-	bs << v.bSuff2;
-	if (v.bSuff2)
-		bs << bits(v.wSuff2, 11);
-	bs << v.bPref3;
-	if (v.bPref3)
-		bs << bits(v.wPref3, 11);
-	bs << v.bSuff3;
-	if (v.bSuff3)
-		bs << bits(v.wSuff3, 11);
-	return bs;
+void CLongName::WriteData(COutBitsStream& bs) const {
+	bs << bits(iName1, 8)
+		<< bits(iName2, 8)
+		<< bPref1;
+	if (bPref1)
+		bs << bits(wPref1, 11);
+	bs << bSuff1;
+	if (bSuff1)
+		bs << bits(wSuff1, 11);
+	bs << bPref2;
+	if (bPref2)
+		bs << bits(wPref2, 11);
+	bs << bSuff2;
+	if (bSuff2)
+		bs << bits(wSuff2, 11);
+	bs << bPref3;
+	if (bPref3)
+		bs << bits(wPref3, 11);
+	bs << bSuff3;
+	if (bSuff3)
+		bs << bits(wSuff3, 11);
 }
 
 // struct CGoldQuantity
-CInBitsStream& operator >>(CInBitsStream& bs, CGoldQuantity& v) {
-	return bs >> v.bNotGold >> bits(v.wQuantity, 12);
+
+void CGoldQuantity::ReadData(CInBitsStream& bs) {
+	bs >> bNotGold >> bits(wQuantity, 12);
 }
 
-COutBitsStream& operator <<(COutBitsStream& bs, const CGoldQuantity& v) {
-	return bs << v.bNotGold << bits(v.wQuantity, 12);
+void CGoldQuantity::WriteData(COutBitsStream& bs) const {
+	bs << bNotGold << bits(wQuantity, 12);
 }
 
 //struct CPropertyList
 
-CInBitsStream& operator >>(CInBitsStream& bs, CPropertyList& v) {
-	for (bs >> bits(v.iEndFlag, 9); bs.Good() && v.iEndFlag < 0x1FF; bs >> bits(v.iEndFlag, 9)) {
-		const int b = ::theApp.PropertyMetaData(v.iEndFlag).Bits();
+void CPropertyList::ReadData(CInBitsStream& bs) {
+	for (bs >> bits(iEndFlag, 9); bs.Good() && iEndFlag < 0x1FF; bs >> bits(iEndFlag, 9)) {
+		const int b = ::theApp.PropertyMetaData(iEndFlag).Bits();
 		if (b > 0)
-			bs >> bits(v.mProperty.emplace_back(v.iEndFlag, 0).second, b);
+			bs >> bits(mProperty.emplace_back(iEndFlag, 0).second, b);
 	}
-	return bs;
 }
-
-COutBitsStream& operator <<(COutBitsStream& bs, const CPropertyList& v) {
-	for (auto& p : v.mProperty) {
+void CPropertyList::WriteData(COutBitsStream& bs) const {
+	for (auto& p : mProperty) {
 		const int b = ::theApp.PropertyMetaData(p.first).Bits();
 		if (b > 0)
 			bs << bits(p.first, 9) << bits(p.second, b);
 	}
-	return bs << bits<WORD>(0x1FF, 9);
+	bs << bits<WORD>(0x1FF, 9);
 }
 
 int CPropertyList::ExtSockets() const {
@@ -317,13 +314,13 @@ void CExtItemInfo::ReadData(CInBitsStream& bs, BOOL bIsCharm, BOOL bRuneWord, BO
 		bs >> bits(wSetID, 12);
 		break;
 	case 6:			//rare
-		bs >> pRareName;
+		pRareName.ensure().ReadData(bs);
 		break;
 	case 7:			//unique
 		bs >> bits(wUniID, 12);
 		break;
 	case 8:			//crafted
-		bs >> pCraftName;
+		pCraftName.ensure().ReadData(bs);
 		break;
 	default:
 		throw CSFormat(::theApp.MsgBoxInfo(7), UINT(iQuality));
@@ -373,13 +370,13 @@ void CExtItemInfo::WriteData(COutBitsStream& bs, BOOL bIsCharm, BOOL bRuneWord, 
 		bs << bits(wSetID, 12);
 		break;
 	case 6:			//rare
-		bs << pRareName;
+		pRareName->WriteData(bs);
 		break;
 	case 7:			//unique
 		bs << bits(wUniID, 12);
 		break;
 	case 8:			//crafted
-		bs << pCraftName;
+		pCraftName->WriteData(bs);
 		break;
 	default:
 		ASSERT(FALSE && _T("Invalid item quality"));
@@ -433,13 +430,13 @@ void CTypeSpecificInfo::ReadData(CInBitsStream& bs, BOOL bHasDef, BOOL bHasDur, 
 		for (auto& b : aHasSetPropList.ensure())
 			if (bs.Good())
 				bs >> b;
-	bs >> stPropertyList;
+	stPropertyList.ReadData(bs);
 	if (bIsSet) 	//这是一个套装
 		for (size_t i = 0; bs.Good() && i < aHasSetPropList.size(); ++i)
 			if (aHasSetPropList[i])
-				bs >> apSetProperty[i].ensure();
+				apSetProperty[i].ensure().ReadData(bs);
 	if (bRuneWord)	//有符文之语属性
-		bs >> stRuneWordPropertyList;
+		stRuneWordPropertyList.ensure().ReadData(bs);
 }
 
 void CTypeSpecificInfo::WriteData(COutBitsStream& bs, BOOL bHasDef, BOOL bHasDur, BOOL bSocketed, BOOL bIsStacked, BOOL bIsSet, BOOL bRuneWord) const {
@@ -458,13 +455,13 @@ void CTypeSpecificInfo::WriteData(COutBitsStream& bs, BOOL bHasDef, BOOL bHasDur
 		for (auto b : aHasSetPropList)
 			if (bs.Good())
 				bs << b;
-	bs << stPropertyList;
+	stPropertyList.WriteData(bs);
 	if (bIsSet) 	//这是一个套装
 		for (size_t i = 0; bs.Good() && i < aHasSetPropList.size(); ++i)
 			if (aHasSetPropList[i])
-				bs << apSetProperty[i];
+				apSetProperty[i]->WriteData(bs);
 	if (bRuneWord)	//有符文之语属性
-		bs << stRuneWordPropertyList;
+		stRuneWordPropertyList->WriteData(bs);
 }
 
 pair<int, int> CTypeSpecificInfo::Sockets() const {
@@ -528,7 +525,7 @@ const CItemMetaData* CItemInfo::ReadData(CInBitsStream& bs, BOOL bSimple, BOOL b
 			isPtr24);
 	//特殊物品类型的额外数据
 	if (IsGold())	//gld 的数量域
-		bs >> pGold;
+		pGold.ensure().ReadData(bs);
 	bs >> bHasRand;
 	if (!bSimple) {
 		if (bHasRand)
@@ -569,7 +566,7 @@ void CItemInfo::WriteData(COutBitsStream& bs, const CItemMetaData& itemData, BOO
 			isPtr24);
 	//特殊物品类型的额外数据
 	if (IsGold())	//gld 的数量域
-		bs << pGold;
+		pGold->WriteData(bs);
 	bs << bHasRand;
 	if (bHasRand)
 		for (auto i : pTmStFlag)
@@ -817,5 +814,3 @@ void CItemList::WriteData(COutBitsStream& bs, BOOL isD2R, BOOL isPtr24) const {
 		item.WriteData(bs, isD2R, isPtr24);
 	}
 }
-
-
