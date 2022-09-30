@@ -8,7 +8,7 @@
 using namespace std;
 
 //d2s文件的CRC算法
-static DWORD ComputCRC(const BYTE * source, DWORD len, DWORD init) {
+static DWORD ComputCRC(const BYTE* source, DWORD len, DWORD init) {
 	ASSERT(source && len);
 	for (UINT i = 0, add; i < len; ++i, init = (init << 1) + add)
 		add = (init & 0x80000000 ? 1 : 0) + source[i];
@@ -16,79 +16,74 @@ static DWORD ComputCRC(const BYTE * source, DWORD len, DWORD init) {
 }
 
 //检验数据的CRC，会修改数据内容
-static BOOL ValidateCrc(std::vector<BYTE> & data, DWORD dwCrc, DWORD dwOff) {
+static BOOL ValidateCrc(std::vector<BYTE>& data, DWORD dwCrc, DWORD dwOff) {
 	ASSERT(dwOff + 4 <= data.size());
-	*reinterpret_cast<DWORD *>(&data[dwOff]) = 0;
+	*reinterpret_cast<DWORD*>(&data[dwOff]) = 0;
 	return (dwCrc == ::ComputCRC(&data[0], data.size(), 0));
 }
 
 //struct CQuestInfoData
 
-CInBitsStream & operator >>(CInBitsStream & bs, CQuestInfoData & v) {
-	return bs >> v.wIntroduced1
-		>> v.wActI
-		>> v.wTraval1
-		>> v.wIntroduced2
-		>> v.wActII
-		>> v.wTraval2
-		>> v.wIntroduced3
-		>> v.wActIII
-		>> v.wTraval3
-		>> v.wIntroduced4
-		>> v.wActIV
-		>> v.wTraval4
-		>> v.unknown1
-		>> v.wIntroduced5
-		>> v.unknown2
-		>> v.wActV
-		>> v.bResetStats
-		>> v.unknown3
-		>> v.unknown4;
+void CQuestInfoData::ReadData(CInBitsStream& bs) {
+	bs >> wIntroduced1 >> wActI >> wTraval1
+		>> wIntroduced2 >> wActII >> wTraval2
+		>> wIntroduced3 >> wActIII >> wTraval3
+		>> wIntroduced4 >> wActIV >> wTraval4
+		>> unknown1 >> wIntroduced5 >> unknown2
+		>> wActV >> bResetStats >> unknown3
+		>> unknown4;
 }
 
-COutBitsStream & operator <<(COutBitsStream & bs, const CQuestInfoData & v) {
-	return bs << v.wIntroduced1 << v.wActI << v.wTraval1
-		<< v.wIntroduced2 << v.wActII << v.wTraval2
-		<< v.wIntroduced3 << v.wActIII << v.wTraval3
-		<< v.wIntroduced4 << v.wActIV << v.wTraval4 << v.unknown1
-		<< v.wIntroduced5 << v.unknown2 << v.wActV << v.bResetStats 
-		<< v.unknown3 << v.unknown4;
+void CQuestInfoData::WriteData(COutBitsStream& bs) const {
+	bs << wIntroduced1 << wActI << wTraval1
+		<< wIntroduced2 << wActII << wTraval2
+		<< wIntroduced3 << wActIII << wTraval3
+		<< wIntroduced4 << wActIV << wTraval4
+		<< unknown1 << wIntroduced5 << unknown2
+		<< wActV << bResetStats << unknown3
+		<< unknown4;
 }
 
 //struct CQuestInfo
 
-CInBitsStream & operator >>(CInBitsStream & bs, CQuestInfo & v) {
-	bs >> v.dwMajic >> v.dwActs >> v.wSize;
-	if (v.dwMajic != 0x216F6F57 || v.wSize != 0x12A)
+void CQuestInfo::ReadData(CInBitsStream& bs) {
+	bs >> dwMajic >> dwActs >> wSize;
+	if (dwMajic != 0x216F6F57 || wSize != 0x12A)
 		throw ::theApp.MsgBoxInfo(13);
-	return bs >> v.QIData;
+	for (auto& p : QIData)
+		p.ReadData(bs);
 }
 
-COutBitsStream & operator <<(COutBitsStream & bs, const CQuestInfo & v) {
-	return bs << DWORD(0x216F6F57) << v.dwActs << WORD(0x12A) << v.QIData;
+void CQuestInfo::WriteData(COutBitsStream& bs) const {
+	bs << DWORD(0x216F6F57) << dwActs << WORD(0x12A);
+	for (const auto& p : QIData)
+		p.WriteData(bs);
 }
 
 //struct CWaypointData
 
-CInBitsStream & operator >>(CInBitsStream & bs, CWaypointData & v) {
-	return bs >> v.unkown >> v.Waypoints >> v.unkown2;
+void CWaypointData::ReadData(CInBitsStream& bs) {
+	bs >> unkown >> Waypoints >> unkown2;
 }
 
-COutBitsStream & operator <<(COutBitsStream & bs, const CWaypointData & v) {
-	return bs << v.unkown << v.Waypoints << v.unkown2;
+void CWaypointData::WriteData(COutBitsStream& bs) const {
+	bs << unkown << Waypoints << unkown2;
 }
 
 //struct CWaypoints
 
-CInBitsStream & operator >>(CInBitsStream & bs, CWaypoints & v) {
-	bs >> v.wMajic >> v.unkown >> v.wSize;
-	if (v.wMajic != 0x5357 || v.wSize != 0x50)
+void CWaypoints::ReadData(CInBitsStream& bs) {
+	bs >> wMajic >> unkown >> wSize;
+	if (wMajic != 0x5357 || wSize != 0x50)
 		throw ::theApp.MsgBoxInfo(14);
-	return bs >> v.wp;
+	for(auto & p: wp) 
+		p.ReadData(bs);
 }
 
-COutBitsStream & operator <<(COutBitsStream & bs, const CWaypoints & v) {
-	return bs << WORD(0x5357) << v.unkown << WORD(0x50) << v.wp;
+void CWaypoints::WriteData(COutBitsStream& bs) const {
+	bs << WORD(0x5357) << unkown << WORD(0x50);
+	for (const auto& p : wp)
+		p.WriteData(bs);
 }
 
 //CPlayerStats
@@ -99,55 +94,53 @@ static const DWORD PLAYER_STATS_BITS_COUNT[CPlayerStats::ARRAY_SIZE] = {
 	7,32,25,25
 };
 
-CInBitsStream & operator >>(CInBitsStream & bs, CPlayerStats & v) {
-	bs >> v.wMajic;
-	if (v.wMajic != 0x6667)
+void CPlayerStats::ReadData(CInBitsStream& bs) {
+	bs >> wMajic;
+	if (wMajic != 0x6667)
 		throw ::theApp.MsgBoxInfo(15);
-	::ZeroMemory(v.m_adwValue, sizeof(v.m_adwValue));
-	for (bs >> bits(v.iEnd, 9); bs.Good() && v.iEnd < size(v.m_adwValue); bs >> bits(v.iEnd, 9))
-		bs >> bits(v.m_adwValue[v.iEnd], PLAYER_STATS_BITS_COUNT[v.iEnd]);
+	::ZeroMemory(m_adwValue, sizeof(m_adwValue));
+	for (bs >> bits(iEnd, 9); bs.Good() && iEnd < size(m_adwValue); bs >> bits(iEnd, 9))
+		bs >> bits(m_adwValue[iEnd], PLAYER_STATS_BITS_COUNT[iEnd]);
 	bs.AlignByte();
-	return bs;
 }
 
-COutBitsStream & operator <<(COutBitsStream & bs, const CPlayerStats & v) {
+void CPlayerStats::WriteData(COutBitsStream& bs) const {
 	bs << WORD(0x6667);
-	for (UINT i = 0; bs.Good() && i < size(v.m_adwValue); ++i)
-		if (v.m_adwValue[i])
-			bs << bits(WORD(i), 9) << bits(v.m_adwValue[i], PLAYER_STATS_BITS_COUNT[i]);
+	for (UINT i = 0; bs.Good() && i < size(m_adwValue); ++i)
+		if (m_adwValue[i])
+			bs << bits(WORD(i), 9) << bits(m_adwValue[i], PLAYER_STATS_BITS_COUNT[i]);
 	bs << bits<WORD>(0x1FF, 9);
 	bs.AlignByte();
-	return bs;
 }
 
 //struct CCharSkills
 
-CInBitsStream & operator >>(CInBitsStream & bs, CCharSkills & v) {
-	bs >> v.wMagic;
-	if (v.wMagic != 0x6669)
+void CCharSkills::ReadData(CInBitsStream& bs) {
+	bs >> wMagic;
+	if (wMagic != 0x6669)
 		throw ::theApp.MsgBoxInfo(16);
-	return bs >> v.bSkillLevel;
+	bs >> bSkillLevel;
 }
 
-COutBitsStream & operator <<(COutBitsStream & bs, const CCharSkills & v) {
-	return bs << WORD(0x6669) << v.bSkillLevel;
+void CCharSkills::WriteData(COutBitsStream& bs) const {
+	bs << WORD(0x6669) << bSkillLevel;
 }
 
 //struct CCorpseData
 
-void CCorpseData::ReadData(CInBitsStream & bs, BOOL isD2R, BOOL isPtr24) {
-	bs >> unknown; 
+void CCorpseData::ReadData(CInBitsStream& bs, BOOL isD2R, BOOL isPtr24) {
+	bs >> unknown;
 	stItems.ReadData(bs, isD2R, isPtr24);
 }
 
-void CCorpseData::WriteData(COutBitsStream & bs, BOOL isD2R, BOOL isPtr24) const {
+void CCorpseData::WriteData(COutBitsStream& bs, BOOL isD2R, BOOL isPtr24) const {
 	bs << unknown;
 	stItems.WriteData(bs, isD2R, isPtr24);
 }
 
 //struct CCorpse
 
-void CCorpse::ReadData(CInBitsStream & bs, BOOL isD2R, BOOL isPtr24) {
+void CCorpse::ReadData(CInBitsStream& bs, BOOL isD2R, BOOL isPtr24) {
 	bs >> wMagic >> wCount;
 	if (wMagic != 0x4D4A || wCount > 1)
 		throw ::theApp.MsgBoxInfo(19);
@@ -155,18 +148,19 @@ void CCorpse::ReadData(CInBitsStream & bs, BOOL isD2R, BOOL isPtr24) {
 		pCorpseData.ensure().ReadData(bs, isD2R, isPtr24);
 }
 
-void CCorpse::WriteData(COutBitsStream & bs, BOOL isD2R, BOOL isPtr24) const {
+void CCorpse::WriteData(COutBitsStream& bs, BOOL isD2R, BOOL isPtr24) const {
 	bs << WORD(0x4D4A);
 	if (pCorpseData.exist()) {
 		bs << WORD(1);
 		pCorpseData->WriteData(bs, isD2R, isPtr24);
-	} else
+	}
+	else
 		bs << WORD(0);
 }
 
 //struct CMercenary
 
-void CMercenary::ReadData(CInBitsStream & bs, BOOL hasMercenary, BOOL isD2R, BOOL isPtr24) {
+void CMercenary::ReadData(CInBitsStream& bs, BOOL hasMercenary, BOOL isD2R, BOOL isPtr24) {
 	bs >> wMagic;
 	if (wMagic != 0x666A)
 		throw ::theApp.MsgBoxInfo(20);
@@ -174,7 +168,7 @@ void CMercenary::ReadData(CInBitsStream & bs, BOOL hasMercenary, BOOL isD2R, BOO
 		stItems.ensure().ReadData(bs, isD2R, isPtr24);
 }
 
-void CMercenary::WriteData(COutBitsStream & bs, BOOL hasMercenary, BOOL isD2R, BOOL isPtr24) const {
+void CMercenary::WriteData(COutBitsStream& bs, BOOL hasMercenary, BOOL isD2R, BOOL isPtr24) const {
 	bs << WORD(0x666A);
 	if (hasMercenary)
 		stItems->WriteData(bs, isD2R, isPtr24);
@@ -182,7 +176,7 @@ void CMercenary::WriteData(COutBitsStream & bs, BOOL hasMercenary, BOOL isD2R, B
 
 //struct CGolem
 
-void CGolem::ReadData(CInBitsStream & bs, BOOL isD2R, BOOL isPtr24) {
+void CGolem::ReadData(CInBitsStream& bs, BOOL isD2R, BOOL isPtr24) {
 	bs >> wMagic >> bHasGolem;
 	if (wMagic != 0x666B)
 		throw ::theApp.MsgBoxInfo(21);
@@ -190,7 +184,7 @@ void CGolem::ReadData(CInBitsStream & bs, BOOL isD2R, BOOL isPtr24) {
 		pItem.ensure().ReadData(bs, isD2R, isPtr24);
 }
 
-void CGolem::WriteData(COutBitsStream & bs, BOOL isD2R, BOOL isPtr24) const {
+void CGolem::WriteData(COutBitsStream& bs, BOOL isD2R, BOOL isPtr24) const {
 	bs << WORD(0x666B) << bHasGolem;
 	if (bHasGolem)
 		pItem->WriteData(bs, isD2R, isPtr24);
@@ -198,14 +192,14 @@ void CGolem::WriteData(COutBitsStream & bs, BOOL isD2R, BOOL isPtr24) const {
 
 //CD2S_Struct
 
-void CD2S_Struct::ReadFile(const CString & path)
+void CD2S_Struct::ReadFile(const CString& path)
 {
 	CInBitsStream bs;
 	bs.ReadFile(CFile(path, CFile::modeRead));
 	ReadData(bs);
 }
 
-void CD2S_Struct::WriteFile(const CString & path) const {
+void CD2S_Struct::WriteFile(const CString& path) const {
 	COutBitsStream bs;
 	if (!WriteData(bs))
 		return;
@@ -223,7 +217,7 @@ void CD2S_Struct::Reset() {
 	stGolem.Reset();
 }
 
-void CD2S_Struct::ReadData(CInBitsStream & bs) {
+void CD2S_Struct::ReadData(CInBitsStream& bs) {
 	Reset();
 	//得到人物信息
 	bs >> dwMajic;
@@ -265,12 +259,12 @@ void CD2S_Struct::ReadData(CInBitsStream & bs) {
 		>> dwMercExp
 		>> unkown7
 		>> NamePTR
-		>> unkown8
-		>> QuestInfo
-		>> Waypoints
-		>> NPC
-		>> PlayerStats
-		>> Skills;
+		>> unkown8;
+	QuestInfo.ReadData(bs);
+	Waypoints.ReadData(bs);
+	bs >> NPC;
+	PlayerStats.ReadData(bs);
+	Skills.ReadData(bs);
 	ItemList.ReadData(bs, isD2R(), isPtr24());
 	stCorpse.ReadData(bs, isD2R(), isPtr24());
 	if (isExpansion()) {
@@ -282,7 +276,7 @@ void CD2S_Struct::ReadData(CInBitsStream & bs) {
 		throw ::theApp.MsgBoxInfo(11);
 }
 
-BOOL CD2S_Struct::WriteData(COutBitsStream & bs) const {
+BOOL CD2S_Struct::WriteData(COutBitsStream& bs) const {
 	// Character data
 	bs << DWORD(0xAA55AA55)	//dwMajic
 		<< dwVersion;
@@ -319,12 +313,12 @@ BOOL CD2S_Struct::WriteData(COutBitsStream & bs) const {
 		<< dwMercExp
 		<< unkown7
 		<< NamePTR
-		<< unkown8
-		<< QuestInfo
-		<< Waypoints
-		<< NPC
-		<< PlayerStats
-		<< Skills;
+		<< unkown8;
+	QuestInfo.WriteData(bs);
+	Waypoints.WriteData(bs);
+	bs << NPC;
+	PlayerStats.WriteData(bs);
+	Skills.WriteData(bs);
 	ItemList.WriteData(bs, isD2R(), isPtr24());
 	stCorpse.WriteData(bs, isD2R(), isPtr24());
 	if (isExpansion()) {
@@ -335,16 +329,16 @@ BOOL CD2S_Struct::WriteData(COutBitsStream & bs) const {
 	//Data size
 	bs << offset_value(offSize, bs.BytePos());
 	//CRC
-	auto & data = bs.Data();
+	auto& data = bs.Data();
 	const DWORD dwCrc = ::ComputCRC(&data[0], data.size(), 0);
 	bs << offset_value(offCrc, dwCrc);
 	return bs.Good();
 }
 
-void CD2S_Struct::name(const CString & name) {
+void CD2S_Struct::name(const CString& name) {
 	CStringA utf8 = EncodeCharName(name);
 	// Copy data
-	BYTE * dest = isPtr24() ? NamePTR : Name;
+	BYTE* dest = isPtr24() ? NamePTR : Name;
 	int destLen = isPtr24() ? sizeof NamePTR : sizeof Name;
 	::ZeroMemory(dest, destLen);
 	::CopyMemory(dest, utf8, min(utf8.GetLength(), destLen));
