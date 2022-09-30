@@ -25,7 +25,7 @@ private:
 	std::vector<__MsgType> m_sItemMsg;	//物品的信息
 //自定义函数
 	void AddMsg(BYTE color, const CString & msg);
-	void AddPropertyList(BYTE color, const CPropertyList & propList);
+	void AddPropertyList(BYTE color, DWORD version, const CPropertyList & propList);
 public:
 	LONG GetItemInfo(const CD2Item * pItem, int iGems);		//读取物品属性并显示，返回窗体的高度。iGems为镶嵌宝石数量
 	const CD2Item * GetItemPtr() const{return m_pItem;}

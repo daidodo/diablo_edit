@@ -67,12 +67,12 @@ void CDlgSuspend::AddMsg(BYTE color, const CString & msg) {
 		m_sItemMsg.emplace_back(color, msg);
 }
 
-void CDlgSuspend::AddPropertyList(BYTE color, const CPropertyList & propList) {
+void CDlgSuspend::AddPropertyList(BYTE color, DWORD version, const CPropertyList & propList) {
 	for (const auto & p : propList.mProperty) {
 		if (p.first == 194 || p.first == 152)     //extend sockets & indestructible
 			continue;
 		const auto id = p.first;
-		const auto desc = ::theApp.PropertyDescription(id, p.second);
+		const auto desc = ::theApp.PropertyDescription(version, id, p.second);
 		AddMsg(color, CSFormat(L"%s [%d]", desc, id));
 	}
 }
@@ -167,14 +167,14 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem, int iGems)
 		}
         //Property
 		if (!pItem->bSimple) {
-			AddPropertyList(BLUE, pItem->pItemInfo->pTpSpInfo->stPropertyList);
+			AddPropertyList(BLUE, pItem->dwVersion, pItem->pItemInfo->pTpSpInfo->stPropertyList);
 			if (pItem->IsSet()) {
 				auto & setProps = pItem->pItemInfo->pTpSpInfo->apSetProperty;
 				for (size_t i = 0; i < std::size(setProps); ++i)
 					if (setProps[i].exist())
-						AddPropertyList(GREEN, *setProps[i]);
+						AddPropertyList(GREEN, pItem->dwVersion, *setProps[i]);
 			} else if (pItem->IsRuneWord())
-				AddPropertyList(BLUE, *pItem->pItemInfo->pTpSpInfo->stRuneWordPropertyList);
+				AddPropertyList(BLUE, pItem->dwVersion, *pItem->pItemInfo->pTpSpInfo->stRuneWordPropertyList);
 		}
         //Ethereal
         if(pItem->bEthereal)
