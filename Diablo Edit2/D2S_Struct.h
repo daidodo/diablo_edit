@@ -156,8 +156,6 @@ struct CD2S_Struct
 	void ReadData(CInBitsStream& bs);
 	void ReadFile(const CString& path);
 	void WriteFile(const CString& path) const;
-	BOOL isD2R() const { return dwVersion >= 0x61; }
-	BOOL isPtr24() const { return dwVersion == 0x62; }
 	CString name() const { return DecodeCharName(isPtr24() ? NamePTR : Name); }
 	void name(const CString& name);
 	BOOL HasCorpse() const { return stCorpse.HasCorpse(); }
