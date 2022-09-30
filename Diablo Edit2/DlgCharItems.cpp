@@ -501,7 +501,7 @@ END_MESSAGE_MAP()
 void CDlgCharItems::UpdateUI(const CD2S_Struct & character) {
 	ResetAll();
 	m_bHasCharacter = TRUE;
-	SetD2R(character.isD2R());
+	SetD2R(IsD2R(character.dwVersion));
 	m_dwWeaponSet = character.dwWeaponSet;
 	m_bSecondHand = m_dwWeaponSet != 0;
 	//Character items
