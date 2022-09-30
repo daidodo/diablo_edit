@@ -190,6 +190,7 @@
     <ClInclude Include="BinDataStream.h" />
     <ClInclude Include="D2Item.h" />
     <ClInclude Include="D2S_Struct.h" />
+    <ClInclude Include="D2Version.h" />
     <ClInclude Include="Diablo Edit2.h" />
     <ClInclude Include="Diablo Edit2Doc.h" />
     <ClInclude Include="Diablo Edit2View.h" />
