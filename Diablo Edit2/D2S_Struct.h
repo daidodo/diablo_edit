@@ -24,6 +24,9 @@ struct CQuestInfoData
 	BYTE	bResetStats;		//版本1.13及以上，设置成 0x2 可以找阿卡拉重置技能和属性点
 	BYTE	unknown3;
 	WORD	unknown4[6];
+	//Functions:
+	void ReadData(CInBitsStream& bs);
+	void WriteData(COutBitsStream& bs) const;
 };
 
 struct CQuestInfo
@@ -34,6 +37,8 @@ struct CQuestInfo
 	CQuestInfoData	QIData[3];
 	//Functions:
 	void Reset() {}
+	void ReadData(CInBitsStream& bs);
+	void WriteData(COutBitsStream& bs) const;
 };
 
 // 小站信息
@@ -42,6 +47,9 @@ struct CWaypointData
 	WORD	unkown;				//0x102;
 	BYTE	Waypoints[5];
 	BYTE	unkown2[17];		//全0
+	//Functions:
+	void ReadData(CInBitsStream& bs);
+	void WriteData(COutBitsStream& bs) const;
 };
 
 struct CWaypoints
@@ -52,6 +60,8 @@ struct CWaypoints
 	CWaypointData	wp[3];
 	//Functions:
 	void Reset() {}
+	void ReadData(CInBitsStream& bs);
+	void WriteData(COutBitsStream& bs) const;
 };
 
 //人物属性
@@ -79,6 +89,8 @@ struct CPlayerStats
 	WORD iEnd;						//0x1FF: 9 bits, 结束
 	//Functions:
 	void Reset() {}
+	void ReadData(CInBitsStream& bs);
+	void WriteData(COutBitsStream& bs) const;
 };
 
 //人物技能
@@ -88,6 +100,8 @@ struct CCharSkills
 	BYTE	bSkillLevel[30];	//技能等级
 	//Functions:
 	void Reset() {}
+	void ReadData(CInBitsStream& bs);
+	void WriteData(COutBitsStream& bs) const;
 };
 
 //尸体数据
@@ -96,8 +110,8 @@ struct CCorpseData
 	BYTE		unknown[12];
 	CItemList	stItems;	//尸体身上的装备列表
 	//Functions:
-	void ReadData(CInBitsStream & bs, BOOL isD2R, BOOL isPtr24);
-	void WriteData(COutBitsStream & bs, BOOL isD2R, BOOL isPtr24) const;
+	void ReadData(CInBitsStream& bs, BOOL isD2R, BOOL isPtr24);
+	void WriteData(COutBitsStream& bs, BOOL isD2R, BOOL isPtr24) const;
 };
 
 //尸体
@@ -109,8 +123,8 @@ struct CCorpse
 	//Function:
 	BOOL HasCorpse() const { return wCount > 0 && pCorpseData.exist(); }
 	void Reset() { pCorpseData.reset(); }
-	void ReadData(CInBitsStream & bs, BOOL isD2R, BOOL isPtr24);
-	void WriteData(COutBitsStream & bs, BOOL isD2R, BOOL isPtr24) const;
+	void ReadData(CInBitsStream& bs, BOOL isD2R, BOOL isPtr24);
+	void WriteData(COutBitsStream& bs, BOOL isD2R, BOOL isPtr24) const;
 };
 
 //雇佣兵
@@ -120,8 +134,8 @@ struct CMercenary
 	MayExist<CItemList>	stItems;	//雇佣兵的装备列表, if wMercName != 0
 	//Function:
 	void Reset() { stItems.reset(); }
-	void ReadData(CInBitsStream & bs, BOOL hasMercenary, BOOL isD2R, BOOL isPtr24);
-	void WriteData(COutBitsStream & bs, BOOL hasMercenary, BOOL isD2R, BOOL isPtr24) const;
+	void ReadData(CInBitsStream& bs, BOOL hasMercenary, BOOL isD2R, BOOL isPtr24);
+	void WriteData(COutBitsStream& bs, BOOL hasMercenary, BOOL isD2R, BOOL isPtr24) const;
 };
 
 //钢铁石魔
@@ -132,20 +146,20 @@ struct CGolem
 	MayExist<CD2Item>	pItem;	//召唤钢铁石魔的物品, if bHasGolem != 0
 	//Function:
 	void Reset() { bHasGolem = FALSE; pItem.reset(); }
-	void ReadData(CInBitsStream & bs, BOOL isD2R, BOOL isPtr24);
-	void WriteData(COutBitsStream & bs, BOOL isD2R, BOOL isPtr24) const;
+	void ReadData(CInBitsStream& bs, BOOL isD2R, BOOL isPtr24);
+	void WriteData(COutBitsStream& bs, BOOL isD2R, BOOL isPtr24) const;
 };
 
 struct CD2S_Struct
 {
-//members
-	void ReadData(CInBitsStream & bs);
-	void ReadFile(const CString & path);
-	void WriteFile(const CString & path) const;
+	//members
+	void ReadData(CInBitsStream& bs);
+	void ReadFile(const CString& path);
+	void WriteFile(const CString& path) const;
 	BOOL isD2R() const { return dwVersion >= 0x61; }
 	BOOL isPtr24() const { return dwVersion == 0x62; }
 	CString name() const { return DecodeCharName(isPtr24() ? NamePTR : Name); }
-	void name(const CString & name);
+	void name(const CString& name);
 	BOOL HasCorpse() const { return stCorpse.HasCorpse(); }
 	BOOL HasMercenary() const { return isD2R() ? (dwMercControl != 0) : (wMercName > 0); }
 	BOOL isLadder() const { return (charType & 0x40) != 0; }
@@ -154,7 +168,7 @@ struct CD2S_Struct
 	BOOL isHardcore() const { return (charType & 0x4) != 0; }
 	void Reset();
 private:
-	BOOL WriteData(COutBitsStream & bs) const;
+	BOOL WriteData(COutBitsStream& bs) const;
 public:
 	//人物信息
 	DWORD	dwMajic;			//0xAA55AA55
