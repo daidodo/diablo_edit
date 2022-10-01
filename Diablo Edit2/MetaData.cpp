@@ -34,6 +34,13 @@ vector<int> CPropertyMetaDataItem::Parse(DWORD value) const {
 	return ret;
 }
 
+void CPropertyMetaDataItem::Normalise(std::vector<int>& params) const {
+	params.resize(fields_.size());
+	for (size_t i = 0; i < fields_.size(); ++i)
+		params[i] -= fields_[i].base;
+}
+
+
 vector<tuple<int, int, int>> CPropertyMetaDataItem::GetParams(DWORD value) const {
 	vector<tuple<int, int, int>> ret;
 	for (auto & f : fields_) {
@@ -73,7 +80,7 @@ const CPropertyMetaDataItem& CPropertyMetaData::findData(DWORD version) const {
 		if (item.matchVersion(version))
 			return item;
 	ASSERT(!data_.empty());
-	return data_.front();
+	return data_.back();
 }
 
 //CSFormat

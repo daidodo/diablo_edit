@@ -187,7 +187,7 @@ void CGolem::ReadData(CInBitsStream& bs, DWORD version) {
 void CGolem::WriteData(COutBitsStream& bs, DWORD version) const {
 	bs << WORD(0x666B) << bHasGolem;
 	if (bHasGolem)
-		pItem->WriteData(bs, FALSE);
+		pItem->WriteData(bs, version);
 }
 
 //CD2S_Struct

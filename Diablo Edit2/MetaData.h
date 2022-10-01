@@ -66,6 +66,7 @@ public:
 	CPropertyMetaDataItem(DWORD verMin, const std::vector<CPropertyField> & fields, DWORD def);
 	int Bits() const { return bitsSum_; }
 	std::vector<int> Parse(DWORD value) const;
+	void Normalise(std::vector<int>& params) const;
 	std::vector<std::tuple<int, int, int>> GetParams(DWORD value) const;
 	std::pair<BOOL, DWORD> GetValue(const std::vector<int> & params) const;
 	DWORD DefaultValue() const { return def_; }

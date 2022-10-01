@@ -240,7 +240,7 @@ static bool parse(istream & is, T & value) {
 		return false;
 	string s;
 	getline(is, s, '\t');
-	value = (s.empty() ? 0 : stoi(s));
+	value = (s.empty() ? 0 : stoi(s, nullptr, 0));
 	return !is.bad();
 }
 

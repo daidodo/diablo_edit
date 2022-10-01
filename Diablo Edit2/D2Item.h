@@ -65,12 +65,15 @@ struct CGoldQuantity
 struct CPropertyList
 {
 	std::vector<std::pair<WORD, DWORD>> mProperty;	//属性列表，每项（9 bits ID + VALUE)
-	WORD					iEndFlag;				//9 bits, 0x1FF, 结束标志
+	WORD	iEndFlag;	//9 bits, 0x1FF, 结束标志
+
 	//Functons:
 	int ExtSockets() const;			//属性列表里的额外孔数
 	BOOL IsIndestructible() const;	//属性列表里的不可破坏属性
 	void ReadData(CInBitsStream& bs, DWORD version);
 	void WriteData(COutBitsStream& bs, DWORD version) const;
+private:
+	DWORD	dwVersion;
 };
 
 //Extended Item Info
@@ -237,12 +240,12 @@ struct CD2Item
 	BOOL IsBox() const { return pItemInfo.exist() && pItemInfo->IsBox(); }	//是否赫拉迪卡方块
 	BOOL HasPropertyList() const { return pItemInfo.exist() && pItemInfo->pTpSpInfo.exist(); }
 	void ReadData(CInBitsStream& bs, DWORD version);
-	void WriteData(COutBitsStream & bs, BOOL bExport) const;
+	void WriteData(COutBitsStream & bs, DWORD version) const;
 	BOOL ReadFile(CFile & file);
 	void WriteFile(CFile & file) const;
 private:
 	std::vector<BYTE>		vUnknownItem;	//如果不能识别物品,那么物品的数据将存在这里
-	const CItemMetaData *	pItemData;		//物品的额外属性,大小,bHasDef,bNoDurability,bStacked,等.如果不能识别物品,pItemData = 0;
+	const CItemMetaData *	pItemData = nullptr;	//物品的额外属性,大小,bHasDef,bNoDurability,bStacked,等.如果不能识别物品,pItemData = 0;
 };
 
 struct CItemList

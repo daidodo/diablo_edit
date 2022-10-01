@@ -236,6 +236,7 @@ void CGoldQuantity::WriteData(COutBitsStream& bs) const {
 //struct CPropertyList
 
 void CPropertyList::ReadData(CInBitsStream& bs, DWORD version) {
+	dwVersion = version;
 	for (bs >> bits(iEndFlag, 9); bs.Good() && iEndFlag < 0x1FF; bs >> bits(iEndFlag, 9)) {
 		const int b = ::theApp.PropertyMetaData(version, iEndFlag).Bits();
 		if (b > 0)
@@ -245,9 +246,20 @@ void CPropertyList::ReadData(CInBitsStream& bs, DWORD version) {
 
 void CPropertyList::WriteData(COutBitsStream& bs, DWORD version) const {
 	for (auto& p : mProperty) {
-		const int b = ::theApp.PropertyMetaData(version, p.first).Bits();
-		if (b > 0)
-			bs << bits(p.first, 9) << bits(p.second, b);
+		const auto item = ::theApp.PropertyMetaData(version, p.first);
+		const int b = item.Bits();
+		if (b > 0) {
+			DWORD value = p.second;
+			if (version != dwVersion) {
+				const auto oldItem = ::theApp.PropertyMetaData(dwVersion, p.first);
+				if (&item != &oldItem) {
+					auto v = oldItem.Parse(value);
+					item.Normalise(v);
+					value = item.GetValue(v).second;
+				}
+			}
+			bs << bits(p.first, 9) << bits(value, b);
+		}
 	}
 	bs << bits<WORD>(0x1FF, 9);
 }
@@ -737,16 +749,19 @@ void CD2Item::ReadData(CInBitsStream& bs, DWORD version) {
 		item.ReadData(bs, dwVersion);
 }
 
-void CD2Item::WriteData(COutBitsStream& bs, BOOL bExport) const {
+void CD2Item::WriteData(COutBitsStream& bs, DWORD version) const {
+	const BOOL bExport = !version;
+	if (!version)
+		version = dwVersion;
 	if (!vUnknownItem.empty()) {	//未识别物品数据
 		bs << vUnknownItem;
 	}
 	else {
-		const BOOL isD2R = IsD2R(dwVersion);
+		const BOOL isD2R = IsD2R(version);
 		if (!isD2R || bExport)
 			bs << WORD(0x4D4A);
-		if (bExport && IsPtr25AndAbove(dwVersion))
-			bs << dwVersion;
+		if (bExport && IsPtr25AndAbove(version))
+			bs << version;
 		bs << bQuest
 			<< bits(iUNKNOWN_01, 3)
 			<< bIdentified
@@ -775,16 +790,15 @@ void CD2Item::WriteData(COutBitsStream& bs, BOOL bExport) const {
 			<< bits(iColumn, 4)
 			<< bits(iRow, 4)
 			<< bits(iStoredIn, 3);
-		if (bEar) {	//这是一个耳朵
-			pEar->WriteData(bs, dwVersion);
-		}
-		else		//这是一个物品
-			pItemInfo->WriteData(bs, *pItemData, dwVersion, bSimple, bRuneWord, bPersonalized, bSocketed);
+		if (bEar) 	//这是一个耳朵
+			pEar->WriteData(bs, version);
+		else 		//这是一个物品
+			pItemInfo->WriteData(bs, *pItemData, version, bSimple, bRuneWord, bPersonalized, bSocketed);
 	}
 	bs.AlignByte();
 	for (auto item : aGemItems)
 		if (bs.Good())
-			item.WriteData(bs, FALSE);
+			item.WriteData(bs, version);
 }
 
 BOOL CD2Item::ReadFile(CFile& file) {
@@ -801,7 +815,7 @@ BOOL CD2Item::ReadFile(CFile& file) {
 
 void CD2Item::WriteFile(CFile& file) const {
 	COutBitsStream bs;
-	WriteData(bs, TRUE);
+	WriteData(bs, 0);
 	bs.WriteFile(file);
 }
 
@@ -826,6 +840,6 @@ void CItemList::WriteData(COutBitsStream& bs, DWORD version) const {
 	for (auto& item : vItems) {
 		if (!bs.Good())
 			break;
-		item.WriteData(bs, FALSE);
+		item.WriteData(bs, version);
 	}
 }
