@@ -4532,6 +4532,12 @@
 	Rainbow Facet		
 	Rainbow Facet		
 	Hellfire Torch	地狱火炬	地獄火炬
+	The Cold Rupture	冰寒裂缝	冰寒裂縫
+	The Flame Rift	火焰裂隙	火焰裂隙
+	The Crack of the Heavens	天堂裂击	天堂裂擊
+	The Rotting Fissure	腐败裂痕	腐敗裂痕
+	The Bone Break	分筋裂骨	分筋裂骨
+	The Black Cleft	漆黑裂口	漆黑裂口
 *=======================以下是套装名字(Set Name)			
 	Civerb's Ward		
 	Civerb's Icon		
