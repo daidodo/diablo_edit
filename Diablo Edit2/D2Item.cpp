@@ -699,7 +699,7 @@ int CD2Item::GemIndexMax() const {
 
 void CD2Item::ReadData(CInBitsStream& bs, DWORD version) {
 	bs >> wMajic;
-	if (wMajic != 0x4D4A && wMajic != 0x2010) {
+	if (wMajic != 0x4D4A) {
 		bs.SeekBack(sizeof wMajic);
 		wMajic = 0x4D4A;
 	}
