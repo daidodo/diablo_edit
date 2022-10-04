@@ -298,7 +298,8 @@ void CDlgFoundry::ReadItemInfo(CItemInfo & info, BOOL bRuneWord, BOOL bNormal) {
 }
 
 void CDlgFoundry::ReadItem() {
-	SetWindowText(m_stItem.ItemName());
+	const BYTE* const name = m_stItem.pItemInfo->sTypeName;
+	SetWindowText(CSFormat(_T("%s (%c%c%c)"), m_stItem.ItemName(), name[0], name[1], name[2]));
 	m_bUnidentified = !m_stItem.bIdentified;
 	m_bEthereal = m_stItem.bEthereal;
 	m_chRuneWord.EnableWindow(m_stItem.bRuneWord);
