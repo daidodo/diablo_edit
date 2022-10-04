@@ -742,7 +742,7 @@ void CD2Item::ReadData(CInBitsStream& bs, DWORD version) {
 	}
 	else 		//这是一个物品,但是也可能为"ear "
 		pItemData = pItemInfo.ensure().ReadData(bs, dwVersion, bSimple, bRuneWord, bPersonalized, bSocketed);
-	ASSERT(pItemData && bSimple == pItemData->Simple);
+	ASSERT(pItemData);
 	bs.AlignByte();
 	aGemItems.resize(Gems());
 	for (auto& item : aGemItems)
