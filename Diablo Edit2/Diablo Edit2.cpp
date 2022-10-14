@@ -567,21 +567,19 @@ vector<CPropParam> CDiabloEdit2App::PropertyParameters(DWORD version, WORD id, D
 //普通技能id范围：[0, 6), [217, 221), 350(Delirium)
 //其他id都是：一股邪恶力量
 pair<CString, int> CDiabloEdit2App::ClassSkillName(UINT skill_id) const {
-	if (skill_id < 6)
-		return make_pair(NormalSkillName(skill_id), -1);
-	else if (skill_id < 156) {
+	if (6 <= skill_id && skill_id < 156) {
 		skill_id -= 6;
 		const int cid = skill_id / 30, index = CLASS_SKILL_INDEX[cid][skill_id % 30];
 		return make_pair(ClassSkillName(index, cid), cid);
-	} else if (217 <= skill_id && skill_id < 221)
-		return make_pair(NormalSkillName(skill_id - 211), -1);
-	else if (221 <= skill_id && skill_id < 281) {
+	} else if (221 <= skill_id && skill_id < 281) {
 		skill_id -= 221;
 		const int cid = skill_id / 30 + 5, index = CLASS_SKILL_INDEX[cid][skill_id % 30];
 		return make_pair(ClassSkillName(index, cid), cid);
-	}else if(350 == skill_id)
-		return make_pair(NormalSkillName(10), -1);
-	return make_pair(NormalSkillName(11), -1);
+	}
+	CString skillName = skill_id < 1024 ? NormalSkillName(skill_id) : CString();
+	if (skillName.IsEmpty())
+		skillName = NormalSkillName(1023);
+	return make_pair(skillName, -1);
 }
 
 const CItemMetaData * CDiabloEdit2App::ItemMetaData(DWORD typeID) const {

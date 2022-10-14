@@ -530,12 +530,13 @@
 	Unsummon	取消召唤	取消召喚
 	Left Hand Throw	左手投掷	左手投擲
 	Left Hand Swing	左手挥动	左手揮動
-	Scroll of Identify	辨识卷轴	辨識卷軸
+197	Firestorm	火焰风暴	火焰風暴
+217	Scroll of Identify	辨识卷轴	辨識卷軸
 	Tome of Identify	辨识之书	辨識之書
 	Scroll of Town Portal	回城卷轴	回城卷軸
 	Tome of Town Portal	回城之书	回城之書
-	Delirium	迪勒瑞姆	迪勒瑞姆
-	An Evil Force	一股邪恶力量	一股邪惡力量
+350	Delirium	迪勒瑞姆	迪勒瑞姆
+1023	An Evil Force	一股邪恶力量	一股邪惡力量
 *=======================角色技能名字			
 	Magic Arrow	魔法箭	魔法箭
 	Fire Arrow	火焰箭	火焰箭
@@ -1644,7 +1645,7 @@
 	%+d%% Chance to Cast Level %d %s When Striking	当打击时有%+d%%机会施展等级%d %s	打擊時%+d%%機會施展等級%d %s
 	%+d%% Chance to Cast Level %d %s When Levelup	当升级时%+d%%机会施展等级%d %s	升級時%+d%%機會施展等級%d %s
 	Unused		
-	%+d%% Chance to Cast Level %+d %s When Struck	被击中时有 %+d%% 几率释放 %+d %s技能	被擊中時有 %+d%% 几率釋放 %+d %s 技能
+	%+d%% Chance to Cast Level %d %s When Struck	被击中时有 %+d%% 几率释放 %d级 %s 技能	被擊中時有 %+d%% 几率釋放 %d級 %s 技能
 	Unused		
 	Unused		
 	Level %+d %s (%d/%d Charges)	等级 %+d %s (%d/%d 聚气)	

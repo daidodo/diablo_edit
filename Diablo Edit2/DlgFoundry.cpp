@@ -712,9 +712,10 @@ void CDlgFoundry::SetupParamSkill(UINT idx, BOOL enabled, int value, BOOL classO
 	auto addRangeOther = [=](int from, int to, CComboBox & cb)->int {	//将范围内的非角色技能id加入到ComboBox里面
 		int r = -1;
 		for (int i = from; i < to; ++i) {
-			const auto p = ::theApp.ClassSkillName(i);
-			ASSERT(p.second < 0);
-			const int j = cb.AddString(p.first);
+			const CString name = ::theApp.NormalSkillName(i);
+			if (name.IsEmpty())
+				continue;
+			const int j = cb.AddString(name);
 			cb.SetItemData(j, i);
 			if (value == i)
 				r = j;
@@ -723,13 +724,17 @@ void CDlgFoundry::SetupParamSkill(UINT idx, BOOL enabled, int value, BOOL classO
 	};
 	SetupParamListGeneric(idx, enabled, value, [=](auto & cb)->int {
 		//角色技能id范围：[6, 156)为亚马逊，法师，死灵，圣骑士，野蛮人技能，[221, 281)为德鲁伊，刺客技能。
-		//其他技能id范围：[0, 6), [217, 221), 350(Delirium)
 		const auto r1 = addRangeClass(6, 156, cb), r2 = addRangeClass(221, 281, cb);
 		int r = max(r1, r2);
 		if (!classOnly) {
+			//其他技能id范围
 			cb.AddString(_T("---Other---"));
-			const int r3 = addRangeOther(0, 6, cb), r4 = addRangeOther(217, 221, cb), r5 = addRangeOther(350, 351, cb);
+			const int r3 = addRangeOther(0, 6, cb), r4 = addRangeOther(156, 221, cb), r5 = addRangeOther(281, 1023, cb);
 			r = max(r, max(r3, max(r4, r5)));
+			if (r < 0) {
+				r = cb.AddString(CSFormat(_T("(%d)%s"), value, ::theApp.ClassSkillName(value)));
+				cb.SetItemData(r, value);
+			}
 		}
 		return r;
 	});
