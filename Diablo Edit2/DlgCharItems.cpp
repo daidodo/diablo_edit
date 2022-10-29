@@ -817,11 +817,11 @@ void CDlgCharItems::ResetAll()
 	Invalidate();
 }
 
-static void loadTextMercCB(CComboBox & cb, int sz, function<CString (int i)> name) {
+static void loadTextMercCB(CComboBox & cb, int sz, function<CString (int i)> nameOf) {
 	int sel = cb.GetCurSel();			//保存当前选中项
 	cb.ResetContent();					//删除旧项
 	for (int i = 0; i < sz; ++i)		//更新文字
-		cb.InsertString(i, name(i));
+		cb.InsertString(i, nameOf(i));
 	if (sz > 0)							//重新设置选择项
 		cb.SetCurSel(min(sel, sz - 1));
 }
@@ -1274,11 +1274,13 @@ void CDlgCharItems::OnItemRemove() {
 	Invalidate();
 }
 
-static int mercNameGroup(int type) {
-	if (type < 0)
+static int mercNameGroup(int name) {
+	if (name < 0)
 		return - 1;
-	const int INDEX[] = {5, 14, 23};
-	return lower_bound(begin(INDEX), end(INDEX), type, less<int>()) - begin(INDEX);
+	const int NAME_INDEX[] = {5, 14, 23, 29, 35};
+	const int TYPE_INDEX[] = {0, 1, 2, 3, 1, 3};
+	int type = lower_bound(begin(NAME_INDEX), end(NAME_INDEX), name, less<int>()) - begin(NAME_INDEX);
+	return TYPE_INDEX[type];
 }
 
 void CDlgCharItems::OnCbnSelchangeComboMercType() {

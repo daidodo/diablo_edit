@@ -413,6 +413,15 @@
 	Barbarian - Nightmare		
 	Barbarian - Hell		
 	Barbarian - Hell		
+	Mercenary - Prayer Arura (D2R only)	沙漠雇佣兵 - 祈祷光环 (D2R only)	
+	Mercenary - Defiance Arura (D2R only)	沙漠雇佣兵 - 反抗光环 (D2R only)	
+	Mercenary - Blessed Arura (D2R only)	沙漠雇佣兵 - 精准祝福光环 (D2R only)	
+	Mercenary - Thorns Arura (D2R only)	沙漠雇佣兵 - 荆棘光环 (D2R only)	
+	Mercenary - Holy Freeze Arura (D2R only)	沙漠雇佣兵 - 神圣冰冻光环 (D2R only)	
+	Mercenary - Might Arura (D2R only)	沙漠雇佣兵 - 力量光环 (D2R only)	
+	Barbarian - Frenzy (D2R only)	野蛮人 - 狂乱 (D2R only)	
+	Barbarian - Frenzy (D2R only)	野蛮人 - 狂乱 (D2R only)	
+	Barbarian - Frenzy (D2R only)	野蛮人 - 狂乱 (D2R only)	
 *=======================物品种类名字			
 	General items	一般物品	一般物品
 	Helmets	头盔	頭盔
