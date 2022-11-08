@@ -28,7 +28,8 @@ CPropertyMetaDataItem::CPropertyMetaDataItem(DWORD verMin, const vector<CPropert
 vector<int> CPropertyMetaDataItem::Parse(DWORD value) const {
 	vector<int> ret;
 	for (auto & f : fields_) {
-		ret.push_back((value & f.max) + f.base);
+		const auto MASK = (DWORD(1) << f.bits) - 1;
+		ret.push_back((value & MASK) + f.base);
 		value >>= f.bits;
 	}
 	return ret;
