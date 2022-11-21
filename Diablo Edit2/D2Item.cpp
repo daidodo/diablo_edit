@@ -760,7 +760,7 @@ void CD2Item::WriteData(COutBitsStream& bs, DWORD version) const {
 		const BOOL isD2R = IsD2R(version);
 		if (!isD2R || bExport)
 			bs << WORD(0x4D4A);
-		if (bExport && IsPtr25AndAbove(version))
+		if (bExport && IsD2R(version))
 			bs << version;
 		bs << bQuest
 			<< bits(iUNKNOWN_01, 3)
