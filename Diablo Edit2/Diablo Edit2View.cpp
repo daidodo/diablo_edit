@@ -73,7 +73,6 @@ void CDiabloEdit2View::OnInitialUpdate()
 {
 	CFormView::OnInitialUpdate();
 	GetParentFrame()->RecalcLayout();
-	ResizeParentToFit();
 	//初始化界面
 	InitUI();
 }
@@ -135,6 +134,52 @@ void CDiabloEdit2View::InitUI(void)
 		m_dlgTabPage[m_nTabCurSel]->ShowWindow(SW_SHOW);
 
 		LoadText();
+
+		// Calulate minimum size for view
+		CSize newSize;
+		CSize result = m_dlgTabPage[0]->GetSize();
+		newSize.cx = max(result.cx, newSize.cx);
+		newSize.cy = max(result.cy, newSize.cy);
+
+		result = m_dlgTabPage[1]->GetSize();
+		newSize.cx = max(result.cx, newSize.cx);
+		newSize.cy = max(result.cy, newSize.cy);
+
+		// Adjust size for frame
+		CRect toolRect(0, 0, 0, 0);
+		CWnd* pBar;
+		WINDOWPLACEMENT wndpl;
+		if (pBar = GetParent()->GetDescendantWindow(AFX_IDW_TOOLBAR))
+		{
+			pBar->GetWindowPlacement(&wndpl);
+			if (wndpl.showCmd && SW_SHOW)
+			{
+				toolRect = wndpl.rcNormalPosition;
+				newSize.cy -= toolRect.Height();
+			}
+		}
+
+		if (pBar = GetParent()->GetDescendantWindow(AFX_IDW_STATUS_BAR))
+		{
+			pBar->GetWindowPlacement(&wndpl);
+			if (wndpl.showCmd && SW_SHOW)
+			{
+				toolRect = wndpl.rcNormalPosition;
+				newSize.cy -= toolRect.Height();
+			}
+		}
+
+		newSize.cx += (GetSystemMetrics(SM_CXSIZEFRAME) + GetSystemMetrics(SM_CXBORDER)) * 2 + GetSystemMetrics(SM_CYVSCROLL);
+
+		CRect rect;
+		GetWindowRect(&rect);
+		GetParent()->ScreenToClient(&rect);
+		rect.right = rect.left + newSize.cx;
+		rect.bottom = rect.top + newSize.cy;
+		m_dlgTabPage[0]->MoveWindow(rect);
+		m_dlgTabPage[1]->MoveWindow(rect);
+		SetWindowPos(NULL, -1, -1, rect.Width(), rect.Height(), SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE);
+		GetParentFrame()->SetWindowPos(NULL, -1, -1, rect.Width(), rect.Height(), SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE);
 	}
 }
 
