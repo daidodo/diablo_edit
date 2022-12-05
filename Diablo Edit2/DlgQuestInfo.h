@@ -21,6 +21,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 // 自定义函数
 public:
+	CSize GetSize() const;
 	void UpdateUI(const CD2S_Struct & character);
 	BOOL GatherData(CD2S_Struct & character);
 	void ResetAll();

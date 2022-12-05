@@ -144,6 +144,53 @@ BEGIN_MESSAGE_MAP(CDlgCharBasicInfo, CDialog)
 	ON_NOTIFY(TCN_SELCHANGE, IDC_TAB1, &CDlgCharBasicInfo::OnTcnSelchangeTab1)
 END_MESSAGE_MAP()
 
+CSize CDlgCharBasicInfo::GetSize() const
+{
+	CRect rect;
+	auto pWnd = GetDlgItem(IDC_TAB1);	// This control should have an pixel top position of 235
+	if (pWnd == nullptr || !::IsWindow(pWnd->GetSafeHwnd()))
+	{
+		GetClientRect(&rect);
+		return CSize(rect.Width(), rect.Height());
+	}
+
+	CRect rectTab;
+	pWnd->GetWindowRect(&rectTab);
+	ScreenToClient(&rectTab);
+
+	m_dlgTabPage[0]->GetWindowRect(&rect);
+	ScreenToClient(&rect);
+	CSize result = m_dlgTabPage[0]->GetSize();
+	result.cx += rectTab.left + rect.left;
+	result.cy += rectTab.top + rect.top;
+	CSize newSize = result;
+
+	m_dlgTabPage[1]->GetWindowRect(&rect);
+	ScreenToClient(&rect);
+	result = m_dlgTabPage[0]->GetSize();
+	result.cx += rectTab.left + rect.left;
+	result.cy += rectTab.top + rect.top;
+	newSize.cx = max(result.cx, newSize.cx);
+	newSize.cy = max(result.cy, newSize.cy);
+
+	pWnd = GetDlgItem(IDC_STATIC_GoldinSta);	// This control should be the right most
+	if (pWnd != nullptr && ::IsWindow(pWnd->GetSafeHwnd()))
+	{
+		CRect rect2;
+		pWnd->GetWindowRect(&rect2);
+		ScreenToClient(&rect);
+		newSize.cx = max(newSize.cx, rect2.right + rect.left);
+	}
+
+	GetClientRect(&rect);
+	rect.right = rect.left + newSize.cx;
+	rect.bottom = rect.top + newSize.cy;
+	::SetWindowPos(GetSafeHwnd(), NULL, -1, -1, rect.Width(), rect.Height(), SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE);
+	m_dlgTabPage[0]->MoveWindow(rect);
+	m_dlgTabPage[1]->MoveWindow(rect);
+	return newSize;
+}
+
 // 更新显示的人物信息
 void CDlgCharBasicInfo::UpdateUI(const CD2S_Struct& character)
 {
@@ -405,7 +452,20 @@ void CDlgCharBasicInfo::OnPaint()
 	CCharacterDialogBase::OnPaint();
 	CRect rect;
 	GetClientRect(&rect);
-	rect.top += 235;
+
+	auto pWnd = GetDlgItem(IDC_TAB1);	// This control should have an pixel left position of 338 and bottom position of 58
+	if (pWnd != nullptr && ::IsWindow(pWnd->GetSafeHwnd()))
+	{
+		CRect rectTab;
+		pWnd->GetWindowRect(&rectTab);
+		ScreenToClient(&rectTab);
+		rect.top = rectTab.top;
+	}
+	else
+	{
+		rect.top += 235;
+	}
+
 	m_tcBasicInfo.MoveWindow(rect);
 	m_tcBasicInfo.GetClientRect(&rect);
 	rect.top += 20;

@@ -24,6 +24,11 @@ using namespace std;
 
 const int GRID_WIDTH = 30;	//每个网格的边长(像素)
 
+// SCALING to take into account the possiblity of different dialog base units
+static double DLG_SCALE_X = 1.0;
+static double DLG_SCALE_Y = 1.0;
+static int GRID_WIDTH_SCALED = GRID_WIDTH;
+
 //物品类型和能装备的位置
 enum EEquip {
 	E_ANY = -1,				//可接受任意物品
@@ -162,7 +167,7 @@ const int POSITION_INFO[POSITION_END][5] = {
 static CRect PositionToRect(EPosition pos) {
 	ASSERT(pos < POSITION_END);
 	auto & p = POSITION_INFO[pos];
-	return CRect(p[0], p[1], p[0] + GRID_WIDTH * p[2], p[1] + GRID_WIDTH * p[3]);
+	return CRect(p[0] * DLG_SCALE_X, p[1] * DLG_SCALE_Y, p[0] * DLG_SCALE_X + GRID_WIDTH_SCALED * p[2], p[1] * DLG_SCALE_Y + GRID_WIDTH_SCALED * p[3]);
 }
 
 static int PositionToCol(EPosition pos) {
@@ -284,7 +289,7 @@ CItemView::CItemView(const CD2Item & item, EEquip equip, EPosition pos, int x, i
 	ASSERT(int(vGemItems.size()) <= PositionToCol(IN_SOCKET));
 }
 
-CSize CItemView::ViewSize() const { return CSize(iGridWidth * GRID_WIDTH, iGridHeight*GRID_WIDTH); }
+CSize CItemView::ViewSize() const { return CSize(iGridWidth * GRID_WIDTH_SCALED, iGridHeight  * GRID_WIDTH_SCALED); }
 
 int CItemView::GemCount() const {
 	int r = 0;
@@ -365,9 +370,9 @@ CPoint GridView::IndexToXY(int x, int y, int width, int height) const {
 	ASSERT(0 < width && width <= iCol);
 	ASSERT(0 < height && height <= iRow);
 	if(IsGrid())
-		return CPoint(Rect.left + x * GRID_WIDTH, Rect.top + y * GRID_WIDTH);
-	x = Rect.left + (iCol - width) * GRID_WIDTH / 2;
-	y = Rect.top + (iRow - height) * GRID_WIDTH / 2;
+		return CPoint(Rect.left + x * GRID_WIDTH_SCALED, Rect.top + y * GRID_WIDTH_SCALED);
+	x = Rect.left + (iCol - width) * GRID_WIDTH_SCALED / 2;
+	y = Rect.top + (iRow - height) * GRID_WIDTH_SCALED / 2;
 	return CPoint(x, y);
 }
 
@@ -375,8 +380,8 @@ tuple<int, int, int> GridView::XYToPositionIndex(CPoint pos, BOOL alternativeWea
 	ASSERT(0 <= pos.x && 0 <= pos.y);
 	ASSERT(0 < col && 0 < row);
 	if (IsGrid()) {
-		int x = (pos.x - (col - 1) * GRID_WIDTH / 2 - Rect.left) / GRID_WIDTH;
-		int y = (pos.y - (row - 1) * GRID_WIDTH / 2 - Rect.top) / GRID_WIDTH;
+		int x = (pos.x - (col - 1) * GRID_WIDTH_SCALED / 2 - Rect.left) / GRID_WIDTH_SCALED;
+		int y = (pos.y - (row - 1) * GRID_WIDTH_SCALED / 2 - Rect.top) / GRID_WIDTH_SCALED;
 		ASSERT(0 <= x && x < iCol);
 		ASSERT(0 <= y && y < iRow);
 		return make_tuple(iPosition, x, y);
@@ -429,17 +434,6 @@ CDlgCharItems::CDlgCharItems(CWnd* pParent /*=NULL*/)
 {
 	//鼠标
 	m_hCursor = ::LoadCursor(0, IDC_ARROW);
-	//初始化所有网格
-	for(int i = STASH;i < POSITION_END;++i)
-		m_vGridView.emplace_back(EPosition(i));
-	//屏蔽尸体部位
-	for (int i = CORPSE_HEAD; i < CORPSE_END; ++i)
-		m_vGridView[i].Enable(m_bHasCorpse);
-	//屏蔽雇佣兵部位
-	for (int i = MERCENARY_HEAD; i < MERCENARY_END; ++i)
-		m_vGridView[i].Enable(m_bHasMercenary);
-	//选择箱子大小
-	SetD2R(TRUE);
 }
 
 void CDlgCharItems::DoDataExchange(CDataExchange* pDX)
@@ -497,6 +491,13 @@ BEGIN_MESSAGE_MAP(CDlgCharItems, CDialog)
 	ON_NOTIFY(NM_CLICK, IDC_LIST_RECYCLE, &CDlgCharItems::OnNMClickListRecycle)
 	ON_NOTIFY(NM_DBLCLK, IDC_LIST_RECYCLE, &CDlgCharItems::OnNMDblclkListRecycle)
 END_MESSAGE_MAP()
+
+CSize CDlgCharItems::GetSize() const
+{
+	CRect rect;
+	GetClientRect(&rect);
+	return CSize(rect.Width(), rect.Height());
+}
 
 void CDlgCharItems::UpdateUI(const CD2S_Struct & character) {
 	ResetAll();
@@ -662,6 +663,32 @@ static void DrawGrid(CPaintDC & dc, const CRect & rect, int intervalX = 0, int i
 	}
 }
 
+void CDlgCharItems::CalculateScale()
+{
+	auto pWnd = GetDlgItem(IDC_CHECK1);	// This control should have an pixel left position of 338 and bottom position of 58
+	if (pWnd != nullptr && ::IsWindow(pWnd->GetSafeHwnd()))
+	{
+		CRect rect;
+		pWnd->GetWindowRect(&rect);
+		ScreenToClient(&rect);
+		DLG_SCALE_X = double(rect.left) / 338.0;
+		DLG_SCALE_Y = double(rect.bottom) / 58.0;
+		GRID_WIDTH_SCALED = (int)std::floor(min(DLG_SCALE_X, DLG_SCALE_Y) * GRID_WIDTH);
+	}
+
+	//初始化所有网格
+	for (int i = STASH; i < POSITION_END; ++i)
+		m_vGridView.emplace_back(EPosition(i));
+	//屏蔽尸体部位
+	for (int i = CORPSE_HEAD; i < CORPSE_END; ++i)
+		m_vGridView[i].Enable(m_bHasCorpse);
+	//屏蔽雇佣兵部位
+	for (int i = MERCENARY_HEAD; i < MERCENARY_END; ++i)
+		m_vGridView[i].Enable(m_bHasMercenary);
+	//选择箱子大小
+	SetD2R(TRUE);
+}
+
 void CDlgCharItems::DrawGrids(CPaintDC & dc)
 {
     CPen pen(PS_SOLID,1,RGB(0,200,100));
@@ -669,7 +696,7 @@ void CDlgCharItems::DrawGrids(CPaintDC & dc)
 	for (const auto & g : m_vGridView) {
 		if (!g.Visible())continue;
 		if (g.IsGrid())
-			::DrawGrid(dc, g.Rect, GRID_WIDTH, GRID_WIDTH);
+			::DrawGrid(dc, g.Rect, GRID_WIDTH_SCALED, GRID_WIDTH_SCALED);
 		else
 			::DrawGrid(dc, g.Rect);
 	}
@@ -680,11 +707,15 @@ void CDlgCharItems::DrawItemXY(CPaintDC & dc, CPoint pos, const CItemView & view
 {
 	CBitmap bmp;
 	bmp.LoadBitmap(view.nPicRes);
+
+	BITMAP bmpInfo;
+	bmp.GetBitmap(&bmpInfo);
+
 	CDC memDC;
 	memDC.CreateCompatibleDC(&dc);
 	CBitmap* pOld = memDC.SelectObject(&bmp);
 	auto sz = view.ViewSize();
-	dc.BitBlt(pos.x, pos.y, sz.cx,sz.cy, &memDC, 0, 0, SRCCOPY);
+	dc.StretchBlt(pos.x, pos.y, sz.cx,sz.cy, &memDC, 0, 0, bmpInfo.bmWidth, bmpInfo.bmHeight, SRCCOPY);
 	memDC.SelectObject(pOld);
 }
 
@@ -767,7 +798,7 @@ void CDlgCharItems::ShowItemInfoDlg(const CD2Item * pItem, int x, int gems){
         m_pDlgItemInfo->GetWindowRect(&rect);
         GetWindowRect(&rect1);
 		//Adjust Suspend Window position
-		if (x < INFO_WINDOW_RIGHT - GRID_WIDTH * 2)
+		if (x < INFO_WINDOW_RIGHT - GRID_WIDTH_SCALED * 2)
 			rect1.left += INFO_WINDOW_RIGHT;
 		else
 			rect1.left += INFO_WINDOW_LEFT;
@@ -1068,6 +1099,7 @@ void CDlgCharItems::OnContextMenu(CWnd* /*pWnd*/, CPoint point) {
 BOOL CDlgCharItems::OnInitDialog()
 {
     CCharacterDialogBase::OnInitDialog();
+	CalculateScale();
 	m_lstRecycle.InsertColumn(0, _T(""), LVCFMT_LEFT, 140);
 	m_scTrasparent.SetRange(0, 255);
 	m_scTrasparent.SetPos(200);

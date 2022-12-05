@@ -66,6 +66,8 @@ class CDlgCharItems : public CCharacterDialogBase
 {
 	DECLARE_DYNAMIC(CDlgCharItems)
 
+	void CalculateScale();
+
 	std::vector<GridView> m_vGridView;		//所有网格的信息
 	void DrawGrids(CPaintDC & dc);			//画所有网格
 	BOOL m_bHasCharacter = FALSE;			//是否加载了人物
@@ -126,6 +128,7 @@ public:
 	enum { IDD = IDD_DIALOG_CharItems };
 	CDlgCharItems(CWnd* pParent = NULL);
 	//虚函数
+	CSize GetSize() const;
 	void UpdateUI(const CD2S_Struct & character);
 	BOOL GatherData(CD2S_Struct & character);
 	void ResetAll();
