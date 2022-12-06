@@ -1,11 +1,10 @@
 ﻿//{{NO_DEPENDENCIES}}
-// Microsoft Visual C++ 生成的包含文件。
-// 供 DiabloEdit2.rc 使用
+// Microsoft Visual C++ generated include file.
+// Used by DiabloEdit2.rc
 //
 #define IDD_ABOUTBOX                    100
 #define IDP_OLE_INIT_FAILED             100
 #define IDD_DIABLOEDIT2_FORM            101
-#define IDD_DIALOG_OnlyTabCtrl          101
 #define IDD_DIALOG_BasicCharInfo        102
 #define IDD_DIALOG_WayPoints            103
 #define IDR_MAINFRAME                   128
@@ -463,13 +462,39 @@
 #define IDC_LIST_RECYCLE                1058
 #define IDC_STATIC_TIP                  1059
 #define IDC_TREE1                       1060
+#define IDC_INV_STASH                   1061
+#define IDC_INV                         1062
+#define IDC_INV_SOCKETS                 1063
+#define IDC_INV_CUBE                    1064
+#define IDC_INV_BELT_GRID               1065
+#define IDC_INV_RH                      1066
+#define IDC_INV_LH                      1067
 #define IDC_BUTTON1                     1068
-#define IDC_BUTTON2                     1069
+#define IDC_INV_CORPSD_RH               1069
+#define IDC_INV_CORPSD_LH               1070
+#define IDC_INV_MERC_RH                 1071
+#define IDC_INV_MERC_LH                 1072
 #define IDC_LIST1                       1073
-#define IDC_BUTTON3                     1074
-#define IDC_BUTTON4                     1075
-#define IDC_BUTTON5                     1076
+#define IDC_INV_GOLEM                   1074
+#define IDC_INV_TORSO                   1075
+#define IDC_INV_CORPSE_TORSO            1076
 #define IDC_SLIDER1                     1077
+#define IDC_INV_MERC_TORSO              1078
+#define IDC_INV_HELM                    1079
+#define IDC_INV_CORPSE_HELM             1080
+#define IDC_INV_MERC_HELM               1081
+#define IDC_INV_GLOVE                   1082
+#define IDC_INV_CORPSE_GLOVE            1083
+#define IDC_INV_FOOT                    1084
+#define IDC_INV_CORPSE_FOOT             1085
+#define IDC_INV_BELT                    1086
+#define IDC_INV_CORPSE_BELT             1087
+#define IDC_INV_RF                      1088
+#define IDC_INV_CORPSE_RF               1089
+#define IDC_INV_LF                      1090
+#define IDC_INV_CORPSE_LF               1091
+#define IDC_INV_AMU                     1092
+#define IDC_INV_CORPSE_AMU              1093
 #define IDC_STATIC05                    1094
 #define IDC_STATIC06                    1095
 #define IDC_STATIC07                    1096
@@ -591,9 +616,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        478
+#define _APS_NEXT_RESOURCE_VALUE        479
 #define _APS_NEXT_COMMAND_VALUE         32780
-#define _APS_NEXT_CONTROL_VALUE         1061
+#define _APS_NEXT_CONTROL_VALUE         1062
 #define _APS_NEXT_SYMED_VALUE           310
 #endif
 #endif

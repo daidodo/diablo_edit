@@ -66,13 +66,13 @@ private:
 	DWORD m_dwMaxGoldInStash;
 // 自定义函数
 public:
-	CSize GetSize() const;
 	void UpdateUI(const CD2S_Struct & character);
 	BOOL GatherData(CD2S_Struct & character);
 	void ResetAll();
 	void LoadText(void);	//加载控件的字符串内容
 private:
 	void InitUI(void);
+	void RefreshUI(void);
 public:
 	virtual BOOL OnInitDialog();
 	afx_msg void OnBnClicked_Skills();

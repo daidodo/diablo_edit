@@ -113,13 +113,6 @@ BEGIN_MESSAGE_MAP(CDlgQuestInfo, CDialog)
 	ON_BN_CLICKED(IDC_CHECK1, &CDlgQuestInfo::OnBnClickedCheck1)
 END_MESSAGE_MAP()
 
-CSize CDlgQuestInfo::GetSize() const
-{
-	CRect rect;
-	GetClientRect(&rect);
-	return CSize(rect.Width(), rect.Height());
-}
-
 void CDlgQuestInfo::UpdateUI(const CD2S_Struct & character)
 {
 	for(int i = 0;i < LEVEL_SIZE;++i){

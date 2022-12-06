@@ -25,8 +25,6 @@ using namespace std;
 const int GRID_WIDTH = 30;	//每个网格的边长(像素)
 
 // SCALING to take into account the possiblity of different dialog base units
-static double DLG_SCALE_X = 1.0;
-static double DLG_SCALE_Y = 1.0;
 static int GRID_WIDTH_SCALED = GRID_WIDTH;
 
 //物品类型和能装备的位置
@@ -126,7 +124,7 @@ static BOOL IsGolem(EPosition pos) { return GOLEM == pos; }
 
 //每个位置(EPosition)在UI的起始坐标(像素),列数,行数
 //left,top,col,row,equip
-const int POSITION_INFO[POSITION_END][5] = {
+int POSITION_INFO[POSITION_END][5] = { // Top-Left position adjusted by CalculateScale at runtime to adjust for DPI
 	{10,5,6,8,E_ANY},		//箱子
 	{10,5,10,10,E_ANY},		//D2R大箱子
 	{10,315,10,4,E_ANY},	//口袋
@@ -164,10 +162,48 @@ const int POSITION_INFO[POSITION_END][5] = {
 	{600,30,2,4,E_ANY},		//生成金属石魔的物品
 };
 
+const int POSITION_RECT[POSITION_END] = { // Rect used to position images
+	IDC_INV_STASH,			//箱子
+	IDC_INV_STASH,			//D2R大箱子
+	IDC_INV,				//口袋
+	IDC_INV_CUBE,			//方块
+	IDC_INV_BELT_GRID,		//腰带里
+	IDC_INV_SOCKETS,		//镶嵌在孔里
+
+	IDC_INV_HELM,			//头
+	IDC_INV_AMU,			//项链
+	IDC_INV_TORSO,			//身体
+	IDC_INV_RH,				//武器右
+	IDC_INV_LH,				//武器左
+	IDC_INV_RF,				//戒指右
+	IDC_INV_LF,				//戒指左
+	IDC_INV_BELT,			//腰带		
+	IDC_INV_FOOT,			//鞋子
+	IDC_INV_GLOVE,			//手套
+
+	IDC_INV_CORPSE_HELM,	//尸体的头
+	IDC_INV_CORPSE_AMU,		//尸体的项链
+	IDC_INV_CORPSE_TORSO,	//尸体的身体
+	IDC_INV_CORPSD_RH,	//尸体的武器右
+	IDC_INV_CORPSD_LH,	//尸体的武器左
+	IDC_INV_CORPSE_RF,	//尸体的戒指右
+	IDC_INV_CORPSE_LF,	//尸体的戒指左
+	IDC_INV_CORPSE_BELT,	//尸体的腰带		
+	IDC_INV_CORPSE_FOOT,	//尸体的鞋子
+	IDC_INV_CORPSE_GLOVE,	//尸体的手套
+
+	IDC_INV_MERC_HELM,		//雇佣兵的头
+	IDC_INV_MERC_TORSO,		//雇佣兵的身体
+	IDC_INV_MERC_RH,		//雇佣兵的武器右
+	IDC_INV_MERC_LH,		//雇佣兵的武器左
+
+	IDC_INV_GOLEM,			//生成金属石魔的物品
+};
+
 static CRect PositionToRect(EPosition pos) {
 	ASSERT(pos < POSITION_END);
 	auto & p = POSITION_INFO[pos];
-	return CRect(p[0] * DLG_SCALE_X, p[1] * DLG_SCALE_Y, p[0] * DLG_SCALE_X + GRID_WIDTH_SCALED * p[2], p[1] * DLG_SCALE_Y + GRID_WIDTH_SCALED * p[3]);
+	return CRect(p[0], p[1], p[0] + GRID_WIDTH_SCALED * p[2], p[1] + GRID_WIDTH_SCALED * p[3]);
 }
 
 static int PositionToCol(EPosition pos) {
@@ -492,13 +528,6 @@ BEGIN_MESSAGE_MAP(CDlgCharItems, CDialog)
 	ON_NOTIFY(NM_DBLCLK, IDC_LIST_RECYCLE, &CDlgCharItems::OnNMDblclkListRecycle)
 END_MESSAGE_MAP()
 
-CSize CDlgCharItems::GetSize() const
-{
-	CRect rect;
-	GetClientRect(&rect);
-	return CSize(rect.Width(), rect.Height());
-}
-
 void CDlgCharItems::UpdateUI(const CD2S_Struct & character) {
 	ResetAll();
 	m_bHasCharacter = TRUE;
@@ -665,15 +694,34 @@ static void DrawGrid(CPaintDC & dc, const CRect & rect, int intervalX = 0, int i
 
 void CDlgCharItems::CalculateScale()
 {
-	auto pWnd = GetDlgItem(IDC_CHECK1);	// This control should have an pixel left position of 338 and bottom position of 58
+	// Fix up position and grid scale
+	auto pWnd = GetDlgItem(IDC_INV_STASH);	// This control is a good one to calculate scale and it is the biggest grid and the other grids should follow it's scale
 	if (pWnd != nullptr && ::IsWindow(pWnd->GetSafeHwnd()))
 	{
 		CRect rect;
 		pWnd->GetWindowRect(&rect);
 		ScreenToClient(&rect);
-		DLG_SCALE_X = double(rect.left) / 338.0;
-		DLG_SCALE_Y = double(rect.bottom) / 58.0;
-		GRID_WIDTH_SCALED = (int)std::floor(min(DLG_SCALE_X, DLG_SCALE_Y) * GRID_WIDTH);
+
+		// This grid should be info[2] * GRID_WIDTH wide and info[3] * GRID_WIDTH high, so calcualte scale of each GRID Cell.
+		auto& info = POSITION_INFO[STASH_D2R];
+		double scaleX = double(rect.Width()) / double(info[2] * GRID_WIDTH);
+		double scaleY = double(rect.Height()) / double(info[3] * GRID_WIDTH);
+		GRID_WIDTH_SCALED = (int)std::floor(min(scaleX, scaleY) * GRID_WIDTH);
+	}
+
+	// Adjust POSITION_RECT top-left values
+	for (size_t i = 0; i < POSITION_END; ++i)
+	{
+		pWnd = GetDlgItem(POSITION_RECT[i]);
+		if (pWnd != nullptr && ::IsWindow(pWnd->GetSafeHwnd()))
+		{
+			auto& info = POSITION_INFO[i];
+			CRect rect;
+			pWnd->GetWindowRect(&rect);
+			ScreenToClient(&rect);
+			info[0] = rect.left;
+			info[1] = rect.top;
+		}
 	}
 
 	//初始化所有网格

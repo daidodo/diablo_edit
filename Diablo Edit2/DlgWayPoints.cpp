@@ -123,13 +123,6 @@ BEGIN_MESSAGE_MAP(CDlgWayPoints, CDialog)
 	ON_BN_CLICKED(IDC_CHECK0, &CDlgWayPoints::OnBnClicked_SelAll)
 END_MESSAGE_MAP()
 
-CSize CDlgWayPoints::GetSize() const
-{
-	CRect rect;
-	GetClientRect(&rect);
-	return CSize(rect.Width(), rect.Height());
-}
-
 void CDlgWayPoints::UpdateUI(const CD2S_Struct & character)
 {
 	for(int i = 0;i < 3;++i){
