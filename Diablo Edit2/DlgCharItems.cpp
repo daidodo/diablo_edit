@@ -1234,11 +1234,42 @@ void CDlgCharItems::OnChangeMercenary() {
 	}
 }
 
-static HCURSOR CreateCursorFromBitmap(int picIndex, CSize sz) {
+static HCURSOR CreateCursorFromBitmap(CDC* pDC, int picIndex, CSize sz) {
 	// Load bitmap
 	CBitmap bmp;
 	if (!bmp.LoadBitmap(picIndex))
 		ASSERT(FALSE);
+
+	// Check to see if we need to be scaled
+	BITMAP bmpInfo;
+	bmp.GetBitmap(&bmpInfo);
+	if (bmpInfo.bmWidth != sz.cx || bmpInfo.bmHeight != sz.cy)
+	{
+		// select the source CBitmap in a memory DC;
+		CDC memSrcDc;
+		memSrcDc.CreateCompatibleDC(pDC);
+		memSrcDc.SelectObject(&bmp); //now bitmap is an instance of CBitmap class
+
+		// Create your new CBitmap with the new desired size and select it into a destination memory DC
+		CDC memDestDC;
+		CBitmap image;
+		memDestDC.CreateCompatibleDC(pDC);
+		image.CreateCompatibleBitmap(&memSrcDc, sz.cx, sz.cy);
+		memDestDC.SelectObject(&image);
+
+		// StretchBlt from src to dest
+		memDestDC.StretchBlt(0, 0, sz.cx, sz.cy, &memSrcDc, 0, 0, bmpInfo.bmWidth, bmpInfo.bmHeight, SRCCOPY);
+
+		HGDIOBJ hbitmap_detach = bmp.Detach();
+		if (hbitmap_detach)
+		{
+			DeleteObject(hbitmap_detach);
+		}
+
+		bmp.Attach(image.Detach());
+		bmp.GetBitmap(&bmpInfo);
+	}
+
 	// Create an empty mask bitmap.
 	CBitmap monobmp;
 	monobmp.CreateBitmap(sz.cx, sz.cy, 1, 1, NULL);
@@ -1254,7 +1285,7 @@ static HCURSOR CreateCursorFromBitmap(int picIndex, CSize sz) {
 }
 
 HCURSOR CDlgCharItems::CreateAlphaCursor(const CItemView & itemView) {
-	return ::CreateCursorFromBitmap(itemView.nPicRes, itemView.ViewSize());
+	return ::CreateCursorFromBitmap(GetDC(), itemView.nPicRes, itemView.ViewSize());
 }
 
 BOOL CDlgCharItems::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message) {

@@ -175,7 +175,7 @@
 	Ladder	天梯	天梯
 	Expansion	资料片	資料片
 	Hardcore	专家级	專家級
-	Died berfore	以前死过	以前死過
+	Died before	以前死过	以前死過
 	Skill Points	技能点剩余	技能點剩餘
 	Gold in person	身上金钱	身上金錢
 	Gold in stash	箱子金钱	箱子金錢

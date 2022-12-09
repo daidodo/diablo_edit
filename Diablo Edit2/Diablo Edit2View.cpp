@@ -147,6 +147,11 @@ void CDiabloEdit2View::RefreshUI(void)
 	// In case of resize, the tab control needs to resize
 	CRect rect;
 	GetClientRect(&rect);
+
+	// get the current scroll bar state and adjust rect
+	CSize scrollPos = GetScrollPosition();
+	rect.left -= scrollPos.cx;
+	rect.top -= scrollPos.cy;
 	m_tcTab.MoveWindow(rect);
 	m_tcTab.GetClientRect(&rect);
 	m_tcTab.AdjustRect(FALSE, &rect);
@@ -368,4 +373,3 @@ void CDiabloEdit2View::OnLanguage3()
         LoadText();
 	}
 }
-
