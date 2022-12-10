@@ -128,7 +128,6 @@ public:
 	enum { IDD = IDD_DIALOG_CharItems };
 	CDlgCharItems(CWnd* pParent = NULL);
 	//虚函数
-	CSize GetSize() const;
 	void UpdateUI(const CD2S_Struct & character);
 	BOOL GatherData(CD2S_Struct & character);
 	void ResetAll();
