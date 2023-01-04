@@ -447,7 +447,8 @@ void CDlgFoundry::WriteTypeSpecificInfo(CTypeSpecificInfo & spec, const CItemMet
 		spec.iMaxDurability.reset();
 	if (spec.iMaxDurability.exist() && spec.iMaxDurability > 0) {
 		spec.iCurDur.ensure() = intOf(m_edDurability);
-		validate((spec.iCurDur <= spec.iMaxDurability), 30);
+		// validate((spec.iCurDur <= spec.iMaxDurability), 30);
+		validate((spec.iCurDur < 256), 29);
 	}else
 		spec.iCurDur.reset();
 	const int s2 = intOf(m_sExtSockets);
