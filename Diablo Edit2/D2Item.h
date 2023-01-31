@@ -163,7 +163,8 @@ struct CItemInfo
 	MayExist<CExtItemInfo>			pExtItemInfo;	//如果bSimple == FALSE，则此结构存在
 	MayExist<CGoldQuantity>			pGold;			//如果sTypeName == "gld "，则此结构存在
 	BOOL							bHasRand = FALSE;//1 bit
-	MayExist<DWORD, 3>				pTmStFlag;		//如果bHasRand == TRUE，则此结构存在
+	MayExist<DWORD, 4>				pTimeStampFlag;	//如果bHasRand == TRUE，则此结构存在
+													//20230131：之前为3个DWORD（未测试），现在改成4个DWORD（已测试）
 	MayExist<CTypeSpecificInfo>		pTpSpInfo;		//如果bSimple == FALSE，则此结构存在
 	//Functions:
 	explicit CItemInfo(const CItemMetaData * meta = 0);

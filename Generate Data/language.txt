@@ -545,6 +545,8 @@
 	Scroll of Town Portal	回城卷轴	回城卷軸
 	Tome of Town Portal	回城之书	回城之書
 350	Delirium	迪勒瑞姆	迪勒瑞姆
+371	Mark of the Bear	熊之印记	熊之印記
+372	Mark of the Wolf	狼之印记	狼之印記
 1023	An Evil Force	一股邪恶力量	一股邪惡力量
 *=======================角色技能名字			
 	Magic Arrow	魔法箭	魔法箭
@@ -1653,7 +1655,7 @@
 	%+d%% Chance to Cast Level %d %s When Death	当死亡时%+d%%机会施展等级%d %s	死亡時%+d%%機會施展等級%d %s
 	%+d%% Chance to Cast Level %d %s When Striking	当打击时有%+d%%机会施展等级%d %s	打擊時%+d%%機會施展等級%d %s
 	%+d%% Chance to Cast Level %d %s When Levelup	当升级时%+d%%机会施展等级%d %s	升級時%+d%%機會施展等級%d %s
-	Unused		
+	%+d%% Chance for Finishing Moves to not Consume Charges	%+d%% 几率使终结技不消耗集气的力量	%+d%% 機率使終結技不消耗集氣的力量
 	%+d%% Chance to Cast Level %d %s When Struck	被击中时有 %+d%% 几率释放 %d级 %s 技能	被擊中時有 %+d%% 几率釋放 %d級 %s 技能
 	Unused		
 	Unused		
@@ -4762,3 +4764,7 @@
 193	Wrath		
 195	Zephyr		
 2718	Delirium		
+2784	Hustle	催促	催促
+2785	Hustle	催促	催促
+2786	Mosaic	嵌饰	嵌飾
+2787	Metamorphosis	变化	變化

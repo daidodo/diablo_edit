@@ -545,7 +545,7 @@ const CItemMetaData* CItemInfo::ReadData(CInBitsStream& bs, DWORD version, BOOL 
 	bs >> bHasRand;
 	if (!bSimple) {
 		if (bHasRand)
-			for (auto& i : pTmStFlag.ensure())
+			for (auto& i : pTimeStampFlag.ensure())
 				if (bs.Good())
 					bs >> bits(i, 32);
 		//Type Specific info
@@ -587,7 +587,7 @@ void CItemInfo::WriteData(COutBitsStream& bs, const CItemMetaData& itemData, DWO
 		pGold->WriteData(bs);
 	bs << bHasRand;
 	if (bHasRand)
-		for (auto i : pTmStFlag)
+		for (auto i : pTimeStampFlag)
 			if (bs.Good())
 				bs << bits(i, 32);
 	if (!bSimple) {	//Type Specific info
@@ -682,8 +682,10 @@ CString CD2Item::ItemName() const {
 			if (extInfo.wMonsterID.exist())
 				name.push_front(::theApp.MonsterName(extInfo.wMonsterID));
 		}
-		if (extInfo.iQuality <= 3 && IsRuneWord())
-			name.push_front(::theApp.RuneWordName(RuneWordId()));
+		if (extInfo.iQuality <= 3 && IsRuneWord()) {
+			const CString runewordName = ::theApp.RuneWordName(RuneWordId());
+			name.push_front(runewordName);
+		}
 		if (bEthereal)
 			name.push_back(_T("(ETH)"));
 	}
