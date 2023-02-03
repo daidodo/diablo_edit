@@ -101,7 +101,7 @@ public:
 	const CString & RareCraftedName(UINT index) const { return String(SectionToIndex(RARE_CRAFTED_NAME, index)); }
 	const CString & UniqueName(UINT index) const { return String(SectionToIndex(UNIQUE_ITEM_NAME, index)); }
 	const CString & SetItemName(UINT index) const { return String(SectionToIndex(SET_ITEM_NAME, index)); }
-	const CString & RuneWordName(UINT index) const {
+	const CString RuneWordName(UINT index) const {
 		return index < SectionSize(RUNE_WORD_NAME) ? String(SectionToIndex(RUNE_WORD_NAME, index)) : CString();
 	}
 	UINT ItemQualityNameSize() const { return SectionSize(ITEM_QUALITY_NAME); }
