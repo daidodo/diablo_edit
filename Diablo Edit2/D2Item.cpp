@@ -396,7 +396,7 @@ void CExtItemInfo::WriteData(COutBitsStream& bs, DWORD version, BOOL bIsCharm, B
 	default:
 		ASSERT(FALSE && _T("Invalid item quality"));
 	}
-	if (bRuneWord)	//
+	if (bRuneWord)	//runeword
 		bs << bits(wRune, 16);
 	if (bPersonalized) {
 		int b = IsPtr24AndAbove(version) ? 8 : 7;
