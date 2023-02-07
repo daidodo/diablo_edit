@@ -441,6 +441,7 @@ BOOL CDiabloEdit2App::ReadItemRes(void) {
 			&& parse(ls, item.Simple)
 			&& parse(ls, item.Normal)
 			&& parse(ls, item.White)
+			&& parse(ls, item.IsNew)
 			&& parse(ls, item.HasDef)
 			&& parse(ls, item.HasDur)
 			&& parse(ls, item.IsStacked)
@@ -454,7 +455,8 @@ BOOL CDiabloEdit2App::ReadItemRes(void) {
 			&& parse(ls, item.Damage1Max)
 			&& parse(ls, item.Damage2Min)
 			&& parse(ls, item.Damage2Max)
-			&& parse(ls, item.Pad);
+			&& parse(ls, item.iPadBits)
+			&& parse(ls, item.iPad);
 		// ID
 		if (id.size() != 3)
 			return FALSE;

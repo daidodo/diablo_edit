@@ -29,6 +29,7 @@ struct CItemMetaData
 	BOOL Simple = FALSE;	//物品是否有Smiple标志
 	BOOL Normal = FALSE;	//质量只能是normal，除去Simple物品
 	BOOL White = FALSE;		//质量只能是low, normal, high（白色），除去Simple和Normal物品
+	BOOL IsNew = FALSE;		//物品的bNew是否为1。目前只有 黄金鸟(Gold Bird) 是TRUE
 	BOOL HasDef = FALSE;	//有防御值
 	BOOL HasDur = FALSE;	//有耐久度
 	BOOL IsStacked = FALSE;	//有数量
@@ -42,7 +43,8 @@ struct CItemMetaData
 	UINT Damage1Max = 0;	//武器的单手最高伤害
 	UINT Damage2Min = 0;	//武器的双手最低伤害
 	UINT Damage2Max = 0;	//武器的双手最高伤害
-	UINT Pad = 0;			//D2R里Simple物品最后的补偿bits
+	UINT iPadBits = 0;		//D2R里Simple物品最后的补偿占用bits
+	BYTE iPad = 0;			//D2R里Simple物品最后的补偿
 };
 
 //属性的参数

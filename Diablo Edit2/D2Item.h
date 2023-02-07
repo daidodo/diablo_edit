@@ -166,6 +166,7 @@ struct CItemInfo
 	MayExist<DWORD, 4>				pTimeStampFlag;	//如果bHasRand == TRUE，则此结构存在
 													//20230131：之前为3个DWORD（未测试），现在改成4个DWORD（已测试）
 	MayExist<CTypeSpecificInfo>		pTpSpInfo;		//如果bSimple == FALSE，则此结构存在
+	BYTE							iPad;			//D2R里Simple物品最后的补偿
 	//Functions:
 	explicit CItemInfo(const CItemMetaData * meta = 0);
 	const CItemMetaData * ReadData(CInBitsStream & bs, DWORD version, BOOL bSimple, BOOL bRuneWord, BOOL bPersonalized, BOOL bSocketed);
@@ -191,7 +192,8 @@ struct CD2Item
 	BOOL	bDisabled = FALSE;		//bit 24，物品不可用。比如耐久度变成0了，仅仅增加耐久度不够，还要重置这个bit
 	BYTE	iUNKNOWN_10 = 0;		//bit 25,26
 	BOOL	bSocketed = FALSE;		//bit 27,是否有孔
-	BYTE	iUNKNOWN_03 = 0;		//bit 28,29
+	BOOL	bUNKNOWN_03 = 0;		//bit 28
+	BOOL	bNew = 0;				//bit 29
 	BOOL	bBadEquipped = FALSE;	//bit 30
 	BOOL	bUNKNOWN_04 = FALSE;	//bit 31
 	BOOL	bEar = FALSE;			//bit 32

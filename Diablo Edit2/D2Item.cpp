@@ -513,6 +513,7 @@ CItemInfo::CItemInfo(const CItemMetaData* meta) {
 			pExtItemInfo.ensure(meta);
 			pTpSpInfo.ensure(meta);
 		}
+		iPad = meta->iPad;
 	}
 }
 
@@ -558,11 +559,10 @@ const CItemMetaData* CItemInfo::ReadData(CInBitsStream& bs, DWORD version, BOOL 
 			pExtItemInfo->IsSet(),
 			bRuneWord);
 	}
-	else  if (isD2R && pItemData->Pad > 0) {
+	else  if (isD2R && pItemData->iPadBits > 0) {
 		// Simple items need an extra bit of padding. Tested in D2R only.
 		// https://github.com/daidodo/diablo_edit/issues/13
-		BYTE pad;
-		bs >> bits(pad, pItemData->Pad);
+		bs >> bits(iPad, pItemData->iPadBits);
 	}
 	return pItemData;
 }
@@ -600,8 +600,8 @@ void CItemInfo::WriteData(COutBitsStream& bs, const CItemMetaData& itemData, DWO
 			pExtItemInfo->IsSet(),
 			bRuneWord);
 	}
-	else if (isD2R && itemData.Pad > 0)
-		bs << bits<BYTE>(0, itemData.Pad);	// padding
+	else if (isD2R && itemData.iPadBits > 0)
+		bs << bits(iPad, itemData.iPadBits);	// padding
 }
 
 BOOL CItemInfo::IsNameValid() const {
@@ -632,6 +632,7 @@ CD2Item::CD2Item(DWORD type) {
 	if (type > 0) {
 		pItemData = ::theApp.ItemMetaData(type);
 		ASSERT(pItemData);
+		bNew = pItemData->IsNew;
 		bSimple = pItemData->Simple;
 		if (0x20726165 == type) {	//"ear "
 			bEar = TRUE;
@@ -710,25 +711,26 @@ void CD2Item::ReadData(CInBitsStream& bs, DWORD version) {
 		bs.SeekBack(sizeof dwVersion);
 		dwVersion = version;
 	}
-	bs >> bQuest
-		>> bits(iUNKNOWN_01, 3)
-		>> bIdentified
-		>> bits(iUNKNOWN_02, 3)
-		>> bDisabled
-		>> bits(iUNKNOWN_10, 2)
-		>> bSocketed
-		>> bits(iUNKNOWN_03, 2)
-		>> bBadEquipped
-		>> bUNKNOWN_04
-		>> bEar
-		>> bNewbie
-		>> bits(iUNKNOWN_05, 3)
-		>> bSimple
-		>> bEthereal
-		>> bUNKNOWN_06
-		>> bPersonalized
-		>> bUNKNOWN_07
-		>> bRuneWord;
+	bs >> bQuest;
+	bs >> bits(iUNKNOWN_01, 3);
+	bs >> bIdentified;
+	bs >> bits(iUNKNOWN_02, 3);
+	bs >> bDisabled;
+	bs >> bits(iUNKNOWN_10, 2);
+	bs >> bSocketed;
+	bs >> bUNKNOWN_03;
+	bs >> bNew;
+	bs >> bBadEquipped;
+	bs >> bUNKNOWN_04;
+	bs >> bEar;
+	bs >> bNewbie;
+	bs >> bits(iUNKNOWN_05, 3);
+	bs >> bSimple;
+	bs >> bEthereal;
+	bs >> bUNKNOWN_06;
+	bs >> bPersonalized;
+	bs >> bUNKNOWN_07;
+	bs >> bRuneWord;;
 	if (IsD2R(dwVersion))
 		bs >> bits(iUNKNOWN_09, 8);
 	else
@@ -771,7 +773,8 @@ void CD2Item::WriteData(COutBitsStream& bs, DWORD version) const {
 			<< BOOL(FALSE)		// Always reset bDisabled
 			<< bits(iUNKNOWN_10, 2)
 			<< bSocketed
-			<< bits(iUNKNOWN_03, 2)
+			<< bUNKNOWN_03
+			<< bNew
 			<< bBadEquipped
 			<< bUNKNOWN_04
 			<< bEar
