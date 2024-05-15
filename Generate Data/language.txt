@@ -700,13 +700,13 @@
 	War Cry	战斗狂嗥	戰鬥狂嗥
 	Battle Command	战斗指挥	戰鬥指揮
 	Raven	乌鸦	烏鴉
-	Plague Poppy	猛毒华藤	猛毒花藤
+	Poison Creeper	毒花藤	劇毒藤蔓
 	Oak Sage	橡木智者	橡木智者
 	Summon Spirit Wolf	召唤鬼狼	召喚鬼狼
-	Cycle of Life	食尸藤	食屍藤
+	Carrion Vine	食尸藤	食屍藤蔓
 	Heart of Wolverine	狼獾之心	狼獾之心
 	Summon Fenris	召唤狂狼	召喚狂狼
-	Vines	太阳藤	太陽藤
+	Solar Creeper	太阳藤	太陽藤蔓
 	Spirit of Barbs	棘灵	棘靈
 	Summon Grizzly	召唤灰熊	召喚灰熊
 	Wearwolf	狼人变化	狼人變化
