@@ -33,7 +33,7 @@ private:
 	CTabCtrl m_tcBasicInfo;
 	int	m_nTabCurSel,m_nTabPageCount;
 	//人物信息
-	CString m_sVersion;
+	CComboBox m_sVersion;
 	CString m_sName;
 	CComboBox m_cbCharClass;
 	BOOL m_bLadder;

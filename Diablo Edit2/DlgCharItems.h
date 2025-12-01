@@ -89,7 +89,7 @@ class CDlgCharItems : public CCharacterDialogBase
 	std::unique_ptr<CDlgSuspend> m_pDlgItemInfo;//显示物品信息的悬浮窗口
 	BOOL m_bNotShowItemInfoDlg;					//是否隐藏物品信息悬浮窗
 	CSliderCtrl m_scTrasparent;					//属性悬浮窗的透明度
-	void ShowItemInfoDlg(const CD2Item * pItem, int x, int gems);	//显示/隐藏(pItem = 0)物品信息悬浮窗口。x用来选择窗口位置，gems为镶嵌宝石数量
+	void ShowItemInfoDlg(const CD2Item * pItem, int x, int y, int gems);	//显示/隐藏(pItem = 0)物品信息悬浮窗口。x用来选择窗口位置，gems为镶嵌宝石数量
 
 	//鼠标
 	int m_iSelectedItemIndex = -1;		//选中的物品在m_vItemViews中的索引

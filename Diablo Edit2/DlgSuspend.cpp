@@ -18,12 +18,12 @@ enum { WHITE, BLUE, GREEN, RARE, UNIQUE, CRAFT, RED, GRAY };	//颜色索引
 
 const COLORREF	CDlgSuspend::FONT_COLOR[] = {
 	RGB(255,255,255),		//白色
-	RGB(0,0,255),			//蓝色
-	RGB(0,255,0),			//绿色
+	RGB(0,200,255),			//蓝色
+	RGB(100,255,100),			//绿色
 	RGB(255,255,0),			//黄金色
 	RGB(0x94,0x80,0x64),	//暗金色
 	RGB(255,128,0),			//橙色
-	RGB(255, 0, 0),			//红色
+	RGB(255, 80, 50),			//红色
 	RGB(100, 100, 100),		//灰色
 };
 
@@ -190,7 +190,7 @@ LONG CDlgSuspend::GetItemInfo(const CD2Item * pItem, int iGems)
 		AddMsg(RED, ::theApp.ItemSuspendUI(12));
 	//根据信息条数和长度决定窗体长度和宽度
 	auto pDC = GetDC();
-	LONG maxWidth = accumulate(m_sItemMsg.begin(), m_sItemMsg.end(), 0, [&pDC](LONG m, auto& a) {auto textSize = pDC->GetTextExtent(a.second); return max(m, textSize.cx); });
+	LONG maxWidth = 2.0* accumulate(m_sItemMsg.begin(), m_sItemMsg.end(), 0, [&pDC](LONG m, auto& a) {auto textSize = pDC->GetTextExtent(a.second); return max(m, textSize.cx); });
 	CRect rect;
 	GetWindowRect(&rect);
 	SetWindowPos(0, rect.left, rect.top,
@@ -210,6 +210,12 @@ void CDlgSuspend::OnPaint()
 	CBrush bh(RGB(0,0,0));
 	dc.FillRect(rect,&bh);
 	dc.SetBkColor(0);
+	
+	// 设置字体大小
+	CFont font;
+	font.CreatePointFont(140, _T("微软雅黑")); // 120表示12pt
+	CFont* pOldFont = dc.SelectObject(&font);
+	
 	rect.top = HEIGHT_PER_LINE / 2;
 	rect.bottom = rect.top + HEIGHT_PER_LINE;
 	for (auto & p : m_sItemMsg) {
@@ -218,6 +224,9 @@ void CDlgSuspend::OnPaint()
 		rect.top = rect.bottom;
 		rect.bottom += HEIGHT_PER_LINE;
 	}
+	
+	// 恢复原字体
+	dc.SelectObject(pOldFont);
 }
 
 BOOL CDlgSuspend::OnInitDialog()

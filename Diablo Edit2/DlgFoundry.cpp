@@ -157,7 +157,11 @@ void CDlgFoundry::InitUI() {
 					cb.AddString(str);
 			}
 			for (UINT i = 0; i < ::theApp.MagicSuffixSize(); ++i) {
-				const auto str = ::theApp.MagicSuffix(i);
+				CString str = ::theApp.MagicSuffix(i);
+				// 去掉字符串前面的"of "前缀
+				if (str.Left(3).CompareNoCase(_T("of ")) == 0) {
+					str = str.Mid(3);
+				}
 				for (auto & cb : m_cbSuffix)
 					cb.AddString(str);
 			}

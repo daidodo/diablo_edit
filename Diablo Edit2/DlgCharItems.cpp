@@ -25,7 +25,7 @@ using namespace std;
 const int GRID_WIDTH = 30;	//每个网格的边长(像素)
 
 // SCALING to take into account the possiblity of different dialog base units
-static int GRID_WIDTH_SCALED = GRID_WIDTH;
+static int GRID_WIDTH_SCALED = GRID_WIDTH*2;
 
 //物品类型和能装备的位置
 enum EEquip {
@@ -325,7 +325,7 @@ CItemView::CItemView(const CD2Item & item, EEquip equip, EPosition pos, int x, i
 	ASSERT(int(vGemItems.size()) <= PositionToCol(IN_SOCKET));
 }
 
-CSize CItemView::ViewSize() const { return CSize(iGridWidth * GRID_WIDTH_SCALED, iGridHeight  * GRID_WIDTH_SCALED); }
+CSize CItemView::ViewSize() const { return CSize(iGridWidth * GRID_WIDTH_SCALED , iGridHeight  * GRID_WIDTH_SCALED ); }
 
 int CItemView::GemCount() const {
 	int r = 0;
@@ -835,7 +835,7 @@ tuple<int, int, int> CDlgCharItems::HitTestPosition(CPoint pos, int col, int row
 	return make_tuple(-1, -1, -1);
 }
 
-void CDlgCharItems::ShowItemInfoDlg(const CD2Item * pItem, int x, int gems){
+void CDlgCharItems::ShowItemInfoDlg(const CD2Item * pItem, int x, int y,  int gems){
     if(!m_bNotShowItemInfoDlg && pItem && (!m_pDlgItemInfo || pItem != m_pDlgItemInfo->GetItemPtr())){
         if(!m_pDlgItemInfo){
 			m_pDlgItemInfo = make_unique<CDlgSuspend>(this, m_scTrasparent.GetPos());
@@ -846,10 +846,11 @@ void CDlgCharItems::ShowItemInfoDlg(const CD2Item * pItem, int x, int gems){
         m_pDlgItemInfo->GetWindowRect(&rect);
         GetWindowRect(&rect1);
 		//Adjust Suspend Window position
-		if (x < INFO_WINDOW_RIGHT - GRID_WIDTH_SCALED * 2)
-			rect1.left += INFO_WINDOW_RIGHT;
-		else
-			rect1.left += INFO_WINDOW_LEFT;
+		// if (x < INFO_WINDOW_RIGHT - GRID_WIDTH_SCALED)
+		// 	rect1.left += INFO_WINDOW_RIGHT + x;
+		// else
+			rect1.left += INFO_WINDOW_LEFT + x + GRID_WIDTH_SCALED/2;
+			rect1.top += y;
 		m_pDlgItemInfo->MoveWindow(rect1.left, rect1.top, rect.Width(), rect.Height(), TRUE);
         m_pDlgItemInfo->ShowWindow(SW_SHOWNOACTIVATE); //显示对话框
         m_pDlgItemInfo->Invalidate();
@@ -969,7 +970,7 @@ void CDlgCharItems::OnMouseMove(UINT nFlags, CPoint point)
 				gems = m_vItemViews[index].GemCount();
 			}
 		}
-		ShowItemInfoDlg(item, point.x, gems);
+		ShowItemInfoDlg(item, point.x, point.y, gems);
 	}
 	m_pMouse = point;
 	UpdateData(FALSE);
@@ -1028,7 +1029,7 @@ void CDlgCharItems::OnLButtonDown(UINT nFlags, CPoint point)
 					m_hCursor = CreateAlphaCursor(view);  //设置鼠标为物品图片
 					grid.ItemIndex(-1, view.iGridX, view.iGridY, view.iGridWidth, view.iGridHeight);
 					view.iPosition = IN_MOUSE;
-					ShowItemInfoDlg(0, 0, 0);
+					ShowItemInfoDlg(0, point.x, point.y, 0);
 					Invalidate();
 				}
 			}
@@ -1330,7 +1331,7 @@ void CDlgCharItems::OnItemPaste() {
 }
 
 void CDlgCharItems::OnItemModify() {
-	ShowItemInfoDlg(0, 0, 0);	//Hide suspend window
+	ShowItemInfoDlg(0, 0, 0, 0);	//Hide suspend window
 	auto & view = SelectedItemView();
 	view.UpdateItem(m_vItemViews);
 	CDlgFoundry dlg(view.Item, this);

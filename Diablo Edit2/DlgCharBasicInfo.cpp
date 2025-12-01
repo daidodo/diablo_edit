@@ -28,7 +28,7 @@ IMPLEMENT_DYNAMIC(CDlgCharBasicInfo, CCharacterDialogBase)
 CDlgCharBasicInfo::CDlgCharBasicInfo(CWnd* pParent /*=NULL*/)
 	: CCharacterDialogBase(CDlgCharBasicInfo::IDD, pParent)
 	, m_dlgTabPage(0)
-	, m_sVersion(_T(""))
+
 	, m_sName(_T(""))
 	, m_sCharTitle(_T(""))
 	, m_uCharLevel(1)
@@ -73,7 +73,7 @@ CDlgCharBasicInfo::~CDlgCharBasicInfo()
 void CDlgCharBasicInfo::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
-	DDX_Text(pDX, IDC_EDIT1, m_sVersion);
+	DDX_Control(pDX, IDC_EDIT1, m_sVersion);
 	DDX_Control(pDX, IDC_COMBO1, m_cbCharClass);
 	DDX_Check(pDX, IDC_CHECK1, m_bLadder);
 	DDX_Check(pDX, IDC_CHECK2, m_bExpansion);
@@ -147,17 +147,20 @@ END_MESSAGE_MAP()
 // 更新显示的人物信息
 void CDlgCharBasicInfo::UpdateUI(const CD2S_Struct& character)
 {
+	// 根据版本号设置下拉列表选中项
+	int nSel = -1;
 	switch (character.dwVersion) {
-		case 0x63:m_sVersion = _T("PTR2.5"); break;
-		case 0x62:m_sVersion = _T("PTR2.4"); break;
-		case 0x61:m_sVersion = _T("Resurrected"); break;
-		case 0x60:m_sVersion = _T("1.1x"); break;
-		case 0x5C:m_sVersion = _T("1.09"); break;
-		case 0x59:m_sVersion = _T("Standard 1.08"); break;
-		case 0x57:m_sVersion = _T("1.07/Expansion 1.08"); break;
-		case 0x47:m_sVersion = _T("1.00-1.06"); break;
-		default:m_sVersion = ::theApp.MsgUnknown();
+		case 0x63:nSel = 0; break;
+		case 0x62:nSel = 1; break;
+		case 0x61:nSel = 2; break;
+		case 0x60:nSel = 3; break;
+		case 0x5C:nSel = 4; break;
+		case 0x59:nSel = 5; break;
+		case 0x57:nSel = 6; break;
+		case 0x47:nSel = 7; break;
 	}
+	if (nSel >= 0)
+		m_sVersion.SetCurSel(nSel);
 	m_cbCharClass.SetCurSel(character.charClass);
 	m_bLadder = character.isLadder();
 	m_bExpansion = character.isExpansion();
@@ -217,6 +220,18 @@ BOOL CDlgCharBasicInfo::GatherData(CD2S_Struct& character)
 		return FALSE;
 	}
 	character.name(m_sName);
+	// 从下拉列表获取选中的版本号
+	int nSel = m_sVersion.GetCurSel();
+	switch (nSel) {
+		case 0:character.SetVersion(0x63); break; // PTR2.5
+		case 1:character.SetVersion(0x62); break; // PTR2.4
+		case 2:character.SetVersion(0x61); break; // Resurrected
+		case 3:character.SetVersion(0x60); break; // 1.1x
+		case 4:character.SetVersion(0x5C); break; // 1.09
+		case 5:character.SetVersion(0x59); break; // Standard 1.08
+		case 6:character.SetVersion(0x57); break; // 1.07/Expansion 1.08
+		case 7:character.SetVersion(0x47); break; // 1.00-1.06
+	}
 	if (m_uCharLevel < 1 || m_uCharLevel > 127) {
 		MessageBox(::theApp.MsgBoxInfo(1), ::theApp.MsgError(), MB_ICONERROR);
 		return FALSE;
@@ -277,8 +292,9 @@ BOOL CDlgCharBasicInfo::GatherData(CD2S_Struct& character)
 void CDlgCharBasicInfo::ResetAll()
 {
 	//CString
-	m_sVersion = m_sName = m_sCharTitle = _T("");
+	m_sName = m_sCharTitle = _T("");
 	//CComboBox
+	m_sVersion.SetCurSel(0);
 	m_cbCharClass.SetCurSel(0);
 	m_cbLastDifficult.SetCurSel(0);
 	m_cbLastACT.SetCurSel(0);
@@ -301,6 +317,15 @@ void CDlgCharBasicInfo::ResetAll()
 
 void CDlgCharBasicInfo::InitUI(void)
 {
+	// 初始化版本下拉列表
+	m_sVersion.AddString(_T("PTR2.5"));
+	m_sVersion.AddString(_T("PTR2.4"));
+	m_sVersion.AddString(_T("Resurrected"));
+	m_sVersion.AddString(_T("1.1x"));
+	m_sVersion.AddString(_T("1.09"));
+	m_sVersion.AddString(_T("Standard 1.08"));
+	m_sVersion.AddString(_T("1.07/Expansion 1.08"));
+	m_sVersion.AddString(_T("1.00-1.06"));
 	m_cbLastACT.AddString(_T("I"));
 	m_cbLastACT.AddString(_T("II"));
 	m_cbLastACT.AddString(_T("III"));

@@ -166,6 +166,15 @@ struct CD2S_Struct
 	BOOL isDiedBefore() const { return (charType & 0x8) != 0; }
 	BOOL isHardcore() const { return (charType & 0x4) != 0; }
 	void Reset();
+	// Version manipulation
+	DWORD GetVersion() const { return dwVersion; }
+	BOOL SetVersion(DWORD dwNewVersion) { 
+		if (IsValidVersion(dwNewVersion)) {
+			dwVersion = dwNewVersion;
+			return TRUE;
+		}
+		return FALSE;
+	}
 private:
 	BOOL WriteData(COutBitsStream& bs) const;
 public:
